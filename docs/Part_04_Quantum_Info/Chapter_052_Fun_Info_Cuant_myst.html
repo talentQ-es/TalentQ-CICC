@@ -1,0 +1,1385 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Medidas generalizadas &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Elementos de Información Cuántica" href="Chapter_053_Entrop_Cuant_myst.html" />
+    <link rel="prev" title="Mezcla de Estados" href="Chapter_051_Operador_densidad_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Los Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.html">Algoritmos de Oráculo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_042_QFT_myst.html">Transformada de Fourier Cuántica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_043_QPE_myst.html">Estimación Cuántica de Fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Informacion Cuántica</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter_051_Operador_densidad_myst.html">Mezcla de Estados</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Medidas generalizadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_053_Entrop_Cuant_myst.html">Elementos de Información Cuántica</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Medidas generalizadas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-proyectivas">Medidas proyectivas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento-de-stern-gerlach-real">El experimento de Stern Gerlach real</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#experimento-de-stern-gerlach-ideal">Experimento de Stern-Gerlach ideal:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Medidas generalizadas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimento-de-stern-gerlach-real">Experimento de Stern-Gerlach real:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-selectiva-generalizada-sobre-un-estado-puro">Medida selectiva generalizada sobre un estado puro</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bullet-postulado-iii-b"><span class="math notranslate nohighlight">\(\bullet\)</span>  Postulado III-b:    <a id="postul_III_medida"></a></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-generalizadas-en-estados-mezclados">Medidas generalizadas en estados mezclados</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-selectiva">Medida selectiva</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-no-selectiva">Medida no selectiva</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#povms">POVMs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-povm-a-partir-de-proyectores-no-ortogonales">Ejemplo:  POVM a partir de proyectores no ortogonales.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguibilidad-de-estados">Distinguibilidad de estados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguibilidad-dentro-de-un-conjunto">Distinguibilidad dentro de un conjunto</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-no-ortogonales">Estados no-ortogonales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Mar 11, 2024 | 14 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="medidas-generalizadas">
+<h1>Medidas generalizadas<a class="headerlink" href="#medidas-generalizadas" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ketbra}[2]{| #1\rangle \langle #2|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\tr}{{\rm Tr}\,} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Tr}{{\rm Tr}\,} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\V}{{\cal V}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Lin}{\hbox{Lin}}\)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\bn}{{\bf n}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\bsig}{\boldsymbol{\sigma}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ketup}{\ket{\!\uparrow}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ketdo}{\ket{\!\downarrow}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braup}{\bra{\uparrow\!}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\brado}{\bra{\downarrow\!}} \)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../macro_tQ.py
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><a id="med_proy"></a></p>
+<section id="medidas-proyectivas">
+<h2>Medidas proyectivas<a class="headerlink" href="#medidas-proyectivas" title="Permalink to this heading">#</a></h2>
+<p>En el axioma de la medida se relaciona, de manera <em>un tanto difusa</em>, <u>un aparato de medida con un operador observable</u></p>
+<p>Por ejemplo, a un Stern Gerlach orientado en la dirección <span class="math notranslate nohighlight">\(z\)</span> le hacemos corresponder el operador</p>
+<div class="math notranslate nohighlight">
+\[ S_z = \frac{\hbar}{2}\sigma_z  = S_z^\dagger\]</div>
+<p>Vamos a precisar un poco más para aclarar cómo aparece esta relación. Supongamos
+que:</p>
+<ul class="simple">
+<li><p>tenemos un dispositivo macroscópico que interactúa  con un sistema cuántico de dimensión <span class="math notranslate nohighlight">\(N = {\rm dim }\Hil\)</span></p></li>
+<li><p>en cada interacción, <u>el aparato adopta <b>uno</b> de entre  <b>un conjunto discreto</b> de posibles estados clásicos</u></p></li>
+</ul>
+<p>Asumimos que es posible preparar el estado cuántico repetidamente de <u>la misma manera</u> y efectuar medidas</p>
+<p>En un primer escenario vamos a suponer que ocurre lo siguiente:</p>
+<ol class="arabic simple">
+<li><p>hay número <span class="math notranslate nohighlight">\(N\)</span> de resultados posibles. Podemos, por tanto, numerarlos <span class="math notranslate nohighlight">\(m=1,2,...,N\)</span>.</p></li>
+<li><p>los resultados, <span class="math notranslate nohighlight">\(m\)</span>, obtenidos repitiendo <u><em>la primera medida</em></u> son aleatorios y siguen una cierta distribución de probabilidad <span class="math notranslate nohighlight">\(p(m)\)</span></p></li>
+<li><p>si se realiza una cadena de medidas sucesivas <u>iguales</u>, el resultado <span class="math notranslate nohighlight">\(m\)</span> de la primera medición se repite <i>idénticamente</i>. Es decir <span class="math notranslate nohighlight">\(p(m|m) = 1\)</span> y  <span class="math notranslate nohighlight">\(p(n|m) = 0\)</span> si <span class="math notranslate nohighlight">\(n\neq m\)</span>.</p></li>
+</ol>
+<p>En este caso estamos <em>en presencia</em> de una <strong>medida proyectiva</strong>, o <strong>de von Neumann</strong> y podemos reconstruir el formalismo matemático asociado.</p>
+<p>De las observaciónes anteriores  <b>podemos sacar conclusiones</b>. Denotemos <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> el estado cuántico asociado a la preparación inicial. Al medir un resultado <span class="math notranslate nohighlight">\(m\)</span>:</p>
+<ul class="simple">
+<li><p>el <b>estado</b> ha cambiado <span class="math notranslate nohighlight">\(\ket{\psi} \to \ket{m}\)</span>, dado que la distribución de probabilidades se modifica  <i>en la medición posterior a  dicha medida</i>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>los  estados así generados <b>son ortogonales</b>. Una vez medido <span class="math notranslate nohighlight">\(m\)</span>, la probabilidad de encontrar <span class="math notranslate nohighlight">\(n\neq m\)</span> es nula</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[p(n|m) = |\braket{n}{m}|^2 = \delta_{mn}\]</div>
+<ul class="simple">
+<li><p>no queda ni rastro del estado original <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>  en <span class="math notranslate nohighlight">\(\ket{m}\)</span>. El hecho de que, después de la primera medida, el estado (la distribución de probabilidades) permanezca invariable, indica que la acción del aparato de medida sobre el estado inicial puede describirse mediante un <b>proyector</b> para cada <span class="math notranslate nohighlight">\(m\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi} \stackrel{m}{\rightarrow} \ket{m} \sim P_m\ket{\psi} = P_m^2 \ket{\psi} = P_m^3\ket{\psi} = ...
+\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{8mm}{0mm}\)</span>Los proyectores asociados son ortogonales</p>
+<div class="math notranslate nohighlight">
+\[
+P_m P_n = \ket{m}\braket{m}{n}\bra{n} = P_m \delta_{mn}
+\]</div>
+<p>La situación descrita aquí es un caso ideal de medida que se denomina <em>medida proyectiva</em>. Ahora
+podemos <u><em>encapsular</em> toda la información relevante usando el <em>teorema de descomposición espectral</em></u></p>
+<p>Efectivamente, con los <em>proyectores ortogonales</em> <span class="math notranslate nohighlight">\(\{P_m\}\)</span> siempre podemos fabricar un <em>operador hermítico</em> si los combinamos con <em>autovalores reales</em></p>
+<p>Existen infinitos aparatos capaces de realizar la misma medida. Cada uno asociará un valor numérico de medida <span class="math notranslate nohighlight">\(\lambda_m\)</span> a cada resultado <span class="math notranslate nohighlight">\(m\)</span> posible, dependiendo de la escala con la que está construido. Entonces, el operador que contiene la información del aparato de medida es el <em>observable</em></p>
+<div class="math notranslate nohighlight">
+\[
+A = \sum_m \lambda_m P_m
+\]</div>
+<p>cuyo valor esperado en el estado final <span class="math notranslate nohighlight">\(\ket{m}\)</span> delata el valor <span class="math notranslate nohighlight">\(\lambda_m\)</span> del resultado obtenido</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{m} A \ket{m} = \sum_n \lambda_n \bra{m}P_n\ket{m} = \sum_n \lambda_n \delta_{mn} = \lambda_m
+\]</div>
+<div class="attention admonition">
+<p class="admonition-title">En resumen</p>
+<p>Una medida proyectiva está asociado a un conjunto <span class="math notranslate nohighlight">\(P_m, m=1,...,N\)</span> de <em>proyectores ortogonales</em>.</p>
+<p>El <i>observable</i> sólo sirve para encapsular la información anterior.</p>
+<p>Sin embargo, las medidas proyectivas forman un límite ideal de la medida más general.</p>
+<p>Para entender en qué modo es así, debemos generalizar el formalismo para poder tener en cuenta situaciones reales.</p>
+</div>
+<section id="el-experimento-de-stern-gerlach-real">
+<h3>El experimento de Stern Gerlach real<a class="headerlink" href="#el-experimento-de-stern-gerlach-real" title="Permalink to this heading">#</a></h3>
+<p>Volvamos sobre el caso de un electrón que atraviesa un Stern-Gerlach en el que el campo magnético está alineado en la dirección <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p>Nuestro modelo de evolución nos indica que, debido a la interacción con el campo <span class="math notranslate nohighlight">\(B_z\)</span>, las partículas</p>
+<ul class="simple">
+<li><p>con espín +<span class="math notranslate nohighlight">\(\hbar/2\)</span>   sufrirán una fuerza deflectora hacia arriba.</p></li>
+<li><p>con espín -<span class="math notranslate nohighlight">\(\hbar/2\)</span> sufrirán una fuerza deflectora hacia abajo.</p></li>
+</ul>
+<p>Por tanto, si a la salida, el electrón es detectado en la pantalla superior (inferior), decimos que hemos medido una componente del espín <span class="math notranslate nohighlight">\(+\hbar/2\)</span> (<span class="math notranslate nohighlight">\(-\hbar/2\)</span>).</p>
+<p>En realidad esta afirmación es excesiva: lo único que tenemos derecho a afirmar es que hemos medido  <em>en qué pantalla se ha detectado el electrón</em></p>
+<p>Interpretar el Stern Gerlach como medidor del espín es más delicado y llevará a definir el concepto de <strong>medida generalizada</strong>.</p>
+<section id="experimento-de-stern-gerlach-ideal">
+<h4>Experimento de Stern-Gerlach ideal:<a class="headerlink" href="#experimento-de-stern-gerlach-ideal" title="Permalink to this heading">#</a></h4>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Stern-Gerlach-3.png"><img alt="../../_images/Stern-Gerlach-3.png" src="../../_images/Stern-Gerlach-3.png" style="width: 1000px;" /></a>
+</figure>
+<p>En la pantalla posterior al imán, la <em>función de onda orbital</em><span class="math notranslate nohighlight">\(~~\Rightarrow ~~
+\psi(z) = \braket{z}{\psi}\)</span> nos da la amplitud de probabilidad de hallar el electrón en la posición <span class="math notranslate nohighlight">\(z\)</span></p>
+<p>Si sólo estamos interesados en predecir si impactará en <span class="math notranslate nohighlight">\(~z&gt;0~\)</span> ó  en <span class="math notranslate nohighlight">\(~z&lt;0~\)</span> podemos <b>reducir el problema a un espacio de Hilbert de dimensión 2</b></p>
+<div class="amsmath math notranslate nohighlight" id="equation-f7b12381-d599-4868-9288-a79a7b567d21">
+<span class="eqno">(25)<a class="headerlink" href="#equation-f7b12381-d599-4868-9288-a79a7b567d21" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\ket{\psi} ~ &amp;=&amp; \int_{-\infty}^{+\infty} dz \ket{z}\braket{z}{\psi} ~= ~  \int_{-\infty}^0 dz \ket{z}\braket{z}{\psi} + \int_0^{+\infty}dz \ket{z}\braket{z}{\psi} \\
+&amp;=&amp;  \int_0^{+\infty}dz\, \psi(z) \ket{z} ~+ ~\int_{-\infty}^0 dz\, \psi(z)\ket{z}
+\\ \rule{0mm}{10mm} &amp;=&amp; 
+a\ket{+} + b\ket{-}
+\end{eqnarray}\]</div>
+<p>con <span class="math notranslate nohighlight">\(a^2 + b^2 = 1\)</span>
+$<span class="math notranslate nohighlight">\(
+a^2 = \int_0^{+\infty} dz |\psi(z)|^2  ~~~~~~~~~.~~~~~~~~b^2 = \int_{-\infty}^0 dz |\psi(z)|^2
+\)</span><span class="math notranslate nohighlight">\(
+ y 
+\)</span><span class="math notranslate nohighlight">\(
+\ket{+} = \frac{1}{a}\int_0^{+\infty}dz\, \psi(z) \ket{z}~~~~~~~.~~~~~~~~
+\ket{-} = \frac{1}{b}\int_{-\infty}^0dz\, \psi(z) \ket{z}~~~~~~~.~~~~~~~~
+\)</span>$</p>
+<p>claramente <span class="math notranslate nohighlight">\(~\braket{+}{+} = \braket{-}{-} = 1~\)</span> y <span class="math notranslate nohighlight">\(~\braket{+}{-} = 0~\)</span>.</p>
+<ul class="simple">
+<li><p>Los estados <span class="math notranslate nohighlight">\(\ket{+}\)</span> están asociados a la detección en cualquier punto con <span class="math notranslate nohighlight">\(~z&gt;0~\)</span> y, a este evento le asignamos el valor +1.</p></li>
+<li><p>Los estados <span class="math notranslate nohighlight">\(\ket{-}\)</span> están asociados a la detección en cualquier punto con <span class="math notranslate nohighlight">\(~z&lt;0~\)</span> y, a este evento le asignamos el valor -1.</p></li>
+</ul>
+<p>Esto hace de <span class="math notranslate nohighlight">\(\ket{\pm}\)</span> autoestados del observable <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+<p>Vamos a estudiar cómo se ve el asunto desde el punto de vista de la variable de espín.</p>
+<p>El espín pertenece a un espacio <span class="math notranslate nohighlight">\(\Hil_S\)</span> de dimensión 2 en el que podemos tomar una base <span class="math notranslate nohighlight">\(\{ \ketup,\ketdo\}\)</span></p>
+<ul class="simple">
+<li><p>A la entrada del detector, no hay <u>ninguna correlación</u> entre ambos grados de libertad.</p></li>
+</ul>
+<p>El sistema se halla en un cierto estado de espín y centrado simétricamente</p>
+<div class="amsmath math notranslate nohighlight" id="equation-804a46a5-734f-4205-8d2c-4c96ccf2aaeb">
+<span class="eqno">(26)<a class="headerlink" href="#equation-804a46a5-734f-4205-8d2c-4c96ccf2aaeb" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\ket{\chi} &amp;=&amp; \ket{s}\otimes \ket{\psi}  ~= ~ (c_\uparrow\ketup + c_\downarrow \ketdo)\otimes  \frac{1}{\sqrt{2}}(\ket{+} + \ket{-})
+\end{eqnarray}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(|c_\uparrow|^2 + |c_\downarrow|^2 = 1\)</span>.</p>
+<ul class="simple">
+<li><p>La <b>interacción</b> con el campo magnético induce una evolución que  <b>entrelaza</b> los estados <span class="math notranslate nohighlight">\(\ket{\uparrow}\)</span> con <span class="math notranslate nohighlight">\(\ket{+}\)</span> y <span class="math notranslate nohighlight">\(\ket{\downarrow}\)</span> con <span class="math notranslate nohighlight">\(\ket{-}\)</span> de forma que, a la salida</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\ket{\chi}  ~\longrightarrow ~ \ket{\chi'}~ =~ c_\uparrow \ketup\otimes \ket{+} ~+~ c_\downarrow \ketdo\otimes \ket{-}  
+\]</div>
+<p>Si el detector superior o inferior hacen <em>click</em>, entonces se realiza una medida proyectiva a uno de los dos estados orbitales <span class="math notranslate nohighlight">\(\pm 1 \to \{\ket{\pm}\}\)</span></p>
+<p>Consecuentemente el <i>estado de espín</i> colapsa  a uno de los dos estados de la base</p>
+<div class="math notranslate nohighlight">
+\[
+ (+1)~ : ~\ket{\chi'} \, \longrightarrow \,  \ket{\uparrow} ~~~~~~~~~~~;~~~~~~~~~~ (-1)~ :~ \ket{\chi'} \, \longrightarrow \,  \ket{\downarrow}
+\]</div>
+<p>La repetición permite reconstruir las amplitudes de la función de onda de espín</p>
+<div class="math notranslate nohighlight">
+\[
+p(+1) ~=~ |c_\uparrow|^2 ~~~~~~~~~;~~~~~~~~~~ p(-1) ~=~ |c_\downarrow|^2
+\]</div>
+<div class="attention admonition">
+<p class="admonition-title">En resumen</p>
+<p>En un experimento de Stern-Gerlach ideal, la <i>medida proyectiva</i> de la componente orbital efectuada por el detector espacial, <i>equivale a una medida proyectiva del espín</i> descrita por el observable</p>
+<div class="math notranslate nohighlight">
+\[
+Z = (+1)\, \ketbra{\!\uparrow}{\uparrow\!}~ +~ (-1)\, \ketbra{\!\downarrow}{\downarrow\!}
+\]</div>
+</div>
+<p><a id="med_gen"></a></p>
+</section>
+</section>
+</section>
+<section id="id1">
+<h2>Medidas generalizadas<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="experimento-de-stern-gerlach-real">
+<h3>Experimento de Stern-Gerlach real:<a class="headerlink" href="#experimento-de-stern-gerlach-real" title="Permalink to this heading">#</a></h3>
+<p>En el experimento de Stern-Gerlach real la interacción con el campo magnético genera un entrelazamiento imperfecto, con unas funciones de onda que no tienen soporte en el las semirectas <span class="math notranslate nohighlight">\(~z&gt;0~\)</span> ó <span class="math notranslate nohighlight">\(~z&lt;0~\)</span> (ver figura)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Stern-Gerlach-4.png"><img alt="../../_images/Stern-Gerlach-4.png" src="../../_images/Stern-Gerlach-4.png" style="width: 1000px;" /></a>
+</figure>
+<p>En este caso, el estado inicial es transformado por la interacción en un estado entrelazado</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\chi}  ~\longrightarrow ~ \ket{\chi'} = c_\uparrow \ket{\uparrow}\otimes \left( \sqrt{1-p_0}\,\ket{+} + \sqrt{p_0}\,\ket{-} \right) + c_\downarrow \ket{\downarrow}\otimes \left( \sqrt{p_1}\, \ket{+} + \sqrt{1-p_1}\, \ket{-} \right)
+\]</div>
+<p>Aquí <span class="math notranslate nohighlight">\(~0\leq p_0, p_1\leq 1~\)</span> parametrizan la desviación vertical de la función de onda orbital</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>verifica que <span class="math notranslate nohighlight">\(\|\ket{\chi'}\| = 1\)</span>.</p>
+</div>
+<p>Si pretendemos medir el impacto en el semieje vertical, será mejor que escribamos <span class="math notranslate nohighlight">\(\ket{\chi'}\)</span> en la forma</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\chi'} = 
+\left(  \sqrt{1-p_0} c_\uparrow \ketup + \sqrt{p_1} c_\downarrow \ketdo\right) \otimes \,\ket{+} ~+~ \left( \sqrt{p_0}\,c_\uparrow \ketup  +  \sqrt{1-p_1}c_\downarrow  \ketdo \right)\otimes \ket{-}
+\]</div>
+<p>Nuevamente una medida consiste en una señal que procede del detector de posición superior <span class="math notranslate nohighlight">\(\ket{+}\)</span> o del inferior  <span class="math notranslate nohighlight">\(\ket{-}\)</span></p>
+<p>La probabilidad de detección de <span class="math notranslate nohighlight">\(\ket{+}\)</span> ó <span class="math notranslate nohighlight">\(\ket{-}\)</span> viene dada por el módulo del vector que lo multiplica</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d3bfdc66-de9a-4834-ae96-24a6f62432e2">
+<span class="eqno">(27)<a class="headerlink" href="#equation-d3bfdc66-de9a-4834-ae96-24a6f62432e2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
+p(+1) &amp;=&amp; (1-p_0)|c_\uparrow|^2 + p_1 |c_\downarrow|^2  \\
+\rule{0mm}{9mm}
+p(-1) &amp;=&amp; p_0 |c_\uparrow|^2 + (1-p_1) |c_\downarrow|^2
+\end{eqnarray}\]</div>
+<p><strong>Medida no-proyectiva del espín</strong></p>
+<p>A continuación vamos a describir el experimento como <u>un proceso de medida directa del espín</u> que afecta al espín</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9925d677-2887-4e6d-9d17-8c00a0e75d0e">
+<span class="eqno">(28)<a class="headerlink" href="#equation-9925d677-2887-4e6d-9d17-8c00a0e75d0e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\ket{s}  ~= ~ (c_\uparrow\ketup + c_\downarrow \ketdo) ~~\stackrel{\rm Stern Gerlach}{\longrightarrow} ~~
+\ket{s'}
+\end{eqnarray}\]</div>
+<p>Introduzcamos los operadores</p>
+<div class="amsmath math notranslate nohighlight" id="equation-36f8483c-c6b6-403d-9d0e-83affd40a0fd">
+<span class="eqno">(29)<a class="headerlink" href="#equation-36f8483c-c6b6-403d-9d0e-83affd40a0fd" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+M_+ &amp;=&amp; \sqrt{1-p_0} \, \ketup\braup ~+~ \sqrt{p_1} \, \ketdo\brado \\
+\rule{0mm}{8mm}
+M_- &amp;=&amp; \sqrt{p_0} \, \ketup\braup ~+~ \sqrt{1-p_1} \, \ketdo\brado \\
+\end{eqnarray}\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>verifica que <span class="math notranslate nohighlight">\(M_m\)</span> ni son proyectores, ni son ortogonales. Prueba que satisfacen la relación siguiente</p>
+<div class="math notranslate nohighlight">
+\[
+ M_+^\dagger M_+ + M_-^\dagger M_- = I
+ \]</div>
+</div>
+<p>Veamos que dichas probabilidades ¡<u>son expresables en términos de </u> <span class="math notranslate nohighlight">\(M_\pm\)</span>!</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5f3e1703-d18c-4fcd-821f-349b984b0316">
+<span class="eqno">(30)<a class="headerlink" href="#equation-5f3e1703-d18c-4fcd-821f-349b984b0316" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
+p(+1) &amp;=&amp; (1-p_0)|c_\uparrow|^2 + p_1 |c_\downarrow|^2 = \bra{s}M_+^\dagger M_+\ket{s} \\
+\rule{0mm}{18mm}
+p(-1) &amp;=&amp; p_0 |c_\uparrow|^2 + (1-p_1) |c_\downarrow|^2=  \bra{s}M_-^\dagger M_-\ket{s} 
+\end{eqnarray}\]</div>
+<p>Con respecto a los estados finales, el registro en cada detector hace  colapsar el estado inicial a un estado normalizado</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f04718da-13f0-4824-8724-364123a2af50">
+<span class="eqno">(31)<a class="headerlink" href="#equation-f04718da-13f0-4824-8724-364123a2af50" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+(+1)~:~ \ket{s} ~&amp;\stackrel{\rm Stern Gerlach}{\longrightarrow}&amp; ~\ket{s_+} = \frac{\sqrt{1-p_0}\, c_\uparrow\ket{\uparrow} + \sqrt{p_1}\, c_\downarrow\ket{\downarrow}) }{\hbox{Norma}} ~ = ~ \frac{M_+\ket{s}}{\bra{s}M_+^\dagger M_+\ket{s}}\\
+\rule{0mm}{20mm}
+(-1)~:~ \ket{s}~&amp;\stackrel{\rm Stern Gerlach}{\longrightarrow} &amp; ~\ket{s_-} = \frac{\sqrt{p_0}\, c_\uparrow\ket{\uparrow} + \sqrt{1-p_1}\, c_\downarrow\ket{\downarrow}) }{\hbox{Norma}} ~= ~\frac{M_-\ket{s}}{\bra{s}M_-^\dagger M_-\ket{s}}  \\
+\end{eqnarray}\]</div>
+<div class="attention admonition">
+<p class="admonition-title">En resumen</p>
+<ul class="simple">
+<li><p>en un experimento no-ideal, la medida proyectiva en el espacio orbital <span class="math notranslate nohighlight">\(\Hil_B\)</span> equivale a una medida no-proyectiva  en el espacio <span class="math notranslate nohighlight">\(\Hil_S\)</span> de espín.</p></li>
+<li><p>vemos como la medida proyectiva se recupera como un caso <i>ideal</i>  en el que <span class="math notranslate nohighlight">\(p_0 = p_1 = 0\)</span>. En este caso las medidas repetidas de la posición   <span class="math notranslate nohighlight">\(p(+1) = |c_\uparrow|^2\)</span> y <span class="math notranslate nohighlight">\(p(-1)=|c_\downarrow|^2\)</span> permiten una <i>identificación precisa</i> del estado de espín preparado incialmente <span class="math notranslate nohighlight">\(\ket{s}\)</span>.</p></li>
+<li><p>en el otro extremo <span class="math notranslate nohighlight">\(p(+1) = p(-1) = 1/2\)</span> tenemos que el estado que genera el Stern-Gerlach es factorizable
+<span class="math notranslate nohighlight">\( \frac{1}{\sqrt{2}}\ket{s}\otimes (\ket{+}+\ket{-})\)</span>, y su medida no permite concluir nada acerca de <span class="math notranslate nohighlight">\(\ket{s}\)</span>. Se trata de una <i>medida borrosa</i>.</p></li>
+<li><p>En este sentido una <b>medida generalizada</b> es una medida <u>imprecisa</u> de un grado de libertad.</p></li>
+</ul>
+</div>
+</section>
+<section id="medida-selectiva-generalizada-sobre-un-estado-puro">
+<h3>Medida selectiva generalizada sobre un estado puro<a class="headerlink" href="#medida-selectiva-generalizada-sobre-un-estado-puro" title="Permalink to this heading">#</a></h3>
+<section id="bullet-postulado-iii-b">
+<h4><span class="math notranslate nohighlight">\(\bullet\)</span>  Postulado III-b:    <a id='postul_III_medida'></a><a class="headerlink" href="#bullet-postulado-iii-b" title="Permalink to this heading">#</a></h4>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Una <i>medida geralizada selectiva</i> se describe mediante una <i> colección de   operadores lineales de medida </i>  <span class="math notranslate nohighlight">\(\{ M_m \}\)</span>  que verifican la <i>relación de completitud</i></p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{m} M_m^\dagger M_m = I \, 
+\]</div>
+<p class="sd-card-text">Con cada proceso de medida, <u>un sólo resultado</u> <span class="math notranslate nohighlight">\(m\)</span> será declarado. El estado (normalizado) posterior a la detección será</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi}  \to  \frac{M_m\ket{\psi}}{p(m)}
+\]</div>
+<p class="sd-card-text">La probabilidad de medir el valor <span class="math notranslate nohighlight">\(m\)</span> vendrá dada por</p>
+<div class="math notranslate nohighlight">
+\[
+p(m)  = \bra{\psi} M_m^\dagger M_m \ket{\psi}
+\]</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>La relación de completitud es esencial para que las cantidades <span class="math notranslate nohighlight">\(p(m)\)</span> tengan intepretación de probabilidades</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_m p(m) = \sum_m \bra{\psi}M_m^\dagger M_m \ket{\psi} = \braket{\psi}{\psi} = 1
+\]</div>
+</div>
+<ul class="simple">
+<li><p>Las medidas proyectivas son casos particulares de medidas generalizadas en las que los operadores <span class="math notranslate nohighlight">\(M_m \)</span> son proyectores ortogonales <span class="math notranslate nohighlight">\(M_m M_n = M_m \delta_{mn}\)</span>.
+Por tanto hay  <span class="math notranslate nohighlight">\(N = {\rm dim}\, \Hil\)</span> resultados posibles.</p></li>
+</ul>
+<ul class="simple">
+<li><p>La medidas proyectivas están asociadas a una <em>propiedad medible</em> del sistema ya que se borra todo rastro del estado entrante <span class="math notranslate nohighlight">\(\ket{\psi} \to P_m\ket{\psi}/|P_m\ket{\psi}| = P^2_m\ket{\psi}/|P_m\ket{\psi}| = ... \)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>Las medidas generalizadas no están asociadas a una <em>propiedad medible</em>. El estado final depende del entrante <span class="math notranslate nohighlight">\(\ket{\psi} \neq  M_m\ket{\psi}/|M_m\ket{\psi}| \neq  M^2_m\ket{\psi}/|M^2_m\ket{\psi}|\neq ...\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="medidas-generalizadas-en-estados-mezclados">
+<h3>Medidas generalizadas en estados mezclados</b><a class="headerlink" href="#medidas-generalizadas-en-estados-mezclados" title="Permalink to this heading">#</a></h3>
+<section id="medida-selectiva">
+<h4>Medida selectiva<a class="headerlink" href="#medida-selectiva" title="Permalink to this heading">#</a></h4>
+<p>Supongamos que,  en un sistema descrito por el estado mezclado</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \sum_i p_i \ket{\psi_i}\bra{\psi_i}
+\]</div>
+<p>actuamos con una serie de operadores de medida  <span class="math notranslate nohighlight">\(\{M_m\}\)</span>.</p>
+<p>Cada vez que obtenemos un resultado <span class="math notranslate nohighlight">\(m\)</span>, lo anotamos, con el objeto de hacer estadística. Esto es una <em>medida selectiva</em></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">El resultado de una <i>medida selectiva generalizada</i> <span class="math notranslate nohighlight">\(\{M_m\}\)</span> sobre un estado <span class="math notranslate nohighlight">\(\rho\)</span>  puede dar un resultado <span class="math notranslate nohighlight">\(m\)</span> con probabilidad</p>
+<div class="math notranslate nohighlight">
+\[
+p(m) = \tr\left(M_m^\dagger M_m \rho\right)
+\]</div>
+<p class="sd-card-text">Posteriormente a la detección de dicho resultado, el sistema colapsa a un nuevo estado</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_m =  \frac{M_m  \rho M_m^\dagger}{p_m} 
+\]</div>
+</div>
+</div>
+<p><em>Prueba:</em>
+<span class="math notranslate nohighlight">\(~~\)</span> Sea <span class="math notranslate nohighlight">\(\rho = \sum_i p_i \ketbra{\psi_i}{\psi_i}\)</span> el estado que entra en el detector.</p>
+<p>La  <em>probabilidad</em> de obtener el resultado <span class="math notranslate nohighlight">\(m\)</span> <em>condicionada</em> a que el estado sobre el que se mide sea <span class="math notranslate nohighlight">\(\ket{\psi_i}\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+p(m|i) = \bra{\psi_i}M^\dagger_m M_m \ket{\psi_i}
+\]</div>
+<p>Ahora podemos calcular la probabilidad total de obtención del valor <span class="math notranslate nohighlight">\(m\)</span> al medir sobre el colectivo</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f362c0e5-3dbb-4b50-96c5-849615bde8fc">
+<span class="eqno">(32)<a class="headerlink" href="#equation-f362c0e5-3dbb-4b50-96c5-849615bde8fc" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+p_m &amp;=&amp; \sum_i p(m|i) p_i = \sum_{i=1}^r \bra{\psi_i}M^\dagger_m M_m \ket{\psi_i} p_i \\
+&amp;=&amp; \tr \left( M_m^\dagger M \sum_{i=1}^r p_i \ketbra{\psi_i}{\psi_i} \right) \\  \rule{0mm}{7mm}
+&amp;=&amp; \tr \left( M_m^\dagger M_m \rho \right) \\   \rule{0mm}{8mm}
+\end{eqnarray}\]</div>
+<p>Veamos cómo se transforma el estado.
+Supongamos que la medida arroja el valor <span class="math notranslate nohighlight">\(m\)</span>. Este resultado puede provenir de <u>cualquier miembro del colectivo</u></p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi_i} ~\to ~  \ket{\psi_i^m} = \frac{M_m\ket{\psi_i}}{\sqrt{p(m|i)}}
+\]</div>
+<p>con una probabilidad condicionada <span class="math notranslate nohighlight">\(p(i|m)\)</span> de <span class="math notranslate nohighlight">\(-\)</span>sabiendo que el resultado es <span class="math notranslate nohighlight">\(m-\)</span>  haya sido <span class="math notranslate nohighlight">\(\ket{\psi_i}\)</span> el estado que entró en el detector.</p>
+<p>En definitiva, una medida <span class="math notranslate nohighlight">\(m\)</span> modifica el colectivo en la forma</p>
+<div class="math notranslate nohighlight">
+\[
+\{\, \ket{\psi_i},p_i \, \} ~~~\to ~~~ \{\, \ket{\psi^m_i},p(i|m)\, \}
+\]</div>
+<p>Las probabilidades condicionadas <span class="math notranslate nohighlight">\(~p(m|i)~\)</span> y <span class="math notranslate nohighlight">\(~p(i|m)~\)</span> se relacionan mediante la <strong>regla de Bayes</strong></p>
+<div class="math notranslate nohighlight">
+\[
+p(m|i)p_i  = p(m,i) = p(i,m) = p(i|m) p_m
+\]</div>
+<p>es decir</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{p(m|i)}{p(i|m)} = \frac{p_i}{p_m}
+\]</div>
+<p><em>En resumen</em>:
+tras una medida selectiva en la que <em>observamos</em> el resultado <span class="math notranslate nohighlight">\(m\)</span>, la descripción del sistema vendrá dada por un nuevo operador densidad</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8878e59a-bb82-4f0b-91c9-fde590b7c3d2">
+<span class="eqno">(33)<a class="headerlink" href="#equation-8878e59a-bb82-4f0b-91c9-fde590b7c3d2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+ \rho_m &amp;=&amp; \sum_i p(i|m) \,\ketbra{\psi_i^m}{\psi_i^m} \\
+&amp;=&amp;\sum_i p(i|m) \frac{M_m\ketbra{\psi_i}{\psi_i}M_m^\dagger}{p(m|i)}  \\
+&amp;=&amp;  \sum_i \frac{p_i}{p_m} M_m\ketbra{\psi_i}{\psi_i}M_m^\dagger  = \frac{1}{p_m}M_m\left(\sum_i p_i \ketbra{\psi_i}{\psi_i} \right) M_m^\dagger\\
+&amp;=&amp; \frac{M_m  \rho M_m^\dagger}{p_m} 
+\end{eqnarray}\]</div>
+</section>
+<section id="medida-no-selectiva">
+<h4>Medida no selectiva<a class="headerlink" href="#medida-no-selectiva" title="Permalink to this heading">#</a></h4>
+<p>Supongamos que después de muchas medidas selectivas <span class="math notranslate nohighlight">\(m_1,m_2,....\)</span> de un estado <span class="math notranslate nohighlight">\(\rho\)</span> obtenemos las probabilidades <span class="math notranslate nohighlight">\(\{p(m_i)\sim m_i/\sum_i m_i\}\)</span>  asociada a los resultados de las medidas</p>
+<p>Ahora preparamos de nuevo <span class="math notranslate nohighlight">\(\rho\)</span> y realizamos una medida en la que  <b>no registramos</b> el resultado. Es decir, sólo sabemos que el sistema ha sido medido.</p>
+<p>Entonces la <em>mejor descripción del sistema</em> es un nuevo estado <span class="math notranslate nohighlight">\(\rho'\)</span> que es <i> separable</i></p>
+<div class="amsmath math notranslate nohighlight" id="equation-17783c5c-0f86-45b7-bfe3-692c10c0fff4">
+<span class="eqno">(34)<a class="headerlink" href="#equation-17783c5c-0f86-45b7-bfe3-692c10c0fff4" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\rho' &amp;=&amp; \sum_m p_m \rho_m = \sum_m p_m \frac{M_m  \rho M_m^\dagger}{p_m}  \\
+&amp;=&amp; \sum_m M_m  \rho M_m^\dagger
+\end{eqnarray}\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo</p>
+<p>En el experimento de EPR, el estado inicial que comparten Alice y Bob es  puro</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho = \ketbra{B_{11}}{B_{11}} = \frac{1}{\sqrt{2}}\begin{pmatrix}0\\1\\-1\\0\end{pmatrix}
+\frac{1}{\sqrt{2}}\begin{pmatrix}0 &amp; 1 &amp; -1&amp;0 \end{pmatrix} = \begin{pmatrix} 0&amp;0&amp;0&amp;0 \\ 0&amp;\frac{1}{2}&amp;-\frac{1}{2}&amp;0 \\ 0&amp;-\frac{1}{2}&amp;\frac{1}{2}&amp;0 \\ 0&amp;0&amp;0&amp;0 \end{pmatrix}
+\end{split}\]</div>
+<p>Alice <u>mide</u>, pero Bob <u>desconoce el resultado</u>. Para él se trata de una medida no-selectiva donde el nuevo estado compartido será</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho' ~=~ P_0^A \rho P_0^A + P_1^A \rho P_1^A ~=~ \ketbra{0}{0} \otimes I \cdot \rho \cdot \ketbra{0}{0}\otimes I + \ketbra{1}{1}\otimes I\cdot \rho\cdot \ketbra{1}{1}\otimes I  ~=~ \begin{pmatrix} 0&amp;0&amp;0&amp;0 \\ 0&amp;\frac{1}{2}&amp;0&amp;0 \\ 0&amp;0&amp;\frac{1}{2}&amp;0 \\ 0&amp;0&amp;0&amp;0 \end{pmatrix}
+\end{split}\]</div>
+<p>Vemos que se han perdido las coherencias <span class="math notranslate nohighlight">\(\rho_{i\neq j}\)</span> y el resultado es una mezcla estadística con pureza <span class="math notranslate nohighlight">\(\tr \rho'^2 = 1/2\)</span>.</p>
+<p>Las probabilidades de medida para Bob vienen controladas por la matriz densidad reducida <span class="math notranslate nohighlight">\(\rho_B\)</span>.</p>
+<p>Es relevante ver que éstas <b>no dependen de lo que haya hecho Alice</b></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho_B = \tr_A \rho = \tr_A \rho' = \begin{pmatrix} \frac{1}{2} &amp;0 \\ 0 &amp; \frac{1}{2} \end{pmatrix}
+\end{split}\]</div>
+<p>lo cual es importante, porque, de lo contrario, podríamos utilizarlo para efectuar una comunicación instantánea.</p>
+</div>
+<p><a id="povms"></a></p>
+</section>
+</section>
+</section>
+<section id="povms">
+<h2>POVMs<a class="headerlink" href="#povms" title="Permalink to this heading">#</a></h2>
+<p>A partir de una medida generalizada definida mediante operadores <span class="math notranslate nohighlight">\(\{M_m\}\)</span> podemos definir un conjunto de nuevos operadores</p>
+<div class="math notranslate nohighlight">
+\[
+E_m = M_m^\dagger M_m
+\]</div>
+<p>que implementan las denominadas  <em>Medidas Evaluadas por Operadores Positivos</em> POVM</p>
+<p>Notar que</p>
+<ul class="simple">
+<li><p>son operadores hermíticos</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[E_m^\dagger = E_m\]</div>
+<ul class="simple">
+<li><p>son operadores positivos</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\bra{\psi}E_m\ket{m} = \bra{\psi}M_m^\dagger M_m\ket{m} = |M_m\ket{\psi}|^2 \geq 0 \]</div>
+<ul class="simple">
+<li><p>verifican la <em>relación de completitud</em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\sum_m E_m = I\]</div>
+<p>Un POVM es un concepto más <em>grueso</em> que un <em>operador generalizado</em>.</p>
+<p>En particular <em>sólo sirve para calcular probabilidades</em> de ocurrencia de un cierto resultado</p>
+<div class="math notranslate nohighlight">
+\[
+p(m) = \bra{\psi} E_m \ket{\psi}
+\]</div>
+<p>Genéricamente están asociados a <em>medidas destructivas</em> en las que ya no existe el estado posterior.</p>
+<dl class="simple myst">
+<dt>La relación entre POVM’s y operadores de medida no es unívoca</dt><dd><p>a un POVM le podemos asociar infinitos operadores de medida</p>
+</dd>
+</dl>
+<p>Como <span class="math notranslate nohighlight">\(E_m\)</span> son operadores positivos, es posible definir su raíz cuadrada <span class="math notranslate nohighlight">\(\sqrt{E_m}\)</span>, (usando la descomposición espectral)</p>
+<p>Entonces, para cualquier unitario <span class="math notranslate nohighlight">\(U\)</span> podemos definir un operador</p>
+<div class="math notranslate nohighlight">
+\[
+M_m = U\sqrt{E_m}
+\]</div>
+<p>que verifica ser un operador de medida asociado a <span class="math notranslate nohighlight">\(E_m\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+M_m^\dagger M_m = \sqrt{E_m}U^\dagger U \sqrt{E_m} = E_m
+\]</div>
+<p>Después de una medida, el estado es
+$<span class="math notranslate nohighlight">\(
+\ket{\psi} \to \ket{\psi_m} = \frac{U\sqrt{E_m}\ket{\psi}}{p(m)}
+\)</span>$</p>
+<p><strong>POVM en el experimento de Stern Gerlach real</strong></p>
+<p>Recordemos que, en este caso no-ideal, el detector efectúa las medidas generalizadas</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a86bda99-41e1-405a-b7cb-19f01546a713">
+<span class="eqno">(35)<a class="headerlink" href="#equation-a86bda99-41e1-405a-b7cb-19f01546a713" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+M_+ &amp;=&amp; \sqrt{1-p_0} \, \ketup\braup ~+~ \sqrt{p_1} \, \ketdo\brado \\
+\rule{0mm}{14mm}
+M_- &amp;=&amp; \sqrt{p_0} \, \ketup\braup ~+~ \sqrt{1-p_1} \, \ketdo\brado \\
+\end{eqnarray}\]</div>
+<p>asociadas a las medidas <span class="math notranslate nohighlight">\(+1\)</span> y <span class="math notranslate nohighlight">\(-1\)</span> en el detector de posición</p>
+<p>Los POVMS asociados a estas medidas son</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1307060b-05e9-4643-8eef-2b3f6b5f1dc5">
+<span class="eqno">(36)<a class="headerlink" href="#equation-1307060b-05e9-4643-8eef-2b3f6b5f1dc5" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+E_+ = M_+^\dagger M_+&amp;=&amp; (1-p_0)\ketbra{\uparrow}{\uparrow} + p_1 \ketbra{\downarrow}{\downarrow} \\
+\rule{0mm}{10mm}
+E_- = M_-^\dagger M_-&amp;=&amp; p_0\ketbra{\uparrow}{\uparrow} + (1- p_1) \ketbra{\downarrow}{\downarrow}    
+\end{eqnarray}\]</div>
+<p>que sólo sirven para reconstruir las probabilidades</p>
+<div class="amsmath math notranslate nohighlight" id="equation-34da3f74-1682-4187-9622-e0252a7526de">
+<span class="eqno">(37)<a class="headerlink" href="#equation-34da3f74-1682-4187-9622-e0252a7526de" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+p(+1) &amp;=&amp; \bra{s}E_+ \ket{s} \\ \rule{0mm}{10mm}
+p(-1) &amp;=&amp; \bra{s} E_- \ket{s}
+\end{eqnarray}\]</div>
+<p>Cada proyector se correspondería físicamente con un semi-detector que sólo tienen <em>pantalla de detección</em> en la parte superior o inferior respectivamente.</p>
+<p>Es inmediato comprobar que</p>
+<div class="math notranslate nohighlight">
+\[
+M_+ = \sqrt{E_+} ~~~~~,~~~~~~ M_- = \sqrt{E_-}
+\]</div>
+<p>Estos operadores de medida forman parte de una familia de <i>medidas generalizadas</i></p>
+<div class="math notranslate nohighlight">
+\[
+\tilde M_+ = U_+ \sqrt{E_+} ~~~~~,~~~~~~ \tilde M_- = U_- \sqrt{E_-}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(U_+\)</span> y <span class="math notranslate nohighlight">\(U_-\)</span> son operadores unitarios.</p>
+<section id="ejemplo-povm-a-partir-de-proyectores-no-ortogonales">
+<h3>Ejemplo:  POVM a partir de proyectores no ortogonales.<a class="headerlink" href="#ejemplo-povm-a-partir-de-proyectores-no-ortogonales" title="Permalink to this heading">#</a></h3>
+<p>Ya sabemos que, con una colección de proyectores ortogonales podemos construir un observable</p>
+<p>Este es el caso de un <i>Stern-Gerlach</i> <em>ideal</em> orientado en la dirección  <span class="math notranslate nohighlight">\(\hat\bn\)</span>, el cual realiza una medida proyectiva asociada a un observable</p>
+<div class="math notranslate nohighlight">
+\[S = \hat\bn\cdot \bsig  = + P_{+\hat\bn}-P_{-\hat\bn}\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[P_{\pm\hat\bn} = \frac{1}{2}\left( I \pm \hat\bn\cdot \bsig \right) = \ketbra{\pm,\hat\bn}{\pm,\hat\bn}\]</div>
+<p>Ahora vamos a considerar una <i>colección de <span class="math notranslate nohighlight">\(r\)</span> vectores unitarios </i> <span class="math notranslate nohighlight">\(\{\hat\bn_i\}\, \)</span>,
+y  numeros reales positivo <span class="math notranslate nohighlight">\(c_i\in [0,1), ~i=1,...,r\)</span> que verifican las dos condiciones siguientes</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^r c_i = 1 ~~~~~~\hbox{y} ~~~~~~~\sum_{i=1}^r c_i \hat\bn_i = 0
+\]</div>
+<p>Con cada dirección podemos asociar un proyector</p>
+<div class="math notranslate nohighlight">
+\[P_{\hat\bn_i} =  \frac{1}{2}\left( I + \hat\bn_i\cdot \bsig \right) = \ketbra{+,\hat\bn_i}{+,\hat\bn_i} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ejemplo, la estrella de Mercedes Benz</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">n0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">n1</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">n2</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">)]</span>
+
+
+<span class="n">tQ</span><span class="o">.</span><span class="n">plot_2D_plane</span><span class="p">(</span><span class="n">left</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">up</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">down</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#cambiar las dimensiones para que encuadrar la figura</span>
+<span class="n">tQ</span><span class="o">.</span><span class="n">draw_vector</span><span class="p">(</span><span class="n">n0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">n0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">tQ</span><span class="o">.</span><span class="n">draw_vector</span><span class="p">(</span><span class="n">n1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">n1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">vcolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">tQ</span><span class="o">.</span><span class="n">draw_vector</span><span class="p">(</span><span class="n">n2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">n2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">vcolor</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/abeab683e2029dc6a7882b759fbb5f85186878793e721b27fa615df6afa8e4ad.png" src="../../_images/abeab683e2029dc6a7882b759fbb5f85186878793e721b27fa615df6afa8e4ad.png" />
+</div>
+</div>
+<p>Con esta geometría es inmediato comprobar que la colección de semi-detectores <span class="math notranslate nohighlight">\(P_{\hat\bn_i}\)</span> permite definir un POVM <span class="math notranslate nohighlight">\(\{E_i\}\)</span> con</p>
+<div class="math notranslate nohighlight">
+\[  E_i = 2 c_i P_{\hat\bn_i}\]</div>
+<p>Efectivamente, cada <span class="math notranslate nohighlight">\(E_i\)</span> es</p>
+<ul class="simple">
+<li><p>hermítico,</p></li>
+<li><p>tiene autovalores no-negativos <span class="math notranslate nohighlight">\(\{2c_i,0\}\)</span> y verifica que</p></li>
+<li><p>verifica
+<span class="math notranslate nohighlight">\(
+\sum_{i} E_i = \sum_i 2 c_i P_i = \left( \sum_{i=1}^r c_i I + \sum_{i=1}^r c_i \hat\bn_i \cdot \bsig\right) = I
+\)</span></p></li>
+</ul>
+<p>Notar que, en general, los operadores  <span class="math notranslate nohighlight">\(E_i\)</span> no son, ni proyectores, ni ortogonales, si los vectores <span class="math notranslate nohighlight">\(\hat\bn_i\)</span> no lo son. Tenemos</p>
+<div class="math notranslate nohighlight">
+\[
+E_i E_j = 4 c_i c_j \braket{\hat\bn_i}{\hat\bn_j}\ket{\hat\bn_i}\bra{\hat\bn_j} \neq E_i \delta_{ij}
+\]</div>
+<p><a id="disting_estados"></a></p>
+</section>
+</section>
+<section id="distinguibilidad-de-estados">
+<h2>Distinguibilidad de estados<a class="headerlink" href="#distinguibilidad-de-estados" title="Permalink to this heading">#</a></h2>
+<p>Hacer la tomografía completa de un estado cuántico es una tarea ardua. Requiere  realizar muchas mediciones para reconstruir los coeficientes en la base asociada al aparato de medida.</p>
+<p>El teorema de no-clonación hace que tengamos, necesariamente, que pasar por la tarea de preparar el estado cada vez que repetimos la medida. Si el estado está muy entrelazado, esta tarea puede ser muy costosa.</p>
+<p>Un problema de menor entidad que <em>reconstruir</em> un estado es <em>reconocer</em> un estado</p>
+<p>Supongamos que pretendemos dar una respuesta Si/No a la pregunta acerca de si un sistema se encuentra en un determinado estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>. ¿Existe un POVM  (adaptado a <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>) capaz de  hacer esta tarea?</p>
+<p>El siguiente teorema demuestra que no.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Es imposible,  mediante una sola medida, <i>discernir</i> si un cierto objeto cuántico se encuentra en un estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> o no.</p>
+</div>
+</div>
+<p><em>Demostración:</em></p>
+<p>Intuitivamente resulta evidente. Una sola medida puede corresponder al estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, o a cualquiera que
+tenga una proyección no nula en su dirección.</p>
+<p>Ahora lo probaremos por reducción al absurdo para ver cómo funciona la maquinaria matemática: supongamos que existe un POVM, <span class="math notranslate nohighlight">\(\{E_m\}\)</span>, tal que, una medida concreta <span class="math notranslate nohighlight">\( m_0\)</span>,</p>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> con certidumbre total <b>sí ocurre</b>   cuando el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> está presente,</p>
+<div class="math notranslate nohighlight">
+\[ p_\psi( m_0) = \bra{\psi}E_{ m_0}\ket{\psi} =1 \]</div>
+<p><span class="math notranslate nohighlight">\(\bullet\)</span> con certidumbre total <b>no ocurre</b> cuando el objeto se encuentra en cualquier otro estado <span class="math notranslate nohighlight">\(\ket{\chi}\neq \ket{\psi}\)</span></p>
+<div class="math notranslate nohighlight">
+\[ p_\chi(m_0) = \bra{\chi}E_{m_0}\ket{\chi} = 0\]</div>
+<p>Podemos ahora hacer uso de una propiedad de los POVMs que se demostrará aparte: para cualesquiera estados <span class="math notranslate nohighlight">\(\ket{\psi}, \ket{\chi}\)</span> se cumplen las implicaciones</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e4838641-97ba-4e8b-b24c-264fc27b1358">
+<span class="eqno">(38)<a class="headerlink" href="#equation-e4838641-97ba-4e8b-b24c-264fc27b1358" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\bra{\psi}E_{m}\ket{\psi} = 1 ~~~~&amp;\Longleftrightarrow &amp;~~~~E_{m} \ket{\psi} =  \ket{\psi} \\ \rule{0mm}{6mm}
+\bra{\chi}E_{m}\ket{\chi} = 0 ~~~~&amp;\Longleftrightarrow &amp;~~~~E_{m} \ket{\chi} = 0 \\
+\end{eqnarray}\]</div>
+<p>Ahora podemos ver que, necesariamente, <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> y <span class="math notranslate nohighlight">\(\ket{\chi}\)</span> deben ser ortogonales</p>
+<div class="math notranslate nohighlight">
+\[
+\braket{\psi}{\chi} =  \big(\bra{\psi}E_{m}\big)  \ket{\chi} =  \bra{\psi}\big( E_{m} \ket{\chi}\big) = 0 
+\]</div>
+<p>Por ser  <span class="math notranslate nohighlight">\(\ket{\chi}\neq \ket{\psi} \)</span> un <u>estado arbitrario</u>, la condición de ortogonalidad no será cierta en general, lo cual prueba el teorema.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Muestra que si <span class="math notranslate nohighlight">\(E\)</span> es un elemento de un POVM, para cualquier estado normalizado <span class="math notranslate nohighlight">\(\ket{\phi}\)</span> se cumple la siguiente doble implicación</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{\phi} E \ket{\phi} = \mu ~~~~\Longleftrightarrow ~~~E\ket{\phi} = \mu \ket{\phi}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\mu =0,1 \)</span>.</p>
+</div>
+<section id="distinguibilidad-dentro-de-un-conjunto">
+<h3>Distinguibilidad dentro de un conjunto<a class="headerlink" href="#distinguibilidad-dentro-de-un-conjunto" title="Permalink to this heading">#</a></h3>
+<p>La respuesta negativa anterior se debe a la <em>arbitrariedad infinita</em> de <span class="math notranslate nohighlight">\(\ket{\chi}\neq \ket{\psi}\)</span>.</p>
+<p>Ahora vamos a restringir la discriminación de <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> a un conjunto <span class="math notranslate nohighlight">\(\{\ket{\psi_a}\}\)</span> con <span class="math notranslate nohighlight">\(a=0,1,2,..,p\)</span>
+de estados pre-establecidos.</p>
+<p>El teorema anterior conduce automáticamente al siguiente corolario.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Corolario</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Sólo es posible distinguir de forma <i>inequívoca</i> un estado de entre un conjunto discreto de estados <span class="math notranslate nohighlight">\(\{\ket{\psi_i}\}\, i=1,...,p\)</span>,  si estos son  mutuamente <i> ortogonales</i></p>
+</div>
+</div>
+<ul class="simple">
+<li><p>Observar que <span class="math notranslate nohighlight">\(p \leq N = \hbox{dim}(\Hil)\)</span>.</p></li>
+<li><p>En este caso existe un conjunto de medidas proyectivas que permiten discriminar un elemento <span class="math notranslate nohighlight">\(\ket{\psi_i}\)</span> de los demás mediante una sola medida.</p></li>
+</ul>
+<p>Con los <span class="math notranslate nohighlight">\(p\)</span> vectores ortonormales definimos proyectores</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1ca5e92d-253e-4ebc-9265-523d3a418b41">
+<span class="eqno">(39)<a class="headerlink" href="#equation-1ca5e92d-253e-4ebc-9265-523d3a418b41" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+P_i &amp;=&amp; \ketbra{\psi_i}{\psi_i} ~~~~~~~~~~~~~i=1,2,..,p \\
+\rule{0mm}{10mm} 
+P_0 &amp;=&amp;I-\sum_{i=1}^p \ketbra{\psi_i}{\psi_i}
+\end{eqnarray}\]</div>
+<p>De hecho, son hermíticos y ortogonales <span class="math notranslate nohighlight">\(P_iP_j = P_j \delta_{ij}\)</span>. Además
+verifican también la relación de completitud</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=0}^p  P_i =  I 
+\]</div>
+<p>por lo que definen una medida de von Neumann.</p>
+<p>Si Bob recibe un estado <span class="math notranslate nohighlight">\(\ket{\psi_j}\)</span>, entonces la probabilidad de medida asociada al operador <span class="math notranslate nohighlight">\(M_i\)</span> será</p>
+<div class="math notranslate nohighlight">
+\[
+p(i) = \bra{\psi_j}P_i \ket{\psi_j} = \delta_{ij}
+\]</div>
+<p>es decir <span class="math notranslate nohighlight">\(p(j) = 1 \)</span> si <span class="math notranslate nohighlight">\(i=j\)</span> y <span class="math notranslate nohighlight">\(p(i) = 0\)</span> si <span class="math notranslate nohighlight">\(i\neq j\)</span>.</p>
+<p>De esta manera, es posible <b>distinguir fidedignamente</b> cuál es el estado recibido con una sola medida de los  <span class="math notranslate nohighlight">\(p+1\)</span> detectores.</p>
+<section id="estados-no-ortogonales">
+<h4>Estados no-ortogonales<a class="headerlink" href="#estados-no-ortogonales" title="Permalink to this heading">#</a></h4>
+<p>Cuando el conjunto de estados que queremos discriminar no es ortogonal, el uso de POVMs  es <em>más ventajoso</em> que el de medidas proyectivas.</p>
+<p>Supongamos que Bob recibe un objeto cuántico que ha sido preparado por Alice en el estado</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \frac{1}{2}\ketbra{1}{1} + \frac{1}{2}\ketbra{2}{2}
+\]</div>
+<p>donde los estados son <em>no ortogonales</em> <span class="math notranslate nohighlight">\(\braket{1}{2}\neq 0\)</span>.</p>
+<p>Bob diseña un POVM <span class="math notranslate nohighlight">\(\{E_m\}\)</span> optimizado para cumplir con las siguientes reglas del juego</p>
+<ul class="simple">
+<li><p>después de la medida podemos <b>no emitir</b> ninguna afirmación o <b>hacerlo</b></p></li>
+<li><p>si emitimos una afirmación, ésta debe ser verdad con <b>certidumbre total</b>:  es <span class="math notranslate nohighlight">\(\ket{1}\)</span> ó es <span class="math notranslate nohighlight">\(\ket{2}\)</span> .</p></li>
+</ul>
+<p>Por tanto, hay <em>tres respuestas</em> posibles, y, consistentemente, el POVM está formado por <em>tres operadores</em> <span class="math notranslate nohighlight">\(\{ E_1, E_2, E_3\}\)</span>  construidos de forma tal que</p>
+<ul class="simple">
+<li><p>en el estado  <span class="math notranslate nohighlight">\(\ket{1} \Rightarrow E_2\)</span> nunca ocurre <span class="math notranslate nohighlight">\(~ \Rightarrow ~\bra{1}E_2\ket{1} = 0\)</span>, pero pueden ocurrir <span class="math notranslate nohighlight">\(E_1, E_3\)</span></p></li>
+</ul>
+<p>En consecuencia, si <em>se detecta</em> <span class="math notranslate nohighlight">\(E_2 ~ ( \bra{1}E_2\ket{1} \neq 0)\)</span> entonces no puede ser <span class="math notranslate nohighlight">\(\ket{1}\)</span>, así que <em>tiene que ser</em> <span class="math notranslate nohighlight">\(\ket{2}\)</span>.</p>
+<ul class="simple">
+<li><p>en el estado  <span class="math notranslate nohighlight">\(\ket{2} \Rightarrow E_1\)</span> nunca ocurre <span class="math notranslate nohighlight">\(~\Rightarrow ~ \bra{2}E_1\ket{2} = 0\)</span>, pero pueden ocurrir <span class="math notranslate nohighlight">\(E_2, E_3\)</span></p></li>
+</ul>
+<p>En consecuencia, <em>si se detecta</em> <span class="math notranslate nohighlight">\(E_1 ~(\bra{1}E_1\ket{1} \neq 0)\)</span> entonces no puede ser <span class="math notranslate nohighlight">\(\ket{2}\)</span>, así que <em>tiene que ser</em> <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
+<p>De forma consistente, tenemos que, después de efectuar una medida</p>
+<ul class="simple">
+<li><p>Si se detecta <span class="math notranslate nohighlight">\(E_1\)</span> es señal inequívoca de que el estado era <span class="math notranslate nohighlight">\(\ket{1}\)</span></p></li>
+<li><p>Si se detecta <span class="math notranslate nohighlight">\(E_2\)</span> es señal inequívoca de que el estado era <span class="math notranslate nohighlight">\(\ket{2}\)</span></p></li>
+<li><p>Si se detecta <span class="math notranslate nohighlight">\(E_3\)</span> no se puede afirmar nada</p></li>
+</ul>
+<p>Podemos dar una forma más explícita de estos operadores</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c08b9f06-e51c-4f1a-8bca-f1852c7cae39">
+<span class="eqno">(40)<a class="headerlink" href="#equation-c08b9f06-e51c-4f1a-8bca-f1852c7cae39" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} \rule{0mm}{10mm}
+E_1 &amp;=&amp; a_1 \left( \rule{0mm}{4mm}I- \ket{2}\bra{2} \right) \\
+\rule{0mm}{10mm}
+E_2 &amp;=&amp; a_2 \left( \rule{0mm}{4mm} I-\ket{1}\bra{1} \right)  \\
+\rule{0mm}{10mm}
+E_3 &amp;=&amp; I - E_1 - E_2
+\end{eqnarray}\]</div>
+<p>Las constantes <span class="math notranslate nohighlight">\(a_1\)</span> y <span class="math notranslate nohighlight">\(a_2\)</span> pueden optimizarse para que la probabilidad de las opciones <span class="math notranslate nohighlight">\(E_1\)</span> y <span class="math notranslate nohighlight">\(E_2\)</span> que permiten extraer una conclusión se maximice</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4d2eba9b-230a-45bd-8964-38cf7ada9c73">
+<span class="eqno">(41)<a class="headerlink" href="#equation-4d2eba9b-230a-45bd-8964-38cf7ada9c73" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+p &amp;=&amp; \tr((E_1 + E_2)\rho)   \nonumber \\  \rule{0mm}{8mm}
+&amp;=&amp; \tr\left[(E_1+E_2) \left(\frac{1}{2}\ket{1}\bra{1} + \frac{1}{2}\ket{2}\bra{2}\right) \right] \nonumber\\
+&amp;=&amp; \frac{1}{2}\left(\bra{1}E_1\ket{1} + \bra{2}E_1\ket{2} + \bra{1}E_2\ket{1}  + \bra{2}E_2\ket{2}\right)  \nonumber\\ \rule{0mm}{8mm}
+&amp;=&amp; \frac{1}{2}(a_1+a_2) (1 - |\braket{1}{2}|^2) 
+\end{eqnarray}\]</div>
+<p>En <a class="reference external" href="https://arxiv.org/abs/quant-ph/9604014">https://arxiv.org/abs/quant-ph/9604014</a> se demuestra que, para maximizar <span class="math notranslate nohighlight">\(p\)</span>, manteniendo la positividad de <span class="math notranslate nohighlight">\(E_3\)</span>, debemos tomar</p>
+<div class="math notranslate nohighlight">
+\[
+a_1 = a_2 = \frac{1}{1+|\braket{1}{2}|} ~~~~~~~\Rightarrow ~~~~~~~ p = 1 - |\braket{1}{2}|
+\]</div>
+<p>La posibilidad de afirmar algo como resultado de una medida se vuelve menor  a medida que los estados se parecen más entre sí.</p>
+<p>Para estados ortogonales <span class="math notranslate nohighlight">\(\braket{1}{2} = 0\)</span> se cumple la distinguibilidad completa <span class="math notranslate nohighlight">\(p_{max} = 1\)</span></p>
+<p>Estados paralelos  <span class="math notranslate nohighlight">\(\braket{1}{2} = 1\)</span> son indistinguibles.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Muestra que, en el caso particular <span class="math notranslate nohighlight">\(a_1=a_2 = a\)</span>, la probabilidad  <span class="math notranslate nohighlight">\(p\)</span> cuando la medida se realiza sobre un conjunto equiprobable <span class="math notranslate nohighlight">\(\{\ket{1},\frac{1}{2}; \ket{2},\frac{1}{2}\}\)</span>, se maximiza cuando
+$<span class="math notranslate nohighlight">\(
+a_{opt}  = \frac{1}{1+|\braket{1}{2}|}~~~~~~ \hbox{con} ~~~~~~p = 1 - |\braket{1}{2}|
+\)</span>$</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Suppose that Alice sends with equal  probability  <span class="math notranslate nohighlight">\(1/2\)</span> the states   <span class="math notranslate nohighlight">\( \ket{a_\perp} = \ket{1} ,  \ket{b_\perp} =  \frac{\sqrt{3}}{2}\ket{0} + \frac{1}{2}\ket{1}\}\)</span>. Write the density operator that Bob uses to describe the statistical mixture.</p>
+<p>Bob tries to identify correctly which state was actually sent first by using the projective measurement <span class="math notranslate nohighlight">\(Z = P_0 + P_1\)</span>.
+Show that only <span class="math notranslate nohighlight">\(P_0\)</span> discriminates and that this only occurs with probability 3/8 hence the identification rate is  <span class="math notranslate nohighlight">\(37.5\%\)</span>.</p>
+<p>Then Bob tries to use the triangular POVM with  directions <span class="math notranslate nohighlight">\(\{(\theta_a = 0,\phi_a = 0)\)</span>, <span class="math notranslate nohighlight">\((\theta_b = 4\pi/3,\phi_b = 0)\}\)</span> and <span class="math notranslate nohighlight">\((\theta_c = 8\pi/3,\phi_c = 0)\)</span>.  Find the associated Bloch vectors
+<span class="math notranslate nohighlight">\(\{\ket{i} = \ket{\hat\bn_i}\} , ~i=a,b,c\)</span> and build the POVM <span class="math notranslate nohighlight">\(\{ E_i = \frac{2}{3}\ket{i}\bra{i}\}\)</span>.
+Show that now Bob can discriminate <span class="math notranslate nohighlight">\(\ket{a_\perp}\)</span> from <span class="math notranslate nohighlight">\(\ket{b_\perp}\)</span> with up to <span class="math notranslate nohighlight">\(50\%\)</span> certainty.</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_04_Quantum_Info"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter_051_Operador_densidad_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mezcla de Estados</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter_053_Entrop_Cuant_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Elementos de Información Cuántica</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-proyectivas">Medidas proyectivas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento-de-stern-gerlach-real">El experimento de Stern Gerlach real</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#experimento-de-stern-gerlach-ideal">Experimento de Stern-Gerlach ideal:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Medidas generalizadas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimento-de-stern-gerlach-real">Experimento de Stern-Gerlach real:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-selectiva-generalizada-sobre-un-estado-puro">Medida selectiva generalizada sobre un estado puro</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bullet-postulado-iii-b"><span class="math notranslate nohighlight">\(\bullet\)</span>  Postulado III-b:    <a id="postul_III_medida"></a></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-generalizadas-en-estados-mezclados">Medidas generalizadas en estados mezclados</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-selectiva">Medida selectiva</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-no-selectiva">Medida no selectiva</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#povms">POVMs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-povm-a-partir-de-proyectores-no-ortogonales">Ejemplo:  POVM a partir de proyectores no ortogonales.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguibilidad-de-estados">Distinguibilidad de estados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguibilidad-dentro-de-un-conjunto">Distinguibilidad dentro de un conjunto</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-no-ortogonales">Estados no-ortogonales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

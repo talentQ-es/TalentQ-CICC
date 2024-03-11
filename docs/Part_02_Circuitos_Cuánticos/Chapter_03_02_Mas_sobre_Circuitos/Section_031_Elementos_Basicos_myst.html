@@ -1,0 +1,1311 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Circuitería cuántica elemental &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_02_Circuitos_Cuánticos/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Circuitos para computación clásica" href="Section_032_CompClasica_myst.html" />
+    <link rel="prev" title="Más cosas sobre circuitos" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El cúbit de espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.html">Algoritmos de Oráculo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_042_QFT_myst.html">Transformada de Fourier Cuántica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_043_QPE_myst.html">Estimación Cuántica de Fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Informacion Cuántica</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst.html">Mezcla de Estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst.html">Medidas generalizadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst.html">Elementos de Información Cuántica</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_02_Circuitos_Cuánticos/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Circuitos_Cuánticos/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Part_02_Circuitos_Cuánticos/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Circuitería cuántica elemental</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion-de-una-exponencial">Conjugación de una exponencial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cubits">2 cúbits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#puertas-universales">Puertas universales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-calidad-en-circuitos">Medidas de calidad en circuitos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-computacional">Complejidad computacional</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-clasica">Complejidad clásica:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-cuantica">Complejidad cuántica:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Feb 24, 2024 | 10 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="circuiteria-cuantica-elemental">
+<h1>Circuitería cuántica elemental<a class="headerlink" href="#circuiteria-cuantica-elemental" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\mathbb H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../../macro_tQ.py
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="retroceso-de-fase">
+<h2>Retroceso de Fase<a class="headerlink" href="#retroceso-de-fase" title="Permalink to this heading">#</a></h2>
+<p>Hemos estudiado ya el operador controlado <span class="math notranslate nohighlight">\(\cg{U}\)</span>. Es un error frecuente pensar que el cúbit controlador no se modifica.</p>
+<p>Un caso importante ocurre cuando el operador <span class="math notranslate nohighlight">\(U\)</span> actúa sobre uno de sus autoestados
+(recuerda que los autovalores de  un operador unitario son fases puras)</p>
+<div class="math notranslate nohighlight">
+\[
+U\ket{u} = e^{i\lambda} \ket{u}
+\]</div>
+<p>Supongamos que por el <em>cúbit controlador</em> circula una superposición <span class="math notranslate nohighlight">\((a\ket{0}+b\ket{1})\)</span> y un autoestado <span class="math notranslate nohighlight">\(\ket{u}\)</span> de <span class="math notranslate nohighlight">\(U\)</span> por el cúbit controlado. La acción de <span class="math notranslate nohighlight">\(\cg{U}\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+\cg{U}: (a\ket{0} + b\ket{1})\otimes \ket{u} ~\to ~ a\ket{0}\ket{u} + b \ket{1}e^{i\lambda}\ket{u}  = \left( a\ket{0}\ket{u} + be^{i\lambda} \ket{1} \rule{0mm}{4mm} \right)\otimes \ket{u}
+\]</div>
+<p>En resultado final es que la fase <span class="math notranslate nohighlight">\(e^{i\lambda}\)</span> ha <strong>modificado</strong> el estado de entrada, mientras que el segundo cúbit no ha cambiado.</p>
+<p>El punto es que, en el segundo paso, la fase generada por la acción de U <em>no pertenece</em> realmente a ninguno de los dos espacios sino al producto.</p>
+<p>De modo que puede adscribirse al primer espacio, como hemos hecho en el último paso.</p>
+<p>De ahí el nombre de <em>retroceso de fase</em>, en inglés “phase kickback”.</p>
+<p>El siguiente circuito resume la acción de retroceso de fase</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/phase_kickback.png"><img alt="../../../_images/phase_kickback.png" src="../../../_images/phase_kickback.png" style="width: 400px;" /></a>
+</figure>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Programa un circuito en el que  <span class="math notranslate nohighlight">\(U = P(\phi)\)</span> es el operador de fase y el estado en el primer cúbit es <span class="math notranslate nohighlight">\(\ket{0}\)</span> y en el segundo es <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
+<ul class="simple">
+<li><p>Usando el <em>statevector_simulator</em> representa el estado de salida para distintos de valores de <span class="math notranslate nohighlight">\(\phi\in \)</span></p></li>
+<li><p>¿en qué plano rota el vector del primer cúbit? ¿Cómo podemos cambiar dicho plano de rotación?</p></li>
+</ul>
+</div>
+</section>
+<section id="circuitos-equivalentes">
+<h2>Circuitos Equivalentes<a class="headerlink" href="#circuitos-equivalentes" title="Permalink to this heading">#</a></h2>
+<p>Es posible encontrar distintos circuitos que producen acciones idénticas sobre un estado arbitrario. Se denominan <em>circuitos equivalentes</em>.</p>
+<p>Matemáticamente, representan distintas descomposiciones del mismo operador unitario en unitarios</p>
+<section id="conjugacion">
+<h3>Conjugación<a class="headerlink" href="#conjugacion" title="Permalink to this heading">#</a></h3>
+<p>Una caso muy frecuente es la <strong>conjugación</strong> de una puerta <span class="math notranslate nohighlight">\(V\)</span>  por un <strong>unitario</strong> <span class="math notranslate nohighlight">\(U\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+U V   U^\dagger = V'  
+\]</div>
+<p>El operador conjugado <span class="math notranslate nohighlight">\(V'\)</span> tiene <strong>la misma acción</strong> sobre la base <em>base rotada</em> <span class="math notranslate nohighlight">\(\{\ket{e'} = U\ket{e}\}\)</span>
+que la que tiene <span class="math notranslate nohighlight">\(V\)</span> sobre la original <span class="math notranslate nohighlight">\(\{\ket{e}\}\)</span>.</p>
+<p>Por ello,</p>
+<ul class="simple">
+<li><p>los <em>autovalores</em> de <span class="math notranslate nohighlight">\(V\)</span> y de <span class="math notranslate nohighlight">\(V'\)</span> son los <em>mismos</em> y</p></li>
+<li><p>los <em>autovectores</em> son los <em>rotados</em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\lambda' = \lambda ~~~~~~\hbox{y}~~~~~~  \ket{\lambda}' = U\ket{\lambda}
+\]</div>
+<p>Comprobémoslo</p>
+<div class="math notranslate nohighlight">
+\[
+\fbox{$V \ket{\lambda}= \lambda\ket{\lambda}$} ~~\Rightarrow ~~~V'\ket{\lambda}' = (UVU^\dagger) U\ket{\lambda} = UV\ket{\lambda} =  U(\lambda\ket{\lambda}) = \lambda U\ket{\lambda} = \lambda\ket{\lambda}' ~~\Rightarrow ~~~ \fbox{$ V' \ket{\lambda}' = \lambda\ket{\lambda}'$}
+\]</div>
+<p>Por ejemplo</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/H_conjugation.png"><img alt="../../../_images/H_conjugation.png" src="../../../_images/H_conjugation.png" style="width: 500px;" /></a>
+</figure>
+<p>y,  equivalentemente, intercambiando <span class="math notranslate nohighlight">\(X \leftrightarrow Z\)</span>.</p>
+<ul class="simple">
+<li><p>Este tipo de equivalencia se sigue de las identidades algebráicas</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+HXH = Z ~~~~~&amp;&amp;~~ ~~~
+HZH = X \nonumber
+\end{eqnarray*}\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>que son fáciles de visualizar recordando que  <span class="math notranslate nohighlight">\(H\)</span> es una rotación de 180<span class="math notranslate nohighlight">\(^\circ\)</span> en torno al eje diagonal en el plano <span class="math notranslate nohighlight">\(XZ\)</span></p>
+<ul class="simple">
+<li><p>Análogamente</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+S X S^\dagger  = Y~~~~~&amp;&amp;~~~ ~~~
+S Y S^\dagger = -X  ~~~~~~~~ S Z S^\dagger = Z\nonumber\\
+\end{eqnarray*}\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>también  son fáciles de visualizar recordando que <span class="math notranslate nohighlight">\(S=\sqrt{Z}\)</span> es una rotación de <span class="math notranslate nohighlight">\(90^\circ\)</span> en torno al eje <span class="math notranslate nohighlight">\(Z\)</span>.</p>
+</section>
+<section id="conjugacion-de-una-exponencial">
+<h3>Conjugación de una exponencial<a class="headerlink" href="#conjugacion-de-una-exponencial" title="Permalink to this heading">#</a></h3>
+<p>Muchas puertas unitarias son de la forma <span class="math notranslate nohighlight">\(V = e^{\alpha A}\)</span>.</p>
+<p>Por ejemplo, si  <span class="math notranslate nohighlight">\(A = \hat{\bf n}\cdot \boldsymbol{\sigma} \)</span> entonces <span class="math notranslate nohighlight">\(  ~\Rightarrow ~V= R_{\hat{\bf n}}(\theta)\)</span> es el operador que rota un ángulo <span class="math notranslate nohighlight">\(\theta\)</span> en torno al vector <span class="math notranslate nohighlight">\(\hat{\bf n}\)</span> en la esfera de Bloch.</p>
+<div class="math notranslate nohighlight">
+\[
+ R_{\hat{\bf n}}(\theta) = e^{-i\frac{\theta}{2}\hat{\bf n}\cdot \boldsymbol{\sigma}}
+\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Lema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La conjugación de una exponencial se exponencia</p>
+</div>
+</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+U e^{\alpha A} U^\dagger &amp;=&amp;  U \left(1 + \alpha A  + \frac{1}{2} \alpha^2 A^2 + ... \right) U^\dagger \\ \rule{0mm}{8mm}
+&amp;=&amp; 1 + \alpha UAU^\dagger + \frac{1}{2}\alpha^2 UAU^\dagger U AU^\dagger + ... \\ \rule{0mm}{8mm}
+&amp;=&amp; e^{ \alpha UAU^\dagger} 
+\end{eqnarray*}\]</div>
+<p>Para el caso <span class="math notranslate nohighlight">\(A = \hat{\bf n}\cdot \boldsymbol{\sigma} \)</span>  la conjugación es</p>
+<div class="math notranslate nohighlight">
+\[
+U A U^\dagger ~\to ~U (\hat{\bf n}\cdot \boldsymbol{\sigma} ) U^\dagger = (U\hat{\bf n})\cdot  \boldsymbol{\sigma}
+\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Corolario</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(~\)</span> <i>la conjugación de una rotación en torno a un eje produce una rotación en torno al eje conjugado</i></p>
+<div class="math notranslate nohighlight">
+\[
+U R_{\hat{\bf n}}(\theta) U^\dagger = R_{U\hat{\bf n}}(\theta)
+\]</div>
+</div>
+</div>
+<p>Por ejemplo:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+H R_z(\theta) H &amp;=&amp; e^{-i \theta/2 HZH} =  e^{-i (\theta/2) X} \\ \rule{0mm}{8mm}
+&amp;=&amp; R_x(\theta)
+\end{eqnarray*}\]</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/HRzHconjugation.png"><img alt="../../../_images/HRzHconjugation.png" src="../../../_images/HRzHconjugation.png" style="width: 700px;" /></a>
+</figure>
+</section>
+<section id="cubits">
+<h3>2 cúbits<a class="headerlink" href="#cubits" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>La puerta  controlada <span class="math notranslate nohighlight">\(\cg{Z} =  {\rm diag}(1,1,1,-1)\)</span>   es simétrica ya que lo único que hace, es cambiar de signo al estado <span class="math notranslate nohighlight">\(\ket{11}\)</span>. Es decir</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Equiv_Z.png"><img alt="../../../_images/Equiv_Z.png" src="../../../_images/Equiv_Z.png" style="width: 300px;" /></a>
+</figure>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span> En realidad, <span class="math notranslate nohighlight">\(\cg{Z}\)</span> es un caso particular de   <span class="math notranslate nohighlight">\(\cg{P(\phi)} = {\rm diag} (1,1,1, e^{i\phi})\)</span>, para la cual la equivalencia es la misma.</p>
+<ul class="simple">
+<li><p>Otra equivalencia importante es</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Equiv_HH.png"><img alt="../../../_images/Equiv_HH.png" src="../../../_images/Equiv_HH.png" style="width: 400px;" /></a>
+</figure>
+<p>Para probarla, observemos que las tres puertas del segundo cúbit se pueden componer para dar <span class="math notranslate nohighlight">\(HXH=Z\)</span>. Por el contrario, las dos puertas de Hadamard en el primer cúbit no se pueden multiplicar al haber un control entre ellas.
+Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span class="math notranslate nohighlight">\(\cg{Z}\)</span> y, finalmente, conjugar en el primer cúbit <span class="math notranslate nohighlight">\(HZH=X\)</span>.</p>
+<ul class="simple">
+<li><p>Otra  equivalencia nada intuitiva pero muy importante relaciona tres operaciones CNOT con la permutación U<span class="math notranslate nohighlight">\(_{\rm SWAP}\)</span></p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Equiv_CNOTs.png"><img alt="../../../_images/Equiv_CNOTs.png" src="../../../_images/Equiv_CNOTs.png" style="width: 400px;" /></a>
+</figure>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>No hay una forma sencilla de probar esta identidad, así que lo recomendable es escribir las matrices asociadas a cada miembro y comprobar que son iguales</p>
+<ul class="simple">
+<li><p>La puerta de phase global controlada, <span class="math notranslate nohighlight">\(\cg{K_\phi} = {\rm diag} (1,1,e^{i\phi}, e^{i\phi})\)</span>, secretamente, no es una puerta controlada</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Equiv_Kphase.png"><img alt="../../../_images/Equiv_Kphase.png" src="../../../_images/Equiv_Kphase.png" style="width: 330px;" /></a>
+</figure>
+<p>También podemos comprobar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="n">U_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;unitary_simulator&#39;</span><span class="p">)</span>
+
+<span class="n">qc_left</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc_right</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc_left</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc_left</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_left</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc_right</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+ 
+<span class="nb">print</span><span class="p">(</span><span class="n">qc_left</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">qc_right</span><span class="p">)</span>
+
+<span class="n">U_left</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_left</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="n">U_simulator</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">()</span>
+<span class="n">U_right</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_right</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="n">U_simulator</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          ┌───┐     
+q_0: ──■──┤ X ├──■──
+     ┌─┴─┐└─┬─┘┌─┴─┐
+q_1: ┤ X ├──■──┤ X ├
+     └───┘     └───┘
+        
+q_0: ─X─
+      │ 
+q_1: ─X─
+        
+</pre></div>
+</div>
+</div>
+</div>
+<p>podemos comprobar que las matrices que representan los circuitos coinciden</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+<span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_left</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_left = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\text{U_left = }\\\begin{split}\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 1 &amp; 0  \\
+ 0 &amp; 1 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 1  \\
+ \end{bmatrix}
+\end{split}\end{aligned}\end{align} \]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_right</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_right = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\text{U_right = }\\\begin{split}\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 1 &amp; 0  \\
+ 0 &amp; 1 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 1  \\
+ \end{bmatrix}
+\end{split}\end{aligned}\end{align} \]</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Demuestra las equivalencia de circuitos anteriores de dos formas:</p>
+<ul class="simple">
+<li><p>Sobre el papel,  multiplicando las matrices asociadas</p></li>
+<li><p>En qiskit, componiendo los circuitos y extrayendo el operador unitario asociado</p></li>
+</ul>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Comprueba la equivalencia de los dos circuitos siguientes, siempre que se verifique que <span class="math notranslate nohighlight">\(V^2 = U\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/CCUdecomposition.png"><img alt="../../../_images/CCUdecomposition.png" src="../../../_images/CCUdecomposition.png" style="width: 450px;" /></a>
+</figure>
+</div>
+</section>
+</section>
+<section id="operadores-de-clifford">
+<h2>Operadores de Clifford<a class="headerlink" href="#operadores-de-clifford" title="Permalink to this heading">#</a></h2>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Se define un <i>operador de Clifford</i>, <span class="math notranslate nohighlight">\(U\)</span> como aquel que conjuga un operador de Pauli a otro operador de Pauli.</p>
+</div>
+</div>
+<p>Los propios operadores de Pauli son operadores de Clifford.  La conjugación correspondiente simplemente refleja el operador de Pauli. Por ejemplo con <span class="math notranslate nohighlight">\(U=Z\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ZXZ = -X~~~~~~~~~ZYZ = -Y ~~~~~~~~~ZZZ = Z 
+\]</div>
+<p>Pero vemos que también <span class="math notranslate nohighlight">\(H\)</span> y <span class="math notranslate nohighlight">\(S\)</span> son de Clifford.
+Por el contrario <span class="math notranslate nohighlight">\(T\)</span> no es un operador de Clifford.</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>La forma más fácil de calcular estas conjugaciones es  recordar el álgebra de operadores de Pauli</p>
+<div class="math notranslate nohighlight">
+\[
+X Y = i Z ~~~~~ Y Z = i X ~~~~~ ZX = iY
+\]</div>
+<p>donde todas involucran a <span class="math notranslate nohighlight">\(X,Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span> en orden cíclico.</p>
+<p>También el hecho de que dos operadores de Pauli distintos anti-conmutan</p>
+<div class="math notranslate nohighlight">
+\[
+\{X,Y\} = XY + YX = 0
+\]</div>
+<p>e igualmente para <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span></p>
+</div>
+<p>Esta definición se extiende a puertas multi-cúbits. Un operador de Clifford será aquel que conjuga una cadena de Pauli para dar otra cadena de Pauli. Por ejemplo</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+(XXH) \, (YZX) \,  (XXH)^\dagger &amp;=&amp; XXH \otimes YZX \otimes XXH \\ \rule{0mm}{10mm}
+&amp;=&amp; XYX \otimes  XZX \otimes HXH \\ \rule{0mm}{10mm}
+&amp;=&amp; (-Y)\otimes (-Z) \otimes Z \\ \rule{0mm}{10mm} &amp;=&amp; YZZ
+\end{eqnarray*}\]</div>
+<p>También podemos conjugar operadores obtenidos por exponenciación</p>
+<div class="math notranslate nohighlight">
+\[
+(XXH) \, e^{aYZX} \,  (XXH)^\dagger =e^{a XXH \otimes XZX \otimes XXH} =  e^{a YZZ}
+\]</div>
+<p>Para 2 cúbits la <em>clase de Clifford</em> admite puertas controladas.</p>
+<div class="math notranslate nohighlight">
+\[
+\cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
+\]</div>
+<p>que copia el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit</p>
+<p>Esta identidad se puede demostrar gráficamente</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 800px;" /></a>
+</figure>
+<section id="computacion-cuantica-universal">
+<h3>Computación Cuántica Universal<a class="headerlink" href="#computacion-cuantica-universal" title="Permalink to this heading">#</a></h3>
+<p>El objetivo de un <em>computador cuántico universal</em> es el de ser capaz de implementar el operador unitario más general</p>
+<div class="math notranslate nohighlight">
+\[
+U  = \sum_x \ket{f(x)}\bra{x}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(f: x \to f(x)\)</span> es una función arbitraria invertible.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>Barenco et. al. 1995:</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Cualquier operador unitario <span class="math notranslate nohighlight">\(U_n\)</span> sobre <span class="math notranslate nohighlight">\(n\)</span> cúbits puede expresarse como el producto de</p>
+<ul class="simple">
+<li><p class="sd-card-text">puertas continuas de <i>un cubit</i></p></li>
+<li><p class="sd-card-text">puertas CNOT.</p></li>
+</ul>
+</div>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Equiv_Phase.png"><img alt="../../../_images/Equiv_Phase.png" src="../../../_images/Equiv_Phase.png" style="width: 600px;" /></a>
+</figure>
+<p><strong>Prueba</strong>: consta de varios pasos</p>
+<ol class="arabic simple">
+<li><p>cualquier operador <span class="math notranslate nohighlight">\(U_n\)</span> sobre <span class="math notranslate nohighlight">\(n\)</span> cúbits se puede descomponer como <em>producto de operadores</em> <span class="math notranslate nohighlight">\(\cg{^kU}\)</span> controlados por <span class="math notranslate nohighlight">\(k\)</span> cúbits</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>los operadores <span class="math notranslate nohighlight">\(\hbox{C}^kU\)</span> se pueden descomponer como productos de un  operador <span class="math notranslate nohighlight">\(\cg{U}\)</span> y puertas de Toffoli CCNOT</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>En general para <span class="math notranslate nohighlight">\(\cg{^kU}\)</span> necesitamos <span class="math notranslate nohighlight">\(k-1\)</span> ancillas</p>
+<figure class="align-center" id="fig-ref">
+<a class="reference internal image-reference" href="../../../_images/CkUdecomposition.png"><img alt="../../../_images/CkUdecomposition.png" src="../../../_images/CkUdecomposition.png" style="width: 400px;" /></a>
+</figure>
+<p><a id="Toffolidecomposition"></a></p>
+<ol class="arabic simple" start="3">
+<li><p>Las puertas de Toffoli puede descomponerse como productos de <span class="math notranslate nohighlight">\(H\)</span>, <span class="math notranslate nohighlight">\(\cg{X}\)</span> y <span class="math notranslate nohighlight">\(\cg{S}\)</span></p></li>
+</ol>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Toffolidecomposition.png"><img alt="../../../_images/Toffolidecomposition.png" src="../../../_images/Toffolidecomposition.png" style="width: 450px;" /></a>
+</figure>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Este no es más que el caso particular  de la descomposición general de <span class="math notranslate nohighlight">\(\cg{^2U}\)</span> usando <span class="math notranslate nohighlight">\(U = X = HZH=HSSH =  (HSH)(HSH)= V^2 ~~\Rightarrow ~~V = HSH\)</span>.</p>
+<p><a id="CUdecomposition"></a>
+4. Una puerta <span class="math notranslate nohighlight">\(\cg{U}\)</span> puede descomponerse de forma única usando tres rotaciones <span class="math notranslate nohighlight">\(A, B\)</span> y <span class="math notranslate nohighlight">\(C\)</span> que verifiquen</p>
+<div class="math notranslate nohighlight">
+\[
+ABC = I ~~~~~,~~~~ e^{i\delta}  AXBXC = U
+\]</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/CUdecomposition.png"><img alt="../../../_images/CUdecomposition.png" src="../../../_images/CUdecomposition.png" style="width: 600px;" /></a>
+</figure>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>En efecto, si el cúbit de control es <span class="math notranslate nohighlight">\(\ket{0}\)</span> la fase <span class="math notranslate nohighlight">\(P(\delta)\)</span> no le afecta y el operador efectivo en el segundo cúbit es <span class="math notranslate nohighlight">\(ABC= I\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Por el contrario, si el primer cúbits es <span class="math notranslate nohighlight">\(\ket{1}\)</span>, entonces se aplica <span class="math notranslate nohighlight">\(AXBXC\)</span> al segundo cúbit, y
+el operador <span class="math notranslate nohighlight">\(P(\delta)\)</span> añade la fase global, que al ser global podemos pasársela al segundo cúbit, lo que hace <span class="math notranslate nohighlight">\(e^{i\delta} AXBXC = U\)</span></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Detalles<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Las dos condiciones  algebráicas admiten una solución única para un operador unitario genérico</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U = e^{i\delta}\begin{bmatrix}\displaystyle e^{-i(\alpha+\beta)/2}\cos\frac{\theta}{2} &amp; \displaystyle - e^{i(-\alpha+\beta)/2}\sin\frac{\theta}{2}  \\  
+\rule{0mm}{5mm}
+\displaystyle   e^{i(\alpha-\beta)/2}\sin\frac{\theta}{2}  &amp;\displaystyle e^{i(\alpha+\beta)/2}\cos\frac{\theta}{2}
+\end{bmatrix} = e^{i\delta} AXBXC ~  \Longrightarrow ~
+\left\{ \begin{array}{l} A = R_z(\alpha) R_y\left(\frac{\theta}{2}\right) \\ B = R_y\left(-\frac{\theta}{2}\right) R_z\left(-\frac{\alpha + \beta}{2}\right) \\
+C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
+\right.
+\end{split}\]</div>
+<p class="sd-card-text"><i> Nota: </i>: <span class="math notranslate nohighlight">\(U\in U(2)\)</span>  es un operador unitario y  su determinante es una fase <span class="math notranslate nohighlight">\(\det U = e^{i\delta}\)</span>.     Por su parte <span class="math notranslate nohighlight">\(\det(AXBXC) = 1\)</span>, y por tanto es un elemento de <span class="math notranslate nohighlight">\(SU(2)\)</span>.  Por esta razón es necesario añadir la fase <span class="math notranslate nohighlight">\(e^{i\delta}\)</span> para obtener un operador unitario general.</p>
+</div>
+</details><section id="puertas-universales">
+<h4>Puertas universales<a class="headerlink" href="#puertas-universales" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>La descomposición del teorema de Barenco es  una identidad exacta capaz de descomponer un conjunto infinito y continuo de operadores <span class="math notranslate nohighlight">\(U_n\)</span> en puertas CNOT y puertas <em>continuas</em> <span class="math notranslate nohighlight">\(U\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>La computación cuántica <em>resistentes a errores (“fault tolerant”)</em> demanda la <strong>discretización</strong> del proceso de computación.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Existe un <em>conjunto discreto de puertas universales</em> susceptibles de ser programadas de manera resistente a errores</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Puede ser diferente dependiendo de la plataforma utilizada.</p>
+<ul class="simple">
+<li><p>En circuitos superconductores</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-a47c439b-84ee-4dcb-8ac5-0cf2f441cad7">
+<span class="eqno">(18)<a class="headerlink" href="#equation-a47c439b-84ee-4dcb-8ac5-0cf2f441cad7" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\hbox{Shor basis}~~
+ ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
+\hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
+\end{eqnarray}\]</div>
+<ul class="simple">
+<li><p>Es importante relacionar las puertas universales con <em>puertas nativas</em></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Por ejemplo, en ordenadores de iones atrapados hay las siguientes <a class="reference external" href="https://ionq.com/docs/getting-started-with-native-gates#introducing-the-native-gates">puertas nativas</a></p>
+<div class="math notranslate nohighlight">
+\[
+\{ \hbox{GPi},\hbox{Virtual}Z, \hbox{MS}\} 
+\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>donde
+$<span class="math notranslate nohighlight">\(
+\hbox{GPi} = \begin{bmatrix} 0 &amp; e^{-i\phi} \\e^{i\phi} &amp; 0 \end{bmatrix}~~~,~~~
+\hbox{Virtual}Z = \begin{bmatrix} e^{-i\phi} &amp; 0 \\ 0 &amp; e^{i\phi} \end{bmatrix} ~~,~~~~
+\)</span>$</p>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span> y la puerta de Mølmer-Sørensen</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+MS(\phi_1,\phi_2) = \frac{1}{\sqrt{2}}
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; e^{-i(\phi_1+\phi_2)} \\ 0 &amp; 1 &amp;-i e^{-i(\phi_1-\phi_2)} &amp; 0 \\ 0 &amp; -i e^{i(\phi_1-\phi_2)} &amp; 1 &amp; 0  \\ 
+-ie^{i(\phi_1+\phi_2)} &amp; 0 &amp; 0 &amp; 1 
+\end{bmatrix}
+\end{split}\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>Solovay Kitaev et. al. 1995</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Una puerta simple <span class="math notranslate nohighlight">\(U\)</span> arbitraria puede ser aproximada con precisión <span class="math notranslate nohighlight">\(\epsilon\)</span> usando una secuencia de puertas discretas
+<span class="math notranslate nohighlight">\(R\)</span> en el siguiente sentido de proximidad</p>
+<div class="math notranslate nohighlight">
+\[
+\hbox{max}_{\ket{\psi}} || (U - R)\ket{\psi} ||&lt;\epsilon
+\]</div>
+<p class="sd-card-text">donde la secuencia aproximante <span class="math notranslate nohighlight">\(R\)</span> involucra   <span class="math notranslate nohighlight">\(\leq {\cal O}(\log^2(1/\epsilon))\)</span> puertas de un conjunto discreto universal,</p>
+</div>
+</div>
+<p>Referencia: M.A. Nielsen y L.I. Chuang <em>Quantum Computation and Quantum Information</em>, pág. 197.</p>
+</section>
+</section>
+</section>
+<section id="medidas-de-calidad-en-circuitos">
+<h2>Medidas de calidad en circuitos<a class="headerlink" href="#medidas-de-calidad-en-circuitos" title="Permalink to this heading">#</a></h2>
+<p>Alguna medidas cuantitativas  permiten comparar la calidad de distintos circuitos que efectúan la misma tarea.</p>
+<ul class="simple">
+<li><p><strong>anchura</strong>= es el número total de cúbits  que necesita.</p></li>
+</ul>
+<p>El uso de ancillas incrementa la anchura de un circuito, y por tanto, reduce su calidad en comparación con otro circuito que tenga menor anchura.</p>
+<ul class="simple">
+<li><p><strong>coste</strong>= el número de puertas presentes en el mismo.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>complejidad</strong>= es una medida estandarizada asociada al número de <em>puertas elementales</em> en las que puede descomponerse un circuito.</p></li>
+</ul>
+<p>Es un número a reducir. Sin embargo no es una medida inambigua ya que depende de la librería utilizada. Por ejemplo, si ésta es la NCT, entonces el coste del <a class="reference internal" href="#Toffolidecomposition"><span class="xref myst">circuito</span></a> es 1. Sin embargo, si la librería es la tomada por <span class="math notranslate nohighlight">\( \{ H, S, T, \hbox{CNOT}\} \)</span>
+entonces el coste sube hasta 7. Por ello, a la hora de comparar circuitos es importante definirlos en la misma base.</p>
+<ul class="simple">
+<li><p><strong>profundidad</strong>= para evaluar la <em>profundidad</em>  es necesario agrupar todas las puertas  que se puedan realizar en paralelo en cortes temporales de duración <span class="math notranslate nohighlight">\(\Delta\)</span> (pulso).</p></li>
+</ul>
+<p>En particular puertas que actúen sobre registros diferentes no interferirán y se podrán paralelizar.
+Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span class="xref myst">circuito que descompone <span class="math notranslate nohighlight">\(U\)</span></span></a>   tiene un coste igual a 6, pero una profundidad igual a 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">transpile</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" src="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tamaño=&#39;</span><span class="p">,</span><span class="n">qc</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;profundidad=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">depth</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tamaño= 6
+puertas no locales= 2
+anchura= 3
+profundidad= 4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_dec</span><span class="o">=</span><span class="n">qc</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+<span class="n">qc_dec</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" src="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;complejidad=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;profundidad=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">depth</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complejidad= 8
+puertas no locales= 4
+anchura= 3
+profundidad= 6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from qiskit import IBMQ</span>
+<span class="c1">#IBMQ.load_account()</span>
+<span class="c1">#provider = IBMQ.get_provider(hub=&#39;ibm-q&#39;)</span>
+<span class="c1">#provider.backends()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#backend = provider.get_backend(&quot;ibmq_lima&quot;)</span>
+<span class="c1">#backend.configuration().basis_gates</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###qc_trans = transpile(qc_dec)</span>
+<span class="c1">#qc_trans = transpile(qc,backend)</span>
+<span class="c1">#qc_trans.draw(&#39;mpl&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(&#39;complejidad=&#39;, qc_trans.size())</span>
+<span class="c1">#print(&#39;puertas no locales=&#39;, qc_trans.num_nonlocal_gates())</span>
+<span class="c1">#print(&#39;anchura=&#39;, qc_trans.num_qubits)</span>
+<span class="c1">#print(&#39;profundidad=&#39;, qc_trans.depth())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<ol class="arabic simple">
+<li><p>Programa y ejecuta un circuito de 16 cúbits que prepare el estado <span class="math notranslate nohighlight">\(\ket{00\ldots 0} \to \frac{1}{\sqrt{2}}\left(\ket{00\ldots 0} + \ket{11\ldots 1}\right) \)</span></p></li>
+<li><p>Modifica la posición de los controladores hasta reducir la profundidad a 5.</p></li>
+</ol>
+</div>
+</section>
+<section id="complejidad-computacional">
+<h2>Complejidad computacional<a class="headerlink" href="#complejidad-computacional" title="Permalink to this heading">#</a></h2>
+<p>Un algoritmo es una descomposición de una función en composición de un conjunto de <em>funciones primitivas</em></p>
+<p>A la hora de comparar estrategias de computación es necesario  analizar el coste relativo de diferentes algoritmos. Esta es la labor de teoría de la complejidad computacional.</p>
+<p>Como regla general, cada <em>modelo computacional</em> reducirá un problema complejo a una serie de pasos elementales (<em>operaciones primitivas</em>), a los que les asignaremos un coste computacional 1.</p>
+<p>La teoría de la <em>complejidad computacional</em> agrupa problemas por clases en las que el uso de recursos computacionales (tiempo o espacio) crece de forma similar.</p>
+<section id="complejidad-clasica">
+<h3>Complejidad clásica:<a class="headerlink" href="#complejidad-clasica" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>P</strong> ( <em>Polinómica</em>):  decimos que un problema pertenece a esta clase si puede ser resuelto en un tiempo (<span class="math notranslate nohighlight">\(t \sim \)</span>número de pasos) polinómico en el tamaño <span class="math notranslate nohighlight">\(n\)</span> del dato de entrada <span class="math notranslate nohighlight">\(t\sim \exists k \Rightarrow  {\cal O}(n^k)\, \)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>BPP</strong> (“<em>Bounded probabilistic polynomial</em>”): problemas que se pueden resolver mediante una máquina de Turing probabilística en tiempo polinómico y con una probabilidad de error <span class="math notranslate nohighlight">\(\leq 1/3\)</span> para cualquier dato de entrada.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>NP</strong> (“<em>No determinista Polinómica</em>”): clase de problemas que pueden ser  <em>verificados</em> en tiempo polinómico,
+pero carecen de un algoritmo para ser resueltos en tiempo polinómico.</p></li>
+</ul>
+<p>Es evidente que <strong>P</strong><span class="math notranslate nohighlight">\(\subseteq\)</span> <strong>NP</strong>. No es evidente, aunque sí conjeturado, que <strong>P</strong><span class="math notranslate nohighlight">\(\neq\)</span> <strong>NP</strong>, siendo este un problema central en matemáticas.</p>
+<ul class="simple">
+<li><p><strong>NPC</strong> (<em>NP-Completa</em>): es un subconjunto de <strong>NPC</strong><span class="math notranslate nohighlight">\(\subset\)</span><strong>NP</strong> que contiene a los problemas más difíciles en esta clase.</p></li>
+</ul>
+<p>Un problema es <strong>NPC</strong> si cualquier  problema en <strong>NP</strong> puede aplicarse al mismo  mediante un algoritmo de coste polinómico.</p>
+<p>La importancia de esta subclase es que la resolución eficiente de uno solo de sus elementos implica lo mismo para toda la clase, o lo que es igual implicaría que <strong>NP</strong> = <strong>P</strong>.</p>
+<p>Ejemplos de esta clase son  el <em>problema del viajante</em> y  el de la <em>satisfabilidad booleana</em>.</p>
+<ul class="simple">
+<li><p><strong>PSPACE</strong>. Clase de problemas con necesidades de <em>memoria</em> exponencial en el tamaño del problema.</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplos</p>
+<ul class="simple">
+<li><p>ejemplos de la clase <b>NP</b>: la <i>factorización entera</i>, o la evaluación de  <i>logaritmos discretos</i>,…</p></li>
+<li><p>ejemplos de la clase <b>NPC</b> son el <i>problema del viajante</i>, la <i>coloración de grafos</i>,</p></li>
+</ul>
+</div>
+</section>
+<section id="complejidad-cuantica">
+<h3>Complejidad cuántica:<a class="headerlink" href="#complejidad-cuantica" title="Permalink to this heading">#</a></h3>
+<p>Decimos que un circuito es <em>eficiente</em> (<em>no-eficiente</em>) si su <em>coste</em> escala de forma <em>polinómica</em> (<em>exponencial</em>)  con la anchura del circuito.</p>
+<p>La descomposición de un operador unitario genérico <span class="math notranslate nohighlight">\(U(n)\)</span> no será eficiente, puesto que viene especificado por un número exponencial <span class="math notranslate nohighlight">\(\sim 2^n\times 2^n\)</span> de parámetros.</p>
+<p>Al igual que en computación clásica existen clases de complejidad cuánticas asociadas a familias de problemas que escalan de la misma manera.</p>
+<ul class="simple">
+<li><p><strong>BQP</strong> (<em>Bounded Quantum Polynomial</em>): clase de problemas para los que existe un algoritmos cuántico de coste polinómico y con una probabilidad de error <span class="math notranslate nohighlight">\(\leq 3\)</span>. Es el análogo cuántico de la clase <strong>BPP</strong>.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>quantum NP</strong>: clase de problemas que admiten un circuito polinómico en el número de cúbits que <em>verifica</em>  una eventual solución con probabilidad 1 si es correcta, y <em>rechaza</em> cualquier resultado que no sea solución con la misma probabilidad.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>QMA</strong> (<em>Quantum Merlin-Arthur</em>): admitiendo una probabilidad de error <span class="math notranslate nohighlight">\(\leq 1/3\)</span> en la clase <strong>quantum NP</strong> obtenemos el análogo cuántico de la clase <strong>NP</strong>.  Existe una clase <strong>QMA</strong>-completa que contiene los problemas más duros en esta categoría. ´</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplos</p>
+<p>El ejemplo más famoso de problema  <b>QMA</b>-completo es determinar si la energía <span class="math notranslate nohighlight">\(E_0\)</span> del estado fundamental de un Hamiltoniano <span class="math notranslate nohighlight">\(k-\)</span>local es <span class="math notranslate nohighlight">\(E_0\leq a\)</span> o bien <span class="math notranslate nohighlight">\(E_0\geq a + 1/poly(n)\)</span>.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>La teoría de la complejidad computacional intenta establecer relaciones de inclusión entre estas clases.
+A parte de la mencionada <b> P <span class="math notranslate nohighlight">\(\subseteq\)</span> NP </b> se  puede probar que</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_02_Circuitos_Cuánticos/Chapter_03_02_Mas_sobre_Circuitos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Chapter_03_01_Mas_sobre_circuitos_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Más cosas sobre circuitos</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Section_032_CompClasica_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Circuitos para computación clásica</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion-de-una-exponencial">Conjugación de una exponencial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cubits">2 cúbits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#puertas-universales">Puertas universales</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-calidad-en-circuitos">Medidas de calidad en circuitos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-computacional">Complejidad computacional</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-clasica">Complejidad clásica:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-cuantica">Complejidad cuántica:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
