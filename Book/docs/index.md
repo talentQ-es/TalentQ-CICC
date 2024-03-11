@@ -1,6 +1,5 @@
 # Curso de Introducción a la Computación Cuántica
 
-Curso introductorio a la computación cuántica.
 
 
 

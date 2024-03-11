@@ -1,7 +1,7 @@
 format: jb-book
 root: docs/index
 parts:
-- caption:  Las reglas del juego
+- caption:  Elementos de Mecánica Cuántica
   chapters:
   - file:  docs/Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.md
     sections:
