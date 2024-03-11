@@ -1,2 +1,2 @@
-# Curso de Introducción a la Información Cuántica
+# Curso de Introducción a la Computación Cuántica
  
