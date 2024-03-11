@@ -1,0 +1,1245 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Algoritmos de Oráculo &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Transformada de Fourier Cuántica" href="Chapter_042_QFT_myst.html" />
+    <link rel="prev" title="Circuitos para computación clásica" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Los Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Cuánticos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Algoritmos de Oráculo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_042_QFT_myst.html">Transformada de Fourier Cuántica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_043_QPE_myst.html">Estimación Cuántica de Fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Informacion Cuántica</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst.html">Mezcla de Estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst.html">Medidas generalizadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst.html">Elementos de Información Cuántica</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Algoritmos de Oráculo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-de-deutsch-josza">El problema de Deutsch-Josza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-de-bernstein-vazirani">El problema de Bernstein-Vazirani</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion">Implementación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-de-simon">El problema de Simon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprobacion">Comprobación</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Mar 11, 2024 | 5 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="algoritmos-de-oraculo">
+<h1>Algoritmos de Oráculo<a class="headerlink" href="#algoritmos-de-oraculo" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../macro_tQ.py
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>La potencial de la computación cuántica reside en que podamos fabricar estados que concentran la solución a un problema en una o varias amplitudes.</p></li>
+<li><p>El foco se desplaza enconces a encontrar los <em>problemas adecuados</em></p></li>
+</ul>
+<ul class="simple">
+<li><p>Un clase importante de problemas consiste en  <em>desvelar</em> alguna propiedad de una cierta función binaria. La única opción válida para dicho propósito es consultar dicha función tantas veces como sea necesario. Por lo demás, se trata de una <em>caja negra</em>. Por esta razón, a dichas funciones se les denomina <em>oráculos</em></p></li>
+</ul>
+<p><em>Ejemplo:</em></p>
+<p>Denotaremos el conjunto <span class="math notranslate nohighlight">\(S_n =\{0,1,...2^n-1 \}\sim \{0,1\}^n\)</span> indistintamente.</p>
+<p>La implementación unitaria de una función binaria  <span class="math notranslate nohighlight">\(f:S_n \to S_1\)</span> se realiza en la forma de un operador controlado</p>
+<div class="math notranslate nohighlight">
+\[
+{U_f} : \ket{x}_n\otimes \ket{y} \to \ket{x}_n\otimes \ket{y + f(x)}
+\]</div>
+<p>En particular, si <span class="math notranslate nohighlight">\(\ket{y} = \ket{-}\)</span> tendremos el oráculo <span class="math notranslate nohighlight">\(f(x)\)</span> codificado en la fase.</p>
+<p>Vamos a estudiar el siguiente circuito</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Busqueda_Oraculo.png"><img alt="../../_images/Busqueda_Oraculo.png" src="../../_images/Busqueda_Oraculo.png" style="width: 500px;" /></a>
+</figure>
+<p>Los ingredientes que nos ofrece la computación cuántica para tratar de obtener una ventaja computacional son :</p>
+<ul class="simple">
+<li><p>paralelismo (<span class="math notranslate nohighlight">\(\to \)</span> evaluar el oráculo en <strong>todos</strong> los elementos de la base simultáneamente)</p></li>
+<li><p>codificación del oráculo en <strong>la fase</strong> (retroceso de fase)</p></li>
+<li><p>interferencia para <strong>concentrar</strong> la información en algunas amplitudes.</p></li>
+</ul>
+<p>Vamos a evaluar el estado en la salida</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\ket{\psi_0} &amp;=&amp; \ket{0}_n \otimes \ket{-} \nonumber\\
+\rule{0mm}{15mm}
+&amp;\stackrel{W_{n}}{\longrightarrow} &amp; \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x}\otimes \ket{-} ~~~~\hbox{ paralelismo}  \nonumber \\
+\rule{0mm}{12mm}
+&amp;\stackrel{U_f}{\longrightarrow} &amp;  \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}\ket{x}\otimes (-1)^{f(x)} \ket{-} ~~~~ \hbox{ codificación del oráculo  en la fase}
+\end{eqnarray*}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+&amp;\stackrel{W_{n}}{\longrightarrow} &amp;   \frac{1}{\sqrt{2^n}} \sum_{x=0}^{2^n-1}(-1)^{f(x)}(H^{\otimes n}\ket{x})\otimes  \ket{-}   \nonumber\\
+\rule{0mm}{12mm}
+&amp;=&amp;   \frac{1}{2^n} \sum_{x,y=0}^{2^n-1}(-1)^{f(x)+ x \cdot y}\ket{y}\otimes \ket{-}   ~~~~ \hbox{interferencia } 
+\end{eqnarray*}\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[x\cdot y = x_{n-1}y_{n-1} \oplus x_{n-2}y_{n-2} \oplus ...  \oplus x_{0}y_{0}\]</div>
+<p>el resultado final es un estado factorizado. Por tanto podemos medir el primer factor de forma independiente y olvidarnos del segundo</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\Phi} =  \frac{1}{2^n} \sum_{x,y=0}^{2^n-1}(-1)^{f(x)+ x \cdot y}\ket{y}
+\]</div>
+<p>dependiendo de cómo sea <span class="math notranslate nohighlight">\(f(x)\)</span> podremos conseguir <em>interferencias</em> que  concentren la probabilidad en algún estado</p>
+</section>
+<section id="el-problema-de-deutsch-josza">
+<h2>El problema de Deutsch-Josza<a class="headerlink" href="#el-problema-de-deutsch-josza" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Promesa</strong>: <span class="math notranslate nohighlight">\(f\)</span> pertenece a una de las dos clases siguientes:  <em>constante</em> (<span class="math notranslate nohighlight">\(C \Rightarrow f(x)\)</span> igual para todo <span class="math notranslate nohighlight">\(x\)</span>) o <em>equilibrada</em> (<span class="math notranslate nohighlight">\(E\Rightarrow f(x)\)</span> igual para la mitad)</p></li>
+<li><p><strong>Problema</strong>: descubrir si <span class="math notranslate nohighlight">\(f\)</span> es de clase  <span class="math notranslate nohighlight">\(C\)</span> ó <span class="math notranslate nohighlight">\(E\)</span></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>Clásicamente: deberíamos invocar el oráculos  <span class="math notranslate nohighlight">\(2^n/2+1\)</span> veces. Esto es, por lo menos hasta la mitad de valores posibles de entrada, más uno.</p>
+</div>
+<ul class="simple">
+<li><p><strong>Solución</strong>: corremos el circuito una vez y medimos sobre el estado <span class="math notranslate nohighlight">\(~\ket{\Phi}\)</span></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\to ~\)</span> si <span class="math notranslate nohighlight">\(f \in C\)</span>  es <b>constante</b>  <span class="math notranslate nohighlight">\(~\Rightarrow~ f(x) = f_0 ~\forall x ~~~\Rightarrow~~~\)</span> la probabilidad de obtener <span class="math notranslate nohighlight">\( \ket{0^n}~\)</span> es  <span class="math notranslate nohighlight">\( 1\)</span></p>
+<p><em>Prueba:</em></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+p_{0} &amp;=&amp; |\braket{0^n}{\Phi}|^2 \nonumber\\ \rule{0mm}{12mm}
+&amp;=&amp; \left\vert \bra{0^n} \sum_{y=0}^{2^n-1}\left( \frac{1}{2^n}\sum_{x=0}^{2^n-1}(-1)^{f_0 + x \cdot y} \right)\ket{y} \right\vert^2
+ \nonumber\\ \rule{0mm}{12mm}
+ &amp;=&amp; \left\vert \frac{(-1)^{f_0}}{2^{n}}   \sum_{x=0}^{2^n-1} (-1)^{x \cdot 0}\right\vert^2    \\ \rule{0mm}{15mm}
+ &amp;=&amp; (-1)^{2f_0} \\ \rule{0mm}{15mm} &amp;=&amp; 1 
+\nonumber 
+\end{eqnarray*}\]</div>
+<p><span class="math notranslate nohighlight">\(\to ~ \)</span>    si <span class="math notranslate nohighlight">\(f\in E\)</span> es <b>equilibrada</b> <span class="math notranslate nohighlight">\(~\Rightarrow~\)</span> la probabilidad de obtener <span class="math notranslate nohighlight">\(~\ket{0^n}~\)</span>  es <span class="math notranslate nohighlight">\(~0~\)</span></p>
+<p>En este caso  <span class="math notranslate nohighlight">\(f(x)=\pm 1\)</span> está distribuida de forma equilibrada <span class="math notranslate nohighlight">\(~\Rightarrow\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\braket{0^n}{\Phi} &amp;=&amp; \bra{0^n} \sum_{y=0}^{2^n-1}\left( \frac{1}{2^n}\sum_{x=0}^{2^n-1}(-1)^{f(x) + x \cdot y} \right)\ket{y} \nonumber\\ \rule{0mm}{15mm}
+ &amp;=&amp;  \frac{1}{2^{n}} \sum_{x=0}^{2^n-1} (-1)^{f(x) + x \cdot 0}    = 0
+\nonumber \\
+ &amp;=&amp;  \frac{1}{2^{n}} \sum_{x=0}^{2^n-1} (-1)^{f(x)}    = 0
+\end{eqnarray*}\]</div>
+<p>al haber, por hipótesis, igual número de valores <span class="math notranslate nohighlight">\(f(x)=0\)</span> que de <span class="math notranslate nohighlight">\(f(x)=1\)</span> en la suma.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Oráculos constantes sólo hay dos, <span class="math notranslate nohighlight">\(f(x)=0~\)</span> ó <span class="math notranslate nohighlight">\(~f(x) = 1\)</span> para todo <span class="math notranslate nohighlight">\(x\)</span>. Oráculos equilibrados hay muchos, y en la lección anterior deberías haber fabricado un circuito para generarlos.
+Construye el circuito de Deutsch-Josza y ponlo a prueba con estos oráculos.</p>
+</div>
+</section>
+<section id="el-problema-de-bernstein-vazirani">
+<h2>El problema de Bernstein-Vazirani<a class="headerlink" href="#el-problema-de-bernstein-vazirani" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Promesa</strong>: <span class="math notranslate nohighlight">\(f\)</span> es una <em>función lineal</em>, definida por una cadena de bits <span class="math notranslate nohighlight">\(a \in \{0,1\}^n\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(x) = a\cdot x  = a_{n-1} x_{n-1} \oplus ....\oplus a_0 x_0\]</div>
+<ul class="simple">
+<li><p><strong>Problema</strong>: hallar <span class="math notranslate nohighlight">\(a = a_{n-1} \ldots a_0\)</span></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>Clásicamente necesitaríamos invocar el oráculo   <span class="math notranslate nohighlight">\(n\)</span> veces.
+Por ejemplo  <span class="math notranslate nohighlight">\(f(0\cdots 0 1)=0,1 \)</span> revela <span class="math notranslate nohighlight">\(a_0=0,1\)</span> respectivamente.
+Iterativamente  <span class="math notranslate nohighlight">\(f(0\cdots 0 1 0)\to a_1\)</span>, <span class="math notranslate nohighlight">\( f(0\cdots 1 0 0)\to a_2 \cdots\)</span>, etc.</p>
+</div>
+<p><strong>Solución</strong>: correr el circuito una vez y medir el estado final</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c483d3e3-7ff7-47ac-8312-9fdc2e644d06">
+<span class="eqno">(18)<a class="headerlink" href="#equation-c483d3e3-7ff7-47ac-8312-9fdc2e644d06" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\ket{\Phi} &amp;=&amp; \frac{1}{2^n} \sum_{x,y=0}^{2^n-1}(-1)^{f(x)+ y \cdot x}\ket{y}
+=  
+\frac{1}{2^n}\sum_{y=0}^{2^n-1} \left(\sum_{x=0}^{2^n-1}(-1)^{(a+y)\cdot x}\right)\ket{y} ~\nonumber\\  \rule{0mm}{10mm}
+&amp;=&amp;  
+\frac{1}{2^n}\sum_{y=0}^{2^n-1} \left(\sum_{x=0}^{2^n-1}(-1)^{(-a+y)\cdot x}\right)\ket{y}\nonumber\\ \rule{0mm}{10mm}
+ &amp;=&amp;  \frac{1}{2^n} \sum_{y=0}^{2^n-1} 2^n \delta_{(-a+y),0} \ket{y} \nonumber\\ \rule{0mm}{10mm}
+&amp;=&amp; \rule{0mm}{5mm} \ket{a_0a_1\cdots a_{n-1}} \nonumber 
+\end{eqnarray}\]</div>
+<p>¡ Una <strong>única</strong>  medida del estado final da <span class="math notranslate nohighlight">\(a\)</span> !</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>En ambos casos, la <i>clave</i> está en <i>concentrar</i> la  probabilidad de la solución en la amplitud de un sólo estado.</p>
+</div>
+<section id="implementacion">
+<h3>Implementación<a class="headerlink" href="#implementacion" title="Permalink to this heading">#</a></h3>
+<p>En primer lugar generamos un oráculo lineal <span class="math notranslate nohighlight">\(f(x)=x\cdot a\)</span> con una cadena <span class="math notranslate nohighlight">\(a=(a_{n-1},\ldots a_0)\)</span> oculta de longitud <span class="math notranslate nohighlight">\(n\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+
+<span class="k">def</span> <span class="nf">random_linear_oracle</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>  <span class="c1">#n es la longitud de la cadena a oculta</span>
+
+    <span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">string</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="n">n</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;cadena oculta=&#39;</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>  
+    <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># el ultimo registro es la salida |f(x)&gt; = |a.x&gt;</span>
+
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ai</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>  <span class="c1"># ponemos reversed para usar el convenio de qiskit</span>
+        <span class="k">if</span> <span class="n">ai</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>    
+    <span class="k">return</span> <span class="n">qc</span>
+
+<span class="n">random_linear_oracle</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cadena oculta= 0101
+</pre></div>
+</div>
+<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">               
+q_0: ──■───────
+       │       
+q_1: ──┼───────
+       │       
+q_2: ──┼────■──
+       │    │  
+q_3: ──┼────┼──
+     ┌─┴─┐┌─┴─┐
+q_4: ┤ X ├┤ X ├
+     └───┘└───┘</pre></div></div>
+</div>
+<p>Ahora implementamos el oráculo en el algoritmo de BV</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">BV_circuit</span><span class="p">(</span><span class="n">linear_oracle</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1">#n: número de bits</span>
+    <span class="c1">#a: coeficiente oculto</span>
+    <span class="c1">#return: circuito</span>
+
+    <span class="n">qreg</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">creg</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qreg</span><span class="p">,</span><span class="n">creg</span><span class="p">)</span>
+
+    <span class="c1">#Hacemos máxima superposición</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qreg</span><span class="p">)</span>
+
+    <span class="c1">#Ponemos el último qubit en el estado |-&gt;</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">qreg</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    
+    <span class="c1"># añadimos el oráculo lineal con la cadena oculta</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">linear_oracle</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(),</span><span class="n">qreg</span><span class="p">[:])</span>
+    
+    <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    
+
+    <span class="c1">#Aplicamos Hadamard de nuevo</span>
+
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qreg</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qreg</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">creg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">qc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>vamos a correr un ejemplo concreto</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">linear_oracle</span> <span class="o">=</span> <span class="n">random_linear_oracle</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">circuito</span> <span class="o">=</span> <span class="n">BV_circuit</span><span class="p">(</span><span class="n">linear_oracle</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">circuito</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cadena oculta= 1000
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../_images/f0b6873a31aef69c103100bb558354bbb76f7f61d43e8f867a28bf35eb863464.png" src="../../_images/f0b6873a31aef69c103100bb558354bbb76f7f61d43e8f867a28bf35eb863464.png" />
+</div>
+</div>
+<p>ahora podemos extraer la cadena <span class="math notranslate nohighlight">\(a\)</span> en <em>una sóla invocación</em> del oráculo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">execute</span><span class="p">,</span> <span class="n">Aer</span>
+<span class="n">simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuito</span><span class="p">,</span><span class="n">simulator</span><span class="p">,</span><span class="n">shots</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">cuentas</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(</span><span class="n">circuito</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">cuentas</span><span class="p">)</span> <span class="c1"># Mostramos un histograma de resultados</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f2745b1c24416b5bfe1f4b74181faed9e3ed29e62f9afa59695dcbbc4af8c70f.png" src="../../_images/f2745b1c24416b5bfe1f4b74181faed9e3ed29e62f9afa59695dcbbc4af8c70f.png" />
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Nota (¿Por qué funciona el algoritmo de Bernstein Vazirani?)</p>
+<p>Supongamos que <span class="math notranslate nohighlight">\(a = 01011\)</span> y que el oráculo que implementa la función lineal es</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/BV_circuit.png"><img alt="../../_images/BV_circuit.png" src="../../_images/BV_circuit.png" style="width: 300px;" /></a>
+</figure>
+<p>Insertando dicho oráculo en el algoritmo de búsqueda, y</p>
+<ul class="simple">
+<li><p>recordando que <span class="math notranslate nohighlight">\(\ket{-} = H \ket{1}\)</span></p></li>
+<li><p>usando la equivalencia de circuitos</p></li>
+</ul>
+<p>es fácil reconocer que es equivalente al siguiente</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Bernstein_Vazirani_trick.png"><img alt="../../_images/Bernstein_Vazirani_trick.png" src="../../_images/Bernstein_Vazirani_trick.png" style="width: 250px;" /></a>
+</figure>
+</div>
+<p>Los anteriores algoritmos son <em>deterministas</em>. Vamos a ver un algoritmo que proporciona una ventaja exponencial pero de manera <em>probabilista</em></p>
+</section>
+</section>
+<section id="el-problema-de-simon">
+<h2>El problema de Simon<a class="headerlink" href="#el-problema-de-simon" title="Permalink to this heading">#</a></h2>
+<p>Consideremos <em>ahora</em> una función <span class="math notranslate nohighlight">\(f:\{0,1\}^n \to \{0,1\}^n\)</span> con la siguiente propiedad</p>
+<ul class="simple">
+<li><p><strong>Promesa</strong> : <span class="math notranslate nohighlight">\(f\)</span> es <em>doblemente valuada y periódica</em> bajo suma <em>bit a bit</em>.</p></li>
+</ul>
+<p>es decir <span class="math notranslate nohighlight">\(~\Rightarrow ~\)</span>  existe un <span class="math notranslate nohighlight">\(~s\in \{0,1\}^n ~\)</span> tal que <span class="math notranslate nohighlight">\(~~\forall x\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ f(x) = f(x\oplus s) ~~~~~
+\]</div>
+<p>Ejemplo:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{cc|cc}
+\hline x &amp; f(x) &amp; x &amp; f(x) \\ \hline
+0000&amp;1111&amp; 1000&amp;0101\\
+0001&amp;1011&amp; 1001&amp;0100\\
+0010&amp;0011&amp; 1010&amp;0000\\
+0011&amp;1000&amp; 1011&amp;1110\\
+0100&amp;0101&amp; 1100&amp;1111\\
+0101&amp;0100&amp; 1101&amp;1011\\
+0110&amp;0000&amp; 1110&amp;0011\\
+0111&amp;1110&amp; 1111&amp;1000\\
+\hline 
+\end{array}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Problema</strong>: hallar <span class="math notranslate nohighlight">\(s\)</span> con el mínimo número de consultas al oráculo</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p><i>Clásicamente</i> necesitaríamos inspeccionar <span class="math notranslate nohighlight">\({\cal O}(n 2^n)\)</span> términos</p>
+</div>
+<p>El circuito es <em>el mismo</em>, pero ahora involucra <span class="math notranslate nohighlight">\(n\)</span> cúbits para codificar la <em>imagen</em> de <span class="math notranslate nohighlight">\(f\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/SimonCircuit.png"><img alt="../../_images/SimonCircuit.png" src="../../_images/SimonCircuit.png" style="width: 500px;" /></a>
+</figure>
+<p>Notar la diferencia con los casos anteriores:</p>
+<ul class="simple">
+<li><p>ahora en la entrada de la ancilla ponemos <span class="math notranslate nohighlight">\(\ket{0}_n\)</span>
+<span class="math notranslate nohighlight">\(\Rightarrow\)</span> como consecuencia el oráculo aplica <span class="math notranslate nohighlight">\(f(x)\)</span> de forma <em>booleana</em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+U_f \sum_{x=0}^{2^n-1}\ket{x}\otimes \ket{0}  = \sum_{x=0}^{2^n-1}\ket{x}\otimes \ket{f(x)}
+\]</div>
+<ul class="simple">
+<li><p>después de aplicar e oráculo el estado está entrelazado!</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\Rightarrow\)</span> si hacemos una medida del segundo registro
+el  n-cúbit en segundo registro colapsará a un cierto estado
+<span class="math notranslate nohighlight">\(~\ket{f(x_0)} \)</span></p>
+<ul class="simple">
+<li><p>en virtud de la <em>promesa</em> <span class="math notranslate nohighlight">\(\ket{f(x_0)} = \ket{f(x_0\oplus s)}\)</span>, el primer registro colapsará a una <em>superposición de dos estados</em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi} = \frac{1}{\sqrt{2}} \left( \rule{0mm}{4mm} \ket{x_0} + \ket{x_0 \oplus s} \right)
+\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{8mm}{0mm}\)</span>justo antes de la barrera</p>
+<ul class="simple">
+<li><p>siguiendo el circuito, aplicamos de nuevo la puerta de Walsh-Hadamard al primer registro</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+H^{\otimes n} \frac{1}{\sqrt{2}} \left( \rule{0mm}{4mm} \ket{x_0} + \ket{x_0 \oplus s} \right) &amp;=&amp; \frac{1}{\sqrt{2^{n+1}}} \sum_{y=0}^{2^n-1} \left[ (-1)^{x_0\cdot y} + (-1)^{(x_0\oplus s) \cdot y}\right]  \ket{y} \nonumber\\ \rule{0mm}{10mm}
+&amp;=&amp; \frac{1}{\sqrt{2^{n+1}}} \sum_{y=0}^{2^n-1} \left[ (-1)^{x_0\cdot y} + (-1)^{x_0 \cdot y}(-1)^{ s \cdot y}\right]  \ket{y} \nonumber\\ \rule{0mm}{10mm}
+&amp;=&amp;  \frac{1}{\sqrt{2^{n+1}}} \sum_{y=0}^{2^n-1}(-1)^{x_0\cdot y}  \left( \rule{0mm}{6mm} 1+ (-1)^{s \cdot y}\right) \ket{y}
+\end{eqnarray*}\]</div>
+<p>Observar  el factor</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{1}{2}\left( \rule{0mm}{3mm} 1+ (-1)^{s \cdot y}\right)~~ = ~~ 
+\left\{\begin{array}{ccc} 0 &amp;\hbox{if}&amp;  s \cdot y\, (\hbox{mod 2}) = 1 \\ 1 &amp;\hbox{if} &amp; s\cdot y\, (\hbox{mod 2}) = 0\end{array}
+\right.
+\end{split}\]</div>
+<p>hace que <strong>sólo tengan amplitud no nula</strong> aquellos  <span class="math notranslate nohighlight">\(\ket{y}\)</span> con <span class="math notranslate nohighlight">\(s\cdot y\,  (\hbox{mod 2})= 0\)</span></p>
+<p>Midiendo de forma repetida, el primer registro obtendremos una serie de n-bits <span class="math notranslate nohighlight">\( y^{(a)} = y^{(1)},y^{(2)},...,y^{(n)}\)</span> todos los cuales  verifican
+un sistema homogéneo de <span class="math notranslate nohighlight">\(n\)</span> ecuaciones lineales</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+s\cdot y^{(1)} (\hbox{mod(2)})~=~ s_{n-1}y^{(1)}_{n-1} \oplus s_{n-2}y^{(1)}_{n-2} \oplus \ldots \oplus s_0 y^{(1)}_0  &amp;~=~&amp; 0 \nonumber\\ \rule{0mm}{8mm}
+s\cdot y^{(2)} (\hbox{mod(2)}) ~=~ s_{n-1}y^{(2)}_{n-1} \oplus s_{n-2}y^{(2)}_{n-2} \oplus \ldots \oplus s_0 y^{(2)}_0 &amp;~=~&amp; 0 \nonumber\\
+\vdots &amp; &amp; \nonumber\\ \rule{0mm}{10mm}
+s\cdot y^{(n)} (\hbox{mod(2)}) ~=~ s_{n-1}y^{(p)}_{n-1} \oplus s_{n-2}y^{(n)}_{n-2} \oplus \ldots \oplus s_0 y^{(n)}_0 &amp;~=~&amp; 0 \nonumber\\
+\end{eqnarray*}\]</div>
+<p>donde todas las suma se entienden módulo dos.
+Por un lado <span class="math notranslate nohighlight">\(s=s_{n-1}\ldots s_0\)</span> son nuestras incógnitas y, por otro, <span class="math notranslate nohighlight">\(y^{(a)} = y^{(a)}_{n-1}\ldots y^{(a)}_0\)</span> los coeficientes conocidos como resultado de las medidas</p>
+<p>Dado que tenemos que averiguar los <span class="math notranslate nohighlight">\(n\)</span> bits que conforman la solución <span class="math notranslate nohighlight">\(s\)</span> necesitaremos, como mínimo, <span class="math notranslate nohighlight">\(n\)</span> ecuaciones linealmente independientes</p>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<ol class="arabic simple">
+<li><p>No hay garantía de que las cadenas de bits <span class="math notranslate nohighlight">\(y\)</span> obtenidos en las distintas evaluaciones del circuito sean diferentes siempre diferentes entre sí.
+Por tanto en general, para obtener un sistema lineal resoluble será necesario correr el circuito un número mayor de veces que <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+</ol>
+<p>Es por esta razón que el algoritmo de Simon es <i>probabilístico</i></p>
+<ol class="arabic simple" start="2">
+<li><p>La distribución de amplitudes que son nulas o no es independiente de <span class="math notranslate nohighlight">\(x_0\)</span> y, por tanto, del resultado <span class="math notranslate nohighlight">\(\ket{f(x_0)}\)</span> medido en el segundo registro. De modo que lo podemos obviar.</p></li>
+</ol>
+</div>
+<p>Vamos a estudiar la misma función que hemos utilizado en la lección anterior para codificar un oráculo arbitrario dado por una tabla de verdad <em>f_outputs</em></p>
+<p>Esta función está en <code class="docutils literal notranslate"><span class="pre">macro_CURSO.py</span></code> donde se denomina <code class="docutils literal notranslate"><span class="pre">binary_function(f_outputs)</span></code>.</p>
+<p>La promesa es que dicha función contiene un sólo período. Vamos a tratar de encontrarlo.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># promesa: esta función contiene un periodo binario</span>
+<span class="n">f_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1111&#39;</span><span class="p">,</span> <span class="s1">&#39;1011&#39;</span><span class="p">,</span> <span class="s1">&#39;0011&#39;</span><span class="p">,</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span> <span class="s1">&#39;0101&#39;</span><span class="p">,</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;0000&#39;</span><span class="p">,</span> <span class="s1">&#39;1110&#39;</span><span class="p">,</span> <span class="s1">&#39;0101&#39;</span><span class="p">,</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span> <span class="s1">&#39;0000&#39;</span><span class="p">,</span> <span class="s1">&#39;1110&#39;</span><span class="p">,</span> 
+               <span class="s1">&#39;1111&#39;</span><span class="p">,</span> <span class="s1">&#39;1011&#39;</span><span class="p">,</span> <span class="s1">&#39;0011&#39;</span><span class="p">,</span> <span class="s1">&#39;1000&#39;</span><span class="p">]</span>
+
+<span class="c1"># creamos el oráculo y lo transformamos en una puerta </span>
+<span class="n">simon_oracle_gate</span> <span class="o">=</span> <span class="n">binary_function</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">)</span><span class="o">.</span><span class="n">to_gate</span><span class="p">()</span>
+
+<span class="c1"># verificamos que se trata de una función de n en n bits</span>
+<span class="n">n_input</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">)))</span> <span class="c1">#número de outputs</span>
+<span class="n">m_output</span> <span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>            <span class="c1">#longitud de cada output</span>
+<span class="k">assert</span><span class="p">(</span><span class="n">n_input</span> <span class="o">==</span> <span class="n">m_output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Completa la  construcción del algoritmo de Simon</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Aplica la puerta de Walsh-Hadamard al primer registro
+qc.h(qr_in)
+qc.barrier()
+
+# Aplicamos el oráculo
+qc.append(simon_oracle_gate,qr_in[:]+qr_out[:])    
+qc.barrier()
+
+# Medimos el registro de los cúbits de |f(x)&gt;
+qc.measure(qr_out, cr)
+qc.barrier()
+
+
+# Volvemos a aplicar la puerta de Walsh-Hadamard al primer registro
+qc.h(qr_in)
+qc.barrier()
+
+# Finalmente medimos el registro de los inputs |x&gt;
+
+qc.measure(qr_in, cr)
+</pre></div>
+</div>
+</div>
+</details></div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+<span class="n">n</span><span class="o">=</span><span class="n">n_input</span>
+
+<span class="n">qr_in</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">qr_out</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;meas&#39;</span><span class="p">)</span>
+    
+<span class="c1"># Construimos el circuito</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr_in</span><span class="p">,</span> <span class="n">qr_out</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+    
+<span class="c1">#========Escribe tu código aquí========</span>
+<span class="c1"># Aplica la puerta de Walsh-Hadamard al primer registro</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr_in</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># Aplicamos el oráculo</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">simon_oracle_gate</span><span class="p">,</span><span class="n">qr_in</span><span class="p">[:]</span><span class="o">+</span><span class="n">qr_out</span><span class="p">[:])</span>    
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># Medimos el registro de los cúbits de |f(x)&gt;  este paso se puede omitir, compruébalo </span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr_out</span><span class="p">,</span> <span class="n">cr</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+
+<span class="c1"># Volvemos a aplicar la puerta de Walsh-Hadamard al primer registro</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr_in</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># Finalmente medimos el registro de los inputs |x&gt;</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr_in</span><span class="p">,</span> <span class="n">cr</span><span class="p">)</span>   
+
+<span class="c1">#======================================</span>
+    
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../_images/cce224308c69f3e5c6409fb82289e9ac141b3e911529b299bdf823f6036b3702.png" src="../../_images/cce224308c69f3e5c6409fb82289e9ac141b3e911529b299bdf823f6036b3702.png" />
+</div>
+</div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
+<span class="n">n</span><span class="o">=</span><span class="n">n_input</span>
+
+<span class="n">qr_in</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">qr_out</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;meas&#39;</span><span class="p">)</span>
+    
+<span class="c1"># Construimos el circuito</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr_in</span><span class="p">,</span> <span class="n">qr_out</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+    
+<span class="c1">#========Escribe tu código aquí========</span>
+    
+
+<span class="c1">#======================================</span>
+    
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comprobacion">
+<h2>Comprobación<a class="headerlink" href="#comprobacion" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+
+<span class="n">shots_exe</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<span class="n">job</span>     <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="n">shots_exe</span><span class="p">)</span>
+<span class="n">result</span>  <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">counts</span>  <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_for_solution</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
+
+<span class="c1">#   extraemos la longitud de las cuentas &#39;x&#39; que será igual a la de la incógnita &#39;s&#39;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> 
+
+<span class="c1">#   generamos todos los posibles inputs</span>
+    <span class="n">s_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)]</span>
+<span class="c1">#    s_list = [format(i, &#39;0&#39;+str(n)+&#39;b&#39;) for i in range(1, 2**n)]  # otra manera de hacer lo mismo</span>
+    
+<span class="c1">#   ahora evaluamos, para cada s,  s.x_i = 0 con todos los x_i encontrados</span>
+    <span class="k">for</span> <span class="n">s_str</span> <span class="ow">in</span> <span class="n">s_list</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">s_str</span><span class="p">)]</span>
+<span class="c1">#        print(&#39; s=&#39;,s)</span>
+
+<span class="c1">#   sólo necesitamos n valores de x independientes&#39;</span>
+        <span class="n">prod_sxi</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">([</span><span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">xi</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">))])</span><span class="o">%</span><span class="k">2</span> for xi in list(counts)[:n]]
+
+<span class="c1">#   sólo si todos los s.x_i = 0 también la suma será = 0</span>
+        <span class="n">sum_sx</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">prod_sxi</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;(Sum_{i=1}^4 s.x_i%2))=&#39;</span><span class="p">,</span> <span class="n">sum_sx</span><span class="p">,</span> <span class="s1">&#39; para s=&#39;</span><span class="p">,</span> <span class="n">s_str</span><span class="p">)</span>
+        <span class="k">if</span>  <span class="n">sum_sx</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">s_str</span>
+            <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ejecutamos la parte clásica que sólo involucra <span class="math notranslate nohighlight">\({\cal O}(n^2)\)</span> operaciones</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_sol</span> <span class="o">=</span> <span class="n">solve_for_solution</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;la periodicidad buscada es =&#39;</span><span class="p">,</span> <span class="n">s_sol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Completa esta  función que toma como argumento una cadena de bits <i>s</i>, y  gener una tabla de verdad asociada a una función binaria <span class="math notranslate nohighlight">\(f:\{0,1\}^n\to\{0,1\}^n\)</span> con exactamente la periodicidad <span class="math notranslate nohighlight">\(s\)</span>. Utiliza el algoritmo de Simon para recuperar dicha periodicidad.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>old = [a for a in aux if sum_mod2(a, s) == inp][0]
+outputs.append(old)
+</pre></div>
+</div>
+</div>
+</details></div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">oraculo_de_Simon</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>   
+    <span class="s1">&#39;autor Sergio Barrera&#39;</span>  
+
+    <span class="k">def</span> <span class="nf">suma_bit_a_bit_mod2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>    
+        <span class="n">suma</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+            <span class="n">suma</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">%</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">suma</span>
+
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> 
+    <span class="n">inputs</span>  <span class="o">=</span> <span class="p">[</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)]</span>
+    <span class="n">aux</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>    
+    <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">inp</span> <span class="ow">in</span> <span class="p">[</span><span class="n">suma_bit_a_bit_mod2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">aux</span><span class="p">]:</span>
+<span class="c1">###         </span>
+<span class="c1">#        tu solución aquí </span>
+<span class="c1">##</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+            <span class="n">aux</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">outputs</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_03_Algoritmos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Circuitos para computación clásica</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter_042_QFT_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Transformada de Fourier Cuántica</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-de-deutsch-josza">El problema de Deutsch-Josza</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-de-bernstein-vazirani">El problema de Bernstein-Vazirani</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion">Implementación</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-problema-de-simon">El problema de Simon</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comprobacion">Comprobación</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

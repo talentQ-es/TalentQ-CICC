@@ -1,0 +1,1151 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>El cúbit de espín &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_02_Circuitos_Cuánticos/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="El arte de medir I" href="Section_024_El_Arte_de_Medir_I_myst.html" />
+    <link rel="prev" title="Puertas Simples" href="Section_022_Puertas_Simples_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">El cúbit de espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.html">Algoritmos de Oráculo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_042_QFT_myst.html">Transformada de Fourier Cuántica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_043_QPE_myst.html">Estimación Cuántica de Fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Informacion Cuántica</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst.html">Mezcla de Estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst.html">Medidas generalizadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst.html">Elementos de Información Cuántica</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_02_Circuitos_Cuánticos/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Circuitos_Cuánticos/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Part_02_Circuitos_Cuánticos/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>El cúbit de espín</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentos-magnetico-y-angular">Momentos magnético y angular</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento-de-stern-y-gerlach">El experimento de Stern y Gerlach</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mediciones-sucesivas">Mediciones sucesivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espin">Espín</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-un-cubit-de-espin">Preparación de un cúbit de espín</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulando-un-cubit">Manipulando un cúbit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolucion-de-un-espin-en-un-campo-magnetico">Evolución de un espín en un campo magnético.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-cuantico">Control cuántico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pulsos-y-puertas-elementales">Pulsos y puertas elementales</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Feb 24, 2024 | 10 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="el-cubit-de-espin">
+<h1>El cúbit de espín<a class="headerlink" href="#el-cubit-de-espin" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\mathcal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\bn}{{\bf n}} \)</span></p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#momentos-magnetico-y-angular" id="id1">Momentos magnético y angular</a></p></li>
+<li><p><a class="reference internal" href="#el-experimento-de-stern-y-gerlach" id="id2">El experimento de Stern y Gerlach</a></p></li>
+<li><p><a class="reference internal" href="#preparacion-de-un-cubit-de-espin" id="id3">Preparación de un cúbit de espín</a></p></li>
+<li><p><a class="reference internal" href="#manipulando-un-cubit" id="id4">Manipulando un cúbit</a></p></li>
+</ul>
+</div>
+<p>El descubrimiento del espín fue una de los primeros fenómenos cuya descripción encontró acomodo en la nueva Mecánica Cuántica.</p>
+<p>Tanto es así que, el espín es un paradigma de <em>grado de libertad cuántizado</em>, y permite obtener intuición sobre los procesos de medida generales.</p>
+<section id="momentos-magnetico-y-angular">
+<span id="sec-023-momento"></span><h2><a class="toc-backref" href="#id1">Momentos magnético y angular</a><a class="headerlink" href="#momentos-magnetico-y-angular" title="Permalink to this heading">#</a></h2>
+<p>Clásicamente una distribución de carga que rota posee un <em>momento angular</em> de rotación <span class="math notranslate nohighlight">\({\bf J}\)</span> y un <em>momento magnético</em> <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> que son proporcionales</p>
+<p>Por ejemplo, un átomo formado por un electrón de carga <span class="math notranslate nohighlight">\(q\)</span> rotando en torno al núcleo tendrá</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\mu} = \frac{q}{2m} {\bf J} = \gamma {\bf J}
+\]</div>
+<p>La constante de proporcionalidad,  <span class="math notranslate nohighlight">\(\gamma\)</span>, se denomina <em>razón giromagnética</em></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Momento_Magnetico.png"><img alt="../../../_images/Momento_Magnetico.png" src="../../../_images/Momento_Magnetico.png" style="width: 500px;" /></a>
+</figure>
+<p>En este sentido, conocer el valor de <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> es equivalente a  <em>medir</em> <span class="math notranslate nohighlight">\({\bf J}\)</span></p>
+<p>La manera de poner de manifiesto el momento magnético es sumergir el átomo en un campo magnético <span class="math notranslate nohighlight">\({\bf B}\)</span>. Se observan dos efectos</p>
+<ul class="simple">
+<li><p>En un campo magnético constante, el átomo adquiere una energía de interacción</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+U = -\boldsymbol{\mu}\cdot {\bf B} = - \mu B \cos \theta
+\]</div>
+<p>y modificará  su estado  rotación para tratar de alinear <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> paralelamente a <span class="math notranslate nohighlight">\( {\bf B}\)</span>, de forma que <span class="math notranslate nohighlight">\(U\)</span> se minimice.</p>
+<ul class="simple">
+<li><p>Si el campo magnético no es constante, <span class="math notranslate nohighlight">\({\bf B} = {\bf B}(x,y,z)\)</span>, el átomo  actúa una fuerza proporcional al gradiente del campo magnético</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+{\bf F} = - \boldsymbol{\nabla} U(x,y,z) = \boldsymbol{\nabla} ( \boldsymbol{\mu}\cdot {\bf B}(x,y,z) )
+\]</div>
+</section>
+<section id="el-experimento-de-stern-y-gerlach">
+<span id="sec-023-sterngerlach"></span><h2><a class="toc-backref" href="#id2">El experimento de Stern y Gerlach</a><a class="headerlink" href="#el-experimento-de-stern-y-gerlach" title="Permalink to this heading">#</a></h2>
+<p>En 1921 Stern, e independientemente en 1922 Gerlach, dispararon una nube de átomos de plata en el seno de un campo magnético no constante <span class="math notranslate nohighlight">\({\bf B}(z) = (0,0,B_z(z))\)</span></p>
+<p>El <em>momento magnético</em> <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> en dichos átomos está asociado al <em>momento angular del  último</em> electrón de valencia.</p>
+<p>En este caso, la fuerza esperable que desvíe un átomos de momento angular <span class="math notranslate nohighlight">\({\bf J}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+{\bf F}= -\boldsymbol{\nabla} U = \boldsymbol{\nabla}(\boldsymbol{\mu}\cdot{\bf B}(z))= \left( \hat{\bf x}\frac{\partial}{\partial x}+ 
+\hat{\bf y}\frac{\partial}{\partial y}+ \hat{\bf z}\frac{\partial}{\partial z}\right)(\mu_z B_z(z)) =  \gamma J_z\frac{\partial B_z(z)}{\partial z} \, \hat{\bf z}
+\]</div>
+<p>Vemos que</p>
+<ul class="simple">
+<li><p>es una fuerza vertical. Esta es la dirección en la que esperamos una desviación de un electrón que lo atravies</p></li>
+<li><p>la magnitud de dicha desviación es proporcional a la proyección vertical del momento angular <span class="math notranslate nohighlight">\(J_z = \boldsymbol{J}\cdot\hat{\bf z} \)</span></p></li>
+</ul>
+<p><a title="Theresa Knott from en.wikipedia, CC BY-SA 3.0 &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Stern-Gerlach_experiment.PNG"><a class="reference internal" href="https://upload.wikimedia.org/wikipedia/commons/2/29/Stern-Gerlach_experiment.PNG"><img alt="https://upload.wikimedia.org/wikipedia/commons/2/29/Stern-Gerlach_experiment.PNG" class="align-center" src="https://upload.wikimedia.org/wikipedia/commons/2/29/Stern-Gerlach_experiment.PNG" style="width: 1000px;" /></a></a></p>
+<p>La nube de electrones que atraviesa el campo magnético está inicialmente despolarizada. Eso quiere decir que, en promedio, el momento angular es cero.</p>
+<p>Cada componente, y en particular <span class="math notranslate nohighlight">\(\mu_z\)</span>, será una distribución constante <span class="math notranslate nohighlight">\(\mu_z\in [-\mu,+\mu]\)</span> de media cero. Por tanto, a la salida del polarizador esperamos una nube verticalmente alargada centrada en la posición central.</p>
+<p>El resultado del experimento de Stern (1921) y Gerlach (1922) fue que, en lugar de eso, sólo se encuentran dos puntos de acumulación, situados simétricamente en la dirección del eje del polarizador.</p>
+<p>Esto quiere decir que la variable <span class="math notranslate nohighlight">\(J_z\)</span> sólo adquiere dos valores opuestos</p>
+<div class="math notranslate nohighlight">
+\[J_z = \pm\frac{\hbar}{2}\]</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>La dirección <span class="math notranslate nohighlight">\(z\)</span> no tiene nada de particular. Si el eje del polarizador apunta en la dirección <span class="math notranslate nohighlight">\(\hat{\bf n}\)</span>, los puntos de acumulación se situaciónan a lo largo de dicho eje, y para cáda átomo estaríamos midiendo el valor de la proyección <span class="math notranslate nohighlight">\(J_{\hat{\bf n}}={\bf J}\cdot\hat{\bf n} = \pm \hbar/2\)</span>.</p>
+</div>
+<section id="mediciones-sucesivas">
+<h3>Mediciones sucesivas<a class="headerlink" href="#mediciones-sucesivas" title="Permalink to this heading">#</a></h3>
+<p>El nombre de <em>polarizador</em> cobra sentido cuando hacemos dos experimentos sucesivamente de forma que, la salida de uno, sea la entrada del siguiente.</p>
+<p>Supongamos que seleccionamos sólo los electrones que se desvían hacia arriba <span class="math notranslate nohighlight">\(+\hbar/2\)</span> en el primer polarizador.</p>
+<p>A continuación  los hacemos pasar por un segundo polarizador de Stern Gerlach cuyo eje se desvía de la vertical en el plano perpendiclar <span class="math notranslate nohighlight">\((y,z)\)</span> un ángulo <span class="math notranslate nohighlight">\(\theta\)</span> relativo al eje <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<p><em>Resultado</em>:  las incidencias sobre la segunda placa  aparecen en una u otra posición a lo largo del <em>segundo eje</em> de <em>forma aleatoria</em>.</p>
+<p>Repitiendo el experimento obtenemos la frecuencia relativa de incidencia en una posición u otra y, de ahí, la probabilidad de ocurrencia de cada resultado</p>
+<div class="math notranslate nohighlight">
+\[
+p(+\hbar/2) = \cos^2\theta/2 ~~~~~,~~~~~  p(-\hbar/2) = \sin^2\theta/2 ~\, 
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\theta\)</span> es el ángulo entre los ejes de los dos polarizadores sucesivos.</p>
+<p><img alt="picture" src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Stern-Gerlach_Analyzer_Sequential_Series_E3.png" /></p>
+<p>En esta figura se aprecia que la polarización del resultado en una dirección (selección de un resultado, por ejemplo <span class="math notranslate nohighlight">\(+\hbar/2\)</span>), arroja una distribución equilibrada de resultados en el polarizador siguiente, rotado <span class="math notranslate nohighlight">\(90^\circ\)</span></p>
+<p>La interpretación de este experimento indica que cada polarizador <em>prepara</em> a su salida, un estado que es base de un operador relacionado con su orientación.</p>
+<ul class="simple">
+<li><p>a la salida del primer polarizador, uno de los dos posibles autoestados de <span class="math notranslate nohighlight">\(\sigma_z\)</span>, <span class="math notranslate nohighlight">\(\ket{\pm}_z\)</span></p></li>
+<li><p>a la salida del segundo polarizador, uno de los posibles autestados de <span class="math notranslate nohighlight">\(\sigma_x\)</span>, <span class="math notranslate nohighlight">\(\ket{\pm}_x\)</span></p></li>
+</ul>
+<p>Dado que <span class="math notranslate nohighlight">\([\sigma_z,\sigma_x]\neq 0\)</span> no conmutan, es imposible encontrar una base común de autoestados de ambos operadores.</p>
+<p>Esto hace que siempre que actúa un Stern Gerlach, las medidas en el siguiente aparezcan máximamente despolarizadas.  En última instancia esto es una manifestación del principio de incertidumbre obligado por la relación</p>
+<div class="math notranslate nohighlight">
+\[
+[\sigma_z, \sigma_x] = i \sigma_y
+\]</div>
+</section>
+<section id="espin">
+<h3>Espín<a class="headerlink" href="#espin" title="Permalink to this heading">#</a></h3>
+<p>La desviación del átomo de plata en el experimento de Stern y Gerlach se debe al último electrón. Pero no puede provenir de su movimiento ya que el <em>momento angular orbital</em> del último electrón es nulo al hallarse en el orbotal <span class="math notranslate nohighlight">\(5s\)</span>, es decir, tendríamos <span class="math notranslate nohighlight">\(~{\bf J} = {\bf L} = 0\)</span>.</p>
+<p>En conclusión: tiene que haber una contribución  de  <em>carácter interno</em></p>
+<div class="math notranslate nohighlight">
+\[
+{\bf J} = {\bf L} + {\bf S}  ~~\Rightarrow~~
+ \boldsymbol{\mu} =  \boldsymbol{\mu}_L +  \boldsymbol{\mu}_S  \]</div>
+<p>con</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\mu}_S =\gamma_e {\bf S} =   g_s\frac{ q}{2 m_e} {\bf S} 
+\]</div>
+<p>y <span class="math notranslate nohighlight">\(g_s = 2,0023...\)</span> el <em>factor giromagnético</em> del electrón.</p>
+<p>Es como si el electrón mismo tuviese momento angular interno, pero tratándose de una partícula puntual esto sólo puede entenderse como un símil, no como una nube de carga real en rotación</p>
+<p>La variable <span class="math notranslate nohighlight">\({\bf S}\)</span> se denomina <em>espín</em> y  <span class="math notranslate nohighlight">\(S_z = \pm \hbar/2\)</span> es su <em>proyección</em> en la dirección dirección <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span>.</p>
+<p>Muchas veces se omite el factor <span class="math notranslate nohighlight">\(\hbar\)</span> y se dice que el electrón tiene espín <span class="math notranslate nohighlight">\(1/2\)</span>.</p>
+<p>En otras palabras, <em>el observable</em> asociado a la medición de la proyección del espín en la dirección <span class="math notranslate nohighlight">\(z\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+S = \frac{\hbar}{2}\sigma_z ~~~~~~ \Rightarrow ~~~~~~~S \ket{\pm} = \pm\frac{\hbar}{2} \ket{\pm}
+\]</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>Con frecuencia se usan unidades en las que <span class="math notranslate nohighlight">\(\hbar = 1\)</span>, por lo que la proyección del espín del electrón será siempre <span class="math notranslate nohighlight">\(\pm 1/2\)</span>.</p>
+<p>Todas las partículas elementales tienen espín:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S=1/2\)</span> los fermiones (quarks, electrón, muón, neutrino,…)</p></li>
+<li><p><span class="math notranslate nohighlight">\(S = 0\)</span> el bosón de Higgs</p></li>
+<li><p><span class="math notranslate nohighlight">\(S=1\)</span> los bosones intermediarios (fotón, gluón, W,Z,…)</p></li>
+</ul>
+<p>Las partículas compuestas tienen espín formado por el de los componentes</p>
+<ul class="simple">
+<li><p>protón, neutrón tienen <span class="math notranslate nohighlight">\(S=1/2\)</span> y son fermiones</p></li>
+<li><p>núcleos tienen <span class="math notranslate nohighlight">\(S=1/2\)</span> ó <span class="math notranslate nohighlight">\(0\)</span>  si tienen un número impar o par de nucleones</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="preparacion-de-un-cubit-de-espin">
+<span id="sec-023-prepacubit"></span><h2><a class="toc-backref" href="#id3">Preparación de un cúbit de espín</a><a class="headerlink" href="#preparacion-de-un-cubit-de-espin" title="Permalink to this heading">#</a></h2>
+<p>Un <em>Stern-Gerlach</em> con el campo magnético <span class="math notranslate nohighlight">\({\bf B}\)</span> alineado con el eje <span class="math notranslate nohighlight">\(~\hat\bn = (0,0,1)\)</span>
+prepara el estado entrante en uno de los dos estados <span class="math notranslate nohighlight">\(\{\ket{+},\ket{-}\}\)</span>, autoestados del operador <span class="math notranslate nohighlight">\(\sigma_z\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_z \, \ket{\pm} = \pm \ket{\pm}
+\]</div>
+<p>donde cada resultado es observado <u>en función de la deflexión observada a su salida</u></p>
+<p>Sin embargo, <u><em>no hay nada de especial</em></u> en la elección del eje <span class="math notranslate nohighlight">\(z\)</span> para orientar el campo magnético.</p>
+<p>Experimentalmente obtenemos el mismo efecto cuando orientamos el eje del <em>Stern-Gerlach</em>  con su campo magnético <span class="math notranslate nohighlight">\({\bf B}\)</span> en la dirección de un vector unitario, <span class="math notranslate nohighlight">\(|\hat\bn|=1\)</span>, con</p>
+<div class="math notranslate nohighlight">
+\[
+\hat\bn(\theta,\phi) = \sin\theta\cos\phi \, \hat {\bf x} + \sin\theta\sin\phi \, \hat {\bf y} + \cos\theta \, \hat {\bf z}
+\]</div>
+<p>Al hacer pasar una electrón a través de dicho Stern Gerlach y observar su deflexión obtenemos igualmente dos resultados posible.</p>
+<p>Si, a la salida, observamos que se deflectó en el mismo sentido de <span class="math notranslate nohighlight">\(\vec B\)</span> (sentido opuesto a <span class="math notranslate nohighlight">\(\vec B\)</span>) diremos que, como resultado de la medición:</p>
+<p>el espín del electrón, <span class="math notranslate nohighlight">\(S\)</span>, <b>adquirió</b> una proyección  <span class="math notranslate nohighlight">\(+\hbar/2\)</span> <span class="math notranslate nohighlight">\((-\hbar/2)\)</span>
+<u>a lo largo del eje que marca el <i>Stern-Gerlach</i></u>, <span class="math notranslate nohighlight">\(~\hat\bn(\theta,\phi)~\)</span>.</p>
+<p>Los dos estados asociados los denominaremos <span class="math notranslate nohighlight">\(\ket{\pm}_{\hat\bn} = \ket{\pm,\hat\bn}\)</span>.</p>
+<p>Deben ser autoestados de una ecuación que generalice y se reduzca a la anterior cuando <span class="math notranslate nohighlight">\(\hat\bn = \hat{\bf z}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+(\hat\bn\cdot \boldsymbol{\sigma} )\,\ket{\pm,\hat\bn} = \pm \ket{\pm,\hat\bn}
+\]</div>
+<p>Es inmediato comprobar que, los autoestados son los vectores de la esfera de Bloch que usan <em>los mismos ángulos</em>
+<span class="math notranslate nohighlight">\((\theta, \phi)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\ket{+,\hat\bn} =  \begin{bmatrix} \cos\displaystyle\frac{\theta}{2} \\  e^{i\phi}\sin\displaystyle\frac{\theta}{2} \end{bmatrix} ~~~~~~~~,~~~~~
+~~~~~
+\ket{-,\hat\bn} =  \begin{bmatrix} -e^{-i\phi}\sin\displaystyle\frac{\theta}{2} \\  \cos\displaystyle\frac{\theta}{2} \end{bmatrix} 
+\end{split}\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Comprueba, que los estados <span class="math notranslate nohighlight">\(\ket{\pm,\hat\bn}\)</span> son ortogonales, y son autoestados del operador <span class="math notranslate nohighlight">\(~ \hat{\bf n} \cdot \boldsymbol{\sigma} ~\)</span>, con autovalores <span class="math notranslate nohighlight">\(~\pm 1\)</span></p>
+</div>
+<p>En cada caso, a la salida, escribiremos para la función de onda total</p>
+<div class="math notranslate nohighlight">
+\[~\ket{\psi} = \psi(\vec r)\otimes \ket{\pm,\hat\bn }~\]</div>
+<p>cuya interpretación es la <em>amplitud de probabilidad</em> de encontrar al alectrón en el punto <span class="math notranslate nohighlight">\(\vec r\)</span> con la proyección de su espín en la dirección <span class="math notranslate nohighlight">\(\hat\bn\)</span> igual a <span class="math notranslate nohighlight">\(\pm 1\)</span></p>
+<div class="attention admonition">
+<p class="admonition-title">En resumen</p>
+<ul class="simple">
+<li><p>El observable asociado a un polarizador de Stern Gerlach <i>orientado</i> en una dirección <span class="math notranslate nohighlight">\(\hat\bn\)</span> es
+el operador</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+{\bf S} = \frac{\hbar}{2}\, \hat\bn\cdot  \boldsymbol{\sigma} 
+\]</div>
+<ul class="simple">
+<li><p>Si se registra <span class="math notranslate nohighlight">\(+\)</span>,  estado de espín emergente <span class="math notranslate nohighlight">\(\ket{+,\hat\bn}\)</span> es el <i>cúbit</i> que tiene, en la esfera de Bloch,   los mismos ángulos <span class="math notranslate nohighlight">\((\theta, \phi)\)</span>  que definen la orientación del <i>Stern-Gerlach</i> en el laboratorio</p></li>
+</ul>
+</div>
+<p>En particular cuando <span class="math notranslate nohighlight">\(\theta = \phi =  0 ~\Rightarrow \hat{\bf n} = (0,0,1) = \hat{\bf z}\)</span>, recuperamos la base <span class="math notranslate nohighlight">\(Z\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\ket{+,\hat{\bf z}} =  \begin{bmatrix} 1 \\  0 \end{bmatrix} ~~~~~~~~,~~~~~
+~~~~~
+\ket{-,\hat{\bf z}} =  \begin{bmatrix} 0 \\  1\end{bmatrix} 
+\end{split}\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Supongamos que estamos en posesión de un cúbit en uno de los dos estados <span class="math notranslate nohighlight">\(\ket{\pm,\hat{\bf n}}\)</span>. Demuestra que podemos hallar la orientación del <i>Stern-Gerlach</i> que lo preparó  hallando valores medios de los operadores de Pauli</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{\pm,\hat{\bf n}} \, \boldsymbol{\sigma}\,  \ket{\pm,\hat{\bf n}} = \pm \hat{\bf n}
+\]</div>
+</div>
+</section>
+<section id="manipulando-un-cubit">
+<span id="sec-023-manipcubit"></span><h2><a class="toc-backref" href="#id4">Manipulando un cúbit</a><a class="headerlink" href="#manipulando-un-cubit" title="Permalink to this heading">#</a></h2>
+<p>Ahora podemos preguntarnos qué le ocurre a dicho electrón si lo sumergimos en un campo magnético <span class="math notranslate nohighlight">\({\bf B}\)</span>.</p>
+<p>El Hamiltoniano de una partícula con espín en un campo magnético es</p>
+<div class="math notranslate nohighlight">
+\[
+H = -\hat{\boldsymbol{\mu}}\cdot {\bf B} = -\gamma \hat{\bf S}\cdot {\bf B} =  -\gamma \frac{\hbar}{2} \boldsymbol{\sigma}\cdot {\bf B}
+\]</div>
+<p>El <em>factor giromagnético</em> <span class="math notranslate nohighlight">\(\gamma\)</span> depende de qué tipo de partícula  estamos estudiando (electrón, protón, núcleo…)</p>
+<p>Definiremos el  <em>vector de Larmor</em></p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\omega} = \gamma \bf B
+\]</div>
+<p>cuyo módulo será la <em>frecuencia de Larmor</em>
+$<span class="math notranslate nohighlight">\(
+\omega = \gamma B ~~
+~[\hbox{Hz}]
+\)</span>$</p>
+<p>Notar que <span class="math notranslate nohighlight">\(B\)</span> es positivo. De modo que <span class="math notranslate nohighlight">\(\omega\)</span> tendrá el signo de <span class="math notranslate nohighlight">\(\gamma\)</span> y por tanto el de <span class="math notranslate nohighlight">\(q\)</span></p>
+<p>con esta definición, el Hamiltoniano  se escribe en la forma</p>
+<div class="math notranslate nohighlight">
+\[
+H =  \frac{\hbar}{2}(-\gamma {\bf B})\cdot \boldsymbol{\sigma}= -\frac{\hbar}{2} \boldsymbol{\omega}\cdot \boldsymbol{\sigma}
+\]</div>
+<p>Si uno mira las unidades de la ecuación anterior verá que</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\([H]\)</span> el hamiltoniano tiene unidades de energía, por ejemplo, julio, J.</p></li>
+<li><p><span class="math notranslate nohighlight">\([\hbar]\)</span> la constante de Planck, tiene unidades de energía <span class="math notranslate nohighlight">\(\times\)</span> tiempo, es decir, J s.</p></li>
+</ul>
+<p>Consistentemente</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\omega} = \gamma {\bf B}\)</span> es un vector que tiene unidades de inversa de tiempo, de hecho rad s<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p></li>
+</ul>
+<p>De hecho <strong>cualquier Hamiltoniano</strong> 2<span class="math notranslate nohighlight">\(\times\)</span>2 se puede escribir de esta forma, que admite la interpretación de un espín en un campo magnético identificando <span class="math notranslate nohighlight">\(\boldsymbol{\omega} = \gamma \bf B\)</span>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Dado un Hamiltoniano</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H =  \begin{bmatrix} E_1 &amp; H_{12} \\ H_{12}^* &amp; E_2 \end{bmatrix}
+\end{split}\]</div>
+<p>obtén el <i>vector de Larmor efectivo</i> <span class="math notranslate nohighlight">\(\boldsymbol{\omega}\)</span> asociado</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solution<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight" id="equation-3ce9ce02-acc2-45fe-8369-c478ef6f43c4">
+<span class="eqno">(16)<a class="headerlink" href="#equation-3ce9ce02-acc2-45fe-8369-c478ef6f43c4" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+H &amp;=&amp; \begin{bmatrix} E_1 &amp; H_{12} \\ H^*_{12} &amp; E_2 \end{bmatrix} \nonumber\\
+&amp;=&amp; \rule{0mm}{8mm}\frac{H_{11} + H_{22}}{2} I + \frac{E_1 - E_2}{2}\sigma_z + {\rm Re}(H_{12})\sigma_x - {\rm Im}(H_{12})\sigma_y
+\nonumber\\
+&amp;=&amp;  \rule{0mm}{8mm}\frac{E_1 + E_2}{2} I  - \frac{\hbar}{2} \boldsymbol{\omega} \cdot \boldsymbol{\sigma} \label{cambioB}
+\end{eqnarray}\]</div>
+<p class="sd-card-text">donde definimos el vector de Larmor efectivo
+$<span class="math notranslate nohighlight">\(
+\omega_x = -\frac{2}{\hbar } {\rm Re} (H_{12})~~ ,~~~~   \omega_y =  \frac{2}{\hbar } {\rm Im} (H_{12}) ~~,~~~~\omega_z =  \frac{ E_{2}-E_{1}}{\hbar } 
+\)</span>$</p>
+</div>
+</details></div>
+<p>De la sección anterior, ya sabemos cuáles son los autoestados de <span class="math notranslate nohighlight">\(H\)</span></p>
+<p>Por ejemplo, tomando <span class="math notranslate nohighlight">\({\bf B} = B\, \hat{\bf z}\)</span> a lo largo del eje <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span> vemos que <span class="math notranslate nohighlight">\(\boldsymbol{\omega} = (0,0,\omega)\)</span> y</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H = -\frac{\hbar}{2}\omega \sigma_z = \begin{bmatrix} -\hbar\omega/2 &amp; 0 \\ 0 &amp; \hbar\omega/2 \end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>El estado <em>fundamental</em> es <span class="math notranslate nohighlight">\(\begin{bmatrix} 1\\ 0\end{bmatrix} =\ket{+,\hat{\bf z}}=\ket{1}\)</span> con energía <span class="math notranslate nohighlight">\(\varepsilon_0=-\hbar \omega/2\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>El estado <em>excitado</em>
+es <span class="math notranslate nohighlight">\(\begin{bmatrix} 1\\ 0\end{bmatrix} =\ket{-,\hat{\bf z}}= \ket{0}\)</span> con energía <span class="math notranslate nohighlight">\(\varepsilon_1=\, \hbar \omega/2\)</span>.</p></li>
+</ul>
+<p>Al igual que clásicamente, con carga positiva <span class="math notranslate nohighlight">\(\gamma&gt; 0\)</span>  el estado que minimiza la energía es el que, en la esfera de Bloch, es paralelo a la dirección del campo magnético en el espacio</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<ul>
+<li><p>Observamos como <em>la presencia del campo magnético</em> induce una <em>separación de niveles</em> o <em>gap</em> de energía</p>
+<div class="math notranslate nohighlight">
+\[\Delta \varepsilon = \varepsilon_1-\varepsilon_0 = \hbar \omega\]</div>
+</li>
+<li><p>Este efecto se denomina <em>efecto Zeeman</em></p></li>
+<li><p>Con frecuencia se habla la <em>frecuencia del gap</em>  <span class="math notranslate nohighlight">\(\omega = \Delta \varepsilon/\hbar = \)</span> y sus unidades son  [rad s<span class="math notranslate nohighlight">\(^{-1}\)</span>]</p></li>
+<li><p>El eje <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span> no tiene nada de especial. Y la observación anterior se generaliza a cualquier campo magnético <span class="math notranslate nohighlight">\({\bf B}= B\, \hat{\bf u}\)</span>. El Hamiltoniano asociado tendrá ahora dos autoestados <span class="math notranslate nohighlight">\(\{\ket{-,\hat{\bf u}},\ket{+,\hat{\bf u}}\}\)</span> con idénticas energías <span class="math notranslate nohighlight">\(\varepsilon_{0}\)</span> y <span class="math notranslate nohighlight">\(\varepsilon_1\)</span>.</p></li>
+</ul>
+</div>
+<section id="evolucion-de-un-espin-en-un-campo-magnetico">
+<h3>Evolución de un espín en un campo magnético.<a class="headerlink" href="#evolucion-de-un-espin-en-un-campo-magnetico" title="Permalink to this heading">#</a></h3>
+<p>Situemos un espín <span class="math notranslate nohighlight">\(\ket{\psi} = \ket{s,\hat\bn}\)</span> en un campo magnético vertical <span class="math notranslate nohighlight">\({\bf B}= B \, \hat{\bf z}\)</span>, .
+La evolución en el tiempo, <span class="math notranslate nohighlight">\(\ket{\psi(t)}\)</span>,  viene gobernada por la ecuación de Schrödinger</p>
+<div class="math notranslate nohighlight">
+\[
+i\hbar \frac{d}{dt} \ket{\psi(t)} = H \ket{\psi(t)}
+\]</div>
+<p>Cuando <span class="math notranslate nohighlight">\(H\)</span> es un operador constante en el tiempo (por ejemplo si el campo <span class="math notranslate nohighlight">\(\bf B\)</span> no varía) existe una solución exacta para la evolución</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi(t)} = U(t,0) \ket{\psi(0)}
+\]</div>
+<p>que involucra el <em>operador de evolución</em></p>
+<div class="math notranslate nohighlight">
+\[
+U(t,0) = \exp\left( -\frac{i}{\hbar} t H\right)
+\]</div>
+<p>En la base que diagonaliza el operador, es equivalente a exponenciar los elementos diagonales. Es el caso cuando tomamos el campo magnético  a lo largo del eje <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span>, <span class="math notranslate nohighlight">\({\bf B} = B\, \hat{\bf z}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\exp\left( -\frac{i}{\hbar} t H\right)= \exp\left( -\frac{i}{\hbar} t\left(- \frac{\hbar}{2}\omega \sigma_z \right)\right) = \exp \begin{bmatrix} it \omega/2 &amp; 0 \\ 0 &amp; -it \omega/2 \end{bmatrix} =
+\begin{bmatrix} e^{it \omega/2} &amp; 0 \\ 0 &amp;e^{-it \omega/2}  \end{bmatrix} =  e^{it \omega/2}
+\begin{bmatrix}1 &amp; 0 \\ 0 &amp;e^{-it \omega}\end{bmatrix}
+\end{split}\]</div>
+<p>Podemos despreciar la <em>fase global</em> y escribir para el operador de evolución</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U(t,0) = \begin{bmatrix}1 &amp; 0 \\ 0 &amp;e^{-it \omega}\end{bmatrix}
+\end{split}\]</div>
+<p>Ya podemos obtener la evolución en el tiempo de un estado inicial de la polarización del espín. Supongamos que, a tiempo <span class="math notranslate nohighlight">\(t=0\)</span>, tenemos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\ket{\psi(0)} =  \begin{bmatrix} \cos\theta \\ e^{i\phi} \sin\theta \end{bmatrix}
+\end{split}\]</div>
+<p>A tiempo <span class="math notranslate nohighlight">\(t\)</span> el estado será</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\ket{\psi(t)} = U(t,0) \ket{\psi(0)} = \begin{bmatrix}1 &amp; 0 \\ 0 &amp;e^{it \omega}\end{bmatrix}\begin{bmatrix} \cos\theta \\ e^{i\phi} \sin\theta \end{bmatrix} = 
+\begin{bmatrix} \cos\theta \\ e^{i(\phi- t\omega)} \sin\theta \end{bmatrix}
+\end{split}\]</div>
+<p>El resultado es fácil de visualizar:  en la esfera de Bloch, el estado instantáneo <span class="math notranslate nohighlight">\(\ket{\psi(t)} = \begin{bmatrix} \cos\theta \\ e^{i(\phi- t\omega)} \sin\theta \end{bmatrix}\)</span>,  experimenta</p>
+<ul class="simple">
+<li><p>una <em>precesión de Larmor</em> en torno que marca el campo magnético, preservando el  ángulo <span class="math notranslate nohighlight">\(\theta\)</span> inicial fijo,</p></li>
+<li><p>con una velocidad angular dada por la <em>frecuencia de Larmor</em>, <span class="math notranslate nohighlight">\(\omega = \gamma B~\)</span> [rad s<span class="math notranslate nohighlight">\(^{-1}\)</span>] en sentido horario <span class="math notranslate nohighlight">\(\omega &gt;0\)</span> (antihorario <span class="math notranslate nohighlight">\(\omega &lt;0\)</span>) para una partícula de carga positiva (negativa)</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/precession.png"><img alt="../../../_images/precession.png" src="../../../_images/precession.png" style="width: 350px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>la probabilidad de <em>decaer</em> al estado fundamental <span class="math notranslate nohighlight">\(\ket{+,\hat{\bf z}}=\begin{bmatrix}1 \\ 0\end{bmatrix}\)</span> es <span class="math notranslate nohighlight">\(\cos^2 \theta\)</span>, y es invariante bajo evolución temporal</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<ul class="simple">
+<li><p>Observamos como <em>la presencia del campo magnético</em> induce una <em>separación de niveles</em> o <em>gap</em> de energía</p></li>
+<li><p>los dos autoestados del hamiltoniano <span class="math notranslate nohighlight">\(\ket{\pm,\hat{\bf z}}\)</span>  de energías <span class="math notranslate nohighlight">\(\pm \hbar\omega/2\)</span>   son <em>estables</em> bajo evolución temporal.</p></li>
+<li><p>esto los hace útiles para computación cuántica <span class="math notranslate nohighlight">\(\Rightarrow\)</span> un hamiltoniano <em>congela</em> ciertos estados, sus autoestados, siempre que <i> no sean degenerados </i></p></li>
+</ul>
+</div>
+</section>
+<section id="control-cuantico">
+<h3>Control cuántico<a class="headerlink" href="#control-cuantico" title="Permalink to this heading">#</a></h3>
+<p>La elección del eje <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span> para alinear el campo magnético es <em>totalmente arbitraria</em> y se ha elegido para simplificar los cálculos, al ser el Hamiltoniano diagonal. Si escogiésemos otra dirección arbitraria:</p>
+<ul class="simple">
+<li><p>el resultado físico <strong>tiene que ser el mismo</strong>: una <em>precesión de Larmor</em> del vector de Bloch en torno al eje que marca el campo magnético <span class="math notranslate nohighlight">\({\bf B}\)</span> con <em>frecuencia angular de Larmor</em> <span class="math notranslate nohighlight">\(\omega = \gamma B\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>el álgebra será más complicada porque tendremos que exponenciar una matriz  <span class="math notranslate nohighlight">\(H = -\frac{\hbar}{2}\boldsymbol{\omega}\cdot\boldsymbol{\sigma} \)</span> que ya no es diagonal</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+U_{\boldsymbol{\omega}}(t,0) = \exp\left( -\frac{i}{\hbar} t H\right) = \exp\left( \frac{i}{\hbar} t \frac{\hbar}{2}\boldsymbol{\omega}\cdot \boldsymbol{\sigma}\right)  =  
+ \exp\left( i\frac{t\omega}{2}  \frac{\boldsymbol{\omega}}{\omega}\cdot \boldsymbol{\sigma}\right)
+\]</div>
+<ul class="simple">
+<li><p>Observamos que <span class="math notranslate nohighlight">\(U_{\boldsymbol{\omega}}(t,0)\)</span> es el operador de rotación de ángulo <span class="math notranslate nohighlight">\(\alpha = -t\omega\)</span> en torno al eje <span class="math notranslate nohighlight">\(\hat{\bf n} = \boldsymbol{\omega}/\omega\)</span>.</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/precession_tilted2.png"><img alt="../../../_images/precession_tilted2.png" src="../../../_images/precession_tilted2.png" style="width: 350px;" /></a>
+</figure>
+<p>El resultado general es el siguiente</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+U_{\boldsymbol{\omega}}(t,0) ~&amp;=&amp;~ \cos\left(\frac{t\omega}{2}\right) I + i \sin\left(\frac{t\omega}{2}\right) \, \frac{\boldsymbol{\omega}}{\omega}\cdot \boldsymbol{\sigma} \\
+&amp;&amp;\\
+&amp;=&amp; 
+\begin{bmatrix}
+ \cos \displaystyle\frac{t\omega}{2}+ i \displaystyle\frac{\omega_z}{\omega} \sin\displaystyle\frac{t\omega}{2}  &amp;   \displaystyle\frac{\omega_y+i\omega_x}{\omega} \sin\displaystyle\frac{t\omega}{2}  \\
+ \rule{0mm}{8mm}
+ \displaystyle\frac{-\omega_y+i\omega_x}{\omega} \sin\displaystyle\frac{t\omega}{2}  &amp; \cos\displaystyle\frac{t\omega}{2} - i \displaystyle\frac{\omega_z}{\omega} \sin\frac{t \omega }{2}
+\end{bmatrix}
+\end{eqnarray*}\]</div>
+<p>Supongamos que, a <span class="math notranslate nohighlight">\(t=0\)</span>, nos encontramos en el estado <span class="math notranslate nohighlight">\(\ket{\psi(0)} = \ket{0} = \ket{+,\hat{\bf z}}\)</span>. Entonces a tiempo <span class="math notranslate nohighlight">\(t\)</span> el estado
+será</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\ket{\psi(t)}=U_{\boldsymbol{\omega}}(t,0)\begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix}
+\cos \displaystyle\frac{t\omega}{2}+ i \displaystyle\frac{\omega_z}{\omega} \sin\displaystyle\frac{t\omega}{2} \\ \rule{0mm}{8mm}
+ \displaystyle\frac{-\omega_y+i\omega_x}{\omega} \sin\displaystyle\frac{t\omega}{2} 
+\end{bmatrix} 
+\end{split}\]</div>
+<p>La probabilidad de medir el estado <span class="math notranslate nohighlight">\(\ket{0}\)</span> o el estado <span class="math notranslate nohighlight">\(\ket{1}\)</span> en ese instante será</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+p_0(t) &amp;=&amp; |\braket{0}{\psi(t)}|^2 =  \cos^2 \frac{t\omega}{2} + \frac{\omega_z^2}{\omega^2} \sin^2 \frac{t\omega}{2} \\ \rule{0mm}{8mm}
+p_1(t) &amp;=&amp;|\braket{1}{\psi(t)}|^2 =  \frac{\omega_x^2 + \omega_y^2}{\omega^2} \sin^2\frac{t\omega}{2}
+\end{eqnarray*}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">tlist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+
+<span class="n">wz</span> <span class="o">=</span> <span class="mf">0.8</span> <span class="c1"># la componente w_z </span>
+<span class="n">w</span>  <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># el módulo de w</span>
+<span class="n">wxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">wz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1">## esto es sqrt(w_x**2 + w_y**2)</span>
+<span class="n">p0list08</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tlist</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">wz</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tlist</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">p1list08</span><span class="o">=</span>  <span class="p">(</span><span class="n">wxy</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tlist</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">wz</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">w</span>  <span class="o">=</span> <span class="mi">1</span>
+<span class="n">wxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">wz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  
+<span class="n">p0list02</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tlist</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">wz</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tlist</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">p1list02</span><span class="o">=</span>  <span class="p">(</span><span class="n">wxy</span><span class="o">/</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tlist</span><span class="o">*</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;p(t)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlist</span><span class="p">,</span><span class="n">p0list08</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_0(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlist</span><span class="p">,</span><span class="n">p1list08</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_1(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$\omega_z = 0.8$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;p(t)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlist</span><span class="p">,</span><span class="n">p0list02</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_0(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tlist</span><span class="p">,</span><span class="n">p1list02</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p_1(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$\omega_z = 0.2$&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/46ad30b9db2ab78a86a8127b22f341bd3354238854f692c6c40a28e60a5b0687.png" src="../../../_images/46ad30b9db2ab78a86a8127b22f341bd3354238854f692c6c40a28e60a5b0687.png" />
+</div>
+</div>
+<p>Observamos que es imposible conseguir una probabilidad de transición <span class="math notranslate nohighlight">\(p_1(t) = 1\)</span> a menos que hagamos <span class="math notranslate nohighlight">\(\omega_z = 0\)</span>.</p>
+<p>Podemos generar ahora la rotación más general de un cúbit en torno a un eje arbitrario</p>
+<p>Podemos comprobar que se recuperan las precesiones en torno a los ejes <span class="math notranslate nohighlight">\(\hat{\bf x}\)</span>, <span class="math notranslate nohighlight">\(\hat{\bf y}\)</span> y <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\omega} = (0,0, \gamma B_z)\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U_z(t,0) = \begin{bmatrix} e^{it \omega/2} &amp; 0 \\ 0 &amp;e^{-it \omega/2}  \end{bmatrix} = R_{z}(-t\omega)
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\omega} = (\gamma B_x,0,0)\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U_x(t,0) = 
+\begin{bmatrix}
+ \cos \displaystyle\frac{t\omega}{2}  &amp;  i \sin\displaystyle\frac{t\omega}{2}  \\
+ \rule{0mm}{8mm}
+ i \sin\displaystyle\frac{t\omega}{2}  &amp; \cos\displaystyle\frac{t\omega}{2} 
+\end{bmatrix} = R_{x}(-t\omega)
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\omega} = (0,\gamma B_y,0)\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U_y(t,0) = 
+\begin{bmatrix}
+ \cos \displaystyle\frac{t\omega}{2}  &amp;   \sin\displaystyle\frac{t\omega}{2}  \\
+ \rule{0mm}{8mm}
+  -\sin\displaystyle\frac{t\omega}{2}  &amp; \cos\displaystyle\frac{t\omega}{2} 
+\end{bmatrix}= R_{y}(-t\omega)
+\end{split}\]</div>
+<p>Recuperamos los operadores de rotación de cúbits en torno a los tres ejes, con un ángulo dinámico <span class="math notranslate nohighlight">\(\alpha = -t\omega\)</span>.</p>
+</section>
+<section id="pulsos-y-puertas-elementales">
+<h3>Pulsos y puertas elementales<a class="headerlink" href="#pulsos-y-puertas-elementales" title="Permalink to this heading">#</a></h3>
+<p>Si tenemos un conocimiento muy exacto de la frecuencia de Larmor, podemos utilizar el procedimiento anterior para construir cualquier puerta simples de 1 cúbit, encendiendo el campo magnético un tiempo muy preciso, o <em>pulso</em></p>
+<p>Por ejemplo, cuando  <span class="math notranslate nohighlight">\(t =\Delta t =  \pi/\omega\)</span> hablamos de un <em>pulso elemental</em> en el que <span class="math notranslate nohighlight">\( ~\Rightarrow~\cos \frac{t\omega}{2} = 0~\)</span> , <span class="math notranslate nohighlight">\(~\sin \frac{t\omega}{2} = 1\)</span></p>
+<p>Con él somos capaces de generar las puertas <span class="math notranslate nohighlight">\(X,Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span>, así como la puerta de Hadamard.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+i \,U_{\hat{\bf z}}( \Delta t ,0) &amp;=&amp;  \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; -1  \end{bmatrix} =  Z  
+\nonumber\\ 
+&amp;&amp; \\
+i \,U_{\hat{\bf y}}( \Delta t ,0) &amp;=&amp;     \begin{bmatrix} 0  &amp; -i \\   i&amp; 0 \end{bmatrix}  =  Y 
+\nonumber\\ 
+&amp;&amp; \\
+i \,U_{\hat{\bf x}}( \Delta t ,0)  &amp;=&amp;  \begin{bmatrix} 0  &amp; 1 \\   1&amp; 0 \end{bmatrix} = X  \, 
+\nonumber\\ 
+&amp;&amp; \\
+i \,U_{\frac{1}{\sqrt{2}}(\hat{\bf x}+\hat{\bf z})}( \pi/\omega,0)  &amp;=&amp; \frac{1}{\sqrt{2}} \begin{bmatrix} 1  &amp; 1 \\   1&amp; -1 \end{bmatrix} = H  \, 
+\end{eqnarray*}\]</div>
+<p>Con pulsos de menor tiempo podemos construir puertas <span class="math notranslate nohighlight">\(S\)</span> y <span class="math notranslate nohighlight">\(T\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+e^{i\pi/4} \,U_{\hat{\bf z}}( \Delta t ,0) = S
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[e^{i\pi/8}\,U_{\hat{\bf z}}( \Delta t ,0) = T
+\]</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_02_Circuitos_Cuánticos/Chapter_01_02_Circuitos_1_cubit"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Section_022_Puertas_Simples_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Puertas Simples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Section_024_El_Arte_de_Medir_I_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">El arte de medir I</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#momentos-magnetico-y-angular">Momentos magnético y angular</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-experimento-de-stern-y-gerlach">El experimento de Stern y Gerlach</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mediciones-sucesivas">Mediciones sucesivas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#espin">Espín</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-un-cubit-de-espin">Preparación de un cúbit de espín</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulando-un-cubit">Manipulando un cúbit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolucion-de-un-espin-en-un-campo-magnetico">Evolución de un espín en un campo magnético.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#control-cuantico">Control cuántico</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pulsos-y-puertas-elementales">Pulsos y puertas elementales</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

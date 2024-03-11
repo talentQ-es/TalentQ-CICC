@@ -1,0 +1,124 @@
+\selectlanguage *{english}
+\contentsline {chapter}{\numberline {1}Formalismo Matemático}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Números Complejos}{3}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Introducción}{3}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Formas cartesiana y polar}{4}{subsection.1.1.2}%
+\contentsline {subsubsection}{Forma Cartesiana}{4}{subsubsection*.3}%
+\contentsline {paragraph}{Numeros complejos en python:}{5}{paragraph*.4}%
+\contentsline {subsubsection}{Forma Polar}{6}{subsubsection*.5}%
+\contentsline {subsubsection}{Conversión entre formas cartesiana y polar}{8}{subsubsection*.6}%
+\contentsline {subsubsection}{Conjugacion compleja}{9}{subsubsection*.7}%
+\contentsline {subsection}{\numberline {1.1.3}Operaciones básicas}{10}{subsection.1.1.3}%
+\contentsline {subsubsection}{Suma}{10}{subsubsection*.8}%
+\contentsline {subsubsection}{Multiplicación}{13}{subsubsection*.9}%
+\contentsline {subsubsection}{Valor absoluto}{13}{subsubsection*.10}%
+\contentsline {subsubsection}{División}{14}{subsubsection*.11}%
+\contentsline {subsection}{\numberline {1.1.4}Casos particulares}{14}{subsection.1.1.4}%
+\contentsline {subsubsection}{Sumas nulas}{14}{subsubsection*.12}%
+\contentsline {subsubsection}{Desigualdad triangular}{19}{subsubsection*.13}%
+\contentsline {section}{\numberline {1.2}Vectores}{20}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Espacio Vectorial Complejo}{21}{subsection.1.2.1}%
+\contentsline {subsubsection}{Definición}{21}{subsubsection*.14}%
+\contentsline {subsubsection}{Conjugación adjunta}{22}{subsubsection*.15}%
+\contentsline {subsection}{\numberline {1.2.2}Bases}{23}{subsection.1.2.2}%
+\contentsline {subsubsection}{Cambio de base}{24}{subsubsection*.16}%
+\contentsline {subsection}{\numberline {1.2.3}Espacio de Hilbert}{26}{subsection.1.2.3}%
+\contentsline {subsubsection}{Producto Escalar}{26}{subsubsection*.17}%
+\contentsline {subsubsection}{Norma}{27}{subsubsection*.18}%
+\contentsline {subsubsection}{Distancia}{27}{subsubsection*.19}%
+\contentsline {subsection}{\numberline {1.2.4}Base ortonormales}{28}{subsection.1.2.4}%
+\contentsline {subsubsection}{Descomposición ortogonal}{29}{subsubsection*.20}%
+\contentsline {section}{\numberline {1.3}Operadores}{30}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Operadores y Matrices}{30}{subsection.1.3.1}%
+\contentsline {subsubsection}{Matriz de un operador}{32}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {1.3.2}Base de Operadores}{33}{subsection.1.3.2}%
+\contentsline {subsubsection}{Producto externo}{33}{subsubsection*.22}%
+\contentsline {paragraph}{Producto externo en componentes}{34}{paragraph*.23}%
+\contentsline {subsubsection}{Base canónica de operadores}{34}{subsubsection*.24}%
+\contentsline {paragraph}{Elementos de matriz}{35}{paragraph*.25}%
+\contentsline {paragraph}{Cambio de base}{36}{paragraph*.26}%
+\contentsline {paragraph}{Relación de completitud}{37}{paragraph*.27}%
+\contentsline {subsection}{\numberline {1.3.3}El Espacio Vectorial \(\hbox {Lin}({\cal H})\)}{37}{subsection.1.3.3}%
+\contentsline {subsubsection}{Operador Adjunto}{38}{subsubsection*.28}%
+\contentsline {paragraph}{Matriz adjunta}{38}{paragraph*.29}%
+\contentsline {subsection}{\numberline {1.3.4}Clases de operadores}{39}{subsection.1.3.4}%
+\contentsline {subsubsection}{Operador Unitario}{39}{subsubsection*.30}%
+\contentsline {paragraph}{Bases ortonormales}{40}{paragraph*.31}%
+\contentsline {subsubsection}{Operador Normal}{41}{subsubsection*.32}%
+\contentsline {subsubsection}{Operador Hermítico}{41}{subsubsection*.33}%
+\contentsline {subsubsection}{Operador semi\sphinxhyphen {}definido positivo}{42}{subsubsection*.34}%
+\contentsline {subsubsection}{Proyectores}{42}{subsubsection*.35}%
+\contentsline {paragraph}{Matriz asociada a un proyector}{43}{paragraph*.36}%
+\contentsline {paragraph}{Proyector ortogonal}{44}{paragraph*.37}%
+\contentsline {paragraph}{Proyectores sobre un subespacio}{46}{paragraph*.38}%
+\contentsline {subsection}{\numberline {1.3.5}Autovalores y autovectores}{46}{subsection.1.3.5}%
+\contentsline {subsubsection}{Subespacio Propio}{48}{subsubsection*.39}%
+\contentsline {subsubsection}{Espectro de Operadores}{49}{subsubsection*.40}%
+\contentsline {paragraph}{Espectro de Operadores Normales}{49}{paragraph*.41}%
+\contentsline {paragraph}{Espectro de Operadores Hermíticos}{50}{paragraph*.42}%
+\contentsline {paragraph}{Espectro de Operadores Unitarios}{51}{paragraph*.43}%
+\contentsline {paragraph}{Espectro de Proyectores}{51}{paragraph*.44}%
+\contentsline {subsubsection}{Operadores que conmutan}{51}{subsubsection*.45}%
+\contentsline {paragraph}{Valores singulares}{52}{paragraph*.46}%
+\contentsline {paragraph}{Representación espectral de proyectores}{52}{paragraph*.47}%
+\contentsline {subsubsection}{Descomposición de Operadores}{53}{subsubsection*.48}%
+\contentsline {paragraph}{Descomposición espectral}{53}{paragraph*.49}%
+\contentsline {paragraph}{Descomposición Polar (PD)}{54}{paragraph*.50}%
+\contentsline {paragraph}{Descomposición en Valores Singulares (SVD)}{56}{paragraph*.51}%
+\contentsline {subsubsection}{Traza}{58}{subsubsection*.52}%
+\contentsline {paragraph}{Traza de un operador}{58}{paragraph*.53}%
+\contentsline {paragraph}{\(\hbox {Lin}({\cal H})\) como un espacio de Hilbert}{59}{paragraph*.54}%
+\contentsline {paragraph}{\(\hbox {Lin}({\cal H})\) como un espacio normado}{59}{paragraph*.55}%
+\contentsline {paragraph}{Distancia de traza}{60}{paragraph*.56}%
+\contentsline {subsection}{\numberline {1.3.6}Funciones de Operadores}{60}{subsection.1.3.6}%
+\contentsline {subsubsection}{Funciones analíticas}{60}{subsubsection*.57}%
+\contentsline {paragraph}{Exponencial de un operador}{61}{paragraph*.58}%
+\contentsline {paragraph}{Operadores unitarios a partir de hermíticos}{62}{paragraph*.59}%
+\contentsline {subsubsection}{Funciones generales}{62}{subsubsection*.60}%
+\contentsline {subsection}{\numberline {1.3.7}Matrices de Pauli}{63}{subsection.1.3.7}%
+\contentsline {subsubsection}{Composición}{64}{subsubsection*.61}%
+\contentsline {subsubsection}{Exponenciación}{65}{subsubsection*.62}%
+\contentsline {section}{\numberline {1.4}Tensores}{66}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Producto Tensorial}{66}{subsection.1.4.1}%
+\contentsline {subsubsection}{Base y Dimensión}{67}{subsubsection*.63}%
+\contentsline {subsubsection}{Indexación equivalente}{68}{subsubsection*.64}%
+\contentsline {subsubsection}{Producto de Kronecker}{68}{subsubsection*.65}%
+\contentsline {subsection}{\numberline {1.4.2}Factorización y Entrelazamiento}{69}{subsection.1.4.2}%
+\contentsline {subsubsection}{Criterio de factorizabilidad}{69}{subsubsection*.66}%
+\contentsline {subsubsection}{Descomposición de Schmidt}{70}{subsubsection*.67}%
+\contentsline {subsection}{\numberline {1.4.3}Producto Tensorial Múltiple}{72}{subsection.1.4.3}%
+\contentsline {subsubsection}{Base de \({\cal H}^{\otimes n}\)}{73}{subsubsection*.68}%
+\contentsline {subsubsection}{Estado entrelazado general}{73}{subsubsection*.69}%
+\contentsline {subsubsection}{Estado factorizable}{74}{subsubsection*.70}%
+\contentsline {subsubsection}{Estados producto de matrices \sphinxstyleemphasis {(MPS)}}{74}{subsubsection*.71}%
+\contentsline {subsubsection}{Redes de tensores}{75}{subsubsection*.72}%
+\contentsline {subsection}{\numberline {1.4.4}Operadores sobre \({\cal H}^{\otimes n}\)}{75}{subsection.1.4.4}%
+\contentsline {subsubsection}{Matrices}{76}{subsubsection*.73}%
+\contentsline {subsubsection}{Producto tensorial de operadores}{76}{subsubsection*.74}%
+\contentsline {subsubsection}{Producto de Kronecker de matrices}{77}{subsubsection*.75}%
+\contentsline {subsubsection}{Generación de entrelazamiento}{78}{subsubsection*.76}%
+\contentsline {section}{\numberline {1.5}Probabilidades}{79}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Variables aleatorias}{79}{subsection.1.5.1}%
+\contentsline {subsubsection}{Distribución de probabilidad}{79}{subsubsection*.77}%
+\contentsline {subsection}{\numberline {1.5.2}La conexión estadística}{80}{subsection.1.5.2}%
+\contentsline {subsubsection}{Frecuencias e Histogramas}{80}{subsubsection*.78}%
+\contentsline {subsubsection}{Ley de los grandes números}{81}{subsubsection*.79}%
+\contentsline {subsection}{\numberline {1.5.3}Distribuciones frecuentes}{82}{subsection.1.5.3}%
+\contentsline {subsubsection}{La distribución de Bernouilli}{82}{subsubsection*.80}%
+\contentsline {subsubsection}{Distribución binomial}{82}{subsubsection*.81}%
+\contentsline {subsubsection}{La distribución normal}{82}{subsubsection*.82}%
+\contentsline {subsection}{\numberline {1.5.4}Probabilidades combinadas}{84}{subsection.1.5.4}%
+\contentsline {subsubsection}{Probabilidad combinada}{84}{subsubsection*.83}%
+\contentsline {subsubsection}{Probabilidad condicionada}{84}{subsubsection*.84}%
+\contentsline {paragraph}{Teorema de Bayes}{84}{paragraph*.85}%
+\contentsline {chapter}{\numberline {2}Fundamentos de Mecánica Cuántica}{87}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Axiomas}{87}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Medidas y valores esperados}{89}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Valores esperados}{90}{subsection.2.2.1}%
+\contentsline {subsubsection}{Desviación estándar}{91}{subsubsection*.86}%
+\contentsline {section}{\numberline {2.3}Evolución temporal}{92}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Ecuación de Schrödinger}{92}{subsection.2.3.1}%
+\contentsline {subsubsection}{Conservación de la probabilidad.}{92}{subsubsection*.87}%
+\contentsline {subsection}{\numberline {2.3.2}Operador de Evolución}{93}{subsection.2.3.2}%
+\contentsline {subsubsection}{Caso de \(H\) independiente del tiempo}{94}{subsubsection*.88}%
+\contentsline {subsubsection}{Evolución en la base autoestados de H}{96}{subsubsection*.89}%

@@ -1,0 +1,46 @@
+
+############## Definición/Lema/Teorema con Prueba/Demostración ##############
+
+Veamose el cuadro:
+
+    ::::{card}
+
+    **TITULO*: *SUBTITULO*
+
+    ^^^
+
+    TEXTO AQUÍ
+
+
+    :::{dropdown} Prueba/Demostración
+
+    TEXTO AQUÍ
+
+    :::
+    ::::
+
+
+
+    El :::{dropdown} es opcional
+
+######################## Nota / Ejemplo / Ejercicio #############################
+
+Veamose el cuadro:
+
+    ::::{admonition} TITULO (SUBTITULO)
+    :class: CLASE
+
+    TEXTO AQUI
+
+    :::{dropdown} Solución
+
+    TEXTO AQUÍ
+
+    :::
+    ::::
+
+Donde:
+    - Para notas:                  CLASE = note
+    - Para Ejercicios y Ejemplos:  CLASE = tip
+
+El :::{dropdown} es opcional

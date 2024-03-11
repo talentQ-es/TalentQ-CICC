@@ -1,0 +1,14 @@
+conda create -n qiskit_qibo_pennylane
+conda activate qiskit_qibo_pennylane
+
+conda install python==3.11.7
+pip install -r requirements_qqp.txt
+
+## Activamos las extensiones del nbclassic
+
+jupyter nbclassic-serverextension enable --py jupyter_contrib_nbextensions --sys-prefix
+jupyter nbclassic-extension install --py jupyter_contrib_nbextensions --sys-prefix
+
+jupyter nbclassic-serverextension enable --py jupyter_nbextensions_configurator --sys-prefix
+jupyter nbclassic-extension install --py jupyter_nbextensions_configurator --sys-prefix
+jupyter nbclassic-extension enable jupyter_nbextensions_configurator --py --sys-prefix

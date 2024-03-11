@@ -1,0 +1,1752 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Elementos de Información Cuántica &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Medidas generalizadas" href="Chapter_052_Fun_Info_Cuant_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Los Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.html">Algoritmos de Oráculo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_042_QFT_myst.html">Transformada de Fourier Cuántica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_043_QPE_myst.html">Estimación Cuántica de Fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Informacion Cuántica</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter_051_Operador_densidad_myst.html">Mezcla de Estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_052_Fun_Info_Cuant_myst.html">Medidas generalizadas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Elementos de Información Cuántica</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Elementos de Información Cuántica</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-de-informacion-clasicas">Entropías de información clásicas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-shannon">Entropía de Shannon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-combinadas">Entropías combinadas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-condicional">Entropía condicional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-mutua">Información Mútua</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-relativa">Entropía relativa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-de-informacion-cuanticas">Entropías de información cuánticas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-von-neumann">Entropía de Von Neumann</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-la-entropia-de-von-neumann">Propiedades de la entropía de Von Neumann</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Entropía relativa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-de-preparacion-y-de-medida">Entropías de preparación y de medida</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-preparacion">Entropía de preparación</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-medida">Entropía de medida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-mezclas-estadisticas">Entropía de mezclas estadísticas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-cuanticas-de-sistemas-compuestos">Entropías cuánticas de sistemas compuestos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-entrelazamiento">Entropía de entrelazamiento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-un-estado-no-correlacionado">Entropía de un estado no correlacionado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Información mutua</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Entropía condicional</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desigualdad-triangular-de-araki-lieb">Desigualdad triangular de Araki-Lieb</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-1-saturacion-de-sub-aditividad-estado-factorizable">Caso 1 : saturación de sub-aditividad: estado  factorizable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-2-saturacion-de-araki-lieb-estado-puro-o-entrelazado">Caso 2 :  saturación de Araki-Lieb : estado  puro o entrelazado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codificacion-cuantica">Codificación cuántica</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Mar 11, 2024 | 16 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="elementos-de-informacion-cuantica">
+<h1>Elementos de Información Cuántica<a class="headerlink" href="#elementos-de-informacion-cuantica" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ketbra}[2]{| #1\rangle \langle #2|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\tr}{{\rm Tr}\,} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Tr}{{\rm Tr}\,} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\V}{{\cal V}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Lin}{\hbox{Lin}}\)</span></p>
+<section id="entropias-de-informacion-clasicas">
+<h2>Entropías de información clásicas<a class="headerlink" href="#entropias-de-informacion-clasicas" title="Permalink to this heading">#</a></h2>
+<p>por completitud, vamos a repasar los aspectos fundamentales de la teoría clásica de la información.</p>
+<p><a id='ent_Shannon'></a></p>
+<section id="entropia-de-shannon">
+<h3>Entropía de Shannon<a class="headerlink" href="#entropia-de-shannon" title="Permalink to this heading">#</a></h3>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>entropía de Shannon</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La entropía de Shannon asociada a una variabla aleatoria clásica <span class="math notranslate nohighlight">\(X = (x,p(x))\)</span> viene dada por la expresión</p>
+<div class="math notranslate nohighlight">
+\[
+H(X) = -\sum_{x} p(x) \log p(x)
+\]</div>
+</div>
+</div>
+<p>La entropía de Shannon es una medida de la  <em>incertidumbre</em> que elimina, en promedio, el resultado <span class="math notranslate nohighlight">\(x\in X\)</span>  de una <em>tirada</em>. Por tanto, es una medida también de la cantidad de información que, en promedio, alberga cada suceso de la variable.</p>
+<p>La entropía de Shannon posee las siguientes propiedades</p>
+<ul class="simple">
+<li><p>sea  <span class="math notranslate nohighlight">\(N\)</span>  el número de elementos de <span class="math notranslate nohighlight">\(X\)</span>, se cumple <span class="math notranslate nohighlight">\( 0 \leq H(X) \leq \log N\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H(X)\)</span> es una función <em>cóncava</em> de <span class="math notranslate nohighlight">\(X\)</span>. Para <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span> y <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> dos variables aleatorias</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H\left( \rule{0mm}{4mm} \lambda X + (1-\lambda) Y)\right) ~ \geq ~ \lambda H(X) + (1-\lambda) H(Y)
+\]</div>
+<p>Esto quiere decir que hay <strong>más incertidumbre</strong> en el colectivo de eventos conjuntos <span class="math notranslate nohighlight">\(xy\in XY\)</span> que la <strong>suma de las incertidumbres</strong> de cada una de las variables estocásticas por separado.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo</p>
+<p>La entropía de la distribución binaria (o de Bernoulli) <span class="math notranslate nohighlight">\( \{ (a,b),(p,(1-p) \} \)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+H(p) = - p\log p -(1-p)\log (1-p)
+\]</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/binaryentropy.png"><img alt="../../_images/binaryentropy.png" src="../../_images/binaryentropy.png" style="width: 400px;" /></a>
+</figure>
+<p>El caso <span class="math notranslate nohighlight">\(p=1/2\)</span> marca el máximo de la entropía. En este valor es donde, en promedio, conocer el resultado <span class="math notranslate nohighlight">\(a\)</span> ó <span class="math notranslate nohighlight">\(b\)</span> de una tirada, remueve la mayor cantidad de incertidumbre. El valor <span class="math notranslate nohighlight">\(H(1/2) = 1\)</span> define la unidad de información cuando usamos logaritmos en base 2, y recibe el nombre 1 bit de información.</p>
+</div>
+<p>Otra interpretación de <span class="math notranslate nohighlight">\(H(X)\)</span> proviene de la cantidad de recursos que necesitamos para transmitir mensajes formados con <em>letras</em> de la variabla aleatoria <span class="math notranslate nohighlight">\(X\)</span>. Esto es el contenido del primer teorema de Shannon.</p>
+<p>Para transmitir un mensaje a través de un canal se recurre a un proceso de codificación comprimida. Generalmente se comprime en bits <span class="math notranslate nohighlight">\(\{0,1\}\)</span> pero el uso de dits <span class="math notranslate nohighlight">\(\{0,...,D-1\}\)</span> es posible.</p>
+<p>De hecho, asociado a una codificación en dits, se define <span class="math notranslate nohighlight">\(H_D(X) = -\sum_{x} p(x) \log_D p(x)\)</span>. Cuando no mencionamos <span class="math notranslate nohighlight">\(D\)</span>, estaremos suponiendo que <span class="math notranslate nohighlight">\(D=2\)</span>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>Primer Teorema de Shannon, de Codificación de Fuentes</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Sea <span class="math notranslate nohighlight">\(X = \{a_i,p(a_i)\}\)</span> una fuente estocastica de <span class="math notranslate nohighlight">\(N\)</span> letras. En el límite <span class="math notranslate nohighlight">\(n\to \infty\)</span> es posible <b>codificar sin pérdidas</b> palabras  de <span class="math notranslate nohighlight">\(n\)</span> letras  utilizando en promedio  <span class="math notranslate nohighlight">\(H(X)\)</span> bits por cada letra de fuente .</p>
+</div>
+</div>
+<p>El truco que se le ocurrión a Shannon  es renunciar a codificar las letras de la fuente de forma individual, y a cambio, codificar grupos de letras de longitud <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>La clave de este teorema reside la caracterización del denominado <em>conjunto típico</em> de <span class="math notranslate nohighlight">\(n-\)</span>cadenas <span class="math notranslate nohighlight">\(T_n = \{\bar x^n\}\)</span>. En el límite <span class="math notranslate nohighlight">\(n\to \infty\)</span> se demuestran las siguientes tres propiedades</p>
+<ul class="simple">
+<li><p>cualquier secuencia que no esté en el conjunto típico tiene probabilidad nula de aparecer</p></li>
+<li><p>el número de secuencias en el conjunto típico es <span class="math notranslate nohighlight">\(|T| ~ \stackrel{n\to\infty}{\longrightarrow} ~ 2^{n H(X)}\)</span>.</p></li>
+<li><p>cualquier secuencia que esté en el conjunto típico aparece con probabilidad uniforme (necesariamente <span class="math notranslate nohighlight">\(p(\bar x^k) \stackrel{n\to\infty}{\longrightarrow} |T|^{-1} =  2^{- nH(X)}\)</span>).</p></li>
+</ul>
+<p>Para probar estas tres propiedades hay que realizar un análisis de la probabilidad de ocurrencia de un mensaje de <span class="math notranslate nohighlight">\(n\)</span> letras escogidas de un alfabeto de <span class="math notranslate nohighlight">\(N\)</span> símbolos</p>
+<div class="math notranslate nohighlight">
+\[
+x^{n} \sim \underbrace{a_1\cdots a_1}_{N(a_1|x^n)} \underbrace{a_2\cdots a_2}_{N(a_2|x^n)} \cdots \underbrace{a_N\cdots a_N}_{N(a_N|x^n)} \label{repclase}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(N(a_i|x^n)\)</span> es el número de veces que aparece la letra <span class="math notranslate nohighlight">\(a_i\)</span> en el mensaje <span class="math notranslate nohighlight">\(x^n\)</span>. El número de <span class="math notranslate nohighlight">\(n-\)</span>cadenas posibles es <span class="math notranslate nohighlight">\(N^n = 2^{n\log N}\)</span>.</p>
+<p>Bajo la hipótesis de <i>independencia  e igualdad estadística</i> la probabilidad de una secuencia concreta será</p>
+<div class="math notranslate nohighlight">
+\[
+p (x^n) ~=~ \prod_{i=1}^n p(x_i) ~=~  \prod_{i=1}^N p(a_i)^{N(a_i|x^n)}\, .\label{pronseq}
+\]</div>
+<p>se demuestra que cuando <span class="math notranslate nohighlight">\(n\to \infty\)</span> <u>prácticamente todas las secuencias</u> <span class="math notranslate nohighlight">\(x^n\)</span> que se generan aleatoriamente pertenecen al <em>conjunto típico</em> <span class="math notranslate nohighlight">\(\bar x^n\)</span>, caracterizado por</p>
+<div class="math notranslate nohighlight">
+\[
+\left|-\frac{1}{n} \log \, p(\bar x^n) - H(X)\right| \leq \delta
+\]</div>
+<p>El número de secuencias típicas es <i>subexponencial</i> con respecto al conjunto de secuencias posible</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ae65e755-fa83-4093-87f6-45d6ae63a268">
+<span class="eqno">(42)<a class="headerlink" href="#equation-ae65e755-fa83-4093-87f6-45d6ae63a268" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\frac{[\bar x^n ]}{N^n} =  \frac{n!}{\prod_{i=1}^N (N(a_i | \bar x^n)!}\frac{1}{N^n} &amp;\stackrel{n\to\infty}{\to}&amp; \frac{n!}{\prod_{i=1}^N (n p_X(a_i))!}  \frac{1}{N^n} = 2^{\log n! - \sum_{i=1}^N \log (n p_X(a_i))!-n\log N} \nonumber\\
+\rule{0mm}{7mm}&amp;\sim &amp; 2^{n\log n - n/\ln 2 - \sum_i (np_X(a_i) \log n p_X(a_i)+ n p_X(a_i) /\ln 2)-n\log N}  \nonumber\\
+&amp; \sim  &amp; 2^{-n (\log N- H_X)}  
+\rule{0mm}{7mm}
+\end{eqnarray}\]</div>
+<p>Finalmente, la probabilidad de encontrar
+una secuencia típica  <span class="math notranslate nohighlight">\(\bar x^n = x_1...x_n\)</span>, será</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7e4f8971-f9ef-42b8-8be0-d98bfc4ae260">
+<span class="eqno">(43)<a class="headerlink" href="#equation-7e4f8971-f9ef-42b8-8be0-d98bfc4ae260" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+ p(\bar x^n) &amp;=&amp; p(x_1)p(x_2)....p(x_n)  \nonumber\\
+\rule{0mm}{5mm} &amp;\simeq &amp; p(a_1)^{n p(a_1)} ...p(a_N)^{np(a_N)} \nonumber\\
+\rule{0mm}{5mm} &amp;=&amp; 
+2^{np(x_1) \log p(a_1) + ... + np(a_N)\log p(a_N)} = 2^{-n H_X}
+\end{eqnarray}\]</div>
+<p>independiente de la secuencia concreta. En otras palabras,  las secuencias típicas son equiprobables.</p>
+<p>Las anteriores observaciones permiten establecer un procedimiento de codificación de mensajes: sólo tiene sentido codificar llos  <span class="math notranslate nohighlight">\(|T| = 2^{nH(X)}\)</span> mensajes típicos que pueden aparecer.</p>
+<p>Esto se puede realizar con cadenas que tengan  <span class="math notranslate nohighlight">\(n H(X)\)</span> bits por mensaje, o <span class="math notranslate nohighlight">\(H(X)\)</span> bits por letra.</p>
+<p>Si <span class="math notranslate nohighlight">\(X\)</span> es un alfabeto equiprobable, entonces <span class="math notranslate nohighlight">\(H(X) = \log N\)</span> y no es posible comprimirlo.</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>La cantidad <span class="math notranslate nohighlight">\(~ \log N - H(X) ~\)</span> cuantifica la <i>compresibilidad  </i> en una fuente aleatoria <span class="math notranslate nohighlight">\(X\)</span></p>
+</div>
+</section>
+<section id="entropias-combinadas">
+<h3>Entropías combinadas<a class="headerlink" href="#entropias-combinadas" title="Permalink to this heading">#</a></h3>
+<p>En un proceso de comunicación hay dos variables aleatorias, la emisión <span class="math notranslate nohighlight">\(X = (x, p(x))\)</span> y la recepción <span class="math notranslate nohighlight">\(Y = (y, p(y))\)</span>.</p>
+<p>La ocurrencia conjunta de una pareja de valores <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> en los extremos del canal define una nueva variable aleatoria <span class="math notranslate nohighlight">\(XY = \{xy, p(x,y)\}\)</span> conde  <span class="math notranslate nohighlight">\(p(x,y)\)</span> es la <em>probabilidad combinada</em>.</p>
+<p>Como cualquier variable aleatoria, podemos también asociarle una entropía</p>
+<div class="math notranslate nohighlight">
+\[
+H(X,Y) = - \sum_{xy} p(x,y) \log p(x,y)
+\]</div>
+</section>
+<section id="entropia-condicional">
+<h3>Entropía condicional<a class="headerlink" href="#entropia-condicional" title="Permalink to this heading">#</a></h3>
+<p>La probabilidad condicional es la herramienta matemática que caracteriza el ruido en un canal de comunicación.
+Concretamente
+la matriz <span class="math notranslate nohighlight">\(Q_{xy} = p(x|y)\)</span> indica la probabilidad de que, habiendo recibido <span class="math notranslate nohighlight">\(y\)</span>, la letra emitida haya sido <span class="math notranslate nohighlight">\(x\)</span>. Un canal sin ruido debería tener <span class="math notranslate nohighlight">\(Q_{xy} = \delta_{xy}\)</span>.</p>
+<p>En un canal con ruido, la variable aleatoria <span class="math notranslate nohighlight">\(X|y = \{x, p(x|y)\}\)</span> informa de la probabilidad de obtener cualquier <span class="math notranslate nohighlight">\(x\)</span> cuando por el otro lado <span class="math notranslate nohighlight">\(y\)</span> fue enviado.</p>
+<p>Como a cualquier variable aleatoria, podemos asignarle una entropía</p>
+<div class="math notranslate nohighlight">
+\[
+H(X|y) = -\sum_x p(x|y)\log(p(x|y)).
+\]</div>
+<p>Si ahora promediamos <span class="math notranslate nohighlight">\(H(X|y)\)</span> sobre los posibles mensajes <span class="math notranslate nohighlight">\(y\)</span> enviados, obtendremos la entropía condicional</p>
+<div class="math notranslate nohighlight">
+\[
+H(X|Y) = \sum_y p(y)H(X|y) = H(X,Y)  - H(Y)
+\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\sum_y p(y)H(X|y) &amp;=&amp; -\sum_{yx} p(y)p(x|y)\log(p(x|y)) \\
+   &amp;=&amp; -\sum_{yx} p(x,y)\log(p(x,y)/p(y)) = -\sum_{yx} p(x,y)\log(p(x,y) + \sum_{yx} p(x,y)\log(p(y))
+    \\ &amp;=&amp;  = H(X,Y) + \sum_{y} p(y)\log(p(y)) =  H(X,Y)  - H(Y)
+\end{eqnarray*}\]</div>
+</div>
+</details><p>y refleja la incertidumbre residual que aun queda en <span class="math notranslate nohighlight">\(X\)</span> después de haber recibido una gran cantidad de mensajes de <span class="math notranslate nohighlight">\(y \in Y\)</span>.</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(X,Y\)</span> son variables independiente <span class="math notranslate nohighlight">\(~\to H(X|Y) = H(X)~\)</span>, y conocer <span class="math notranslate nohighlight">\(Y\)</span> no reduce la incertidumnbre en <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+<li><p>Si <span class="math notranslate nohighlight">\(X=Y~ \to ~H(X|Y) = 0\)</span> y conocer <span class="math notranslate nohighlight">\(Y\)</span> no deja ninguna incertidumbre residual en <span class="math notranslate nohighlight">\(X\)</span>.</p></li>
+</ul>
+</section>
+<section id="informacion-mutua">
+<h3>Información Mútua<a class="headerlink" href="#informacion-mutua" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(H(X)\)</span> es una medida de la cantidad de incertidumbre a priori que hay en <span class="math notranslate nohighlight">\(X\)</span>, es decir de la información que se  remueve al conocer un evento <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(H(X|Y)\)</span> es una medida
+de la incertidumbre que queda en <span class="math notranslate nohighlight">\(X\)</span> después de haber recibir  <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>Necesariamente <span class="math notranslate nohighlight">\(H(X|Y)&lt;H(X)\)</span> puesto que no se puede remover más incertidumbre que la que hay originalmente en <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>La diferencia es, por tanto, positiva <span class="math notranslate nohighlight">\(H(X)-H(X|Y)&gt;0\)</span>, y cuantifica la cantidad de información <em>ganada</em> por el receptor. Se denomina  <em>información mutua</em></p>
+<div class="math notranslate nohighlight">
+\[
+ I(X,Y) = H(X)  + H(Y) - H(X,Y) \geq 0 .
+\]</div>
+<p>La no-negatividad  de la información mutua será probada en breve</p>
+<p>Vemos que esta cantidad es simétrica en <span class="math notranslate nohighlight">\(X\leftrightarrow Y\)</span> y se puede escribir</p>
+<div class="math notranslate nohighlight">
+\[
+I(X,Y) = H(X) - H(X|Y) = H(Y) - H(Y|X)    \, .
+\]</div>
+<p>Por tanto, <span class="math notranslate nohighlight">\(I(X,Y)\)</span> es una medida de las <em>correlaciones</em> que hay entre ambas variables.</p>
+<ul class="simple">
+<li><p>Si no hay ninguna correlación, entonces haber medido <span class="math notranslate nohighlight">\(Y\)</span> no aporta nada, y la información mutua es cero
+<span class="math notranslate nohighlight">\(I(X,Y)=0\)</span>.</p></li>
+<li><p>Si están perfectamente correlacionadas <span class="math notranslate nohighlight">\(I(X,Y)=H(X)\)</span>, entonces hay una correlación perfecta entre emision y recepción  y la información transmitida alcanza
+su máximo.</p></li>
+</ul>
+<p>La no-negatividad de la información mutua recibe otra denominación equivalente: <strong>sub-aditividad</strong></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Corolario</b>: </i>sub-aditividad</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La entropía de Shannon es sub-aditiva. Dadas dos variables aleatorias <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span></p>
+<div class="math notranslate nohighlight">
+\[ H(X,Y)   \leq H(X) + H(Y) \]</div>
+<p class="sd-card-text">donde la igualdad se satura si no existe ninguna correlación entre ambas variables</p>
+</div>
+</div>
+</section>
+<section id="entropia-relativa">
+<h3>Entropía relativa<a class="headerlink" href="#entropia-relativa" title="Permalink to this heading">#</a></h3>
+<p>La entropía relativa  es una medida de la <em>distancia</em> entre las distribuciones de probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span> y <span class="math notranslate nohighlight">\(q(x)\)</span>, definidas sobre el mismo espacio muestral <span class="math notranslate nohighlight">\(x\in X\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-c9e6e74c-2915-4ce2-b5cd-6485470a762b">
+<span class="eqno">(44)<a class="headerlink" href="#equation-c9e6e74c-2915-4ce2-b5cd-6485470a762b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+H(p|| q) &amp;=&amp; \sum_x p(x) \big( \log p(x)- \log q(x) \big)  \\
+&amp;=&amp;  - H(X) -  \sum_x p(x) \log q(x)\, .
+\end{eqnarray}\]</div>
+<p>A veces se denomina a esta distancia: <em>divergencia</em> (de Kuhllback Leibler).</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>desigualdad de Gibbs</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La entropía relativa es <i>no-negativa</i>. Es decir, para dos distribuciones arbitrarias <span class="math notranslate nohighlight">\(p(x),q(x)\)</span> se cumple que</p>
+<div class="math notranslate nohighlight">
+\[
+H(p|| q) ~=~  \sum_x p(x)  \log p(x) -  \sum_x p(x)  \log q(x)  ~\geq~ 0
+\]</div>
+<p class="sd-card-text">y la desigualdad se satura si y sólo si <span class="math notranslate nohighlight">\(p(x) = q(x)\)</span> son distribuciones idénticas</p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">En general tendremos</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7760d4f1-43f0-4fa9-880f-5fe9bd8539c3">
+<span class="eqno">(45)<a class="headerlink" href="#equation-7760d4f1-43f0-4fa9-880f-5fe9bd8539c3" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+ \sum_x p(x)  \log \frac{p(x)}{q(x)} &amp; ~= ~&amp;   \sum_x p(x) \log\frac{p(x)}{q(x)}    ~= ~ - \sum_x p(x)   \log\frac{q(x)}{p(x)} \nonumber\\
+&amp;~\geq ~&amp; -  \log  \sum_x p(x)  \frac{q(x)}{p(x)}   ~= ~ -  \log  \sum_x q(x)   \nonumber\\
+&amp;=&amp;  -\log 1\nonumber =  0  \nonumber
+\end{eqnarray}\]</div>
+<p class="sd-card-text">donde la desigualdad se sigue del hecho de que <span class="math notranslate nohighlight">\(- \log x\)</span> es una función convexa, en cualquier base.
+Para la igualdad,  <span class="math notranslate nohighlight">\(p(x) = q(x)\)</span> es condición suficiente. Para ver que es necesaria consultar referencias.</p>
+</div>
+</details><p>Tomando varios casos particulares podemos ahora probar algunas afirmaciones realizadas anteriormente</p>
+<ul class="simple">
+<li><p>La entropía de Shannon está acotada por la dimensión, <span class="math notranslate nohighlight">\(N\)</span> del espacio muestral</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+ H(X) \leq \log N
+ \]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Basta tomar
+<span class="math notranslate nohighlight">\(q_X(x) = 1/N\)</span>. Entonces
+<span class="math notranslate nohighlight">\( H(p_X|| q_X) =  - H(X)  +\log N \geq 0\)</span>.</p>
+<p class="sd-card-text">La desigualdad  se satura cuando <span class="math notranslate nohighlight">\(X\)</span> también es una variable equiprobable <span class="math notranslate nohighlight">\(p_X(x)=q_X(x) = 1/N ~\Rightarrow ~ H(p_X|| q_X) = 0\)</span>.</p>
+</div>
+</details><ul class="simple">
+<li><p>La entropía de Shannon es sub-aditiva</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+H(X,Y) \leq  H(X) + H(Y) 
+\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Tomemos ahora sobre la variable aleatoria <span class="math notranslate nohighlight">\(XY \to \{(x,y)\}\)</span>, para <span class="math notranslate nohighlight">\(p_X\)</span> la distribución combinada <span class="math notranslate nohighlight">\(p_{X,Y}\)</span> y para <span class="math notranslate nohighlight">\(q_X\)</span> la  factorizada <span class="math notranslate nohighlight">\( p_Xp_Y\)</span>, donde <span class="math notranslate nohighlight">\(p_X(x) = \sum_y p_{XY}(x,y)\)</span> y <span class="math notranslate nohighlight">\(p_Y(y) = \sum_x p_{XY}(x,y)\)</span> son las distribuciones marginales</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f45a3488-48bc-4250-8422-96c993da9f50">
+<span class="eqno">(46)<a class="headerlink" href="#equation-f45a3488-48bc-4250-8422-96c993da9f50" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+H(p_{X,Y}(x, y) || p_X(x) p_Y(y)) 
+&amp;=&amp; -  H(X,Y) - \sum_{x,y} p_{XY}(x,y) \log p_X(x)  - \sum_{x,y} p_{XY}(x,y) \log p_Y(y) \nonumber\\
+&amp;=&amp; -  H(X,Y) - \sum_{x} p_{X}(x) \log p_X(x)  - \sum_{y} p_{Y}(y) \log p_Y(y) \nonumber\\
+&amp;=&amp;  - H(X,Y) + H(X) + H(Y)  \\
+&amp;=&amp; ~ I(X,Y) \geq 0  \rule{0mm}{8mm}
+\end{eqnarray}\]</div>
+<p class="sd-card-text">Esta desigualdad prueba que la información mútua es no-negativa. Equivalentemente</p>
+<div class="math notranslate nohighlight">
+\[
+H(X,Y) \leq  H(X) + H(Y) 
+\]</div>
+</div>
+</details></section>
+</section>
+<section id="entropias-de-informacion-cuanticas">
+<h2>Entropías de información cuánticas<a class="headerlink" href="#entropias-de-informacion-cuanticas" title="Permalink to this heading">#</a></h2>
+<p>Supongamos una fuente aleatoria clásica que genera letras de un alfabeto <span class="math notranslate nohighlight">\(X =\{x_a, p_a\}\)</span> con probabilidad <span class="math notranslate nohighlight">\(p_a = p(x_a)\)</span>.</p>
+<p>La <em>incertidumbre  a priori</em> (información) vienen dada por la entropía de Shannon</p>
+<div class="math notranslate nohighlight">
+\[
+H(X) = - \sum_{a=1}^r p_a \log p_a
+\]</div>
+<p>Para transmitir un mensaje usando un <em>canal cuántico</em> preparamos estados <span class="math notranslate nohighlight">\(x_i \to \ket{\psi_i}\)</span> con <span class="math notranslate nohighlight">\(i\)</span> aparatos  y los enviamos sucesivamente.</p>
+<p>De esta manera hemos creado una <em>fuente de señal cuántica</em>.</p>
+<p>Desde el punto de vista del receptor, se trata de una superposición estadística incoherente de estados <span class="math notranslate nohighlight">\(X = \{\ket{\psi_a},p_a\}\)</span> que son recibidos con probabilidad <span class="math notranslate nohighlight">\(p_a = p(\ket{\psi_a})\)</span>.</p>
+<p>Para descifrar el mensaje, el receptor debe adivinar qué estados componen el estado que le llega realizando medidas.</p>
+<p>El <b>operador densidad</b> es el objeto matemático que caracteriza la mezcla estadística que se recibe</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \sum_{a} p_a \ket{\psi_a}\bra{\psi_a}
+\]</div>
+<p>Notemos que</p>
+<ul class="simple">
+<li><p>no hemos demandado que <span class="math notranslate nohighlight">\(\ket{\psi_a}\)</span> sea un conjunto de vectores ortogonales. En general no lo será.</p></li>
+<li><p>el número de vectores y de letras <span class="math notranslate nohighlight">\(a=1,2, ...\)</span>, puede ser mayor o menor que la dimensión del espacio de Hilbert del sistema cuántico</p></li>
+</ul>
+<p>Por ser hermítico, siempre podemos escribir <span class="math notranslate nohighlight">\(\rho\)</span> en su <em>representación espectral</em></p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \sum_{i=1}^N \lambda_i \ket{\lambda_i}\bra{\lambda_i}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\lambda_i\)</span> son los autovalores y <span class="math notranslate nohighlight">\(\ket{\lambda_i}\)</span> sus autovectores, que forman una base ortonormal <span class="math notranslate nohighlight">\(\braket{\lambda_i}{\lambda_j} = \delta_{ij}\)</span>.</p>
+<p>Esta representación, hace referencia a un <em>aparato hipotético</em> asociado a medidas proyectivas <span class="math notranslate nohighlight">\(\{M_i = \ketbra{\lambda_i}{\lambda_i}\}\)</span></p>
+<p>Denominamos a la variable aleatoria cuántica  <span class="math notranslate nohighlight">\(\hat C = \{\ket{\lambda_i},\lambda_i\}\)</span> <em>colectivo canónico</em></p>
+<p><a id='ent_vonNeumann'></a></p>
+<section id="entropia-de-von-neumann">
+<h3>Entropía de Von Neumann<a class="headerlink" href="#entropia-de-von-neumann" title="Permalink to this heading">#</a></h3>
+<p>El procedimiento descrito nos confronta con dos colectivos</p>
+<ul class="simple">
+<li><p>el  <em>original</em>, asociado a la preparación <span class="math notranslate nohighlight">\(X = \{x_a, p_a\} \to \{\ket{\psi_a},p_a\}\)</span></p></li>
+<li><p>el <em>canónico</em>, asociado a la diagonalización de <span class="math notranslate nohighlight">\(\rho \to   C = \{\ket{\lambda_i},\lambda_i\}\)</span></p></li>
+</ul>
+<p>Cada colectivo lleva asociada una entropía de Shannon</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ffe9ebf6-f7f9-4268-b446-6f2dd2783f12">
+<span class="eqno">(47)<a class="headerlink" href="#equation-ffe9ebf6-f7f9-4268-b446-6f2dd2783f12" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+H(X) &amp;=&amp; -\sum_a p_a \log p_a \\
+H(C) &amp;=&amp; -\sum_{i=1}^N \lambda_i \log \lambda_i
+\end{eqnarray}\]</div>
+<p>La clave de la segunda expresión  es que, por definición, es equivalente a la siguiente</p>
+<div class="math notranslate nohighlight">
+\[
+H(C) = -\Tr (\rho \log \rho)
+\]</div>
+<p>La ventaja de escribirlo de esta manera es que es <em>independiente</em> de la base.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>entropía de von Neumann</i></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+S(\rho) = -\Tr (\rho\log \rho)
+\]</div>
+</div>
+</div>
+<p>Observar que, escrito de esta manera,  <span class="math notranslate nohighlight">\(S(\rho)\)</span></p>
+<ul class="simple">
+<li><p>no hace referencia a <em>ninguna base</em> de estados concreta.</p></li>
+<li><p>está unívocamente determinada para cada estado <span class="math notranslate nohighlight">\(\rho\)</span></p></li>
+<li><p>tampoco hace referencia al procedimiento de preparación</p></li>
+</ul>
+<p>En definitiva: <em>podemos asignar una  entropía de von Neumann a todo operador densidad</em> <span class="math notranslate nohighlight">\(\rho\)</span></p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Escribe una función <span class="math notranslate nohighlight">\(S\_entropy(\rho)\)</span> que devuelva la entropía de Von Neumann asociada a un estado <span class="math notranslate nohighlight">\(\rho\)</span>
+escrito como una matriz en la base canónica.</p>
+</div>
+<section id="propiedades-de-la-entropia-de-von-neumann">
+<h4>Propiedades de la entropía de Von Neumann<a class="headerlink" href="#propiedades-de-la-entropia-de-von-neumann" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>acotación</strong>:
+sea <span class="math notranslate nohighlight">\(N=\)</span> la <u>dimensión de <span class="math notranslate nohighlight">\(\Hil\)</span></u>, la entropía de von Neumann está acotada por</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[0 \leq S(\rho)\leq \log N\]</div>
+<ul class="simple">
+<li><p>en un <i>estado puro</i>, la entropía de von Neumann  es nula</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+S(\rho ) = 0 ~~~\Longleftrightarrow ~~~\rho^2 = \rho 
+\]</div>
+<ul class="simple">
+<li><p>en un estado <i>maximalmente mezclado</i>, la entropía de un estado es maximal</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+S(\rho) = \log N ~~~\Longleftrightarrow ~~~\rho = \frac{1}{N} I
+\]</div>
+<ul class="simple">
+<li><p><strong>concavidad</strong>:</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\( S(\rho)\)</span> es una función cóncava de su argumento <span class="math notranslate nohighlight">\(\rho\)</span>. Para cualquier linea recta que interpole entre <span class="math notranslate nohighlight">\(\rho_1\)</span> y <span class="math notranslate nohighlight">\(\rho_2\)</span></p>
+<div class="math notranslate nohighlight">
+\[ S\left(\rule{0mm}{4mm}\lambda \rho_1 +(1-\lambda) \rho_2 \right) \geq \lambda S(\rho_1) +(1-\lambda) S(\rho_2) \]</div>
+<p>donde <span class="math notranslate nohighlight">\(\lambda \in (0,1)\)</span></p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>La concavidad de <span class="math notranslate nohighlight">\(S\)</span> se generaliza a combinaciones lineales. Sea <span class="math notranslate nohighlight">\(\rho = \sum_{i=1}^r p_i \rho_i\)</span>, donde <span class="math notranslate nohighlight">\(~\sum_{i=1}^r p_i = 1\)</span><br />
+$<span class="math notranslate nohighlight">\(
+S(\rho ) \geq \sum_i p_i S(\rho_i)
+\)</span>$</p>
+</div>
+<p>The proof will be given later by means of the subaditivity property.</p>
+<ul class="simple">
+<li><p><strong>invariancia</strong>:
+la entropía de von Neumann es invariante bajo <em>transformaciones unitarias</em></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ 
+S(\rho) = S(U^\dagger \rho U)
+\]</div>
+<p>En particular esto implica que la entropía de von Neumann de un sistema aislado es constante en el tiempo</p>
+<div class="math notranslate nohighlight">
+\[
+S(\rho(t)) = S(U(t)\rho(0) U(t)^\dagger) = S(\rho(0))
+\]</div>
+<p>Es decir</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dS(t)}{dt} = 0
+\]</div>
+<p>Inversamente, puede probarse que si <span class="math notranslate nohighlight">\(dS(t)/dt \neq 0\)</span> entonces</p>
+<ul class="simple">
+<li><p>el sistema es abierto</p></li>
+<li><p><span class="math notranslate nohighlight">\( \displaystyle \frac{dS(t)}{dt} &gt;  0 ~~ \)</span> la entropía sólo puede crecer</p></li>
+</ul>
+<p>En este caso hablamos de <em>evolución incoherente</em> o <em>decoherencia</em></p>
+<p><a id= 'entrop_rel'></a></p>
+</section>
+</section>
+<section id="id1">
+<h3>Entropía relativa<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Definimos la entropía relativa por analogía formal con el caso clásico. Sean <span class="math notranslate nohighlight">\(\rho\)</span> y <span class="math notranslate nohighlight">\(\sigma\)</span> dos estados cuánticos, la entropía relativa es una medida de distancia que se anula cuando son iguales</p>
+<div class="math notranslate nohighlight">
+\[
+S(\rho \| \sigma) = \Tr \rho(\log\rho - \log \sigma)
+\]</div>
+<p>La desigualdad de Gibbs para <span class="math notranslate nohighlight">\(H(X\| Y)\)</span> tiene un resultado paralelo  para <span class="math notranslate nohighlight">\(S(\rho\|\sigma)\)</span></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>desigualdad de Klein</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La entropía relativa es no-negativa
+$<span class="math notranslate nohighlight">\(
+S(\rho \| \sigma) \geq 0
+\)</span>$</p>
+<p class="sd-card-text">y se anula si y sólo si <span class="math notranslate nohighlight">\(\rho = \sigma\)</span></p>
+</div>
+</div>
+<p><a id='ent_for_med'></a></p>
+</section>
+<section id="entropias-de-preparacion-y-de-medida">
+<h3>Entropías de preparación y de medida<a class="headerlink" href="#entropias-de-preparacion-y-de-medida" title="Permalink to this heading">#</a></h3>
+<section id="entropia-de-preparacion">
+<h4>Entropía de preparación<a class="headerlink" href="#entropia-de-preparacion" title="Permalink to this heading">#</a></h4>
+<p>Existen infinitos colectivos <span class="math notranslate nohighlight">\(X = \{\ket{\psi_a},p_a\}~,~  \tilde X = \{\ket{\tilde \psi_i},\tilde p_i\},...\)</span> que son descritos por el mismo operador densidad</p>
+<div class="math notranslate nohighlight">
+\[
+\rho ~=~ \sum_{a=1}^r p_a \ket{\psi_a}\bra{\psi_a} ~= ~ \sum_{i=1}^s \tilde p_i \ket{\tilde\psi_i}\bra{\tilde\psi_i}  ~=~~ ...
+\]</div>
+<ul class="simple">
+<li><p>Cada colectivo lleva asociado una entropía de Shannon <span class="math notranslate nohighlight">\(H(X), H(\tilde X) ,...\)</span> diferente.</p></li>
+<li><p>Sin embargo, la entropía de von-Neumann <span class="math notranslate nohighlight">\(S(\rho)\)</span> es la misma para todos porque sólo depende de <span class="math notranslate nohighlight">\(\rho\)</span></p></li>
+</ul>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>entropía de preparación</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Para cada colectivo <span class="math notranslate nohighlight">\(X = \{\ket{\psi_a},p_a\}\)</span> que prepara un estado  <span class="math notranslate nohighlight">\(\rho = \sum_a p_a\ket{\psi_a}\bra{\psi_a}\)</span> definimos la <i>entropía de preparación</i> como la diferencia</p>
+<div class="math notranslate nohighlight">
+\[\Delta(X,\rho) = H(X) - S(\rho )\]</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La entropía de preparación es no-negativa <span class="math notranslate nohighlight">\(\Delta(X,\rho) \geq 0\)</span>, es decir</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+S(\rho ) ~~\leq ~~ H(X)
+ \\
+\end{eqnarray*}\]</div>
+<p class="sd-card-text">La desigualdad se satura para una preparación <span class="math notranslate nohighlight">\(X\)</span> en la que los estados <span class="math notranslate nohighlight">\(\{\ket{\psi_a}\}\)</span> sean ortogonales</p>
+</div>
+</div>
+<ul class="simple">
+<li><p>La demostración es larga y no la haremos.
+El resultado es plausible porque <span class="math notranslate nohighlight">\(H(X) \leq \log(r)\)</span> donde <span class="math notranslate nohighlight">\(r\)</span> el número de <em>letras</em> en el colectivo <span class="math notranslate nohighlight">\(\ket{\psi_a}, \, a = 1,...,r\)</span> que no está acotado, mientras que <span class="math notranslate nohighlight">\(S(\rho)\leq \log N\)</span> está acotado por la dimensión del espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span>.</p></li>
+<li><p>Por otro lado, si pedimos que los estados sean ortogonales, entonces <span class="math notranslate nohighlight">\(r\leq N\)</span>. Podemos completar hasta formar una base <span class="math notranslate nohighlight">\(\{\ket{\psi_a}\} \, a = 1,..,N\)</span>. Como <span class="math notranslate nohighlight">\(S(\rho)\)</span> es invariante bajo transformaciones unitarias, es igual a la escrita en la base de autoestador <span class="math notranslate nohighlight">\(\{\ket{\lambda_a}\}\)</span> es decir <span class="math notranslate nohighlight">\(H\)</span>.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Si los estados de la fuente <span class="math notranslate nohighlight">\(X = \{\ket{\psi_a},p_a\}\)</span> no son ortogonales <span class="math notranslate nohighlight">\(S&lt; H\)</span>. Pero los
+<span class="math notranslate nohighlight">\(\{\ket{\psi_a}\}\)</span>  no se pueden distinguir <span class="math notranslate nohighlight">\(\Rightarrow\)</span> no hay un observable que permita recuperar toda la información codificada en el mensaje clásico.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\Rightarrow \rho\)</span> transmite menos información por el canal cuántico que la contenida en el mensaje clásico original</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo 1 (Estados ortogonales)</p>
+<p>Supongamos que Alice tiene una fuente aleatoria  de estados ortogonales</p>
+<div class="math notranslate nohighlight">
+\[X = \{ \ket{\psi_i}, p_i\} = \{ (\ket{0}, p_0= 1/4), (\ket{1},p_1 = 3/4)\}\]</div>
+<p>Bob describe el sistema mediante la matriz densidad</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho = p_0\ket{0}\bra{0} + p_1\ket{1}\bra{1} = \begin{bmatrix} p_0 &amp; 0 \\ 0 &amp; p_1 \end{bmatrix}
+\end{split}\]</div>
+<p>y la entropía de Shannon asociada será</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c32aedba-cfe3-4cbf-9375-086cd7c2d682">
+<span class="eqno">(48)<a class="headerlink" href="#equation-c32aedba-cfe3-4cbf-9375-086cd7c2d682" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+S(\rho) &amp;=&amp;  -\Tr \rho\log \rho = - \Tr \left( \begin{bmatrix} p_0 &amp; 0 \\ 0 &amp; p_1 \end{bmatrix}  \begin{bmatrix} \log p_0 &amp; 0 \\ 0 &amp; \log p_1 \end{bmatrix} \right) \nonumber\\
+&amp;=&amp; \rule{0mm}{5mm}
+-p_0\log p_0 - p_1 \log p_1 = H(p_0,p_1) \nonumber
+\end{eqnarray}\]</div>
+<p>Entonces, para estados ortogonales, las entropías de  Von Neuman y de Shannon son iguales</p>
+<div class="amsmath math notranslate nohighlight" id="equation-742285b9-9af4-4f66-b255-925d17da3a0a">
+<span class="eqno">(49)<a class="headerlink" href="#equation-742285b9-9af4-4f66-b255-925d17da3a0a" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+S(\rho)\rule{0mm}{8mm}&amp;=&amp; -\frac{1}{4}\log \frac{1}{4} - \frac{3}{4} \log \frac{3}{4}    = 0.81 \, \hbox{bits} = 
+  H(X)   \, . \nonumber
+\end{eqnarray}\]</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo 2 (Estados no-ortogonales)</p>
+<p>Sea ahora otra fuente de Alice que produce el colectivo de estados con idénticas probabilidades <span class="math notranslate nohighlight">\(p_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[\{ \ket{\psi_i}, p_i\} = \left\{\rule{0mm}{4mm} (\ket{0}, p_0= 1/4)\, , \, (\ket{+},p_+ = 3/4)\right\}\]</div>
+<p>Bob ahora escribe la matriz densidad</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho = \frac{1}{4}\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{bmatrix} + \frac{3}{8} \begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 1 \end{bmatrix} = \frac{1}{8} \begin{bmatrix} 5 &amp; 3 \\ 3 &amp; 3 \end{bmatrix} \,
+\end{split}\]</div>
+<p>Diagonalizando obtenemos autovalores
+$<span class="math notranslate nohighlight">\(\lambda_i = \frac{1}{2} \pm \frac{1}{4} \sqrt{\frac{5}{2}}\)</span>$</p>
+<p>Ahora calculamos la entropía de Shannon</p>
+<div class="math notranslate nohighlight">
+\[
+S(\rho) = -\sum_i \lambda_i \log \lambda_i \, =\,  0.485\, \hbox{bits} \, &lt;\,   0.81   \, \hbox{bits} ~=~   H(X)
+\]</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>Que <span class="math notranslate nohighlight">\(S\)</span> sea menor que <span class="math notranslate nohighlight">\(H\)</span> también parece indicar que un alfabeto cuántico <span class="math notranslate nohighlight">\(X= \{\ket{\psi_a},p_a\}\)</span> podría admitir una codificación con  menos recursos que uno clásico. Es decir,  una compresión mayor.</p>
+<p>La demostración de este hecho es el teorema de Schuhmacher.</p>
+</div>
+</section>
+</section>
+<section id="entropia-de-medida">
+<h3>Entropía de medida<a class="headerlink" href="#entropia-de-medida" title="Permalink to this heading">#</a></h3>
+<p>Bob recibe un sistema en un estado <span class="math notranslate nohighlight">\(\rho\)</span> y le aplica una medida proyectiva <span class="math notranslate nohighlight">\(\{E_m = P_m\}\)</span>, donde</p>
+<div class="math notranslate nohighlight">
+\[
+P_l^2 = P_l~,~~ P_m P_n = P_m\delta_{mn}~,~~ \sum_m P_m = I
+\]</div>
+<p>Si <u>no registra el resultado</u>, la <em>medida no selectiva</em> tendrá el siguiente efecto sobre el estado</p>
+<div class="math notranslate nohighlight">
+\[
+\rho ~~ \stackrel{\{P_m\}}{\longrightarrow} ~~ \rho' = \sum_m P_m \rho P_m
+\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">En una medida proyectiva no-selectiva, la entropía no disminuye,
+<span class="math notranslate nohighlight">\(
+S(\rho') \geq S(\rho)
+\)</span>.<br />
+La desigualdad se satura cuando la base  de la medida proyectiva diagonaliza <span class="math notranslate nohighlight">\(\rho = \sum_m\lambda_m P_m \)</span>.</p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Queremos demostrar que
+$<span class="math notranslate nohighlight">\(
+0 ~\leq -S(\rho) + S(\rho') = -S(\rho) -\tr (\rho'\log \rho')
+\)</span>$</p>
+<p class="sd-card-text">Conocemos una desigualdad muy parecida, la desigualdad  de Klein,</p>
+<div class="math notranslate nohighlight">
+\[
+0~\leq ~S(\rho\|\rho') ~=~ -S(\rho) -\tr (\rho\log \rho')
+\]</div>
+<p class="sd-card-text">Sería suficiente con demostrar  que los segundos términos son iguales <span class="math notranslate nohighlight">\(\tr (\rho\log \rho') = \tr (\rho'\log \rho')\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\tr (\rho'\log \rho') = \tr\left[ \sum_l  P_l \rho P_l \log \rho' \right] 
+\]</div>
+<p class="sd-card-text">Examinemos:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6c8f1f5c-dcc9-4a76-921e-9a30c39811e3">
+<span class="eqno">(50)<a class="headerlink" href="#equation-6c8f1f5c-dcc9-4a76-921e-9a30c39811e3" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+P_l \rho' &amp;=&amp; P_l\sum_m P_m \rho P_m = \sum_m P_l\delta_{lm}\rho P_m = P_l\rho P_l \nonumber \\
+\rho'P_l  &amp;=&amp; \sum_m P_m \rho P_mP_l = \sum_m P_m\rho P_l \delta_{lm} = P_l\rho P_l\nonumber  \\
+\end{eqnarray}\]</div>
+<p class="sd-card-text">De aquí se deduce que <span class="math notranslate nohighlight">\(~\rho' P_l = P_l \rho' ~\Rightarrow ~\log\rho' P_l = P_l \log \rho'~\)</span>,
+y por tanto</p>
+<p class="sd-card-text">pero
+$<span class="math notranslate nohighlight">\(
+\tr(\rho'\log \rho') =  \tr\left[\sum_l\left( P_l \rho \log \rho' P_l\right)\right]= \tr \left[\left(\sum_l P_l^2\right) \rho \log \rho'\right] = \tr(\rho\log \rho')
+\)</span>$
+y así  llegamos al resultado deseado.</p>
+</div>
+</details><div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Trabaja en <span class="math notranslate nohighlight">\(\Hil\)</span> de dimensión 6. De forma aleatoria, define un colectivo <span class="math notranslate nohighlight">\(\{\ket{\psi_a},q_a\},\, a = 0,...r-1\)</span>.
+Haz una medida no-selectiva proyectiva en la base <span class="math notranslate nohighlight">\(\ket{i}\)</span>  computacional. Obtén la variación de entropía por la
+medida.</p>
+<p>Repíte, haciendo la medida en la base <span class="math notranslate nohighlight">\(\ket{\lambda_i}\)</span> de autoestados de <span class="math notranslate nohighlight">\(\rho\)</span>.</p>
+</div>
+</section>
+<section id="entropia-de-mezclas-estadisticas">
+<h3>Entropía de mezclas estadísticas<a class="headerlink" href="#entropia-de-mezclas-estadisticas" title="Permalink to this heading">#</a></h3>
+<p>La idea es comparar las entropías de una serie de estados <span class="math notranslate nohighlight">\(\rho_i\, i=1,2,...r\)</span> con la de una mezcla estadística de estados mezclados</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \sum_{i=1}^r p_i \rho_i
+\]</div>
+<p>con <span class="math notranslate nohighlight">\(p_i\geq 0, \, \sum_{i=1}^r p_i =1\)</span>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Sea <span class="math notranslate nohighlight">\(\rho = \sum_{i=1}^r p_i\rho_i\)</span> una mezcla estadística de estados  <span class="math notranslate nohighlight">\(\rho_i\)</span> con probabilidades <span class="math notranslate nohighlight">\(p_i\geq 0,\, \sum_{i=1}^r p_i =1\)</span>. Se demuestran las siguientes desigualdades</p>
+<div class="math notranslate nohighlight">
+\[\fbox{$
+~\sum_{i=1}^r p_i S(\rho_i) ~~\leq~  S(\rho) ~\leq~ \sum_{i=1}^r p_i S(\rho_i) + H(\{p_i\}) ~
+$}
+\]</div>
+<p class="sd-card-text">La desigualdad de la derecha se satura cuando <span class="math notranslate nohighlight">\(\rho_i\)</span> tienen soporte en subespacios mutuamente ortogonales.</p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">La desigualdad de la izquierda ya la hemos mencionado, y es la propiedad de <b>concavidad</b> de la entropía.
+Su demostración es sencilla usando la desigualdad triangular que será demostrada más adelante.</p>
+<p class="sd-card-text">Para demostrar la desigualdad de la derecha empezaremos probándola para el caso en que <span class="math notranslate nohighlight">\(\rho_a = \ketbra{\psi_i}{\psi_i}\)</span> son estados puros, <strong>no necesariamente ortogonales</strong>.</p>
+<p class="sd-card-text">Introduzcamos un sistema auxiliar <span class="math notranslate nohighlight">\(B\)</span> con dimensión <span class="math notranslate nohighlight">\(d_B\geq r\)</span> y  base ortonormal <span class="math notranslate nohighlight">\(\{\ket{i}\}\)</span> y definamos <span class="math notranslate nohighlight">\(\rho_{AB} = \ketbra{AB}{AB}\)</span> en términos del estado entrelazado</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{AB} = \sum_{i=1}^r \sqrt{p_i} \ket{\psi_i}\ket{i}
+\]</div>
+<p class="sd-card-text">Al ser <span class="math notranslate nohighlight">\(\rho_{AB}\)</span> puro sus trazas parciales coinciden y, por tanto, sus entropías también</p>
+<div class="math notranslate nohighlight">
+\[
+S(B) = S(A) = S\big(\sum_{i} p_i\ketbra{\psi_i}{\psi_i}\big) = S(\rho)
+\]</div>
+<p class="sd-card-text">A continuación efectuamos una medida proyectiva y no-selectiva en <span class="math notranslate nohighlight">\(B\)</span> usando los proyectores <span class="math notranslate nohighlight">\(P_i^B = \ketbra{i}{i}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\rho_B'= \sum_i P_i^B\rho_B P_i^B = \sum_i p_i \ketbra{i}{i}
+\]</div>
+<p class="sd-card-text">Hemos probado que, una medida no-selectiva sólo puede aumentar la entropía, es decir</p>
+<div class="math notranslate nohighlight">
+\[
+S(B)= S(\rho) \leq S(\rho_B') = - \sum_i p_i\log p_i = H(\{p_i\})
+\]</div>
+<p class="sd-card-text">Por tanto, cuando <span class="math notranslate nohighlight">\(\rho_i\)</span> son estados puros, tenemos que</p>
+<div class="math notranslate nohighlight">
+\[
+S (\rho) \leq H(\{p_i\}) + \sum_i p_i S(\rho_i)
+\]</div>
+<p class="sd-card-text">donde hemos sumado el último término que es cero. La desigualdad se satura si los <span class="math notranslate nohighlight">\(\ket{\psi_i}\)</span> son ortogonales.</p>
+<p class="sd-card-text">Ahora podemos abordar el caso general en el que <span class="math notranslate nohighlight">\(\rho_i\)</span> son mezclados. La descomposición espectral de cada <span class="math notranslate nohighlight">\(\rho_i\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_i = \sum_{j=1}^N \pi^i_j \ketbra{e^i_j}{e^i_j}
+\]</div>
+<p class="sd-card-text">donde las <span class="math notranslate nohighlight">\(r\)</span> bases <span class="math notranslate nohighlight">\(\{\ket{e^i_j}\, , j=1,...,N\}\)</span> son en principio diferentes. Ahora podemos escribir</p>
+<div class="math notranslate nohighlight">
+\[
+\rho ~=~ \sum_{i=1}^r \sum_{j=1}^N p_i \pi^i_j \ketbra{e^i_j}{e^i_j}  ~= ~\sum_{i,j} q_{ij}\rho_{ij}
+\]</div>
+<p class="sd-card-text">donde hemos considerador <span class="math notranslate nohighlight">\(\rho\)</span> como una mezcla de estados puros <span class="math notranslate nohighlight">\(\rho_{ij}\)</span>. A este caso le podemos aplicar el resultado encontrado para estados puros</p>
+<div class="math notranslate nohighlight">
+\[
+S(\rho) \leq H(\{q_{ij}\} = -\sum_{ij} p_i\pi^i_j \log(p_i\pi^i_j) = -\sum_{ij} p_i\pi^i_j(\log p_i + \log \pi^i_j)
+= -\sum_i p_i \log p_i -\sum_i p_i\big( \sum_j \pi^i_j \log \pi^i_j \big)
+\]</div>
+<p class="sd-card-text">donde hemos usador que <span class="math notranslate nohighlight">\(\sum_j \pi^i_j = \tr(\rho_i) = 1\)</span>. Ahora reconocemos en los dos últimos términos las funciones <span class="math notranslate nohighlight">\(H(\{p_i\})\)</span> y  <span class="math notranslate nohighlight">\(S(\rho_i)\)</span>, es decir</p>
+<div class="math notranslate nohighlight">
+\[
+S(\rho) \leq H(\{p_i\}) + \sum_i p_i S(\rho_i)
+\]</div>
+</div>
+</details><p>La desigualdad de la izquierda es la propiedad de concavidad cuyo contenido es que la entropía de una mezcla es mayor que la de sus partes.</p>
+<p>La diferencia es una cantidad importante que <em>conviene maximizar</em> ya que aumenta la cantidad de información del sistema.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>información de Holevo</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La <i> información de Holevo </i> de un estado <span class="math notranslate nohighlight">\(\rho = \sum_i p_i \rho_i\)</span> se define por el incremento de entropía asociado a la mezcla estadística</p>
+<div class="math notranslate nohighlight">
+\[
+\chi = S(\rho) - \sum_i p_i S(\rho_i)    
+\]</div>
+</div>
+</div>
+<p>Del teorema anterior, restando la cantidad <span class="math notranslate nohighlight">\(\rho = \sum_{i=1}^r p_i \rho_i\)</span> en todos los miembros, se verifica la desigualdad siguiente para la información de Holevo</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Corolario</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">En una mezcla estadística <span class="math notranslate nohighlight">\(\rho = \sum_{i=1}^r p_i \rho_i\)</span> la información de Holevo se encuentra acotada en la forma</p>
+<div class="math notranslate nohighlight">
+\[ 
+0 \leq \chi(\rho) \leq H(\{p_i\}) 
+\]</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Trabaja en <span class="math notranslate nohighlight">\(\Hil\)</span> de dimensión 6. De forma aleatoria, define tres colectivos <span class="math notranslate nohighlight">\(\{\ket{\psi_a},q_a\}_I\)</span> con <span class="math notranslate nohighlight">\(a = 0,...r_a-1\)</span> y  <span class="math notranslate nohighlight">\(I=0,1,2\)</span>. Con 3 probabilidades aleatorias, <span class="math notranslate nohighlight">\(\{p_i\}\, i=0,1,2\)</span> considera la mezcla estadística <span class="math notranslate nohighlight">\(\rho = \sum_i p_i \rho_i\)</span>.  Calcula la información de Holevo y verifica las cotas.</p>
+</div>
+<p><a id="ent_comp"></a></p>
+</section>
+</section>
+<section id="entropias-cuanticas-de-sistemas-compuestos">
+<h2>Entropías cuánticas de sistemas compuestos</b><a class="headerlink" href="#entropias-cuanticas-de-sistemas-compuestos" title="Permalink to this heading">#</a></h2>
+<p>Depués de la información contenida en un estado, la cantidad importante que deseamos conocer es el <em>grado de correlación</em> que guardan dos sistemas <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Considerados de forma conjunta, el sistema bipartito aislado  <span class="math notranslate nohighlight">\(AB \sim \Hil_A\otimes \Hil_B\)</span></p>
+<p>recordemos que toda la  información accesible   para observadores   que puedan medir en <span class="math notranslate nohighlight">\(AB\)</span> (<span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>) está contenida en <span class="math notranslate nohighlight">\(\rho\)</span>, <span class="math notranslate nohighlight">\((\rho_A,\rho_B)\)</span></p>
+<p>en particular, la entropía de von Neumann <span class="math notranslate nohighlight">\(S(\rho)\)</span> mide la incertidumbre de Shannon asociada a una preparación mediante un conjunto de medidas proyectivas</p>
+<section id="entropia-de-entrelazamiento">
+<h3>Entropía de entrelazamiento<a class="headerlink" href="#entropia-de-entrelazamiento" title="Permalink to this heading">#</a></h3>
+<p><a id='ent_entrelaz'></a></p>
+<p>es natural pensar que el grado de entrelazamiento entre <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> tenga un reflejo en los estados parciales <span class="math notranslate nohighlight">\(\rho_A\)</span> y <span class="math notranslate nohighlight">\(\rho_B\)</span>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Entropía de entrelazamiento</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La <b>entropía de entrelazamiento</b> es
+la entropía de Von Neumann de un sub-sistema obtenido a partir de la traza parcial sobre su complemento</p>
+<div class="math notranslate nohighlight">
+\[
+S(\rho_A) = \Tr \rho_A \log \rho_A~~~~~~\hbox{con} ~~~~~\rho_A = \Tr_B \rho
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S(\rho_B) = \Tr \rho_B \log \rho_B~~~~~~\hbox{con} ~~~~~\rho_B = \Tr_A \rho
+\]</div>
+</div>
+</div>
+<p><strong>Notación</strong>: salvo advertencia, cuando tratemos con sistemas compuestos, denotaremos</p>
+<div class="math notranslate nohighlight">
+\[ 
+S(AB) = S(\rho) ~~~~~~~~~ S(A) = S(\rho_A)  ~~~~~~~~~~ S(B) = S(\rho_B)
+\]</div>
+<p>donde se entiende que se trata de los sistemas obtenidos mediante las trazas parciales.</p>
+</section>
+<section id="entropia-de-un-estado-no-correlacionado">
+<h3>Entropía de un estado no correlacionado<a class="headerlink" href="#entropia-de-un-estado-no-correlacionado" title="Permalink to this heading">#</a></h3>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i></i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Para un estado no-correlacionado encontramos
+$<span class="math notranslate nohighlight">\(
+S(\rho) = S (\rho_A\otimes \rho_B) = S(\rho_A) + S(\rho_B)
+\)</span>$</p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Trabajando con las resoluciones espectrales de <span class="math notranslate nohighlight">\(\rho_A\)</span> y <span class="math notranslate nohighlight">\(\rho_B\)</span> encontramos que</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\log (\rho_A\otimes \rho_B) &amp;=&amp; \big( \sum_{i,a} \log(\lambda_i \mu_a) \ketbra{\lambda_i \mu_a}{\lambda_i\mu_a}\big) \\
+&amp;=&amp; \big( \sum_{i,a} (\log\lambda_i+ \log \mu_a)  \ketbra{\lambda_i \mu_a}{\lambda_i\mu_a}\big)  + \\
+&amp;=&amp; \sum_{i} \log \lambda_i \ketbra{\lambda_i}{\lambda_i}\otimes \sum_a \ketbra{\mu_a}{\mu_a} + 
+\sum_{i}  \ketbra{\lambda_i}{\lambda_i}\otimes \sum_a \log \mu_a \ketbra{\mu_a}{\mu_a} \\
+&amp;=&amp; \log\rho_A\otimes I + I\otimes \log \rho_B
+\end{eqnarray*}\]</div>
+<p class="sd-card-text">Entonces</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+S(\rho_A\otimes \rho_B) &amp;=&amp; -\tr_{AB} \left[(\rho_A\otimes \rho_B)\log (\rho_A\otimes\rho_B)\right] \\
+ &amp;=&amp; -\tr_{AB} \left[(\rho_A\otimes \rho_B)(\log\rho_A\otimes I + I\otimes \log \rho_B)\right] \\
+&amp;=&amp;- \tr_{AB}\left[\rho_A\log\rho_A\otimes \rho_B + \rho_A \otimes \rho_B \log\rho_B\right]\\
+&amp;=&amp; \tr(\rho_A\log\rho_A)\otimes \tr \rho_B + \tr\rho_A \otimes \tr(\rho_B \log\rho_B)\\
+&amp;=&amp; S(A) + S(B)
+\end{eqnarray*}\]</div>
+</div>
+</details><p>Esta noción de no-correlación es análoga a la que existe en probabilidad clásica.</p>
+<p>Clásicamente hay varias entropías que juegan un papel central, la entropía condicional <span class="math notranslate nohighlight">\(H(X|Y)\)</span>, la entropía relativa <span class="math notranslate nohighlight">\(H(X\|Y)\)</span> y la información mutua <span class="math notranslate nohighlight">\(I(X,Y)\)</span>.
+Las tres admiten interpretaciones en términos de incertidumbres y expectativas.</p>
+<p>Podemos definir,  cantidades <em>formalmente análogas</em> en el contexto cuántico, a pesar de que la interpretación probabilística no es tan evidente, o es desconocida.</p>
+<p>Ya hemos definido antes la <a class="reference internal" href="#entrop_rel"><span class="xref myst">entropía relativa</span></a>, y su importante propiedad de positividad.</p>
+<p><a id ='infor_mutua'></a></p>
+</section>
+<section id="id2">
+<h3>Información mutua<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>La definición de información mutua es la misma, intercambiando la entropía de Shannon por la de von Neumann</p>
+<div class="math notranslate nohighlight">
+\[
+I(A,B) = S(A) + S(B) - S(AB) 
+\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>positividad de la Información Mutua</i></p>
+</div>
+<div class="sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+I(A,B) \geq 0
+\]</div>
+<p class="sd-card-text">y la desigualdad se satura <span class="math notranslate nohighlight">\(I(A,B) = 0\)</span> si y solo si <span class="math notranslate nohighlight">\(\rho = \rho_A\otimes \rho_B\)</span> es factorizable</p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Consideremos la entropía relativa asociada a los estados <span class="math notranslate nohighlight">\(\rho  = \rho_{AB}\)</span> y  <span class="math notranslate nohighlight">\(\sigma = \rho_A\otimes \rho_B\)</span></p>
+<p class="sd-card-text">Entonces, por la desigualdad de Klein</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c8075b4f-d77f-4bca-a0b7-dd214b448a3d">
+<span class="eqno">(51)<a class="headerlink" href="#equation-c8075b4f-d77f-4bca-a0b7-dd214b448a3d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+0\leq S(\rho\|\sigma) &amp;=&amp; \tr\left(\rho_{AB}(\log \rho_{AB} - \log (\rho_A\otimes \rho_B) \rule{0mm}{4mm}\right)\nonumber\\  \rule{0mm}{8mm}
+&amp;=&amp; \tr \left(\rho_{AB}(\log \rho_{AB} - \log (\rho_A\otimes I) -\log ( I \otimes \rho_B) \rule{0mm}{4mm} \right)
+\\ \rule{0mm}{8mm}
+&amp;=&amp; S(AB) - \tr_{A}(\tr_B\rho_{AB}) - \tr_B(\tr_A\rho_{AB}) \\ \rule{0mm}{8mm}
+&amp;=&amp; S(AB) - S(A) - S(B) 
+\nonumber \\
+\end{eqnarray}\]</div>
+</div>
+</details></section>
+<section id="id3">
+<h3>Entropía condicional<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Por último, copiaremos la definición de la entropía condicional, a pesar de que  no existe una noción de probabilidad condicional cuántica</p>
+<div class="math notranslate nohighlight">
+\[
+S(A|B) = S(AB) - S(B)
+\]</div>
+<p>Aquí encontramos una característica genuina:
+a diferencia del caso clásico, <span class="math notranslate nohighlight">\(S(A|B)\)</span> <em>puede ser negativa</em>.</p>
+<ul class="simple">
+<li><p>Por ejemplo, si <span class="math notranslate nohighlight">\(AB\)</span> es un estado puro <span class="math notranslate nohighlight">\(\Rightarrow S(AB) = 0\)</span></p></li>
+<li><p>Sin embargo no puede ser <em>demasiado</em> negativa</p></li>
+</ul>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+S(A|B) \geq  - \hbox{min}(S_A,S_B)
+\]</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Por un lado, del hecho de que <span class="math notranslate nohighlight">\(S(AB)\geq 0\)</span> se sigue que
+$<span class="math notranslate nohighlight">\(
+S(A|B) \geq - S(B)
+\)</span>$</p>
+<p class="sd-card-text">Por otro, vamos a acoplar <span class="math notranslate nohighlight">\(AB\)</span> a un tercer sistema <span class="math notranslate nohighlight">\(C\)</span> y considerar un estado puro <span class="math notranslate nohighlight">\(ABC\)</span> (se entiende (<span class="math notranslate nohighlight">\(\rho_{ABC} = \ket{\psi_{ABC}}\bra{\psi_{ABC}}\)</span>).</p>
+<p class="sd-card-text">Entonces sabemos que <span class="math notranslate nohighlight">\(S(AB) = S(C)\)</span> y que, también <span class="math notranslate nohighlight">\(S(B) = S(AC)\)</span>. Encontramos que</p>
+<div class="math notranslate nohighlight">
+\[
+S(A|B) = S(AB)- S(B) = S(C) - S(AC) \geq -S(A)
+\]</div>
+<p class="sd-card-text">donde hemos utilizado la positividad de la información mutua entre <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<p class="sd-card-text">Por tanto se sigue el enunciado</p>
+<div class="math notranslate nohighlight">
+\[
+S(A|B) \geq   \hbox{max}(-S_A,-S_B) =  - \hbox{min}(S_A,S_B)
+\]</div>
+</div>
+</details><p>La entropía condicional juega un papel fundamental en la posibilidad de establecer <em>protocolos de teleportación</em></p>
+<p><a id='desig_triang'></a></p>
+<section id="desigualdad-triangular-de-araki-lieb">
+<h4>Desigualdad triangular de Araki-Lieb<a class="headerlink" href="#desigualdad-triangular-de-araki-lieb" title="Permalink to this heading">#</a></h4>
+<p>Ahora podemos enunciar ciertas relaciones que guardan la entropía de un sistema <span class="math notranslate nohighlight">\(AB\)</span> con la de sus partes <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La entropías de von Neumann de un sistema compuesto <span class="math notranslate nohighlight">\(AB\)</span> y de sus partes <span class="math notranslate nohighlight">\(A,B\)</span> satisfacen, en cualquier estado <span class="math notranslate nohighlight">\(\rho\)</span>, la desigualdad siguiente</p>
+<div class="math notranslate nohighlight">
+\[
+|S(A) - S(B)| ~~ \leq ~~ S(AB) ~~\leq ~~S(A) + S(B)
+\]</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>La desigualdad de la izquierda recibe el nombre de  <em>desigualdad de Araki-Lieb</em></p></li>
+<li><p>La desigualdad de la derecha se conoce por <em>sub-aditividad</em> de la entropía.</p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">La desigualdad de la derecha se denomina <i>subaditividad</i>    y equivale a la positividad de la entropía relativa.</p>
+<p class="sd-card-text">Para demostrar la desigualdad de la izquierda (Araki-Lieb) recordamos la cota inferior para la entropía condicional</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c55ccbe2-5662-4f65-aee7-f6ec62f6231f">
+<span class="eqno">(52)<a class="headerlink" href="#equation-c55ccbe2-5662-4f65-aee7-f6ec62f6231f" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+ S(A|B) = S(AB) - S(B) &amp;\geq &amp; - \hbox{min}(S_A,S_B) \geq -S_A \\
+ S(B|A) = S(AB) - S(A) &amp;\geq&amp; - \hbox{min}(S_A,S_B) \geq -S_B \rule{0mm}{6mm}
+\end{eqnarray}\]</div>
+<p class="sd-card-text">De aquí se sigue que
+$<span class="math notranslate nohighlight">\(
+S(AB) \geq  |S(A)- S(B)|
+\)</span>$</p>
+</div>
+</details><p>La propiedad de subatividad permite encontrar una demostración sencilla de la  <em>concavidad</em> de la entropía de Von Neumann.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Corolario</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La entropía de von Neumann es una función <b>cóncava</b> de su argumento</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_i p_i \rho_i \leq S(p_i \rho_i) 
+\]</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Sean <span class="math notranslate nohighlight">\(\{\lambda_{i,a}\}, a=1,...,d_A\)</span> autovalores  <span class="math notranslate nohighlight">\(\rho_i\)</span>, then
+$<span class="math notranslate nohighlight">\(
+S(\rho_i ) = -\sum_{a}\lambda_{ia}\log\lambda_{ia}
+\)</span>$</p>
+<p class="sd-card-text">Let us consider an auxiliary system <span class="math notranslate nohighlight">\(B\)</span> with orthonormal basis  <span class="math notranslate nohighlight">\(\{\ket{i}\}\)</span>, and density matrix
+$<span class="math notranslate nohighlight">\(
+\rho_B = \sum_i p_i \ket{i}\bra{i}
+\)</span><span class="math notranslate nohighlight">\(
+and, now, define  the following \)</span>AB<span class="math notranslate nohighlight">\(-joint  state
+\)</span><span class="math notranslate nohighlight">\(
+\rho_{AB} = \sum_{i} p_i \rho_i \otimes \ket{i}\bra{i}
+\)</span><span class="math notranslate nohighlight">\(
+If \)</span>\rho_i <span class="math notranslate nohighlight">\( has eigenvectors  \)</span>\ket{e_{ia}}<span class="math notranslate nohighlight">\( with eigenvalues \)</span>\lambda_{ia}<span class="math notranslate nohighlight">\( so that \)</span>\sum_a \lambda_{ia} = 1<span class="math notranslate nohighlight">\(. Then it is easy to see that  the eigenvalues of \)</span>\rho_{AB}<span class="math notranslate nohighlight">\( will be \)</span>{ p_i\lambda_{ia}}$</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3a331917-d248-4380-9c20-b31ce135b8eb">
+<span class="eqno">(53)<a class="headerlink" href="#equation-3a331917-d248-4380-9c20-b31ce135b8eb" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+S_{AB} &amp;=&amp;-  \sum_{i,a} p_i\lambda_{ia} \log( p_i \lambda_{ia})  =
+\sum_i p_i\log p_i\sum_a\lambda_{ia} + \sum_i p_i \sum_{a}\lambda_{ia}\log\lambda_{ia} \nonumber\\
+&amp;=&amp;  \sum_i p_i\log p_i+ \sum_i p_i S(\rho_i)\nonumber\\
+&amp;=&amp; S_B + \sum_i p_i S(\rho_i) 
+\end{eqnarray}\]</div>
+<p class="sd-card-text">Taking the partial traces we find</p>
+<div class="amsmath math notranslate nohighlight" id="equation-403bc527-5558-41b0-9d1d-c246c7aed00b">
+<span class="eqno">(54)<a class="headerlink" href="#equation-403bc527-5558-41b0-9d1d-c246c7aed00b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\rho_A &amp;=&amp; \tr_B \rho_{AB} =  \sum_{i} p_i \rho_i \nonumber\\
+\rho_B &amp;=&amp; \tr_A \rho_{AB} = \sum_i p_i \ket{i}\bra{i} \nonumber
+\end{eqnarray}\]</div>
+<p class="sd-card-text">Now using the subaditivity property
+<span class="math notranslate nohighlight">\(
+S_{AB} \leq S_A + S_B
+\)</span>
+we obtain
+$<span class="math notranslate nohighlight">\(
+S_{AB} =   S_B + \sum_i p_i S(\rho_i)  \leq S_A  + S_ B=  \, .
+\)</span><span class="math notranslate nohighlight">\(
+and cancelling out \)</span>S(B)<span class="math notranslate nohighlight">\( we obtain
+\)</span><span class="math notranslate nohighlight">\(
+ \sum_i p_i S(\rho_i) \leq S(A) = S\left(  \sum_i p_i\rho_i \right)
+\)</span>$</p>
+</div>
+</details><p>Vamos a ver casos que saturan estas desigualdades</p>
+</section>
+<section id="caso-1-saturacion-de-sub-aditividad-estado-factorizable">
+<h4>Caso 1 : saturación de sub-aditividad: estado  factorizable<a class="headerlink" href="#caso-1-saturacion-de-sub-aditividad-estado-factorizable" title="Permalink to this heading">#</a></h4>
+<p>Supongamos que el sistema <span class="math notranslate nohighlight">\(AB\)</span> se encuentra en un estado compuesto <em>factorizable</em> . Entonces la <em>información mútua</em> es nula y, consecuentemente, la <em>sub-aditividad</em> se satura</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_{AB} = \rho_A \otimes \rho_B ~~~~\Leftrightarrow ~~~~ S(AB) = S(A) + S(B)
+\]</div>
+</section>
+<section id="caso-2-saturacion-de-araki-lieb-estado-puro-o-entrelazado">
+<h4>Caso 2 :  saturación de Araki-Lieb : estado  puro o entrelazado<a class="headerlink" href="#caso-2-saturacion-de-araki-lieb-estado-puro-o-entrelazado" title="Permalink to this heading">#</a></h4>
+<p>Comenzaremos por escribir el estado puro</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_{AB} = \ket{\psi_{AB}} \bra{\psi_{AB}}
+\]</div>
+<p>En un estado puro de un sistema <span class="math notranslate nohighlight">\(AB\)</span> bipartito, el entrelazamiento introduce correlaciones cuánticas entre los dos sistemas</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi_{AB}} = \sum_i c_{ij} \ket{i}_A\otimes \ket{j}_B
+\]</div>
+<p>Una forma de establecer si existe entrelazamiento es usar la descomposición de Schmidt.</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi_{AB}} = \sum_{a=1}^r \sqrt{p_a}\,  \ket{\psi^a_A}\otimes \ket{\psi^a_B}
+\]</div>
+<p>Si y sólo si  el número de Schmidt, <span class="math notranslate nohighlight">\(r\)</span>, es mayor que uno, el estado está entrelazado.</p>
+<p>Ahora queremos ser más finos, y proponer una manera de calcular el alcance de dichas correlaciones. Esto es lo que mide la <em>Entropía de Entrelazamiento</em>.</p>
+<p>Efectivamente
+$<span class="math notranslate nohighlight">\(
+S(\rho_A) = S(\rho_B) = - \sum_{a=1}^r p_a \log p_a
+\)</span>$</p>
+<p>Por tanto, la <em>entropía de entrelazamiento</em> es proporcional al <em>entrelazamiento</em> que hay en <span class="math notranslate nohighlight">\(\ket{\psi_{AB}}\)</span>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Sea <span class="math notranslate nohighlight">\({AB}\)</span> un sistema compuesto en un estado puro  <span class="math notranslate nohighlight">\( S(AB) = 0\)</span>. La entropía de entrelazamiento de sus subsistemas constituyentes <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> es</p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\to ~\)</span>  igual para ambos subsistemas <span class="math notranslate nohighlight">\(S(A) = S(B)\)</span></p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(\to ~\)</span>  proporcional al entrelazamiento del estado puro <span class="math notranslate nohighlight">\(\ket{\psi_{AB}}\)</span></p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">La matriz densidad <span class="math notranslate nohighlight">\(\rho_{AB} = \ket{\psi_{AB}}\bra{\psi_{AB}}\)</span> tiene entropía nula <span class="math notranslate nohighlight">\(S(\rho_{AB})=0\)</span>. No así las matrices densidad de los subsistemas <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span>.
+Escribiendo <span class="math notranslate nohighlight">\(\ket{\psi_{AB}}\)</span> en la base de Schmidt, podemos calcular</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_{A} =\Tr_B \rho_{AB} =  \sum_{a} p_a \ket{\psi^a_A}\bra{\psi^a_A}
+~~~~~~~,~~~~~~~~
+\rho_{B} =\Tr_A \rho_{AB} =  \sum_{a} p_a \ket{\psi^a_B}\bra{\psi^a_B}
+\]</div>
+<p class="sd-card-text">Como <span class="math notranslate nohighlight">\(\ket{\psi^a}\)</span> son ortonormales, para las entropías de los subsistemas  encontramos
+$<span class="math notranslate nohighlight">\(
+S(A) = S(B)  = \sum_{a=1}^r p_a \log p_a
+\)</span>$</p>
+<ul class="simple">
+<li><p class="sd-card-text">son proporcionales al grado de entrelazamiento de <span class="math notranslate nohighlight">\(\ket{\psi_{AB}}\)</span>.</p></li>
+</ul>
+<p class="sd-card-text">Efectivamente, si <span class="math notranslate nohighlight">\(p_1= 1\)</span> y <span class="math notranslate nohighlight">\(p_{i&gt;1} = 0\)</span>, con lo que no hay entrelazamiento, entonces la entropía <span class="math notranslate nohighlight">\(S(A) = S(B)=0\)</span>.</p>
+<p class="sd-card-text">Por el contrario, si el estado es maximalmente mezclado <span class="math notranslate nohighlight">\(S = \log N\)</span>, entonces el entrelazamiento también es maximal <span class="math notranslate nohighlight">\(p_a = \frac{1}{\sqrt{N}}\)</span> para <span class="math notranslate nohighlight">\(a = 1,..., N\)</span>.</p>
+</div>
+</details><p>Vemos que, en este caso, se satura la desigualdad de Araki-Lieb</p>
+<div class="math notranslate nohighlight">
+\[
+|S(A)-S(B)| = 0 = S(AB)
+\]</div>
+<p><a id="codif_optim"></a></p>
+</section>
+</section>
+</section>
+<section id="codificacion-cuantica">
+<h2>Codificación cuántica<a class="headerlink" href="#codificacion-cuantica" title="Permalink to this heading">#</a></h2>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>de Schuhmacher</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Given a message whose letters are pure states drawn independently from the quantum alphabet <span class="math notranslate nohighlight">\(X=  \{ \ket{\psi_i}, p_i\}\)</span>,  there exists
+an <i>optimal lossless coding</i> that makes an average use of <span class="math notranslate nohighlight">\(S(\rho)\)</span> <i>qubits per letter</i>, where <span class="math notranslate nohighlight">\(\rho = \sum_i p_i \ketbra{\psi_i}{\psi_i}\)</span>.
+\end{tcolorbox}</p>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_04_Quantum_Info"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter_052_Fun_Info_Cuant_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Medidas generalizadas</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-de-informacion-clasicas">Entropías de información clásicas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-shannon">Entropía de Shannon</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-combinadas">Entropías combinadas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-condicional">Entropía condicional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#informacion-mutua">Información Mútua</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-relativa">Entropía relativa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-de-informacion-cuanticas">Entropías de información cuánticas</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-von-neumann">Entropía de Von Neumann</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-de-la-entropia-de-von-neumann">Propiedades de la entropía de Von Neumann</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Entropía relativa</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-de-preparacion-y-de-medida">Entropías de preparación y de medida</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-preparacion">Entropía de preparación</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-medida">Entropía de medida</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-mezclas-estadisticas">Entropía de mezclas estadísticas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entropias-cuanticas-de-sistemas-compuestos">Entropías cuánticas de sistemas compuestos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-entrelazamiento">Entropía de entrelazamiento</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entropia-de-un-estado-no-correlacionado">Entropía de un estado no correlacionado</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Información mutua</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Entropía condicional</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desigualdad-triangular-de-araki-lieb">Desigualdad triangular de Araki-Lieb</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-1-saturacion-de-sub-aditividad-estado-factorizable">Caso 1 : saturación de sub-aditividad: estado  factorizable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-2-saturacion-de-araki-lieb-estado-puro-o-entrelazado">Caso 2 :  saturación de Araki-Lieb : estado  puro o entrelazado</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codificacion-cuantica">Codificación cuántica</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

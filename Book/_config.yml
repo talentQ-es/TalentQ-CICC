@@ -1,0 +1,106 @@
+title : Curso de Introducción a la Computación Cuántica
+author: Javier Mas Solé & David Castaño Bandín
+logo: 'TalentQ_LogoNegNegro.png'
+
+# Short description about the book
+description: Curso básico sobre Computación Cuántica
+
+
+only_build_toc_files          : true  # Only build files in _toc
+
+execute:
+  #execute_notebooks           : auto     # Por defecto. Ejecuta si hay cambios en las celdas
+  execute_notebooks           : cache
+  #execute_notebooks           : force
+  #execute_notebooks           : inline
+  #execute_notebooks           : 'off'
+
+  exclude_patterns:
+    - 'pattern1'
+    - 'pattern2'
+    - '*pattern3withwildcard'
+
+  timeout: 100
+  allow_errors: true
+  stderr_output: show
+
+
+# HTML-specific settings
+html:
+  home_page_in_navbar         : false
+  use_multitoc_numbering      : true  # Restart numbering between parts
+  use_repository_button       : true
+  use_issues_button           : true
+  use_edit_page_button        : true
+  comments:
+    utterances:
+      repo: "jamasole/Curso-TalentQ-Book"
+
+# Interact link settings
+notebook_interface            : "notebook"
+
+# Launch button settings
+repository:
+  url                         : https://github.com/jamasole/Curso-TalentQ-Jupyterlab
+  path_to_book                : "Book"    # Optional path to your book, relative to the repository root
+  branch                      : main  # Which branch of the repository should be used when creating links (optional)
+
+#launch_buttons:
+#  notebook_interface     : "jupyterlab"  # or "classic"
+#  binderhub_url          : "https://mybinder.org"
+#  thebe                  : true    # para ejecución interactiva
+
+
+
+
+# LaTeX settings
+bibtex_bibfiles:
+   - _bibliography/references.bib
+
+# sphinx:
+#  config:
+#    bibtex_reference_style: 'author_year'
+
+sphinx:
+  extra_extensions:
+    - sphinx_proof
+    - sphinx_comments
+    - sphinx_exercise
+  config:
+    html_js_files:
+    - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js  # Para usar Plotly
+
+latex:
+  latex_engine                : "pdflatex"
+  latex_documents:
+    targetname: book.tex
+
+## Esto es para Rmarkdown
+#
+# sphinx:
+#  config:
+#    nb_custom_formats:
+#        .Rmd:
+#            - jupytext.reads
+#            - fmt: Rmd
+
+## show_authors: true   # No se como funciona
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath
+    - colon_fence
+    - deflist
+    - dollarmath
+    - fieldlist
+    - html_admonition
+    - html_image
+    - linkify
+    - replacements
+    - smartquotes
+    - strikethrough
+    - substitution
+    - tasklist
+  myst_heading_anchors : 3

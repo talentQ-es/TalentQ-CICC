@@ -1,0 +1,1197 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>El arte de medir II &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Entrelazamiento en acción" href="Section_027_Entrelazamiento_myst.html" />
+    <link rel="prev" title="Multi-cúbits" href="Section_025_Multicubits_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Los Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>El arte de medir II</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-estados-multicubit">Medidas de estados multicúbit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-multiples-cubits-y-medidas-en-qiskit">Circuitos con múltiples cúbits y medidas en Qiskit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-en-bases-generales">Medidas en bases generales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-pauli">Medidas  de Pauli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-bell">Medida de Bell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-observables-multi-cubit">Valores esperados de observables multi-cúbit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-cadenas-de-pauli">Valores esperados de cadenas de Pauli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-hadamard">Medida de Hadamard</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proyeccion-de-hadamard">Proyección de Hadamard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Mar 11, 2024 | 4 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="el-arte-de-medir-ii">
+<h1>El arte de medir II<a class="headerlink" href="#el-arte-de-medir-ii" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\mathcal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\boldn}{{\bf n}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\tr}{{\rm tr}}\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../../macro_tQ.py
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="medidas-de-estados-multicubit">
+<h2>Medidas de estados multicúbit<a class="headerlink" href="#medidas-de-estados-multicubit" title="Permalink to this heading">#</a></h2>
+<p>Un aparato de medida estándar  hace colapsar el estado a un elemento <span class="math notranslate nohighlight">\(\ket{x}\)</span> de la <em>base computacional</em>, que identificamos mediante una cadena de bits <span class="math notranslate nohighlight">\(a_{n-1}...a_0\)</span> con <span class="math notranslate nohighlight">\(a_i=0,1\)</span>,  donde <span class="math notranslate nohighlight">\(x= 2^{n-1}i_{n-1}+...+2^0 a_0\)</span>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Multimeter_zbasis.png"><img alt="../../../_images/Multimeter_zbasis.png" src="../../../_images/Multimeter_zbasis.png" style="width: 400px;" /></a>
+</figure>
+<p>Este medidor está asociado al operador hermítico <span class="math notranslate nohighlight">\(\sigma_z^{\otimes n} = Z\otimes \ldots \otimes Z\)</span></p>
+<section id="circuitos-con-multiples-cubits-y-medidas-en-qiskit">
+<h3>Circuitos con múltiples cúbits y medidas en Qiskit<a class="headerlink" href="#circuitos-con-multiples-cubits-y-medidas-en-qiskit" title="Permalink to this heading">#</a></h3>
+<p>Un estado general en un circuito de <span class="math notranslate nohighlight">\(n\)</span> cúbits se expresará en la base computacional</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi} = \sum_{i_{n-1},...,i_0= 0,1} c_{i_{n-1}...i_0} \ket{i_{n-1}...i_0} = \sum_a c_a \ket{a}
+\]</div>
+<p>Las medida es esencialmente un mapa entre n-cúbits cuánticos y n-bits clásicos.</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{i_{n-1} i_{n-2}\, ... \, i_0} ~~\longrightarrow ~~ i_{n-1}i_{n-2}...i_0\in \{0,1\}^n
+\]</div>
+<p>La manera de tener acceso al valor absoluto de las amplitudes es midiendo repetidas veces para reconstruir la función de probabilidad</p>
+<div class="math notranslate nohighlight">
+\[
+|c_{i_{n-1} i_{n-2}...i_0}|^2 =p(i_{n-1} i_{n-2}...i_0)= \frac{n_{i_{n-1} i_{n-2}...i_0}}{N}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(N\)</span> es el número total de medidas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+<span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="kn">from</span> <span class="nn">qiskit_aer</span> <span class="kn">import</span> <span class="n">AerSimulator</span> 
+
+<span class="s1">&#39;definimos un estado de entrada en H^3$&#39;</span>
+<span class="n">psi</span> <span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">psi</span><span class="o">/=</span><span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Statevector</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;Latex&#39;</span><span class="p">))</span>
+
+<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qr&#39;</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cr&#39;</span><span class="p">)</span>
+<span class="n">qc_psi_Qs</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+<span class="n">qc_psi_Qs</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">qc_psi_Qs</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">[:],</span><span class="n">cr</span><span class="p">[:])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">qc_psi_Qs</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">))</span>
+
+<span class="s1">&#39;ejecutamos el circuito y graficamos la estadística de cuentas&#39;</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">100000</span>
+
+<span class="n">job</span><span class="o">=</span><span class="n">AerSimulator</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc_psi_Qs</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span> 
+<span class="n">result</span><span class="o">=</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>        
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cuentas=&#39;</span><span class="p">,</span><span class="n">counts</span><span class="p">)</span>        <span class="c1">#diccionario de cuentas</span>
+<span class="n">display</span><span class="p">(</span><span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span> <span class="c1"># Mostramos un histograma de resultados</span>
+
+<span class="s1">&#39;transformamos las cuentas en un diccionario de  probabilidades &#39;</span>    
+<span class="n">probs_psi</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>         <span class="c1"># vamos a modificar el diccionario &quot;cuentas&quot; con las probabilidades </span>
+<span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span><span class="n">counts</span> <span class="ow">in</span> <span class="n">probs_psi</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">probs_psi</span><span class="p">[</span><span class="n">bitstring</span><span class="p">]</span><span class="o">=</span> <span class="n">counts</span><span class="o">/</span><span class="n">nshots</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Probabilidades=&#39;</span><span class="p">,</span> <span class="n">probs_psi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{4} |000\rangle- \frac{1}{2} |001\rangle- \frac{1}{2} |010\rangle+\frac{1}{4} |011\rangle+\frac{1}{4} |100\rangle+\frac{1}{2} |110\rangle- \frac{1}{4} |111\rangle\]</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../../_images/f777b889f3fbfa0767dd2e7338ac2dc98e3b84a84bd2e12a36498842467befb5.png" src="../../../_images/f777b889f3fbfa0767dd2e7338ac2dc98e3b84a84bd2e12a36498842467befb5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cuentas= {&#39;011&#39;: 6180, &#39;111&#39;: 6070, &#39;110&#39;: 25236, &#39;100&#39;: 6352, &#39;001&#39;: 24997, &#39;010&#39;: 25003, &#39;000&#39;: 6162}
+</pre></div>
+</div>
+<img alt="../../../_images/084d76e458ec3c967389add29e4ad035bc386bf5ff51ca54f0748f7aebcf07f8.png" src="../../../_images/084d76e458ec3c967389add29e4ad035bc386bf5ff51ca54f0748f7aebcf07f8.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Probabilidades= {&#39;011&#39;: 0.0618, &#39;111&#39;: 0.0607, &#39;110&#39;: 0.25236, &#39;100&#39;: 0.06352, &#39;001&#39;: 0.24997, &#39;010&#39;: 0.25003, &#39;000&#39;: 0.06162}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="medidas-en-bases-generales">
+<h2>Medidas en bases generales<a class="headerlink" href="#medidas-en-bases-generales" title="Permalink to this heading">#</a></h2>
+<p>Al igual que en el capítulo anterior, desearíamos poder medir el estado en una base ortonormal arbitraria <span class="math notranslate nohighlight">\(\{\ket{ x}'\}\)</span>, <span class="math notranslate nohighlight">\(x=0,...,2^n-1\)</span>.</p>
+<p>Esto quiere decir que buscamos un circuito que, a la llegada de un vector  concreto de la base <span class="math notranslate nohighlight">\(\ket{x}'=\ket{a_{n-1}...a_0}'\)</span>, devuelva exactamente <em>la  colección</em> de bits:  <span class="math notranslate nohighlight">\(~a_{n-1}...a_0\)</span> donde <span class="math notranslate nohighlight">\(a_i = 0,1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+M : \ket{a_{n-1}...a_0}' ~~~~~~\Longrightarrow ~~~~~~ a_{n-1}...a_0
+\]</div>
+<p>Vamos a suponer que conocemos el operador unitario, <span class="math notranslate nohighlight">\(U\)</span>, que lleva la  base computacional a la base deseada</p>
+<div class="math notranslate nohighlight">
+\[\ket{a_{n-1}...a_0}'= U\ket{a_{n-1}...a_0}~~~~~~\Longleftrightarrow ~~~~~~   U^\dagger\ket{a_{n-1}...a_0}' = \ket{ a_{n-1}...a_0}  \, .\]</div>
+<p>Entonces es evidente que sólo tenemos que añadir el operador <span class="math notranslate nohighlight">\(U^\dagger\)</span> antes de usar el medidor estándar</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Multimeter_basis.png"><img alt="../../../_images/Multimeter_basis.png" src="../../../_images/Multimeter_basis.png" style="width: 450px;" /></a>
+</figure>
+<section id="medidas-de-pauli">
+<h3>Medidas  de Pauli<a class="headerlink" href="#medidas-de-pauli" title="Permalink to this heading">#</a></h3>
+<p>En caso más frecuente consiste en medir diferentes cúbits en diferentes bases de Pauli, <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> ó <span class="math notranslate nohighlight">\(Z\)</span>.
+En este caso, <span class="math notranslate nohighlight">\(U\)</span> es un producto de <em>rotaciones locales</em> en cada cúbit, <span class="math notranslate nohighlight">\(\ket{a_i}_x = H\ket{a_i}_z\)</span> ó <span class="math notranslate nohighlight">\(\ket{a_i}_y = SH\ket{a_i}\)</span>.
+Por ejemplo el siguiente circuito mide en la base <span class="math notranslate nohighlight">\(Z_0X_1Y_2\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/XYZ_multimeter.png"><img alt="../../../_images/XYZ_multimeter.png" src="../../../_images/XYZ_multimeter.png" style="width: 250px;" /></a>
+</figure>
+<p>definamos una función que añade aparatos de medida en bases <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> ó <span class="math notranslate nohighlight">\(Z\)</span> a partir de una <em>cadena</em> como ‘xxy’ etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_multimeasure_XYZ</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">paulistring</span><span class="p">):</span>
+
+    <span class="k">assert</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">num_qubits</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">paulistring</span><span class="p">))</span> <span class="c1">#check whether width of circuit coincides with length of Pauli string</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">basis</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">paulistring</span><span class="p">)):</span>
+        <span class="k">if</span>  <span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
+            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+            <span class="k">pass</span>    
+        <span class="k">elif</span> <span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">sdg</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">qc</span> 
+
+<span class="s1">&#39;Veamos un ejemplo&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">add_multimeasure_XYZ</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="s1">&#39;ZYIX&#39;</span><span class="p">)</span>  <span class="c1"># probar a cambiar el aparato de medida</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../../_images/9f39dbc651ca034f22f05e6d214d428140d38832f54424125e8e3caab042b2c2.png" src="../../../_images/9f39dbc651ca034f22f05e6d214d428140d38832f54424125e8e3caab042b2c2.png" />
+</div>
+</div>
+</section>
+<section id="medida-de-bell">
+<h3>Medida de Bell<a class="headerlink" href="#medida-de-bell" title="Permalink to this heading">#</a></h3>
+<p>El circuito</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Bell_basis.png"><img alt="../../../_images/Bell_basis.png" src="../../../_images/Bell_basis.png" style="width: 200px;" /></a>
+</figure>
+<p>genera la <i>base de Bell</i> <span class="math notranslate nohighlight">\(\ket{B_{xy}} = \ket{xy}_B \)</span> a partir de la <i>base computacional</i> <span class="math notranslate nohighlight">\(\{\ket{xy}\}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{rcl}
+\ket{00}_B &amp;=&amp; \frac{1}{\sqrt{2}} \big( \ket{00} + \ket{11} \big) \\
+\ket{01}_B &amp;=&amp; \frac{1}{\sqrt{2}} \big( \ket{01} + \ket{10} \big) \\
+\ket{10}_B &amp;=&amp; \frac{1}{\sqrt{2}} \big( \ket{00} - \ket{11} \big) \\
+\ket{11}_B &amp;=&amp; \frac{1}{\sqrt{2}} \big( \ket{01} - \ket{10} \big) \\
+\end{array}
+\end{split}\]</div>
+<p>El circuito que efectúa una medida en la base de Bell será, por tanto</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{xy}_B \to xy
+\]</div>
+<p>utiliza el <em>desentrelazador</em></p>
+<div class="math notranslate nohighlight">
+\[U^\dagger = ( \hbox{CNOT}\cdot H)^\dagger = H\cdot \hbox{CNOT}\]</div>
+<p>antes del medidor</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Bell_meter.png"><img alt="../../../_images/Bell_meter.png" src="../../../_images/Bell_meter.png" style="width: 400px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_Bell_measurement</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">qubits</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qubits</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    
+<span class="s1">&#39;ahora verificamos&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+
+<span class="s1">&#39;creamos el circuito&#39;</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="s1">&#39;definimos la base de Bell&#39;</span>
+<span class="n">B00</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">B01</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">B10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">B11</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="s1">&#39;inicializamos el estado de entrada en cualquiera de los estados anteriores&#39;</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">B10</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="s1">&#39;añadimos el medidor en la base de Bell</span>
+<span class="n">add_Bell_measurement</span><span class="p">(</span><span class="n">qc</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">))</span>
+
+<span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span><span class="o">=</span><span class="n">M_simulator</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">22</span>
+    <span class="s1">&#39;añadimos el medidor en la base de Bell</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: unterminated string literal (detected at line 22)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="valores-esperados-de-observables-multi-cubit">
+<h2>Valores esperados de observables multi-cúbit<a class="headerlink" href="#valores-esperados-de-observables-multi-cubit" title="Permalink to this heading">#</a></h2>
+<p>El <em>problema</em> esencial para medir un valor esperado <span class="math notranslate nohighlight">\(\bra{\psi} A \ket{\psi}\)</span> es que, en general,  <span class="math notranslate nohighlight">\(A\)</span> <strong>no es un operador unitario</strong>. Por tanto no se puede incluir como parte de un circuito</p>
+<p>Si pudiésemos expresar  como una combinación de operadores unitarios, <span class="math notranslate nohighlight">\(A = \sum_i c_i U_i\)</span>, entonces sí podríamos calcular cada valor esperado <span class="math notranslate nohighlight">\(\langle U_i\rangle\)</span> mediante un circuito y, finalmente, componer el resultado <span class="math notranslate nohighlight">\(\langle A\rangle = \sum_i c_i \langle U_i\rangle\)</span></p>
+<p>Una base  la constituyen la <em>base de cadenas de Pauli</em>,  <span class="math notranslate nohighlight">\(U = \sigma_{i_1}\otimes \ldots \otimes \sigma_{i_n}\)</span> que son, a la vez, hermíticas y unitarias</p>
+<div class="math notranslate nohighlight">
+\[
+A = \sum_{i_1,...,i_n=0}^3 a_{i_1\ldots i_n} \, \sigma_{i_1}\otimes \ldots \otimes \sigma_{i_n}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\sigma_i = (I,X,Y,Z)\)</span>. Por ejemplo, con <span class="math notranslate nohighlight">\(n=3\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_2\otimes \sigma_0 \otimes \sigma_3 =  Y\otimes I\otimes Z 
+\]</div>
+<p>los coeficientes se pueden obtener calculando las trazas</p>
+<div class="math notranslate nohighlight">
+\[
+a_{i_1\ldots i_n} =\frac{1}{2^n} \tr (A \,  \sigma_{i_1}\otimes \ldots  \otimes\sigma_{i_n})
+\]</div>
+<p>Por tanto sólo tenemos que averiguar los valores esperados de cadenas de Pauli</p>
+<div class="math notranslate nohighlight">
+\[
+\langle A \rangle_{\psi} =  \sum_{i_1,...,i_n=0}^3 a_{i_1\ldots i_n} \langle \sigma_{i_1}\otimes \ldots   \otimes\sigma_{i_n}\rangle
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39; Matrices de Pauli&#39;</span>
+<span class="n">s0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span> <span class="c1"># matriz identidad</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">],[</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">Pauli_basis</span> <span class="o">=</span> <span class="p">[</span><span class="n">s0</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="n">s3</span><span class="p">]</span>
+
+<span class="s1">&#39; Cadena de Pauli YIZ = s2s0s3&#39;</span> 
+<span class="n">Pauli_string_203</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">s0</span><span class="p">,</span><span class="n">s3</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">array_to_latex</span><span class="p">(</span><span class="n">Pauli_string_203</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;YIZ =&#39;</span><span class="p">))</span>
+
+<span class="s1">&#39;Matriz arbitraria&#39;</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="s1">&#39;Proyección a_203 de A sobre YIZ&#39;</span>
+<span class="n">a_203</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">Pauli_string_203</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a_203 = &#39;</span><span class="p">,</span> <span class="n">a_203</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}
+YIZ =
+\begin{bmatrix}
+0 &amp; 0 &amp; 0 &amp; 0 &amp; - i &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; i &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; - i &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; i  \\
+ i &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; - i &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; i &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; - i &amp; 0 &amp; 0 &amp; 0 &amp; 0  \\
+ \end{bmatrix}
+\end{split}\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a_203 =  (-0.014428679620298882+0.0500845900523401j)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="valores-esperados-de-cadenas-de-pauli">
+<h3>Valores esperados de cadenas de Pauli<a class="headerlink" href="#valores-esperados-de-cadenas-de-pauli" title="Permalink to this heading">#</a></h3>
+<p>Veamos cómo calcular el valor esperado siguiente</p>
+<div class="math notranslate nohighlight">
+\[
+\langle Z\otimes Z\otimes Z\rangle_\Psi  = \bra{\Psi}   Z\otimes Z\otimes Z \ket{\Psi}
+\]</div>
+<p>Dado que <span class="math notranslate nohighlight">\(Z\ket{i} = (-1)^i\ket{i}\)</span> donde <span class="math notranslate nohighlight">\(i=0,1\)</span>, insertando la identidad, el valor esperado  de este operador es</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{rcl}
+\langle  Z\otimes Z\otimes Z\rangle_\Psi &amp;=&amp;
+\bra{\Psi} Z\otimes Z\otimes Z \ket{\Psi} \\ 
+&amp;=&amp; \sum_{i_2,i_1,i_0=0,1}\bra{\Psi} Z\otimes Z\otimes Z \ket{i_2 i_1 i_0}\braket{i_2 i_1 i_0}{\Psi}  \rule{0mm}{10mm}  \\ \rule{0mm}{10mm}
+&amp;=&amp; \sum_{i_2,i_1,i_0=0,1}(-1)^{i_2 + i_1 + i_0}\big|\bra{i_2 i_1 i_0}\Psi\rangle\big|^2 \\ \rule{0mm}{10mm}
+&amp;=&amp; \sum_{i_2,i_1,i_0=0,1} (-1)^{i_2 + i_1 + i_0} p(i_2,i_1,i_0) \nonumber\\ 
+\end{array}
+\end{split}\]</div>
+<p>Naturalmente, <span class="math notranslate nohighlight">\(\langle ZZZ\rangle \)</span> es el valor medio  de la distribución de probabilidad  <span class="math notranslate nohighlight">\(\{\lambda(x),p(x)\},\)</span> con <span class="math notranslate nohighlight">\(x=(i_2 i_1 i_0)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ \langle ZZZ\rangle = \bar \lambda = \sum_x \lambda(x) p(x) = \sum_{x}(-1)^{i_{2}+i_1+i_0}\frac{n(x)}{\sum_x n(x)} 
+\]</div>
+<p>También podemos obtener la varianza de esta distribución</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2 = \sum_{x}\left((-1)^{i_{2}+i_1+i_0}-\bar\lambda \right)^2 p(x)
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;aprovechamos el diccionatio &quot;probs_psi&quot; creado al principio de este capítulo&#39;</span>
+
+<span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span><span class="n">probs</span>  <span class="ow">in</span> <span class="n">probs_psi</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">mean</span> <span class="o">+=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span> <span class="o">*</span> <span class="n">probs</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;ZZZ&gt;_shots =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="s1">&#39;verificamos con la expresión analítica&#39;</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">ZZZ</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span><span class="n">s3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;ZZZ&gt;_analitico =&#39;</span><span class="p">,</span> <span class="n">tQ</span><span class="o">.</span><span class="n">braket</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ZZZ</span><span class="p">,</span><span class="n">psi</span><span class="p">))</span> <span class="p">)</span>
+
+<span class="n">variance</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span><span class="n">probs</span>  <span class="ow">in</span> <span class="n">probs_psi</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">variance</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">probs</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sigma = &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ZZZ&gt;_shots = -0.24844
+&lt;ZZZ&gt;_analitico = -0.25
+sigma =  0.9686472868903314
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora es muy evidente cómo medir el valor esperado de otras <em>cadenas de Pauli</em> en el mismo estado. Por ejemplo</p>
+<div class="math notranslate nohighlight">
+\[
+\langle Z\otimes X\otimes Y\rangle_\Psi  = \bra{\Psi}   Z\otimes X\otimes Y \ket{\Psi}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+
+<span class="s1">&#39; ahora generamos el circuito que mide en la base ZXY&#39;</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">qr</span><span class="p">)</span>
+<span class="n">add_multimeasure_XYZ</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="s1">&#39;ZXY&#39;</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="n">AerSimulator</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span><span class="n">count</span>  <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">mean</span> <span class="o">+=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span> <span class="o">*</span> <span class="n">count</span><span class="o">/</span><span class="n">nshots</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;ZXY&gt; =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="s1">&#39;verificamos con la expresión analítica&#39;</span>
+<span class="n">ZXY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">s3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">s2</span><span class="p">,</span><span class="n">s1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;ZXY&gt;_analitico =&#39;</span><span class="p">,</span> <span class="n">tQ</span><span class="o">.</span><span class="n">braket</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ZXY</span><span class="p">,</span><span class="n">psi</span><span class="p">))</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;011&#39;: 28018, &#39;111&#39;: 3070, &#39;110&#39;: 3149, &#39;001&#39;: 3162, &#39;100&#39;: 15825, &#39;101&#39;: 15679, &#39;000&#39;: 3161, &#39;010&#39;: 27936}
+&lt;ZXY&gt; = 0.00014
+&lt;ZXY&gt;_analitico = 0j
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Considera el hamiltoniano <span class="math notranslate nohighlight">\(H=\lambda (X X+Y Y+Z Z)\)</span> siendo <span class="math notranslate nohighlight">\(\lambda =1.47\cdot 10^{-6}eV\)</span>.
+Calcular el valor esperado de la energía <span class="math notranslate nohighlight">\(E = \langle H\rangle_\Psi\)</span>  en los cuatro estados de Bell
+<span class="math notranslate nohighlight">\(\ket{\Psi} = \ket{ij}_B\)</span>.</p>
+</div>
+</section>
+<section id="medida-de-hadamard">
+<h3>Medida de Hadamard<a class="headerlink" href="#medida-de-hadamard" title="Permalink to this heading">#</a></h3>
+<p>Al final, el valor esperado de un operador es un simple número que se obtiene a partir de una distribución aleatoria de valores.
+¿No podríamos diseñar una variable aleatoria cuyo valor medio coincida con ese resultado?
+La medida de Hadamard hace precisamente esto aprovechando el entrelazamiento.</p>
+<p>Consideremos el siguiente circuito</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Hadamard_measure.png"><img alt="../../../_images/Hadamard_measure.png" src="../../../_images/Hadamard_measure.png" style="width: 280px;" /></a>
+</figure>
+<p>El aparato de medida sólo registra valores <span class="math notranslate nohighlight">\(\{0,1\}\)</span> como resultado de las medidas proyectivas sobre los ejes <span class="math notranslate nohighlight">\(X\)</span>  ó <span class="math notranslate nohighlight">\(Y\)</span>. Supongamos que medimos con el observable <span class="math notranslate nohighlight">\(X\)</span>. El promedio</p>
+<div class="math notranslate nohighlight">
+\[
+p_{0}-p_{1} = \frac{n_{0}}{N} - \frac{n_{1}}{N} = \langle X\rangle_{ancilla}
+\]</div>
+<p>es el valor esperado de <span class="math notranslate nohighlight">\(X\)</span> en la ancilla. Análogamente, será <span class="math notranslate nohighlight">\(\langle Y\rangle_{ancilla}\)</span>  si usamos el observable <span class="math notranslate nohighlight">\(Y\)</span>.  Vamos a demostrar el siguiente resultado que relaciona estos dos números con el valor esperado de <span class="math notranslate nohighlight">\(U\)</span> en el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<div class="math notranslate nohighlight">
+\[
+\langle X\rangle_{ancilla} = {\rm Re} \langle U\rangle_{\psi} ~~~,~~~ \langle Y\rangle_{ancilla} = {\rm Im} \langle U\rangle_{\psi}\, 
+\]</div>
+</div>
+</div>
+<p>La demostración requiere un cálculo explícito. Para el caso de medir con <span class="math notranslate nohighlight">\(X\)</span>, el circuito anterior será</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Hadamard_measurea.png"><img alt="../../../_images/Hadamard_measurea.png" src="../../../_images/Hadamard_measurea.png" style="width: 350px;" /></a>
+</figure>
+<p>Un cálculo explícito nos da el estado que llega al aparato de medida</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{0}\ket{\psi} ~\to ~ \ket{\Psi} = \frac{1}{2} \left[\rule{0mm}{3mm} |0\rangle \otimes (1 + U) |\psi\rangle +  |1\rangle \otimes (1 - U) |\psi\rangle \right] \label{hadam}
+\]</div>
+<p>El número <span class="math notranslate nohighlight">\( p_{0} - p_{1}\)</span> es el valor esperado de <span class="math notranslate nohighlight">\(\langle X\rangle \)</span> en el estado de la ancilla justo  antes de la barrera. Encontramos el siguiente resultado</p>
+<div class="math notranslate nohighlight">
+\[
+\langle{X}\rangle_{ancilla}  =  \hbox{Re}\bra{\psi} U \ket{\psi}
+\]</div>
+<p>Supongamos ahora que medimos en la base <span class="math notranslate nohighlight">\(Y\)</span>, es decir, con el circuito siguiente.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Hadamard_measureb.png"><img alt="../../../_images/Hadamard_measureb.png" src="../../../_images/Hadamard_measureb.png" style="width: 350px;" /></a>
+</figure>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Verificar que la parte imaginaria viene de medir  <span class="math notranslate nohighlight">\(\langle Y\rangle\)</span> en la ancilla</p>
+<div class="math notranslate nohighlight">
+\[
+\langle{Y}\rangle_{ancilla}  =  \hbox{Im}\bra{\psi} U \ket{\psi} \, .
+\]</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Obtener el valor esperado de <span class="math notranslate nohighlight">\(\langle Z\otimes Z\otimes Z\rangle_\Psi\)</span> en el estado</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi&gt; = \frac{i}{4}|000&gt;+\frac{1}{\sqrt{8}}|001&gt;+\frac{1+i}{4}|010&gt;+\frac{1+2i}{\sqrt{8}}|101&gt;+\frac{1}{4}|110&gt;
+\]</div>
+<p>usando el método de Hadamard.</p>
+</div>
+<p>Generamos el circuito de medida de Hadamard</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+
+<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;qr&#39;</span><span class="p">)</span>
+<span class="n">qra</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;ancilla&#39;</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="s1">&#39;creamos el operador como una puerta &quot;gate&quot; que admite el método &quot;control&#39;</span>
+<span class="n">qc0</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">qc0</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">CZZZ_gate</span> <span class="o">=</span> <span class="n">qc0</span><span class="o">.</span><span class="n">to_gate</span><span class="p">()</span><span class="o">.</span><span class="n">control</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">ctrl_state</span><span class="o">=</span> <span class="mi">1</span><span class="p">)</span> 
+
+<span class="s1">&#39;creamos el circuito con el operador controlado&#39;</span>
+<span class="n">qc_Had</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qra</span><span class="p">,</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+<span class="n">qc_Had</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span><span class="n">qr</span><span class="p">)</span>
+<span class="n">qc_Had</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qra</span><span class="p">)</span>  
+<span class="n">qc_Had</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CZZZ_gate</span><span class="p">,</span><span class="n">qra</span><span class="p">[:]</span> <span class="o">+</span> <span class="n">qr</span><span class="p">[:])</span>
+<span class="n">qc_Had</span><span class="o">.</span><span class="n">sdg</span><span class="p">(</span><span class="n">qra</span><span class="p">)</span>
+<span class="n">qc_Had</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qra</span><span class="p">)</span>
+<span class="n">qc_Had</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qra</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="n">qc_Had</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f8d5d49719afc0c9c0bad625fa414caff8dc688ec2dd3ba89985a145cd7e6a10.png" src="../../../_images/f8d5d49719afc0c9c0bad625fa414caff8dc688ec2dd3ba89985a145cd7e6a10.png" />
+</div>
+</div>
+<p>Ejecutamos y obtenemos el valor esperado</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<span class="n">shots</span><span class="o">=</span><span class="mi">1000000</span>
+
+<span class="n">cuentas_Had</span><span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_Had</span><span class="p">,</span><span class="n">M_backend</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cuentas_Had</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">cuentas_Had</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000000</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">cuentas_Had</span><span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_Had</span><span class="p">,</span><span class="n">M_backend</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;Aer&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Define una función <i>add_Hadamadard_measure</i> que reciba un circuito y una  cadena de Pauli y añada al circuito el medidor de Hadamard asociado.</p>
+</div>
+<section id="proyeccion-de-hadamard">
+<h4>Proyección de Hadamard<a class="headerlink" href="#proyeccion-de-hadamard" title="Permalink to this heading">#</a></h4>
+<p>Supongamos el operador <span class="math notranslate nohighlight">\(U\)</span> es un operador sobre 1 cúbit <em>a la vez hermítico y unitario</em>.</p>
+<p>Por tanto puede ser considerado, a la vez,</p>
+<ul class="simple">
+<li><p>un observable con autovalores reales  <span class="math notranslate nohighlight">\(\lambda = \pm1\)</span> y</p></li>
+<li><p>una puerta cuántica con autovalores de módulo unidad</p></li>
+</ul>
+<p>Ello deja a <span class="math notranslate nohighlight">\(\lambda = \pm 1\)</span> como los únicos autovalores posibles para un operador así.
+Los operadores <span class="math notranslate nohighlight">\(X,Y,Z\)</span> y <span class="math notranslate nohighlight">\(H\)</span> son ejemplos de ello.</p>
+<p>Denominemos <span class="math notranslate nohighlight">\(\ket{a}_U, \, a=0,1\)</span>  los autovectores de <span class="math notranslate nohighlight">\(U\)</span> con autovalores <span class="math notranslate nohighlight">\((-1)^a\)</span>, es decir <span class="math notranslate nohighlight">\(U\ket{a}_U = (-1)^a\ket{a}_U\)</span>.</p>
+<p>En este caso, los factores <span class="math notranslate nohighlight">\((1\pm U)\)</span> que aparecen en la medida de Hadamard son proyectores ortogonales sobre los autoestados de <span class="math notranslate nohighlight">\(U\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/HadamardProjection.png"><img alt="../../../_images/HadamardProjection.png" src="../../../_images/HadamardProjection.png" style="width: 280px;" /></a>
+</figure>
+<p>La imagen bajo este circuito de un estado de entrada <span class="math notranslate nohighlight">\(\ket{0}\ket{\psi}\)</span> ahora será</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{0}\ket{\psi} = \ket{0}\otimes (\alpha\ket{0}_U + \beta\ket{1}_U) ~~\longrightarrow ~~  \alpha\ket{0}\ket{0}_U +  \beta\ket{1}\ket{1}_U\, .
+\]</div>
+<p>Al igual que con los estados de Bell, cada resultado de  medida en la ancilla está correlacionado con un autoestado del operador <span class="math notranslate nohighlight">\(U\)</span>.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Section_025_Multicubits_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Multi-cúbits</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Section_027_Entrelazamiento_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Entrelazamiento en acción</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-estados-multicubit">Medidas de estados multicúbit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-multiples-cubits-y-medidas-en-qiskit">Circuitos con múltiples cúbits y medidas en Qiskit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-en-bases-generales">Medidas en bases generales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-pauli">Medidas  de Pauli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-bell">Medida de Bell</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-observables-multi-cubit">Valores esperados de observables multi-cúbit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-cadenas-de-pauli">Valores esperados de cadenas de Pauli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-hadamard">Medida de Hadamard</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proyeccion-de-hadamard">Proyección de Hadamard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

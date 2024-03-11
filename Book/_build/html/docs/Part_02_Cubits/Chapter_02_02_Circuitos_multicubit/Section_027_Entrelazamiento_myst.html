@@ -1,0 +1,1273 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Entrelazamiento en acción &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Más cosas sobre circuitos" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html" />
+    <link rel="prev" title="El arte de medir II" href="Section_026_El_Arte_de_Medir_II_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Los Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Entrelazamiento en acción</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desigualdades-de-bell">Desigualdades de Bell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perfecta-anticorrelacion">Perfecta anticorrelación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-desigualdad-de-chsh">La desigualdad de CHSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimento-ghz">Experimento GHZ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teleportacion">Teleportación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codificacion-superdensa">Codificación superdensa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercambio-de-entrelazamiento">Intercambio de entrelazamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locc">LOCC</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Mar 11, 2024 | 11 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="entrelazamiento-en-accion">
+<h1>Entrelazamiento en acción<a class="headerlink" href="#entrelazamiento-en-accion" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\mathcal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\bn}{{\bf n}} \)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../../macro_tQ.py
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="desigualdades-de-bell">
+<h2>Desigualdades de Bell<a class="headerlink" href="#desigualdades-de-bell" title="Permalink to this heading">#</a></h2>
+<p>Las teorías con <em>realismo local</em> asumen que los valores que adquieren las magnitudes que se miden en un experimento <em>pertenecen</em> al sistema medido.</p>
+<p>Así, en una teoría con realismo local la posición de una partícula es algo bien definido aunque no lo estemos midiendo.</p>
+<p>La palabra <em>local</em> hace referencia a que ningún agente puede propagar su acción a mayor velocidad que la luz. Podría usarse la palabra <em>causal</em> en su lugar.</p>
+<p>Por ejemplo, al hablar del espín de un electrón, no es correcto decir que <em>la proyección del espín a lo largo del eje <span class="math notranslate nohighlight">\(\hat{\bf z}~\)</span> <u>es</u> <span class="math notranslate nohighlight">\(~+\hbar/2\)</span></em>.</p>
+<p>Lo correcto es decir que, <u>al medir</u>,  cualquiera de los valores <span class="math notranslate nohighlight">\(\pm\hbar/2\)</span> se <u>adquiere</u> o <u>pone de manifiesto</u>  de forma aleatoria.</p>
+<p>En 1964  físico nor-irlandés John Bell, que trabajaba en el CERN,   <a class="reference external" href="https://cds.cern.ch/record/111654/files/vol1p195-200_001.pdf">demostró</a> que <strong>todas</strong> las teorías que respetan el realismo local satisfacen ciertas <em>desigualdades matemáticas</em>.</p>
+<p>En particular, <u>todas las magnitudes que evolucionan siguiendo las leyes de la física clásica</u> las satisfacen.</p>
+<p>Por el contrario, John Bell mostró cómo, en Mecánica Cuántica, el entrelazamiento, incorpora <em>correlaciones</em> sutiles entre las medidas que permiten traspasar  dichas desigualdades.</p>
+<p>La discusión, de puramente filosófica a ser objeto de investigación experimental, culminó con el <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.49.1804">experimento</a> de Alain Aspect y colaboradores en 1982.</p>
+<p>Se observó que la Mecánica Cuántica viola las desigualdades de Bell y, por tanto, <strong>no es una teoría con realismo local</strong>.</p>
+<p>La propuesta de John Bell dio pie a una familia de desigualdades que ponen en evidencia la imposibilidad de obtener ciertas correlaciones en un mundo clásico.</p>
+<p>Vamos a examinar la desigualdad en la forma estudiada por Clauser, Horne, Shimony y Holt <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.23.880">CHSH</a>.</p>
+<p>Posteriormente estudiaremos el experimento de GHZ, el cuál, también pone de manifiesto las correlaciones sutiles que introduce el entrelazamiento de una forma mucho determinista, en lugar de estadística.</p>
+<section id="perfecta-anticorrelacion">
+<h3>Perfecta anticorrelación<a class="headerlink" href="#perfecta-anticorrelacion" title="Permalink to this heading">#</a></h3>
+<p>Central en esta discusión es la presencia de entrelazamiento. Vamos a seleccionar el denominado <em>singlete</em>  de la Base de Bell.</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{B_{11}}=\frac{1}{\sqrt{2}}(\ket{01}-\ket{10})
+\]</div>
+<p>Supongamos que  Alice y Bob poseen sendos medidores de Stern Gerlach apuntando en la dirección <span class="math notranslate nohighlight">\(\hat{\bf z} = (0,0,1)\)</span>.</p>
+<ul class="simple">
+<li><p>Si Alice registra +1 el estado colapsa a <span class="math notranslate nohighlight">\(\ket{01}\)</span> y, por tanto, Bob solo podrá medir  <span class="math notranslate nohighlight">\(\, -1\)</span></p></li>
+<li><p>Si Alice registra -1 el estado colapsa a <span class="math notranslate nohighlight">\(\ket{10}\)</span> y, por tanto, Bob solo podrá medir  <span class="math notranslate nohighlight">\(\, +1\)</span></p></li>
+</ul>
+<p>En definitiva, hay una anticorrelación perfecta que se pone de manifiesto en el valor medio del producto de las medidas.</p>
+<p>Si las mediciones de Alice y Bob son <span class="math notranslate nohighlight">\(a_i=\pm 1\Rightarrow b_i=\mp 1\)</span> respectivamente, el valor medio
+de la variable aleatoria <span class="math notranslate nohighlight">\(\{a_i, b_i\}\)</span> es <span class="math notranslate nohighlight">\(-1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\overline{ab} = \frac{1}{N}\sum_{i=1}^N a_i b_i =\frac{1}{N}\sum_{i=1}^N (-1) = -1
+\]</div>
+<p>Vamos a ver cómo la predicción teórica confirma este hecho.</p>
+<p>El estado <span class="math notranslate nohighlight">\(\ket{B_{11}}\)</span> ya es autoestado del observable asociado</p>
+<div class="math notranslate nohighlight">
+\[
+Z\otimes Z \ket{B_{11}} = Z\ket{0}Z\ket{1} - Z\ket{1}Z\ket{0} = -\ket{01} + \ket{10} = -\ket{B_{11}}
+\]</div>
+<p>Y el valor esperado satura  este autovalor</p>
+<div class="math notranslate nohighlight">
+\[
+ \langle Z\otimes Z\rangle = \bra{B_{11}}Z\otimes Z\,  \ket{B_{11}}  = -\braket{B_{11}}{B_{11}}= -1\, 
+\]</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>La anti correlación que hemos hallado es la misma que en un experimento clásico preparado en una bolsa que contiene dos calcetines de dos colores: si Alice saca el blanco, el que saca Bob tiene que ser negro.</p>
+</div>
+<p>La cosa se pone más divertida cuando los dos polarizadores de Stern Gerlach <u><em>no se orientan en la misma dirección</em></u></p>
+<p>El observable asociado ahora a la dirección <span class="math notranslate nohighlight">\(~\hat{\bf n}~\)</span>  será  <span class="math notranslate nohighlight">\(~ A = \hat{\bf n}\cdot \boldsymbol{\sigma}\)</span></p>
+<p>Aun así, los autovalores de este operador y, por ello, la proyección del espín seguirá siendo <span class="math notranslate nohighlight">\(\pm 1\)</span></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">el valor medio del producto de las proyecciones de espín a lo largo de sendos ejes <span class="math notranslate nohighlight">\(~\hat{\bf m}~\)</span> y <span class="math notranslate nohighlight">\(~\hat{\bf n}~\)</span> viene dada por el coseno del ángulo <span class="math notranslate nohighlight">\(\theta\)</span>  que forman los  ejes de los dos detectores</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{B_{11}}(\hat{\bf m}\cdot \boldsymbol{\sigma}\otimes \hat{\bf n}\cdot \boldsymbol{\sigma})\ket{B_{11}}
+ = -\cos \theta = - \hat{\bf m}\cdot \hat{\bf n}
+\]</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Prueba este resultado.</p>
+</div>
+<ul class="simple">
+<li><p>Cuando los ejes son paralelos recuperamos la  anti-correlación, en cualquier dirección</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+-\hat{\bf n}\cdot \hat{\bf n} = - \cos 0 = -1 
+\]</div>
+<ul class="simple">
+<li><p>cuando las direcciones de los detectores de Alice y Bob no coinciden sigue habiendo una medida cuántica <span class="math notranslate nohighlight">\(a,b = \pm 1\)</span> en ambos.</p></li>
+<li><p>Clásicamente, ¿qué esperarías medir?</p></li>
+</ul>
+<p><a id='csch'></a></p>
+</section>
+<section id="la-desigualdad-de-chsh">
+<h3>La desigualdad de CHSH<a class="headerlink" href="#la-desigualdad-de-chsh" title="Permalink to this heading">#</a></h3>
+<p>Enn 1970 Clauser, Horne, Shimony y Holt <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.23.880">CHSH</a> propusieron una figura de mérito capaz de distinguir las correlaciones cuánticas de las clásicas.</p>
+<p>La idea es que Alice y Bob pueden escoger, cada uno,   <u><em>dos orientaciones  arbitrarias</em></u> para su detector.</p>
+<p>Para el detector de Alice las denotamos <span class="math notranslate nohighlight">\(\hat{\bf n}_A, \hat{\bf n}'_A\)</span>  y  para el de Bob <span class="math notranslate nohighlight">\(\, \hat{\bf n}_B, \hat{\bf n}'_B.\)</span></p>
+<p>Los pasos a seguir son los siguientes:</p>
+<ol class="arabic simple">
+<li><p>Alice y Bob seleccionan <em>una orientación</em> para sus detectores. Hay cuatro parejas posibles</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c} {\rm Alice} &amp; {\rm Bob} \\ \hline \hat{\bf n}_A  &amp;\hat{\bf n}_B \\ \hat{\bf n}_A &amp;\hat{\bf n}'_B \\ \hat{\bf n}'_A &amp; \hat{\bf n}_B \\ \hat{\bf n}'_A &amp;\hat{\bf n}'_B \end{array}
+\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Alice y Bob reciben un electrón cada uno de un par entrelazado en el estado <span class="math notranslate nohighlight">\(\ket{B_{11}}\)</span></p></li>
+<li><p>Alice y Bob realizan la medida de la proyección del espín a lo largo del eje elegido y anotan el resultado de la medición <span class="math notranslate nohighlight">\((a,b)=(\pm 1, \pm 1)\)</span></p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p>Repiten el paso anterior un número <span class="math notranslate nohighlight">\(i=1,..., N\)</span> grande de veces, y con los datos obtenidos <span class="math notranslate nohighlight">\(~(a_i,b_i)=(\pm 1, \pm 1)~\)</span> pueden reconstruir la correlación</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+ C(\hat{\bf n}_A, \hat{\bf n}_B) = \frac{1}{N}\sum_{i=1}^N a_i b_i ~\in~  [-1,1]
+\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Repiten todo el proceso anterior para las cuatro posibles orientaciones elegidas de forma aleatoria. Con las  <span class="math notranslate nohighlight">\(4N\)</span> mediciones construyen la cantidad</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+R = | C(\hat{\bf n}_A, \hat{\bf n}_B) +  C(\hat{\bf n}_A, \hat{\bf n}'_B) +  C(\hat{\bf n}'_A, \hat{\bf n}_B)-  C(\hat{\bf n}'_A, \hat{\bf n}'_B)|
+\]</div>
+<p>En un mundo clásico, supondríamos que los valores <span class="math notranslate nohighlight">\(a_i,b_i\)</span> proceden de <em>valores predefinidos</em> para cada sistema individual, sobre el que efectuamos simplemente un promedio estadístico de muchos sistemas. Entonces podemos probar la <strong>desigualdad de CHSH</strong></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La desigualdad de CHSH afirma que</p>
+<div class="math notranslate nohighlight">
+\[
+R \leq 2
+\]</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Prueba<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Es fácil ver que se cumple para cada colección <span class="math notranslate nohighlight">\(a_i,a'_i,b_i,b'_i \in \pm 1\)</span> la desigualdad</p>
+<div class="math notranslate nohighlight">
+\[
+a_i (b_i +  b'_i) + a'_i (b_i -  b'_i) = \pm 2
+\]</div>
+<p class="sd-card-text">porque si <span class="math notranslate nohighlight">\(b_i +  b'_i=\pm 2\)</span> entonces <span class="math notranslate nohighlight">\(b_i - b'_i=0\)</span> y viceversa. Ahora podemos demostrar la desigualdad</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+R &amp;=&amp; \lim_{N\to \infty}|\frac{1}{N} \sum_{i=1}^N \left( a_i b_i + a_i b'_i + a'_i b_i - a'_i b'_i\right) | \nonumber\\
+&amp;=&amp; \lim_{N\to \infty}\frac{1}{N}| \sum_{i=1}^N  \left( a_i (b_i +  b'_i) + a'_i (b_i -  b'_i)\right)| \nonumber\\
+&amp;\leq &amp;  \lim_{N\to \infty} \frac{1}{N} \sum_{i=1}^N  |\left( a_i (b_i +  b'_i) + a'_i (b_i -  b'_i)\right)| \ \nonumber\\
+&amp;= &amp;  \lim_{N\to \infty} \frac{1}{N} \sum_{i=1}^N  2 \ \nonumber\\
+&amp;=&amp; 2
+\end{eqnarray*}\]</div>
+</div>
+</details><p>La Mecánica Cuántica nos proporciona una respuesta teórica para <span class="math notranslate nohighlight">\(R\)</span> que sólo depende de los ángulos relativos <span class="math notranslate nohighlight">\(\cos\theta_{AB} = \cos(\theta_A-\theta_B)= \hat{\bf n}_A\cdot \hat{\bf n}_B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+R = | \cos\theta_{AB}  + \cos \theta_{A'B} + \cos \theta_{AB'}  - \cos \theta_{A'B'}|\, .
+\]</div>
+<p>Ahora sólo hace falta jugar un poco con los detectores.</p>
+<p>Por ejemplo, podemos situarlos en el plano <span class="math notranslate nohighlight">\((y,z)\)</span>, perpendicular al eje de propagación <span class="math notranslate nohighlight">\(x\)</span>, de manera que los vectores  <span class="math notranslate nohighlight">\(\hat{\bf n}'_A,\hat{\bf n}_{A},\hat{\bf n}_B\)</span> y <span class="math notranslate nohighlight">\(\hat{\bf n}_B'\)</span> estén ordenados correlativamente en sentido horario. Finalmente tomaremos
+dos ejes coincidentes <span class="math notranslate nohighlight">\(\hat{\bf n}_{A}=\hat{\bf n}_B\)</span> paralelos <span class="math notranslate nohighlight">\(\Rightarrow \theta_{AB}=0\)</span>, y apertura igual para ambos, <span class="math notranslate nohighlight">\(\theta_{A'A} = \theta_{BB'} = \varphi\)</span>, de modo que <span class="math notranslate nohighlight">\(\theta_{A'B'} = 2\varphi\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/CHSH_basis.png"><img alt="../../../_images/CHSH_basis.png" src="../../../_images/CHSH_basis.png" style="width: 280px;" /></a>
+</figure>
+<div class="math notranslate nohighlight">
+\[
+R = |1 +  2 \cos\varphi  - \cos 2\varphi|\, .
+\]</div>
+<p>Derivando vemos que esta expresión alcanza su máximo cuando <span class="math notranslate nohighlight">\(\sin\varphi = \sin 2\varphi\)</span> lo cual tiene solución <span class="math notranslate nohighlight">\(\varphi = \pi/3 = 60^\circ\)</span>. Sustituyendo encontramos <span class="math notranslate nohighlight">\(R= 2.5&gt;2\)</span>.</p>
+<p>Vamos a hacer una lista de ángulos relativos entre los dos polarizadores</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;angulos de medida&#39;</span>
+<span class="n">phi_divs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">phi_list</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">phi_divs</span><span class="p">)</span> <span class="c1">#lista de angulos&#39;</span>
+
+<span class="s1">&#39;lista de correlaciones C[i] a calcular&#39;</span>
+<span class="n">C</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="s1">&#39;lista de valores de R&#39;</span>
+<span class="n">R</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">phi_divs</span><span class="p">)</span>
+
+<span class="s1">&#39;Numero de medidas&#39;</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">2048</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+<span class="n">M_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">phi_divs</span><span class="p">):</span> 
+
+    <span class="s1">&#39;ángulos de medida&#39;</span>
+    <span class="n">phi</span><span class="o">=</span><span class="n">phi_list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> 
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;A&#39; = 2\phi, A = B = phi, B&#39; = 0&#39;&#39;&#39;</span>
+    <span class="n">angles_AB</span><span class="o">=</span><span class="p">[[</span><span class="n">phi</span><span class="p">,</span><span class="n">phi</span><span class="p">],[</span><span class="mi">2</span><span class="o">*</span><span class="n">phi</span><span class="p">,</span><span class="n">phi</span><span class="p">],[</span><span class="n">phi</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">2</span><span class="o">*</span><span class="n">phi</span><span class="p">,</span><span class="mi">0</span><span class="p">]]</span> <span class="c1"># AB , A&#39;B , AB&#39;, A&#39;B&#39;</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>        
+        <span class="s1">&#39;una pareja de ángulos uno para A y otro para B &#39;</span>
+        <span class="n">ang_AB</span><span class="o">=</span><span class="n">angles_AB</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="s1">&#39;hay un circuito para cada proceso de medida&#39;</span>
+        <span class="n">qc</span><span class="o">=</span><span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="s1">&#39;creamos el par de Bell B(11)&#39;</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+         
+        <span class="s1">&#39;simulamos la medida en la base de los polarizadores de A y B rotados en torno al eje x&#39;</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="o">-</span><span class="n">ang_AB</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># notar el valor negativo del ángulo de rotación </span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="o">-</span><span class="n">ang_AB</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+        
+        <span class="k">if</span> <span class="n">j</span> <span class="o">==</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">))</span>
+        <span class="s1">&#39; medimos &#39;</span>
+        <span class="n">counts</span><span class="o">=</span><span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span> <span class="o">=</span> <span class="n">M_simulator</span><span class="p">,</span><span class="n">shots</span> <span class="o">=</span> <span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>         
+        <span class="s1">&#39;construimos el correlador&#39;</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span> <span class="mi">0</span> 
+        <span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span> <span class="n">counts</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span> <span class="o">*</span> <span class="n">counts</span><span class="o">/</span><span class="n">nshots</span> 
+
+    <span class="s1">&#39;construimos la cantidad R&#39;</span>
+    <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">C</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">C</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../../_images/5a42e98394c4d52aae524385e733a799e27229d9fc9697ad0eb52e9635083e41.png" src="../../../_images/5a42e98394c4d52aae524385e733a799e27229d9fc9697ad0eb52e9635083e41.png" />
+</div>
+</div>
+<p>Podemos graficarlo y compararlo con el valor analítico</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39; función analítica &#39;</span>
+<span class="n">fx</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_list</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">phi_list</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phi_list</span><span class="p">,</span><span class="n">fx</span><span class="p">,</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="s1">&#39; resultado de la simulación&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">phi_list</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="s1">&#39; líneas horizotales en +2 y - 2&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\varphi$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$R(\varphi)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/5dad350ede659460f7443bbce583ddc2af1415945fd37fb4833bc4e702433d9a.png" src="../../../_images/5dad350ede659460f7443bbce583ddc2af1415945fd37fb4833bc4e702433d9a.png" />
+</div>
+</div>
+<p>Prueba con otros estados de la base de Bell. Realiza este experimento en un ordenador real.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Usar bases perpendiculares de  Alice <span class="math notranslate nohighlight">\(A\perp A'\)</span>,  y Bob <span class="math notranslate nohighlight">\(B\perp B'\)</span>, y formando un ángulo <span class="math notranslate nohighlight">\(\varphi\)</span> entre sí.</p>
+<p>Sin pérdida de generalidad puedes tomar <span class="math notranslate nohighlight">\(B = X\perp Z = B'\)</span>.</p>
+<p>Variar <span class="math notranslate nohighlight">\(\varphi\)</span> en el intervalo <span class="math notranslate nohighlight">\((0,\pi)\)</span> y hallar el valor de la máxima violación de la desigualdad de Bell.</p>
+<p>¿Es mayor que en el ejemplo anterior? ¿Podrías  hallar otra violación aún mayor?</p>
+</div>
+</section>
+<section id="experimento-ghz">
+<h3>Experimento GHZ<a class="headerlink" href="#experimento-ghz" title="Permalink to this heading">#</a></h3>
+<p>Las desigualdades de Bell-CHCS demuestran que hay una manera de distinguir una teoría con  realismo local de una en la que éste postulado no  exista.</p>
+<p>Lo hacen de una forma estadística: es necesario formar ciertas medias de datos sobre estados de 2-cúbits, los  estados de Bell.</p>
+<p>En 1997 Greenberger, Horne y Zeilinger estudiaron las propiedades de una serie de estados de 3-cúbits:</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\rm GHZ} = \frac{1}{\sqrt{2}}( \ket{000} - \ket{111} )\, . 
+\]</div>
+<p>Es muy fácil ver que, en vez de una violación <strong>probabilística</strong> de una <em>desigualdad</em>, el estado GHZ conduce a una  violación <strong>determinista</strong> de una <em>igualdad</em>.</p>
+<p>Supongamos que:</p>
+<ul class="simple">
+<li><p>un sistema está  compuesto de  tres subsistemas, <span class="math notranslate nohighlight">\(A, B\)</span> y <span class="math notranslate nohighlight">\(C\)</span>.</p></li>
+<li><p>en cada uno de ellos hay dos <em>magnitudes</em> observables, <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span>, que al ser medidas adquieren valores binarios <span class="math notranslate nohighlight">\(x, y = \pm 1\)</span>.</p></li>
+</ul>
+<p>Pretendemos saber:</p>
+<p>si existe un estado del sistema tal que, con el resultado  de  medidas simultáneas <span class="math notranslate nohighlight">\(X\)</span> o <span class="math notranslate nohighlight">\(Y\)</span> de cada una de sus partes <span class="math notranslate nohighlight">\(A,B\)</span> y <span class="math notranslate nohighlight">\(C\)</span> , se obtengan resultados <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> que verifiquen las siguientes ecuaciones:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{ccc}
+{\rm medimos} &amp; &amp; \hbox{obtenemos} ~ x,y ~~ \hbox{tales que} \\
+XYY ~~~~~ &amp;\to&amp; ~xyy =~~~ 1\nonumber\\
+YXY ~~~~~ &amp;\to&amp; ~yxy =~~~ 1 \label{GHZeq}\\
+YYX ~~~~~ &amp;\to&amp; ~yyx =~~~ 1\nonumber\\
+XXX ~~~~~ &amp;\to&amp; ~xxx = -1\nonumber
+\end{array}
+\end{split}\]</div>
+<p>Si la teoría satisface los axiomas de realismo local,  los valores de <span class="math notranslate nohighlight">\(X\)</span> es <span class="math notranslate nohighlight">\(Y\)</span> estarán bien definidos independientemente de la medida que efectuemos.</p>
+<p>Dicho de otra forma, las medidas que efectuamos son compatibles y no afectan a los resultados posibles.</p>
+<p>Entonces podemos utilizar conclusiones que extraigamos de los resultados de un experimento para los de otro (notar que se supone que el estado es el mismo en todos los casos  )</p>
+<ul class="simple">
+<li><p>Las tres primeras afirman que <span class="math notranslate nohighlight">\(x=1\)</span> puesto que <span class="math notranslate nohighlight">\(y^2=1\)</span>.</p></li>
+<li><p>La última afirma que <span class="math notranslate nohighlight">\(x=-1\)</span></p></li>
+</ul>
+<p>vemos que hay una contradicción. Concluimos que las medidas efectuadas <em>no son compatibles entre sí</em>.</p>
+<p>Como vemos, la paradoja existe en tanto en cuanto atribuyamos a las magnitudes <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span> una noción de realidad  independiente de la medición.</p>
+<p>Sólo de esta manera podemos inferir, de las tres primeras líneas, el resultado  <span class="math notranslate nohighlight">\(xxx  =  1\)</span> sin realizar una medición directa de <span class="math notranslate nohighlight">\(XXX\)</span>  por consistencia.</p>
+<p>La satisfacción, por tanto, de las cuatro afirmaciones,  pasa por aceptar que las variables <span class="math notranslate nohighlight">\(X\)</span> e <span class="math notranslate nohighlight">\(Y\)</span>, no pueden tener valores predefinidos simultáneamente  en los cuatro experimentos.</p>
+<p>Cuánticamente es fácil ver que el estado GHZ proporciona una solución al conjunto de ecuaciones.</p>
+<p>Supongamos que  <span class="math notranslate nohighlight">\(x\)</span> e <span class="math notranslate nohighlight">\(y\)</span> son los resultados de medir <span class="math notranslate nohighlight">\(X = \sigma_x~\)</span> y <span class="math notranslate nohighlight">\(~Y = \sigma_y\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+X \ket{0} = \ket{1}\, , ~ X \ket{1} = \ket{0}\, ~~ , ~~ Y \ket{0} = i \ket{1}\, , ~ Y \ket{1} = -i \ket{0}\, . ~ 
+\]</div>
+<p>Por un lado,</p>
+<div class="math notranslate nohighlight">
+\[xyy\ket{{\rm GHZ}}  = X \otimes Y\otimes Y \big(\frac{1}{\sqrt{2}}(\ket{000}-\ket{111}\big) = \frac{1}{\sqrt{2}} \big(i^2 \ket{111}- (-i)^2
+\ket{000}\big) = +  \ket{{\rm GHZ}}\, ,\]</div>
+<p>y,
+análogamente, obtenemos <span class="math notranslate nohighlight">\(xyy=yxy=yyx= +1\)</span>.</p>
+<p>Por otro, <span class="math notranslate nohighlight">\(xxx=-1\)</span> se sigue de</p>
+<div class="math notranslate nohighlight">
+\[  
+xxx  \ket{{\rm GHZ}} =   X \otimes X \otimes X \big(\frac{1}{\sqrt{2}}(\ket{000}-\ket{111}\big) =
+\frac{1}{\sqrt{2}}(\ket{111}-\ket{000}) =  - \ket{\rm GHZ}\, .
+\]</div>
+<p>Inicializamos el estado GHZ</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/GHZ.png"><img alt="../../../_images/GHZ.png" src="../../../_images/GHZ.png" style="width: 300px;" /></a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+
+<span class="n">qc_GHZ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> 
+
+<span class="n">qc_GHZ</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_GHZ</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_GHZ</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc_GHZ</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc_GHZ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../../_images/e4e59e681e882e8eae20b9cb558266ab203109b1a525857ab817566bd9c5ff99.png" src="../../../_images/e4e59e681e882e8eae20b9cb558266ab203109b1a525857ab817566bd9c5ff99.png" />
+</div>
+</div>
+<p>Analicemos el valor medio de alguno de los operadores <span class="math notranslate nohighlight">\(YYX, YXY, XYY\)</span> ó <span class="math notranslate nohighlight">\(XXX\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+
+<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<span class="n">shots</span><span class="o">=</span><span class="mi">1000</span>
+
+
+<span class="s1">&#39;elige uno de los términos siguientes&#39;</span>
+<span class="c1">#multibasis = &#39;YYX&#39;</span>
+<span class="c1">#multibasis = &#39;YXY&#39;</span>
+<span class="c1">#multibasis = &#39;XYY&#39;</span>
+<span class="n">multibasis</span> <span class="o">=</span> <span class="s1">&#39;XXX&#39;</span>
+
+<span class="n">qc_GHZ</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">tQ</span><span class="o">.</span><span class="n">add_multimeasure_XYZ</span><span class="p">(</span><span class="n">qc_GHZ</span><span class="p">,</span> <span class="n">multibasis</span><span class="p">)</span>
+<span class="n">qc_GHZ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/e0ea98249a5ed3d13d8d31e5adab9b95d5b186a2e78f51220d2e46ac356e81a6.png" src="../../../_images/e0ea98249a5ed3d13d8d31e5adab9b95d5b186a2e78f51220d2e46ac356e81a6.png" />
+</div>
+</div>
+<p>Ejecuta el código anterior para las 4 posibles cadenas de Pauli</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cuentas_GHZ</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_GHZ</span><span class="p">,</span><span class="n">M_backend</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">multibasis</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&gt; =&#39;</span><span class="p">,</span> <span class="n">tQ</span><span class="o">.</span><span class="n">expval_Zn_from_counts</span><span class="p">(</span><span class="n">cuentas_GHZ</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;XXX&gt; = -1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="teleportacion">
+<h3>Teleportación<a class="headerlink" href="#teleportacion" title="Permalink to this heading">#</a></h3>
+<p>El entrelazamiento conlleva un tipo  nuevo de correlación que acaba constituyendo un recurso importante.</p>
+<p>El protocolo de teleportación fue propuesto por <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.70.1895">C.Bennet,G. Brassar, C. Crepeau, R.Josza, A. Peres u W. Wooters</a> en 1993.</p>
+<p>Supongamos que Alice y Bob tiene dos cúbits que se encuentran en el estado entrelazado <span class="math notranslate nohighlight">\(\ket{B_{00}}\)</span></p>
+<p>Alice tiene, un segundo cúbit inicializado en un estado arbitrario <span class="math notranslate nohighlight">\(\ket{\phi}\)</span>, y se plantea la posibilidad de transferirlo o clonarlo en el laboratorio de Bob.</p>
+<p>El circuito de la imagen permite efectuar esa tarea</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/teleportacion.png"><img alt="../../../_images/teleportacion.png" src="../../../_images/teleportacion.png" style="width: 500px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>El estado inicial es</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\ket{\phi} \ket{B_{00}} &amp;=&amp;  \ket{\phi}\otimes \frac{1}{\sqrt{2}}\left(\ket{0}\otimes \ket{0} + \ket{1}\otimes\ket{1}\rule{0mm}{4mm}\right)\, \\
+&amp;=&amp; \frac{1}{\sqrt{2}} (a \ket{000} + b\ket{100} + a\ket{011} + b\ket{111})
+\end{eqnarray*}\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Alice tiene acceso a los dos primeros qubits y Bob al tercero.</p>
+<ul class="simple">
+<li><p>Alice realiza una  <i>medida de Bell</i> a sus dos qubits, intercalando un operador <span class="math notranslate nohighlight">\(U_{\rm desent}= (H \otimes I)\cdot U_{\rm CNOT}~\)</span> que rota a la base de Bell</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+ (H \otimes I\otimes I)(U_{\rm CNOT}\otimes I)\, \ket{\phi}\ket{B_{00}} &amp; =&amp;  \frac{1}{2}
+\left[\rule{0mm}{3mm} \ket{00}(a\ket{0} + b\ket{1}) + \ket{01}(a\ket{1}+ b\ket{0}) \right. \nonumber\\
+\rule{0mm}{14mm}
+&amp;&amp;\left.  \rule{0mm}{3mm}+ ~\ket{10}(a\ket{0}-b\ket{1}) + \ket{11}(a\ket{1}-b\ket{0})\right] \label{teleport}
+\end{eqnarray*}\]</div>
+<ul class="simple">
+<li><p>Alice mide el estado que obra en su poder, y obtiene un 2-bit  clásico, <span class="math notranslate nohighlight">\(xy\)</span> de manera equiprobable para las 4 posibilidades.</p></li>
+</ul>
+<p>De forma correlacionada, el cúbit
+de Bob colapsa a uno de entre 4 estados <span class="math notranslate nohighlight">\(\ket{\phi_{xy}},~\)</span> pero no sabe a cuál.</p>
+<ul class="simple">
+<li><p>Para resolver esta ambigüedad, Alice envía el resultado de su medida <span class="math notranslate nohighlight">\(xy\)</span> por un canal clásico a Bob</p></li>
+</ul>
+<ul class="simple">
+<li><p>Bob efectúa sobre su cúbit una operación controlada por este 2-bit, <span class="math notranslate nohighlight">\(U_{xy} =  X^y Z^x \)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+xy ~=~ \left\{ \begin{array}{c} 00 \\ 01 \\ 10 \\ 11 \end{array} \right\}~~ \Longrightarrow  
+~~~ X^y Z^x \ket{\phi_{xy}} ~=~ \left\{  \begin{array}{rl}    I :&amp; (a\ket{0} + b\ket{1})  \\    X: &amp; (a\ket{1} + b\ket{0})  \\  Z:&amp; (a\ket{0} - b\ket{1})  
+\\  XZ = -iY:&amp;   (a\ket{1} - b\ket{0}) \\
+       \end{array} \right. ~~ \longrightarrow  ~~ a \ket{0} + b\ket{1}\,  = \, \ket{\phi}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Como resultado de esta operación, el cúbit de Bob es finalmente <span class="math notranslate nohighlight">\(\ket{\phi}\)</span>.</p>
+<p>Vamos preparar el estado de Alice</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># escoge dos ángulos theta y phi en la esfera de Bloch</span>
+<span class="p">[</span><span class="n">theta</span><span class="p">,</span><span class="n">phi</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="mf">1.1</span> <span class="p">,</span> <span class="mf">2.2</span><span class="p">]</span>
+
+<span class="c1"># o hazlo de forma aleatoria</span>
+<span class="c1">#import random</span>
+<span class="c1">#[theta,phi] = np.array([np.pi*np.random.rand(),2*np.pi*np.random.rand()])</span>
+
+<span class="n">estado</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">),(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">phi</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span>
+
+<span class="c1">#visualicémoslo en la esfera de Bloch</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_bloch_multivector</span><span class="p">,</span> <span class="n">array_to_latex</span>  
+<span class="n">plot_bloch_multivector</span><span class="p">(</span><span class="n">estado</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/f4167481650744e348dba378b8a6fe28c71a86eaaa2dcd6f5fb7fd30c10297d5.png" src="../../../_images/f4167481650744e348dba378b8a6fe28c71a86eaaa2dcd6f5fb7fd30c10297d5.png" />
+</div>
+</div>
+<p>Lo primero que haremos será incializar el circuito, dotado de tres cubits y dos canales clásicos en dos registros. Alice tendrá control sobre los dos primeros <span class="math notranslate nohighlight">\(q_0, q_1\)</span> y Bob sobre el tercero <span class="math notranslate nohighlight">\(q_2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+
+<span class="n">qrA</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;qAlice&quot;</span><span class="p">)</span> 
+<span class="n">qrB</span> <span class="o">=</span>  <span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;qBob&quot;</span><span class="p">)</span> 
+<span class="n">crx</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;crx&quot;</span><span class="p">)</span> 
+<span class="n">cry</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;cry&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>generamos el circuito de teleportación</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inicializa el circuito</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qrA</span><span class="p">,</span><span class="n">qrB</span><span class="p">,</span> <span class="n">crx</span><span class="p">,</span> <span class="n">cry</span><span class="p">)</span>
+
+<span class="c1"># Alice y Bob comparten un par de Bell</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qrA</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qrA</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">qrB</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># inyecta en el circuito el estado a teleportar</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># Añade un medidor de estados de Bell en los cúbits de Alice y efectúa las medidas</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qrA</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qrA</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qrA</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">([</span><span class="n">qrA</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qrA</span><span class="p">[</span><span class="mi">1</span><span class="p">]],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Añade el operador X^y Z^x controlado clásicamente por las salidas x e y </span>
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">qrB</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">cry</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  
+<span class="n">qc</span><span class="o">.</span><span class="n">z</span><span class="p">(</span><span class="n">qrB</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">c_if</span><span class="p">(</span><span class="n">crx</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1">#visualiza el circuito </span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/2e4583bada703f71517c983524a43148ebb5ce44020158a803c2ebd4e110af2a.png" src="../../../_images/2e4583bada703f71517c983524a43148ebb5ce44020158a803c2ebd4e110af2a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejecuta varias veces y observa el resultado </span>
+<span class="n">S_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
+<span class="n">out_vector</span><span class="o">=</span><span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">S_simulator</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">()</span>
+<span class="n">plot_bloch_multivector</span><span class="p">(</span><span class="n">out_vector</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/2f5c62bcb71b4b502d5f98132042202c78da1226c674cae82a376feff82255c5.png" src="../../../_images/2f5c62bcb71b4b502d5f98132042202c78da1226c674cae82a376feff82255c5.png" />
+</div>
+</div>
+<p>Observa al ejecutar repetidas veces que los resultados de las medidas intermedias son aleatorios, pero el estado teleportado es siempre el correcto</p>
+<p>El siguiente ejercicio ilustra el principio de la <em>medida diferida</em>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Modifica y ejecuta  el circuito de teleportación de dos formas distintas</p>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>a) Sustituyendo los controles clásicos por controles cuánticos</p>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>b) Permutando el orden de los controles y los aparatos de medida</p>
+<p>Discute la sutileza que distingue estas posibilidades.</p>
+<p><i>Lectura recomendada: Nielsen-Chuang sección 4.4.  </i></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Cambia el estado que comparten Alice y Bob por <span class="math notranslate nohighlight">\(\ket{B_{11}}\)</span> y modifica el circuito para que teleporte igualmente.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>El protocolo de teleportación parece poner en riesgo conceptos fundamentales.</p>
+<ul class="simple">
+<li><p><b> No clonación: </b>
+el protocolo tiene como ingrediente esencial la medida y, por tanto, la <i>destrucción</i> del estado de Alice. Como consecuencia, el estado ha sido teleportado pero no clonado. Es decir,   <i>no se viola el Teorema de No Clonación </i>.</p></li>
+<li><p><b> Causalidad: </b>
+el protocolo de teleportación <i> no viola causalidad </i>.
+Es necesario mandar una información clásica (como muy rápido a la velocidad de la luz) para resolver la ambigüedad que le queda a Bob.
+Esta parte es la que hace que la teleportación no sea un proceso instantáneo de acción a distancia.</p></li>
+</ul>
+</div>
+</section>
+<section id="codificacion-superdensa">
+<h3>Codificación superdensa<a class="headerlink" href="#codificacion-superdensa" title="Permalink to this heading">#</a></h3>
+<p>Una segunda aplicación de las correlaciones que introduce el entrelazamiento permite codificar 2 bits clásicos en términos de un sólo cúbit.</p>
+<p>Este protocolo fue propuesto por <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.69.2881">C. Bennet y S.J. Wiesner en 1992</a></p>
+<p>Supongamos que Alice quiere transmitir  un para de bits <span class="math notranslate nohighlight">\(xy\in \{00,01,10,11\}\)</span> a Bob.
+Ambos deben estar en posesión de un estado entrelazado que tomaremos <span class="math notranslate nohighlight">\(\ket{B_{00}}\)</span></p>
+<p>El circuito siguiente muestra el proceso</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/superdense_coding.png"><img alt="../../../_images/superdense_coding.png" src="../../../_images/superdense_coding.png" style="width: 550px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>Alice comienza efectuando una operación en su laboratorio sobre el cúbit que maneja, que depende del 2-bit <span class="math notranslate nohighlight">\(xy\)</span> que quiere enviar</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U_{xy} =Z^x X^y ~~:~ ~\ket{B_{00}} ~\Rightarrow  ~\ket{B_{xy}} = \left\{ \begin{array}{c}  \frac{1}{\sqrt{2}}(\ket{00} + \ket{11})  = \ket{B_{00}} \\  \frac{1}{\sqrt{2}}(\ket{10} + \ket{01}) =\ket{B_{01}}  \\   \frac{1}{\sqrt{2}}(\ket{00} - \ket{11})= \ket{B_{10}}  \\  \frac{1}{\sqrt{2}}(\ket{10} - \ket{01}) =\ket{B_{11}} \end{array} \right. 
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Una vez efectuada esa operación, el estado que comparten es  <span class="math notranslate nohighlight">\(\ket{B_{xy}}\)</span>.</p>
+<ul class="simple">
+<li><p>Alice envía a Bob su parte del estado entrelazado a través de un canal cuántico.</p></li>
+<li><p>Ahora Bob está en posesión del estado <span class="math notranslate nohighlight">\(\ket{B_{xy}}\)</span> y sólo necesita hacer una <em>medida de Bell</em> sobre el estado que posee para recuperar la etiqueta <span class="math notranslate nohighlight">\(xy\)</span></p></li>
+</ul>
+</section>
+</section>
+<section id="intercambio-de-entrelazamiento">
+<h2>Intercambio de entrelazamiento<a class="headerlink" href="#intercambio-de-entrelazamiento" title="Permalink to this heading">#</a></h2>
+<p>Ya hemos visto cómo el ejemplo más sencillo de entrelazamiento tiene una aplicación muy interesante en la teleportación. Vamos a ver que el entrelazamiento se puede <em>contagiar</em> a terceras partes. En inglés se denomina <em>entanglement swapping</em>.</p>
+<p>Consideremos el siguiente circuito</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/entanglement_swap.png"><img alt="../../../_images/entanglement_swap.png" src="../../../_images/entanglement_swap.png" style="width: 400px;" /></a>
+</figure>
+<ul class="simple">
+<li><p>Alice (A) entrelaza un cúbit con Charles © y otro con Bob (B).</p></li>
+</ul>
+<ul class="simple">
+<li><p>Después, Alice hace una medida de Bell, y comunica el resultado <span class="math notranslate nohighlight">\(xy\)</span> a Charles y a Bob respectivamente,</p></li>
+</ul>
+<ul class="simple">
+<li><p>los cuales efectúan las puertas controladas <span class="math notranslate nohighlight">\(Z^x\)</span> y <span class="math notranslate nohighlight">\(X^y\)</span> respectivamente.</p></li>
+</ul>
+<ul class="simple">
+<li><p>El estado a la salida es <span class="math notranslate nohighlight">\(\ket{B_{00}}_{CB}\)</span> de Bell compartido por Bob y Charles.</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<ol class="arabic simple">
+<li><p>Programa el circuito de la figura.</p></li>
+<li><p>Ejecuta varias veces el circuito y muestra que el estado final que comparten Bob y Charles está entrelazado. ¿Es siempre el mismo estado?</p></li>
+<li><p>Completa el circuito para que sea  capaz de teleportar un cúbit arbitrario entre Charles y Bob.</p></li>
+</ol>
+</div>
+<p><a id='LOCC'></a></p>
+<section id="locc">
+<h3>LOCC<a class="headerlink" href="#locc" title="Permalink to this heading">#</a></h3>
+<p>Bajo la denominacióm de Operaciones Locales y Comunicación Clásica se denomina un método en Teoría Cuántica de la Información, mediante el cual,</p>
+<ul class="simple">
+<li><p>una <em>operación local</em> es efectuada en una parte del sistema.</p></li>
+<li><p>el resultado es comunicado clásicamente a otra del sistema</p></li>
+<li><p>en esa otra parte se fectúa también una operación local, condicionada al resultado comunicado clásicamente.</p></li>
+</ul>
+<p>Al algoritmo de teleportación es un ejemplo de LOCC en el cuál</p>
+<ul class="simple">
+<li><p>Alice realiza una medida de Bell</p></li>
+<li><p>Bob actúa localmente con <span class="math notranslate nohighlight">\(X\)</span> o <span class="math notranslate nohighlight">\(Z\)</span> dependiendo del resultado comunicado clásicamente.</p></li>
+</ul>
+<p>En el intercambio de entrelazamiento vemos que LOCC se puede utilizar para transformar un estado entrelazado en otro estado entrelazado.</p>
+<p>En este caso un estado de Bell entre Alice y Bob pasa a otro estado de Bell entre Charles y Bob</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Section_026_El_Arte_de_Medir_II_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">El arte de medir II</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Chapter_03_01_Mas_sobre_circuitos_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Más cosas sobre circuitos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desigualdades-de-bell">Desigualdades de Bell</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perfecta-anticorrelacion">Perfecta anticorrelación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-desigualdad-de-chsh">La desigualdad de CHSH</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimento-ghz">Experimento GHZ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teleportacion">Teleportación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codificacion-superdensa">Codificación superdensa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intercambio-de-entrelazamiento">Intercambio de entrelazamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#locc">LOCC</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+format: jb-book
+root: docs/index
+# options:  
+#  numbered: True  # Number sections 
+parts:
+- caption: Las reglas del juego
+#  numbered: True
+  chapters:
+
+  - file: docs/00_Formalismo/01_formalismo_matematico.md
+    sections:
+    - file: docs/00_Formalismo/01_Numeros_Complejos.md
+    - file: docs/00_Formalismo/01_Vectores.md
+    - file: docs/00_Formalismo/01_Operadores_01.md
+    - file: docs/00_Formalismo/01_Operadores_02.md
+    - file: docs/00_Formalismo/01_Tensores.md
+    - file: docs/00_Formalismo/01_Probabilidades.md
+
+  - file: docs/00_Formalismo/02_Fundamentos_MC_intro.md
+    sections:
+    - file: docs/00_Formalismo/02_Fundamentos_MC.md
+
+  - file: docs/pruebas/214_Grover_lab.md
+  - file: docs/QML/1_Introduction_lab
+  - file: docs/QML/2_Feature_encoding_lab
+
+- caption: Circuitos Cuánticos
+#  numbered: True
+  chapters:
+
+  - file: docs/01_Circuitos/110_Circuitos_1_qúbit.md
+    sections:
+    - file: docs/01_Circuitos/111_Cubits.ipynb
+    - file: docs/01_Circuitos/112_Puertas_Simples.ipynb
+    - file: docs/01_Circuitos/113_Espin.ipynb
+
+  - file: docs/01_Circuitos/120_Circuitos_multiqúbit.md
+    sections:
+    - file: docs/01_Circuitos/121_Multicubits.ipynb
+    - file: docs/01_Circuitos/122_El_Arte_de_Medir_II.ipynb
+    - file: docs/01_Circuitos/123_Entrelazamiento.ipynb
+
+  - file: docs/01_Circuitos/130_circuitos_mas_cosas.md
+    sections:
+    - file: docs/01_Circuitos/131_Elementos_Basicos.ipynb
+    - file: docs/01_Circuitos/132_CompClasica.ipynb
+
+
+
+
+#- caption: Part 1
+#  numbered: True
+#  maxdepth: 3     # The displayed Table of Contents will only have two levels
+#  chapters:
+#  - file: docs/about_py
+#    sections:
+#      - file: docs/getting_started

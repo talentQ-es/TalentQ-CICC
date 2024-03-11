@@ -1,0 +1,1408 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Estimación Cuántica de Fase &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_03_Algoritmos/Chapter_043_QPE_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Algoritmos de búsqueda" href="Chapter_044_Grover_myst.html" />
+    <link rel="prev" title="Transformada de Fourier Cuántica" href="Chapter_042_QFT_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Los Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Cuánticos</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter_041_Alg_Oraculo_myst.html">Algoritmos de Oráculo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_042_QFT_myst.html">Transformada de Fourier Cuántica</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Estimación Cuántica de Fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Informacion Cuántica</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst.html">Mezcla de Estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_04_Quantum_Info/Chapter_052_Fun_Info_Cuant_myst.html">Medidas generalizadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_04_Quantum_Info/Chapter_053_Entrop_Cuant_myst.html">Elementos de Información Cuántica</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_03_Algoritmos/Chapter_043_QPE_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_03_Algoritmos/Chapter_043_QPE_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Part_03_Algoritmos/Chapter_043_QPE_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Estimación Cuántica de Fase</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Estimación Cuántica de Fase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-de-medidas">Distribución de medidas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#y-si-no-podemos-preparar-un-autoestado">¿y si no podemos preparar  un autoestado?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-modular">Orden  modular</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Ejemplo:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Mar 11, 2024 | 6 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="estimacion-cuantica-de-fase">
+<h1>Estimación Cuántica de Fase<a class="headerlink" href="#estimacion-cuantica-de-fase" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../macro_tQ.py
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="id1">
+<h2>Estimación Cuántica de Fase<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Sea <span class="math notranslate nohighlight">\(U\)</span> un operador unitario y  <span class="math notranslate nohighlight">\(\ket{u}\)</span> un autovector. Por ser unitario, su autovalor es una fase compleja</p>
+<div class="math notranslate nohighlight">
+\[
+U \ket{u} = e^{2\pi i \varphi} \ket{u}\, ,
+\]</div>
+<p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Promesa</strong>: <em>podemos preparar</em>  <span class="math notranslate nohighlight">\(\ket{u}\)</span> y aplicar el operador <span class="math notranslate nohighlight">\(U\)</span> <u>tantas veces como sea necesario</u></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Problema</strong>:  calcular  la <u><em>mejor aproximación posible</em></u> a <span class="math notranslate nohighlight">\(\varphi\)</span>.</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>Los autovalores  <span class="math notranslate nohighlight">\(\lambda = e^{i2\pi \varphi}=e^{i2\pi (\varphi+n)}\)</span>  son iguales, para cualquier <span class="math notranslate nohighlight">\(n\in {\mathbb Z}\)</span> entero. Por tanto será suficiente considerar valores de <span class="math notranslate nohighlight">\(\varphi\)</span> en el intervalo</p>
+<div class="math notranslate nohighlight">
+\[\varphi \in [0,1)\]</div>
+<p>para generar <i>todos</i> los  posibles autovalores <span class="math notranslate nohighlight">\(\lambda\)</span> distintos.</p>
+</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/QPE.png"><img alt="../../_images/QPE.png" src="../../_images/QPE.png" style="width: 500px;" /></a>
+</figure>
+<p>El circuito  QPE (“Quantum Phase Estimation”) viene representado en la figura,  donde el primer registro tiene dimensión <span class="math notranslate nohighlight">\(t\)</span> y la entrada es el estado <span class="math notranslate nohighlight">\(\ket{0}_t\otimes \ket{u}\)</span>.</p>
+<ul class="simple">
+<li><p>La dimensión <span class="math notranslate nohighlight">\(t\)</span> del primer registro <strong>controlará la precisión de nuestra aproximación</strong> a <span class="math notranslate nohighlight">\(\varphi\)</span>.</p></li>
+<li><p>La dimensión <span class="math notranslate nohighlight">\(n\)</span> del espacio al que pertenece <span class="math notranslate nohighlight">\(\ket{u}\)</span>  es la necesaria para servir de espacio de representación para <span class="math notranslate nohighlight">\(U\)</span>.</p></li>
+</ul>
+<p>Si el primer registro tiene <span class="math notranslate nohighlight">\(t\)</span> cúbits <span class="math notranslate nohighlight">\(\{\ket{y}\}\)</span> con <span class="math notranslate nohighlight">\(y \in S_t = 0,1,... 2^t-1\)</span></p>
+<p>Si el primer registro tiene <span class="math notranslate nohighlight">\(t\)</span> cúbits, el estado que genera el circuito justo antes de la transformada de Fourier</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\ket{0}_t \otimes \ket{u} ~ &amp;\stackrel{H^t}{\longrightarrow} &amp; ~  \sum_{y\in S_t}\ket{y} \otimes \ket{u} ~ =  \sum_{y_0...y_{t-1}=0,1}\ket{y_{t-1}}...\ket{y_0}\otimes \ket{u}  
+\\   \rule{0mm}{10mm}
+ &amp;\stackrel{\cg{U^y}}{\longrightarrow} &amp; \sum_{y_0...y_{t-1}=0,1}\ket{y_{t-1}}...\ket{y_0}\otimes U^{y_{t-1}2^{t-1}}...U^{y_0 2^{0}} \ket{u} \\  \rule{0mm}{10mm}
+ &amp;&amp; =    \sum_{y\in S_t} \ket{y} \,  U^{y_{t-1}2^{t-1}+ \ldots +y_0 2^0}\ket{u}  \\
+ &amp;&amp; = \,    \sum_{y\in S_t} \ket{y} \,  U^y\ket{u} \rule{0mm}{10mm}
+\end{eqnarray*}\]</div>
+<p><strong>La clave</strong>: cuando <span class="math notranslate nohighlight">\(\ket{u}\)</span> es un <i>autoestado</i>  de <span class="math notranslate nohighlight">\(U\)</span>, se produce un <i>retroceso de fase</i></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+ \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} U^{y}\ket{u}  ~= ~  \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} \otimes e^{2\pi i \varphi y}  \ket{u} ~= ~ \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y} \otimes \ket{u}  \label{fase1}  
+\end{eqnarray*}\]</div>
+<p><u>Observa el primer registro</u> : parece la <i>transformada de Fourier</i> <span class="math notranslate nohighlight">\(\ket{\widetilde{2^t \varphi}}\)</span>   del vector <span class="math notranslate nohighlight">\(\ket{2^t \varphi}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+  \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y}  
+  = U_{TFC}\ket{2^t \varphi} =  \ket{\widetilde{2^t \varphi}}  
+\]</div>
+<p>Esto sería correcto si el número <span class="math notranslate nohighlight">\(2^t\varphi \in S_t\)</span> <em>fuese un entero</em></p>
+<p>Sin embargo <span class="math notranslate nohighlight">\(2^t\varphi \notin {\mathbb Z}\)</span> en general <b>¡ no será
+un entero </b>!</p>
+<p>Vamos entonces a separarlo en la forma siguiente en sus partes <em>entera</em> <span class="math notranslate nohighlight">\(a\in {\mathbb Z}\)</span> y <em>mantisa</em> <span class="math notranslate nohighlight">\(\delta \in [0,1)\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+2^t \varphi  =a + \delta 
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo</p>
+<p>Si <span class="math notranslate nohighlight">\(\varphi = 0.4375 \in [0,1) \)</span> entonces</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( 2^2 \varphi = 1.75 \Rightarrow a=1~,~\delta = 0.75\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( 2^3 \varphi = 3.5~ \Rightarrow a=3~,~\delta = 0.5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( 2^4 \varphi = 7  ~~~ \Rightarrow a=7~,~\delta = 0\)</span></p></li>
+</ul>
+<p>En el fondo esto es así porque <span class="math notranslate nohighlight">\(0.4375 = 7 / 2^{4}\)</span> pero si <span class="math notranslate nohighlight">\(\varphi\)</span> fuese <em>irracional</em> no existiría ningún <span class="math notranslate nohighlight">\(t\)</span> para el cuál <span class="math notranslate nohighlight">\(2^t\varphi\)</span> no tenga mantisa.</p>
+</div>
+<p>Vamos a terminar el circuito</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/QPE.png"><img alt="../../_images/QPE.png" src="../../_images/QPE.png" style="width: 500px;" /></a>
+</figure>
+<p>Introduciendo el cambio de variable <span class="math notranslate nohighlight">\(2^t \varphi  =a + \delta\)</span>  vamos a efectuar la transformada de Fourier inversa en el primer registro</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+U^\dagger_{TFC} \frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} \ket{y} &amp;=&amp;\frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} U^\dagger_{TFC} \ket{y}
+\\ \rule{0mm}{10mm}
+~&amp;=&amp;~ \frac{1}{2^{t}}  \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta) y/2^t}\left( \sum_{x=0}^{2^t-1}e^{-2\pi i  yx/2^t}\ket{x} \right)   \\
+~&amp;=&amp;~ \frac{1}{2^{t}} \sum_{x=0}^{2^t-1} \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \ket{x}  ~ \equiv ~ \ket{\Phi}
+\end{eqnarray*}\]</div>
+<p>Si <span class="math notranslate nohighlight">\(\underline{\delta = 0}:~\)</span>  es decir, si <span class="math notranslate nohighlight">\(2^t\varphi\)</span> fuese un entero <span class="math notranslate nohighlight">\(a\in S_t = \{0, \ldots, 2^t-1\}\)</span>,
+entonces el resultado
+sería  <b>exactamente</b> <span class="math notranslate nohighlight">\(\ket{\Phi} = \ket{a} = \ket{2^t\varphi}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\ket{\Phi} &amp;=&amp;  \sum_{x=0}^{2^t-1} \frac{1}{2^{t}}  \left(\sum_{y=0}^{2^t-1}  e^{2\pi i (a-x) y/2^t} \right)\ket{x}  \\  \rule{0mm}{10mm}
+&amp;=&amp;  \sum_{x=0}^{2^t-1}  \frac{1}{2^{t}} \left(2^t \delta_{x,a} \right)\ket{x}\\ \rule{0mm}{10mm}
+&amp;=&amp; \ket{a}
+\end{eqnarray*}\]</div>
+<p>En este caso:</p>
+<ul class="simple">
+<li><p>midiendo el primer registro obtendríamos un registro binario del número <span class="math notranslate nohighlight">\(a\in[0, 2^t-1]\)</span></p></li>
+<li><p>con <span class="math notranslate nohighlight">\(a\)</span> recuperaríamos la <em>fase</em> buscada <em>de forma exacta</em>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+ \varphi = \frac{a}{2^t}  \in [0,1)
+\]</div>
+<p>Si <span class="math notranslate nohighlight">\(\underline{\delta \neq 0}:~\)</span></p>
+<ul class="simple">
+<li><p>El estado en el primer registro  <span class="math notranslate nohighlight">\(\ket{\Phi} = \sum_{x=0}^{2^t-1} f(x) \ket{x}\)</span> será una superposición.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\ket{\Phi} =  \sum_{x=0}^{2^t-1} \left( \frac{1}{2^{t}}\sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \right) \ket{x}  
+= \sum_{x=0}^{2^t-1} f(x) \ket{x}
+\]</div>
+<ul class="simple">
+<li><p>Una medida dará el registro binario de <em>un número entero</em> <span class="math notranslate nohighlight">\(x \to m \in [0,2^t-1)\)</span> con distribución de probabilidad <span class="math notranslate nohighlight">\(p(m) = |f(m)|^2\)</span> centrada en <span class="math notranslate nohighlight">\(m=a=[2^t\varphi]\)</span></p></li>
+</ul>
+<section id="ejemplo">
+<h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
+<p>Vamos a estudiar esta distribución analizando el operador unitario de fase</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U =  \begin{bmatrix} e^{2\pi i \phi_0} &amp; 0 \\ 0 &amp; e^{2\pi i\phi_1}\end{bmatrix} 
+\end{split}\]</div>
+<p>que tiene por autoestados  <span class="math notranslate nohighlight">\(\ket{0}\)</span> y <span class="math notranslate nohighlight">\(\ket{1}\)</span> con autovalores <span class="math notranslate nohighlight">\(e^{2\pi\phi_0}\)</span> y <span class="math notranslate nohighlight">\(e^{2\pi \phi_1}\)</span> respectivamente.</p>
+<p>Para programar este operador notamos que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U =  
+\begin{bmatrix} e^{2\pi \phi_0} &amp; 0 \\ 0 &amp; e^{-2\pi i\phi_0}\end{bmatrix}
+\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{2\pi i(\phi_0+\phi_1)}\end{bmatrix} = 
+R_z(\theta = -4\pi \phi_0) \cdot P(\theta = 2\pi (\phi_1+\phi_0))
+\end{split}\]</div>
+<p>El circuito requiere la versión <em>controlada</em> <span class="math notranslate nohighlight">\(\cg U^k\)</span> de potencias de este operador</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c_Uop</span><span class="p">(</span><span class="n">phi0</span><span class="p">,</span><span class="n">phi1</span><span class="p">,</span><span class="n">power</span><span class="p">):</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">power</span><span class="p">):</span>
+        <span class="n">U</span><span class="o">.</span><span class="n">rz</span><span class="p">(</span><span class="o">-</span><span class="n">phi0</span><span class="o">*</span><span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">U</span><span class="o">.</span><span class="n">p</span><span class="p">((</span><span class="n">phi1</span><span class="o">+</span><span class="n">phi0</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="o">.</span><span class="n">to_gate</span><span class="p">()</span>
+    <span class="n">U</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;c_U(</span><span class="si">%f</span><span class="s2"> ,</span><span class="si">%f</span><span class="s2">)^</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">phi0</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">phi1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">power</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="o">.</span><span class="n">control</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">U</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para poner a prueba el algoritmo vamos a  por seleccionar unos valores de <span class="math notranslate nohighlight">\(\phi_i = (\phi_0,\phi_1)\)</span> de la forma</p>
+<div class="math notranslate nohighlight">
+\[\phi_i = (a_i + \delta_i) 2^{-t}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_seed</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="n">a0</span> <span class="o">=</span> <span class="mf">2.</span>
+<span class="n">delta0</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">phi0</span> <span class="o">=</span> <span class="p">(</span><span class="n">a0</span><span class="o">+</span><span class="n">delta0</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">t_seed</span><span class="p">)</span> 
+
+<span class="n">a1</span> <span class="o">=</span> <span class="mf">3.</span>
+<span class="n">delta1</span> <span class="o">=</span> <span class="mf">0.</span>
+<span class="n">phi1</span> <span class="o">=</span><span class="p">(</span><span class="n">a1</span><span class="o">+</span> <span class="n">delta1</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">t_seed</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;phi0=&#39;</span><span class="p">,</span> <span class="n">phi0</span><span class="p">,</span> <span class="s1">&#39; -&gt;   2^t*phi0 = a0 + delta0 = &#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi0</span> <span class="p">,</span> <span class="s1">&#39; , a0 =&#39;</span> <span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi0</span><span class="p">),</span> <span class="s1">&#39;=&gt;&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi0</span><span class="p">),</span><span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">t_seed</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;phi1=&#39;</span><span class="p">,</span> <span class="n">phi1</span><span class="p">,</span> <span class="s1">&#39; -&gt;   2^t*phi1 = a1 + delta1 = &#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi1</span> <span class="p">,</span> <span class="s1">&#39; , a1 =&#39;</span> <span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi1</span><span class="p">),</span> <span class="s1">&#39;=&gt;&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi1</span><span class="p">),</span><span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">t_seed</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>phi0= 0.275  -&gt;   2^t*phi0 = a0 + delta0 =  2.2  , a0 = 2 =&gt; 010
+phi1= 0.375  -&gt;   2^t*phi1 = a1 + delta1 =  3.0  , a1 = 3 =&gt; 011
+</pre></div>
+</div>
+</div>
+</div>
+<p>Construimos el circuito QPE</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># la dimensión del registro de evaluación </span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># la dimensiónd el espacio de representación del opeador U</span>
+
+<span class="n">qrt</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">qra</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;qr_U&quot;</span><span class="p">)</span> <span class="c1"># aquí 1 es la dimensión del espacio en el que opera U</span>
+<span class="n">crt</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">qpe</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qrt</span><span class="p">,</span><span class="n">qra</span><span class="p">,</span><span class="n">crt</span><span class="p">)</span>   
+
+<span class="c1">##########################################################################</span>
+<span class="c1">#inicializamos la ancilla en un autoestado |u&gt; =|0&gt; o |u&gt; = |1&gt;</span>
+<span class="c1">#qpe.x(qra)   </span>
+<span class="c1">##########################################################################</span>
+
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">qpe</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># aplicamos los operadores controlados c-U^j </span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">qpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_Uop</span><span class="p">(</span><span class="n">phi0</span><span class="p">,</span><span class="n">phi1</span><span class="p">,</span><span class="mi">2</span><span class="o">**</span><span class="n">j</span><span class="p">),[</span><span class="n">qrt</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span><span class="o">+</span><span class="n">qra</span><span class="p">[:])</span>
+    
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># aplicamos la QFT^-1 que está definida en macro.py </span>
+<span class="n">qpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC_adj</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">qrt</span><span class="p">)</span>
+
+<span class="c1"># podemos hacerlo usando la librería de qiskit </span>
+<span class="c1">#from qiskit.circuit.library import QFT</span>
+<span class="c1">#qpe.append(QFT(len(qr),do_swaps=True).inverse(),qr)</span>
+
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qrt</span><span class="p">,</span><span class="n">crt</span><span class="p">)</span>
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../_images/f3d5b710ec05bca12b4dcced46aca8b22d49380eab661c908c633d74e8b8841d.png" src="../../_images/f3d5b710ec05bca12b4dcced46aca8b22d49380eab661c908c633d74e8b8841d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span> <span class="n">M_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/13ab7b0be3bdd52c340bfce15d131db357bc990cf49e6f0a6c02e24039dbf46a.png" src="../../_images/13ab7b0be3bdd52c340bfce15d131db357bc990cf49e6f0a6c02e24039dbf46a.png" />
+</div>
+</div>
+<p>De aquí extraemos la aproximación que hemos obtenido.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;010010&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_resultante</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">get</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Seleccionamos el autovalor asociado a |u&gt; </span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">phi0</span>  <span class="c1"># si |0&gt;</span>
+<span class="c1">#phi = phi1   # si |1&gt;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el valor de phi original era =&#39;</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;la mejor aproximación al valor verdadero es a/2^t =&#39;</span><span class="p">,</span> <span class="n">a_resultante</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el error relativo es delta/(2^t phi) =&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">phi</span> <span class="o">-</span><span class="n">a_resultante</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="n">phi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>el valor de phi original era = 0.275
+la mejor aproximación al valor verdadero es a/2^t = 0.28125
+el error relativo es delta/(2^t phi) = -0.022727272727272645
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distribucion-de-medidas">
+<h3>Distribución de medidas<a class="headerlink" href="#distribucion-de-medidas" title="Permalink to this heading">#</a></h3>
+<p>Para una mantisa fija, <span class="math notranslate nohighlight">\(\delta \Rightarrow  \phi = a+\delta\)</span> las distintas medidas del estado resultante <span class="math notranslate nohighlight">\(\ket{m}\)</span> se distribuirán en el torno a un <em>valor central</em> <span class="math notranslate nohighlight">\(\ket{a} = \ket{[2^t\varphi]} \)</span>.</p>
+<p>Escribiendo <span class="math notranslate nohighlight">\(\ket{m=a+l}\)</span>  podemos obtener la <em>distribución de probabilidad</em> <span class="math notranslate nohighlight">\(p(m) = p(\delta, l)\)</span> de medir <span class="math notranslate nohighlight">\(m=a+l\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+p(\delta, l) ~~&amp;=&amp;~~ \left\vert \,  \bra{a+ l} \,  \frac{1}{2^{t}}\sum_{x=0}^{2^t-1}   \sum_{y=0}^{2^t-1}  e^{2\pi i (\delta + a -x) y/2^t} \ket{x}  \,  \right\vert^2  ~~ \stackrel{x= a + l}{=} ~~
+  \frac{1}{2^{2t}} \left\vert \,  \sum_{y=0}^{2^t-1} \left(e^{2\pi i (\delta-l) /2^t}\right)^y \,  \right\vert^2 
+\end{eqnarray*}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+&amp;=&amp; ~~  \frac{1}{2^{2t}} \left\vert\,  \frac{1- e^{2\pi i  \,  (\delta-l) }}{1- e^{2\pi i (\delta-l)/2^t}} \, \right\vert^2   ~= ~ 
+\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \, 
+\end{eqnarray*}\]</div>
+<div class="math notranslate nohighlight">
+\[
+\geq   \frac{1}{2^{2t}} \left(\frac{2 (\delta-l)}{\pi(\delta-l)/2^t }\right)^2 = \left(\frac{2}{\pi}\right)^2 \sim 0.405
+\]</div>
+<p>donde hemos usado que   <span class="math notranslate nohighlight">\(\pi x\geq \sin(\pi x) \geq 2 x\)</span> para <span class="math notranslate nohighlight">\(x\in [ 0,\pi/2 ]\)</span>.</p>
+<p>A <span class="math notranslate nohighlight">\(\delta\)</span> fijo  hasta <span class="math notranslate nohighlight">\(\delta = 0.5\)</span>, vemos que la probabilidad está <em>picada</em> en <span class="math notranslate nohighlight">\(l=0\)</span>, es decir en <span class="math notranslate nohighlight">\(m=a\)</span>. A partir de ahí, como es de esperar, está picada en <span class="math notranslate nohighlight">\(l=1\)</span>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/xprobeigenvalues.png"><img alt="../../_images/xprobeigenvalues.png" src="../../_images/xprobeigenvalues.png" style="width: 400px;" /></a>
+</figure>
+<p>La probabilidad nunca es menor de 0.405 en su máximo.</p>
+<p>A <span class="math notranslate nohighlight">\(l = 0\)</span> fijo, la probabilidad de encontrar <span class="math notranslate nohighlight">\(m=a+0=a\)</span> es 1 cuando <span class="math notranslate nohighlight">\(\delta=0\)</span> y decrece con <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/xmaxprobeigen.png"><img alt="../../_images/xmaxprobeigen.png" src="../../_images/xmaxprobeigen.png" style="width: 400px;" /></a>
+</figure>
+<p>Cuando <span class="math notranslate nohighlight">\(l=1\)</span> la probabilidad máxima corresponde al número <span class="math notranslate nohighlight">\(m=a+1\)</span>.</p>
+<p>La <strong>anchura <span class="math notranslate nohighlight">\(t\)</span> del circuito auxiliar</strong> determina la anchura de la curva de probabilidad en torno al valor medio.</p>
+<p>Ello permite acotar la aproximación al valor real de la fase buscada según el siguiente teorema  (ver Nielsen p. 224)</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">El algoritmo QPE (Quantum Phase Estimation) es capaz de producir ua <i>estimación <span class="math notranslate nohighlight">\(m\)</span> de orden <span class="math notranslate nohighlight">\(k\)</span></i>  para la fase <span class="math notranslate nohighlight">\(\varphi\)</span> (en el sentido de que  <span class="math notranslate nohighlight">\(|\varphi- m/2^t |&lt;2^{-k}\)</span>) con una  probabilidad <span class="math notranslate nohighlight">\(1-\epsilon\)</span>,  tomando una dimensión del espacio de representación</p>
+<div class="math notranslate nohighlight">
+\[
+t \geq k  + \left[ \log\left(1 + \frac{1}{2\epsilon}\right) \right] \label{tedeene}
+\]</div>
+</div>
+</div>
+</section>
+<section id="y-si-no-podemos-preparar-un-autoestado">
+<h3>¿y si no podemos preparar  un autoestado?<a class="headerlink" href="#y-si-no-podemos-preparar-un-autoestado" title="Permalink to this heading">#</a></h3>
+<p>Una de las premisas usadas en la sección anterior es la posibilidad de preparar el autoestado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> de <span class="math notranslate nohighlight">\(U\)</span></p>
+<p>En caso contrario, ¿qué <em>resultado</em> obtenemos después de usar el circuito de estimación cuántica de fase?</p>
+<p>Apliquemos el circuito anterior a un vector arbitrario <span class="math notranslate nohighlight">\(\ket{b}\)</span>. Genéricamente dicho vector admitirá una expansión de la forma</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{b} = \sum_{i=1}^N c_i \ket{u_i}
+\]</div>
+<p>en la <em>base de autovectores</em> de <span class="math notranslate nohighlight">\(U\)</span></p>
+<div class="math notranslate nohighlight">
+\[U\ket{u_i} = e^{2\pi i\varphi_i}\ket{u_i}\]</div>
+<p>Debido a la linealidad del circuito QPE, a la salida del mismo encontraremos una combinación lineal de estados
+de la forma</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+U_{QPE}\, :\,\ket{0}_t \left(\sum_{i=1}c_i\ket{u_i}\right) &amp;=&amp; \sum_{i=1}c_i U_{QPE}\left(\ket{0}_t\ket{u_i}
+\rule{0mm}{6mm}\right)  \\
+&amp;=&amp; \sum_{i=1}^N  c_i \ket{\Phi_i}\ket{u_i} 
+\\
+&amp;=&amp; \sum_{i\in S_n}\sum_{x\in S_t} c_i \ket{x}\braket{x}{\Phi_i}\ket{u_i}
+\\
+&amp;=&amp; \sum_{i\in S_n}\sum_{x\in S_t} c_i \braket{x}{\Phi_i} \ket{x}\ket{u_i} 
+\end{eqnarray*}\]</div>
+<p>Midiendo en el primer registro <span class="math notranslate nohighlight">\(\ket{x}\hookrightarrow \ket{m}\)</span> obtendremos un número entero <span class="math notranslate nohighlight">\(\to m \)</span> con probabilidad</p>
+<div class="math notranslate nohighlight">
+\[
+p(m) = \sum_i  |c_i|^2  |\braket{m}{\Phi_i}|^2   = \sum_i  |c_i|^2  p(\delta_i,l_i)
+\]</div>
+<p>La probabilidad <span class="math notranslate nohighlight">\(p(m)\)</span> es una <strong>suma ponderada de distribuciones</strong> <span class="math notranslate nohighlight">\(p(\delta_i,l_i) =  |\braket{m}{\Phi_i}|^2\)</span>
+con  <span class="math notranslate nohighlight">\(m = a_i + l_i\)</span> <em>picadas</em> en torno  <span class="math notranslate nohighlight">\(l_i = 0\)</span>.</p>
+<p>Si <span class="math notranslate nohighlight">\(t\)</span> se escoge como en el teorema descrito anteriormente, el resultado será una aproximación <span class="math notranslate nohighlight">\(a_i\)</span> a <span class="math notranslate nohighlight">\(2^t\varphi_i\)</span> con una probabilidad de acierto de, al menos, <span class="math notranslate nohighlight">\(|c_i|^2 (1-\epsilon)\)</span>.</p>
+<p><em>Ejemplo:</em></p>
+<p>Vamos a correr el circuito QPE inicializando para una  combinaciones <span class="math notranslate nohighlight">\(\ket{b} = \cos \theta/2 \ket{0} + \sin \theta/2
+ \ket{1}= R_y(\theta)\ket{0}\)</span> de autoestados de <span class="math notranslate nohighlight">\(P(\varphi)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_seed</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">a0</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">delta0</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">phi0</span> <span class="o">=</span> <span class="p">(</span><span class="n">a0</span><span class="o">+</span> <span class="n">delta0</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">t_seed</span><span class="p">)</span> 
+
+<span class="n">a1</span> <span class="o">=</span> <span class="mf">3.</span>
+<span class="n">delta1</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">phi1</span> <span class="o">=</span><span class="p">(</span><span class="n">a1</span><span class="o">+</span> <span class="n">delta1</span><span class="p">)</span><span class="o">*</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">t_seed</span><span class="p">)</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;phi0=&#39;</span><span class="p">,</span> <span class="n">phi0</span><span class="p">,</span> <span class="s1">&#39; -&gt;   2^t*phi0 = a0 + delta0 = &#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi0</span> <span class="p">,</span> <span class="s1">&#39; , a0 =&#39;</span> <span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi0</span><span class="p">),</span> <span class="s1">&#39;=&gt;&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi0</span><span class="p">),</span><span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">t_seed</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;phi1=&#39;</span><span class="p">,</span> <span class="n">phi1</span><span class="p">,</span> <span class="s1">&#39; -&gt;   2^t*phi1 = a1 + delta1 = &#39;</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi1</span> <span class="p">,</span> <span class="s1">&#39; , a1 =&#39;</span> <span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi0</span><span class="p">),</span> <span class="s1">&#39;=&gt;&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">t_seed</span><span class="o">*</span><span class="n">phi1</span><span class="p">),</span><span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">t_seed</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>phi0= 0.1375  -&gt;   2^t*phi0 = a0 + delta0 =  1.1  , a0 = 1 =&gt; 001
+phi1= 0.3875  -&gt;   2^t*phi1 = a1 + delta1 =  3.1  , a1 = 1 =&gt; 011
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># la dimensión del registro de evaluación </span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># la dimensiónd el espacio de representación del opeador U</span>
+
+<span class="n">qrt</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">qra</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;qr_U&quot;</span><span class="p">)</span> <span class="c1"># aquí 1 es la dimensión del espacio en el que opera U</span>
+<span class="n">crt</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">qpe</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qrt</span><span class="p">,</span><span class="n">qra</span><span class="p">,</span><span class="n">crt</span><span class="p">)</span>   
+
+<span class="c1">##########################################################################</span>
+<span class="c1">#inicializamos la ancilla en una combinación cos(th/2)|0&gt; + sin(th/2)|1&gt;</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">0.15</span> 
+<span class="n">qpe</span><span class="o">.</span><span class="n">ry</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span><span class="n">qra</span><span class="p">)</span> 
+<span class="c1">##########################################################################</span>
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">qpe</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># aplicamos los operadores controlados c-U^j </span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">qpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_Uop</span><span class="p">(</span><span class="n">phi0</span><span class="p">,</span><span class="n">phi1</span><span class="p">,</span><span class="mi">2</span><span class="o">**</span><span class="n">j</span><span class="p">),[</span><span class="n">qrt</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span><span class="o">+</span><span class="n">qra</span><span class="p">[:])</span>
+<span class="c1">#    qpe.cp(2*np.pi*phi1*(2**j), qrt[j], qra); # This is C-U</span>
+    
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># aplicamos la QFT^-1 que está definida en macro.py </span>
+<span class="n">qpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC_adj</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">qrt</span><span class="p">)</span>
+
+<span class="c1"># podemos hacerlo usando la librería de qiskit </span>
+<span class="c1">#from qiskit.circuit.library import QFT</span>
+<span class="c1">#qpe.append(QFT(len(qr),do_swaps=True).inverse(),qr)</span>
+
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qrt</span><span class="p">,</span><span class="n">crt</span><span class="p">)</span>
+
+<span class="n">qpe</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../_images/c7cf8c9dc47af7358513d0edce652fc82d73f9c1b35bad1cebff9f2c7a305d8a.png" src="../../_images/c7cf8c9dc47af7358513d0edce652fc82d73f9c1b35bad1cebff9f2c7a305d8a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span> <span class="n">M_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3a464eef9e02ed85cdb75c9bee23579c28b2facf76172b522049673ef4831a28.png" src="../../_images/3a464eef9e02ed85cdb75c9bee23579c28b2facf76172b522049673ef4831a28.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="orden-modular">
+<h2>Orden  modular<a class="headerlink" href="#orden-modular" title="Permalink to this heading">#</a></h2>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Orden modular</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Sean <span class="math notranslate nohighlight">\(m,N \in {\mathbb N}\)</span> dos enteros <span class="math notranslate nohighlight">\(m&lt;N\)</span> coprimos (sin divisores  comunes).
+Definimos el <b> orden de <span class="math notranslate nohighlight">\(m\)</span> módulo <span class="math notranslate nohighlight">\(N\)</span></b> como el  menor entero positivo, <span class="math notranslate nohighlight">\(r\)</span>, tal que <span class="math notranslate nohighlight">\(m^r = 1\)</span> mod<span class="math notranslate nohighlight">\(N\)</span>.</p>
+</div>
+</div>
+<p><strong>Problema</strong>: dados <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(N\)</span>,   hallar <span class="math notranslate nohighlight">\(r\)</span> con el número mínimo de operaciones.</p>
+<p><em>Ejemplo:</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">}</span>   <span class="c1"># comprimos con 15</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">7</span>
+<span class="n">N</span><span class="o">=</span><span class="mi">15</span>
+<span class="p">[</span><span class="n">m</span><span class="o">**</span><span class="n">i</span><span class="o">%</span><span class="k">N</span> for i in range(17)]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 7, 4, 13, 1, 7, 4, 13, 1, 7, 4, 13, 1, 7, 4, 13, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>En general, si <span class="math notranslate nohighlight">\(N=2^n\)</span>, clásicamente no existen algoritmos capaces de resolver este problema en un número  de pasos que sea <i> polinómico en <span class="math notranslate nohighlight">\(n\)</span></i>.</p>
+<p>Por el contrario, verificar si un <span class="math notranslate nohighlight">\(r\)</span> es solución es fácil.</p>
+<p>Nos hallamos ante un problema de tipo NP.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>Como  <span class="math notranslate nohighlight">\(m^r = 1 = m^0\)</span>, a partir de ese momento la serie de valores <span class="math notranslate nohighlight">\(\{m^0,m^1,\ldots m^{r-1}\}\)</span> se repite.
+Por tanto, halla el <i> orden modular </i> de <span class="math notranslate nohighlight">\(m\)</span> módulo <span class="math notranslate nohighlight">\(N\)</span>  es lo mismo que hallar la <i> periodicidad</i> de la función <span class="math notranslate nohighlight">\(f(x) = m^x\, \)</span>mod<span class="math notranslate nohighlight">\(N\)</span>.</p>
+<p>Sin embargo, si tratamos de fabricar un oráculo para el operador unitario <span class="math notranslate nohighlight">\(U_f:\ket{x}\ket{y} \to \ket{x}\ket{m^x y \,{\rm mod} N}\)</span> nos encontraremos con una complejidad exponencial</p>
+</div>
+<p>Sea <span class="math notranslate nohighlight">\(U ; \Hil_n \to \Hil_n \)</span> un oráculo que actúa en la forma siguiente sobre la base <span class="math notranslate nohighlight">\(\{\ket{y}\}\)</span>  donde <span class="math notranslate nohighlight">\(y \in S_n = {0,1,...,N-1}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+U\ket{y }  = \ket{m y \,{\rm mod} N}
+\]</div>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>Un oráculo general que funcione para cualquier <span class="math notranslate nohighlight">\((m,N)\)</span> no es conocido.</p>
+</div>
+<p>La composición  <span class="math notranslate nohighlight">\(U^x = \underbrace{U\cdot U \cdots U}_{x}\)</span> genera todos los vectores que buscamos</p>
+<div class="math notranslate nohighlight">
+\[
+U^x\ket{y }  = U^{x-1}\ket{m y \,{\rm mod} N} =  U^{x-2}\ket{m^2 y \,{\rm mod} N} = ... = \ket{m^x y \,{\rm mod} N}
+\]</div>
+<p>El <em>orden</em> de <span class="math notranslate nohighlight">\(m\)</span> mod<span class="math notranslate nohighlight">\(N\)</span> es claramente el número <span class="math notranslate nohighlight">\(r\)</span> tal que</p>
+<div class="math notranslate nohighlight">
+\[U^{r }\ket{y} = \ket{m^r  y \,{\rm mod} N} = \ket{y}\]</div>
+<p>Con <span class="math notranslate nohighlight">\(U\)</span> podríamos implementar la función <span class="math notranslate nohighlight">\(f(x) = m^x{\rm mod} N\)</span> en la forma</p>
+<div class="math notranslate nohighlight">
+\[
+U_f \ket{x}\ket{1}  = \ket{x}U^x\ket{1} = \ket{x}\ket{m^x \, {\rm mod} N }
+\]</div>
+<p>y buscar la periodicidad de <span class="math notranslate nohighlight">\(f(x+r) = f(x)\)</span> siguiento el método de la lección anterior.</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<ul class="simple">
+<li><p>La acción de <span class="math notranslate nohighlight">\(U_f\)</span> parece mucho a la de un operador controlado <span class="math notranslate nohighlight">\(\cg{U}\ket{x}\ket{y} = \ket{x}U^x\ket{y}\)</span>. Sin embargo ahora <span class="math notranslate nohighlight">\(x = 0,1,...,2^t-1\)</span> es un entero. El circuito que implementa <span class="math notranslate nohighlight">\(U_f\)</span> es precisamente el que se utiliza en el circuito de QPE.</p></li>
+<li><p>Con esta observación vemos que el circuito de QPE se parece mucho al que hemos usado en la búsqueda de un período en el tema anterior.</p></li>
+</ul>
+</div>
+<p>Vamos a aplicar el  método de <i> Estimación Cuántica de Fase</i> (QPE) al operador <span class="math notranslate nohighlight">\(U\)</span></p>
+<p>Recordemos que dicho método <u>nos pide evaluar el operador <span class="math notranslate nohighlight">\(U\)</span> sobre sus autovectores</u> <span class="math notranslate nohighlight">\(U\ket{u} = e^{i\varphi}\ket{u}\)</span>.</p>
+<p>Si <em>conociésemos</em> <span class="math notranslate nohighlight">\(r\)</span> podríamos construir el siguiente conjunto de <span class="math notranslate nohighlight">\(r\)</span>  vectores <span class="math notranslate nohighlight">\(\ket{u_s}\)</span> con <span class="math notranslate nohighlight">\(s=0,...,r-1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\ket{u_s} = \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i \frac{s }{r}j} U^j\ket{1}
+\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Los vectores   <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span>   forman un conjunto de <i>autovectores</i> de  <span class="math notranslate nohighlight">\(U\)</span> con <i>autovalores</i> <span class="math notranslate nohighlight">\(e^{2\pi i s/r}~\)</span>. Es decir</p>
+<div class="math notranslate nohighlight">
+\[
+U\ket{ u_s} = e^{i\varphi_s} \ket{u_s}
+\]</div>
+<p class="sd-card-text">con
+$<span class="math notranslate nohighlight">\(
+\varphi_s = s/r~~~~~~ s=0,...,r-1
+\)</span>$</p>
+</div>
+</div>
+<p><strong>Prueba</strong>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2eeb3016-8680-4155-80dd-642cd9cdaac2">
+<span class="eqno">(19)<a class="headerlink" href="#equation-2eeb3016-8680-4155-80dd-642cd9cdaac2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
+\nonumber\\
+ &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
+ e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s j/r} U^{j}\ket{1} 
+\nonumber\\
+&amp;=&amp; e^{2\pi i s/r} \ket{u_s}\, .  \rule{0mm}{8mm}
+\end{eqnarray}\]</div>
+<p>Podríamos sencillamente aplicar el algoritmo de estimación de fase para <em>extraer la serie</em> de valores de <span class="math notranslate nohighlight">\(\varphi_s = s/r\)</span> y de ahí recuperar el <em>orden modular</em> <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<p>El problema es que, para generar <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span> necesitamos conocer <span class="math notranslate nohighlight">\(r\)</span>, que, <em>precisamente, es el dato  que buscamos</em></p>
+<p>Una <em>observación importante</em> nos permite soslayar esta dificultad: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-2d201c79-39c7-4b59-b614-f3c50a6c350e">
+<span class="eqno">(20)<a class="headerlink" href="#equation-2d201c79-39c7-4b59-b614-f3c50a6c350e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
+\rule{0mm}{12mm}
+&amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
+&amp;=&amp; \ket{1}
+\end{eqnarray}\]</div>
+<p><u>¡El resultado es asombrosamente simple!</u>:</p>
+<p>si inicializamos el circuito de estimación de fase con el estado <span class="math notranslate nohighlight">\(\ket{0}_t\ket{1}_n\)</span> a la salida obtendremos una superposición uniforme</p>
+<div class="math notranslate nohighlight">
+\[
+U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1} \ket{m_s}\otimes\ket{u_s}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(m_s = 2^t s/r\)</span> siempre que <span class="math notranslate nohighlight">\(t\)</span> se haya elegido de forma que <span class="math notranslate nohighlight">\(~2^t s/r \in {\mathbb Z}\)</span> sea entero.</p>
+<center> 
+<img src="./figuras/Orden_modular.png" width='60%' style='margin:left'/>
+</center>
+<section id="id2">
+<h3>Ejemplo:<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Necesitamos un oráculo que implemente la operación</p>
+<div class="math notranslate nohighlight">
+\[U^{x }\ket{y} = \ket{m^x  y \,{\rm mod} N} \]</div>
+<p>El siguiente código implementa este oráculo para <span class="math notranslate nohighlight">\(N=15\)</span> y <span class="math notranslate nohighlight">\(m\in \{2,4,7,8,11,13\}\)</span> coprimos, y lo convierte en una puerta controlada</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c_amod15</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Controlled multiplication by a mod 15&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;a&#39; must be 2,4,7,8,11 or 13&quot;</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>        
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">power</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">13</span><span class="p">]:</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]:</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">11</span><span class="p">]:</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+            <span class="n">U</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+                <span class="n">U</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="c1">#    print(U)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="o">.</span><span class="n">to_gate</span><span class="p">()</span>
+    <span class="n">U</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%i</span><span class="s2">^</span><span class="si">%i</span><span class="s2"> mod 15&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">power</span><span class="p">)</span>
+    <span class="n">c_U</span> <span class="o">=</span> <span class="n">U</span><span class="o">.</span><span class="n">control</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">c_U</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Función definida en <a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/shor.html">Qiskit Textbook</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_amod15</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span> <span class="p">)</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../_images/f8e410c73b3a92cfc763e9ed85d648b581e66e32521eb9b7b32439558e68bf8c.png" src="../../_images/f8e410c73b3a92cfc763e9ed85d648b581e66e32521eb9b7b32439558e68bf8c.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Construye un circuito con esta puerta y verifica que reproduce la lista <span class="math notranslate nohighlight">\(m^x\)</span> mod 15 con <span class="math notranslate nohighlight">\(x=0,1,2,...\)</span></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="mi">4</span> 
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span> 
+<span class="n">m</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="n">qr</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+<span class="n">ar</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;qr_U&quot;</span><span class="p">)</span> <span class="c1"># aquí 1 es la dimensión del espacio en el que opera U</span>
+<span class="n">cr</span><span class="o">=</span><span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">ar</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>   
+
+<span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">ar</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">#  inicializamos la ancilla al autoestado de P(phi) -&gt;  |u&gt; = |1&gt;</span>
+<span class="c1">#qpe.h(ar[0]) #  </span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># aplicamos los operadores controlados c-U^j </span>
+<span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_amod15</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">q</span><span class="p">),</span> <span class="p">[</span><span class="n">qr</span><span class="p">[</span><span class="n">q</span><span class="p">]]</span> <span class="o">+</span> <span class="n">ar</span><span class="p">[:])</span>
+
+
+<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+
+<span class="c1"># aplicamos la QFT^-1 que está definida en macro.py </span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC_adj</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">qr</span><span class="p">)</span>
+
+<span class="c1"># podemos hacerlo usando la librería de qiskit </span>
+<span class="c1">#from qiskit.circuit.library import QFT</span>
+<span class="c1">#qpe.append(QFT(len(qr),do_swaps=True).inverse(),qr)</span>
+
+
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8e2f71990f182d20233afb1cac9c0e3d50cb227fca1727e1625ec0db831957fb.png" src="../../_images/8e2f71990f182d20233afb1cac9c0e3d50cb227fca1727e1625ec0db831957fb.png" />
+</div>
+</div>
+<p>Ejecutamos el circuito y listamos los suceso más probables</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+<span class="n">M_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">M_simulator</span><span class="p">,</span><span class="n">shots</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">counts</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9c03c5b0864a76cf08c79e98a9074b787040a49ef9e5c23a580e6be53a0e9137.png" src="../../_images/9c03c5b0864a76cf08c79e98a9074b787040a49ef9e5c23a580e6be53a0e9137.png" />
+</div>
+</div>
+<p>de aquí obtenemos la lista de valores enteros <span class="math notranslate nohighlight">\(2^t s/r\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ns_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span>  <span class="n">keys</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[2^ts/r] ~ &#39;</span><span class="p">,</span> <span class="n">Ns_list</span><span class="p">)</span>
+
+<span class="c1"># dividiendo por 2**t</span>
+<span class="n">phis_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ns_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="n">t</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ns_list</span><span class="p">))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;phi_s&#39;</span><span class="p">,</span> <span class="n">phis_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2^ts/r] ~  [4, 8, 12]
+phi_s [0.25, 0.5, 0.75]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora podemos usar, como antes, dos estrategias para extraer el valor del período <span class="math notranslate nohighlight">\(r\)</span>:</p>
+<ol class="arabic simple">
+<li><p>analizando las diferencias: <span class="math notranslate nohighlight">\(r = \displaystyle \left(\frac{s+1}{r} - \frac{s}{r}\right)^{-1}\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">differences</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">((</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">differences</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el valor entero del promedio =&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">differences</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">differences</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 4]
+el valor entero del promedio = 4
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>usando la representación en fracciones continuas: <span class="math notranslate nohighlight">\(\, \displaystyle \varphi_s = \frac{s}{r}\)</span></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;[s/r]=&#39;</span><span class="p">,[</span><span class="n">Fraction</span><span class="p">(</span><span class="n">phis_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">)))])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[s/r]= [Fraction(1, 4), Fraction(1, 2), Fraction(3, 4)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<ul class="simple">
+<li><p>En el caso más general <span class="math notranslate nohighlight">\(\varphi_s = 2^t s/r \notin {\mathbb Z}\)</span> no será un entero</p></li>
+<li><p>Entonces el resultado de la medida <span class="math notranslate nohighlight">\(m_s\)</span> seguirá una distribución de probabilidad <i>picada</i> en torno a la parte entera <span class="math notranslate nohighlight">\(a_s = [2^t s/r]\)</span></p></li>
+<li><p>Haciendo un número alto de medidas y seleccionando los eventos  <span class="math notranslate nohighlight">\(m_s = a_s\)</span> más probables podemos recuperar <span class="math notranslate nohighlight">\(r\)</span> por los mismos métodos anteriores.</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_03_Algoritmos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter_042_QFT_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Transformada de Fourier Cuántica</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter_044_Grover_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Algoritmos de búsqueda</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Estimación Cuántica de Fase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-de-medidas">Distribución de medidas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#y-si-no-podemos-preparar-un-autoestado">¿y si no podemos preparar  un autoestado?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-modular">Orden  modular</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Ejemplo:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

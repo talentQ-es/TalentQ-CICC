@@ -1,0 +1,62 @@
+Esta es un guia de cuadros para Jupyter Notebook 7. Debe de usarse la sintaxis estricta de este documento, modificando solo las partes indicadas.
+
+Recordemos que antes y despues de una equación con DOBLE DOLAR deben haber lineas en blanco o <br>:
+
+Texto....
+
+$$
+equación....
+$$
+
+Texto....
+<br>
+$$
+equación....
+$$
+
+############## Definición/Lema/Teorema/Nota/Ejercicio/Ejemplo ##############
+
+Los cuadros deben de ser de esta forma:
+
+    <div class="alert alert-block alert-TipoAlert">
+    <p style="text-align: left ;color: navy;">
+    <b>TITULO</b>: <i>SUBTITULO</i>
+
+    TEXTO AQUÍ
+
+    <details><summary><p style="text-align:left"> >> <i>Prueba/Demostración:</i></p></summary>
+    TEXTO AQUÍ
+    </details>
+
+    </p></div>
+
+donde
+    - TipoAlert = info, danger, success,....
+    - TITULO    = Definición, Teorema, Lema, Nota, Ejercicio o Ejemplo
+    - SUBTITULO = Lo que sea, lo importante es que vaya <i>  </i>
+
+La sección <details> </details> es opcional
+El cambio de color es opcional, es decir, se puede borrar:
+    - <p style="text-align: left ;color: navy;">
+    - </p>
+
+IMPORTANTE: Para convertir los cuadros y elegir a que tipo de cuadro de myst se convierte, se usa el TITULO,
+así que es importante que esté bien escrito y sea uno de los anteriores (mayusculas y tildes dan igual).
+Ejemplos:
+    <b>Teorema</b>: <i>de Gram-Schmidt</i>
+    <b>Definición</b>: <i>Espacio Vectorial</i>
+
+
+
+
+
+
+############ Demostraciones sueltas, sin ser en un cuadro ##############
+
+<details><summary><p style="text-align:left"> >> <i>Demostración</i> </p></summary>
+
+TEXTO AQUÍ
+
+</details>
+
+

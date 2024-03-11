@@ -1,0 +1,1761 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Mezcla de Estados &#8212; Curso de Introducción a la Computación Cuántica</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/myfile.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Medidas generalizadas" href="Chapter_052_Fun_Info_Cuant_myst.html" />
+    <link rel="prev" title="Algoritmos de búsqueda" href="../Part_03_Algoritmos/Chapter_044_Grover_myst.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-light" alt="Curso de Introducción a la Computación Cuántica - Home"/>
+    <script>document.write(`<img src="../../_static/TalentQ_LogoNegNegro.png" class="logo__image only-dark" alt="Curso de Introducción a la Computación Cuántica - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las reglas del juego</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Formalismo Matemático</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los Números Complejos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Los Vectores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_05_Probabilidades_myst.html">Probabilidades</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html">Fundamentos de Mecánica Cuántica</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Circuitos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.html">Circuitos de 1 cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.html">El espín</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.html">Circuitos de multicúbit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Algoritmos Cuánticos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.html">Algoritmos de Oráculo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_042_QFT_myst.html">Transformada de Fourier Cuántica</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_043_QPE_myst.html">Estimación Cuántica de Fase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Part_03_Algoritmos/Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Informacion Cuántica</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mezcla de Estados</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_052_Fun_Info_Cuant_myst.html">Medidas generalizadas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_053_Entrop_Cuant_myst.html">Elementos de Información Cuántica</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/Part_04_Quantum_Info/Chapter_051_Operador_densidad_myst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mezcla de Estados</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-puro-y-mezcla-estadistica">Estado puro y mezcla estadística</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operador-densidad">Operador densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-del-operador-densidad">Propiedades del operador densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convexidad">Convexidad</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unicidad-del-operador-densidad">Unicidad del operador densidad</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolucion-temporal">Evolución temporal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casos-particulares-de-operador-densidad">Casos particulares de operador densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#operador-densidad-de-un-estado-puro">Operador densidad de un estado puro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-maximalmente-mezclado">Estado maximalmente mezclado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-parcialmente-mezclado">Estado parcialmente mezclado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-termico-o-de-gibbs">Estado térmico, o de Gibbs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cubit-mezclado-bola-de-bloch">Cúbit mezclado: bola de Bloch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-proyectivas-en-estados-mezclados">Medidas proyectivas en estados mezclados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-esperado-en-un-estado-mezclado">Valor esperado en un estado mezclado</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fidelidad">Fidelidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poblaciones-y-coherencias">Poblaciones y Coherencias</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poblaciones">Poblaciones:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coherencias">Coherencias:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-mezclado-compuesto">Estado mezclado compuesto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traza-parcial">Traza parcial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impurificacion-y-purificacion">Impurificación y purificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impurificacion-de-un-estado-puro">Impurificación de  un estado puro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purificacion-de-un-estado-mezclado">Purificación de un estado mezclado</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-no-correlacionados-separables-y-entrelazados">Estados no correlacionados, separables y entrelazados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-no-correlacionados">Estados no-correlacionados:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-separables">Estados separables:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-entrelazados">Estados entrelazados:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <blockquote>
+<div><p>Mar 11, 2024 | 15 min read</p>
+</div></blockquote>
+<figure class="align-right">
+<a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
+</figure>
+<section class="tex2jax_ignore mathjax_ignore" id="mezcla-de-estados">
+<h1>Mezcla de Estados<a class="headerlink" href="#mezcla-de-estados" title="Permalink to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\ketbra}[2]{| #1\rangle \langle #2|} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\tr}{{\rm Tr}\,} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Tr}{{\rm Tr}\,} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\V}{{\cal V}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Lin}{\hbox{Lin}}\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../macro_tQ.py
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="estado-puro-y-mezcla-estadistica">
+<h2>Estado puro y mezcla estadística<a class="headerlink" href="#estado-puro-y-mezcla-estadistica" title="Permalink to this heading">#</a></h2>
+<p>El contenido de la <em>función de onda</em> es <strong>probabilístico</strong>. Sólo sirve para predecir probabilidades de resultados de medidas.</p>
+<p>La evolución de la <em>función de onda</em> es <strong>determinista</strong>, se obtiene de solucionar la ecuación de Schrödinger</p>
+<p>Sin embargo, el <em>propio conocimiento</em> de la función de onda <em>puede estar sometido a incertidumbre</em>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Estado puro</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Si con <i>certeza total</i> podemos afirmar que el estado de un sistema está descrito por un vector
+<span class="math notranslate nohighlight">\(\ket{\psi}\in \Hil\)</span>
+decimos que nuestro sistema se encuentra en un <i>estado puro</i>.</p>
+</div>
+</div>
+<p>¿Qué ocurre si no podemos tener la certeza de que el estado que describe el sistema sea <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>?</p>
+<p>Por ejemplo: sea un aparato de Stern Gerlach que prepara el estado <span class="math notranslate nohighlight">\(\ket{\uparrow}\)</span> y otro que prepara el estado  <span class="math notranslate nohighlight">\(\ket{\rightarrow}\)</span></p>
+<p>Supongamos que la <em>elección del polarizador</em> es aleatoria:</p>
+<ul class="simple">
+<li><p>con probabilidad <span class="math notranslate nohighlight">\(p\)</span> se elige el polarizador que prepara <span class="math notranslate nohighlight">\(\ket{\uparrow}\)</span></p></li>
+<li><p>con probabilidad <span class="math notranslate nohighlight">\((1-p)\)</span>  el polarizador que prepara <span class="math notranslate nohighlight">\(\ket{\rightarrow}\)</span>.</p></li>
+</ul>
+<p>El estado generado mediante este procedimiento es una <strong>mezcla estadística</strong> de estados puros</p>
+<div class="math notranslate nohighlight">
+\[
+\{ \, \ket{\uparrow},p\, ;\, \ket{\rightarrow},(1-p)\, \}
+\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Estado mezclado</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">En la situación más general, un  sistema estará en un <b>estado mezclado</b> asociado a una variable aleatoria evaluada en el espacio <span class="math notranslate nohighlight">\(\Hil\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+X = \{\ket{\psi_\alpha},p_\alpha\}
+\]</div>
+<p class="sd-card-text">que indica que, con probabilidad <span class="math notranslate nohighlight">\(p_\alpha\)</span> ,  el  sistema fue preparado en el estado <span class="math notranslate nohighlight">\(\ket{\psi_\alpha}\)</span></p>
+</div>
+</div>
+<p>La situación en la que trabajamos con estados mezclados es <strong>genérica</strong>.</p>
+<p>La descripción de un sistema mediante un estados puros solo es válida</p>
+<ul class="simple">
+<li><p>inmediatamente después de una medida.</p></li>
+<li><p>después,  en sistemas perfectamente aislados</p></li>
+</ul>
+<p>Podemos describir otras situaciones en las que el estado del sistema <u>no puede ser descrito mediante un estado puro</u>:</p>
+<ul class="simple">
+<li><p><strong>Computación cuántica:</strong></p></li>
+</ul>
+<p>Un registro cuántico en un ordenador cuántico está inicializado en <span class="math notranslate nohighlight">\(\ket{0}\)</span>.</p>
+<p>Al cabo de un rato, la interacción con el resto del sistema hará que, con probabilidad <span class="math notranslate nohighlight">\(p\ll 1\)</span>, este registro reciba la acción de un operador no deseado <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Entonces, la descripción correcta será la asociada al colectivo <span class="math notranslate nohighlight">\(\{\ket{0},(1-p)\, ;\, \ket{1},p\}\)</span>, es decir</p>
+<div class="math notranslate nohighlight">
+\[\rho = p\ketbra{1}{1} + (1-p)\ketbra{0}{0}\]</div>
+<ul class="simple">
+<li><p><strong>Comunicaciones cuánticas:</strong></p></li>
+</ul>
+<p>Un mensaje codificado cuánticamente es una secuencia de estados (letras) <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1}\}\)</span> que se extrae de un generador aleatorio clásico con probabilidades <span class="math notranslate nohighlight">\(p\)</span> y <span class="math notranslate nohighlight">\(1-p\)</span>.</p>
+<p>A su recepción, estos estados se detectarán realizando medidas sobre un estado que, en ausencia de ruido, será igualmente</p>
+<div class="math notranslate nohighlight">
+\[\rho = p\ketbra{1}{1} + (1-p)\ketbra{0}{0}\]</div>
+<ul class="simple">
+<li><p><strong>Acceso parcial a un sistema</strong></p></li>
+</ul>
+<p>Supongamos un sistema bi-partito <span class="math notranslate nohighlight">\(\ket{\psi} = \sum_{ij} c_{ij}\ket{i}\ket{j} \in \Hil_A\otimes \Hil_B\)</span>. Supongamos que sólo disponemos de observable capaz de <em>medir</em> una parte del sistema, <span class="math notranslate nohighlight">\(A = O\otimes I\)</span>.</p>
+<p><u>No existe</u> un estado puro <span class="math notranslate nohighlight">\(\ket{\varphi}\in \Hil_A\)</span> a partir del cual se pueda obtener el valor esperado <span class="math notranslate nohighlight">\(\langle O\rangle = \bra{\varphi}O\ket{\varphi}\)</span>.</p>
+<p>Los 2 ejemplos mencionados antes son de este último tipo, ya que en ambos casos nuestro sistema es una parte de un sistema más grande que incluye el entorno, y al que no podemos tener acceso.</p>
+</section>
+<section id="operador-densidad">
+<h2>Operador densidad<a class="headerlink" href="#operador-densidad" title="Permalink to this heading">#</a></h2>
+<p>Supongamos que a nuestro sistema le podemos asignar un estado mezclado descrito por   <span class="math notranslate nohighlight">\(X = \{\ket{\psi_\alpha},p_\alpha\}\)</span>:</p>
+<ul class="simple">
+<li><p>¿Cuál es la forma correcta de describir la información accesible?</p></li>
+<li><p>¿Cómo generalizar los axiomas de la MC a esta situación?</p></li>
+</ul>
+<p>Empecemos calculando la probabilidad <span class="math notranslate nohighlight">\(p(\lambda_n)\)</span> de encontrar un autovector <span class="math notranslate nohighlight">\(\ket{\lambda_n}\)</span> como resultado de la medida de un observable <span class="math notranslate nohighlight">\(A\)</span></p>
+<p>Dicha probabilidad,  debe ser la <em>suma ponderada</em> de probabilidades <em>condicionadas  a que el estado sea cada uno de los estados posibles</em> <span class="math notranslate nohighlight">\(\ket{\psi_\alpha}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+p(\lambda_n) &amp;=&amp;
+\sum_\alpha p(\lambda_n | \alpha) p_\alpha 
+\\ \rule{0mm}{8mm}
+&amp;=&amp; \sum_\alpha  |\braket{\lambda_n}{\psi_\alpha}|^2  p_\alpha =  \sum_\alpha p_\alpha \braket{\lambda_n}{\psi_\alpha}\braket{\psi_\alpha}{\lambda_n} \\ \rule{0mm}{6mm}
+&amp;=&amp; \bra{\lambda_n}\left(\rule{0mm}{8mm}\sum_\alpha p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha}\right)\ket{\lambda_n} \\ \rule{0mm}{8mm}
+&amp;\equiv&amp;\bra{\lambda_n}\rho\ket{\lambda_n}\\ \rule{0mm}{8mm}
+\end{eqnarray*}\]</div>
+<p>El resultado anterior muestra la aparición en escena de un <em>nuevo operador</em> formado con <u>los datos del <em>colectivo aleatorio</em></u> <span class="math notranslate nohighlight">\(\{\ket{\psi_\alpha},p_\alpha\}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \sum_\alpha p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha} = \sum_\alpha p_\alpha P_\alpha
+\]</div>
+<p><span class="math notranslate nohighlight">\(\rho ~\)</span> se denomina <em>operador densidad</em> y consiste en una <em>suma ponderada</em> de <em>proyectores</em> <span class="math notranslate nohighlight">\(P_\alpha\)</span>, sobre cada uno de los subespacios generados por los <em>estados posibles</em> <span class="math notranslate nohighlight">\(\ket{\psi_\alpha}\)</span></p>
+<p>Este es el objeto matemático que caracteriza un estado mezcla.</p>
+<p>En particular:</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La probabilidad de medir el autovalor <span class="math notranslate nohighlight">\(\lambda_n\)</span> es el valor esperado</p>
+<div class="math notranslate nohighlight">
+\[
+p(\lambda_n) =\bra{\lambda_n }\rho\ket{\lambda_n} 
+\]</div>
+</div>
+</div>
+<p><a id='prop_op_dens'></a></p>
+<section id="propiedades-del-operador-densidad">
+<h3>Propiedades del operador densidad<a class="headerlink" href="#propiedades-del-operador-densidad" title="Permalink to this heading">#</a></h3>
+<p>Podemos ahora invertir la pregunta:</p>
+<p>dado un operador <span class="math notranslate nohighlight">\(\rho\)</span>, ¿qué condiciones debe verificar para poder representar el estado de un sistema?</p>
+<p>La caracterización más general es la siguiente:</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">un operador, <span class="math notranslate nohighlight">\(\rho\)</span>, podrá ser el <i>operador densidad</i> de un sistema cuántico, si cumple los requisitos de</p>
+<ul class="simple">
+<li><p class="sd-card-text">ser hermítico <span class="math notranslate nohighlight">\(\rho = \rho^\dagger\)</span></p></li>
+<li><p class="sd-card-text">ser semidefinido positivo</p></li>
+<li><p class="sd-card-text">tener traza unidad <span class="math notranslate nohighlight">\(~\tr \rho = 1\)</span></p></li>
+</ul>
+</div>
+</div>
+<p><em>Prueba</em></p>
+<ul class="simple">
+<li><p>la hermiticidad asegura que <span class="math notranslate nohighlight">\(\rho\)</span> admite una descomposición espectral</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\rho =  \sum_\alpha p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha} = \rho^\dagger
+\]</div>
+<p>dado que <span class="math notranslate nohighlight">\(p_\alpha\)</span> son autovalores reales</p>
+<ul class="simple">
+<li><p>la semidefinición positiva garantiza que dichos autovalores son no-negativos</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[p_\alpha\geq 0\]</div>
+<ul class="simple">
+<li><p>finalmente la traza unitaria permite dar a  <span class="math notranslate nohighlight">\(p_\alpha\)</span> el significado de probabilidades</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+{\rm Tr}\, \rho = {\rm \Tr} \sum_\alpha p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha} = \sum_\alpha p_\alpha \braket{\psi_\alpha}{\psi_\alpha} = \sum_\alpha p_\alpha = 1
+\]</div>
+<p>En resumen, para todo operador <span class="math notranslate nohighlight">\(\rho\)</span> que satisface los requisitos, existe un colectivo
+<span class="math notranslate nohighlight">\(\{\ket{\psi_\alpha},p_\alpha\}\)</span> del cuál, <span class="math notranslate nohighlight">\(\rho\)</span> es el operador densidad asociado.</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>El espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span> es un espacio de dimensión <span class="math notranslate nohighlight">\(N\)</span> arbitrario. Pero en el contexto de este curso, es natural pensar en <span class="math notranslate nohighlight">\(\Hil\)</span> como el <i>espacio multi-cúbit</i> formado por el producto tensorial de <span class="math notranslate nohighlight">\(n-\)</span>cúbits, <span class="math notranslate nohighlight">\(\Hil_2^{\otimes n}\)</span> cuya dimensión es <span class="math notranslate nohighlight">\(N= 2^n\)</span>.</p>
+<p>Así, a un colectivo <span class="math notranslate nohighlight">\(\{\ket{\psi_a},p_a\}\)</span> de estados del sistema multi-cúbit</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\psi_a} = \sum_{i_1,...,i_n=0,1} c^{(\alpha)}_{i_1...i_n} \ket{i_1... i_n}
+\]</div>
+<p>le podremos asociar una matriz densidad</p>
+<div class="math notranslate nohighlight">
+\[\rho = \sum_a p_a \ket{\psi_a}\bra{\psi_a}\]</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>escribe una función <span class="math notranslate nohighlight">\(density\_operator\)</span> en python que tome por argumentos una lista <span class="math notranslate nohighlight">\(\{p_a\}, \, a=1,..,r\)</span> de probabilidades, y otra lista <span class="math notranslate nohighlight">\(\{\ket{\psi_a}\}\)</span> de vectores normalizados en un espacio <span class="math notranslate nohighlight">\(\Hil\)</span> de dimensión <span class="math notranslate nohighlight">\(d\)</span>, y devuelva el operador densidad <span class="math notranslate nohighlight">\(\rho\)</span>.</p>
+<p>Ejecútala con argumentos generados aleatoriamente y verifica que se cumplen las propiedades que definen una matriz densidad.</p>
+</div>
+<section id="convexidad">
+<h4>Convexidad<a class="headerlink" href="#convexidad" title="Permalink to this heading">#</a></h4>
+<p>Las propiedades que definen un operador densidad restringen el espacio <span class="math notranslate nohighlight">\(\Lin(\Hil)\)</span> a un subconjunto más restringido que un subespacio vectorial.</p>
+<p>Es trivial demostrar el siguiente teorema que afirma que el conjunto de operadores densidad es un <strong>conjunto convexo</strong></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>convexidad</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">El conjunto de operadores densidad es un <i>conjunto convexo</i> :</p>
+</div>
+</div>
+<p>Es decir: sean <span class="math notranslate nohighlight">\(r\)</span> operadores densidad <span class="math notranslate nohighlight">\(\rho_a\)</span>, <span class="math notranslate nohighlight">\(a=1,...,r\)</span>, la combinación</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \sum_{a=1}^r p_a \rho_a
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(p_a\geq 0\)</span> con <span class="math notranslate nohighlight">\(\sum_a p_a = 1\)</span>, <em>es un operador densidad</em></p>
+<ul class="simple">
+<li><p>La combinación lineal del teorema tiene a todas las matrices densidad <span class="math notranslate nohighlight">\(\rho_a\)</span> como casos particulares</p></li>
+<li><p>El caso <span class="math notranslate nohighlight">\(r=2\)</span> es una <em>cuerda</em> <span class="math notranslate nohighlight">\(\rho = p \rho_1  + (1-p) \rho_2\)</span> de matrices densidad que interpolan entre <span class="math notranslate nohighlight">\(\rho_1\)</span> y <span class="math notranslate nohighlight">\(\rho_2\)</span></p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Demuestra el teorema de convexidad.</p>
+</div>
+</section>
+<section id="unicidad-del-operador-densidad">
+<h4>Unicidad del operador densidad<a class="headerlink" href="#unicidad-del-operador-densidad" title="Permalink to this heading">#</a></h4>
+<p>A todo colectivo <span class="math notranslate nohighlight">\(\{\ket{\psi_\alpha},p_\alpha\}\)</span> le podemos asociar un  <strong>único</strong> operador densidad.</p>
+<p>Pero esta relación no es inyectiva <span class="math notranslate nohighlight">\(~\Rightarrow ~\)</span>  hay muchos (de hecho infinitos) colectivos que se describen mediante <em>el mismo operador densidad</em></p>
+<div class="math notranslate nohighlight">
+\[
+\rho ~=~ p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha} ~=~ \sum_\beta \tilde p_\beta \ket{\tilde \psi_\beta}\bra{\tilde \psi_\beta} = ...
+\]</div>
+<p>En consecuencia: la probabilidades <span class="math notranslate nohighlight">\(p(\lambda_n) = \Tr (P_n\rho)\)</span> serán idénticas para todos los colectivos.</p>
+<p>Esto quiere decir que, en un estado mezclado:  <em>será imposible discernir cuál ha sido la preparación del estado a partir del las mediciones de experimentos cuánticos</em>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>verifica que
+$<span class="math notranslate nohighlight">\(
+\rho = \frac{1}{2}\ketbra{\tilde 0}{\tilde 0} + \frac{1}{2}\ketbra{\tilde 1}{\tilde 1} = 
+\frac{2}{3}\ketbra{0}{0} + \frac{1}{3}\ketbra{1}{1}  
+\)</span>$</p>
+<p>si ambos colectivos se relacionan como sigue</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\tilde 0} = \sqrt{\frac{2}{3}}\ket{0} + \sqrt{\frac{1}{3}} \ket{1} ~~~;~~~~
+\ket{\tilde 1} = \sqrt{\frac{2}{3}}\ket{0} - \sqrt{\frac{1}{3}} \ket{1} 
+\]</div>
+</div>
+</section>
+</section>
+<section id="evolucion-temporal">
+<h3>Evolución temporal<a class="headerlink" href="#evolucion-temporal" title="Permalink to this heading">#</a></h3>
+<p>La evolución hamiltoniana de un sistema <span class="math notranslate nohighlight">\(\ket{\psi(t)} = U(t,t_0)\ket{\psi(t_0)}\)</span> se traduce en la evolución unitaria de la matriz densidad</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\rho(t)        &amp;=&amp;  U(t,t_0) \rho(t_0) U^{\dagger}(t,t_0)
+\end{eqnarray*}\]</div>
+<p>a partir de aquí, es fácil obtener la ecuación diferencial de von Neumann</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+i \hbar \dot \rho(t) &amp;=&amp; i\hbar (\dot U \rho(t_0)U^{-1} + U \rho(t_0)\dot U^{-1}  \\ \rule{0mm}{10mm}
+&amp;=&amp; H \rho(t_0)U^{-1} - U \rho(t_0) U^{-1} H \\  \rule{0mm}{10mm}
+&amp;=&amp; [H,\rho(t)]
+\end{eqnarray*}\]</div>
+</section>
+<section id="casos-particulares-de-operador-densidad">
+<h3>Casos particulares de operador densidad<a class="headerlink" href="#casos-particulares-de-operador-densidad" title="Permalink to this heading">#</a></h3>
+<section id="operador-densidad-de-un-estado-puro">
+<h4>Operador densidad de un estado puro<a class="headerlink" href="#operador-densidad-de-un-estado-puro" title="Permalink to this heading">#</a></h4>
+<p>La matriz densidad es un formalismo más general que el del vector estado, que sólo se aplica en el caso de ser el estado puro.</p>
+<p>En efecto, el operador densidad asociado a un estado puro <span class="math notranslate nohighlight">\(\ket{\psi_0}\)</span> se obtiene haciendo todas las probabilidades <span class="math notranslate nohighlight">\(p_{\alpha\neq 0}=0\)</span> y <span class="math notranslate nohighlight">\(p_{0} = 1\)</span>. Entonces el colectivo <span class="math notranslate nohighlight">\(\{\ket{\psi_0},p_0=1\}\)</span> lleva asociado el operador</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho = \ket{\psi_0}\bra{\psi_0} = \begin{bmatrix}1 &amp;  &amp; \\ &amp; 0 &amp; \\ &amp; &amp; \ddots  \end{bmatrix}
+\end{split}\]</div>
+<p>Es evidente que esta expresión cumple la propiedad que caracteriza a un <em>proyector</em></p>
+<div class="math notranslate nohighlight">
+\[
+\rho^2 = \rho
+\]</div>
+<p>y esto es una ecuación que <u><em>caracteriza</em>  a los operadores densidad asociados a estados puros</u></p>
+<p><strong>Por el contrario</strong>, para un estado mezcla podemos ver que <span class="math notranslate nohighlight">\(\rho^2 \neq \rho\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-821a5ca3-db10-4663-a95f-5d7b4d41a578">
+<span class="eqno">(22)<a class="headerlink" href="#equation-821a5ca3-db10-4663-a95f-5d7b4d41a578" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\rho^2  &amp;=&amp;\left(
+\sum_{\alpha} p_\alpha \ketbra{\psi_\alpha}{\psi_\alpha}\right)
+\left(\sum_{\beta}p_\beta \ketbra{\psi_\beta}{\psi_\beta}\right) \\
+&amp;=&amp; \sum_\alpha p_\alpha^2 \ketbra{\psi_\alpha}{\psi_\alpha} \\
+&amp;\neq &amp;  \sum_\alpha p_\alpha \ketbra{\psi_\alpha}{\psi_\alpha} = \rho
+\end{eqnarray}\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Lema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Si <span class="math notranslate nohighlight">\(\rho\)</span> es un estado puro, <span class="math notranslate nohighlight">\(\Tr\rho^2 = 1\)</span>, y si es mezclado <span class="math notranslate nohighlight">\(\Tr \rho^2 &lt; 1\)</span>.</p>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Demuestra este lema.</p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Solución<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><em>Prueba:</em></p>
+<p class="sd-card-text">Por un lado, el valor de <span class="math notranslate nohighlight">\(\Tr \rho^2\)</span> es independiente de la base. Por tanto podemos calcularla en la base <span class="math notranslate nohighlight">\(\ket{\psi_a}\)</span> de autovectores</p>
+<div class="math notranslate nohighlight">
+\[
+\Tr \rho^2 = \Tr \left(\sum_a \lambda_a\ketbra{\psi_a}{\psi_a}\right)^2 = \sum_a \lambda_a^2
+\]</div>
+<p class="sd-card-text">Pero como <span class="math notranslate nohighlight">\(\lambda_a \leq 1\)</span> encontramos dos posibilidades.</p>
+<ul class="simple">
+<li><p class="sd-card-text">Si sólo hay un autovalor no nulo, <span class="math notranslate nohighlight">\(\lambda_1 = 1\)</span>, el estado es puro, y <span class="math notranslate nohighlight">\(\Tr \rho^2 = 1\)</span>.</p></li>
+<li><p class="sd-card-text">Si hay más de un autovalor no nulo, el estado es mezclado y <span class="math notranslate nohighlight">\(\Tr\rho^2 &lt; 0\)</span>.</p></li>
+</ul>
+</div>
+</details><p>Definimos la <i>pureza</i> de un estado como la cantidad <span class="math notranslate nohighlight">\( \Tr \rho^2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span>  <span class="n">DensityMatrix</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_state_city</span><span class="p">,</span> <span class="n">array_to_latex</span><span class="p">,</span> <span class="n">plot_state_hinton</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># plot state using a DensityMatrix</span>
+<span class="n">rho_state</span> <span class="o">=</span> <span class="n">DensityMatrix</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">array_to_latex</span><span class="p">(</span><span class="n">rho_state</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+
+<span class="n">plot_state_city</span><span class="p">(</span><span class="n">rho_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix}
+\frac{1}{2} &amp; 0 &amp; 0 &amp; \frac{1}{2}  \\
+ 0 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 0  \\
+ \frac{1}{2} &amp; 0 &amp; 0 &amp; \frac{1}{2}  \\
+ \end{bmatrix}
+\end{split}\]</div>
+<img alt="../../_images/baca541d476a452fe713a53c6339d67ace855032cfe014a69f587251f71fcdae.png" src="../../_images/baca541d476a452fe713a53c6339d67ace855032cfe014a69f587251f71fcdae.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># tr(\rho)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rho_state</span><span class="o">.</span><span class="n">trace</span><span class="p">())</span>
+
+<span class="c1"># pureza = tr(\rho**2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rho_state</span><span class="o">.</span><span class="n">purity</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.9999999999999998+0j)
+(0.9999999999999996+0j)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="estado-maximalmente-mezclado">
+<h4>Estado maximalmente mezclado<a class="headerlink" href="#estado-maximalmente-mezclado" title="Permalink to this heading">#</a></h4>
+<p>En el extremo opuesto de un estado puro, encontramos un estado <em>maximalmente mezclado</em>, en el cual</p>
+<ul class="simple">
+<li><p><em>todos</em> los estados de la mezcla son mutuamente ortogonales  <span class="math notranslate nohighlight">\(\braket{\psi_\alpha}{\psi_\beta} = \delta_{\alpha\beta}\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>aparecen de manera <em>equiprobable</em> <span class="math notranslate nohighlight">\(\{\ket{\psi_\alpha},p_\alpha = \frac{1}{d}\}, \alpha = 1,...,d\)</span>
+$<span class="math notranslate nohighlight">\(
+\rho = \sum_{\alpha=1}^d \frac{1}{d} \ket{\psi_\alpha}\bra{\psi_\alpha} = \frac{1}{d} I = \begin{bmatrix}1/d &amp;  &amp; &amp; \\ &amp; 1/d &amp;  &amp;\\ &amp; &amp; &amp;\ddots &amp; \\ &amp; &amp; &amp; &amp; 1/d \end{bmatrix}
+\)</span>$</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\rule{8mm}{0mm}\)</span>Por tanto, es una matriz diagonal proporcional a la identidad.</p>
+<p>La pureza de un estado máximalmente mezclado es mínima</p>
+<div class="math notranslate nohighlight">
+\[
+1 \geq \tr \rho^2 \geq  \sum_{i=1}^d \frac{1}{d^2} = \frac{1}{d}
+\]</div>
+</section>
+<section id="estado-parcialmente-mezclado">
+<h4>Estado parcialmente mezclado<a class="headerlink" href="#estado-parcialmente-mezclado" title="Permalink to this heading">#</a></h4>
+<p>Entre los dos extremos mencionados anteriormente, estado puro y estado maximalmente mezclado se sitúa cualquier estado <span class="math notranslate nohighlight">\(\rho\)</span> genérico. Si escribimos</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \sum_{\alpha=0}^{r-1} p_\alpha \ket{\psi_\alpha}\bra{\psi_\alpha}
+\]</div>
+<p>Aunque <span class="math notranslate nohighlight">\(p_\alpha = 1/d\)</span>, si <span class="math notranslate nohighlight">\(r\neq d\)</span>, o los estados no son ortonormales <span class="math notranslate nohighlight">\(\braket{\psi_\alpha}{\psi_\beta}\neq \delta_{\alpha\beta}\)</span>, entonces el estado es <em>parcialmente mezclado</em>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Usando la función <span class="math notranslate nohighlight">\(get\_density\_operator\)</span>, genera de forma aleatoria operadores densidad para distintos valores de <span class="math notranslate nohighlight">\(r\)</span> y <span class="math notranslate nohighlight">\(d\)</span>.</p>
+<p>Obtén los valores de <span class="math notranslate nohighlight">\(\tr \rho\)</span> y <span class="math notranslate nohighlight">\(\tr \rho^2\)</span></p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Dado un operador <span class="math notranslate nohighlight">\(A\in \Lin(\Hil)\)</span> verifica que <span class="math notranslate nohighlight">\(\rho = A^\dagger A/(\hbox{tr} A^\dagger A)\)</span> es operador densidad.</p>
+<p>¿Qué ocurre cuándo <span class="math notranslate nohighlight">\(A\)</span> es hermítico?</p>
+</div>
+</section>
+<section id="estado-termico-o-de-gibbs">
+<h4>Estado térmico, o de Gibbs<a class="headerlink" href="#estado-termico-o-de-gibbs" title="Permalink to this heading">#</a></h4>
+<p>Un caso muy importante de mezcla parcial es el <em>estado de Gibbs</em>, que describe un sistema cuando alcanza el <em>equilibrio término a una temperatura <span class="math notranslate nohighlight">\(T\)</span></em>.</p>
+<p>En este caso, los estados <span class="math notranslate nohighlight">\(\{\ket{\psi_\alpha}= \ket{E_\alpha}\}\)</span> son la <em>base de autoestados del operador Hamiltoniano</em>,</p>
+<div class="math notranslate nohighlight">
+\[
+H\ket{E_\alpha} = E_\alpha \ket{E_\alpha}
+\]</div>
+<p>y los autovalores <span class="math notranslate nohighlight">\(E_\alpha\, \alpha = 1,2...d\)</span> son los <em>niveles de energía</em> del sistema.</p>
+<p>Cuando un sistema está en contacto con un baño térmico a temperatura <span class="math notranslate nohighlight">\(T\)</span> el estado de energía no está bien definido, sino que es una <em>mezcla estadística</em> denominada <strong>colectivo canónico</strong></p>
+<div class="math notranslate nohighlight">
+\[\left\{\rule{0mm}{5mm}\ket{E_\alpha}, p_\alpha = e^{-E_\alpha/k_BT}\right\}\]</div>
+<ul class="simple">
+<li><p>Los coeficientes <span class="math notranslate nohighlight">\(p_\alpha = e^{-E_\alpha/k_BT}\)</span> se denominan <em>coeficientes de Boltzmann</em>  codifican la probabilidad  de hallarse en el estado (nivel de energía) <span class="math notranslate nohighlight">\(\ket{E_\alpha}\)</span>.</p></li>
+<li><p>el denominador común  <span class="math notranslate nohighlight">\(k_B T\)</span> es una energía característica para las temperatura <span class="math notranslate nohighlight">\(T\)</span>, y <span class="math notranslate nohighlight">\(k_B\)</span> es una constante universal denominada <em>constante de Boltzmann</em></p></li>
+</ul>
+<p>La matriz densidad que describe el estado de este sistema es el denominado <em>estado de Gibbs</em></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho(T) = \frac{1}{Z}\sum_{\alpha=1}^d e^{-E_\alpha/k_BT} \ket{E_\alpha}\bra{E_\alpha} = \frac{1}{Z} \begin{bmatrix}e^{-E_0/k_BT}&amp;  &amp; \\ &amp; e^{-E_1/k_BT} &amp; \\ &amp;  &amp;\ddots  \end{bmatrix} \, ,
+\end{split}\]</div>
+<p>donde  <span class="math notranslate nohighlight">\(Z =\sum_\alpha e^{-E_\alpha/k_BT}\)</span> se denomina <em>Función de Partición</em> y es la <em>normalización necesaria</em> para que <span class="math notranslate nohighlight">\(\tr\rho(T) = 1\)</span>.</p>
+<p>La energía del sistema a cada temperatura, vendrá dada por un promedio sobre todos los autoestados pesados por la matriz densidad a dicha temperatura</p>
+<div class="math notranslate nohighlight">
+\[
+\langle E \rangle_T = \tr (\rho(T) H)
+\]</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Probar  que recuperamos los casos puro y maximalmente mezclado en los límites siguientes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\rho(T=0) = \ketbra{E_0}{E_0}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho(T=\infty) = \frac{1}{d} I\)</span></p></li>
+</ul>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Genera aleatoriamente un estado de Gibbs a temperatura <span class="math notranslate nohighlight">\(T\)</span> y grafica los valores de <span class="math notranslate nohighlight">\(p_\alpha(T)\)</span> para distintos valores de <span class="math notranslate nohighlight">\(T\)</span> (toma <span class="math notranslate nohighlight">\(k_B=1\)</span>).</p>
+</div>
+<p><a id='cubitmezcla'></a></p>
+</section>
+</section>
+<section id="cubit-mezclado-bola-de-bloch">
+<h3>Cúbit mezclado: bola de Bloch<a class="headerlink" href="#cubit-mezclado-bola-de-bloch" title="Permalink to this heading">#</a></h3>
+<p>Sobre <span class="math notranslate nohighlight">\(\Hil = {\mathbb C}^2\)</span>, el operador hermítico más general se puede expandir en la base <span class="math notranslate nohighlight">\(\{ I, \sigma_x, \sigma_y,\sigma_z\}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \frac{1}{2} ( I + {\bf u}\cdot \boldsymbol \sigma)
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\({\bf u} = (u_x,u_y,u_z)\)</span> es un vector real tri-dimensional.</p>
+<p>Escribiendo <span class="math notranslate nohighlight">\(\rho\)</span> explícitamente se sigue que</p>
+<div class="math notranslate nohighlight">
+\[
+\det \rho = \frac{1}{4} (1- | {\bf u}|^2) = \frac{1}{4}(1+ | {\bf u}|)(1- | {\bf u}|) = \lambda_+\lambda_-
+\]</div>
+<p>lo cual implica que los <em>autovalores</em> de <span class="math notranslate nohighlight">\(\rho\)</span> son <span class="math notranslate nohighlight">\(\lambda_\pm = \frac{1}{2}(1\pm | {\bf u}|)\)</span></p>
+<p>Para que <span class="math notranslate nohighlight">\(\rho\)</span> sea semidefinida positiva, debe ocurrir que</p>
+<div class="math notranslate nohighlight">
+\[
+0\leq |{\bf u} | \leq 1
+\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Lema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">El cúbit mezcla <i> más general</i> se puede parametrizar como un punto en la <i> bola de Bloch </i> <span class="math notranslate nohighlight">\(|{\bf u}|\leq 1\)</span> en la forma</p>
+<div class="math notranslate nohighlight">
+\[
+{\bf u} = u\left(\cos\theta\ket{0} + e^{i\phi}\sin\theta \ket{1} \right) 
+\]</div>
+<p class="sd-card-text">donde <span class="math notranslate nohighlight">\(u\in [0,1]\)</span>.</p>
+</div>
+</div>
+<p>Encontramos los dos casos límite</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|{\bf u}| = 0 \to  \lambda_+ = \lambda_- = 1/2\)</span>, en el <em>centro de la bola de Bloch</em></p></li>
+</ul>
+<p>En este caso el cúbit está en una estado maximalmente mezclado</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho = \begin{bmatrix} 1/2 &amp; 0 \\ 0 &amp; 1/2 \end{bmatrix}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|{\bf u}| = 1 \to \lambda_+ = 1, \lambda_- = 0 \)</span>
+, sobre la <em>esfera de Bloch</em></p></li>
+</ul>
+<p>En este caso el cúbit está en una estado puro</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\rho = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{bmatrix} = \rho^2
+\end{split}\]</div>
+</section>
+</section>
+<section id="medidas-proyectivas-en-estados-mezclados">
+<h2>Medidas proyectivas en estados mezclados</b><a class="headerlink" href="#medidas-proyectivas-en-estados-mezclados" title="Permalink to this heading">#</a></h2>
+<p>El escenario ahora es un estado general <span class="math notranslate nohighlight">\(\rho\)</span> sobre el que efectuamos una medida asociada a un <em>observable</em> que admite una descomposición espectral</p>
+<div class="math notranslate nohighlight">
+\[
+A = \sum_n \lambda_n \ketbra{\lambda_n}{\lambda_n} = \sum_n \lambda_n P_n
+\]</div>
+<p>donde el operador de proyección <span class="math notranslate nohighlight">\(P_n = \ket{\lambda_n}\bra{\lambda_n}\)</span>.</p>
+<p>Ya hemos visto cómo escribir la probabilidad de medir el autovalor <span class="math notranslate nohighlight">\(\lambda_n\)</span> al inicio de este capítulo</p>
+<div class="math notranslate nohighlight">
+\[
+p(\lambda_n) = \bra{\lambda_n}\rho \ket{\lambda_n}
+\]</div>
+<p><strong>Axioma V: Colapso de la Función de onda</strong></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Después de una medida, si el resultado ha sido <span class="math notranslate nohighlight">\(\lambda_m\)</span> el estado <b>mezclado</b> <span class="math notranslate nohighlight">\(\rho\)</span> colapsa al estado <b>puro</b> <span class="math notranslate nohighlight">\(\rho_m = \ketbra{\lambda_m}{\lambda_m}\)</span>.</p>
+</div>
+</div>
+<p>Es decir, podemos asociar a una medida, el siguiente mapa entre operadores</p>
+<div class="math notranslate nohighlight">
+\[
+\rho ~\to ~~ \ketbra{\lambda_m}{\lambda_m} = \frac{P_m\rho P_m}{p(\lambda_m)} \, .
+\]</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Prueba<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\ketbra{\lambda_m}{\lambda_m} &amp;=&amp;\frac{p(\lambda_m) \ketbra{\lambda_m}{\lambda_m}}{p(\lambda_m)} =
+     \frac{\ketbra{\lambda_m}{\lambda_m} \rho \ketbra{\lambda_m}{\lambda_m}}{p(\lambda_m)} = \frac{P_m \rho P_m}{ p(\lambda_m)}
+\end{eqnarray*}\]</div>
+</div>
+</details><p><a id='valesp_mezcla'></a></p>
+<section id="valor-esperado-en-un-estado-mezclado">
+<h3>Valor esperado en un estado mezclado<a class="headerlink" href="#valor-esperado-en-un-estado-mezclado" title="Permalink to this heading">#</a></h3>
+<p>Vamos a manipular dicha expresión</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+p(\lambda_n) &amp;=&amp; \bra{\lambda_n}\rho\ket{\lambda_n} = \sum_i  \braket{\lambda_n}{i}\bra{i}\rho\ket{\lambda_n} =
+\sum_i \bra{i}\rho\ket{\lambda_n}\braket{\lambda_n}{i} = \sum_i \bra{i}\left( \rho\ket{\lambda_n}\bra{\lambda_n}\rule{0mm}{5mm}\right)\ket{i} \nonumber\\
+&amp;\equiv&amp; \tr(\rho P_n )
+\end{eqnarray*}\]</div>
+<p>Ahora podemos hallar el valor esperado de <span class="math notranslate nohighlight">\(A\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\langle A\rangle_\rho &amp;=&amp; \sum_n \lambda_n p(\lambda_n) = \sum_n \lambda_n \tr(\rho P_n ) 
+     = \tr \left( \rho \sum_n \lambda_n P_n \right) = \tr (\rho A)
+\end{eqnarray*}\]</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">El valor esperado de un observable <span class="math notranslate nohighlight">\(A\)</span> en un estado  <span class="math notranslate nohighlight">\(\rho\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+~~ \langle A\rangle_\rho = {\tr}(\rho A)  
+\]</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Demuestra que, en el caso  <span class="math notranslate nohighlight">\(d=2\)</span>,  dado un estado <span class="math notranslate nohighlight">\(\rho\)</span>, podemos recuperar el punto <span class="math notranslate nohighlight">\({\bf u}\)</span> de la bola de Bloch, calculando los valores esperados de las matrices de Pauli <span class="math notranslate nohighlight">\(\sigma_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\langle \sigma_i \rangle = \tr(\rho \sigma_i) = u_i
+\]</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Genera  operadores densidad con <span class="math notranslate nohighlight">\(d=2\)</span> usando la función <i>get_density_operator</i> y obtén, en cada caso, el valor del vector  <span class="math notranslate nohighlight">\({\bf u}\)</span> y su módulo <span class="math notranslate nohighlight">\(u\)</span>. Observa la variación con <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<p>Para <span class="math notranslate nohighlight">\(r=d=2\)</span> genera un estado <span class="math notranslate nohighlight">\(\rho\)</span> máximamente mezclado y verifica que <span class="math notranslate nohighlight">\({\bf u} = 0\)</span>.</p>
+</div>
+<p><a id="fidelity"></a></p>
+</section>
+</section>
+<section id="fidelidad">
+<h2>Fidelidad<a class="headerlink" href="#fidelidad" title="Permalink to this heading">#</a></h2>
+<p>Dados dos operadores densidad <span class="math notranslate nohighlight">\(\rho_1\)</span> y <span class="math notranslate nohighlight">\(\rho_2\)</span>, es conveniente tener una forma de <em>medir</em> cómo de parecidos o diferentes son entre sí. Es importante que dicha cantidad no dependa de la base.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Fidelidad</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Para dos operadores densidad <span class="math notranslate nohighlight">\(\rho_1\)</span> y <span class="math notranslate nohighlight">\(\rho_2\)</span> se define <i> fidelidad mútua </i> como</p>
+<div class="math notranslate nohighlight">
+\[
+F(\rho_1,\rho_2) = \tr \sqrt{\sqrt{\rho_1} \rho_2\sqrt{\rho_1}}
+\]</div>
+</div>
+</div>
+<p>La fidelidad está relacionada con la <a class="reference internal" href="#../00_Formalismo/01_Operadores.ipynb#trace_norm"><span class="xref myst">norma de traza</span></a>. Efectivamente</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+F(\rho_1,\rho_2) = \tr \sqrt{\sqrt{\rho_1}\rho_2\sqrt{\rho_1}} = \tr \sqrt{\sqrt{\rho_1^\dagger\rho_2^\dagger\rule{0mm}{3.8mm}}\sqrt{\rho_2\rho_1}} = \|\sqrt{ \rho_2 \rho_1}\|_1  
+\end{eqnarray*}\]</div>
+<p><strong>Propiedades:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F(\rho_1,\rho_2) = F(\rho_2,\rho_1)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F(\rho_1,\rho_2) \in [0,1]\)</span> que se maximiza cuando son iguales   <span class="math notranslate nohighlight">\(F(\rho,\rho) =1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F(\rho_1,\rho_2) = F(\rho'_1, \rho'_2) ~~\Leftrightarrow  ~~ \rho'_1 = U^\dagger \rho_1 U \hbox{ and } \rho'_2 = U^\dagger \rho_2 U\)</span></p></li>
+</ul>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\(\rho_1=\ket{\psi_1}\bra{\psi_1}\)</span> es un estado puro, entonces <span class="math notranslate nohighlight">\(F(\rho_1,\rho_2) =\sqrt{\bra{\psi_1}\rho_2\ket{\psi_1}} \)</span></p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><i>Prueba:</i> Si es estado puro, <span class="math notranslate nohighlight">\(\rho_1 = \rho_1^2\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-43b37f6c-0794-465f-bf21-36133ec56f0a">
+<span class="eqno">(23)<a class="headerlink" href="#equation-43b37f6c-0794-465f-bf21-36133ec56f0a" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\tr \sqrt{\sqrt{\rho_1}\rho_2\sqrt{\rho_1}} &amp;=&amp; \tr \sqrt{\rho_1\rho_2\rho_1} \\ &amp;=&amp;
+\tr \sqrt{\ket{\psi_1}\bra{\psi_1}\rho_2\ket{\psi_1}\bra{\psi_1}} \nonumber\\
+&amp;=&amp; \sqrt{\bra{\psi_1}\rho_2\ket{\psi_1}} \tr \sqrt{\rho_1}\\ &amp;=&amp;  \sqrt{\bra{\psi_1}\rho_2\ket{\psi_1}}
+\end{eqnarray}\]</div>
+</div>
+</details><ul class="simple">
+<li><p>Si  <span class="math notranslate nohighlight">\(\rho_1=\ket{\psi_1}\bra{\psi_1}\)</span> y  <span class="math notranslate nohighlight">\(\rho_2=\ket{\psi_2}\bra{\psi_2}\)</span> son ambos puros, entonces</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[F(\rho_1,\rho_2) = | \braket{\psi_1}{\psi_2}|\in (0,1)\, \]</div>
+<p>la fidelidad es  el producto escalar habitual de dos vectores.</p>
+<ul class="simple">
+<li><p>Si <span class="math notranslate nohighlight">\([\rho_1,\rho_2] = 0\)</span>, entonces existe una base <span class="math notranslate nohighlight">\(\ket{i}\)</span> que diagonaliza ambos <span class="math notranslate nohighlight">\(\rho_{1,2} = \sum_i p^{(1,2)}_i\ket{i}\bra{i}\)</span>. En este caso</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[F(\rho_1,\rho_2) = \sum_j \sqrt{p^{(1)}_j p^{(2)}_j}.\]</div>
+<p>que es la fidelidad de dos distribuciones clásicas de probabildad <span class="math notranslate nohighlight">\(\{p^{1,2}_i\}\)</span>.</p>
+<details>
+<summary><p style="text-align: right ;color: navy"> >> <i>Demostración</i> </p></summary>
+<i>Prueba:</i>
+\begin{eqnarray}
+\tr \sqrt{\sqrt{\rho_1}\rho_2\sqrt{\rho_1}} &=& \tr \sqrt{\sum_i \sqrt{p^{(1)}_i}\ket{i}\bra{i}\sum_i p^{(2)}_j\ket{j}\bra{j}\sum_k \sqrt{p^{(1)}_k}\ket{k}\bra{k}} \\
+&=& \tr\sqrt{\sum_i p^{(1)}_i{p^{(2)}_i}\ket{i}\bra{i}} = \tr \left(\sum_i \sqrt{p^{(1)}_i{p^{(2)}_i}}\ket{i}\bra{i}\right)  \\
+&=& \sum_j \sqrt{p^{(1)}_j p^{(2)}_j}
+\end{eqnarray}
+<div class="docutils">
+</div>
+<p>La <em>fidelidad</em> y la <em>distancia de la traza</em> parametrizan la misma noción (o más bien la recíproca)</p>
+<div class="math notranslate nohighlight">
+\[
+D(\rho_1,\rho_2) = \frac{1}{2} \| \rho_1 - \rho_2 \|_1 = \frac{1}{2} \tr \sqrt{( \rho_1 - \rho_2)^\dagger( \rho_1 - \rho_2)}
+\]</div>
+<p>En general <span class="math notranslate nohighlight">\(D\)</span> es más fácil de calcular, y permite acotar la fidelidad mediante las siguientes desigualdades (Teorema de Fuch-van der Graaf)</p>
+<div class="math notranslate nohighlight">
+\[
+1 - \sqrt{F(\rho_1,\rho_2)} \leq D(\rho_1,\rho_2) \leq   \sqrt{1- F(\rho_1,\rho_2)}
+\]</div>
+</section>
+<section id="poblaciones-y-coherencias">
+<h2>Poblaciones y Coherencias<a class="headerlink" href="#poblaciones-y-coherencias" title="Permalink to this heading">#</a></h2>
+<p>Sea, en un espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span>,  una base ortonormal  <span class="math notranslate nohighlight">\(\{\ket{\lambda_n}\}\)</span> de   autoestados de un observable <span class="math notranslate nohighlight">\(A\)</span></p>
+<p><strong>En esta base</strong>, la interpretación de los elementos de matriz</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\rho_{nm} &amp;=&amp; \bra{\lambda_n}\rho \ket{\lambda_m} =
+\bra{\lambda_n}\left(\sum_i p_i \ket{\psi_i}\bra{\psi_i}\right)\ket{\lambda_m}\\
+&amp;=&amp; \sum_i p_i \braket{\lambda_n}{\psi_i}\braket{\psi_i}{\lambda_m}
+\end{eqnarray*}\]</div>
+<p>depende de si <span class="math notranslate nohighlight">\(n=m\)</span> ó <span class="math notranslate nohighlight">\(n\neq m\)</span>.</p>
+<p>Las proyecciones</p>
+<div class="math notranslate nohighlight">
+\[
+c_n^{(i)} = \braket{\lambda_n}{\psi_i} \, 
+\]</div>
+<p>definirían las amplitudes de probabilidad de encontrar <span class="math notranslate nohighlight">\(\ket{\lambda_n}\)</span> si el sistema se encontrase en el estado puro <span class="math notranslate nohighlight">\(\ket{\psi_i}\)</span></p>
+<section id="poblaciones">
+<h3>Poblaciones:<a class="headerlink" href="#poblaciones" title="Permalink to this heading">#</a></h3>
+<p>Tomemos <span class="math notranslate nohighlight">\(\underline{n=m}\)</span>
+$<span class="math notranslate nohighlight">\(
+\rho_{nn} = \sum_i p_i |c_n^{(i)}|^2 = \tr (\rho P_n)
+\)</span><span class="math notranslate nohighlight">\(
+es la *probabilidad media* de encontrar el sistema en el estado \)</span>\ket{\lambda_n}<span class="math notranslate nohighlight">\( al medir \)</span>A$.</p>
+<p>Por ello se denomina <em>población</em>.</p>
+<p>Si se efectúan <span class="math notranslate nohighlight">\(N\)</span> medidas sobre el sistema, en promedio, <span class="math notranslate nohighlight">\(N\rho_{nn}\)</span> de ellas darán como resultado el estado <span class="math notranslate nohighlight">\(\ket{\lambda_n}\)</span></p>
+</section>
+</section>
+<section id="coherencias">
+<h2>Coherencias:<a class="headerlink" href="#coherencias" title="Permalink to this heading">#</a></h2>
+<p>Ahora, con <span class="math notranslate nohighlight">\(\underline{n\neq m}\)</span>
+$<span class="math notranslate nohighlight">\(
+\rho_{nm} = \sum_i p_i  \, c_n^{(i)}c_m^{(i)*}
+\)</span>$</p>
+<p>En este caso se trata del promedio de las <i>interferencias cuánticas</i> entre  <span class="math notranslate nohighlight">\(\ket{\lambda_n}\)</span> y <span class="math notranslate nohighlight">\(\ket{\lambda_m}\)</span> asociadas al hecho de que los estados <span class="math notranslate nohighlight">\(\ket{\psi_i}\)</span> son superposiciones coherentes de ellos.</p>
+<p>Es por ello que, a los elementos no diagonales de <span class="math notranslate nohighlight">\(\rho\)</span> se les denomina <em>coherencias</em>.</p>
+<p>A diferencia de las poblaciones, las coherencias <u>pueden anularse</u> a pesar de que  ninguno de los factores <span class="math notranslate nohighlight">\(c_n^{(i)}c_m^{(i)*}\)</span> sea nulo por separado.</p>
+<p>Si ocurre esto, la mezcla estadística habrá borrado todo rastro de interferencia entre <span class="math notranslate nohighlight">\(\ket{e_n}\)</span> y <span class="math notranslate nohighlight">\(\ket{e_m}\)</span>.</p>
+<p>Por el contrario, si <span class="math notranslate nohighlight">\(\rho_{nm}\neq 0\)</span>, aun subsiste un cierto grado de coherencia entre dichos estados en la mezcla estadística.</p>
+<p>En el curso de su evolución, un <em>sistema cuántico abierto</em></p>
+<ul class="simple">
+<li><p>irá perdiendo sus <em>coherencias</em> <span class="math notranslate nohighlight">\(\rho_{nm} \to 0\)</span> para <span class="math notranslate nohighlight">\(n\neq m\)</span></p></li>
+<li><p>las poblaciones tenderán a la equipartición <span class="math notranslate nohighlight">\(\rho_{nn} = 1/N\)</span>.</p></li>
+</ul>
+<p>Este proceso se estudiará más adelante y se denomina <strong>decoherencia</strong>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Genera el operador densidad asociado a la mezcla maximal de estados de Bell  <span class="math notranslate nohighlight">\(\{\ket{B_{ij}},p_{ij} = 1/4\}\)</span>.</p>
+<p>Perturba las probabilidades <span class="math notranslate nohighlight">\(p_{ij}\)</span> y observa la estructura de las poblaciones y las coherencias.</p>
+</div>
+</section>
+<section id="estado-mezclado-compuesto">
+<h2>Estado mezclado compuesto<a class="headerlink" href="#estado-mezclado-compuesto" title="Permalink to this heading">#</a></h2>
+<p>Un caso muy frecuente  ocurre cuando el sistema total se compone  de dos subsistemas <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span></p>
+<p>En este caso, el espacio total de Hilbert es el producto tensorial <span class="math notranslate nohighlight">\(\Hil = \Hil_A\otimes \Hil_B\)</span>.</p>
+<p>Consideremos bases</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+~\{\ket{i}\},\, &amp;&amp;  i=0,...,d_A-1 ~\hbox{ de } ~\Hil_A \\ \rule{0mm}{14mm}
+~\{\ket{a}\},\, &amp;&amp; a=0,...,d_B-1 ~\hbox{ de } ~\Hil_B
+\end{eqnarray*}\]</div>
+<p>La base canónica de <span class="math notranslate nohighlight">\(\Hil\)</span> viene dada por todos los pares ordenados</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{ia} = \ket{i}\otimes \ket{a}
+\]</div>
+<p>que constituyen un conjunto de <span class="math notranslate nohighlight">\(d_Ad_B\)</span> vectores ortonormales.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo</p>
+<p>Consideremos un ordenador cuántico de <span class="math notranslate nohighlight">\(n = n_A + n_B\)</span> cúbits.</p>
+<p>El espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil = \Hil_A \otimes \Hil_B\)</span>, de dimensión <span class="math notranslate nohighlight">\(d = 2^n\)</span>, tendrá como base los estados <span class="math notranslate nohighlight">\(2^n\)</span>
+estados <span class="math notranslate nohighlight">\( \{\ket{\alpha} = \ket{i_0....i_{n-1}}\}\)</span> donde <span class="math notranslate nohighlight">\(i_k = 0,1\)</span>.</p>
+<p>Pero podemos separarla en la suma directa de las bases de <span class="math notranslate nohighlight">\(\Hil_A\)</span> y <span class="math notranslate nohighlight">\(\Hil_B\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\ket{i} = \ket{i_1....i_{n_A}0...0} ~~~~~~~~~,~~~~~~~~~\ket{a} = \ket{0...0\, i_{n_A +1}...i_{n_A + n_B}}
+\]</div>
+<p>con <span class="math notranslate nohighlight">\(i = 0,...,2^{n_A}-1\)</span>  y  <span class="math notranslate nohighlight">\(a= 0,..., 2^{n_B}-1\)</span>. Claramente</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\alpha} = \ket{ia } = \ket{i}\otimes \ket{a}
+\]</div>
+</div>
+<p>En esta base, un operador densidad arbitrario se expande en términos de una <em>matriz de densidad</em> <span class="math notranslate nohighlight">\(\rho_{ia,jb}\)</span> en la forma</p>
+<div class="math notranslate nohighlight">
+\[\rho=\sum_{i,j=0}^{d_A-1}\sum_{a,b=0}^{d_B-1}\rho_{ia~jb}\ket{ia}\bra{jb}\]</div>
+<p>siempre que verifique las tres condiciones</p>
+<ul class="simple">
+<li><p>Hermiticidad <span class="math notranslate nohighlight">\(\Rightarrow \rho_{ia~jb} = \rho_{jb~ia}^*\)</span></p></li>
+<li><p>Definición semipositiva <em>es decir</em>, para todos los valores propios <span class="math notranslate nohighlight">\(\Rightarrow ~\lambda_{ia} \geq 0\)</span></p></li>
+<li><p>Conservación de la probabilidad: <span class="math notranslate nohighlight">\(~\Tr \rho = \sum_{i=0}^{d_A-1}\sum_{a=0}^{d_B-1} \rho_{ia~ia} =1\)</span></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>Podemos, como siempre, re-etiquetar los bi-índices de <span class="math notranslate nohighlight">\(\rho\)</span> de forma que <span class="math notranslate nohighlight">\(\rho_{ia,jb} = \rho_{\alpha\beta}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\alpha = d_B i + a~~,~~\beta = d_B j + b
+\]</div>
+<p>Si <span class="math notranslate nohighlight">\(i,j = 0,..., d_A-1\)</span> y <span class="math notranslate nohighlight">\(a,b=0,...,d_B-1\)</span>, entonces  <span class="math notranslate nohighlight">\(\alpha,\beta = 0,1,..., d_A d_B-1\)</span>.</p>
+<p>La sentencia <span class="math notranslate nohighlight">\(numpy.reshape\)</span> organiza los <span class="math notranslate nohighlight">\(d_Ad_B\)</span> datos en cualquiera de las dos formas.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39; define a matrix of an operador on H_A*H_B&#39;</span>
+<span class="n">dA</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">#4</span>
+<span class="n">dB</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1">#5</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dA</span><span class="p">,</span><span class="n">dB</span><span class="p">,</span><span class="n">dA</span><span class="p">,</span><span class="n">dB</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dA</span><span class="o">*</span><span class="n">dB</span><span class="p">,</span><span class="n">dA</span><span class="o">*</span><span class="n">dB</span><span class="p">)</span>
+
+<span class="s1">&#39;component map&#39;</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">1</span> 
+<span class="n">a</span><span class="o">=</span><span class="mi">2</span> 
+<span class="n">j</span><span class="o">=</span><span class="mi">1</span> 
+<span class="n">b</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">dB</span><span class="o">*</span><span class="n">i</span> <span class="o">+</span> <span class="n">a</span>
+<span class="n">beta</span>  <span class="o">=</span> <span class="n">dB</span><span class="o">*</span><span class="n">j</span> <span class="o">+</span> <span class="n">b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ia,jb==&#39;</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="s1">&#39;   alpha,beta=&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="p">,</span><span class="n">beta</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A_{ia,jb}=&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">],</span><span class="s1">&#39;     B_{alpha,beta}=&#39;</span><span class="p">,</span><span class="n">B</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">beta</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ia,jb== 1 2 , 1 1    alpha,beta= 12 11
+A_{ia,jb}= 0.45142520405602526      B_{alpha,beta}= 0.1281190836528312
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;reshape and read the same component&#39;</span>
+<span class="n">Aresh</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dA</span><span class="o">*</span><span class="n">dB</span><span class="p">,</span><span class="n">dA</span><span class="o">*</span><span class="n">dB</span><span class="p">)</span>
+<span class="n">Bresh</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dA</span><span class="p">,</span><span class="n">dB</span><span class="p">,</span><span class="n">dA</span><span class="p">,</span><span class="n">dB</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A_{alpha,beta}=&quot;</span><span class="p">,</span> <span class="n">Aresh</span><span class="p">[</span><span class="n">alpha</span><span class="p">,</span><span class="n">beta</span><span class="p">],</span><span class="s1">&#39;B_{i,a,j,b]}=&#39;</span><span class="p">,</span><span class="n">Bresh</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">b</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A_{alpha,beta}= 0.45142520405602526 B_{i,a,j,b]}= 0.1281190836528312
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='traza_parcial'></a></p>
+<section id="traza-parcial">
+<h3>Traza parcial<a class="headerlink" href="#traza-parcial" title="Permalink to this heading">#</a></h3>
+<p>Dado un estado bipartito <span class="math notranslate nohighlight">\(\rho \in {\rm L}(\Hil_A\otimes\Hil_B)\)</span> podemos definir estados <span class="math notranslate nohighlight">\(\rho_A \in \Lin(\Hil_A)\)</span> y
+<span class="math notranslate nohighlight">\(\rho_B \in \Lin(\Hil_B)\)</span> a través de la operación de <em>traza parcial</em></p>
+<div class="math notranslate nohighlight">
+\[\rho_A \equiv {\rm Tr}_B\rho \quad , \quad \rho_B \equiv {\rm Tr}_A\rho  \]</div>
+<p>Vamos a ver cómo son estos dos operadores en una base <span class="math notranslate nohighlight">\(\ket{ia}\)</span> de <span class="math notranslate nohighlight">\(\Hil_A\otimes \Hil_B\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\rho_A \equiv {\rm Tr}_B\rho &amp;=&amp; \sum_{c=0}^{d_B-1} \bra{c} \rho \ket{c}\\
+    &amp;=&amp; \sum_{c=0}^{d_B-1} \bra{c} \left( \sum_{i,j=0}^{d_A-1} \sum_{a,b=0}^{d_B-1} \rho_{ia,jb}\ket{i}\ket{a}\bra{j}\bra{b} \right) \ket{c}  \\
+    &amp;=&amp; \sum_{c=0}^{d_B-1}  \left( \sum_{i,j=0}^{d_A-1} \sum_{a,b=0}^{d_B-1} \rho_{ia,jb}\ket{i}\braket{c}{a}\bra{j}\braket{b}{c} \right)   \\
+    &amp;=&amp; \sum_{c=0}^{d_B-1}  \left( \sum_{i,j=0}^{d_A-1}  \rho_{ic,jc}\ketbra{i}{j} \right)   \\
+    &amp;=&amp;  \sum_{i,j=0}^{d_A-1}   \left( \sum_{c=0}^{d_B-1} \rho_{ic,jc} \right) \ketbra{i}{j}   \\
+    &amp;\equiv &amp;  \sum_{i,j=0}^{d_A-1}   \rho_{A,i,j}  \ketbra{i}{j}   \\    
+\end{eqnarray*}\]</div>
+<p>Encontes, las matrices de densidad asociadas a las trazas parciales son, respectivamente</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_A \to \rho_{A,ij}= \sum_{a=0}^{d_B-1} \rho_{ia~ja} ~~~~~~~,~~~~~~~ \rho_B \to \rho_{B,ab} = \sum_{i=0}^{d_A-1} \rho_{ia~ib}
+\]</div>
+<p>Los estados obtenidos de esta manera, son suficientes para recuperar las probabilidades de resultados de medidas que solo afectan a uno de los subsistemas.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Lema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Sea <span class="math notranslate nohighlight">\(O = O_A\otimes I\)</span> es un observable que sólo mide una propiedad del <i>subsistema</i> <span class="math notranslate nohighlight">\(A\)</span>, entonces</p>
+<div class="math notranslate nohighlight">
+\[
+\langle O \rangle_\rho  = \tr (O_A\rho_A)
+\]</div>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Prueba<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+ \langle O \rangle_\rho  ~=~ \Tr ((O_A\otimes I)\rho) &amp;~=~&amp;
+ \sum_{i=0}^{d_A-1}\sum_{a=0}^{d_B-1} \bra{i}\bra{a} \left( (O_A\otimes I)\rho \rule{0mm}{4mm}\right) \ket{i}\ket{a} \\
+ \rule{0mm}{4mm}
+ &amp;=&amp; \sum_{i=0}^{d_A-1} \bra{i} O_A  \sum_{a=0}^{d_B-1}\bra{a}\rho \ket{a}\ket{i} \\
+ &amp;=&amp; \sum_{i=0}^{d_A-1} \bra{i} O_A  \rho^A\ket{i} \\
+ &amp;=&amp; \Tr(O_A\rho^A)
+\end{eqnarray*}\]</div>
+</div>
+</details><div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Define una función <span class="math notranslate nohighlight">\(get\_partial\_traces\)</span> de Python que recibe como argumentos, una matriz <span class="math notranslate nohighlight">\(\rho\)</span> de dimensión <span class="math notranslate nohighlight">\(d = d_A d_B\)</span> y los datos <span class="math notranslate nohighlight">\(d_A\)</span> y <span class="math notranslate nohighlight">\(d_B\)</span> como dimensiones de <span class="math notranslate nohighlight">\(\Hil_A\)</span> y <span class="math notranslate nohighlight">\(\Hil_B\)</span>. La función devuelve las dos matrices densidad  <span class="math notranslate nohighlight">\(\rho_A\)</span> y <span class="math notranslate nohighlight">\(\rho_B\)</span> obtenidas mediante las trazas parciales.</p>
+<p>Examina los casos en que <span class="math notranslate nohighlight">\(\rho\)</span> es pura o mezclada, así como el caso en que <span class="math notranslate nohighlight">\(\rho= \ket{\psi}\bra{\psi}\)</span> con <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>  factorizable.</p>
+</div>
+</section>
+</section>
+<section id="impurificacion-y-purificacion">
+<h2>Impurificación y purificación<a class="headerlink" href="#impurificacion-y-purificacion" title="Permalink to this heading">#</a></h2>
+<p>En computación cuántica trabajamos con estados puros que se pueden describir mediante un vector <span class="math notranslate nohighlight">\(\ket{\psi}\in \Hil\)</span>.</p>
+<p>Los circuitos son operadores unitarios que actúan sobre un vector de entrada para dar un vector de salida.</p>
+<p>¿Cómo podemos estudiar sistemas mezclados en computación cuántica?</p>
+<section id="impurificacion-de-un-estado-puro">
+<h3>Impurificación de  un estado puro<a class="headerlink" href="#impurificacion-de-un-estado-puro" title="Permalink to this heading">#</a></h3>
+<p>Supongamos que <span class="math notranslate nohighlight">\(\rho \in \, \Lin(\Hil_A\otimes\Hil_B)\)</span> es un estado bipartito <strong>puro</strong>. La matriz de densidad es un proyector</p>
+<div class="math notranslate nohighlight">
+\[\rho=\ket{\psi}\bra{\psi}~~~\Rightarrow ~~~ \rho=\rho^2\]</div>
+<p>Después de tomar la traza parcial en, por ejemplo, <span class="math notranslate nohighlight">\(\Hil_B\)</span>, obtenemos la <em>matriz de densidad reducida</em></p>
+<div class="math notranslate nohighlight">
+\[\rho\to \rho_A = \tr_B\rho\]</div>
+<p>A continuación se muestran tres resultados importantes, dos de los cuales dependen de la naturaleza de <span class="math notranslate nohighlight">\(\ket{\Psi}\)</span></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">1- Los dos operadores reducidos de un estado bipartito <b>puro</b> son iguales <span class="math notranslate nohighlight">\(~\Rightarrow \rho_A = \rho_B\)</span></p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">La manera de probar este resultado es escribir es trabajar en la base de Schmidt par el estado bi-partido</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\Psi}  = \sum_{\alpha=1}^r \sqrt{\lambda_\alpha}\ket{f_\alpha}\ket{\tilde f_\alpha}
+\]</div>
+<p class="sd-card-text">Entonces para la traza parcial sobre <span class="math notranslate nohighlight">\(B\)</span> escribimos</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\rho_A ~=~ \Tr_B \ket{\Psi}\bra{\Psi} &amp;~=~&amp;
+\sum_{\sigma=0}^{d_B-1} \braket{\tilde f_\sigma}{\Psi}   \braket{\Psi}{\tilde f_\sigma} \\
+&amp;~=~&amp; \sum_{\sigma=0}^{d_B-1} \bra{\tilde f_\sigma}\left( \sum_{\alpha, \beta=0}^{r-1} \sqrt{\lambda_\alpha}\sqrt{\lambda_\beta}\ket{f_\alpha}\ket{\tilde f_\alpha}\bra{f_\beta}\bra{\tilde f_\beta} \right)
+\ket{\tilde f_\sigma} \\
+&amp;=&amp;\sum_\sigma\sum_{\alpha \beta} \sqrt{\lambda_\alpha}\sqrt{\lambda_\beta}\ket{f_\alpha}\braket{\tilde f_\sigma}{\tilde f_\alpha}\bra{ f_\beta}\braket{\tilde f_\beta}{\tilde f_\sigma}\\
+&amp;=&amp;\sum_\sigma\sum_{\alpha \beta} \sqrt{\lambda_\alpha}\sqrt{\lambda_\beta}\ket{f_\alpha}\bra{f_\beta}\delta_{\sigma\alpha}\delta_{\beta\sigma} \\
+&amp;=&amp;  \sum_{\sigma=0}^{r-1} \lambda_\sigma\ket{f_\sigma}\bra{f_\sigma}
+\end{eqnarray*}\]</div>
+<p class="sd-card-text">Procediendo de la misma manera, es inmediato demostrar lo contrario</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_B ~=~ \Tr_A \ket{\Psi}\bra{\Psi} = \sum_{\sigma=0}^{r-1} \lambda_\sigma\ket{\tilde f_\sigma}\bra{\tilde f_\sigma}
+\]</div>
+<p class="sd-card-text">Entonces, la matriz de densidad en ambos casos es la misma matriz diagonal dada por los coeficientes de Schmidt</p>
+<div class="math notranslate nohighlight">
+\[\rho^A_{\alpha\alpha} = \rho^B_{\alpha\alpha} = \lambda_\alpha\, \]</div>
+<p class="sd-card-text">con <span class="math notranslate nohighlight">\(\alpha = 0,1,.. r -1 \)</span>.</p>
+</div>
+</details><div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">2-  Si <span class="math notranslate nohighlight">\(\ket{\psi} = \ket{\varphi}\otimes \ket{\phi}\)</span> es <b>factorizable</b>, entonces <span class="math notranslate nohighlight">\(\Rightarrow \)</span> <span class="math notranslate nohighlight">\(\rho_A\)</span> permanece <i>pura</i></p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+ \rho_A = \Tr_{B}\ketbra{\Psi}{\Psi} &amp;=&amp; \sum_{b}\bra{b}\left(\rule{0mm}{4mm} \ketbra{\varphi}{\varphi}\otimes \ketbra{\phi}{\phi}\right) \ket{b}\\
+ &amp;=&amp;   \ketbra{\varphi}{\varphi} \sum_b \braket{b}{\phi}\braket{\phi}{b}\\
+ &amp;=&amp;   \ketbra{\varphi}{\varphi}  \bra{\phi}\left(\sum_b\ketbra{b}{b}\right)\ket{\phi}\\
+ &amp;=&amp;   \ketbra{\varphi}{\varphi}\braket{\phi}{\phi} ~= ~ \ketbra{\varphi}{\varphi} ~ = ~ (\rho^A)^2
+\end{eqnarray*}\]</div>
+</div>
+</details><div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<p class="sd-card-text">3-  si <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> es <b>entrelazada</b> <span class="math notranslate nohighlight">\(~\Rightarrow ~ \rho_A\)</span> es <i>mezclada</i></p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><p class="sd-card-text"><em>Demostación</em>:</p>
+</div></blockquote>
+<p class="sd-card-text">si <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> es entrelazada, en la base de Schmidt <span class="math notranslate nohighlight">\(r&gt;1\)</span>. Entonces claramente</p>
+<div class="math notranslate nohighlight">
+\[
+\rho_A = \sum_{\sigma=0}^{r-1} \lambda_\sigma\ket{f_\sigma}\bra{f_\sigma}
+\]</div>
+<p class="sd-card-text">no es un proyector <span class="math notranslate nohighlight">\(\rho \neq \rho^2\)</span> y, por tanto se trata de un estado mezclado.</p>
+</div>
+</details><p>En resumen:   <u> bajo la aplicación de <i> traza parcial</i>, el <i> entrelazamiento</i> induce <i> mezcla</i></u></p>
+<p>Este resultado permite definir una <em>figura de mérito</em> para calibrar el entrelazamiento de un estado, consistente en particionar el espacio de Hilbert de diferentes maneras, y calcular, para cada partición, la pureza del estado obtenido mediante traza parcial.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Considera el estado generado por el circuito <span class="math notranslate nohighlight">\(\ket{\psi} =  \hbox{CNOT}(1,0)\hbox{CNOT}(0,2)H(1) R_x(\alpha,0)\ket{000}\)</span>
+con <span class="math notranslate nohighlight">\(\alpha = \pi/3\)</span>.</p>
+<p>Calcula las matrices densidad parciales <span class="math notranslate nohighlight">\(\rho_B =\tr_{01}( \ket{\psi}\bra{\psi})\)</span> y <span class="math notranslate nohighlight">\(\rho_A =\tr_{2}( \ket{\psi}\bra{\psi})\)</span>. Verifica que corresponden a idénticos operadores y obtén su pureza.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>En el circuito del ejercicio anterior,</p>
+<ul class="simple">
+<li><p>obtén experimentalmente el valor medio <span class="math notranslate nohighlight">\(\langle Z_2\rangle_B\)</span> y compáralo con la predicción <span class="math notranslate nohighlight">\(\tr (Z\rho_B)\)</span></p></li>
+<li><p>obtén experimentalmente el valor medio de <span class="math notranslate nohighlight">\(\langle Z_0Z_1 \rangle_A \)</span> y compáralo con la predicción <span class="math notranslate nohighlight">\(\tr (Z \otimes Z\cdot \rho_{01})\)</span></p></li>
+<li><p>Repite para <span class="math notranslate nohighlight">\(\langle X_2\rangle_B\)</span>  y <span class="math notranslate nohighlight">\(\langle Z_0X_1\rangle_A\)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="purificacion-de-un-estado-mezclado">
+<h3>Purificación de un estado mezclado<a class="headerlink" href="#purificacion-de-un-estado-mezclado" title="Permalink to this heading">#</a></h3>
+<p>Ya hemos visto cómo una matriz densidad describe las <em>probabilidades a priori</em> cuando efectuamos medidas <em>restringidas</em> a un subespacio de espacio de Hilbert.</p>
+<p>Inversamente, si <span class="math notranslate nohighlight">\(\rho\neq  \rho^2\)</span> es una matriz densidad correspondiente a un estado mezclado, siempre podemos <u>diseñar un estado puro que contenga dicho estado meclado bajo restricción</u>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>purificación</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Sea <span class="math notranslate nohighlight">\(\rho \in \Lin(\Hil_1)\)</span> un operador densidad: <i>siempre</i> podemos definir un estado puro <span class="math notranslate nohighlight">\(\ket{\Psi}\in \Hil_1\otimes \Hil_2\)</span>, para algún espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil_2\)</span>, tal que</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \tr_{\Hil_2}\ket{\Psi}\bra{\Psi}
+\]</div>
+</div>
+</div>
+<p><i> Prueba</i> :
+la prueba pasa por escribir <span class="math notranslate nohighlight">\(\rho\)</span> en su descomposición espectral<br />
+$<span class="math notranslate nohighlight">\(
+\rho = \sum_{a=1}^{d_1} p_a \ketbra{\psi_a}{\psi_a}
+\)</span><span class="math notranslate nohighlight">\(
+donde \)</span>p_a\geq 0<span class="math notranslate nohighlight">\(. Sea \)</span>\Hil_2<span class="math notranslate nohighlight">\( un espacio de Hilbert con dimensión \)</span>d_2\geq d_1<span class="math notranslate nohighlight">\(. En el espacio producto, \)</span>\Hil_2\otimes \Hil_1$ consideremos un estado</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\Psi} = \sum_a \sqrt{p_a}\ket{\psi_a}\otimes \ket{\phi_a}
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\{\phi_a\}\in \Hil_2\)</span> es un conjunto ortonormal de vectores. La traza parcial permite recuperar <span class="math notranslate nohighlight">\(\rho\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-40c836b2-ac76-4cc0-8222-7720bfc97d85">
+<span class="eqno">(24)<a class="headerlink" href="#equation-40c836b2-ac76-4cc0-8222-7720bfc97d85" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\tr_{{\cal H}_2} \rho ~=~\tr_{{\cal H}_2}  \ket{\Psi}\bra{\Psi} &amp;=&amp; \sum_{\alpha=1}^{d_2}\bra{e_\alpha} \left( \sum_{a,b=1}^{d_1} \sqrt{p_a}\sqrt{p_b} \ket{\psi_a}\otimes\ket{\phi_a}\bra{\psi_b} \otimes \bra{\phi_b}\right) \ket{e_\alpha} 
+\nonumber\\
+&amp;=&amp; \sum_{b,a=1}^{d_1}  \sqrt{p_a}\sqrt{p_b} \ket{\psi_a}\bra{\psi_b} \cdot \bra{\phi_b}\left(\sum_{\alpha=1}^{d_2}\ket{e_\alpha}\bra{e_\alpha}\right)\ket{\phi_a} \nonumber\\
+&amp;=&amp; \sum_{b,a=1}^{d_1}  \sqrt{p_a}\sqrt{p_b} \ket{\psi_a}\bra{\psi_b} \cdot \braket{\phi_b}{\phi_a} \nonumber\\
+&amp;=&amp;  \sum_{a=1}^{d_1} p_a \ket{\psi_a} \bra{\psi_a} ~= ~ \rho_1  \hspace{4cm} \rule{3mm}{3mm}
+\end{eqnarray}\]</div>
+</section>
+</section>
+<section id="estados-no-correlacionados-separables-y-entrelazados">
+<h2>Estados no correlacionados, separables y entrelazados<a class="headerlink" href="#estados-no-correlacionados-separables-y-entrelazados" title="Permalink to this heading">#</a></h2>
+<p>En el caso de los vectores <span class="math notranslate nohighlight">\(\ket{\psi} \in \Hil_A\otimes \Hil_B\)</span>, ya hemos visto una distinción entre el estado <em>factorizable</em> y <em>entrelazado</em></p>
+<p>Para los <em>operadores de densidad</em> (estados) <span class="math notranslate nohighlight">\(\rho \in \Lin(\Hil_A\otimes \Hil_B)\)</span> encontramos posibilidades similares</p>
+<section id="estados-no-correlacionados">
+<h3>Estados no-correlacionados:<a class="headerlink" href="#estados-no-correlacionados" title="Permalink to this heading">#</a></h3>
+<p>si  <span class="math notranslate nohighlight">\(\rho\)</span> es un operador factorizable</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \rho_A\otimes \rho_B\, 
+\]</div>
+<p>En este caso</p>
+<div class="math notranslate nohighlight">
+\[\rho_{ia~jb} = \rho_{A,ij}\rho_{B,ab}\]</div>
+<p>decimos que es un estado en el que los subsistemas <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> <i>no están correlacionados</i>.</p>
+<p>Claramente, en este caso se cumple que los factores y las trazas parciales coinciden</p>
+<div class="math notranslate nohighlight">
+\[
+\tr_B \rho = \rho_A~~~~~,~~~~~~\tr_A \rho = \rho_B
+\]</div>
+<p>En un estado  <em>no-correlacionado</em> para cualquier par  de observables <span class="math notranslate nohighlight">\(O_A\otimes I\)</span> y <span class="math notranslate nohighlight">\(I\otimes O_B\)</span>, el valor esperado  de <span class="math notranslate nohighlight">\(O_A\otimes O_B\)</span>   puede obtenerse a partir de los valores esperados de los estados reducidos</p>
+<div class="math notranslate nohighlight">
+\[
+\tr \big((O_A\otimes O_B)\rho\big) ~=~ \tr_A(O_A\rho_A) \tr_B(O_B\rho_B)
+\]</div>
+<p>Cuando es posible encontrar operadores para los que esto no es cierto, hablamos de <em>estado correlacionado</em></p>
+<p>Dentro de esta clase, hay dos posibilidades.</p>
+</section>
+<section id="estados-separables">
+<h3>Estados separables:<a class="headerlink" href="#estados-separables" title="Permalink to this heading">#</a></h3>
+<p>si <span class="math notranslate nohighlight">\(\rho\)</span> es una <em>mezcla estadística</em> de operadores no-correlacionados</p>
+<div class="math notranslate nohighlight">
+\[\rho=\sum_a p_a \, \rho^a_{A}\otimes\rho^a_{B}\]</div>
+<p>con <span class="math notranslate nohighlight">\(p_a\in [0,1]~\)</span> y <span class="math notranslate nohighlight">\(~\sum_a p_a = 1\)</span>.</p>
+<p>En este caso, el estado <span class="math notranslate nohighlight">\(\rho\)</span> solo tiene <em>correlaciones clásicas</em> entre los sistemas <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\tr \big((O_A\otimes O_B)\rho\big) ~=~ \sum_a p_a \tr_A(O^a_A\rho_A) \tr_B(O^a_B\rho_B)
+\]</div>
+<p>Se puede demostrar que todos los estados separables son preparables a partir de estados no-correlacionados mediante LOCC</p>
+</section>
+<section id="estados-entrelazados">
+<h3>Estados entrelazados:<a class="headerlink" href="#estados-entrelazados" title="Permalink to this heading">#</a></h3>
+<p>en cualquier otro caso,</p>
+<div class="math notranslate nohighlight">
+\[\rho \neq \sum_a p_a \, \rho^a_{A}\otimes\rho^a_{B}\]</div>
+<p>En este caso general, existen correlaciones tanto <b>clásicas</b> como <b>cuánticas</b> entre los grados de libertad de <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/Part_04_Quantum_Info"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Part_03_Algoritmos/Chapter_044_Grover_myst.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Algoritmos de búsqueda</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Chapter_052_Fun_Info_Cuant_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Medidas generalizadas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-puro-y-mezcla-estadistica">Estado puro y mezcla estadística</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operador-densidad">Operador densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propiedades-del-operador-densidad">Propiedades del operador densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convexidad">Convexidad</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unicidad-del-operador-densidad">Unicidad del operador densidad</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolucion-temporal">Evolución temporal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#casos-particulares-de-operador-densidad">Casos particulares de operador densidad</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#operador-densidad-de-un-estado-puro">Operador densidad de un estado puro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-maximalmente-mezclado">Estado maximalmente mezclado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-parcialmente-mezclado">Estado parcialmente mezclado</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-termico-o-de-gibbs">Estado térmico, o de Gibbs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cubit-mezclado-bola-de-bloch">Cúbit mezclado: bola de Bloch</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-proyectivas-en-estados-mezclados">Medidas proyectivas en estados mezclados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valor-esperado-en-un-estado-mezclado">Valor esperado en un estado mezclado</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fidelidad">Fidelidad</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poblaciones-y-coherencias">Poblaciones y Coherencias</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poblaciones">Poblaciones:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coherencias">Coherencias:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estado-mezclado-compuesto">Estado mezclado compuesto</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traza-parcial">Traza parcial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impurificacion-y-purificacion">Impurificación y purificación</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impurificacion-de-un-estado-puro">Impurificación de  un estado puro</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#purificacion-de-un-estado-mezclado">Purificación de un estado mezclado</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-no-correlacionados-separables-y-entrelazados">Estados no correlacionados, separables y entrelazados</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-no-correlacionados">Estados no-correlacionados:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-separables">Estados separables:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-entrelazados">Estados entrelazados:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Javier Mas Solé & David Castaño Bandín
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

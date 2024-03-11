@@ -1,0 +1,33 @@
+format: jb-book
+root: docs/index
+parts:
+- caption:  Las reglas del juego
+  chapters:
+  - file:  docs/Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.md
+    sections:
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_01_Numeros_Complejos_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_02_Vectores_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_03_Operadores_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb
+  - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb
+  - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb-e
+
+- caption:  Circuitos Cuánticos
+  chapters:
+  - file:  docs/Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.md
+    sections:
+    - file:  docs/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.ipynb
+    - file:  docs/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.ipynb
+    - file:  docs/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_023_Espin_myst.ipynb
+    - file:  docs/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.ipynb
+  - file:  docs/Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.md
+    sections:
+    - file:  docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.ipynb
+    - file:  docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.ipynb
+    - file:  docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.ipynb
+  - file:  docs/Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.md
+    sections:
+    - file:  docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb
+    - file:  docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.ipynb
+
