@@ -78,7 +78,7 @@ var addUtterances = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = "async";
 
-    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("repo", "talentQ-es/CIIC");
     script.setAttribute("issue-term", "pathname");
     script.setAttribute("theme", "github-light");
     script.setAttribute("label", "💬 comment");
@@ -300,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +317,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/edit/main/Book/docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -701,16 +701,16 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          ┌───┐     
-q_0: ──■──┤ X ├──■──
-     ┌─┴─┐└─┬─┘┌─┴─┐
-q_1: ┤ X ├──■──┤ X ├
-     └───┘     └───┘
-        
-q_0: ─X─
-      │ 
-q_1: ─X─
-        
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">U_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;unitary_simulator&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">qc_left</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">qc_right</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;Aer&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -724,15 +724,15 @@ q_1: ─X─
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\text{U_left = }\\\begin{split}\begin{bmatrix}
-1 &amp; 0 &amp; 0 &amp; 0  \\
- 0 &amp; 0 &amp; 1 &amp; 0  \\
- 0 &amp; 1 &amp; 0 &amp; 0  \\
- 0 &amp; 0 &amp; 0 &amp; 1  \\
- \end{bmatrix}
-\end{split}\end{aligned}\end{align} \]</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_left</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_left = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -742,15 +742,14 @@ q_1: ─X─
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\text{U_right = }\\\begin{split}\begin{bmatrix}
-1 &amp; 0 &amp; 0 &amp; 0  \\
- 0 &amp; 0 &amp; 1 &amp; 0  \\
- 0 &amp; 1 &amp; 0 &amp; 0  \\
- 0 &amp; 0 &amp; 0 &amp; 1  \\
- \end{bmatrix}
-\end{split}\end{aligned}\end{align} \]</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_right</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_right = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;U_right&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="tip admonition">
@@ -913,8 +912,8 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 <ul class="simple">
 <li><p>En circuitos superconductores</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-926116bf-1e8f-4e95-bab6-97607b2da8a4">
-<span class="eqno">(17)<a class="headerlink" href="#equation-926116bf-1e8f-4e95-bab6-97607b2da8a4" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b191dfde-a9c3-4fa7-85b8-21a307a81125">
+<span class="eqno">(17)<a class="headerlink" href="#equation-b191dfde-a9c3-4fa7-85b8-21a307a81125" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \hbox{Shor basis}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
@@ -995,11 +994,16 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/dcb/Programs/miniconda/miniconda3/envs/qiskit_qibo_penny/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
-  self._style, def_font_ratio = load_style(self._style)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">transpile</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;Aer&#39; from &#39;qiskit&#39; (/Users/javier/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/__init__.py)
 </pre></div>
 </div>
-<img alt="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" src="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1012,10 +1016,14 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tamaño= 6
-puertas no locales= 2
-anchura= 3
-profundidad= 4
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tamaño=&#39;</span><span class="p">,</span><span class="n">qc</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;qc&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1028,7 +1036,15 @@ profundidad= 4
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" src="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">qc_dec</span><span class="o">=</span><span class="n">qc</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;qc&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1041,10 +1057,14 @@ profundidad= 4
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complejidad= 8
-puertas no locales= 4
-anchura= 3
-profundidad= 6
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;complejidad=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;qc_dec&#39; is not defined
 </pre></div>
 </div>
 </div>

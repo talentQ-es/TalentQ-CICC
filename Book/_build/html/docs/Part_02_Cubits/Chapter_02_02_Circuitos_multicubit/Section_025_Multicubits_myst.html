@@ -78,7 +78,7 @@ var addUtterances = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = "async";
 
-    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("repo", "talentQ-es/CIIC");
     script.setAttribute("issue-term", "pathname");
     script.setAttribute("theme", "github-light");
     script.setAttribute("label", "💬 comment");
@@ -300,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +317,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.ipynb" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/edit/main/Book/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -523,6 +523,18 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="estados-multi-cubit">
 <h2>Estados multi-cúbit<a class="headerlink" href="#estados-multi-cubit" title="Permalink to this heading">#</a></h2>
@@ -957,11 +969,7 @@ MCX = \ket{1100}  \bra{1100}\otimes X + (I-\ket{1100}\bra{1100}) \otimes I
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
-  self._style, def_font_ratio = load_style(self._style)
-</pre></div>
-</div>
-<img alt="../../../_images/63d2cf10eef7a2674778c55ca4138c9ca4b9a6c92dd67c9b29afe795ebb25be7.png" src="../../../_images/63d2cf10eef7a2674778c55ca4138c9ca4b9a6c92dd67c9b29afe795ebb25be7.png" />
+<img alt="../../../_images/1397422ed380aa2460849fc805e6d95a0ef40fc19de55756712d24834db2b801.png" src="../../../_images/1397422ed380aa2460849fc805e6d95a0ef40fc19de55756712d24834db2b801.png" />
 </div>
 </div>
 <p>En el convenio de qiskit, efectivamente, este operador es el que se corresponde con</p>
@@ -1010,9 +1018,16 @@ MCX = X\otimes \ket{0011}  \bra{0011} + X\otimes (I-\ket{0011}\bra{0011})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/235a5c680565ca97a3613655cdaefd70017d2908c694c8c23b87abb49f780a8c.png" src="../../../_images/235a5c680565ca97a3613655cdaefd70017d2908c694c8c23b87abb49f780a8c.png" />
-<div class="output text_latex math notranslate nohighlight">
-\[0.70711 |00\rangle+0.70711 |11\rangle\]</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">execute</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="s1">&#39; create the circuit &#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>    
+
+<span class="ne">ImportError</span>: cannot import name &#39;Aer&#39; from &#39;qiskit&#39; (/Users/javier/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/__init__.py)
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1023,7 +1038,15 @@ MCX = X\otimes \ket{0011}  \bra{0011} + X\otimes (I-\ket{0011}\bra{0011})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/bd241cd259839559240cc164d00774e343ee8114e2020984d21a10376a843038.png" src="../../../_images/bd241cd259839559240cc164d00774e343ee8114e2020984d21a10376a843038.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="s1">&#39; the Bell state cannot be drawn on Bloch spheres&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">Statevector</span><span class="p">(</span><span class="n">Bell_state</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;Bloch&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;Statevector&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 </section>

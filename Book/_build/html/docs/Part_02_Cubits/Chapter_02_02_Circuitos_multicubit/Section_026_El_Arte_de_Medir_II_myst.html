@@ -78,7 +78,7 @@ var addUtterances = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = "async";
 
-    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("repo", "talentQ-es/CIIC");
     script.setAttribute("issue-term", "pathname");
     script.setAttribute("theme", "github-light");
     script.setAttribute("label", "💬 comment");
@@ -300,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +317,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.ipynb" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/edit/main/Book/docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -522,6 +522,18 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="medidas-de-estados-multicubit">
 <h2>Medidas de estados multicúbit<a class="headerlink" href="#medidas-de-estados-multicubit" title="Permalink to this heading">#</a></h2>
@@ -587,18 +599,16 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\frac{1}{4} |000\rangle- \frac{1}{2} |001\rangle- \frac{1}{2} |010\rangle+\frac{1}{4} |011\rangle+\frac{1}{4} |100\rangle+\frac{1}{2} |110\rangle- \frac{1}{4} |111\rangle\]</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
-  self._style, def_font_ratio = load_style(self._style)
-</pre></div>
-</div>
-<img alt="../../../_images/f777b889f3fbfa0767dd2e7338ac2dc98e3b84a84bd2e12a36498842467befb5.png" src="../../../_images/f777b889f3fbfa0767dd2e7338ac2dc98e3b84a84bd2e12a36498842467befb5.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cuentas= {&#39;011&#39;: 6180, &#39;111&#39;: 6070, &#39;110&#39;: 25236, &#39;100&#39;: 6352, &#39;001&#39;: 24997, &#39;010&#39;: 25003, &#39;000&#39;: 6162}
-</pre></div>
-</div>
-<img alt="../../../_images/084d76e458ec3c967389add29e4ad035bc386bf5ff51ca54f0748f7aebcf07f8.png" src="../../../_images/084d76e458ec3c967389add29e4ad035bc386bf5ff51ca54f0748f7aebcf07f8.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Probabilidades= {&#39;011&#39;: 0.0618, &#39;111&#39;: 0.0607, &#39;110&#39;: 0.25236, &#39;100&#39;: 0.06352, &#39;001&#39;: 0.24997, &#39;010&#39;: 0.25003, &#39;000&#39;: 0.06162}
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">qiskit_aer</span> <span class="kn">import</span> <span class="n">AerSimulator</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="s1">&#39;definimos un estado de entrada en H^3$&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">psi</span> <span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit_aer&#39;
 </pre></div>
 </div>
 </div>
@@ -658,11 +668,7 @@ Por ejemplo el siguiente circuito mide en la base <span class="math notranslate 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
-  self._style, def_font_ratio = load_style(self._style)
-</pre></div>
-</div>
-<img alt="../../../_images/9f39dbc651ca034f22f05e6d214d428140d38832f54424125e8e3caab042b2c2.png" src="../../../_images/9f39dbc651ca034f22f05e6d214d428140d38832f54424125e8e3caab042b2c2.png" />
+<img alt="../../../_images/abef28e9467801a783230b98790f55ab9846bf3c028fd58794e02e050e3e67a4.png" src="../../../_images/abef28e9467801a783230b98790f55ab9846bf3c028fd58794e02e050e3e67a4.png" />
 </div>
 </div>
 </section>
@@ -799,7 +805,7 @@ YIZ =
  0 &amp; 0 &amp; 0 &amp; - i &amp; 0 &amp; 0 &amp; 0 &amp; 0  \\
  \end{bmatrix}
 \end{split}\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a_203 =  (-0.014428679620298882+0.0500845900523401j)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a_203 =  (-0.03548456836966621+0.18472360057870085j)
 </pre></div>
 </div>
 </div>
@@ -856,9 +862,16 @@ YIZ =
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ZZZ&gt;_shots = -0.24844
-&lt;ZZZ&gt;_analitico = -0.25
-sigma =  0.9686472868903314
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="s1">&#39;aprovechamos el diccionatio &quot;probs_psi&quot; creado al principio de este capítulo&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span><span class="n">probs</span>  <span class="ow">in</span> <span class="n">probs_psi</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">mean</span> <span class="o">+=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span> <span class="o">*</span> <span class="n">probs</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;ZZZ&gt;_shots =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;probs_psi&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -896,9 +909,16 @@ sigma =  0.9686472868903314
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;011&#39;: 28018, &#39;111&#39;: 3070, &#39;110&#39;: 3149, &#39;001&#39;: 3162, &#39;100&#39;: 15825, &#39;101&#39;: 15679, &#39;000&#39;: 3161, &#39;010&#39;: 27936}
-&lt;ZXY&gt; = 0.00014
-&lt;ZXY&gt;_analitico = 0j
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="s1">&#39; ahora generamos el circuito que mide en la base ZXY&#39;</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">qc</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">qr</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">add_multimeasure_XYZ</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="s1">&#39;ZXY&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;psi&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -999,7 +1019,18 @@ p_{0}-p_{1} = \frac{n_{0}}{N} - \frac{n_{1}}{N} = \langle X\rangle_{ancilla}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/f8d5d49719afc0c9c0bad625fa414caff8dc688ec2dd3ba89985a145cd7e6a10.png" src="../../../_images/f8d5d49719afc0c9c0bad625fa414caff8dc688ec2dd3ba89985a145cd7e6a10.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="s1">&#39;creamos el circuito con el operador controlado&#39;</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">qc_Had</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qra</span><span class="p">,</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">qc_Had</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span><span class="n">qr</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">qc_Had</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qra</span><span class="p">)</span>  
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">qc_Had</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CZZZ_gate</span><span class="p">,</span><span class="n">qra</span><span class="p">[:]</span> <span class="o">+</span> <span class="n">qr</span><span class="p">[:])</span>
+
+<span class="ne">NameError</span>: name &#39;psi&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <p>Ejecutamos y obtenemos el valor esperado</p>

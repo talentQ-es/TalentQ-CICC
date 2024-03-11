@@ -78,7 +78,7 @@ var addUtterances = () => {
     script.src = "https://utteranc.es/client.js";
     script.async = "async";
 
-    script.setAttribute("repo", "jamasole/Curso-TalentQ-Book");
+    script.setAttribute("repo", "talentQ-es/CIIC");
     script.setAttribute("issue-term", "pathname");
     script.setAttribute("theme", "github-light");
     script.setAttribute("label", "💬 comment");
@@ -300,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +317,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/edit/main/Book/docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb" target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/edit/main/Book/docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +334,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jamasole/Curso-TalentQ-Jupyterlab/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/talentQ-es/CIIC/issues/new?title=Issue%20on%20page%20%2Fdocs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -532,6 +532,18 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="producto-tensorial">
 <h2>Producto Tensorial<a class="headerlink" href="#producto-tensorial" title="Permalink to this heading">#</a></h2>
@@ -550,8 +562,8 @@ document.write(`
 </div>
 </div>
 <p>con la propiedad <em>bilineal</em>, es decir, <em>distributiva</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-9bfaa939-e2db-4e11-9d4d-61ee9a2adf1c">
-<span class="eqno">(10)<a class="headerlink" href="#equation-9bfaa939-e2db-4e11-9d4d-61ee9a2adf1c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-2395ff74-3e37-4845-86d0-8bab6646c20f">
+<span class="eqno">(10)<a class="headerlink" href="#equation-2395ff74-3e37-4845-86d0-8bab6646c20f" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \big(\ket{u}+\ket{v}\big)\otimes \big(\ket{y}+\ket{z}\big) ~&amp;= &amp;~~
 \ket{u}\otimes\ket{y} ~+~ \ket{u}\otimes\ket{z} ~+~ \ket{v}\otimes\ket{y} ~+~~
  \ket{v}\otimes\ket{z} \\
@@ -805,13 +817,13 @@ s_1 &amp;\cdots  &amp;    &amp;  &amp; &amp; &amp;  0  \\  \vdots &amp; \ddots &
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
--0.421018676 + 1.9884591812 i &amp; 0.4695203631 + 0.7737305033 i &amp; -0.5976472935 + 0.9633476624 i  \\
- 1.1975667581 + 1.8222547875 i &amp; 0.0340994515 - 0.1545197835 i &amp; -1.9444165837 - 0.0936036899 i  \\
- -0.0410588139 - 1.425938097 i &amp; 0.7171557496 + 0.1751953481 i &amp; -0.851922519 + 0.6630010753 i  \\
- 1.4691961538 + 0.6211378445 i &amp; -0.2785699926 - 0.4989750888 i &amp; -0.3656961327 + 1.6089711492 i  \\
+-0.8982949174 - 2.7026169327 i &amp; 0.124133033 - 0.657709629 i &amp; -0.1677657125 + 1.6032937382 i  \\
+ 0.6881901319 - 1.1892088562 i &amp; -1.0122744883 - 1.5750017572 i &amp; 0.3555289239 - 2.4690459313 i  \\
+ 0.4472886136 - 0.0255183754 i &amp; 0.2026413535 + 0.9985924138 i &amp; 0.5650013819 + 0.4434425234 i  \\
+ 1.4847474448 + 0.6102776767 i &amp; -0.0931054856 - 0.2593715094 i &amp; 1.5280467629 - 0.2176809518 i  \\
  \end{bmatrix}
 \end{split}\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valores principales s_i =  [4.169 2.289 1.234]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valores principales s_i =  [4.216 3.155 1.353]
 El número de Schmidt es r = 3
 </pre></div>
 </div>
@@ -843,11 +855,11 @@ El número de Schmidt es r = 3
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
--0.0775459278 - 0.3657298049 i &amp; 0.1178320878 - 0.0968882026 i &amp; 0.0508268957 + 0.3189039685 i  \\
- 0.0015768756 + 0.0146891137 i &amp; -0.0050218954 + 0.0033346498 i &amp; -0.0007149343 - 0.0127408517 i  \\
- -0.1802347211 + 0.107199682 i &amp; -0.0727249288 - 0.0450894918 i &amp; 0.1601893481 - 0.0845573517 i  \\
- -0.0547745307 + 0.3815983832 i &amp; -0.1484733118 + 0.0519637262 i &amp; 0.0640166024 - 0.326779578 i  \\
- 0.4359566976 + 0.0144201247 i &amp; 0.0768024057 + 0.1605626362 i &amp; -0.3754447589 - 0.0315930542 i  \\
+0.1500817572 - 0.1585867304 i &amp; -0.0924520197 + 0.1613271667 i &amp; -0.0565991242 + 0.1211630762 i  \\
+ 0.1064148224 + 0.2707524358 i &amp; -0.1423187892 - 0.2027820018 i &amp; -0.114147677 - 0.1368128328 i  \\
+ -0.0049205828 - 0.2400766685 i &amp; 0.0521673535 + 0.1977242256 i &amp; 0.049231814 + 0.1385874541 i  \\
+ 0.0447914363 - 0.1259545835 i &amp; -0.0118410811 + 0.1132249057 i &amp; -0.001705096 + 0.0818592609 i  \\
+ 0.5144520128 - 0.0601336359 i &amp; -0.4137621493 + 0.1528325344 i &amp; -0.2873958481 + 0.1343196673 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>principal values s_i =  [1. 0. 0.]
@@ -1005,8 +1017,8 @@ Los <em>elementos de matriz</em> ahora vendrán etiquetados por dos <em>multi-í
  A_{i_1...i_n, \, j_1...j_n} = \bra{i_1...i_n}A\ket{j_1...j_n}  ~~~~~\leftrightarrow ~~~~~~ A_{ab}= \bra{a}A\ket{b}
 \]</div>
 <p>Con la matriz, el operador se reconstruye en la base canónica de productos externos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4d50652b-7dc5-4687-ad00-9a4a1ee10325">
-<span class="eqno">(11)<a class="headerlink" href="#equation-4d50652b-7dc5-4687-ad00-9a4a1ee10325" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
+<div class="amsmath math notranslate nohighlight" id="equation-e54477ae-b079-4a08-80ab-a1816d0adb1e">
+<span class="eqno">(11)<a class="headerlink" href="#equation-e54477ae-b079-4a08-80ab-a1816d0adb1e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
  A &amp;~~=~&amp; 
  \sum_{i_1,...,i_n,\, j_1,...,j_n=0}^{d-1} A_{i_1...i_n, \, j_1...j_n} \ket{i_1...i_n}\bra{j_1...j_n}
  ~~~~=~~~~

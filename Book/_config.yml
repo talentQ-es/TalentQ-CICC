@@ -34,14 +34,14 @@ html:
   use_edit_page_button        : true
   comments:
     utterances:
-      repo: "jamasole/Curso-TalentQ-Book"
+      repo: "talentQ-es/CIIC"
 
 # Interact link settings
 notebook_interface            : "notebook"
 
 # Launch button settings
 repository:
-  url                         : https://github.com/jamasole/Curso-TalentQ-Jupyterlab
+  url                         : https://github.com/talentQ-es/CIIC
   path_to_book                : "Book"    # Optional path to your book, relative to the repository root
   branch                      : main  # Which branch of the repository should be used when creating links (optional)
 
