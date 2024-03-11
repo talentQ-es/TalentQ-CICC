@@ -18,10 +18,9 @@ kernelspec:
 :align: right
 ::::
 
-(sec_Circuitos_1_cubit)=
-# Circuitos de 1 cúbit
+(sec_Un_cubit)=
+# Cosas de un sólo cúbit 
 
-Aquí vamos a ver circuitos cuánticos de un cúbit.
 
 ```{tableofcontents}
 ```

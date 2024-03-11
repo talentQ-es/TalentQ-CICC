@@ -20,7 +20,7 @@ kernelspec:
 
 
 (sec_Circuitos_multicubit)=
-# Circuitos de multicúbit
+# Muchos cúbits juntos
 
 Aquí vamos a ver circuitos multicúbit.
 
