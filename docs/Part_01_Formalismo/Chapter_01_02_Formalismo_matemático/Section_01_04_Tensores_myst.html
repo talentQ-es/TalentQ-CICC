@@ -456,7 +456,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-de-kronecker">Producto de Kronecker</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factorizacion-y-entrelazamiento">Factorización y Entrelazamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-entrelazamiento-y-sus-medidas">El entrelazamiento y sus medidas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concurrencia">Concurrencia</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-schmidt">Descomposición de Schmidt</a></li>
 </ul>
@@ -543,8 +543,8 @@ document.write(`
 </div>
 </div>
 <p>con la propiedad <em>bilineal</em>, es decir, <em>distributiva</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f9b4434-2d74-4208-b084-9d45414bb5ea">
-<span class="eqno">(10)<a class="headerlink" href="#equation-4f9b4434-2d74-4208-b084-9d45414bb5ea" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-a12a4307-fd67-485f-807d-97371df7d88b">
+<span class="eqno">(10)<a class="headerlink" href="#equation-a12a4307-fd67-485f-807d-97371df7d88b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \big(\ket{u}+\ket{v}\big)\otimes \big(\ket{y}+\ket{z}\big) ~&amp;= &amp;~~
 \ket{u}\otimes\ket{y} ~+~ \ket{u}\otimes\ket{z} ~+~ \ket{v}\otimes\ket{y} ~+~~
  \ket{v}\otimes\ket{z} \\
@@ -568,7 +568,7 @@ y <span class="math notranslate nohighlight">\(~a,b,... \in {\mathbb C}\)</span>
 </div>
 <section id="base-y-dimension">
 <h3>Base y Dimensión<a class="headerlink" href="#base-y-dimension" title="Permalink to this heading">#</a></h3>
-<p>Sea <span class="math notranslate nohighlight">\(\ket{i_1}\)</span> una base de <span class="math notranslate nohighlight">\(\Hil_1\)</span> y <span class="math notranslate nohighlight">\(\ket{i_2}\)</span> una base de <span class="math notranslate nohighlight">\(\Hil_2\)</span>. Entonces, una base de <span class="math notranslate nohighlight">\(\Hil_1\otimes \Hil_2\)</span> se obtiene formando todas las posibles parejas</p>
+<p>Todo esto está muy bien, pero es muy abstracto. Para poder llegar a resultados concretos necesitamos siempre trabajar en una base. Sucede que, dadas unas bases <span class="math notranslate nohighlight">\(\ket{i_1}\)</span> de <span class="math notranslate nohighlight">\(\Hil_1\)</span> y <span class="math notranslate nohighlight">\(\ket{i_2}\)</span>  de <span class="math notranslate nohighlight">\(\Hil_2\)</span>, automáticamente podemos definir una base en el espacio producto <span class="math notranslate nohighlight">\(\Hil_1\otimes \Hil_2\)</span> que  se obtiene formando todas las posibles parejas</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{i_1 i_2} = \ket{i_1}\otimes \ket{i_2}~~~~~~~~~~~~~~~~~~ 
@@ -576,10 +576,9 @@ y <span class="math notranslate nohighlight">\(~a,b,... \in {\mathbb C}\)</span>
 <p>con
 <span class="math notranslate nohighlight">\(
 i_1=1....d_1\)</span> y <span class="math notranslate nohighlight">\(i_2=1,...,d_2
-\)</span>. Cada elemento así formado es <i>linealmente independiente</i> de los demás.</p>
-<p>El número parejas posibles es <span class="math notranslate nohighlight">\(d_1d_2\)</span>, que coincide con la <strong>dimensión</strong> de <span class="math notranslate nohighlight">\(\Hil_1\otimes \Hil_2\)</span></p>
-<p>Vemos que las <strong>etiquetas</strong> de los vectores de la base forman un <em>bi-índice</em> <span class="math notranslate nohighlight">\(\to i_1 i_2\)</span> que asume <span class="math notranslate nohighlight">\(d_1 d_2\)</span> parejas de valores distintos</p>
-<p>Un <em>vector</em> se escribirá igualmente usando <span class="math notranslate nohighlight">\(d_1 d_2\)</span> <i>componentes</i> complejas <span class="math notranslate nohighlight">\(w_{i_1 i_2}\)</span>, etiquetadas mediante un bi-índice en lugar de un índice</p>
+\)</span>. Cada elemento así formado es <i>linealmente independiente</i> de los demás.
+Vemos que las <em>etiquetas</em> de los vectores de la base forman un <em>bi-índice</em> <span class="math notranslate nohighlight">\(\to i_1 i_2\)</span> que asume <span class="math notranslate nohighlight">\(d_1 d_2\)</span> parejas de valores distintos. El número parejas posibles es <span class="math notranslate nohighlight">\(d_1d_2\)</span>, que <em>coincide con la dimensión</em> de <span class="math notranslate nohighlight">\(\Hil_1\otimes \Hil_2\)</span></p>
+<p>Un <em>vector</em> se escribirá igualmente usando <span class="math notranslate nohighlight">\(d_1 d_2\)</span> números complejos <span class="math notranslate nohighlight">\(w_{i_1 i_2}\)</span>, las <em>componentes</em>, etiquetadas ahora mediante un bi-índice en lugar de un índice</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{\omega} ~= ~ \sum_{i_1=1}^{d_1}\sum_{i_2=1}^{d_2} w_{i_1i_2} \ket{i_1 i_2} 
@@ -587,7 +586,8 @@ i_1=1....d_1\)</span> y <span class="math notranslate nohighlight">\(i_2=1,...,d
 \]</div>
 <div class="note admonition">
 <p class="admonition-title">Nota</p>
-<p>podemos etiquetar las componentes (o los elementos de la base) con índices, en lugar de bi-índices
+<p>Lo importante es que cada elemento tenga una <i>etiqueta</i> distinta.
+Podemos etiquetar las componentes (o los elementos de la base) con índices, en lugar de bi-índices
 Para ello basta con definir un mapa  entre dos bi-índices <span class="math notranslate nohighlight">\(i_1,i_2\)</span> y un índice <span class="math notranslate nohighlight">\(a\)</span>
 $<span class="math notranslate nohighlight">\(
 \ket{w} ~= ~ \sum_{i_1=1}^{d_1}\sum_{i_2=1}^{d_2} w_{i_1 i_2} \ket{i_1 i_2} ~=~ \sum_{a=1}^{d_1d_2} w_{a} \ket{a}
@@ -643,13 +643,13 @@ i_1 i_2 ~~\to ~~ a = d_2*(i_1-1) + i_2
 <p>Nota la conjugación compleja relativa entre las dos matrices de componentes <span class="math notranslate nohighlight">\(\Omega_{ij} = u^*_i v_j\)</span> y <span class="math notranslate nohighlight">\(\omega_{ij} ~=~  u_i v_j\)</span>.</p>
 </div>
 <div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Escribe una función  <i>kronecker(u,v)</i> que tome dos kets (como vectores columna)  y devuelva su producto de Kronecker. Verifica el resultado con la funcion <span class="math notranslate nohighlight">\(kron\)</span> de numpy.</p>
+<p class="admonition-title">Ejercicio (explícaselo a tu ordenador)</p>
+<p>escribe una función  <i>kronecker(u,v)</i> que tome dos kets (como vectores columna)  y devuelva su producto de Kronecker. Verifica el resultado con la funcion <span class="math notranslate nohighlight">\(kron\)</span> de numpy.</p>
 </div>
 </section>
 </section>
-<section id="factorizacion-y-entrelazamiento">
-<h2>Factorización y Entrelazamiento<a class="headerlink" href="#factorizacion-y-entrelazamiento" title="Permalink to this heading">#</a></h2>
+<section id="el-entrelazamiento-y-sus-medidas">
+<h2>El entrelazamiento y sus medidas<a class="headerlink" href="#el-entrelazamiento-y-sus-medidas" title="Permalink to this heading">#</a></h2>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Definición</b>: </i>Vector entrelazado</i></p>
@@ -676,6 +676,7 @@ El carácter entrelazado de un vector es <i>genérico</i>, mientras que el cará
 </ul>
 <p>Es evidente que <span class="math notranslate nohighlight">\(d_1 d_2 \gg d_1 + d_2\)</span></p>
 </div>
+<p>La factorizabilidad es una propiedad simple. Se es factorizable o no. El entrelazamiento es una propiedad compleja. Se puede estar más o menos entrelazado. Vamos a ver la manera de caracterizar esto cuando hablamos del producto tensorial de dos espacios de Hilbert.</p>
 <section id="concurrencia">
 <h3>Concurrencia<a class="headerlink" href="#concurrencia" title="Permalink to this heading">#</a></h3>
 <p>En el caso  <span class="math notranslate nohighlight">\(d_1 = d_2 =2\)</span>  la condición de <em>factorizabilidad</em> <span class="math notranslate nohighlight">\(~\Rightarrow ~w_{ij} = u_i v_j\)</span> es <i>equivalente</i> a verificar
@@ -998,8 +999,8 @@ Los <em>elementos de matriz</em> ahora vendrán etiquetados por dos <em>multi-í
  A_{i_1...i_n, \, j_1...j_n} = \bra{i_1...i_n}A\ket{j_1...j_n}  ~~~~~\leftrightarrow ~~~~~~ A_{ab}= \bra{a}A\ket{b}
 \]</div>
 <p>Con la matriz, el operador se reconstruye en la base canónica de productos externos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-392f0589-9eb2-4996-bdea-0b859623a803">
-<span class="eqno">(11)<a class="headerlink" href="#equation-392f0589-9eb2-4996-bdea-0b859623a803" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
+<div class="amsmath math notranslate nohighlight" id="equation-3ab8fdc7-aa7a-4c01-b508-64cc3d9a5a63">
+<span class="eqno">(11)<a class="headerlink" href="#equation-3ab8fdc7-aa7a-4c01-b508-64cc3d9a5a63" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
  A &amp;~~=~&amp; 
  \sum_{i_1,...,i_n,\, j_1,...,j_n=0}^{d-1} A_{i_1...i_n, \, j_1...j_n} \ket{i_1...i_n}\bra{j_1...j_n}
  ~~~~=~~~~
@@ -1186,7 +1187,7 @@ en un producto de Kronecker <span class="math notranslate nohighlight">\(A^{(1)}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-de-kronecker">Producto de Kronecker</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#factorizacion-y-entrelazamiento">Factorización y Entrelazamiento</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-entrelazamiento-y-sus-medidas">El entrelazamiento y sus medidas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concurrencia">Concurrencia</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descomposicion-de-schmidt">Descomposición de Schmidt</a></li>
 </ul>
