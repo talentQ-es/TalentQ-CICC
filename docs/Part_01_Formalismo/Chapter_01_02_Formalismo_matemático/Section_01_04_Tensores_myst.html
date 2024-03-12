@@ -463,8 +463,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-tensorial-multiple">Producto Tensorial Múltiple</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-de-hil-otimes-n">Base de <span class="math notranslate nohighlight">\(\Hil^{\otimes n}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-general">Vector  general</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-generales-tensores">Vectores generales: tensores</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-factorizable">Vector factorizable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-insondable-entrelazamiento">El insondable entrelazamiento</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-producto-de-matrices-mps">Estados producto de matrices <em>(MPS)</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-tensores">Redes de tensores</a></li>
 </ul>
@@ -488,7 +491,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 12, 2024 | 9 min read</p>
+<div><p>Mar 12, 2024 | 10 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -543,8 +546,8 @@ document.write(`
 </div>
 </div>
 <p>con la propiedad <em>bilineal</em>, es decir, <em>distributiva</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-a12a4307-fd67-485f-807d-97371df7d88b">
-<span class="eqno">(10)<a class="headerlink" href="#equation-a12a4307-fd67-485f-807d-97371df7d88b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b500b19f-6b92-4f3b-bbc3-944f725a5293">
+<span class="eqno">(10)<a class="headerlink" href="#equation-b500b19f-6b92-4f3b-bbc3-944f725a5293" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \big(\ket{u}+\ket{v}\big)\otimes \big(\ket{y}+\ket{z}\big) ~&amp;= &amp;~~
 \ket{u}\otimes\ket{y} ~+~ \ket{u}\otimes\ket{z} ~+~ \ket{v}\otimes\ket{y} ~+~~
  \ket{v}\otimes\ket{z} \\
@@ -879,35 +882,46 @@ el espacio <span class="math notranslate nohighlight">\( \Hil_1\otimes \Hil_2 ..
 \[
 {\rm dim}_{\mathbb C} \Hil^{\otimes n} = d^n
 \]</div>
-<p>Podemos cambiar de etiqueta
-$<span class="math notranslate nohighlight">\(\ket{i_1...i_n} \to \ket{a}\)</span>$</p>
-<p>con</p>
+<p>Si cada base <span class="math notranslate nohighlight">\(\{\ket{i}\}\)</span> es ortonormal, tendremos que la base del espacio producto también lo será</p>
 <div class="math notranslate nohighlight">
 \[
-a = i_n + d i_{n-1} + d^2 i_{n-2} \, +...+ \,  d^{n-1} i_1
+\braket{i_1 i_2... i_n}{j_1j_2...j_n} = \delta_{i_1j_1}\delta_{i_2j_2}...\delta_{i_nj_n}
 \]</div>
-<p>Claramente <span class="math notranslate nohighlight">\(a ~\in ~(0,d^n-1)\)</span>. Si cada base <span class="math notranslate nohighlight">\(\{\ket{i}\}\)</span> es ortonormal, tendremos que la base del espacio producto también lo será</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo</p>
+<p>Supongamos que <span class="math notranslate nohighlight">\(d=3\)</span> (cútrits)  y <span class="math notranslate nohighlight">\(n=3\)</span> . Entonces <span class="math notranslate nohighlight">\(\Hil^{\otimes 3}\)</span> tendría por base, elementos de la forma</p>
+<div class="math notranslate nohighlight">
+\[\{\ket{i j k}\}  = \{ \ket{000},\ket{001},\ket{002},\ket{010},....,\ket{332},\ket{333}\}\]</div>
+<p>que son  ortonormales</p>
 <div class="math notranslate nohighlight">
 \[
-\braket{i_1 i_2... i_n}{j_1j_2...j_n} = \delta_{i_1j_1}\delta_{i_2j_2}...\delta_{i_nj_n} ~~~~\leftrightarrow ~~~~
-\braket{a}{b} = \delta_{ab}
+\braket{000}{000} = 1~~~,~~~ \braket{000}{001} = 0~~~,..., ~~~  \braket{333}{332} = 0~~~,~~~
+\braket{333}{333} = 1
 \]</div>
+</div>
 </section>
-<section id="vector-general">
-<h3>Vector  general<a class="headerlink" href="#vector-general" title="Permalink to this heading">#</a></h3>
-<p>Un <em>vector general</em> admitirá una expansión en esta base mediante <span class="math notranslate nohighlight">\(d^n\)</span> <em>componentes complejas</em>
+<section id="vectores-generales-tensores">
+<h3>Vectores generales: tensores<a class="headerlink" href="#vectores-generales-tensores" title="Permalink to this heading">#</a></h3>
+<p>Un <em>vector general</em> <span class="math notranslate nohighlight">\(\ket{u}\)</span> de <span class="math notranslate nohighlight">\(\Hil^{\otimes n}\)</span> admitirá una expansión en esta base mediante <span class="math notranslate nohighlight">\(d^n\)</span> números complejos
 <span class="math notranslate nohighlight">\(u_{i_1 i_2...i_n}\)</span> en la forma</p>
 <div class="math notranslate nohighlight">
 \[
-\ket{u} ~~=~ \sum_{i_1,...,i_n=0}^{d-1} u_{i_1i_2...i_n} \ket{i_1i_2...i_n} ~~=~
- \sum_{a=0}^{d^n-1} u_a\ket{a}\, .
+\ket{u} ~~=~ \sum_{i_1,...,i_n=0}^{d-1} u_{i_1i_2...i_n} \ket{i_1i_2...i_n}\, .
 \]</div>
-<p>Podemos obtener cualquier componente compleja proyectando sobre el elemento correspondiente de la base</p>
+<p>Podemos recuperar cualquier componente proyectando sobre el elemento correspondiente de la base</p>
 <div class="math notranslate nohighlight">
 \[
-u_{i_1i_2...i_n} = \braket{i_1 i_2... i_n}{u}~~~~~~\leftrightarrow~~~~~~~~u_a = \braket{a}{u}
+u_{i_1i_2...i_n} = \braket{i_1 i_2... i_n}{u}
 \]</div>
-<p>Decimos que <span class="math notranslate nohighlight">\(u_{i_1i_2...i_n}\)</span> forman las componentes de un <em>tensor de rango</em> <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Tensores</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Las cantidades <span class="math notranslate nohighlight">\(u_{i_1i_2...i_n}\)</span> forman las componentes de un <b>tensor de rango</b> <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</div>
+</div>
+<p>Un tensor de rango <span class="math notranslate nohighlight">\(n=1\)</span>  es un <b>vector</b>, y un tensor de rango <span class="math notranslate nohighlight">\(n=2\)</span> es una <strong>matriz</strong>.</p>
 <p>Un estado genérico depende de un conjunto de <span class="math notranslate nohighlight">\(d*d...*d = d^n\)</span> componentes independiente <span class="math notranslate nohighlight">\(u_{i_1i_2...i_n}\)</span>.</p>
 <p>Ya hemos visto los casos de rango <span class="math notranslate nohighlight">\(n=1\)</span> <i>(vector)</i> y <span class="math notranslate nohighlight">\(n=2\)</span> <i>(operador)</i></p>
 </section>
@@ -929,6 +943,10 @@ está parametrizado por <span class="math notranslate nohighlight">\(d +d + ...d
 <span class="math notranslate nohighlight">\(w_{i_1,...i_n}\)</span> independientes, esto es como <span class="math notranslate nohighlight">\(d^n \gg nd\)</span></p>
 <p>Ahora no contamos con un análogo del teorema de Schmidt para averiguar cuándo un vector de <span class="math notranslate nohighlight">\(\Hil^n\)</span> es factorizable o entrelazado</p>
 </section>
+</section>
+<section id="el-insondable-entrelazamiento">
+<h2>El insondable entrelazamiento<a class="headerlink" href="#el-insondable-entrelazamiento" title="Permalink to this heading">#</a></h2>
+<p>Para estados en el producto tensorial de dos espacios <span class="math notranslate nohighlight">\(\Hil = \Hil_1\otimes \Hil_2\)</span> vimos que el número de Schmidt es una forma de caracterizar la cantidad de entrelazamiento. En el caso multipartito esto se vuelve inabarcable. Existen numerosas cantidades, denominadas <em>monónotonos de entrelazamiento</em> que pretenden capturar la profundidad del entrelazamiento.</p>
 <section id="estados-producto-de-matrices-mps">
 <h3>Estados producto de matrices <em>(MPS)</em><a class="headerlink" href="#estados-producto-de-matrices-mps" title="Permalink to this heading">#</a></h3>
 <p>En medio de los dos casos extremos anteriores encontramos la posibilidad de que las componentes del tensor se puedan escribir como productos de matrices</p>
@@ -999,8 +1017,8 @@ Los <em>elementos de matriz</em> ahora vendrán etiquetados por dos <em>multi-í
  A_{i_1...i_n, \, j_1...j_n} = \bra{i_1...i_n}A\ket{j_1...j_n}  ~~~~~\leftrightarrow ~~~~~~ A_{ab}= \bra{a}A\ket{b}
 \]</div>
 <p>Con la matriz, el operador se reconstruye en la base canónica de productos externos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3ab8fdc7-aa7a-4c01-b508-64cc3d9a5a63">
-<span class="eqno">(11)<a class="headerlink" href="#equation-3ab8fdc7-aa7a-4c01-b508-64cc3d9a5a63" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
+<div class="amsmath math notranslate nohighlight" id="equation-4c13c079-bfd2-44cf-82e8-c7b1dfab3773">
+<span class="eqno">(11)<a class="headerlink" href="#equation-4c13c079-bfd2-44cf-82e8-c7b1dfab3773" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
  A &amp;~~=~&amp; 
  \sum_{i_1,...,i_n,\, j_1,...,j_n=0}^{d-1} A_{i_1...i_n, \, j_1...j_n} \ket{i_1...i_n}\bra{j_1...j_n}
  ~~~~=~~~~
@@ -1194,8 +1212,11 @@ en un producto de Kronecker <span class="math notranslate nohighlight">\(A^{(1)}
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#producto-tensorial-multiple">Producto Tensorial Múltiple</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-de-hil-otimes-n">Base de <span class="math notranslate nohighlight">\(\Hil^{\otimes n}\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-general">Vector  general</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vectores-generales-tensores">Vectores generales: tensores</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-factorizable">Vector factorizable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-insondable-entrelazamiento">El insondable entrelazamiento</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estados-producto-de-matrices-mps">Estados producto de matrices <em>(MPS)</em></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-de-tensores">Redes de tensores</a></li>
 </ul>
