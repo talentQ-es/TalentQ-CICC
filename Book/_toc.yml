@@ -13,7 +13,7 @@ parts:
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb-e
 
-- caption:  De Cúbitos y Circuitos
+- caption:  Cosas de Cúbits
   chapters:
   - file:  docs/Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.md
     sections:

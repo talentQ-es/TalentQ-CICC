@@ -95,14 +95,16 @@ def draw_vector(x=1,y=0,vname="v",show_name=False,vcolor="b",sides=False,side_co
     
     if sides:
         draw_sides(x,y,side_color)
-
+        
+        
 def plot_complex_number(z,show_name=False,vcolor="b",sides=False,side_color="b",lwidth=1):
      x = z.real
      y = z.imag        
      plot_2D_plane(left=-int(abs(x))-1,right=int(abs(x))+1,up=int(abs(y))+1,down=-int(abs(y))-1,fsize=(8,8))
-     draw_vector(x=x,y=y,vname=False,show_name=False,vcolor="b",sides=False,side_color="b",lwidth=1)
+     draw_vector(x=x,y=y,vname=False,show_name=False,vcolor=vcolor,sides=False,side_color=side_color,lwidth=1)
 
-    
+
+   
 def place_text(x,y,text,tcolor="blue"):
     plt.text(x,y,text,color=tcolor)
     
