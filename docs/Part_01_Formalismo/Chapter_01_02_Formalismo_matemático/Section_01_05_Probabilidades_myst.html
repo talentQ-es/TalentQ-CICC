@@ -511,67 +511,50 @@ document.write(`
 <span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
-<span class="kn">import</span> <span class="nn">copy</span> 
 </pre></div>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">import</span> <span class="nn">copy</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <section id="variables-aleatorias">
 <h2>Variables aleatorias<a class="headerlink" href="#variables-aleatorias" title="Permalink to this heading">#</a></h2>
 <p>Denotamos con <span class="math notranslate nohighlight">\((X,p(X))\)</span> una  <em>variable aleatoria</em> donde</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(X\)</span> es el espacio muestral de valores <span class="math notranslate nohighlight">\(\{x_1, x_2,....,x_n\}\)</span> que pueden aparecer en una <em>consulta</em> la variable aleatoria</p></li>
-<li><p><span class="math notranslate nohighlight">\(p(X)\)</span> es la <em>distribución de probabilidad</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span> es el espacio muestral de valores <span class="math notranslate nohighlight">\(\{x_1, x_2,....,x_n\}\)</span> que pueden aparecer en una <em>consulta</em>, o <em>tirada</em></p></li>
+<li><p><span class="math notranslate nohighlight">\(p(X)\)</span> es la <em>distribución de probabilidad</em>.</p></li>
 </ul>
 <section id="distribucion-de-probabilidad">
 <h3>Distribución de probabilidad<a class="headerlink" href="#distribucion-de-probabilidad" title="Permalink to this heading">#</a></h3>
-<p>Una distribución de probabilidad es una función real <span class="math notranslate nohighlight">\(x\to p(x)\)</span> que debe  verificar las dos condiciones siguientes</p>
+<p>Una distribución de probabilidad es una función <span class="math notranslate nohighlight">\(x\to p(x)\)</span> de los elementos del espacio muestral real <span class="math notranslate nohighlight">\(x\in X\)</span> en los números reales  <span class="math notranslate nohighlight">\(p(x)\in \mathbb{R}\)</span>.
+La probabilidad de un suceso imposible es <span class="math notranslate nohighlight">\(p(x) = 0\)</span>, y la de un suceso seguro es <span class="math notranslate nohighlight">\(p(x) = 1\)</span>.</p>
+<p>La función <span class="math notranslate nohighlight">\(p(x)\)</span> que debe  verificar las dos condiciones siguientes para ser una distribución de probabilidad</p>
 <div class="math notranslate nohighlight">
 \[
 p(x) \in [0,1]~~~~~~~,~~~~~~~~\sum_{x\in X }p(x) = 1 
 \]</div>
-<p>Es decir, la suma de probabilidades de todos los sucesos posibles debe ser la unidad.</p>
+<p>Es decir, la suma de probabilidades de todos los sucesos posibles debe ser la unidad, porque es la probabilidad de obtener algún miembro del espacio muestral.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>:</p>
+</div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text"><b>Media</b>: la <i>media</i> de una variable aleatoria  viene dada por la expresión</p>
+<p class="sd-card-text"><u><i>Media</i></u>: la <i>media</i> de una variable aleatoria  viene dada por la expresión</p>
 <div class="math notranslate nohighlight">
 \[
 \overline X  = \sum_i x_i p(x_i)
 \]</div>
-</div>
-</div>
-<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
-<div class="sd-card-body docutils">
-<p class="sd-card-text"><b>Varianza</b>: la <i>varianza</i>, <span class="math notranslate nohighlight">\(\sigma_X^2\)</span>, es la <i>media de la desviación cuadrática</i> <span class="math notranslate nohighlight">\(\overline{(x_i - \overline{X} )^2}\)</span></p>
+<p class="sd-card-text"><u><i>Varianza</i></u>: la <i>varianza</i>, <span class="math notranslate nohighlight">\(\sigma_X^2\)</span>, es la <i>media de la desviación cuadrática</i> <span class="math notranslate nohighlight">\(\overline{(x_i - \overline{X} )^2}\)</span></p>
 <div class="math notranslate nohighlight">
 \[ 
 \sigma^2_X = \sum_j (x_j-\overline{X})^2 p(x_j) = \overline{X^2} - \overline{X}^2
 \]</div>
-<p class="sd-card-text">La cantidad <span class="math notranslate nohighlight">\(\sigma_X\)</span> se denomina  <i>desviación estándar</i></p>
+</div>
+</div>
+<p>La cantidad <span class="math notranslate nohighlight">\(\sigma_X\)</span> se denomina  <i>desviación estándar</i></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma_X = \sqrt{\overline{X^2} - \overline{X}^2}
 \]</div>
-</div>
-</div>
 </section>
 </section>
 <section id="la-conexion-estadistica">
@@ -668,8 +651,8 @@ p(x) = \begin{pmatrix}n\\ x\end{pmatrix} p^x (1-p)^{n-x}
 \end{split}\]</div>
 <p>donde el primer factor tiene en cuenta las posibles ordenaciones en que aparecen <span class="math notranslate nohighlight">\(x\)</span> éxitos en <span class="math notranslate nohighlight">\(n\)</span> intentos.</p>
 <p>Un cálculo un poco más largo permite ver que, ahora</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cbf6e14b-dcc0-4e0b-8006-0e7b438b5500">
-<span class="eqno">(12)<a class="headerlink" href="#equation-cbf6e14b-dcc0-4e0b-8006-0e7b438b5500" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-8412b747-eb0c-45f1-8d19-79a1c950a7e9">
+<span class="eqno">(12)<a class="headerlink" href="#equation-8412b747-eb0c-45f1-8d19-79a1c950a7e9" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \overline X &amp;=&amp;  np\\ \rule{0mm}{7mm}
 \sigma^2 &amp;=&amp; n p(1-p)
 \end{eqnarray}\]</div>
@@ -682,8 +665,8 @@ p(x) = \begin{pmatrix}n\\ x\end{pmatrix} p^x (1-p)^{n-x}
 p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp \left({-\frac{(x-\mu)^2}{2\sigma^2}}\right)
 \]</div>
 <p>Nos encontramos ante una variable aleatoria con un espacio muestral continuo <span class="math notranslate nohighlight">\(x\in (-\infty,+\infty)\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29040d66-780c-4af2-89e8-aeeb39b57b84">
-<span class="eqno">(13)<a class="headerlink" href="#equation-29040d66-780c-4af2-89e8-aeeb39b57b84" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-244789c3-791c-4eff-8405-031fb5fdccd5">
+<span class="eqno">(13)<a class="headerlink" href="#equation-244789c3-791c-4eff-8405-031fb5fdccd5" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \overline{X} &amp;=&amp; \int_{-\infty}^{+\infty} xp(x) dx = \mu \\
 \overline{(x-\overline X)^2} &amp;=&amp; \int_{-\infty}^{+\infty} (x-\mu)^2 p(x)dx =\sigma^2
 \end{eqnarray}\]</div>
@@ -719,7 +702,7 @@ p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp \left({-\frac{(x-\mu)^2}{2\sigma^2}}\rig
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/8ccecee27e5fc16f24f9edf0ef41f9d9d724c704d2df77d5de4b814656084415.png" src="../../../_images/8ccecee27e5fc16f24f9edf0ef41f9d9d724c704d2df77d5de4b814656084415.png" />
+<img alt="../../../_images/3656647c3f5187eeeaeaa0571ab0199a0b1f409302ab8a519e16c942f8b3cb9c.png" src="../../../_images/3656647c3f5187eeeaeaa0571ab0199a0b1f409302ab8a519e16c942f8b3cb9c.png" />
 </div>
 </div>
 <p>En el límite de número de eventos <span class="math notranslate nohighlight">\(N\to \infty\)</span>, el histograma y la curva matemática confluyen.</p>

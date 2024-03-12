@@ -486,7 +486,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 12, 2024 | 5 min read</p>
+<div><p>Mar 12, 2024 | 4 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -553,8 +553,8 @@ i^3  &amp;=&amp; i*i*i = i^2 * i = -i\\ \rule{0mm}{6mm}
 \end{array}
 \end{split}\]</div>
 <p>Observar que el <em>inverso multiplicativo</em>  <span class="math notranslate nohighlight">\(1/i\)</span> también es <span class="math notranslate nohighlight">\(-i\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-127e9bda-fa6a-435b-ac90-6214d0e49a25">
-<span class="eqno">(1)<a class="headerlink" href="#equation-127e9bda-fa6a-435b-ac90-6214d0e49a25" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-8f7f7a03-2d37-4361-872a-ba0ae3f673c5">
+<span class="eqno">(1)<a class="headerlink" href="#equation-8f7f7a03-2d37-4361-872a-ba0ae3f673c5" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{i}{i}  &amp;=&amp;   1 \nonumber\\
 i (-i) &amp;=&amp; - i^2  =  1
 \end{eqnarray}\]</div>
@@ -676,8 +676,8 @@ z = \rho e^{i\theta} = \rho e^{i(\theta + 2\pi n)}
 </div>
 </div>
 <p>Usar la forma polar es útil en situaciones en las que aparecen productos y potencias del número <span class="math notranslate nohighlight">\(i\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e0b9b79-0afa-425c-8278-2630028479ce">
-<span class="eqno">(2)<a class="headerlink" href="#equation-7e0b9b79-0afa-425c-8278-2630028479ce" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-269e6219-0b06-4e63-8c28-b2f3358a8fad">
+<span class="eqno">(2)<a class="headerlink" href="#equation-269e6219-0b06-4e63-8c28-b2f3358a8fad" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 i &amp;=&amp; e^{i\pi/2} \\ \rule{0mm}{8mm}
 -1 &amp;=&amp; i^2 =  e^{i\pi} \\ \rule{0mm}{8mm}
 -i &amp;=&amp; i^3 = e^{3i\pi/2} =e^{-i\pi/2} \\ 
@@ -995,12 +995,12 @@ comprobación z1/z2= (1.08707+2.79612j)
 <p><a id="sumnul"></a></p>
 <section id="sumas-nulas">
 <h3>Sumas nulas<a class="headerlink" href="#sumas-nulas" title="Permalink to this heading">#</a></h3>
-<p>La interferencia cuántica, en ultima instancia, procede de la posibilidad de sumar muchas fases complejas de manera que el resultado sea nulo. Sea <span class="math notranslate nohighlight">\(N\)</span> un número entero cualquiera, se verifica que</p>
+<p>La interferencia cuántica, en ultima instancia, procede de la posibilidad de sumar muchas fases complejas de manera que se anule el resultado. Sea <span class="math notranslate nohighlight">\(N\)</span> un número entero cualquiera, se verifica que</p>
 <div class="math notranslate nohighlight">
 \[
 \sum_{k=0}^{N-1} e^{2\pi \i k/N} =   e^{2\pi \i\, 0/N} +  e^{2\pi \i\, 1/N}  +~...~ + ~  e^{2\pi \i\, (N-1)/N} ~=~  ~0
  \]</div>
-<p>Para convencerse de que esta identidad es cierta vamos a representar los números complejos y su suma. Puedes cambiar <span class="math notranslate nohighlight">\(N\)</span> y también multiplicar por un módulo constante</p>
+<p>Vamos a representar los números complejos y su suma. Puedes cambiar <span class="math notranslate nohighlight">\(N\)</span> y también multiplicar por un módulo constante <span class="math notranslate nohighlight">\(\rho\)</span> y observar el resultado.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># modifica el número N</span>
