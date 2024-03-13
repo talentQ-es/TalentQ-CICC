@@ -18,7 +18,6 @@ parts:
   - file:  docs/Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.md
     sections:
     - file:  docs/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.ipynb
-    - file:  docs/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.ipynb
     - file:  docs/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.ipynb
   - file:  docs/Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.md
     sections:

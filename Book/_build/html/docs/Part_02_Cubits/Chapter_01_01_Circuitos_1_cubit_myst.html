@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Un cúbit sólo &#8212; Curso de Introducción a la Computación Cuántica</title>
+    <title>El cúbit &#8212; Curso de Introducción a la Computación Cuántica</title>
   
   
   
@@ -104,7 +104,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="El cúbit" href="Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html" />
+    <link rel="next" title="Circuitos de un cúbit" href="Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html" />
     <link rel="prev" title="Fundamentos de Mecánica Cuántica" href="../Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -214,8 +214,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las Reglas del Juego</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">Con las Mates no te mates</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los números complejos, no te quedan tan lejos</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">No te mates con la Mates</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Los números (sin) complejos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Vectores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores sin dolores</a></li>
@@ -226,9 +226,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">De Cúbits y sus Cosas</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Un cúbit sólo</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">El cúbit</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">Circuitos de un cúbit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
 </ul>
 </li>
@@ -438,7 +437,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Un cúbit sólo</h1>
+    <h1>El cúbit</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -453,17 +452,16 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 13, 2024 | 6 words | 0 min read</p>
+<div><p>Mar 13, 2024 | 5 words | 0 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
 </figure>
-<section class="tex2jax_ignore mathjax_ignore" id="un-cubit-solo">
-<span id="sec-un-cubit"></span><h1>Un cúbit sólo<a class="headerlink" href="#un-cubit-solo" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="el-cubit">
+<span id="sec-un-cubit"></span><h1>El cúbit<a class="headerlink" href="#el-cubit" title="Permalink to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">Circuitos de un cúbit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
 </ul>
 </div>
@@ -513,7 +511,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">El cúbit</p>
+        <p class="prev-next-title">Circuitos de un cúbit</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

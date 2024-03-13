@@ -611,8 +611,6 @@
     "### La puerta CNOT\n",
     "\n",
     "La  puerta *binaria* CNOT = $\\cg{X}$ es el caso más sencillo de *operador no factorizable* \n",
-    "gráficamente\n",
-    "<br>\n",
     "\n",
     "::::{figure} images/cX_gate.png\n",
     ":width: 200px\n",

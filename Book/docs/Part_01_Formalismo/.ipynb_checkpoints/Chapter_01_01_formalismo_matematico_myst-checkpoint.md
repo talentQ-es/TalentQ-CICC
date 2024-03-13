@@ -19,7 +19,7 @@ kernelspec:
 ::::
 
 (sec_Formalismo_Matematico)=
-# Formalismo Matemático
+# No te mates con la Mates
 
 Aquí vamos a explicar las herramientas matemáticas necesarias para la computación cuántica.
 

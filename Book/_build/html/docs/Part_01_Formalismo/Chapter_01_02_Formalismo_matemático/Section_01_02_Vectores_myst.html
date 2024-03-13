@@ -107,7 +107,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Operadores" href="Section_01_03_Operadores_myst.html" />
-    <link rel="prev" title="Los números complejos, no te quedan tan lejos" href="Section_01_01_Numeros_Complejos_myst.html" />
+    <link rel="prev" title="Los números (sin) complejos" href="Section_01_01_Numeros_Complejos_myst.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -216,8 +216,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las Reglas del Juego</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_01_01_formalismo_matematico_myst.html">Con las Mates no te mates</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Section_01_01_Numeros_Complejos_myst.html">Los números complejos, no te quedan tan lejos</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_01_01_formalismo_matematico_myst.html">No te mates con la Mates</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Section_01_01_Numeros_Complejos_myst.html">Los números (sin) complejos</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Vectores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Section_01_03_Operadores_myst.html">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Section_01_04_Tensores_myst.html">Tensores sin dolores</a></li>
@@ -228,9 +228,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">De Cúbits y sus Cosas</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.html">Un cúbit sólo</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">El cúbit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_022_Puertas_Simples_myst.html">Puertas Simples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.html">El cúbit</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.html">Circuitos de un cúbit</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.html">El arte de medir I</a></li>
 </ul>
 </li>
@@ -852,8 +851,8 @@ Solución<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-454d0a5c-6d2e-413b-9e12-a522cc927aff">
-<span class="eqno">(3)<a class="headerlink" href="#equation-454d0a5c-6d2e-413b-9e12-a522cc927aff" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-42d50d97-78b4-4768-87eb-1b71cdd2576c">
+<span class="eqno">(3)<a class="headerlink" href="#equation-42d50d97-78b4-4768-87eb-1b71cdd2576c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \braket{e_k}{v} &amp;=&amp;  \bra{e_k}\left(\sum_{j=1}^N v_j\ket{e_j}\right) \nonumber\\
                 &amp;=&amp;  \sum_{j=1}^N  v_j\braket{e_k}{e_j}  \nonumber\\
                 &amp;=&amp;  \sum_{j=1}^N  v_j\delta_{kj} = v_k
@@ -928,7 +927,7 @@ Verifica que <span class="math notranslate nohighlight">\(\| \ket{u}\| = \sqrt{\
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Los números complejos, no te quedan tan lejos</p>
+        <p class="prev-next-title">Los números (sin) complejos</p>
       </div>
     </a>
     <a class="right-next"
