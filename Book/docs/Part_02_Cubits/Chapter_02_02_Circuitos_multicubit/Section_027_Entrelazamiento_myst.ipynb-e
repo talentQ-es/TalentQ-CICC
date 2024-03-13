@@ -9,9 +9,12 @@
     }
    },
    "source": [
-    "<figure><right>\n",
-    "<img   src=\"../../figuras/logos/Logo_TalentQ_Azul.png\" align=right  width=\"150px\"/>\n",
-    "</right></figure>\n",
+    "> {sub-ref}`today` | {sub-ref}`wordcount-minutes` min read\n",
+    "\n",
+    "::::{figure} ../../figuras/logos/Logo_TalentQ_Azul.png\n",
+    ":width: 150px\n",
+    ":align: right\n",
+    "::::\n",
     "\n",
     "# Entrelazamiento en acción\n",
     "\n",
@@ -50,7 +53,7 @@
     "import scipy.linalg as la\n",
     "from IPython.display import display,Markdown,Latex\n",
     "import matplotlib.pyplot as plt\n",
-    "from qiskit.tools.visualization import array_to_latex"
+    "from qiskit.visualization import array_to_latex"
    ]
   },
   {
@@ -62,67 +65,36 @@
     }
    },
    "source": [
-    "## Desigualdades de Bell"
+    "## Desigualdades de Bell\n",
+    "\n",
+    "\n",
+    "### Realismo local\n",
+    "\n",
+    "Las teorías con *realismo local* presuponen que los sistemas físicos  poseen propiedades que adquieren valores bien definidos de forma independiente del observador. \n",
+    "Así, en una teoría con realismo local, una partícula tendrá unos valores concretos de  *posición* y *velocidad*  en cada instante aunque nadie las observe.\n",
+    "Toda la Física Clásica se asienta sobre las premisas de realismo local.\n",
+    "\n",
+    "\n",
+    "La palabra *local* hace referencia a que ningún agente puede causar efectos a distancia a una velocidad  mayor que la velocidad que la luz. También se usa  la palabra *causal* en su lugar."
    ]
   },
   {
    "cell_type": "markdown",
-   "id": "1e251d78",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "-"
-    }
-   },
+   "id": "f84b85cc",
+   "metadata": {},
    "source": [
-    "Las teorías con *realismo local* asumen que los valores que adquieren las magnitudes que se miden en un experimento *pertenecen* al sistema medido. \n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "e73245d6",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "-"
-    }
-   },
-   "source": [
-    "Así, en una teoría con realismo local la posición de una partícula es algo bien definido aunque no lo estemos midiendo. "
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "ee98d85e",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "fragment"
-    }
-   },
-   "source": [
-    "La palabra *local* hace referencia a que ningún agente puede propagar su acción a mayor velocidad que la luz. Podría usarse la palabra *causal* en su lugar."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "df70ba4a",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "-"
-    }
-   },
-   "source": [
-    "Por ejemplo, al hablar del espín de un electrón, no es correcto decir que *la proyección del espín a lo largo del eje $\\hat{\\bf z}~$ <u>es</u> $~+\\hbar/2$*."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "f9cf30b5",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "-"
-    }
-   },
-   "source": [
-    " Lo correcto es decir que, <u>al medir</u>,  cualquiera de los valores $\\pm\\hbar/2$ se <u>adquiere</u> o <u>pone de manifiesto</u>  de forma aleatoria."
+    "La Mecánica Cuántica no es una teoría con realismo local. La función de onda no describe las propiedades de un sistema. Simplemente informa de la probabilidad de obtención de distintos resultados. \n",
+    "\n",
+    "Si dichos resultados reflejasen propiedades del sistema, las probabilidades deberían ser estables frente a diferentes medidas suficientemente finas como para no perturbar el sistema. Pero esto no es así. La medida en Mecánica Cuántica modifica irremediablemente el vector de estado. \n",
+    "\n",
+    "\n",
+    "Si medimos un cúbit con el observable $Z$ y obtenemos $+1$, el estado posteriormente será el $\\ket{0}$. Si repetimos la medida, siempre dará $+1$. Podemos tener la tentación de pensar que la propiedad medida por $Z$ ha quedado fijada en este valor. Eso es lo que sucedería en una teoría con realismo clásico.\n",
+    "\n",
+    "Si a continuación medimos con el observable $X$ y obtenemos también $+1$, el estado posterior será $\\ket{+}$. \n",
+    "Si ahora volvemos a medir con $Z$, es 50% probable que obtengamos un $-1$ en lugar del $+1$ que pensábamos que había quedado fijado. Por tanto, la propiedad $Z$ ha quedado *borrada* al medir la propiedad $X$ y viceversa. \n",
+    "\n",
+    "El lector avezado se percatará de que la clave está en que las medidas sucesivas se corresponden con observables que no conmutan entre sí $[X,Z]= 2i Y  \\neq 0$. Esto esta propiedad está en la base del *Principio de Incertidumbre*.\n",
+    "\n"
    ]
   },
   {
@@ -134,62 +106,24 @@
     }
    },
    "source": [
-    "En 1964  físico nor-irlandés John Bell, que trabajaba en el CERN,   [demostró](https://cds.cern.ch/record/111654/files/vol1p195-200_001.pdf) que **todas** las teorías que respetan el realismo local satisfacen ciertas *desigualdades matemáticas*. \n",
+    "### Desigualdades de Bell\n",
     "\n",
-    "En particular, <u>todas las magnitudes que evolucionan siguiendo las leyes de la física clásica</u> las satisfacen.\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "1bd04eae",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "-"
-    }
-   },
-   "source": [
-    "Por el contrario, John Bell mostró cómo, en Mecánica Cuántica, el entrelazamiento, incorpora *correlaciones* sutiles entre las medidas que permiten traspasar  dichas desigualdades. \n",
-    "\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "28426fe9",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "skip"
-    }
-   },
-   "source": [
+    "En 1964  físico nor-irlandés John Bell, que trabajaba en el CERN,   [demostró](https://cds.cern.ch/record/111654/files/vol1p195-200_001.pdf) que **todas** las teorías que respetan el realismo local satisfacen ciertas *desigualdades matemáticas*. \n",
+    "En particular, todas  las leyes de la *Física Clásica* las satisfacen.\n",
+    "\n",
+    "\n",
+    "En contraste, John Bell mostró cómo, en *Mecánica Cuántica*, el entrelazamiento, incorpora correlaciones sutiles entre las medidas que permiten traspasar  dichas desigualdades. \n",
+    "\n",
+    "\n",
     "La discusión, de puramente filosófica a ser objeto de investigación experimental, culminó con el [experimento](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.49.1804) de Alain Aspect y colaboradores en 1982.\n",
     "\n",
-    "Se observó que la Mecánica Cuántica viola las desigualdades de Bell y, por tanto, **no es una teoría con realismo local**. \n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "654480ff",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "fragment"
-    }
-   },
-   "source": [
+    "En conclusión, quedó demostrado experimentalmente que la Mecánica Cuántica, al violar las desigualdades de Bell, **no es una teoría con realismo local**. \n",
+    "\n",
+    "\n",
     "La propuesta de John Bell dio pie a una familia de desigualdades que ponen en evidencia la imposibilidad de obtener ciertas correlaciones en un mundo clásico. \n",
     "\n",
     "Vamos a examinar la desigualdad en la forma estudiada por Clauser, Horne, Shimony y Holt [CHSH](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.23.880).  \n",
-    "\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "217b7868",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "skip"
-    }
-   },
-   "source": [
+    "\n",
     "Posteriormente estudiaremos el experimento de GHZ, el cuál, también pone de manifiesto las correlaciones sutiles que introduce el entrelazamiento de una forma mucho determinista, en lugar de estadística."
    ]
   },
@@ -208,78 +142,38 @@
     "<br>\n",
     "<br>\n",
     "$$\n",
-    "\\ket{B_{11}}=\\frac{1}{\\sqrt{2}}(\\ket{01}-\\ket{10})\n",
+    "\\ket{11}_B=\\frac{1}{\\sqrt{2}}\\big(\\ket{0}\\otimes \\ket{1}-\\ket{1}\\otimes \\ket{0}\\big)\n",
     "$$\n",
     "\n",
-    "Supongamos que  Alice y Bob poseen sendos medidores de Stern Gerlach apuntando en la dirección $\\hat{\\bf z} = (0,0,1)$."
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "e49b7644",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "fragment"
-    }
-   },
-   "source": [
-    "- Si Alice registra +1 el estado colapsa a $\\ket{01}$ y, por tanto, Bob solo podrá medir  $\\, -1$\n",
+    "Supongamos que  Alice y Bob miden sus cúbits con el observable $Z$\n",
+    "\n",
+    "- Si Alice registra +1 quiere decir que el estado global ha colapsado a   $\\ket{0}\\otimes\\ket{1}$. Si Bob mide a continuación,  solo podrá obtener un valor  $\\, -1$\n",
     "\n",
     "\n",
-    "-  Si Alice registra -1 el estado colapsa a $\\ket{10}$ y, por tanto, Bob solo podrá medir  $\\, +1$"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "00a3ca0a",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "fragment"
-    }
-   },
-   "source": [
+    "- Si Alice registra -1 quiere decir que el estado global ha colapsado a   $\\ket{1}\\otimes\\ket{0}$. Si Bob mide a continuación,  solo podrá obtener un valor  $\\, +1$\n",
+    "\n",
     "En definitiva, hay una anticorrelación perfecta que se pone de manifiesto en el valor medio del producto de las medidas. \n",
     "\n",
-    "Si las mediciones de Alice y Bob son $a_i=\\pm 1\\Rightarrow b_i=\\mp 1$ respectivamente, el valor medio\n",
+    "Denotemos las mediciones de Alice y Bob mediante $a_i=\\pm 1\\Rightarrow b_i=\\mp 1$ respectivamente. El valor medio\n",
     "de la variable aleatoria $\\{a_i, b_i\\}$ es $-1$\n",
     "\n",
     "$$\n",
     "\\overline{ab} = \\frac{1}{N}\\sum_{i=1}^N a_i b_i =\\frac{1}{N}\\sum_{i=1}^N (-1) = -1\n",
-    "$$"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "a8a788c5",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "slide"
-    }
-   },
-   "source": [
-    "Vamos a ver cómo la predicción teórica confirma este hecho.\n",
+    "$$\n",
     "\n",
-    "El estado $\\ket{B_{11}}$ ya es autoestado del observable asociado \n",
+    "\n",
+    "Vamos a ver cómo la predicción teórica confirma este hecho.\n",
+    "El estado $\\ket{11}_B$ ya es autoestado del observable asociado \n",
     "\n",
     "$$\n",
-    "Z\\otimes Z \\ket{B_{11}} = Z\\ket{0}Z\\ket{1} - Z\\ket{1}Z\\ket{0} = -\\ket{01} + \\ket{10} = -\\ket{B_{11}}\n",
-    "$$"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "051e3348",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "fragment"
-    }
-   },
-   "source": [
+    "Z\\otimes Z \\ket{11}_B = Z\\ket{0}Z\\ket{1} - Z\\ket{1}Z\\ket{0} = -\\ket{01} + \\ket{10} = -\\ket{11}_B\n",
+    "$$\n",
+    "\n",
     "Y el valor esperado satura  este autovalor \n",
     "<br>\n",
     "\n",
     "$$\n",
-    " \\langle Z\\otimes Z\\rangle = \\bra{B_{11}}Z\\otimes Z\\,  \\ket{B_{11}}  = -\\braket{B_{11}}{B_{11}}= -1\\, \n",
+    " \\langle Z\\otimes Z\\rangle =\\, _B\\bra{11}Z\\otimes Z\\,  \\ket{11}_B  = -_B\\braket{11}{11}_B= -1\\, \n",
     "$$\n"
    ]
   },
@@ -292,12 +186,13 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-danger\">\n",
-    "<b>Notar:</b>\n",
+    "::::::{admonition} Notar\n",
+    ":class: note\n",
+    "\n",
     "<br>\n",
     "La anti correlación que hemos hallado es la misma que en un experimento clásico preparado en una bolsa que contiene dos calcetines de dos colores: si Alice saca el blanco, el que saca Bob tiene que ser negro.     \n",
     "    \n",
-    "</div>\n",
+    "::::::\n",
     "\n"
    ]
   },
@@ -310,41 +205,31 @@
     }
    },
    "source": [
-    "La cosa se pone más divertida cuando los dos polarizadores de Stern Gerlach <u>*no se orientan en la misma dirección*</u>\n",
+    "La cosa se pone más divertida cuando los dos aparatos de medida <u>*no se orientan en la misma dirección*</u>.\n",
+    "El observable asociado ahora a una medición en una dirección arbitraria  $~\\hat{\\bf n}~$  será  $~ A = \\hat{\\bf n}\\cdot \\boldsymbol{\\sigma}$\n",
     "\n",
-    "El observable asociado ahora a la dirección $~\\hat{\\bf n}~$  será  $~ A = \\hat{\\bf n}\\cdot \\boldsymbol{\\sigma}$\n",
+    "Aun así, los autovalores de este operador y, por ello, la proyección del espín seguirá siendo $\\pm 1$. Supongamos que el eje escogido por Alice es $\\hat{\\bf n}_A$ y el escogido por Bob es $\\hat{\\bf n}_B$\n",
     "\n",
-    "Aun así, los autovalores de este operador y, por ello, la proyección del espín seguirá siendo $\\pm 1$\n",
+    "::::::{card} \n",
+    "<b>Teorema</b>:  \n",
     "\n",
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"text-align: left ;color: navy;\">  \n",
-    "<b>Teorema</b>: \n",
+    "^^^\n",
     "<br>\n",
-    "el valor medio del producto de las proyecciones de espín a lo largo de sendos ejes $~\\hat{\\bf m}~$ y $~\\hat{\\bf n}~$ viene dada por el coseno del ángulo $\\theta$  que forman los  ejes de los dos detectores \n",
+    "el valor medio del producto de las proyecciones de espín a lo largo de sendos ejes $~\\hat{\\bf n}_A~$ y $~\\hat{\\bf n}_B~$ viene dada por el coseno del ángulo $\\theta_{AB}$  que forman los  ejes de los dos detectores \n",
     "<br>\n",
     "<br>    \n",
     "$$\n",
-    "\\bra{B_{11}}(\\hat{\\bf m}\\cdot \\boldsymbol{\\sigma}\\otimes \\hat{\\bf n}\\cdot \\boldsymbol{\\sigma})\\ket{B_{11}}\n",
-    " = -\\cos \\theta = - \\hat{\\bf m}\\cdot \\hat{\\bf n}\n",
+    "_B\\bra{11}(\\hat{\\bf n}_A\\cdot \\boldsymbol{\\sigma}\\otimes \\hat{\\bf n}_B\\cdot \\boldsymbol{\\sigma})\\ket{11}_B\n",
+    "  = - \\hat{\\bf n}_A\\cdot \\hat{\\bf n}_B = -\\cos \\theta_{AB}\n",
     "$$\n",
-    "</p>\n",
-    "</div>\n",
-    "\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "ef222950",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "skip"
-    }
-   },
-   "source": [
-    "<div class=\"alert alert-block alert-success\">\n",
-    "<b>Ejercicio:</b> \n",
+    "\n",
+    "::::::\n",
+    "\n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
+    "\n",
     "Prueba este resultado.\n",
-    "</div>"
+    "::::::\n"
    ]
   },
   {
@@ -356,16 +241,14 @@
     }
    },
    "source": [
-    "- Cuando los ejes son paralelos recuperamos la  anti-correlación, en cualquier dirección\n",
+    "- Cuando los ejes son paralelos $\\hat{\\bf n}_B=\\hat{\\bf n}_B$ recuperamos la  anti-correlación perfecta, en cualquier dirección\n",
     "\n",
     "$$\n",
-    "-\\hat{\\bf n}\\cdot \\hat{\\bf n} = - \\cos 0 = -1 \n",
+    "-\\hat{\\bf n}_A\\cdot \\hat{\\bf n}_B = - \\cos 0 = -1 \n",
     "$$\n",
     "\n",
-    "- cuando las direcciones de los detectores de Alice y Bob no coinciden sigue habiendo una medida cuántica $a,b = \\pm 1$ en ambos. \n",
-    "<br>\n",
-    "<br>\n",
-    "- Clásicamente, ¿qué esperarías medir?\n",
+    "- Cuando las direcciones de los detectores de Alice y Bob no coinciden sigue habiendo una medida cuántica $a,b = \\pm 1$ en ambos. \n",
+    "\n",
     "\n",
     "\n"
    ]
@@ -468,15 +351,16 @@
    "source": [
     "En un mundo clásico, supondríamos que los valores $a_i,b_i$ proceden de *valores predefinidos* para cada sistema individual, sobre el que efectuamos simplemente un promedio estadístico de muchos sistemas. Entonces podemos probar la **desigualdad de CHSH**\n",
     "\n",
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"text-align: left ;color: navy;\">  \n",
-    "<b>Teorema</b>: \n",
+    "::::::{card} \n",
+    "<b>Teorema</b>:  \n",
+    "\n",
+    "^^^\n",
     "La desigualdad de CHSH afirma que \n",
     "<br>\n",
     "$$\n",
     "R \\leq 2\n",
     "$$\n",
-    "</p></div>\n",
+    "::::::\n",
     "\n",
     "<details><summary><p style=\"text-align:right\"> >><i>Prueba</i> </p></summary>\n",
     "Es fácil ver que se cumple para cada colección $a_i,a'_i,b_i,b'_i \\in \\pm 1$ la desigualdad\n",
@@ -541,10 +425,11 @@
    },
    "source": [
     "<br>\n",
-    "<figure>\n",
-    "<img src=\"images/CHSH_basis.png\" align=center width='280px'/>\n",
-    "<center></center>\n",
-    "</figure>\n",
+    "::::{figure} images/CHSH_basis.png\n",
+    ":width: 280px\n",
+    ":align: center\n",
+    "\n",
+    "::::\n",
     "<br>\n"
    ]
   },
@@ -740,8 +625,9 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-success\">\n",
-    "<b>Ejercicio</b> \n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
+    "\n",
     "    \n",
     "Usar bases perpendiculares de  Alice $A\\perp A'$,  y Bob $B\\perp B'$, y formando un ángulo $\\varphi$ entre sí. \n",
     "    \n",
@@ -750,7 +636,7 @@
     "Variar $\\varphi$ en el intervalo $(0,\\pi)$ y hallar el valor de la máxima violación de la desigualdad de Bell.\n",
     "    \n",
     "¿Es mayor que en el ejemplo anterior? ¿Podrías  hallar otra violación aún mayor?\n",
-    "</div>"
+    "::::::\n"
    ]
   },
   {
@@ -991,10 +877,11 @@
    "source": [
     "\n",
     "<br>\n",
-    "<figure>\n",
-    "<img src=\"./images/GHZ.png\" align=center width='300px'/>\n",
-    "<center></center>\n",
-    "</figure>\n",
+    "::::{figure} ./images/GHZ.png\n",
+    ":width: 300px\n",
+    ":align: center\n",
+    "\n",
+    "::::\n",
     "<br>\n"
    ]
   },
@@ -1174,10 +1061,11 @@
    "source": [
     "\n",
     "<br>\n",
-    "<figure>\n",
-    "<img src=\"images/teleportacion.png\" align=center width='500px'/>\n",
-    "<center></center>\n",
-    "</figure>\n",
+    "::::{figure} images/teleportacion.png\n",
+    ":width: 500px\n",
+    ":align: center\n",
+    "\n",
+    "::::\n",
     "<br>\n"
    ]
   },
@@ -1475,9 +1363,10 @@
     "El siguiente ejercicio ilustra el principio de la *medida diferida*. \n",
     "\n",
     "\n",
-    "<div class=\"alert alert-block alert-success\">\n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
     "\n",
-    "<b>  Ejercicio </b> \n",
+    "\n",
     "    \n",
     "Modifica y ejecuta  el circuito de teleportación de dos formas distintas\n",
     "  \n",
@@ -1488,7 +1377,7 @@
     "Discute la sutileza que distingue estas posibilidades.    \n",
     "\n",
     "<i>Lectura recomendada: Nielsen-Chuang sección 4.4.  </i>\n",
-    "</div>\n",
+    "::::::\n",
     "\n"
    ]
   },
@@ -1501,13 +1390,14 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-success\">\n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
     "\n",
-    "<b>  Ejercicio </b> \n",
+    "\n",
     "    \n",
     "Cambia el estado que comparten Alice y Bob por $\\ket{B_{11}}$ y modifica el circuito para que teleporte igualmente.\n",
     "\n",
-    "</div>\n",
+    "::::::\n",
     "\n"
    ]
   },
@@ -1520,8 +1410,9 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-danger\">\n",
-    "    <b>Nota:</b>\n",
+    "::::::{admonition} Nota\n",
+    ":class: note\n",
+    "\n",
     "<br>\n",
     "El protocolo de teleportación parece poner en riesgo conceptos fundamentales. \n",
     "<br>\n",
@@ -1536,7 +1427,7 @@
     "Esta parte es la que hace que la teleportación no sea un proceso instantáneo de acción a distancia.    \n",
     "    \n",
     "    \n",
-    "</div>\n"
+    "::::::\n"
    ]
   },
   {
@@ -1581,10 +1472,11 @@
    "source": [
     "\n",
     "<br>\n",
-    "<figure>\n",
-    "<img src=\"images/superdense_coding.png\" align=center width='550px'/>\n",
-    "<center></center>\n",
-    "</figure>\n",
+    "::::{figure} images/superdense_coding.png\n",
+    ":width: 550px\n",
+    ":align: center\n",
+    "\n",
+    "::::\n",
     "<br>"
    ]
   },
@@ -1660,10 +1552,11 @@
     "\n",
     "\n",
     "<br>\n",
-    "<figure>\n",
-    "<img src=\"images/entanglement_swap.png\" align=center width='400px'/>\n",
-    "<center></center>\n",
-    "</figure>\n",
+    "::::{figure} images/entanglement_swap.png\n",
+    ":width: 400px\n",
+    ":align: center\n",
+    "\n",
+    "::::\n",
     "<br>"
    ]
   },
@@ -1729,9 +1622,10 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-success\">\n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
     "\n",
-    "<b> Ejercicio  </b> \n",
+    "\n",
     "  \n",
     "1.  Programa el circuito de la figura.    \n",
     "\n",
@@ -1739,7 +1633,7 @@
     "    \n",
     "3. Completa el circuito para que sea  capaz de teleportar un cúbit arbitrario entre Charles y Bob.\n",
     " \n",
-    "</div>"
+    "::::::\n"
    ]
   },
   {
@@ -1814,7 +1708,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.9.16"
+   "version": "3.9.12"
   },
   "nbTranslate": {
    "displayLangs": [

@@ -13,7 +13,7 @@ parts:
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb-e
 
-- caption:  Cosas de Cúbits
+- caption:  De Cúbits y sus Cosas
   chapters:
   - file:  docs/Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.md
     sections:
@@ -24,4 +24,5 @@ parts:
     sections:
     - file:  docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.ipynb
     - file:  docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.ipynb
+    - file:  docs/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.ipynb
 

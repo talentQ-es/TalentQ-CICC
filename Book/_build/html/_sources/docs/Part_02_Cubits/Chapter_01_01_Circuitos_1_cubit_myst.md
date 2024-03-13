@@ -19,7 +19,7 @@ kernelspec:
 ::::
 
 (sec_Un_cubit)=
-# Cosas de un sólo cúbit 
+# Un cúbit sólo
 
 
 ```{tableofcontents}
