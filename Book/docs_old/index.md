@@ -1,4 +1,4 @@
-# Curso de Introducción a la Computación Cuántica
+# Introducción a la Computación Cuántica
 
 
 
