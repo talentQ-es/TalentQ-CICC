@@ -483,7 +483,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 12, 2024 | 8 min read</p>
+<div><p>Mar 13, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -848,8 +848,7 @@ No es algo trivial por cuanto la combinación lineal de operadores unitarios, en
 </section>
 <section id="la-puerta-cnot">
 <h3>La puerta CNOT<a class="headerlink" href="#la-puerta-cnot" title="Permalink to this heading">#</a></h3>
-<p>La  puerta <em>binaria</em> CNOT = <span class="math notranslate nohighlight">\(\cg{X}\)</span> es el caso más sencillo de <em>operador no factorizable</em>
-gráficamente</p>
+<p>La  puerta <em>binaria</em> CNOT = <span class="math notranslate nohighlight">\(\cg{X}\)</span> es el caso más sencillo de <em>operador no factorizable</em></p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/cX_gate.png"><img alt="../../../_images/cX_gate.png" src="../../../_images/cX_gate.png" style="width: 200px;" /></a>
 </figure>
@@ -973,12 +972,14 @@ MCX = X\otimes \ket{0011}  \bra{0011} + X\otimes (I-\ket{0011}\bra{0011})
 \ket{00} ~~~\stackrel{I\otimes H}{\longrightarrow}~~~ \frac{1}{\sqrt{2}}\ket{0}(\ket{0}+\ket{1})  &amp;~~~\stackrel{\rm CNOT(0,1)}{\longrightarrow}&amp; \frac{1}{\sqrt{2}} \big( \ket{00} + \ket{11} \big) ~~=~~ \ket{00}_B \equiv \ket{\Phi^+}\\
 \ket{01} ~~~\longrightarrow~~~ \frac{1}{\sqrt{2}}\ket{0}(\ket{0} - \ket{1})  &amp;~~~\longrightarrow &amp; \frac{1}{\sqrt{2}} \big( \ket{00} - \ket{11} \big) ~~=~~ \ket{01}_B \equiv \ket{\Phi^-} \\
 \ket{10} ~~~\longrightarrow~~~ \frac{1}{\sqrt{2}}\ket{1}(\ket{0}+\ket{1})  &amp;~~~\longrightarrow &amp; \frac{1}{\sqrt{2}} \big( \ket{10} + \ket{01} \big) ~~=~~ \ket{10}_B \equiv \ket{\Psi^+}\\
-\ket{11} ~~~\longrightarrow~~~ \frac{1}{\sqrt{2}}\ket{1}(\ket{0}-\ket{1})  &amp;~~~\longrightarrow &amp; \frac{1}{\sqrt{2}} \big( \ket{01} - \ket{01} \big) ~~=~~ \ket{11}_B \equiv \ket{\Psi^-}
+\ket{11} ~~~\longrightarrow~~~ \frac{1}{\sqrt{2}}\ket{1}(\ket{0}-\ket{1})  &amp;~~~\longrightarrow &amp; \frac{1}{\sqrt{2}} \big( \ket{01} - \ket{10} \big) ~~=~~ \ket{11}_B \equiv \ket{\Psi^-}
 \end{array}
 \end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">execute</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit_aer</span> <span class="kn">import</span> <span class="n">StatevectorSimulator</span>
+
 <span class="s1">&#39; create the circuit &#39;</span>
 <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>    
 <span class="c1">#qc.x(0)</span>
@@ -990,26 +991,18 @@ MCX = X\otimes \ket{0011}  \bra{0011} + X\otimes (I-\ket{0011}\bra{0011})
 
 
 <span class="s1">&#39; execute in mode statevector_simulator &#39;</span>
-<span class="n">S_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;statevector_simulator&#39;</span><span class="p">)</span>
-<span class="n">Bell_state</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">S_simulator</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">Bell_state</span> <span class="o">=</span> <span class="n">StatevectorSimulator</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
 
 <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
-<span class="n">Statevector</span><span class="p">(</span><span class="n">Bell_state</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">)</span>
+<span class="n">Statevector</span><span class="p">(</span><span class="n">Bell_state</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;\ket</span><span class="si">{00}</span><span class="s1">_B = &#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">execute</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="s1">&#39; create the circuit &#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>    
-
-<span class="ne">ImportError</span>: cannot import name &#39;Aer&#39; from &#39;qiskit&#39; (/Users/javier/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/__init__.py)
-</pre></div>
-</div>
+<img alt="../../../_images/71409f03211026650bf9273b57435e4a4a3d13c62441735bfa701bbb1464b5d6.png" src="../../../_images/71409f03211026650bf9273b57435e4a4a3d13c62441735bfa701bbb1464b5d6.png" />
+<div class="output text_latex math notranslate nohighlight">
+\[\ket{00}_B = 0.70711 |00\rangle+0.70711 |11\rangle\]</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1020,15 +1013,7 @@ MCX = X\otimes \ket{0011}  \bra{0011} + X\otimes (I-\ket{0011}\bra{0011})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="s1">&#39; the Bell state cannot be drawn on Bloch spheres&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">Statevector</span><span class="p">(</span><span class="n">Bell_state</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;Bloch&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;Statevector&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../../_images/bd241cd259839559240cc164d00774e343ee8114e2020984d21a10376a843038.png" src="../../../_images/bd241cd259839559240cc164d00774e343ee8114e2020984d21a10376a843038.png" />
 </div>
 </div>
 </section>

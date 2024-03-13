@@ -160,7 +160,7 @@ def random_ket(d, seed = None):
     ket /= norm(ket)
     return np.reshape(ket,[d,1])
     
-def random_probs(r):
+def random_prob_dist(r):
     rp = np.random.rand(r)
     rp /= np.sum(rp)
     return rp
