@@ -237,6 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.html">Muchos cúbits juntos</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
 </ul>
 </li>
 </ul>
@@ -486,7 +487,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 12, 2024 | 3 min read</p>
+<div><p>Mar 13, 2024 | 3 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -555,6 +556,24 @@ p(x) \in [0,1]~~~~~~~,~~~~~~~~\sum_{x\in X }p(x) = 1
 \[
 \sigma_X = \sqrt{\overline{X^2} - \overline{X}^2}
 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_prob_dist</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+<span class="n">random_prob_dist</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.06550321, 0.00045257, 0.22756174, 0.07922132, 0.19390968,
+       0.03356594, 0.16785773, 0.08862708, 0.10628265, 0.03701809])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="la-conexion-estadistica">
@@ -578,7 +597,7 @@ p(x) \in [0,1]~~~~~~~,~~~~~~~~\sum_{x\in X }p(x) = 1
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">datos1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">12.2</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">12.8</span><span class="p">,</span> <span class="mf">18.1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mf">19.5</span><span class="p">,</span> <span class="mf">20.2</span><span class="p">,</span> <span class="mf">12.1</span><span class="p">,</span> <span class="mf">12.4</span><span class="p">,</span> <span class="mf">13.2</span><span class="p">,</span> <span class="mf">17.9</span><span class="p">,</span> <span class="mf">14.1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mf">13.4</span><span class="p">,</span> <span class="mf">11.1</span><span class="p">,</span> <span class="mf">14.6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mf">17.4</span><span class="p">,</span> <span class="mf">19.2</span><span class="p">]</span>
-<span class="n">datos2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">datos2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">datos</span>  <span class="o">=</span> <span class="n">datos1</span>
 
 <span class="n">anchura_bins</span> <span class="o">=</span> <span class="mf">1.</span><span class="c1"># para modificar la anchura de los bins</span>
@@ -651,8 +670,8 @@ p(x) = \begin{pmatrix}n\\ x\end{pmatrix} p^x (1-p)^{n-x}
 \end{split}\]</div>
 <p>donde el primer factor tiene en cuenta las posibles ordenaciones en que aparecen <span class="math notranslate nohighlight">\(x\)</span> éxitos en <span class="math notranslate nohighlight">\(n\)</span> intentos.</p>
 <p>Un cálculo un poco más largo permite ver que, ahora</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50e93906-b655-4544-9f47-62678dcdafaf">
-<span class="eqno">(12)<a class="headerlink" href="#equation-50e93906-b655-4544-9f47-62678dcdafaf" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-c7f848c8-fe2f-444d-ad6d-45a89329ba2c">
+<span class="eqno">(12)<a class="headerlink" href="#equation-c7f848c8-fe2f-444d-ad6d-45a89329ba2c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \overline X &amp;=&amp;  np\\ \rule{0mm}{7mm}
 \sigma^2 &amp;=&amp; n p(1-p)
 \end{eqnarray}\]</div>
@@ -665,8 +684,8 @@ p(x) = \begin{pmatrix}n\\ x\end{pmatrix} p^x (1-p)^{n-x}
 p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp \left({-\frac{(x-\mu)^2}{2\sigma^2}}\right)
 \]</div>
 <p>Nos encontramos ante una variable aleatoria con un espacio muestral continuo <span class="math notranslate nohighlight">\(x\in (-\infty,+\infty)\)</span>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a90db30-ea97-4ffc-8f82-972ee4dd6293">
-<span class="eqno">(13)<a class="headerlink" href="#equation-0a90db30-ea97-4ffc-8f82-972ee4dd6293" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-f58210e6-efd2-42d6-9e91-a0415383b8b7">
+<span class="eqno">(13)<a class="headerlink" href="#equation-f58210e6-efd2-42d6-9e91-a0415383b8b7" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \overline{X} &amp;=&amp; \int_{-\infty}^{+\infty} xp(x) dx = \mu \\
 \overline{(x-\overline X)^2} &amp;=&amp; \int_{-\infty}^{+\infty} (x-\mu)^2 p(x)dx =\sigma^2
 \end{eqnarray}\]</div>
@@ -702,7 +721,7 @@ p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp \left({-\frac{(x-\mu)^2}{2\sigma^2}}\rig
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/3656647c3f5187eeeaeaa0571ab0199a0b1f409302ab8a519e16c942f8b3cb9c.png" src="../../../_images/3656647c3f5187eeeaeaa0571ab0199a0b1f409302ab8a519e16c942f8b3cb9c.png" />
+<img alt="../../../_images/6f42f8bea05dbb2921b48667fac4626a630e684d6280ea3352af64be700090ac.png" src="../../../_images/6f42f8bea05dbb2921b48667fac4626a630e684d6280ea3352af64be700090ac.png" />
 </div>
 </div>
 <p>En el límite de número de eventos <span class="math notranslate nohighlight">\(N\to \infty\)</span>, el histograma y la curva matemática confluyen.</p>
