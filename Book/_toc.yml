@@ -4,6 +4,7 @@ parts:
 - caption:  Información General sobrel el Curso
   chapters:
   - file:  docs/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb
+  - file:  docs/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb-e
 - caption:  Las Reglas del Juego
   chapters:
   - file:  docs/Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.md
@@ -14,6 +15,7 @@ parts:
     - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb
     - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb
+  - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb-e
 - caption:  De Cúbits y sus Cosas
   chapters:
   - file:  docs/Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.md

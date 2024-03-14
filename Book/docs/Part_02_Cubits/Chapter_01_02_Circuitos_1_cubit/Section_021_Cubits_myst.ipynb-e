@@ -90,7 +90,7 @@
     "<b>Definición</b>:  \n",
     "\n",
     "^^^\n",
-    "\n",
+    "<br>\n",
     "un cúbit es un <i>espacio de Hilbert</i> complejo de dimensión dos $~\\ket{v}~\\in~\\Hil \\sim {\\mathbb C}^2$ \n",
     "::::::\n"
    ]
@@ -155,9 +155,9 @@
     "<b>Lema</b>:  \n",
     "\n",
     "^^^\n",
-    "    \n",
+    "<br>    \n",
     "El cúbit $\\ket{u}$  <i> más general</i> se puede representar, en la base computacional $\\{\\ket{0},\\ket{1}\\}$, usando dos números reales (ángulos) $\\theta\\in [0,\\pi)$ y $\\varphi\\in [0,2\\pi)$   \n",
-    "\n",
+    "<br>\n",
     "$$\n",
     "|u\\rangle = \\cos{\\frac{\\theta}{2}}\\, |0\\rangle + e^{i\\phi}\\sin{\\frac{\\theta}{2}}\\,|1\\rangle \n",
     "$$\n",
@@ -174,7 +174,7 @@
     }
    },
    "source": [
-    ":::{dropdown} Demostración\n",
+    "<details><summary><p style=\"text-align:left\"> >> <i>Demostración</i> </p></summary>\n",
     "\n",
     "Para demostrar el lema escribimos un vector de estado general usando la representación polar para las componentes complejas\n",
     "    \n",
@@ -199,7 +199,7 @@
     "\\varphi = b_1-b_2\n",
     "$$\n",
     "es relevante para especificar $\\ket{u}  ~~~\\rule{3mm}{3mm}$    \n",
-    ":::\n"
+    "</details>"
    ]
   },
   {
@@ -246,7 +246,7 @@
     "\n",
     "\n",
     "-  $\\phi\\in [0,2\\pi)$ el ángulo *polar*  en torno al eje $Z$, medido a partir del plano $XZ$\n",
-    "\n",
+    "<br>\n",
     "\n",
     "\n",
     "\n",
@@ -431,7 +431,7 @@
     "**Base X**\n",
     " \n",
     "-   $(\\theta,\\phi) = (\\pi/2,0)  ~\\Rightarrow~  \\frac{1}{\\sqrt{2}}\\big(|0\\rangle+|1\\rangle \\big) =\\ket{0}_X \\equiv |+\\rangle$\n",
-    "\n",
+    "<br>\n",
     "  \n",
     "-   $(\\theta,\\phi) = (\\pi/2,\\pi) ~\\Rightarrow~  \\frac{1}{\\sqrt{2}}\\big(|0\\rangle-|1\\rangle \\big)=\\ket{1}_X \\equiv |-\\rangle$\n",
     "\n",
@@ -453,7 +453,7 @@
     "**Base Y**\n",
     "\n",
     "-   $(\\theta,\\phi) = (\\pi/2,\\pi/2) ~\\Rightarrow ~|u\\rangle =\\frac{1}{\\sqrt{2}}\\big(|0\\rangle+i|1\\rangle\\big) =\\ket{0}_Y \\equiv  |+i\\rangle$\n",
-    "\n",
+    "<br>\n",
     "\n",
     "\n",
     "-   $(\\theta,\\phi) = (\\pi/2,3\\pi/2) ~\\Rightarrow ~|u\\rangle = \\frac{1}{\\sqrt{2}}\\big(|0\\rangle-i|1\\rangle\\big) = \\ket{1}_Y \\equiv  |-i\\rangle$\n",
@@ -522,10 +522,10 @@
     "<b>Teorema</b>:  \n",
     "\n",
     "^^^\n",
-    "\n",
+    "<br>\n",
     "El operador que efectúa una <i>rotación de ángulo</i>  $\\alpha\\in [0,2\\pi)$ en torno al <i>eje que marca un vector unitario</i>  $\\hat{\\bf n}$ es el siguiente\n",
-    " \n",
-    "    \n",
+    "<br> \n",
+    "<br>    \n",
     "\\begin{eqnarray}\n",
     "R_{\\hat{\\bf n}}(\\alpha)~ = ~\\exp\\left( -i\\frac{\\alpha}{2} \\hat{\\bf n}\\cdot \\boldsymbol{\\sigma} \\right) ~=~ \n",
     "\\cos \\frac{\\alpha}{2} I - i \\sin\\frac{\\alpha}{2} \\hat{\\bf n}\\cdot\\boldsymbol{\\sigma} \n",
@@ -675,7 +675,8 @@
     "U(\\theta,\\phi,\\varphi)=\\begin{bmatrix}   \\cos \\displaystyle\\frac{\\theta}{2}  & - e^{i\\varphi} \\sin\\displaystyle\\frac{\\theta}{2}  \\\\ \n",
     "\\rule{0mm}{4mm} e^{i\\phi} \\sin \\displaystyle\\frac{\\theta}{2} &e^{i(\\varphi+\\phi)} \\cos \\displaystyle\\frac{\\theta}{2} \\end{bmatrix}\n",
     "$$\n",
-    "\n"
+    "\n",
+    "<br>"
    ]
   },
   {
@@ -689,13 +690,13 @@
    "source": [
     "Es evidente que la acción de este operador sobre la base  $\\{\\ket{0},\\ket{1}\\}$ \n",
     "una base alineada con el eje $(\\theta,\\phi)$\n",
-    "\n",
+    "<br>\n",
     "\n",
     "$$\n",
     "U(\\theta,\\phi,\\varphi)\\begin{bmatrix} 1\\\\0\\end{bmatrix} = \\begin{bmatrix} \\cos\\displaystyle\\frac{\\theta}{2}\\\\ e^{i\\phi} \\sin \\displaystyle \\frac{\\theta}{2} \\end{bmatrix} ~~~~~~,~~~~~~~\n",
     "U(\\theta,\\phi,\\varphi)\\begin{bmatrix} 0\\\\1\\end{bmatrix} = \\begin{bmatrix} -e^{i\\varphi}\\sin\\displaystyle\\frac{\\theta}{2}\\\\ e^{i(\\varphi + \\phi)} \\cos \\displaystyle \\frac{\\theta}{2} \\end{bmatrix} \n",
     "$$\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -762,15 +763,15 @@
    },
    "source": [
     "El efecto de este operador es rotar cualquier cúbit en torno al eje Z un ángulo $\\alpha$. Comprobamos que está relacionada con $R_z(\\alpha)$\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "$$\n",
     "P(\\alpha) = \\begin{bmatrix} 1 & 0 \\\\ 0 & e^{i\\alpha} \\end{bmatrix} = \n",
     "\\begin{bmatrix} e^{i\\alpha/2} & 0 \\\\ 0 & e^{i\\alpha/2} \\end{bmatrix} \n",
     "\\begin{bmatrix} e^{-i\\alpha/2} & 0 \\\\ 0 & e^{i\\alpha/2} \\end{bmatrix}   \\equiv e^{i\\alpha/2} R_z(\\alpha)\n",
     "$$\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "La fase global es trivial. Por tanto los dos operadores $P(\\alpha)$ y $R_Z(\\alpha)$ son equivalentes y producen el mismo efecto sobre la esfera de Bloch.\n",
     "\n"
    ]
@@ -785,8 +786,8 @@
    },
    "source": [
     "- $K_\\alpha = K(\\alpha)$\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "realmente es una fase trivial, pero a veces se utiliza\n",
     "\n",
     "$$\n",
@@ -808,7 +809,7 @@
     "#### Puertas Discretas\n",
     "\n",
     "Hay una serie de rotaciones discretas que forman un conjunto de puertas elementales de gran utilidad\n",
-    "\n",
+    "<br>\n",
     "\n",
     "- $X,Y,Z$\n",
     "\n",
@@ -887,7 +888,7 @@
     "::::::{admonition} Nota\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "en cálculos posteriores encontraremos muy útil la siguiente representación de la acción de $H$\n",
     "\n",
     "$$\n",
@@ -966,8 +967,8 @@
     "::::\n",
     "\n",
     "Cuando el operador $U$ es una <i>composición de puertas</i>, por ejemplo que $U = TH$, el orden en el que aparecen en el circuito es el inverso\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "::::{figure} images/circuito_basico_2.png\n",
     ":width: 300px\n",
     ":align: center\n",
@@ -976,12 +977,12 @@
   },
   {
    "cell_type": "markdown",
-   "id": "c0826775",
    "metadata": {},
    "source": [
     ":::::{tab-set}\n",
     "::::{tab-item} Qibo\n",
     "```python\n",
+    "",
     "\n",
     "#from qibo import Circuit, gates\n",
     "from qibo.models.circuit import Circuit,gates\n",
@@ -997,6 +998,7 @@
     "::::\n",
     "::::{tab-item} Qiskit\n",
     "```python\n",
+    "",
     "\n",
     "from qiskit import  QuantumRegister, QuantumCircuit\n",
     "from qiskit.quantum_info import Statevector\n",
@@ -1024,11 +1026,7 @@
    "cell_type": "code",
    "execution_count": 2,
    "id": "1d62e192-961f-4cc8-9910-1284c41bf620",
-   "metadata": {
-    "tags": [
-     "remove_input"
-    ]
-   },
+   "metadata": {},
    "outputs": [
     {
      "data": {
@@ -1042,6 +1040,11 @@
      "output_type": "execute_result"
     }
    ],
+   "metadata": {
+    "tags": [
+     "remove_input"
+    ]
+   },
    "source": [
     "'''Qibo_code_cell'''\n",
     "\n",

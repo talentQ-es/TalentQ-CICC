@@ -9,9 +9,12 @@
     }
    },
    "source": [
-    "<figure><right>\n",
-    "<img   src=\"../figuras/logos/Logo_TalentQ_Azul.png\" align=right  width=\"150px\"/>\n",
-    "</right></figure>\n",
+    "> {sub-ref}`today` | {sub-ref}`wordcount-minutes` min read\n",
+    "\n",
+    "::::{figure} ../figuras/logos/Logo_TalentQ_Azul.png\n",
+    ":width: 150px\n",
+    ":align: right\n",
+    "::::\n",
     "\n",
     "\n",
     "# Fundamentos de Mecánica Cuántica \n",
@@ -53,16 +56,6 @@
   },
   {
    "cell_type": "markdown",
-   "id": "b9054ff7",
-   "metadata": {},
-   "source": [
-    "Por fin ha llegado el momento de desvelar las *verdaderas reglas del juego*. En este capítulo veremos los postulados de la Mecánica Cuántica. Te pasará lo que nos pasa a todos: que no hay quien los entienda. Pero así es: la Mecánica Cuántica es un conjunto de prescripciones acerca de cómo manipular la (escasa) información que es posible extraer de los sistemas microscópicos. De modo que al final nos acostumbramos a pensar de la manera en que la MC nos dice que tiene sentido hacerlo, y a eso le llamamos entender. \n",
-    "\n",
-    "Los axiomas de la Mecánica Cuántica son sus pilares. Todo se deriva de ellos. Y, como todos los axioma,  son heurísticos, es decir,  basados en la experimentación. La axiomática comúbmente  aceptada es   la denominada  <i>interpretación de Copenhagen</i>.  Empezamos."
-   ]
-  },
-  {
-   "cell_type": "markdown",
    "id": "974bbaca",
    "metadata": {
     "slideshow": {
@@ -70,7 +63,7 @@
     }
    },
    "source": [
-    "## Axiomas de la Mecánica Cuántica para Sistemas Aislados"
+    "## Axiomas"
    ]
   },
   {
@@ -82,20 +75,21 @@
     }
    },
    "source": [
-    "- Estado del sistema\n",
+    "Los axiomas de la Mecánica Cuántica son unos pilares heurísticos, es decir,  basados en la experimentación. La axiomática más aceptada es   la denominada  <i>interpretación de Copenhagen</i> \n",
     "\n",
     "<a id='axiomas-I'></a>\n",
-    "<div class=\"alert alert-block alert-info\">\n",
-    "<p style=\"text-align: left ;color: navy;\"> \n",
-    "<b>Postulado I</b> :  <i>Vector de estado</i>\n",
+    "::::::{card} \n",
+    "<b>Postulado I</b>: </i>Vector de estado</i> \n",
+    "\n",
+    "^^^\n",
     "<br>    \n",
     "En un instante, $t$, la <i>máxima información accesible</i> de un sistema cuántico <i>aislado</i> está asociada a un vector $\\ket{\\psi}$ de norma unidad, perteneciente a un espacio de Hilbert $\\Hil$\n",
-    "</p>\n",
-    "</div>\n",
-    "La palabra *estado* es engañosa por cuanto parece indicar que el sistema *está* en alguna estado concreto definido por un valor concreto de sus propiedades, ¡esto no es así!  El vector de estado se conoce también con el nombrede  *función de onda*\n",
+    "\n",
+    "::::::\n",
+    " La palabra *estado* es engañosa por cuanto parece indicar que el sistema *está* en alguna estado concreto definido por un valor concreto de sus propiedades, ¡esto no es así!  El vector de estado se conoce también con el nombrede  *función de onda*\n",
     "<br>\n",
     "\n",
-    "El postulado I lleva una pequeña puntualización:  dos vectores que difieran en una *fase global* contienen idéntica informacuón y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos\n",
+    "Dos vectores que difieran en una *fase global* contienen idéntica informacuón y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos\n",
     "<br>\n",
     "$$\n",
     "\\ket{\\psi} \\sim \\ket{\\psi'} =  e^{i\\varphi}\\ket{\\psi} \\, ,\n",
@@ -111,8 +105,7 @@
     }
    },
    "source": [
-    "- Evolución con el tiempo \n",
-    "\n",
+    "    \n",
     "La dinámica de un sistema cuántico  está contenido en un *operador hermítico* $H = H^\\dagger$ que se denomina **operador Hamiltoniano**\n",
     "\n",
     "\n",
@@ -129,9 +122,10 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"color: navy;\">  \n",
-    "<b>Postulado  II :</b> <i>Evolución con el tiempo</i>\n",
+    "::::::{card} \n",
+    "<b>Postulado  II</b>: </i>Evolución con el tiempo</i> \n",
+    "\n",
+    "^^^\n",
     "<br>\n",
     "<br>    \n",
     "El cambio continuo en el tiempo de  $\\ket{\\psi(t)}$ de un sistema cuya dinámica obedece a un Hamiltoniano $H(t)$,  es <i>determinista</i> y es solución de la <i>Ecuación de Schrödinger</i>\n",
@@ -140,8 +134,8 @@
     "$$\n",
     " \\frac{\\partial\\ket{\\psi(t)}}{\\partial t} =-\\frac{i}{\\hbar} H(t) \\ket{\\psi(t)} \\, \\label{eqschr}\n",
     "$$\n",
-    "</p>\n",
-    "</div>\n"
+    "\n",
+    "::::::\n"
    ]
   },
   {
@@ -155,8 +149,6 @@
    "source": [
     "La ecuación de Schrödinger es una ecuación diferencial ordinaria (una sola variable) para un vector. Dada una contición inicial $\\ket{\\psi(t=0)} = \\ket{\\psi_0}$, la solución $\\ket{\\psi(t)}$ para todo $t$ es única.\n",
     "\n",
-    "- Medidas\n",
-    "\n",
     "Por tanto, la evolución del estado es *determinista*. Es en la medida sobre el sistema donde la Mecánica Cuántica muestra su carácter probabilístico. Vamos a mencionar en este capítulo la medida proyectiva, que es el caso más simple. Estudiaremos  en el [capítulo 5](../05_Fun_Info_Cuant/Fun_Info_Cuant.ipynb) que son un caso particular del tipo más general de medidas posible  "
    ]
   },
@@ -169,9 +161,10 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-info\">\n",
-    "<p style=\"text-align: left ;color: navy;\"> \n",
-    "<b>Postulado III:</b> $~$ <i>Medidas proyectivas, o de Von Neumann</i>  \n",
+    "::::::{card} \n",
+    "<b>Postulado III</b>: </i>Medidas proyectivas, o de Von Neumann</i> \n",
+    "\n",
+    "^^^\n",
     "<a id='postul_III_medida'></a>\n",
     "<br>\n",
     "<br>    \n",
@@ -189,8 +182,8 @@
     "$$ \n",
     "donde $\\ket{\\lambda_k}$ es el autovector asociado. \n",
     "\n",
-    "</p>\n",
-    "</div>\n",
+    "\n",
+    "::::::\n",
     "    "
    ]
   },
@@ -203,13 +196,13 @@
     }
    },
    "source": [
-    "La intepretación probabilística de las componentes del *vector de estado* fuerza a que dicho vector sea unitario. Efectivamente \n",
+    "- la intepretación probabilística de las componentes del *vector de estado* las que fuerzan a que sea unitario. Efectivamente \n",
     "como la suma de todas las probabilidades debe ser igual a la unidad\n",
     "$$\n",
     "1 = \\sum_k \\lambda_k = \\sum_k \\braket{\\psi}{\\lambda_k}\\braket{\\lambda_k}{\\psi} = \\bra{\\psi}\\left(\\sum_k\\ketbra{\\lambda_k}{\\lambda_k}\\right) \\ket{\\psi} = \\braket{\\psi}{\\psi}\n",
     "$$\n",
     "\n",
-    "Que las magnitudes medibles son números reales, exige que el operador $A$ asociado a un observable deba ser hermítico \n",
+    "- que las magnitudes medibles son números reales, exige que el operador $A$ asociado a un observable deba ser hermítico \n",
     "\n",
     "La fórmula dada para $p(\\lambda_k)$  es cierta cuando el autovalor en cuestion es *no degenerado*. \n",
     "Cuando $\\lambda_k$ tiene degeneración $d_k$ debe generalizarse:\n",
@@ -235,14 +228,15 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-danger\">\n",
-    "<p style=\"text-align: left ;\"> \n",
-    "<b>Nota</b> \n",
+    "::::::{admonition} Nota\n",
+    ":class: note\n",
+    "\n",
+    "\n",
     "\n",
     "- *Muy importante*:  $\\{\\lambda_k,p(\\lambda_k)\\}$ no es una variable <i>pseudo-aleatoria</i> sino, probablemente, la única  variable intrínsecamente aleatoria que existe en la naturaleza.  \n",
     "    \n",
     "    \n",
-    "</div>"
+    "::::::\n"
    ]
   },
   {
@@ -250,8 +244,6 @@
    "id": "f2012fa4",
    "metadata": {},
    "source": [
-    "- Colapso de la función de onda\n",
-    "\n",
     "El hecho de medir tiene consecuencias *irreversibles* sobre el sistema medido. Este hecho es, sin duda, el efecto más diferenciador de la Mecánica Cuántica sobre la clásica: no existe el concepto de *partícula de prueba*, aquella que obtiene información de un sistema sin perturbarlo, como los planetas en el sistema solar"
    ]
   },
@@ -264,14 +256,15 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"color: navy;\">   \n",
-    "<b>Postulado IV:</b>  $~$ <i>Colapso de la función de  onda</i>\n",
+    "::::::{card} \n",
+    "<b>Postulado IV</b>: </i>Colapso de la función de  onda</i> \n",
+    "\n",
+    "^^^\n",
     "<br>  \n",
     "Si el resultado de una medida efectuada sobre un sistema en un estado $\\ket{\\psi}$  ha sido  $\\lambda_n$,  inmediatamente después de la medida, el estado del sistema viene dado por el vector propio asociado  \n",
     "$\\ket{\\lambda_n} \\in \\Hil$, normalizado $|\\braket{\\lambda_n}{\\lambda_n}|=1$\n",
     "   \n",
-    "</div>\n",
+    "::::::\n",
     " "
    ]
   },
@@ -369,9 +362,10 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-danger\">\n",
-    "<p style=\"text-align:left\">  \n",
-    "<b>Notar:</b>\n",
+    "::::::{admonition} Notar\n",
+    ":class: note\n",
+    "\n",
+    "\n",
     "    \n",
     "- En Computación Cuántica, almacenamos la información en las amplitudes $a_i$ en una base dada (la base computacional). Vemos que sólamente su módulo $|a_i|$ es recuperable a través de medidas.\n",
     "    \n",
@@ -379,8 +373,8 @@
     "- Cada vez que seleccionamos un estado $\\ket{\\psi}$, y un observable $A$, se genera una variable aleatoria $(\\lambda,p(\\lambda))\\, \\to $ en cada medida de $A$ sobre $\\ket{\\psi}$ obtenemos un autovalor $\\lambda_i$ con una probabilidad $p(\\lambda_i)$.\n",
     "La repetición del experimento permite reconstruir estimadores estadísticos. \n",
     "  \n",
-    "</p>\n",
-    "</div>"
+    "\n",
+    "::::::\n"
    ]
   },
   {
@@ -388,11 +382,12 @@
    "id": "6073e1bf",
    "metadata": {},
    "source": [
-    "<div class=\"alert alert-block alert-success\">\n",
-    "<b>Ejercicio:</b>\n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
+    "\n",
     "<br>\n",
     "Generaliza las expresiones anteriores al caso en que los autovalores $\\lambda_k$ puedan ser  $d_k$ veces degenerados.\n",
-    "</div>\n"
+    "::::::\n"
    ]
   },
   {
@@ -445,11 +440,12 @@
     "\n",
     "Reconocemos entre paréntesis la descomposición espectral de $A$. Llegamos así a la siguiente expresión para el valor esperado de un observable $A$ en un estado $\\ket{\\psi}$\n",
     "<br>\n",
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"color: navy;\">  \n",
-    "<b>Teorema</b>:\n",
+    "::::::{card} \n",
+    "<b>Teorema</b>:  \n",
+    "\n",
+    "^^^\n",
     "$$\\langle A \\rangle=\\bra{\\psi}A \\ket{\\psi} $$\n",
-    "</div>\n",
+    "::::::\n",
     "\n",
     "En particular, las probabilidades mismas se pueden expresar como *valores esperados del proyector asociado*\n",
     "\n",
@@ -512,14 +508,15 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"color: navy;\">  \n",
-    "<b>Teorema</b>:\n",
+    "::::::{card} \n",
+    "<b>Teorema</b>:  \n",
+    "\n",
+    "^^^\n",
     "<br>   \n",
     "$$ \\sigma = \\sqrt{\\bra{\\psi}A^2\\ket{\\psi} - \\bra{\\psi} A\\ket{\\psi}^2}\n",
     "$$\n",
     "\n",
-    "</div>\n"
+    "::::::\n"
    ]
   },
   {
@@ -684,9 +681,10 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-danger\">\n",
-    "<p style=\"text-align: left\"> \n",
-    "<b>Notar:</b>\n",
+    "::::::{admonition} Notar\n",
+    ":class: note\n",
+    "\n",
+    "\n",
     "\n",
     "Las cantidades que entran en la ecuación de Schrödinger *tienen unidades*: \n",
     "\n",
@@ -700,8 +698,8 @@
     "$$\n",
     "\\boxed{\\hbar = 1.054\\times 10^{-34}~~ \\hbox{J}\\cdot\\hbox{s}}\n",
     "$$\n",
-    "</p>\n",
-    "</div>    "
+    "\n",
+    "::::::\n"
    ]
   },
   {
@@ -717,12 +715,13 @@
     "\n",
     "La *hermiticidad* de $H$ se relaciona directamente con la interpretación probabilística de $\\ket{\\psi}$.\n",
     "\n",
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"color: navy;\">  \n",
-    "<b>Teorema</b>: \n",
+    "::::::{card} \n",
+    "<b>Teorema</b>:  \n",
+    "\n",
+    "^^^\n",
     "<br>\n",
     "En la evolución temporal se conserva la norma del vector de estado\n",
-    "</div>"
+    "::::::\n"
    ]
   },
   {
@@ -785,9 +784,10 @@
    },
    "source": [
     "\n",
-    "<div class=\"alert alert-block alert-danger\">\n",
-    "<p style=\"text-align: left\"> \n",
-    "<b>Notar:</b>\n",
+    "::::::{admonition} Notar\n",
+    ":class: note\n",
+    "\n",
+    "\n",
     "<br>\n",
     "    \n",
     "El operador de evolución satisface las siguientes propiedades\n",
@@ -800,8 +800,8 @@
     " \n",
     " -  invertibilidad: $U(t,t_0)^{-1} = U(t_0,t)$\n",
     " \n",
-    "</p>\n",
-    "</div>"
+    "\n",
+    "::::::\n"
    ]
   },
   {
@@ -815,17 +815,18 @@
    "source": [
     "Evidentemente, el operador de evolución debe estar relacionado con el Hamiltoniano, que es quien gobierna la dinámica. Veamos a ver que hay una ecuación de Schrödinger también para el operador de evolución\n",
     "\n",
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"color: navy;\">  \n",
-    "<b>Teorema</b>:\n",
+    "::::::{card} \n",
+    "<b>Teorema</b>:  \n",
+    "\n",
+    "^^^\n",
     "<br>\n",
     "El operador de evolución satisface la siguiente ecuación de evolución\n",
     "<br>\n",
     "$$\n",
     " \\frac{d}{dt}U(t,t_0) = -\\frac{i}{\\hbar} H(t)\\, U(t,t_0)\n",
     "$$\n",
-    "</p>\n",
-    "</div>\n",
+    "\n",
+    "::::::\n",
     "<details><summary><p style=\"color:grey;text-align:right\"> >> <i>Demostración</i> </p></summary>\n",
     "Tomando la derivada temporal de la ecuación $\\ket{\\psi(t)} = U(t,t_0)\\ket{\\psi(t_0)}$, que define $U(t,t_0)$, tenemos para cada miembro\n",
     "\n",
@@ -863,17 +864,18 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-info\",text-align:center>\n",
-    "<p style=\"color: navy\"> \n",
-    "<b>Teorema</b>:\n",
+    "::::::{card} \n",
+    "<b>Teorema</b>:  \n",
+    "\n",
+    "^^^\n",
     "<br>    \n",
     "Para un hamiltoniano $H$ independiente del tiempo, el operador de evolución $U(t,t_0)$ es\n",
     "<br>\n",
     "$$\n",
     "U(t,t_0) = \\exp\\left({-\\frac{i}{\\hbar} (t-t_0)H}\\right)\n",
     "$$\n",
-    "</p>\n",
-    "</div>\n",
+    "\n",
+    "::::::\n",
     "<details><summary><p style=\"color:grey;text-align:right\"> >> <i>Demostración</i> </p></summary>\n",
     "Basta con demostrar que se satisface la ecuación de evolución y la condición de contorno\n",
     "\n",
@@ -909,9 +911,10 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-danger\">\n",
-    "<p style=\"text-align: left\"> \n",
-    "<b>Notar:</b>\n",
+    "::::::{admonition} Notar\n",
+    ":class: note\n",
+    "\n",
+    "\n",
     "<br>\n",
     "que la cantidad ${-\\frac{i}{\\hbar} (t-t_0) H }$ es adimensional\n",
     "\n",
@@ -920,7 +923,7 @@
     "$$ \n",
     "\n",
     "Es decir, es un número puro. Por eso podemos exponenciarla. El operador de evolución $U(t,t_0)$ es, por tanto, también, una magnitud adimensional.\n",
-    "</div>"
+    "::::::\n"
    ]
   },
   {
@@ -928,11 +931,12 @@
    "id": "c72f0f24",
    "metadata": {},
    "source": [
-    "<div class=\"alert alert-block alert-success\">\n",
-    "<b>Ejercicio:</b>\n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
+    "\n",
     "<br>\n",
     "Escribe una función <i>psi(t,psi0,H)</i> que reciba como argumentos el array <i>psi0</i> de componentes de $\\ket{\\psi(0)}$, una matriz hermítica <i>H</i>, y un valor de <i>t</i>, y devuelva un vector columna correspondiente a $\\ket{\\psi(t)}$. Considera $\\hbar=1$.\n",
-    "</div>\n"
+    "::::::\n"
    ]
   },
   {
@@ -966,11 +970,12 @@
     }
    },
    "source": [
-    "<div class=\"alert alert-block alert-success\">\n",
-    "<b>Ejercicio:</b>\n",
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
+    "\n",
     "<br>\n",
     "Crea un Hamiltoniano aleatorio $2\\times 2$ y considera que la base en la que está escrito es $\\{\\ket{0},\\ket{1}\\}$. Partiendo de cualquiera de ellos, grafica las probabilidades de permanencia $p(\\ket{0}\\to \\ket{0})$ y de transición $p(\\ket{0}\\to \\ket{1})$ como funciones del tiempo (considera que $\\hbar = 1$ por simplicidad). Grafica también el valor esperado de $H$ en ambos estados como función del tiempo. Observa el resultado e intenta explicar por qué es así.    \n",
-    "</div>"
+    "::::::\n"
    ]
   },
   {
@@ -1134,7 +1139,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.9.18"
+   "version": "3.11.7"
   },
   "nbTranslate": {
    "displayLangs": [

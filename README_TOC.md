@@ -5,6 +5,7 @@
 
     - **[Prólogo](./Notebooks/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb)**
 
+
 - **[ Las Reglas del Juego](./Notebooks/Part_01_Formalismo)**
 
     - **[No te mates con la Mates](./Notebooks/Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.md)**
@@ -15,6 +16,7 @@
         - **[Teoría de probabilidades *para todas las edades*](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb)**
 
     - **[Fundamentos de Mecánica Cuántica ](./Notebooks/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb)**
+
 
 - **[ De Cúbits y sus Cosas](./Notebooks/Part_02_Cubits)**
 
