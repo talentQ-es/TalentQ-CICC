@@ -17,17 +17,17 @@ print_in_readme_toc(){
 
         path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
         # Eliminamos la " del final y hacemos echo
-        echo $2" ["${aux%?}"]("$path_to_readme")**"
+        echo $2"["${aux%?}"]("$path_to_readme")**"
 
     elif echo $1 | grep "_myst.md$" >/dev/null 2>&1 ; then
         aux=$(cat $1 | egrep "^# " | head -n 1 | awk -F"# " '{printf $2}')
 
         path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
-        echo $2" ["$aux"]("$path_to_readme")**"
+        echo $2"["$aux"]("$path_to_readme")**"
 
     elif echo $1 | egrep ".txt$" >/dev/null 2>&1; then
         path_to_readme=$(echo $3 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
-        echo $2" [" `cat $1`"]("$path_to_readme")**"
+        echo $2"[" `cat $1`"]("$path_to_readme")**"
 
     fi
 }
