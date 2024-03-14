@@ -17,17 +17,17 @@ print_in_readme_toc(){
 
         path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
         # Eliminamos la " del final y hacemos echo
-        echo $2" ["${aux%?}"]("$path_to_readme")"
+        echo $2" ["${aux%?}"]("$path_to_readme")**"
 
     elif echo $1 | grep "_myst.md$" >/dev/null 2>&1 ; then
         aux=$(cat $1 | egrep "^# " | head -n 1 | awk -F"# " '{printf $2}')
 
         path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
-        echo $2" ["$aux"]("$path_to_readme")"
+        echo $2" ["$aux"]("$path_to_readme")**"
 
     elif echo $1 | egrep ".txt$" >/dev/null 2>&1; then
         path_to_readme=$(echo $3 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
-        echo $2" [" `cat $1`"]("$path_to_readme")"
+        echo $2" [" `cat $1`"]("$path_to_readme")**"
 
     fi
 }
@@ -61,6 +61,7 @@ echo "parts:" >> $Destination_folder/_toc.yml
 
 
 cat $Notebook_folder/index.md | egrep "^# " | head -n 1 > $README_TOC
+cat "## Índice"
 
 for i in $part_folders; do
     echo >> $README_TOC
@@ -74,7 +75,7 @@ for i in $part_folders; do
     echo "- caption: " `cat $caption_part_txt` >> $Destination_folder/_toc.yml
     #echo "### [" `cat $caption_part_txt`"]("$part_folders")" >> $README_TOC
 
-    print_in_readme_toc $caption_part_txt "##" $i >> $README_TOC
+    print_in_readme_toc $caption_part_txt "- **" $i >> $README_TOC
 
     echo "  chapters:" >> $Destination_folder/_toc.yml
     path_chapters=$(find $i -mindepth 1 -maxdepth 1 -not -path '*/.*' | grep /Chapter_  | sort)
@@ -85,13 +86,13 @@ for i in $part_folders; do
             for k in $sections; do
                 aux=$(echo $k | sed 's/'$Destination_folder_aux'\///g')
                 echo "    - file: " $aux >> $Destination_folder/_toc.yml
-                print_in_readme_toc $k "####" >> $README_TOC
+                print_in_readme_toc $k "        - **" >> $README_TOC
             done
         else
             if echo $j | egrep "_myst.ipynb|_myst.md" 2>&1 > /dev/null ; then
      	       echo "  - file: " $j | sed 's/'$Destination_folder_aux'\///g' >> $Destination_folder/_toc.yml
      	       echo >> $README_TOC
-     	       print_in_readme_toc $j "###" >> $README_TOC
+     	       print_in_readme_toc $j "   - **" >> $README_TOC
             fi
         fi
     done
