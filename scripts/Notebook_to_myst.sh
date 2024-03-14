@@ -42,25 +42,25 @@ for i in $part_folders; do
         echo $i ":  No exite txt con la caption"
         exit
     fi
-    echo "- caption: " `cat $caption_part_txt`
-    echo "  chapters:"
+    echo "- caption: " `cat $caption_part_txt` >> $Destination_folder/_toc.yml
+    echo "  chapters:" >> $Destination_folder/_toc.yml
     path_chapters=$(find $i -mindepth 1 -maxdepth 1 -not -path '*/.*' | grep /Chapter_  | sort)
     for j in $path_chapters; do
         if [ -d $j ]; then
-            echo "    sections:"
+            echo "    sections:" >> $Destination_folder/_toc.yml
             sections=$(find $j -mindepth 1 -maxdepth 1 -not -path '*/.*' | egrep "_myst.ipynb$|_myst.md$" | grep /Section_ | sort | sed 's/..\/Book\///g')
             for k in $sections; do
-                echo "    - file: " $k
+                echo "    - file: " $k >> $Destination_folder/_toc.yml
             done
         else
             if echo $j | egrep "_myst.ipynb|_myst.md" 2>&1 > /dev/null ; then
-                echo "  - file: " $j | sed 's/..\/Book\///g'
+     	       echo "  - file: " $j | sed 's/..\/Book\///g' >> $Destination_folder/_toc.yml
             fi
 
         fi
     done
 
     echo
-done >> $Destination_folder/_toc.yml
+done 
 
 jb build --all $Destination_folder

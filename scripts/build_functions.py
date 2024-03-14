@@ -308,7 +308,8 @@ def bluid_references(f_data, pattern_ref, file_name, out_ref, i_start_all_cells)
 
         for i_pattern_ref in i_pattern_ref_list:
             # Sustituimos las referencias del estilo      [...](path#sec_...) por {ref}`sec_...` o {numref}`sec_...`
-            f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\([^)]*#'+pattern_ref+r'(\w+)\)', out_ref+r'`'+pattern_ref+r'\2`', f_data[i_pattern_ref])
+            #f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\([^)]*#'+pattern_ref+r'(\w+)\)', out_ref+r'`'+pattern_ref+r'\2`', f_data[i_pattern_ref])
+            f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\([^)]*#'+pattern_ref+r'([^\)]+)\)', out_ref+r'`'+pattern_ref+r'\2`', f_data[i_pattern_ref])
 
 
     elif pattern_ref == 'ec_':
@@ -372,14 +373,17 @@ def bluid_references(f_data, pattern_ref, file_name, out_ref, i_start_all_cells)
             out_ref = '{numref}'
             for i_pattern_ref in i_pattern_ref_list:
                 # Sustituimos las referencias de la forma    [...](#fig_...)  por  {ref}`sec_...` o {numref}`sec_...`
-                f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#'+pattern_ref+r'(\w+)\)', out_ref+r'`'+pattern_ref+r'\2`', f_data[i_pattern_ref])
-                #f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#(\w+)\)', out_ref+r'`\1 <\2>`', f_data[i_pattern_ref])
+                #f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#'+pattern_ref+r'(\w+)\)', out_ref+r'`'+pattern_ref+r'\2`', f_data[i_pattern_ref])
+                f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#'+pattern_ref+r'([^\)]+)\)', out_ref+r'`'+pattern_ref+r'\2`', f_data[i_pattern_ref])
+                
         else:
             out_ref = '{ref}'
             for i_pattern_ref in i_pattern_ref_list:
                 # Sustituimos las referencias de la forma    [...](#fig_...)  por  {ref}`sec_...` o {numref}`sec_...`
-                f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#'+pattern_ref+r'(\w+)\)', out_ref+r'`\1 <'+pattern_ref+r'\2>`', f_data[i_pattern_ref])
-                #f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#(\w+)\)', out_ref+r'`\1 <\2>`', f_data[i_pattern_ref])
+                #f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#'+pattern_ref+r'(\w+)\)', out_ref+r'`\1 <'+pattern_ref+r'\2>`', f_data[i_pattern_ref])
+                f_data[i_pattern_ref] = re.sub(r'\[([^\]]+)\]\(#'+pattern_ref+r'([^\)]+)\)', out_ref+r'`\1 <'+pattern_ref+r'\2>`', f_data[i_pattern_ref])
+
+                
 
 
 

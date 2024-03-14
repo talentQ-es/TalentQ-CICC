@@ -133,7 +133,8 @@ def find_div_boxes(f_data, i_start_list):
             ######## SUB-TITLE 
 
             if "<i>" in f_data[i_title]:
-                subtitle = re.search(r'<i>(.*?)</i>', f_data[i_title]).group(1).replace("(","").replace(")","").rstrip().lstrip()
+                #subtitle = re.search(r'<i>(.*?)</i>', f_data[i_title]).group(1).replace("(","").replace(")","").rstrip().lstrip()
+                subtitle = re.search(r'<i>(.*?)</i>', f_data[i_title]).group(1).rstrip().lstrip().rstrip(")").lstrip("(")
                 if f_data[i_title].split('</i>')[1].replace(" ","") != '\\n",\n':
                     raise TextoEnLineaTitulo()
             else:
