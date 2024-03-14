@@ -85,7 +85,7 @@
     }
    },
    "source": [
-    "- Estado del sistema\n",
+    "- *Estado del sistema*\n",
     "\n",
     "<a id='axiomas-I'></a>\n",
     "::::::{card} \n",
@@ -93,13 +93,13 @@
     "\n",
     "^^^\n",
     "<br>    \n",
-    "En un instante, $t$, la <i>máxima información accesible</i> de un sistema cuántico <i>aislado</i> está asociada a un vector $\\ket{\\psi}$ de norma unidad, perteneciente a un espacio de Hilbert $\\Hil$\n",
+    "En un instante, $t$, la <i>máxima información accesible</i> de un sistema cuántico <i>aislado</i> está asociada a un vector $\\ket{\\psi}$ de norma unidad, perteneciente a un espacio de Hilbert $\\Hil$. Dos vectores que difieran en una fase  representan al mismo estado. Es decir, son físicamente indistinguibles.\n",
     "\n",
     "::::::\n",
     "La palabra *estado* es engañosa por cuanto parece indicar que el sistema *está* en alguna estado concreto definido por un valor concreto de sus propiedades, ¡esto no es así!  El vector de estado se conoce también con el nombrede  *función de onda*\n",
     "<br>\n",
     "\n",
-    "El postulado I lleva una pequeña puntualización:  dos vectores que difieran en una *fase global* contienen idéntica informacuón y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos\n",
+    "El postulado I lleva una pequeña pero importante puntualización:  dos vectores que difieran en una *fase global* contienen idéntica información y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos\n",
     "<br>\n",
     "$$\n",
     "\\ket{\\psi} \\sim \\ket{\\psi'} =  e^{i\\varphi}\\ket{\\psi} \\, ,\n",
@@ -116,7 +116,7 @@
     }
    },
    "source": [
-    "- Evolución con el tiempo \n",
+    "- *Evolución con el tiempo*\n",
     "\n",
     "La dinámica de un sistema cuántico  está *codificada* en un operador hermítico $H = H^\\dagger$ que se denomina **operador Hamiltoniano**\n",
     "\n",
@@ -151,7 +151,7 @@
    "source": [
     "La ecuación de Schrödinger es una ecuación diferencial ordinaria (una sola variable) para un vector. Dada una condición inicial $\\ket{\\psi(t=0)} = \\ket{\\psi_0}$, la solución $\\ket{\\psi(t)}$ para todo $t$ es única.\n",
     "\n",
-    "- Medidas\n",
+    "- *Medidas*\n",
     "\n",
     "Por tanto, la evolución del estado es *determinista*. Es en la medida sobre el sistema donde la Mecánica Cuántica muestra su carácter probabilístico. Vamos a mencionar en este capítulo la medida proyectiva, que es el caso más simple. Estudiaremos  en el [capítulo 5](../05_Fun_Info_Cuant/Fun_Info_Cuant.ipynb) que son un caso particular del tipo más general de medidas posible  \n",
     "\n",
@@ -242,7 +242,7 @@
    "id": "f2012fa4",
    "metadata": {},
    "source": [
-    "- Colapso de la función de onda\n",
+    "- *Colapso de la función de onda*\n",
     "\n",
     "La función de onda sufre una variación abrupta en el momento de medir. Es, con la variación contínua del Postulado II, la única forma de cambio que puede experimentar el estado de un sistema. "
    ]
