@@ -1,0 +1,781 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "81b93ecd",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "> {sub-ref}`today` | {sub-ref}`wordcount-minutes` min read\n",
+    "\n",
+    "::::{figure} ../../figuras/logos/Logo_TalentQ_Azul.png\n",
+    ":width: 150px\n",
+    ":align: right\n",
+    "::::\n",
+    "\n",
+    "\n",
+    "# Teoría de probabilidades  *para todas las edades*\n",
+    "\n",
+    "$ \\newcommand{\\bra}[1]{\\langle #1|} $\n",
+    "$ \\newcommand{\\ket}[1]{|#1\\rangle} $\n",
+    "$ \\newcommand{\\braket}[2]{\\langle #1|#2\\rangle} $\n",
+    "$ \\newcommand{\\i}{{\\color{blue} i}} $ \n",
+    "$ \\newcommand{\\Hil}{{\\mathbb H}} $\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "c80a8f6f",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    },
+    "tags": [
+     "hide-input"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "%run ../../macro_tQ.py\n",
+    "import sys\n",
+    "sys.path.append('../../')\n",
+    "import macro_tQ as tQ\n",
+    "\n",
+    "import numpy as np"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9717c5f5",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Variables aleatorias\n",
+    "\n",
+    "Denotamos con $(X,p(X))$ una  *variable aleatoria* donde\n",
+    "\n",
+    "- $X$ es el espacio muestral de valores $\\{x_1, x_2,....,x_n\\}$ que pueden aparecer en una *consulta*, o *tirada*\n",
+    "\n",
+    "\n",
+    "- $p(X)$ es la *distribución de probabilidad*.  \n",
+    "\n",
+    "### Distribución de probabilidad\n",
+    "\n",
+    "Una distribución de probabilidad es una función $x\\to p(x)$ de los elementos del espacio muestral real $x\\in X$ en los números reales  $p(x)\\in \\mathbb{R}$. \n",
+    "La probabilidad de un suceso imposible es $p(x) = 0$, y la de un suceso seguro es $p(x) = 1$.\n",
+    "\n",
+    "La función $p(x)$ que debe  verificar las dos condiciones siguientes para ser una distribución de probabilidad\n",
+    "\n",
+    "$$\n",
+    "p(x) \\in [0,1]~~~~~~~,~~~~~~~~\\sum_{x\\in X }p(x) = 1 \n",
+    "$$\n",
+    "\n",
+    "Es decir, la suma de probabilidades de todos los sucesos posibles debe ser la unidad, porque es la probabilidad de obtener algún miembro del espacio muestral. \n",
+    "\n",
+    "::::::{card} \n",
+    "<b>Definición</b>:  \n",
+    "\n",
+    "^^^\n",
+    "<br>\n",
+    "<br>    \n",
+    "<u><i>Media</i></u>: la <i>media</i> de una variable aleatoria  viene dada por la expresión \n",
+    "<br>\n",
+    "<br>\n",
+    "$$\n",
+    "\\overline X  = \\sum_i x_i p(x_i)\n",
+    "$$   \n",
+    "<br>\n",
+    "<u><i>Varianza</i></u>: la <i>varianza</i>, $\\sigma_X^2$, es la <i>media de la desviación cuadrática</i> $\\overline{(x_i - \\overline{X} )^2}$ \n",
+    "<br>\n",
+    "<br>\n",
+    "$$ \n",
+    "\\sigma^2_X = \\sum_j (x_j-\\overline{X})^2 p(x_j) = \\overline{X^2} - \\overline{X}^2\n",
+    "$$    \n",
+    "::::::\n",
+    "\n",
+    "<br>\n",
+    "La cantidad $\\sigma_X$ se denomina  <i>desviación estándar</i>\n",
+    "<br>\n",
+    "$$\n",
+    "\\sigma_X = \\sqrt{\\overline{X^2} - \\overline{X}^2}\n",
+    "$$\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "4dd8c91e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([0.18972554, 0.08990718, 0.16022265, 0.00380055, 0.17957087,\n",
+       "       0.08932226, 0.15063016, 0.02883175, 0.00861419, 0.09937486])"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def random_prob_dist(n):\n",
+    "    p = np.random.rand(n)\n",
+    "    p /= np.sum(p)\n",
+    "    return p\n",
+    "\n",
+    "random_prob_dist(10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ed1ad596",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## La conexión estadística"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d0fbfd92",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "- Nuestro conocimiento del mundo se basa en la realización de experimentos, el resultado de los cuales es (empíricamente) aleatorio. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cdc61b33",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "- Podemos pensar en el hecho de medir un sistema como la consulta de una variable aleatoria $(X,p(X))$ donde la distribución de probabilidad incorpora todo nuestro conocimiento acerca del sistema"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "10e7ab6a",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Frecuencias e Histogramas\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "165f96a7",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Cualquier consulta o medida da lugar a una *muestra* finita de valores $A_N = (a_1,a_2,...,a_N)$ donde $a_i\\in \\{x_1,...,x_n\\}$ pueden repetirse en la muestra, con números de aparición $n(x_i)$ tales que  $n(x_1) +  \\ldots + n(x_p) = N$. \n",
+    "\n",
+    "Estos datos se pueden agrupar en intervalos o *bins* que eliminen cierta precisión numérica. \n",
+    "\n",
+    "Por ejemplo, si truncamos nuestra precisión a las décimas de unidad,  $13.10$ y $13.19$ pertenecerán al mismo *bin*.\n",
+    "\n",
+    "Un histograma es un diagrama en el que, por cada *bin*, hay una columna, cuya altura representa el número de sucesos que pertenecen a dicho *bin*\n",
+    "\n",
+    "En el siguiente ejemplo, puedes ver cómo, la misma lista de datos conduce a distintos histogramas si cambias la anchura de los bins"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "id": "aa150b69",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "datos1 = [12.2, 15.3, 13, 12.8, 18.1, 13, 20, 19.5, 20.2, 12.1, 12.4, 13.2, 17.9, 14.1, 15, 13.4, 11.1, 14.6, 13, 17.4, 19.2]\n",
+    "datos2 = np.linspace(0.,10.,200)\n",
+    "datos  = datos1\n",
+    "\n",
+    "anchura_bins = 1.# para modificar la anchura de los bins\n",
+    "num_bins = int((max(datos)-min(datos))/anchura_bins) #número de bins\n",
+    "bins_list = np.linspace(min(datos), max(datos) + 1 ,num_bins) #calculamos los extremos de los intervalos\n",
+    "\n",
+    "\n",
+    "counts, bins, ignore = plt.hist(x=datos, bins = bins_list, color='#F2AB6D', rwidth=0.85)\n",
+    "plt.xlabel('Datos')\n",
+    "plt.ylabel('Frecuencia')\n",
+    "plt.xticks(bins_list)\n",
+    "\n",
+    "plt.show()\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f69c6617",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Ley de los grandes números"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "18d2dbff",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Las fracciones relativas tienden en el límite $N\\to \\infty$ a la probabilidad relativa de aparición de  $x_i$ en una sola tirada\n",
+    "\n",
+    "$$\n",
+    "f_N(x_i) = \\frac{n(x_i)}{N}~~~\\stackrel{N\\to\\infty}{\\longrightarrow}~~~{p(x_i)}\n",
+    "$$\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "894e284a",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Experimentalmente sólo tenemos acceso a las frecuencias relativas $f_N(x_i)$ para un $N$ grande aunque finito."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3d12dc2c",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "Igualmente, nuestro conocimiento de la  media $\\overline X$  y la varianza $\\sigma_X^2$ siempre es aproximado, y se realiza a través de las medias y varianzas muestrales\n",
+    "\n",
+    "$$\n",
+    "\\begin{eqnarray*}\n",
+    "\\overline{A}_N = \\sum_i x_i f_N(x_i)~~~&\\stackrel{N\\to\\infty}{\\longrightarrow}&~~~ \\overline{X}\\\\\n",
+    "\\sigma_{A_N}^2 = \\sum_{i} (x_i - \\overline{A}_N)^2 f_N(x_i) ~~~&\\stackrel{N\\to\\infty}{\\longrightarrow}&~~~ \\sigma_X^2\n",
+    "\\end{eqnarray*}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d795f9f0",
+   "metadata": {},
+   "source": [
+    "## Distribuciones frecuentes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "bfe099c7",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### La distribución de Bernouilli"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1d808912",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Una variable aleatoria de Bernouilli $X=(x,p(x))$ tiene dos posibles resultados\n",
+    "\n",
+    "   - *éxito* $\\to x=1$ con probabilidad $p(1) = p$\n",
+    "   \n",
+    "            \n",
+    "   - *fracaso* $\\to x=0$ con probabilidad $p(0) = 1-p$\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8ad7c05d",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Podemos calcular fácilmente \n",
+    "\n",
+    "$$\n",
+    "\\begin{eqnarray}\n",
+    "\\overline X &=& \\sum_i x_i p_i =1 \\cdot p + 0\\cdot (1-p) = p\\\\\n",
+    "\\sigma^2 &=& \\sum_i (x-\\overline X )^2p_i = (1-p)^2 p +(0-p)^2(1-p) = p(1-p)\n",
+    "\\end{eqnarray}\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a465f5c3",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Distribución binomial"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "66d1a820",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "La variable aleatoria binomial $X = (x,p(x))$ se define como\n",
+    "\n",
+    "$$\n",
+    "x = \\hbox{número de $éxitos$ obtenidos en $n$ pruebas de Bernouilli sucesivas }\n",
+    "$$\n",
+    "\n",
+    "Claramente $x \\in (0,1,2,...n)$.\n",
+    "\n",
+    "Ahora es muy sencillo obtener la probabilidad de un suceso con $x$ éxitos\n",
+    "\n",
+    "$$\n",
+    "p(x) = \\begin{pmatrix}n\\\\ x\\end{pmatrix} p^x (1-p)^{n-x}\n",
+    "$$\n",
+    "\n",
+    "donde el primer factor tiene en cuenta las posibles ordenaciones en que aparecen $x$ éxitos en $n$ intentos.\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c1948a25",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "Un cálculo un poco más largo permite ver que, ahora\n",
+    "\n",
+    "\\begin{eqnarray}\n",
+    "\\overline X &=&  np\\\\ \\rule{0mm}{7mm}\n",
+    "\\sigma^2 &=& n p(1-p)\n",
+    "\\end{eqnarray}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "fad56824",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### La distribución normal"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5ccaf85c",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Vamos a estudiar la distribución normal centrada en $\\mu$ y con anchura $\\sigma$\n",
+    "<br>\n",
+    "<br>\n",
+    "$$\n",
+    "p(x) = \\frac{1}{\\sqrt{2\\pi}\\sigma} \\exp \\left({-\\frac{(x-\\mu)^2}{2\\sigma^2}}\\right)\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "07015c7c",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Nos encontramos ante una variable aleatoria con un espacio muestral continuo $x\\in (-\\infty,+\\infty)$.\n",
+    "\n",
+    "\\begin{eqnarray}\n",
+    "\\overline{X} &=& \\int_{-\\infty}^{+\\infty} xp(x) dx = \\mu \\\\\n",
+    "\\overline{(x-\\overline X)^2} &=& \\int_{-\\infty}^{+\\infty} (x-\\mu)^2 p(x)dx =\\sigma^2\n",
+    "\\end{eqnarray}\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "96716fa0",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "outputs": [],
+   "source": [
+    "'generamos una instancia de la distribución normal'\n",
+    "mu, sigma = 0, 0.1 \n",
+    "N = 10000\n",
+    "s = np.random.normal(mu, sigma, N)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "32dcfe7c",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/plain": [
+       "<Figure size 432x288 with 1 Axes>"
+      ]
+     },
+     "metadata": {
+      "needs_background": "light"
+     },
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "\n",
+    "'generamos una instancia de histograma con un número de bins'\n",
+    "num_bins=100\n",
+    "counts, bins, ignore = plt.hist(s, num_bins, density=True)\n",
+    "'extraemos los bins para hacer el plot de la funcion analítica'\n",
+    "\n",
+    "\n",
+    "'dibujamos la función analítica para comparar'\n",
+    "def gaussian(x,mu,sigma):\n",
+    "    return 1/(sigma * np.sqrt(2 * np.pi))*np.exp( - (x - mu)**2 / (2 * sigma**2) )\n",
+    "    \n",
+    "plt.plot(bins, gaussian(bins,mu,sigma),linewidth=2, color='r')\n",
+    "\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ac802ded",
+   "metadata": {},
+   "source": [
+    "En el límite de número de eventos $N\\to \\infty$, el histograma y la curva matemática confluyen."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e68827ef",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "## Probabilidades combinadas\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "39354968",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "Las probabilidades combinadas son *la base de las correlaciones*. Es aquí donde la Mecánica Cuántica *predice* resultados diferentes a la Mecánica Clásica.\n",
+    "\n",
+    "Ahora vamos a examinar variables aleatorias formadas por dos espacios muestrales $X$ e $Y$. Dependiendo de la forma en que combinemos la observación de cada una tendremos distintas distribuciones de probabilidad"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d5d72a71",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "### Probabilidad combinada\n",
+    "\n",
+    "La  *probabilidad combinada* $p(X,Y)$ asocia un número $p(x,y)$ a la probabilidad de observación conjunta de $x$ **e** $y$.\n",
+    "\n",
+    "Hay que tratar las parejas de eventos  como un solo evento  $a = (x,y)$. Por eso, la condición de normalización ahora es \n",
+    "\n",
+    "$$\n",
+    "\\sum_a p(a) = \\sum_{xy} p(x,y) = 1\\, .\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "37a84fb1",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "\n",
+    "La suma parcial sobre una de las dos variables conduce a sendas **distribuciones marginales**\n",
+    "\n",
+    "$$\n",
+    "q(x) = \\sum_{y} p(x,y) ~~~~~~~~~ \\tilde q(y) = \\sum_{x} p(x,y)\n",
+    "$$\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3689003f",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "\n",
+    " Si la probabilidad combinada es el producto de las probabilidades de los miembros del par, decimos que $X$ e $Y$ son **variables aleatorias independientes**\n",
+    "\n",
+    "$$\n",
+    "p(x,y) = p(x) p(y)\n",
+    "$$\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d0b0561f",
+   "metadata": {},
+   "source": [
+    "La distribución de cada variable coincide con la que se deduce de marginalizar la otra\n",
+    "\n",
+    "$$\n",
+    "\\sum_y p(x,y) = p(x)~~~~,~~~~\\sum_x p(x,y) = p(y)\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "dff0e91c",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Probabilidad condicionada"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3dbcc6a6",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "La distribución de **probabilidad condicionada** $p(X|Y)$ asigna un número $p(x|y)$ a la probabilidad  de encontrar un suceso $X=x$ una vez *sabemos* que $Y=y$ ha sido el resultado de consultar $Y$. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "778823fd",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "fragment"
+    }
+   },
+   "source": [
+    "La manera de acceder experimentalmente a estas distribuciones, es efectuar un muestreo $(a_i,b_i)$, $i=1,...,N$ de valores de $(X,Y)$ y *seleccionar* sólo aquellos sucesos donde $b_i = y$ un valor concreto de $Y$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d9a4858d",
+   "metadata": {},
+   "source": [
+    "#### Teorema de Bayes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "94a8e780",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "Las probabilidades *condicionales* y *combinadas* no son independientes. Se relacionan de la forma siguiente\n",
+    "\n",
+    "$$\n",
+    "p(x,y)   = p(x|y)p(y) = p(y|x) p(x)= p(y,x)\n",
+    "$$\n",
+    "\n",
+    "La segunda igualdad conduce al *teorema de Bayes*\n",
+    "::::::{card} \n",
+    "<b>Teorema</b>: </i>de Bayes</i> \n",
+    "\n",
+    "^^^\n",
+    "$$\n",
+    "p(x|y) = p(y|x) \\frac{p(x)}{p(y)}\n",
+    "$$\n",
+    "<br>\n",
+    "::::::\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "celltoolbar": "Tags",
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.7"
+  },
+  "nbTranslate": {
+   "displayLangs": [
+    "*"
+   ],
+   "hotkey": "alt-t",
+   "langInMainMenu": true,
+   "sourceLang": "en",
+   "targetLang": "fr",
+   "useGoogleTranslate": true
+  },
+  "toc": {
+   "base_numbering": 1,
+   "nav_menu": {},
+   "number_sections": true,
+   "sideBar": true,
+   "skip_h1_title": true,
+   "title_cell": "Table of Contents",
+   "title_sidebar": "Contents",
+   "toc_cell": false,
+   "toc_position": {
+    "height": "calc(100% - 180px)",
+    "left": "10px",
+    "top": "150px",
+    "width": "381.427px"
+   },
+   "toc_section_display": true,
+   "toc_window_display": false
+  },
+  "varInspector": {
+   "cols": {
+    "lenName": 16,
+    "lenType": 16,
+    "lenVar": 40
+   },
+   "kernels_config": {
+    "python": {
+     "delete_cmd_postfix": "",
+     "delete_cmd_prefix": "del ",
+     "library": "var_list.py",
+     "varRefreshCmd": "print(var_dic_list())"
+    },
+    "r": {
+     "delete_cmd_postfix": ") ",
+     "delete_cmd_prefix": "rm(",
+     "library": "var_list.r",
+     "varRefreshCmd": "cat(var_dic_list()) "
+    }
+   },
+   "types_to_exclude": [
+    "module",
+    "function",
+    "builtin_function_or_method",
+    "instance",
+    "_Feature"
+   ],
+   "window_display": false
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

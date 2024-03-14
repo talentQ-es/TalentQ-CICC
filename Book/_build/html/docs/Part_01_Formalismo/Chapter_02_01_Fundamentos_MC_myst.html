@@ -455,7 +455,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomas">Axiomas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomas-de-la-mecanica-cuantica-para-sistemas-aislados">Axiomas de la Mecánica Cuántica para Sistemas Aislados</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-valores-esperados">Medidas y valores esperados</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados">Valores esperados</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">Desviación estándar</a></li>
@@ -487,7 +487,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 14, 2024 | 8 min read</p>
+<div><p>Mar 14, 2024 | 9 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -525,26 +525,33 @@ document.write(`
 </div>
 </details>
 </div>
-<section id="axiomas">
-<h2>Axiomas<a class="headerlink" href="#axiomas" title="Permalink to this heading">#</a></h2>
-<p>Los axiomas de la Mecánica Cuántica son unos pilares heurísticos, es decir,  basados en la experimentación. La axiomática más aceptada es   la denominada  <i>interpretación de Copenhagen</i></p>
+<p>Ha llegado el momento de desvelar las <em>verdaderas reglas del juego</em>. En este capítulo veremos los postulados de la Mecánica Cuántica, y te pasará lo que nos pasa a todos: que no hay quien los entienda. Pero así es: la Mecánica Cuántica es un conjunto de prescripciones acerca de cómo manipular la (escasa) información que es posible extraer de los sistemas microscópicos. Lo importante es que hace predicciones sobre resultados de medidas que se verifican. En cuanto a lo otro: al final nos acostumbramos a pensar de la manera en que la MC dice que tiene sentido hacerlo, y a eso le llamamos entender.</p>
+<p>Los axiomas de la Mecánica Cuántica son sus pilares. Todo se deriva de ellos. Y, como todos los axioma,  son de origen heurístico, es decir,  basados en la experimentación. La axiomática comúnmente  aceptada es   la denominada  <i>interpretación de Copenhagen</i>.  Empezamos.</p>
+<section id="axiomas-de-la-mecanica-cuantica-para-sistemas-aislados">
+<h2>Axiomas de la Mecánica Cuántica para Sistemas Aislados<a class="headerlink" href="#axiomas-de-la-mecanica-cuantica-para-sistemas-aislados" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>Estado del sistema</em></p></li>
+</ul>
 <p><a id='axiomas-I'></a></p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Postulado I</b>: </i>Vector de estado</i></p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">En un instante, <span class="math notranslate nohighlight">\(t\)</span>, la <i>máxima información accesible</i> de un sistema cuántico <i>aislado</i> está asociada a un vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> de norma unidad, perteneciente a un espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span></p>
+<p class="sd-card-text">En un instante, <span class="math notranslate nohighlight">\(t\)</span>, la <i>máxima información accesible</i> de un sistema cuántico <i>aislado</i> está asociada a un vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> de norma unidad, perteneciente a un espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span>. Dos vectores que difieran en una fase  representan al mismo estado. Es decir, son físicamente indistinguibles.</p>
 </div>
 </div>
 <p>La palabra <em>estado</em> es engañosa por cuanto parece indicar que el sistema <em>está</em> en alguna estado concreto definido por un valor concreto de sus propiedades, ¡esto no es así!  El vector de estado se conoce también con el nombrede  <em>función de onda</em></p>
-<p>Dos vectores que difieran en una <em>fase global</em> contienen idéntica informacuón y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos</p>
+<p>El postulado I lleva una pequeña pero importante puntualización:  dos vectores que difieran en una <em>fase global</em> contienen idéntica información y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{\psi} \sim \ket{\psi'} =  e^{i\varphi}\ket{\psi} \, ,
 \]</div>
-<p>La dinámica de un sistema cuántico  está contenido en un <em>operador hermítico</em> <span class="math notranslate nohighlight">\(H = H^\dagger\)</span> que se denomina <strong>operador Hamiltoniano</strong></p>
-<p>El operador Hamiltoniano  <em>gobierna su evolución</em>. Supongamos que el sistema se prepara a <span class="math notranslate nohighlight">\(t=0\)</span> en un cierto estado <span class="math notranslate nohighlight">\(\ket{\psi(0)}\)</span></p>
+<ul class="simple">
+<li><p><em>Evolución con el tiempo</em></p></li>
+</ul>
+<p>La dinámica de un sistema cuántico  está <em>codificada</em> en un operador hermítico <span class="math notranslate nohighlight">\(H = H^\dagger\)</span> que se denomina <strong>operador Hamiltoniano</strong></p>
+<p>El  Hamiltoniano  <em>gobierna la evolución</em>. Supongamos que el sistema se prepara a <span class="math notranslate nohighlight">\(t=0\)</span> en un cierto estado <span class="math notranslate nohighlight">\(\ket{\psi(0)}\)</span></p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Postulado  II</b>: </i>Evolución con el tiempo</i></p>
@@ -557,7 +564,10 @@ document.write(`
 \]</div>
 </div>
 </div>
-<p>La ecuación de Schrödinger es una ecuación diferencial ordinaria (una sola variable) para un vector. Dada una contición inicial <span class="math notranslate nohighlight">\(\ket{\psi(t=0)} = \ket{\psi_0}\)</span>, la solución <span class="math notranslate nohighlight">\(\ket{\psi(t)}\)</span> para todo <span class="math notranslate nohighlight">\(t\)</span> es única.</p>
+<p>La ecuación de Schrödinger es una ecuación diferencial ordinaria (una sola variable) para un vector. Dada una condición inicial <span class="math notranslate nohighlight">\(\ket{\psi(t=0)} = \ket{\psi_0}\)</span>, la solución <span class="math notranslate nohighlight">\(\ket{\psi(t)}\)</span> para todo <span class="math notranslate nohighlight">\(t\)</span> es única.</p>
+<ul class="simple">
+<li><p><em>Medidas</em></p></li>
+</ul>
 <p>Por tanto, la evolución del estado es <em>determinista</em>. Es en la medida sobre el sistema donde la Mecánica Cuántica muestra su carácter probabilístico. Vamos a mencionar en este capítulo la medida proyectiva, que es el caso más simple. Estudiaremos  en el <a class="reference internal" href="#../05_Fun_Info_Cuant/Fun_Info_Cuant.ipynb"><span class="xref myst">capítulo 5</span></a> que son un caso particular del tipo más general de medidas posible</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
@@ -567,7 +577,7 @@ document.write(`
 <p class="sd-card-text"><a id='postul_III_medida'></a></p>
 <ul class="simple">
 <li><p class="sd-card-text">A una magnitud física medible le está asociado   un operador hermítico  <span class="math notranslate nohighlight">\( A= A^\dagger\)</span> que denominamos <b>observable</b>.</p></li>
-<li><p class="sd-card-text">Los resultados de una medición no pueden dar como resultado nada más que uno de los valores propios de <span class="math notranslate nohighlight">\(A \Rightarrow \lambda_n\)</span>.</p></li>
+<li><p class="sd-card-text">Los resultados de una medición solo pueden dar como resultado  uno de los valores propios de <span class="math notranslate nohighlight">\(A \Rightarrow \lambda_n\)</span>.</p></li>
 <li><p class="sd-card-text"><i> Regla de Born</i>: La probabilidad de obtener  el autovalor <span class="math notranslate nohighlight">\(\lambda_k\)</span> como resultado de una cierta medición, viene dada por
 la expresión</p></li>
 </ul>
@@ -578,16 +588,20 @@ p(\lambda_k)~ = ~|\braket{\lambda_k}{\psi}|^2
 <p class="sd-card-text">donde <span class="math notranslate nohighlight">\(\ket{\lambda_k}\)</span> es el autovector asociado.</p>
 </div>
 </div>
-<ul class="simple">
-<li><p>la intepretación probabilística de las componentes del <em>vector de estado</em> las que fuerzan a que sea unitario. Efectivamente
-como la suma de todas las probabilidades debe ser igual a la unidad
-$<span class="math notranslate nohighlight">\(
+<p>Este postulado establece el nexo entre el formalismo matemático y la experimentación física. Y pone en el centro la naturaleza probabilística del las predicciones: la función de onda, en el fondo es una especie de <em>raíz cuadrada</em> de una distribución de probabilidad.</p>
+<p>La norma unidad del vector de estado postulada en el axioma 1 es consistente con dicha intepretación probabilística. Efectivamente como la suma de todas las probabilidades debe ser igual a uno</p>
+<div class="math notranslate nohighlight">
+\[
 1 = \sum_k \lambda_k = \sum_k \braket{\psi}{\lambda_k}\braket{\lambda_k}{\psi} = \bra{\psi}\left(\sum_k\ketbra{\lambda_k}{\lambda_k}\right) \ket{\psi} = \braket{\psi}{\psi}
-\)</span>$</p></li>
-<li><p>que las magnitudes medibles son números reales, exige que el operador <span class="math notranslate nohighlight">\(A\)</span> asociado a un observable deba ser hermítico</p></li>
+\]</div>
+<p>Que las magnitudes medibles son números reales, exige que el operador <span class="math notranslate nohighlight">\(A\)</span> asociado a un observable deba ser hermítico</p>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<ul class="simple">
+<li><p><em>Muy importante</em>:  <span class="math notranslate nohighlight">\(\{\lambda_k,p(\lambda_k)\}\)</span> no es una variable <i>pseudo-aleatoria</i> sino, probablemente, la única  variable intrínsecamente aleatoria que existe en la naturaleza.</p></li>
+<li><p>La fórmula dada para <span class="math notranslate nohighlight">\(p(\lambda_k)\)</span>  es cierta cuando el autovalor en cuestion es <em>no degenerado</em>.
+Cuando <span class="math notranslate nohighlight">\(\lambda_k\)</span> tiene degeneración <span class="math notranslate nohighlight">\(d_k\)</span> debe generalizarse:</p></li>
 </ul>
-<p>La fórmula dada para <span class="math notranslate nohighlight">\(p(\lambda_k)\)</span>  es cierta cuando el autovalor en cuestion es <em>no degenerado</em>.
-Cuando <span class="math notranslate nohighlight">\(\lambda_k\)</span> tiene degeneración <span class="math notranslate nohighlight">\(d_k\)</span> debe generalizarse:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{rcl}
@@ -597,13 +611,11 @@ p(\lambda_k)~ &amp;=&amp; ~ \sum_{a=1}^{d_k}|\braket{\lambda^a_k}{\psi}|^2 = \br
 \end{array}
 \end{split}\]</div>
 <p>La última expresión revela que <span class="math notranslate nohighlight">\(p(\lambda_k)\)</span> no es más que el <em>valor esperado del proyector</em> <span class="math notranslate nohighlight">\(P_k = P^2_k\)</span> en el estado del sistema anterior a la medida.</p>
-<div class="note admonition">
-<p class="admonition-title">Nota</p>
-<ul class="simple">
-<li><p><em>Muy importante</em>:  <span class="math notranslate nohighlight">\(\{\lambda_k,p(\lambda_k)\}\)</span> no es una variable <i>pseudo-aleatoria</i> sino, probablemente, la única  variable intrínsecamente aleatoria que existe en la naturaleza.</p></li>
-</ul>
 </div>
-<p>El hecho de medir tiene consecuencias <em>irreversibles</em> sobre el sistema medido. Este hecho es, sin duda, el efecto más diferenciador de la Mecánica Cuántica sobre la clásica: no existe el concepto de <em>partícula de prueba</em>, aquella que obtiene información de un sistema sin perturbarlo, como los planetas en el sistema solar</p>
+<ul class="simple">
+<li><p><em>Colapso de la función de onda</em></p></li>
+</ul>
+<p>La función de onda sufre una variación abrupta en el momento de medir. Es, con la variación contínua del Postulado II, la única forma de cambio que puede experimentar el estado de un sistema.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Postulado IV</b>: </i>Colapso de la función de  onda</i></p>
@@ -613,17 +625,22 @@ p(\lambda_k)~ &amp;=&amp; ~ \sum_{a=1}^{d_k}|\braket{\lambda^a_k}{\psi}|^2 = \br
 <span class="math notranslate nohighlight">\(\ket{\lambda_n} \in \Hil\)</span>, normalizado <span class="math notranslate nohighlight">\(|\braket{\lambda_n}{\lambda_n}|=1\)</span></p>
 </div>
 </div>
-<p>El sistema del medidor y el sistema medido, son a su vez un sistema aisado ¿por qué no parecen obedecer a las reglas de un sistema cuántico? ¿cuál es el límite que marca la distinción entre un objeto cuántico y uno clásico capaz de hacer colapsar el estado de otro? El axioma del <em>colapso de la función de onda</em> es heurístico y ha suscitado intensos debates desde su formulación. El más famoso es el de la paradoja del Gato de Schrödinger.</p>
+<p>Este colapso no es distinto en esencial del que sufre una distribución de probabilidad cuando se añade información fruto de un experimento. Por ejemplo, una distribución <span class="math notranslate nohighlight">\((1/2,1/2)\)</span> describe nuestra total ignorancia acerca de bajo qué cubilete se esconde la bola de un trilero. En cuanto levantamos uno, dicha distribución pasa abrúptamente a ser de <em>total certeza</em> <span class="math notranslate nohighlight">\((1,0)\)</span> ó <span class="math notranslate nohighlight">\((0,1)\)</span> dependiendo de cada caso.</p>
+<p>Hay dos peculiaridades que distinguen el caso cuántico y estimulan la especulación filosófica.</p>
+<p>Una ocurre cuando el sistema que se mide está compuesto de partes en un estado cuántico entrelazado. Una medida en una parte induce un colapso también en la otra, y eso independientemente de la naturaleza de, o la distancia a, dicho otro subsistema. De aquí surge famosas paradojas como la del gato de Schrödinger o la de EPR.</p>
+<p>La otra es que  el sistema del medidor y el  medido pueden verse a su vez  como partes de un sistema aislado.<br />
+¿Qué marca la diferencia entre el sistema que mide y el que colapsa? ¿cuál es el límite entre un objeto cuántico y uno clásico?</p>
 </section>
 <section id="medidas-y-valores-esperados">
 <h2>Medidas y valores esperados<a class="headerlink" href="#medidas-y-valores-esperados" title="Permalink to this heading">#</a></h2>
 <p>En Mecánica Cuántica especificamos un estado en las componentes de la expansión de un estado en <em>una base</em> ortonormal.
 Existen infinitas bases posibles para expresar un vector. ¿Qué base es la mejor? La respuesta es que depende del proceso que estudiemos.</p>
-<p>Por ejemplo, si el proceso es <em>la medida</em> de un cierto observable <span class="math notranslate nohighlight">\(A=A^\dagger\)</span>, el resultado de nuestra medición sólo puede ser uno de los <em>valores propios</em> <span class="math notranslate nohighlight">\(\lambda_i\)</span>
-$<span class="math notranslate nohighlight">\(
+<p>Por ejemplo, si el proceso es <em>la medida</em> de un cierto observable <span class="math notranslate nohighlight">\(A=A^\dagger\)</span>, el resultado de nuestra medición sólo puede ser uno de los <em>valores propios</em> <span class="math notranslate nohighlight">\(\lambda_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[
 A \ket{\lambda_k} = \lambda_k \ket{\lambda_k}\, 
-\)</span><span class="math notranslate nohighlight">\(
-donde \)</span>\ket{\lambda_k}<span class="math notranslate nohighlight">\( son los autovectores \)</span>{k=1,2,…}<span class="math notranslate nohighlight">\( que forman una base ortonormal. Ésta es la base natural adaptada a procesos de medida de \)</span>A$. En particular para conocer <em>con qué probabilidad</em> se producirá cada resultado, expandiremos el estado en dicha base de autoestados</p>
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\ket{\lambda_k}\)</span> son los autovectores <span class="math notranslate nohighlight">\({k=1,2,...}\)</span> que forman una base ortonormal. Ésta es la base natural adaptada a procesos de medida de <span class="math notranslate nohighlight">\(A\)</span>. En particular para conocer <em>con qué probabilidad</em> se producirá cada resultado, expandiremos el estado en dicha base de autoestados</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{\psi} = \sum_{i=1}^N a_i \ket{\lambda_i}\, 
@@ -647,7 +664,9 @@ en el límite <span class="math notranslate nohighlight">\(n\to \infty\)</span> 
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
 <ul class="simple">
-<li><p>En Computación Cuántica, almacenamos la información en las amplitudes <span class="math notranslate nohighlight">\(a_i\)</span> en una base dada (la base computacional). Vemos que sólamente su módulo <span class="math notranslate nohighlight">\(|a_i|\)</span> es recuperable a través de medidas.</p></li>
+<li><p>En Computación Cuántica, almacenamos la información en las amplitudes <span class="math notranslate nohighlight">\(a_i\)</span> en una base dada (la base computacional). Vemos que sólamente su módulo <span class="math notranslate nohighlight">\(|a_i|\)</span> es recuperable a través de medidas.
+<cr><br />
+<cr></p></li>
 <li><p>Cada vez que seleccionamos un estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, y un observable <span class="math notranslate nohighlight">\(A\)</span>, se genera una variable aleatoria <span class="math notranslate nohighlight">\((\lambda,p(\lambda))\, \to \)</span> en cada medida de <span class="math notranslate nohighlight">\(A\)</span> sobre <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> obtenemos un autovalor <span class="math notranslate nohighlight">\(\lambda_i\)</span> con una probabilidad <span class="math notranslate nohighlight">\(p(\lambda_i)\)</span>.
 La repetición del experimento permite reconstruir estimadores estadísticos.</p></li>
 </ul>
@@ -673,10 +692,10 @@ p(\lambda_k) &amp;=&amp; \sum_{a=1}^{d_k} |\braket{\lambda^a_k}{\psi}|^2  =
 \[
 P_k = \sum_{a=1}^{d_k} \ket{\lambda^a_k}\bra{\lambda^a_k}
 \]</div>
-<p>es el proyector sobre el subespacio propio</p>
-<p>Por el <em>valor esperado</em> <span class="math notranslate nohighlight">\(\langle A\rangle\)</span> del <em>observable</em> <span class="math notranslate nohighlight">\(A\)</span> en el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, entendemos el <em>valor medio</em> de la variable aleatoria <span class="math notranslate nohighlight">\(\lambda_n\)</span> obtenida por el método descrito.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1b94b48f-01f6-47d5-95c6-52d55f20cabb">
-<span class="eqno">(14)<a class="headerlink" href="#equation-1b94b48f-01f6-47d5-95c6-52d55f20cabb" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<p>es el proyector sobre el subespacio propio.
+Por el <em>valor esperado</em> <span class="math notranslate nohighlight">\(\langle A\rangle\)</span> del <em>observable</em> <span class="math notranslate nohighlight">\(A\)</span> en el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, entendemos el <em>valor medio</em> de la variable aleatoria <span class="math notranslate nohighlight">\(\lambda_n\)</span> obtenida por el método descrito.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-688249e2-faad-4055-8cef-eac3b8118280">
+<span class="eqno">(14)<a class="headerlink" href="#equation-688249e2-faad-4055-8cef-eac3b8118280" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \langle A\rangle &amp;= &amp;  \sum_k \lambda_k p(\lambda_k)
    =  \sum_k \lambda_k \bra{\psi}P_k\ket{\psi}  
 &amp;=&amp; \bra{\psi}\left(\sum_k \lambda_k P_k  \right) \ket{\psi} 
@@ -702,12 +721,6 @@ El valor esperado de un observable en uno de sus autoestados coincide con el aut
 \[
 \bra{\lambda_i}A \ket{\lambda_i} = \bra{\lambda_i}\lambda_i \ket{\lambda_i}  = \lambda_i \braket{\lambda_i}{\lambda_i} = \lambda_i
 \]</div>
-<p>El valor esperado de un observable <span class="math notranslate nohighlight">\(A\)</span> está acotado entre sus valores propios mínimo y máximo</p>
-<div class="math notranslate nohighlight">
-\[
-\lambda_{min} \leq \bra{\psi}A\ket{\psi} \leq \lambda_{max}
-\]</div>
-<p>y las desigualdades anteriores se saturan en los autoestados correspondientes <span class="math notranslate nohighlight">\(\ket{\psi} = \ket{\lambda_{max/min}}\)</span></p>
 <section id="desviacion-estandar">
 <h4>Desviación estándar<a class="headerlink" href="#desviacion-estandar" title="Permalink to this heading">#</a></h4>
 <p><a id='desviacion_estandar'></a></p>
@@ -716,7 +729,7 @@ El valor esperado de un observable en uno de sus autoestados coincide con el aut
 \[
 ~~\sigma ^2 = \overline{(\lambda_i-\bar\lambda_i)^2}= \overline{\lambda^2} - \overline{\lambda}^2
 \]</div>
-<p>de aquí se sigue, para la desviación estándar</p>
+<p>de aquí se sigue, para la desviación estándar.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
@@ -734,18 +747,20 @@ El valor esperado de un observable en uno de sus autoestados coincide con el aut
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39; funcion que toma una matriz y un vector normalizado  y devuelve el valor esperado y la desviación &#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39; función que toma una matriz y un vector normalizado  y devuelve el valor esperado y la desviación &#39;</span>
 <span class="k">def</span> <span class="nf">vev_sig</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ket</span><span class="p">):</span>
-
-    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ket</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">ket</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>  <span class="o">==</span> <span class="mf">1.</span> <span class="c1"># chequeamos que la norma es unidad</span>
+    
+    <span class="s1">&#39;verificamos norma unidad del ket&#39;</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ket</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">ket</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>  <span class="o">==</span> <span class="mf">1.</span>
     <span class="n">bra</span> <span class="o">=</span> <span class="n">ket</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
     
     <span class="s1">&#39;el valor esperado&#39;</span>
-    <span class="n">vev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">ket</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
-   
+<span class="c1">#    vev = np.dot(bra,np.dot(A,ket))[0,0].real</span>
+    <span class="n">vev</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">braket</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">ket</span><span class="p">))</span>
+    
     <span class="s1">&#39;la varianza&#39;</span>
     <span class="n">A2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
-    <span class="n">var</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="n">ket</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">vev</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">var</span><span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">braket</span><span class="p">(</span><span class="n">ket</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="n">ket</span><span class="p">))</span> <span class="o">-</span> <span class="n">vev</span><span class="o">**</span><span class="mi">2</span>
     <span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
     
     <span class="k">return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">vev</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
@@ -766,7 +781,7 @@ El valor esperado de un observable en uno de sus autoestados coincide con el aut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.2419,  0.5518,  2.9581])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.7491,  0.8194,  5.5336])
 </pre></div>
 </div>
 </div>
@@ -793,7 +808,7 @@ El valor esperado de un observable en uno de sus autoestados coincide con el aut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;A&gt;=  -2.24194  sigma =  0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;A&gt;=  (-2.74909-0j)  sigma =  7.88e-08
 </pre></div>
 </div>
 </div>
@@ -1037,7 +1052,7 @@ U(t_0,t_0) =  \exp\left({-\frac{i}{\hbar} (t_0-t_0)H}\right)=\exp(0) = I
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8ea29e3b779369b692d26a631617333e331f608432e41ff8d28d229c48a6e3f9.png" src="../../_images/8ea29e3b779369b692d26a631617333e331f608432e41ff8d28d229c48a6e3f9.png" />
+<img alt="../../_images/089dc1b20005707bbe0a459b93dbb0e1106e44af2da4a28c6cda531959088c96.png" src="../../_images/089dc1b20005707bbe0a459b93dbb0e1106e44af2da4a28c6cda531959088c96.png" />
 </div>
 </div>
 </section>
@@ -1139,7 +1154,7 @@ entonces, a tiempo <span class="math notranslate nohighlight">\(t\)</span></p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomas">Axiomas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiomas-de-la-mecanica-cuantica-para-sistemas-aislados">Axiomas de la Mecánica Cuántica para Sistemas Aislados</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-valores-esperados">Medidas y valores esperados</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados">Valores esperados</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desviacion-estandar">Desviación estándar</a></li>
