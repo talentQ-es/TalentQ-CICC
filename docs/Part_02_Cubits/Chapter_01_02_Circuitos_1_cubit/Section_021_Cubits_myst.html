@@ -522,23 +522,11 @@ document.write(`
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
-<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
 </pre></div>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>La propia palabra cúbit ya incorpora la noción de <em>bit cuántico</em>. Un <em>bit</em> es una variable  real <span class="math notranslate nohighlight">\(a\)</span> que puede tomar valores en <span class="math notranslate nohighlight">\( {\mathbb Z}_2= \{0, 1\}\)</span>. Un sistema físico que admita dos estados diferenciados implementa un bit. Por ejemplo un interruptor (encendido/apagado).</p>
 <p>Igualmente, un sistema cuántico con dos niveles de energía diferenciados puede albergar un cúbit.  Vamos a definirlo matemáticamente en este capítulo. En capítulos posteriores veremos dos implementaciones físicas: el espín de un electrón y la polarización de un fotón.</p>
@@ -547,7 +535,7 @@ document.write(`
 <p class="sd-card-text"><b>Definición</b>:</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">un cúbit es un <i>espacio de Hilbert</i> complejo de dimensión dos <span class="math notranslate nohighlight">\(~\ket{v}~\in~\Hil \sim {\mathbb C}^2\)</span></p>
+<p class="sd-card-text">un cúbit es un <i>espacio de Hilbert</i> complejo de dimensión dos <span class="math notranslate nohighlight">\(~\Hil \sim {\mathbb C}^2\)</span></p>
 </div>
 </div>
 <p>Un <strong>cútrit</strong> es un espacio de Hilbert de dimensión tres, <span class="math notranslate nohighlight">\(\Hil \sim {\mathbb C}^3\)</span>. Un <strong>cúdit</strong> de dimensión <span class="math notranslate nohighlight">\(d\)</span>.</p>
@@ -714,8 +702,8 @@ Los denotamos <span class="math notranslate nohighlight">\(\{\ket{0}_{\bf n},\ke
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">El operador que efectúa una <i>rotación de ángulo</i>  <span class="math notranslate nohighlight">\(\alpha\in [0,2\pi)\)</span> en torno al <i>eje que marca un vector unitario</i>  <span class="math notranslate nohighlight">\(\hat{\bf n}\)</span> es el siguiente</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf2489d7-8502-4cb7-926e-8d1adf0ec078">
-<span class="eqno">(15)<a class="headerlink" href="#equation-bf2489d7-8502-4cb7-926e-8d1adf0ec078" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-0d3cb5a5-360d-492e-ba8a-c16e6cd346c8">
+<span class="eqno">(15)<a class="headerlink" href="#equation-0d3cb5a5-360d-492e-ba8a-c16e6cd346c8" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 R_{\hat{\bf n}}(\alpha)~ = ~\exp\left( -i\frac{\alpha}{2} \hat{\bf n}\cdot \boldsymbol{\sigma} \right) ~=~ 
 \cos \frac{\alpha}{2} I - i \sin\frac{\alpha}{2} \hat{\bf n}\cdot\boldsymbol{\sigma} 
 \end{eqnarray}\]</div>
@@ -965,7 +953,11 @@ Qiskit</label><div class="sd-tab-content docutils">
 </div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/83e78125b5165f2e005a5691b1332b5046cbd6c0e48f0e05b70d2eecf8794241.png" src="../../../_images/83e78125b5165f2e005a5691b1332b5046cbd6c0e48f0e05b70d2eecf8794241.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../../_images/027c7b21eccff399e7a919b93770e94b6d6e77b8ad81500edcdd20623e852039.png" src="../../../_images/027c7b21eccff399e7a919b93770e94b6d6e77b8ad81500edcdd20623e852039.png" />
 </div>
 </div>
 <p>La concatenación de puertas se corresponde con la <em>composición de operadores</em>, es decir, con la <em>multiplicación de las matrices</em> asociadas.</p>
@@ -997,7 +989,7 @@ U = T H ~~~\to ~~~ U_{ij} = \begin{bmatrix}1&amp;0\\0&amp;e^{i\pi/4}\end{bmatrix
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">array_to_latex</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;U = &#39;</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/quantum_info/operators/operator.py:111,</span> in <span class="ni">Operator.__init__</span><span class="nt">(self, data, input_dims, output_dims)</span>
+<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/quantum_info/operators/operator.py:111,</span> in <span class="ni">Operator.__init__</span><span class="nt">(self, data, input_dims, output_dims)</span>
 <span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">to_matrix</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">111</span>     <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;Invalid input data format for Operator&quot;</span><span class="p">)</span>
@@ -1044,7 +1036,7 @@ Podemos visualizar esto usando un simulador de vector de estado.</p>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">display</span><span class="p">(</span><span class="n">statevector</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;latex&#39;</span><span class="p">,</span><span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;\ket{\psi} = &#39;</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># alternative wat to plot the state vector on the Bloch sphere</span>
 
-<span class="nn">File ~/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/quantum_info/states/statevector.py:93,</span> in <span class="ni">Statevector.__init__</span><span class="nt">(self, data, dims)</span>
+<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/quantum_info/states/statevector.py:93,</span> in <span class="ni">Statevector.__init__</span><span class="nt">(self, data, dims)</span>
 <span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">Statevector</span><span class="o">.</span><span class="n">from_instruction</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">data</span>
 <span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">---&gt; </span><span class="mi">93</span>     <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="s2">&quot;Invalid input data format for Statevector&quot;</span><span class="p">)</span>
