@@ -106,6 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Más cosas sobre circuitos" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html" />
     <link rel="prev" title="El arte de medir II" href="Section_026_El_Arte_de_Medir_II_myst.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -219,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las Reglas del Juego</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">No te mates con la Mates</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números  complejos <em>sin complejos</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números  <em>sin</em> complejos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Vectores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores <em>sin dolores</em></a></li>
@@ -239,6 +240,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
 </ul>
 </li>
 </ul>
@@ -521,22 +527,22 @@ document.write(`
 <h3>Realismo local<a class="headerlink" href="#realismo-local" title="Permalink to this heading">#</a></h3>
 <p>Las teorías con <em>realismo local</em> presuponen que los sistemas físicos  poseen propiedades que adquieren valores bien definidos de forma independiente del observador.
 Así, en una teoría con realismo local, una partícula tendrá unos valores concretos de  <em>posición</em> y <em>velocidad</em>  en cada instante aunque nadie las observe.
-Toda la Física Clásica se asienta sobre las premisas de realismo local.</p>
+Toda la Física Clásica se asienta sobre las premisas de realismo local. En Mecánica Clásica, una vez definida una propiedad, sólo es cuestión de resolver las ecuaciones del movimiento para poder predecir el valor que adoptará dicha propiedad en el futuro sin necesidad de medirla.</p>
 <p>La palabra <em>local</em> hace referencia a que ningún agente puede causar efectos a distancia a una velocidad  mayor que la velocidad que la luz. También se usa  la palabra <em>causal</em> en su lugar.</p>
-<p>La Mecánica Cuántica no es una teoría con realismo local. La función de onda no describe las propiedades de un sistema. Simplemente informa de la probabilidad de obtención de distintos resultados.</p>
-<p>Si dichos resultados reflejasen propiedades del sistema, las probabilidades deberían ser estables frente a diferentes medidas suficientemente finas como para no perturbar el sistema. Pero esto no es así. La medida en Mecánica Cuántica modifica irremediablemente el vector de estado.</p>
-<p>Si medimos un cúbit con el observable <span class="math notranslate nohighlight">\(Z\)</span> y obtenemos <span class="math notranslate nohighlight">\(+1\)</span>, el estado posteriormente será el <span class="math notranslate nohighlight">\(\ket{0}\)</span>. Si repetimos la medida, siempre dará <span class="math notranslate nohighlight">\(+1\)</span>. Podemos tener la tentación de pensar que la propiedad medida por <span class="math notranslate nohighlight">\(Z\)</span> ha quedado fijada en este valor. Eso es lo que sucedería en una teoría con realismo clásico.</p>
+<p>La Mecánica Cuántica no es una teoría con realismo local. La función de onda no describe un sistema a partir de los valores de sus propiedades. Simplemente informa de la probabilidad de obtención de distintos resultados cuando se efectúe una medida.</p>
+<p>Si dichos resultados reflejasen propiedades del sistema, las probabilidades deberían ser estables frente a diferentes medidas suficientemente finas como para no perturbar el sistema. Pero esto no es así. La evolución del estado es determinista. Pero salvo para medidas muy particulares, en general, borra toda certeza sobre el valor de cualquier medida subsiguiente.</p>
+<p>De hecho, medidas posteriores (las medidas son el segundo ejemplo de evolución de un vector de estado) también alteran la probabilidad de medida.  Si medimos un cúbit con el observable <span class="math notranslate nohighlight">\(Z\)</span> y obtenemos <span class="math notranslate nohighlight">\(+1\)</span>, el estado posteriormente será el <span class="math notranslate nohighlight">\(\ket{0}\)</span>. Si repetimos la medida, siempre dará <span class="math notranslate nohighlight">\(+1\)</span>. Podemos tener la tentación de pensar que la propiedad medida por <span class="math notranslate nohighlight">\(Z\)</span> ha quedado fijada en este valor. Eso es lo que sucedería en una teoría con realismo clásico.</p>
 <p>Si a continuación medimos con el observable <span class="math notranslate nohighlight">\(X\)</span> y obtenemos también <span class="math notranslate nohighlight">\(+1\)</span>, el estado posterior será <span class="math notranslate nohighlight">\(\ket{+}\)</span>.
 Si ahora volvemos a medir con <span class="math notranslate nohighlight">\(Z\)</span>, es 50% probable que obtengamos un <span class="math notranslate nohighlight">\(-1\)</span> en lugar del <span class="math notranslate nohighlight">\(+1\)</span> que pensábamos que había quedado fijado. Por tanto, la propiedad <span class="math notranslate nohighlight">\(Z\)</span> ha quedado <em>borrada</em> al medir la propiedad <span class="math notranslate nohighlight">\(X\)</span> y viceversa.</p>
-<p>El lector avezado se percatará de que la clave está en que las medidas sucesivas se corresponden con observables que no conmutan entre sí <span class="math notranslate nohighlight">\([X,Z]= 2i Y  \neq 0\)</span>. Esto esta propiedad está en la base del <em>Principio de Incertidumbre</em>.</p>
+<p>El lector avezado se percatará de que la clave está en que las medidas sucesivas se corresponden con observables que no conmutan entre sí <span class="math notranslate nohighlight">\([X,Z]= 2i Y  \neq 0\)</span>. Esta propiedad está en la base del <em>Principio de Incertidumbre</em>.</p>
 </section>
 <section id="id1">
 <h3>Desigualdades de Bell<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>En 1964  físico nor-irlandés John Bell, que trabajaba en el CERN,   <a class="reference external" href="https://cds.cern.ch/record/111654/files/vol1p195-200_001.pdf">demostró</a> que <strong>todas</strong> las teorías que respetan el realismo local satisfacen ciertas <em>desigualdades matemáticas</em>.
 En particular, todas  las leyes de la <em>Física Clásica</em> las satisfacen.</p>
 <p>En contraste, John Bell mostró cómo, en <em>Mecánica Cuántica</em>, el entrelazamiento, incorpora correlaciones sutiles entre las medidas que permiten traspasar  dichas desigualdades.</p>
-<p>La discusión, de puramente filosófica a ser objeto de investigación experimental, culminó con el <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.49.1804">experimento</a> de Alain Aspect y colaboradores en 1982.</p>
-<p>En conclusión, quedó demostrado experimentalmente que la Mecánica Cuántica, al violar las desigualdades de Bell, <strong>no es una teoría con realismo local</strong>.</p>
+<p>La discusión, de puramente filosófica a ser objeto de investigación experimental, culminó con el <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.49.1804">experimento</a> de Alain Aspect y colaboradores en 1982.
+Con él, quedó demostrado experimentalmente que la Mecánica Cuántica, al violar las desigualdades de Bell, <strong>no es una teoría con realismo local</strong>.</p>
 <p>La propuesta de John Bell dio pie a una familia de desigualdades que ponen en evidencia la imposibilidad de obtener ciertas correlaciones en un mundo clásico.</p>
 <p>Vamos a examinar la desigualdad en la forma estudiada por Clauser, Horne, Shimony y Holt <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.23.880">CHSH</a>.</p>
 <p>Posteriormente estudiaremos el experimento de GHZ, el cuál, también pone de manifiesto las correlaciones sutiles que introduce el entrelazamiento de una forma mucho determinista, en lugar de estadística.</p>
@@ -546,7 +552,7 @@ En particular, todas  las leyes de la <em>Física Clásica</em> las satisfacen.<
 <p>Central en esta discusión es la presencia de entrelazamiento. Vamos a seleccionar el denominado <em>singlete</em>  de la Base de Bell.</p>
 <div class="math notranslate nohighlight">
 \[
-\ket{11}_B=\frac{1}{\sqrt{2}}\big(\ket{0}\otimes \ket{1}-\ket{1}\otimes \ket{0}\big)
+\ket{11}_B=\frac{1}{\sqrt{2}}\big(\ket{0}\otimes \ket{1}-\ket{1}\otimes \ket{0}\big) = \ket{\Psi_-}
 \]</div>
 <p>Supongamos que  Alice y Bob miden sus cúbits con el observable <span class="math notranslate nohighlight">\(Z\)</span></p>
 <ul class="simple">
@@ -564,20 +570,30 @@ de la variable aleatoria <span class="math notranslate nohighlight">\(\{a_i, b_i
 El estado <span class="math notranslate nohighlight">\(\ket{11}_B\)</span> ya es autoestado del observable asociado</p>
 <div class="math notranslate nohighlight">
 \[
-Z\otimes Z \ket{11}_B = Z\ket{0}Z\ket{1} - Z\ket{1}Z\ket{0} = -\ket{01} + \ket{10} = -\ket{11}_B
+Z\otimes Z \ket{\Psi_-} = Z\ket{0}Z\ket{1} - Z\ket{1}Z\ket{0} = -\ket{01} + \ket{10} = -\ket{\Psi_-}
 \]</div>
 <p>Y el valor esperado satura  este autovalor</p>
 <div class="math notranslate nohighlight">
 \[
- \langle Z\otimes Z\rangle =\, _B\bra{11}Z\otimes Z\,  \ket{11}_B  = -_B\braket{11}{11}_B= -1\, 
+ \langle Z\otimes Z\rangle_{\Psi_-} =\, \bra{\Psi_-}Z\otimes Z\,  \ket{\Psi_-}  = -\braket{\Psi_-}{\Psi_-} =  -1\, 
 \]</div>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
 <p>La anti correlación que hemos hallado es la misma que en un experimento clásico preparado en una bolsa que contiene dos calcetines de dos colores: si Alice saca el blanco, el que saca Bob tiene que ser negro.</p>
 </div>
-<p>La cosa se pone más divertida cuando los dos aparatos de medida <u><em>no se orientan en la misma dirección</em></u>.
-El observable asociado ahora a una medición en una dirección arbitraria  <span class="math notranslate nohighlight">\(~\hat{\bf n}~\)</span>  será  <span class="math notranslate nohighlight">\(~ A = \hat{\bf n}\cdot \boldsymbol{\sigma}\)</span></p>
-<p>Aun así, los autovalores de este operador y, por ello, la proyección del espín seguirá siendo <span class="math notranslate nohighlight">\(\pm 1\)</span>. Supongamos que el eje escogido por Alice es <span class="math notranslate nohighlight">\(\hat{\bf n}_A\)</span> y el escogido por Bob es <span class="math notranslate nohighlight">\(\hat{\bf n}_B\)</span></p>
+<p>La cosa se pone más divertida cuando los dos aparatos de medida <i><em>no se orientan en la misma dirección</em></i>.
+El observable asociado ahora a una medición en una dirección arbitraria  <span class="math notranslate nohighlight">\(~\hat{\bf n}\)</span>  será  <span class="math notranslate nohighlight">\(~ A = \hat{\bf n}_A\cdot \boldsymbol{\sigma}\)</span> para el detector de Alice y <span class="math notranslate nohighlight">\(~ B = \hat{\bf n}_B\cdot \boldsymbol{\sigma}\)</span> para el de Bob.
+Las mediciones en ambos detectores  ¡siguen estando cuantizadas! <span class="math notranslate nohighlight">\(a_i,b_i = 0,1\)</span>. Ello permite definir una <i>correlación</i> que ahora denotaremos</p>
+<div class="math notranslate nohighlight">
+\[
+ C(\hat{\bf n}_A, \hat{\bf n}_B) = \frac{1}{N}\sum_{i=1}^N a_i b_i ~\in~  [-1,1]
+\]</div>
+<p>No hay un análogo clásico sencillo para esta medida. Sin embargo, cuánticamente, lo que esta correlación mide es el valor esperado del producto tensorial de los observables asociados</p>
+<div class="math notranslate nohighlight">
+\[
+ C(\hat{\bf n}_A, \hat{\bf n}_B) = \bra{\Psi_-}  A \otimes B  \,  \ket{\Psi_-}
+\]</div>
+<p>La Mecánica Cuántica es capaz de ofrecer una predicción para esta cantidad.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
@@ -586,7 +602,7 @@ El observable asociado ahora a una medición en una dirección arbitraria  <span
 <p class="sd-card-text">el valor medio del producto de las proyecciones de espín a lo largo de sendos ejes <span class="math notranslate nohighlight">\(~\hat{\bf n}_A~\)</span> y <span class="math notranslate nohighlight">\(~\hat{\bf n}_B~\)</span> viene dada por el coseno del ángulo <span class="math notranslate nohighlight">\(\theta_{AB}\)</span>  que forman los  ejes de los dos detectores</p>
 <div class="math notranslate nohighlight">
 \[
-_B\bra{11}(\hat{\bf n}_A\cdot \boldsymbol{\sigma}\otimes \hat{\bf n}_B\cdot \boldsymbol{\sigma})\ket{11}_B
+\bra{\Psi_-}(\hat{\bf n}_A\cdot \boldsymbol{\sigma}\otimes \hat{\bf n}_B\cdot \boldsymbol{\sigma})\ket{\Psi_-}
   = - \hat{\bf n}_A\cdot \hat{\bf n}_B = -\cos \theta_{AB}
 \]</div>
 </div>
@@ -596,21 +612,22 @@ _B\bra{11}(\hat{\bf n}_A\cdot \boldsymbol{\sigma}\otimes \hat{\bf n}_B\cdot \bol
 <p>Prueba este resultado.</p>
 </div>
 <ul class="simple">
-<li><p>Cuando los ejes son paralelos <span class="math notranslate nohighlight">\(\hat{\bf n}_B=\hat{\bf n}_B\)</span> recuperamos la  anti-correlación perfecta, en cualquier dirección</p></li>
+<li><p>Cuando los ejes son paralelos <span class="math notranslate nohighlight">\(\hat{\bf n}_A=\hat{\bf n}_B\)</span> recuperamos la  anti-correlación perfecta</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 -\hat{\bf n}_A\cdot \hat{\bf n}_B = - \cos 0 = -1 
 \]</div>
 <ul class="simple">
-<li><p>Cuando las direcciones de los detectores de Alice y Bob no coinciden sigue habiendo una medida cuántica <span class="math notranslate nohighlight">\(a,b = \pm 1\)</span> en ambos.</p></li>
+<li><p>Cuando los ejes no son paralelos <span class="math notranslate nohighlight">\(\hat{\bf n}_B\neq \hat{\bf n}_B\)</span>  sigue habiendo una correlación predicha por la Mecánica Cuántica.</p></li>
+<li><p>La correlación se pierde totalmente sólo cuando los ejes son perpendiculares <span class="math notranslate nohighlight">\(\hat{\bf n}_B\perp \hat{\bf n}_B\)</span></p></li>
 </ul>
 <p><a id='csch'></a></p>
 </section>
 <section id="la-desigualdad-de-chsh">
 <h3>La desigualdad de CHSH<a class="headerlink" href="#la-desigualdad-de-chsh" title="Permalink to this heading">#</a></h3>
 <p>Enn 1970 Clauser, Horne, Shimony y Holt <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.23.880">CHSH</a> propusieron una figura de mérito capaz de distinguir las correlaciones cuánticas de las clásicas.</p>
-<p>La idea es que Alice y Bob pueden escoger, cada uno,   <u><em>dos orientaciones  arbitrarias</em></u> para su detector.</p>
+<p>La idea es raizar una serie de experimentos sucesivos en los que Alice y Bob pueden escoger, cada uno,   <u><em>dos orientaciones  arbitrarias</em></u> para su detector.</p>
 <p>Para el detector de Alice las denotamos <span class="math notranslate nohighlight">\(\hat{\bf n}_A, \hat{\bf n}'_A\)</span>  y  para el de Bob <span class="math notranslate nohighlight">\(\, \hat{\bf n}_B, \hat{\bf n}'_B.\)</span></p>
 <p>Los pasos a seguir son los siguientes:</p>
 <ol class="arabic simple">
@@ -1258,6 +1275,15 @@ U_{xy} =Z^x X^y ~~:~ ~\ket{B_{00}} ~\Rightarrow  ~\ket{B_{xy}} = \left\{ \begin{
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">El arte de medir II</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../Chapter_03_01_Mas_sobre_circuitos_myst.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Más cosas sobre circuitos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
