@@ -1,19 +1,19 @@
 # Introducción a la Computación Cuántica
 ## Índice
 
-- **[ Información General sobrel el Curso](./Notebooks/Part_00_Intro)**
+- **[ ](./Notebooks/Part_00_Intro)**
 
-    - **[Prólogo](./Notebooks/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb)**
+    - **[Prólogo e Instrucciones](./Notebooks/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb)**
 
 
 - **[ Las Reglas del Juego](./Notebooks/Part_01_Formalismo)**
 
     - **[No te mates con la Mates](./Notebooks/Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.md)**
-        - **[Números complejos *sin complejos*](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_01_Numeros_Complejos_myst.ipynb)**
-        - **[Vectores ](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_02_Vectores_myst.ipynb)**
-        - **[Operadores](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_03_Operadores_myst.ipynb)**
-        - **[Tensores *sin dolores*](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb)**
-        - **[Teoría de probabilidades *para todas las edades*](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb)**
+        - **[Números complejos *sin complejos*](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_01_Numeros_Complejos_myst.ipynb)**
+        - **[Vectores ](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_02_Vectores_myst.ipynb)**
+        - **[Operadores](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_03_Operadores_myst.ipynb)**
+        - **[Tensores *sin dolores*](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb)**
+        - **[Teoría de probabilidades *para todas las edades*](./Notebooks/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb)**
 
     - **[Fundamentos de Mecánica Cuántica ](./Notebooks/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb)**
 

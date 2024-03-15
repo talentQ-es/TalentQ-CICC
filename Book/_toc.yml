@@ -1,7 +1,7 @@
 format: jb-book
 root: docs/index
 parts:
-- caption:  Información General sobrel el Curso
+- caption: 
   chapters:
   - file:  docs/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb
   - file:  docs/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb-e
@@ -9,11 +9,11 @@ parts:
   chapters:
   - file:  docs/Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.md
     sections:
-    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_01_Numeros_Complejos_myst.ipynb
-    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_02_Vectores_myst.ipynb
-    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_03_Operadores_myst.ipynb
-    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb
-    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_01_Numeros_Complejos_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_02_Vectores_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_03_Operadores_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_04_Tensores_myst.ipynb
+    - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb-e
 - caption:  De Cúbits y sus Cosas
