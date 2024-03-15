@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Prólogo &#8212; Curso de Introducción a la Computación Cuántica</title>
+    <title>Prólogo e Instrucciones &#8212; Curso de Introducción a la Computación Cuántica</title>
   
   
   
@@ -212,14 +212,13 @@ const thebe_selector_output = ".output, .cell_output"
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Información General sobrel el Curso</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prólogo</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Prólogo e Instrucciones</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las Reglas del Juego</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.html">No te mates con la Mates</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números  complejos <em>sin complejos</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números  <em>sin</em> complejos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Vectores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_01_Formalismo/Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores <em>sin dolores</em></a></li>
@@ -239,6 +238,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
 </ul>
 </li>
 </ul>
@@ -430,7 +434,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -441,11 +447,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Prólogo</h1>
+    <h1>Prólogo e Instrucciones</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prologo">Prólogo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones">Instrucciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repositorio">Repositorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-macro-macrotq-py">La macro: <code class="docutils literal notranslate"><span class="pre">macrotQ.py</span></code>**</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -455,19 +474,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="prologo">
-<h1>Prólogo<a class="headerlink" href="#prologo" title="Permalink to this heading">#</a></h1>
-<p>Hola. Hemos preparado este tutorial con mucho cariño para tí. Antes que nada, queremos dejar clara nuestra filosofía sobre el tema: las concesiones a la divulgación se acaban pagando.
-Si lo que quieres es acabar programando, este manual de autoayuda pretende llevarte de la mano aunque al principio haya que subir alguna cuesta.</p>
-<p>Por eso hemos estructurado el curso a la vieja usanza: primero los mimbres. Si los números complejos te suenan a añejos y los vectores te producen ardores, te recomendamos que emplees un tiempo para dominar el noble arte del álgebra lineal y blandirte a mandobles entre los kets y los bras.  Algo que, por otro lado, es más fácil de lo que parece. Hay más notación que otra cosa y eso, como andar, es cuestión de practicar.
-No es un curso de Mecánica Cuántica por lo que, de ésta, se hará una introducción rigurosa, pero escueta y operacional. En general, hemos reducido deliberadamente el texto a su mínima expresión.</p>
-<p>El curso está pensado para pasar a la acción lo antes posible, pero no demasiado antes. La idea es ir a la vez aprendiendo y programando. Antes se decía que uno no ha entiendo algo hasta que no consigue explicárselo a su abuela. Ahora te pediremos que le expliques cosas a tu ordenador. Notarás que es ¡más exigente y rígido que tu abuela! Será necesario que tengas un mínimo nivel de python, pero también podrás aprender viendo las soluciones, aunque no aprenderás tanto.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="prologo-e-instrucciones">
+<h1>Prólogo e Instrucciones<a class="headerlink" href="#prologo-e-instrucciones" title="Permalink to this heading">#</a></h1>
+<section id="prologo">
+<h2>Prólogo<a class="headerlink" href="#prologo" title="Permalink to this heading">#</a></h2>
+<p>Hola. Desde TalentQ hemos preparado este tutorial con mucho cariño para tí. Antes que nada, queremos dejar claro que, aunque se trata de un curso introductorio básico, el objetivo no es divulgativo, sino operativo. Si lo que quieres es acabar programando, este manual de autoayuda pretende llevarte de la mano hacia ese objetivo,  aunque al principio haya que subir alguna cuesta.  Estamos convencidos de que las concesiones iniciales a la vulgarización de las herramientas se acaban pagando.</p>
+<p>Por eso hemos estructurado el curso a la vieja usanza: primero los mimbres. Si los números complejos te suenan a añejos y los vectores te producen ardores, te recomendamos que emplees un tiempo para dominar el noble arte del <em>álgebra lineal</em> y blandirte a mandobles entre los <em>kets</em> y los <em>bras</em>.  Algo que, por otro lado, no es tan difícil: hay más notación que otra cosa y es,  como andar, cuestión de empezar y practicar.
+Tampoco hemos hecho un curso de Mecánica Cuántica por lo que, de ésta, se hará una introducción rigurosa pero escueta y operacional. En general, hemos reducido deliberadamente el texto a su mínima expresión.</p>
+<p>El curso está pensado para pasar a la acción lo antes posible, pero no demasiado <em>antes</em>. La idea es ir a la vez aprendiendo y programando. Antes se decía que uno no ha entiendo algo hasta que no consigue explicárselo a su abuela. Ahora te pediremos que le expliques cosas a tu ordenador. Notarás que es ¡más exigente y rígido que tu abuela! Será necesario que tengas un mínimo nivel de python, pero también podrás aprender viendo las soluciones, aunque no aprenderás tanto.</p>
 <p>Hoy en día, muchas funcionalidades están encapsuladas en funciones de alto nivel que incorpora, pero también esconden, la conexión con las reglas primarias de la Mecánica Cuántica. Deliberadamente hemos querido obligarte a programar a bajo nivel. Por ejemplo el cálculo de valores esperados aquí lo haremos con los dientes ¡con brakets claro! :)</p>
-<p>Las celdas de código no son interactivas. Pero siempre las puedes copiar y pegar. Hay funciones que son soluciones de ejercicios que, para poder invocarlas más tarde las hemos incluido en un código a parte llamado <code class="docutils literal notranslate"><span class="pre">macrotQ.py</span></code>. La primera celda de cada lección llama a este programa para incluir una función con el preambulo tQ.funcion</p>
 <p>El curso aun está y estará durante tiempo en construcción. Por el momento, intentaremos incluir código en dos lenguajes de programación: <a class="reference external" href="https://qibo.science/">Qibo 2.0</a> y Qiskit 1.0. La idea es que, eventualmente puedas correr tus programas en el ordenador de Quantum Spain.</p>
 <p>Nada más. Esperamos que disfrutes. Cualquier cosa, nos escribes. Un saludo</p>
 <p><em>Javier</em> y <em>David</em></p>
-<p><strong>repositorio de github</strong></p>
+</section>
+<section id="instrucciones">
+<h2>Instrucciones<a class="headerlink" href="#instrucciones" title="Permalink to this heading">#</a></h2>
+<p>Las celdas de código no son interactivas. Pero siempre las puedes copiar y pegar. Hay funciones que son soluciones de ejercicios que, para poder invocarlas más tarde las hemos incluido en un código a parte llamado <code class="docutils literal notranslate"><span class="pre">macrotQ.py</span></code>. La primera celda de cada lección llama a este programa para incluir una función con el preambulo tQ.funcion</p>
+<section id="repositorio">
+<h3>Repositorio<a class="headerlink" href="#repositorio" title="Permalink to this heading">#</a></h3>
 <p>A lo largo de toda la web, en la parte superior derecha puedes encontrar enlace al repositorio de Github donde se alojan los notebooks originales (en la carpeta <code class="docutils literal notranslate"><span class="pre">Notebooks</span></code> del repositorio).</p>
 <p>Puedes bajarte el repositorio y ejecutar los notebook, bien usando <a class="reference external" href="https://www.anaconda.com/">Jupyter Notebook/Lab en Anaconda</a>, <a class="reference external" href="https://colab.research.google.com/?hl=es">Google Colab</a>, …</p>
 <p><strong>requirements.txt</strong></p>
@@ -477,325 +501,24 @@ No es un curso de Mecánica Cuántica por lo que, de ésta, se hará una introdu
 <li><p>qiskit-aer==0.13.3</p></li>
 <li><p>qibo==0.2.4</p></li>
 </ul>
-<p>Puedes por ejemplo, crear un environmente de conda e instalar ahí los paquetes necesario usando nuestro <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p>
+<p>Puedes por ejemplo, crear un entorno de conda e instalar ahí los paquetes necesario usando nuestro <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="s2">&quot;TalentQ&quot;</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.10.13</span>
 <span class="n">conda</span> <span class="n">activate</span> <span class="n">TalentQ</span>
 <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="s2">&quot;requirements.txt&quot;</span>
 </pre></div>
 </div>
-<p><strong>La macro: <code class="docutils literal notranslate"><span class="pre">macrotQ.py</span></code></strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
-<span class="kn">import</span> <span class="nn">copy</span> 
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
-
-<span class="c1">##############################################################################################################</span>
-<span class="c1"># Definimos funciones auxiliares para printear</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Para dibujar vectores </span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="k">def</span> <span class="nf">plot_2D_plane</span><span class="p">(</span><span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">up</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">left</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">down</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">fsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)):</span>
-    <span class="n">hpoints</span><span class="p">,</span> <span class="n">vpoints</span> <span class="o">=</span> <span class="p">[],[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">i</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span> <span class="n">hpoints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">down</span><span class="p">,</span><span class="n">up</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">i</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span> <span class="n">vpoints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fsize</span><span class="p">)</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-
-    <span class="c1"># Establece escalas iguales para ambos ejes</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">left</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="n">right</span><span class="o">+</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">down</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">up</span><span class="o">+</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-    <span class="c1"># Elimina los bordes superior e inferior</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="c1"># Establece los bordes inferior e izquierdo como ejes de coordenadas</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;bottom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">(</span><span class="s1">&#39;zero&#39;</span><span class="p">)</span>
-    <span class="c1"># Crea ticks en cada entero para habilitar dibujo de un retículo menor</span>
-    <span class="c1"># Create minor ticks placed at each integer to enable drawing of minor grid</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">hpoints</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">vpoints</span><span class="p">)</span>
-    <span class="c1"># Dibuja retículo</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-    <span class="c1"># Crea etiquetas &#39;x&#39; e &#39;y&#39; al final de cada eje</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=-</span><span class="mi">24</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mf">1.03</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=-</span><span class="mi">21</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="c1"># Dibuja flechas</span>
-    <span class="n">arrow_fmt</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis_transform</span><span class="p">(),</span> <span class="o">**</span><span class="n">arrow_fmt</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yaxis_transform</span><span class="p">(),</span> <span class="o">**</span><span class="n">arrow_fmt</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis_transform</span><span class="p">(),</span> <span class="o">**</span><span class="n">arrow_fmt</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xaxis_transform</span><span class="p">(),</span> <span class="o">**</span><span class="n">arrow_fmt</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">draw_sides</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">side_color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">lwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">side_color</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.001</span><span class="o">*</span><span class="n">lwidth</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">side_color</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.001</span><span class="o">*</span><span class="n">lwidth</span><span class="p">)</span>       
-<span class="k">def</span> <span class="nf">draw_vector</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vname</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">,</span><span class="n">show_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">vcolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">sides</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">side_color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">lwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span><span class="n">angles</span> <span class="o">=</span> <span class="s1">&#39;xy&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">vcolor</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.008</span><span class="o">*</span><span class="n">lwidth</span><span class="p">)</span>
-    <span class="n">dx</span> <span class="o">=</span> <span class="n">x</span>
-    <span class="k">if</span> <span class="n">y</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span> <span class="n">dy</span><span class="o">=</span><span class="n">y</span><span class="o">-</span><span class="mf">0.3</span>
-    <span class="k">else</span><span class="p">:</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.3</span>
-        
-    <span class="k">if</span> <span class="n">show_name</span><span class="p">:</span>
-        <span class="n">vector_name</span><span class="o">=</span><span class="s2">&quot;$&quot;</span><span class="o">+</span><span class="n">vname</span><span class="o">+</span><span class="s2">&quot;=(&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;,&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;)$&quot;</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span><span class="n">dy</span><span class="p">,</span><span class="n">vector_name</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">vcolor</span><span class="p">)</span>
-    
-    <span class="k">if</span> <span class="n">sides</span><span class="p">:</span>
-        <span class="n">draw_sides</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">side_color</span><span class="p">)</span>
-                
-<span class="k">def</span> <span class="nf">plot_complex_number</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">show_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">vcolor</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">sides</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">side_color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span><span class="n">lwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-     <span class="n">x</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">real</span>
-     <span class="n">y</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">imag</span>        
-     <span class="n">plot_2D_plane</span><span class="p">(</span><span class="n">left</span><span class="o">=-</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">up</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">down</span><span class="o">=-</span><span class="nb">int</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">fsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
-     <span class="n">draw_vector</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">vname</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">show_name</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">vcolor</span><span class="o">=</span><span class="n">vcolor</span><span class="p">,</span><span class="n">sides</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">side_color</span><span class="o">=</span><span class="n">side_color</span><span class="p">,</span><span class="n">lwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-   
-<span class="k">def</span> <span class="nf">place_text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">tcolor</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">tcolor</span><span class="p">)</span>
-    
-<span class="k">def</span> <span class="nf">show_plt</span><span class="p">():</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
-<span class="c1">#def draw_axes():</span>
-<span class="c1">#	points = [ [1.2,0], [0,1.2], [-1.2,0], [0,-1.2] ] # dummy points for zooming out</span>
-<span class="c1">#	arrows = [ [1.1,0], [0,1.1], [-1.1,0], [0,-1.1] ] # coordinates for the axes</span>
-<span class="c1">#	for p in points: </span>
-<span class="c1">#		plt.plot(p[0],p[1]+0.1) # drawing dummy points</span>
-<span class="c1">#	for a in arrows: </span>
-<span class="c1">#		plt.arrow(0,0,a[0],a[1],head_width=0.04, head_length=0.08) # drawing the axes</span>
-        
-<span class="k">def</span> <span class="nf">draw_unit_circle</span><span class="p">():</span>
-    <span class="n">unit_circle</span><span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">unit_circle</span><span class="p">)</span>
-	
-
-<span class="s1">&#39; algebraic functions on a Hilbert space&#39;</span>
-<span class="k">def</span> <span class="nf">braket</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">))])</span>
-
-<span class="k">def</span> <span class="nf">ket_bra</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">ket_bra</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)],</span><span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)):</span>
-            <span class="n">ket_bra</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>            
-    <span class="k">return</span> <span class="n">ket_bra</span>
-
-<span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">braket</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>         
-
-<span class="k">def</span> <span class="nf">normalized</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">u</span><span class="o">/</span><span class="n">norm</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
-    
-<span class="k">def</span> <span class="nf">random_ket</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">seed</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-    <span class="n">ket</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">complex</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">)])</span>
-    <span class="n">ket</span> <span class="o">/=</span> <span class="n">norm</span><span class="p">(</span><span class="n">ket</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">ket</span><span class="p">,[</span><span class="n">d</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-    
-<span class="k">def</span> <span class="nf">random_prob_dist</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-    <span class="n">rp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-    <span class="n">rp</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rp</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">rp</span>
-    
-<span class="k">def</span> <span class="nf">vev_sig</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">ket</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ket</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">,</span><span class="n">ket</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">real</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>  <span class="o">==</span> <span class="mf">1.</span> <span class="c1"># chequeamos que la norma es unidad</span>
-    <span class="n">bra</span> <span class="o">=</span> <span class="n">ket</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
-    
-    <span class="s1">&#39;el valor esperado&#39;</span>
-    <span class="n">vev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">ket</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
-   
-    <span class="s1">&#39;la varianza&#39;</span>
-    <span class="n">A2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="p">)</span>
-    <span class="n">var</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">bra</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A2</span><span class="p">,</span><span class="n">ket</span><span class="p">))[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">vev</span><span class="o">**</span><span class="mi">2</span>
-    <span class="n">sig</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">real</span><span class="p">))</span>
-    
-    <span class="k">return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">vev</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-    
-<span class="k">def</span> <span class="nf">basis_change</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">O</span><span class="p">):</span>
-    
-    <span class="k">assert</span> <span class="n">O</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    
-    <span class="k">if</span> <span class="n">O</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">tO</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="nd">@O@C</span>
-    
-    <span class="k">elif</span> <span class="n">O</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">tO</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="nd">@O</span>
-        
-    <span class="k">return</span> <span class="n">tO</span>
-
-
-<span class="c1">##############################################################################################</span>
-<span class="c1"># función que calcula distribución de probabilidades y amplitudes a partir de un diccionario de cuentas</span>
-
-<span class="k">def</span> <span class="nf">get_probs</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span> <span class="c1"># frecuencias_dict es un diccionario con la estadística de resultados</span>
-   
-    <span class="n">prob_dict</span><span class="o">=</span><span class="n">counts</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># vamos a modificar el diccionario &quot;cuentas&quot; con las probabilidades </span>
-    <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    
-    <span class="n">N</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-    <span class="n">probabilidades</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="o">/</span><span class="n">N</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span> <span class="c1"># lista de frecuencias relativas</span>
- 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)):</span>
-        <span class="n">prob_dict</span><span class="p">[</span><span class="n">keys</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">=</span> <span class="n">probabilidades</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    
-    <span class="k">return</span>  <span class="n">prob_dict</span>
-
-
-
-<span class="c1">##############################################################################################</span>
-<span class="c1"># función que calcula el valor esperado de ZZ..Z para un circuito de n cúbits </span>
-
-<span class="k">def</span> <span class="nf">expval_Zn_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
-    <span class="n">probs</span> <span class="o">=</span> <span class="n">get_probs</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-<span class="c1">#    print(probs)</span>
-    
-    <span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">variance</span> <span class="o">=</span> <span class="mi">0</span>
-   
-    <span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span>  <span class="n">prob</span> <span class="ow">in</span> <span class="n">probs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="c1">#        print(bitstring, prob)</span>
-        <span class="n">mean</span> <span class="o">+=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span> <span class="o">*</span> <span class="n">prob</span> 
-
-    <span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span>  <span class="n">prob</span>  <span class="ow">in</span> <span class="n">probs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">variance</span> <span class="o">+=</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">prob</span> 
-    
-    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">),</span><span class="mi">5</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span>
-
-
-<span class="c1">##############################################################################################</span>
-<span class="c1"># funcion que añade una serie de medidores en la base asociada a una cadena de Pauli</span>
-
-<span class="k">def</span> <span class="nf">add_Bell_measurement</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">qubits</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]):</span>
-    <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qubits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">qubits</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-    
-    
-
-<span class="k">def</span> <span class="nf">add_multimeasure_XYZ</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">paulistring</span><span class="p">):</span>
-
-    <span class="k">assert</span><span class="p">(</span><span class="n">qc</span><span class="o">.</span><span class="n">num_qubits</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">paulistring</span><span class="p">))</span>
-
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">basis</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">paulistring</span><span class="p">):</span>
-        <span class="k">if</span>  <span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>    
-            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-            <span class="k">pass</span>    
-        <span class="k">elif</span> <span class="n">basis</span> <span class="o">==</span> <span class="s1">&#39;Y&#39;</span><span class="p">:</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">sdg</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">qc</span> 
-
-    
-<span class="k">def</span> <span class="nf">measure_in_basis</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
-    <span class="n">qc0</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;Z&quot;</span><span class="p">:</span>
-        <span class="n">qc0</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
-        <span class="n">qc0</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">qc0</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> 
-        <span class="n">qc0</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">axis</span> <span class="o">==</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span>
-        <span class="n">qc0</span><span class="o">.</span><span class="n">sdg</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">qc0</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">qc0</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> 
-        <span class="n">qc0</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        <span class="n">qc0</span><span class="o">.</span><span class="n">s</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-        
-    <span class="n">counts</span><span class="o">=</span><span class="n">execute</span><span class="p">(</span><span class="n">qc0</span><span class="p">,</span><span class="n">backend</span><span class="o">=</span><span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">),</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">counts</span>
-
-<span class="c1"># funcion que incorpora un funcion binaria como una puerta partir de una tabla de valores de salida </span>
-<span class="k">def</span> <span class="nf">binary_function</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">):</span> 
- 
-    <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
-    <span class="kn">from</span> <span class="nn">qiskit.circuit.library</span> <span class="kn">import</span> <span class="n">MCXGate</span>
-
-    <span class="c1">#claramente el número de n-bits de entrada tiene que ser tal que 2^n acomode el número de salidas de f</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">))))</span>
-    
-    <span class="c1">#sin embargo los outputs pueden tener longitud arbitraria</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    
-    <span class="c1">#generamos todos los posibles inputs en binario, completando con ceros hasta tener strings de n bits</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)]</span>
-    <span class="c1"># verificamos que hay tantos outputs como posibles inputs </span>
-    <span class="c1"># assert len(inputs) == len(f_outputs)</span>
-
-    <span class="n">qr_input</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">qr_output</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr_input</span><span class="p">,</span> <span class="n">qr_output</span><span class="p">)</span>
-
-    <span class="c1"># Hacemos un bucle sobre los inputs</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">input_str</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">)]):</span>
-        <span class="n">ctrl_state</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">input_str</span><span class="p">[::],</span><span class="mi">2</span><span class="p">)</span>
-
-        <span class="c1"># Para cada input, i, hacemos un bucle sobre cada  cúbit del output     </span>
-        <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">output_bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
-<span class="c1">###</span>
-            <span class="k">if</span> <span class="n">output_bit</span> <span class="o">==</span><span class="s1">&#39;1&#39;</span><span class="p">:</span>
-                <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MCXGate</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_str</span><span class="p">),</span> <span class="n">ctrl_state</span><span class="o">=</span><span class="n">ctrl_state</span><span class="p">),</span><span class="n">qr_input</span><span class="p">[:]</span><span class="o">+</span><span class="p">[</span><span class="n">qr_output</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
-<span class="c1">#  </span>
-<span class="c1">###</span>
-    <span class="k">return</span> <span class="n">qc</span>
-
-<span class="c1"># funcion que saca una imagen del circuito usando qiskit</span>
-<span class="k">def</span> <span class="nf">draw_qibo_circuit_mpl</span><span class="p">(</span><span class="n">qcircuit</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
-    <span class="k">return</span> <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">from_qasm_str</span><span class="p">(</span><span class="n">qcircuit</span><span class="o">.</span><span class="n">to_qasm</span><span class="p">())</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-           
-
-<span class="c1"># funcion genera una transformada de Fourier Cuántica</span>
-<span class="k">def</span> <span class="nf">TFC</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>    
-
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">k</span><span class="p">),</span> <span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">):</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TFC&#39;</span><span class="p">)</span>
-        
-<span class="k">def</span> <span class="nf">TFC_adj</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>    
-
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">)):</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>            
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">j</span><span class="p">)):</span>
-            <span class="n">qc</span><span class="o">.</span><span class="n">cp</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
-        <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TFC_adj&#39;</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">swap_registers</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="p">):</span>
-        <span class="n">circuit</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">qubit</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="n">qubit</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">circuit</span>
+</section>
+<section id="la-macro-macrotq-py">
+<h3>La macro: <code class="docutils literal notranslate"><span class="pre">macrotQ.py</span></code>**<a class="headerlink" href="#la-macro-macrotq-py" title="Permalink to this heading">#</a></h3>
+<p>A lo largo del curso se proponen ejercicios que implican generar funciones que más tarde se utilizarán. Hemos puesto muchas de estas funciones en este paquete que luego se invoca, para una función_concreta, escribiendo tQ.funcion_concreta. Para ello es necesario importarla y la primera celda de cada capítulo es las siguiente</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">run</span> <span class="o">../../</span><span class="n">macro_tQ</span><span class="o">.</span><span class="n">py</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -853,7 +576,25 @@ No es un curso de Mecánica Cuántica por lo que, de ésta, se hará una introdu
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prologo">Prólogo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones">Instrucciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repositorio">Repositorio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-macro-macrotq-py">La macro: <code class="docutils literal notranslate"><span class="pre">macrotQ.py</span></code>**</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

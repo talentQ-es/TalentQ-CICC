@@ -214,14 +214,13 @@ const thebe_selector_output = ".output, .cell_output"
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Información General sobrel el Curso</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Part_00_Intro/Chapter_00_Pr%C3%B3logo_myst.html">Prólogo</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Part_00_Intro/Chapter_00_Pr%C3%B3logo_myst.html">Prólogo e Instrucciones</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Las Reglas del Juego</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="Chapter_01_01_formalismo_matematico_myst.html">No te mates con la Mates</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números  complejos <em>sin complejos</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_01_Numeros_Complejos_myst.html">Números  <em>sin</em> complejos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_02_Vectores_myst.html">Vectores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_03_Operadores_myst.html">Operadores</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Chapter_01_02_Formalismo_matem%C3%A1tico/Section_01_04_Tensores_myst.html">Tensores <em>sin dolores</em></a></li>
@@ -241,6 +240,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.html">Multi-cúbits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.html">El arte de medir II</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.html">Entrelazamiento en acción</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.html">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
 </ul>
 </li>
 </ul>
@@ -487,7 +491,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 14, 2024 | 9 min read</p>
+<div><p>Mar 15, 2024 | 9 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -541,8 +545,8 @@ document.write(`
 <p class="sd-card-text">En un instante, <span class="math notranslate nohighlight">\(t\)</span>, la <i>máxima información accesible</i> de un sistema cuántico <i>aislado</i> está asociada a un vector <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> de norma unidad, perteneciente a un espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span>. Dos vectores que difieran en una fase  representan al mismo estado. Es decir, son físicamente indistinguibles.</p>
 </div>
 </div>
-<p>La palabra <em>estado</em> es engañosa por cuanto parece indicar que el sistema <em>está</em> en alguna estado concreto definido por un valor concreto de sus propiedades, ¡esto no es así!  El vector de estado se conoce también con el nombrede  <em>función de onda</em></p>
-<p>El postulado I lleva una pequeña pero importante puntualización:  dos vectores que difieran en una <em>fase global</em> contienen idéntica información y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos</p>
+<p>La palabra <i>estado</i>  es engañosa por cuanto parece indicar que el sistema <i>está</i>  definido en cada instante por un valor concreto de sus propiedades. ¡Esto no es así!  El vector de estado se conoce también con el nombrede  <em>función de onda</em></p>
+<p>El postulado I lleva una pequeña pero importante puntualización:  dos vectores que difieran en una <em>fase global</em> contienen idéntica información y, por tanto,  representan al mismo estado: ningún experimento permite distinguirlos. Es decir</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{\psi} \sim \ket{\psi'} =  e^{i\varphi}\ket{\psi} \, ,
@@ -550,8 +554,8 @@ document.write(`
 <ul class="simple">
 <li><p><em>Evolución con el tiempo</em></p></li>
 </ul>
-<p>La dinámica de un sistema cuántico  está <em>codificada</em> en un operador hermítico <span class="math notranslate nohighlight">\(H = H^\dagger\)</span> que se denomina <strong>operador Hamiltoniano</strong></p>
-<p>El  Hamiltoniano  <em>gobierna la evolución</em>. Supongamos que el sistema se prepara a <span class="math notranslate nohighlight">\(t=0\)</span> en un cierto estado <span class="math notranslate nohighlight">\(\ket{\psi(0)}\)</span></p>
+<p>La dinámica de un sistema cuántico  está <em>codificada</em> en un operador hermítico <span class="math notranslate nohighlight">\(H = H^\dagger\)</span> que se denomina <strong>operador Hamiltoniano</strong>.
+El  Hamiltoniano  <em>gobierna la evolución</em>. Supongamos que el sistema se prepara a <span class="math notranslate nohighlight">\(t=0\)</span> en un cierto estado <span class="math notranslate nohighlight">\(\ket{\psi(0)}\)</span></p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Postulado  II</b>: </i>Evolución con el tiempo</i></p>
@@ -564,7 +568,7 @@ document.write(`
 \]</div>
 </div>
 </div>
-<p>La ecuación de Schrödinger es una ecuación diferencial ordinaria (una sola variable) para un vector. Dada una condición inicial <span class="math notranslate nohighlight">\(\ket{\psi(t=0)} = \ket{\psi_0}\)</span>, la solución <span class="math notranslate nohighlight">\(\ket{\psi(t)}\)</span> para todo <span class="math notranslate nohighlight">\(t\)</span> es única.</p>
+<p>La ecuación de Schrödinger es una ecuación diferencial ordinaria (una sola variable) para un vector. Para una condición inicial dada <span class="math notranslate nohighlight">\(\ket{\psi(t=0)} = \ket{\psi_0}\)</span>, la solución <span class="math notranslate nohighlight">\(\ket{\psi(t)}\)</span> para todo <span class="math notranslate nohighlight">\(t\)</span> <i>es única</i>.</p>
 <ul class="simple">
 <li><p><em>Medidas</em></p></li>
 </ul>
@@ -577,7 +581,7 @@ document.write(`
 <p class="sd-card-text"><a id='postul_III_medida'></a></p>
 <ul class="simple">
 <li><p class="sd-card-text">A una magnitud física medible le está asociado   un operador hermítico  <span class="math notranslate nohighlight">\( A= A^\dagger\)</span> que denominamos <b>observable</b>.</p></li>
-<li><p class="sd-card-text">Los resultados de una medición solo pueden dar como resultado  uno de los valores propios de <span class="math notranslate nohighlight">\(A \Rightarrow \lambda_n\)</span>.</p></li>
+<li><p class="sd-card-text">Los resultados de una medición solo pueden dar como resultado  uno de los valores propios de <span class="math notranslate nohighlight">\(A \Rightarrow \lambda_k\)</span>.</p></li>
 <li><p class="sd-card-text"><i> Regla de Born</i>: La probabilidad de obtener  el autovalor <span class="math notranslate nohighlight">\(\lambda_k\)</span> como resultado de una cierta medición, viene dada por
 la expresión</p></li>
 </ul>
@@ -694,8 +698,8 @@ P_k = \sum_{a=1}^{d_k} \ket{\lambda^a_k}\bra{\lambda^a_k}
 \]</div>
 <p>es el proyector sobre el subespacio propio.
 Por el <em>valor esperado</em> <span class="math notranslate nohighlight">\(\langle A\rangle\)</span> del <em>observable</em> <span class="math notranslate nohighlight">\(A\)</span> en el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span>, entendemos el <em>valor medio</em> de la variable aleatoria <span class="math notranslate nohighlight">\(\lambda_n\)</span> obtenida por el método descrito.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-11844b93-d3b2-4eac-9e4a-d243d71436d2">
-<span class="eqno">(14)<a class="headerlink" href="#equation-11844b93-d3b2-4eac-9e4a-d243d71436d2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-a6a0bcf7-a376-401e-8458-4287a9a85ab2">
+<span class="eqno">(14)<a class="headerlink" href="#equation-a6a0bcf7-a376-401e-8458-4287a9a85ab2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \langle A\rangle &amp;= &amp;  \sum_k \lambda_k p(\lambda_k)
    =  \sum_k \lambda_k \bra{\psi}P_k\ket{\psi}  
 &amp;=&amp; \bra{\psi}\left(\sum_k \lambda_k P_k  \right) \ket{\psi} 
