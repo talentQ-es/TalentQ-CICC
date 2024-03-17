@@ -499,7 +499,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 15, 2024 | 10 min read</p>
+<div><p>Mar 17, 2024 | 10 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -539,8 +539,9 @@ document.write(`
 </div>
 <section id="producto-tensorial">
 <h2>Producto Tensorial<a class="headerlink" href="#producto-tensorial" title="Permalink to this heading">#</a></h2>
-<p>Un computador clásico es capaz de tratar grandes cantidades de bits a base de acumular dispositivos de un solo bit. Cuánticamente consideraríamos una colección de sistemas que, cada uno, implemente un cúbit.</p>
-<p>La herramienta matemática para describir un sistema compuesto es el <u><em>producto tensorial</em> de espacios de Hilbert</u></p>
+<p>Un computador clásico es capaz de tratar grandes cantidades de bits a base de acumular dispositivos de un solo bit. Para un computador cuántico consideraríamos una colección de sistemas que implemente, cada uno, un cúbit. Necesitamos describir cómo agrupar sistemas cuánticos.</p>
+<p>Supongamos dos sistemas  a los que podemos asociar sendos espacios de Hilbert <span class="math notranslate nohighlight">\(\Hil_1\)</span> y <span class="math notranslate nohighlight">\(\Hil_2\)</span>.
+El sistema cuántico conjunto viene descrito por elementos en el espacio producto tensorial <span class="math notranslate nohighlight">\(\Hil =\Hil_1\otimes \Hil_2\)</span>. Vamos,  a ver cómo se define este espacio vectorial. Empezaremos por sus elementos.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Definición</b>:</p>
@@ -554,8 +555,8 @@ document.write(`
 </div>
 </div>
 <p>con la propiedad <em>bilineal</em>, es decir, <em>distributiva</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-52535bf8-3798-40d8-9609-8ed9d39a0954">
-<span class="eqno">(10)<a class="headerlink" href="#equation-52535bf8-3798-40d8-9609-8ed9d39a0954" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-842e4d24-e27f-4884-8717-ef36b03e91b0">
+<span class="eqno">(10)<a class="headerlink" href="#equation-842e4d24-e27f-4884-8717-ef36b03e91b0" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \big(\ket{u}+\ket{v}\big)\otimes \big(\ket{y}+\ket{z}\big) ~&amp;= &amp;~~
 \ket{u}\otimes\ket{y} ~+~ \ket{u}\otimes\ket{z} ~+~ \ket{v}\otimes\ket{y} ~+~~
  \ket{v}\otimes\ket{z} \\
@@ -568,7 +569,7 @@ document.write(`
 <p class="sd-card-text"><b>Definición</b>:</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">El  <i>espacio producto tensorial</i>  <span class="math notranslate nohighlight">\(\Hil = \Hil_1 \otimes \Hil_2\)</span> está formado por  <u>todas las combinaciones lineales</u> posibles de   <u>pares ordenados</u></p>
+<p class="sd-card-text">El  <i>espacio producto tensorial</i>  <span class="math notranslate nohighlight">\(\Hil = \Hil_1 \otimes \Hil_2\)</span> está formado por  las superposiciones lineales de <b>todas</b> las posibles combinaciones de  pares ordenados</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{w}= a\ket{u}_1\otimes\ket{u}_2 ~+~ b \ket{v}_1\otimes\ket{v}_2 ~+ ~...
@@ -577,9 +578,11 @@ document.write(`
 y <span class="math notranslate nohighlight">\(~a,b,... \in {\mathbb C}\)</span> son coeficientes complejos.</p>
 </div>
 </div>
+<p>Lo que nos dice este teoremas es que al agrupar dos sistemas, los grados de libertad son muchos más que  la suma de grados de libertad de cada subsistema. Aparecen <em>todas las posibles combinaciones</em> de estos, y además sus superposiciones lineales.</p>
 <section id="base-y-dimension">
 <h3>Base y Dimensión<a class="headerlink" href="#base-y-dimension" title="Permalink to this heading">#</a></h3>
-<p>Todo esto está muy bien, pero es muy abstracto. Para poder llegar a resultados concretos necesitamos siempre trabajar en una base. Sucede que, dadas unas bases <span class="math notranslate nohighlight">\(\ket{i_1}\)</span> de <span class="math notranslate nohighlight">\(\Hil_1\)</span> y <span class="math notranslate nohighlight">\(\ket{i_2}\)</span>  de <span class="math notranslate nohighlight">\(\Hil_2\)</span>, automáticamente podemos definir una base en el espacio producto <span class="math notranslate nohighlight">\(\Hil_1\otimes \Hil_2\)</span> que  se obtiene formando todas las posibles parejas</p>
+<p>Todo esto está muy bien, pero es muy abstracto. Para poder llegar a resultados concretos necesitamos siempre <em>trabajar en una base</em>.</p>
+<p>Sucede que, dadas unas bases <span class="math notranslate nohighlight">\(\ket{i_1}\)</span> de <span class="math notranslate nohighlight">\(\Hil_1\)</span> y <span class="math notranslate nohighlight">\(\ket{i_2}\)</span>  de <span class="math notranslate nohighlight">\(\Hil_2\)</span>, automáticamente podemos definir una base en el espacio producto <span class="math notranslate nohighlight">\(\Hil_1\otimes \Hil_2\)</span> que  se obtiene formando todas las posibles parejas</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{i_1 i_2} = \ket{i_1}\otimes \ket{i_2}~~~~~~~~~~~~~~~~~~ 
@@ -595,22 +598,6 @@ Vemos que las <em>etiquetas</em> de los vectores de la base forman un <em>bi-ín
 \ket{\omega} ~= ~ \sum_{i_1=1}^{d_1}\sum_{i_2=1}^{d_2} w_{i_1i_2} \ket{i_1 i_2} 
 ~=~ w_{11}\ket{11} + w_{12}\ket{12} + ... + w_{21}\ket{21} + ...\ldots + w_{d_1 d_2}\ket{d_1 d_2}   
 \]</div>
-<div class="note admonition">
-<p class="admonition-title">Nota</p>
-<p>Lo importante es que cada elemento tenga una <i>etiqueta</i> distinta.
-Podemos etiquetar las componentes (o los elementos de la base) con índices, en lugar de bi-índices
-Para ello basta con definir un mapa  entre dos bi-índices <span class="math notranslate nohighlight">\(i_1,i_2\)</span> y un índice <span class="math notranslate nohighlight">\(a\)</span>
-$<span class="math notranslate nohighlight">\(
-\ket{w} ~= ~ \sum_{i_1=1}^{d_1}\sum_{i_2=1}^{d_2} w_{i_1 i_2} \ket{i_1 i_2} ~=~ \sum_{a=1}^{d_1d_2} w_{a} \ket{a}
-\)</span>$</p>
-<p>donde hemos querido resaltar que las componente y  los vectores son los mismos, etiquetados de forma diferente.
-En el caso genera el mapa es</p>
-<div class="math notranslate nohighlight">
-\[
-i_1 i_2 ~~\to ~~ a = d_2*(i_1-1) + i_2
-\]</div>
-<p>Claramente <span class="math notranslate nohighlight">\(a = 1,...,d_1d_2\)</span> tiene <span class="math notranslate nohighlight">\(d_1d_2\)</span> valores distintos</p>
-</div>
 <div class="tip admonition">
 <p class="admonition-title">Ejemplo</p>
 <p>Supongamos que <span class="math notranslate nohighlight">\(d_1 = 2\)</span> y <span class="math notranslate nohighlight">\(d_2=3\)</span>, entonces</p>
@@ -1025,8 +1012,8 @@ Los <em>elementos de matriz</em> ahora vendrán etiquetados por dos <em>multi-í
  A_{i_1...i_n, \, j_1...j_n} = \bra{i_1...i_n}A\ket{j_1...j_n}  ~~~~~\leftrightarrow ~~~~~~ A_{ab}= \bra{a}A\ket{b}
 \]</div>
 <p>Con la matriz, el operador se reconstruye en la base canónica de productos externos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b66ae982-c75e-4805-929a-b762700c381b">
-<span class="eqno">(11)<a class="headerlink" href="#equation-b66ae982-c75e-4805-929a-b762700c381b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
+<div class="amsmath math notranslate nohighlight" id="equation-62d23209-0213-4c91-ae43-59d441d894e3">
+<span class="eqno">(11)<a class="headerlink" href="#equation-62d23209-0213-4c91-ae43-59d441d894e3" title="Permalink to this equation">#</a></span>\[\begin{eqnarray} 
  A &amp;~~=~&amp; 
  \sum_{i_1,...,i_n,\, j_1,...,j_n=0}^{d-1} A_{i_1...i_n, \, j_1...j_n} \ket{i_1...i_n}\bra{j_1...j_n}
  ~~~~=~~~~
