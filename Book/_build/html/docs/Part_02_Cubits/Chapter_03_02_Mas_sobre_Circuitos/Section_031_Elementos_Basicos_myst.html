@@ -461,14 +461,15 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion-de-una-exponencial">Conjugación de una exponencial</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cubits">2 cúbits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-1-cubit-conjugacion">Circuitos de 1 cúbit: conjugación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-2-cubits">Circuitos de 2 cúbits</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#puertas-universales">Puertas universales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-digital">Computación cuántica digital</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-solovay-kitaev">Teorema de Solovay Kitaev</a></li>
 </ul>
 </li>
 </ul>
@@ -491,7 +492,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 17, 2024 | 10 min read</p>
+<div><p>Mar 17, 2024 | 11 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -502,8 +503,12 @@ document.write(`
 <span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
-<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\mathbb H}} \)</span>
-<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span></p>
+<span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\mathcal H}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\boldn}{{\bf n}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\bn}{{\bf n}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\boldsig}{\boldsymbol{\sigma}} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\bsig}{\boldsymbol{\sigma}} \)</span></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -512,15 +517,24 @@ document.write(`
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">run</span> ../../macro_tQ.py
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../../&#39;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
+<p>Algunos recursos en programación cuántica serán de uso muy frecuente y, por eso, vamos a detenernos en ellos en este capítulo</p>
 <section id="retroceso-de-fase">
 <h2>Retroceso de Fase<a class="headerlink" href="#retroceso-de-fase" title="Permalink to this heading">#</a></h2>
-<p>Hemos estudiado ya el operador controlado <span class="math notranslate nohighlight">\(\cg{U}\)</span>. Es un error frecuente pensar que el cúbit controlador no se modifica.</p>
-<p>Un caso importante ocurre cuando el operador <span class="math notranslate nohighlight">\(U\)</span> actúa sobre uno de sus autoestados
+<p>Hemos estudiado ya el operador controlado <span class="math notranslate nohighlight">\(\cg{U}\)</span>. Es un error frecuente pensar que el cúbit controlador no se modifica. Un caso importante ocurre cuando el operador <span class="math notranslate nohighlight">\(U\)</span> actúa sobre uno de sus autoestados
 (recuerda que los autovalores de  un operador unitario son fases puras)</p>
 <div class="math notranslate nohighlight">
 \[
@@ -532,113 +546,56 @@ U\ket{u} = e^{i\lambda} \ket{u}
 \cg{U}: (a\ket{0} + b\ket{1})\otimes \ket{u} ~\to ~ a\ket{0}\ket{u} + b \ket{1}e^{i\lambda}\ket{u}  = \left( a\ket{0}\ket{u} + be^{i\lambda} \ket{1} \rule{0mm}{4mm} \right)\otimes \ket{u}
 \]</div>
 <p>En resultado final es que la fase <span class="math notranslate nohighlight">\(e^{i\lambda}\)</span> ha <strong>modificado</strong> el estado de entrada, mientras que el segundo cúbit no ha cambiado.</p>
-<p>El punto es que, en el segundo paso, la fase generada por la acción de U <em>no pertenece</em> realmente a ninguno de los dos espacios sino al producto.</p>
-<p>De modo que puede adscribirse al primer espacio, como hemos hecho en el último paso.</p>
-<p>De ahí el nombre de <em>retroceso de fase</em>, en inglés “phase kickback”.</p>
+<p>El punto es que, en el segundo paso, la fase generada por la acción de U <em>no pertenece</em> realmente a ninguno de los dos espacios sino al producto. De modo que puede adscribirse al primer espacio, como hemos hecho en el último paso.
+De ahí el nombre de <em>retroceso de fase</em>, en inglés “phase kickback”.</p>
 <p>El siguiente circuito resume la acción de retroceso de fase</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/phase_kickback.png"><img alt="../../../_images/phase_kickback.png" src="../../../_images/phase_kickback.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/phase_kickback.png"><img alt="../../../_images/phase_kickback.png" src="../../../_images/phase_kickback.png" style="width: 300px;" /></a>
 </figure>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
-<p>Programa un circuito en el que  <span class="math notranslate nohighlight">\(U = P(\phi)\)</span> es el operador de fase y el estado en el primer cúbit es <span class="math notranslate nohighlight">\(\ket{0}\)</span> y en el segundo es <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
+<p>Programa un circuito en el que  <span class="math notranslate nohighlight">\(U = P(\phi)\)</span> sea el operador de fase y el estado en el primer cúbit es <span class="math notranslate nohighlight">\(\ket{0}\)</span> y en el segundo es <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
 <ul class="simple">
-<li><p>Usando el <em>statevector_simulator</em> representa el estado de salida para distintos de valores de <span class="math notranslate nohighlight">\(\phi\in \)</span></p></li>
+<li><p>Usando el <em>statevector_simulator</em> representa el estado de salida para distintos de valores de <span class="math notranslate nohighlight">\(\phi\in [0,2\pi]\)</span></p></li>
 <li><p>¿en qué plano rota el vector del primer cúbit? ¿Cómo podemos cambiar dicho plano de rotación?</p></li>
 </ul>
 </div>
+<p>Un caso muy frecuente ocurre cuando <span class="math notranslate nohighlight">\(U = X\)</span>, es decir <span class="math notranslate nohighlight">\(\cg{U} = \hbox{CNOT}\)</span>. Los autovalores de <span class="math notranslate nohighlight">\(X\)</span> son los que forman la base <span class="math notranslate nohighlight">\(\ket{\pm}\)</span>. En el caso de <span class="math notranslate nohighlight">\(\ket{-}\)</span> tendremos
+que la fase es <span class="math notranslate nohighlight">\(e^{i\pi} = -1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+X \ket{-} = (-1) \ket{-}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\cg{X} \big( \ket{x}\otimes \ket{-}\big) ~=~ \ket{x} X^x\ket{-} =  (-1)^x \ket{x} \otimes \ket{-}
+\]</div>
+<p>El retroceso de fase consigue de esta manera imprimir el valor del cúbit de control en una fase.</p>
 </section>
 <section id="circuitos-equivalentes">
 <h2>Circuitos Equivalentes<a class="headerlink" href="#circuitos-equivalentes" title="Permalink to this heading">#</a></h2>
-<p>Es posible encontrar distintos circuitos que producen acciones idénticas sobre un estado arbitrario. Se denominan <em>circuitos equivalentes</em>.</p>
-<p>Matemáticamente, representan distintas descomposiciones del mismo operador unitario en unitarios</p>
-<section id="conjugacion">
-<h3>Conjugación<a class="headerlink" href="#conjugacion" title="Permalink to this heading">#</a></h3>
-<p>Una caso muy frecuente es la <strong>conjugación</strong> de una puerta <span class="math notranslate nohighlight">\(V\)</span>  por un <strong>unitario</strong> <span class="math notranslate nohighlight">\(U\)</span></p>
+<p>Los circuitos son una representación gráfica de la descomposición de un cierto operador unitarios en un producto de puertas locales y de dos o más cúbits. Esta descomposición no es única, lo cuál permite compilar un circuito de forma que se elija la descomposición más ventajosa. Vamos a ver algunas equivalencias que permiten, en ocasiones reducir la profundidad de un circuito, y en otras, entender mejor el funcionamiento del circuito.</p>
+<section id="circuitos-de-1-cubit-conjugacion">
+<h3>Circuitos de 1 cúbit: conjugación<a class="headerlink" href="#circuitos-de-1-cubit-conjugacion" title="Permalink to this heading">#</a></h3>
+<p>Las puertas de 1 cúbits, <span class="math notranslate nohighlight">\(V\)</span>, representan rotaciones en la esfera de Bloch en torno a algún eje <span class="math notranslate nohighlight">\(\hat\bn\)</span>. La conjugación es un cambio de ejes</p>
 <div class="math notranslate nohighlight">
 \[
-U V   U^\dagger = V'  
+V ' = U V U^{\dagger}
 \]</div>
-<p>El operador conjugado <span class="math notranslate nohighlight">\(V'\)</span> tiene <strong>la misma acción</strong> sobre la base <em>base rotada</em> <span class="math notranslate nohighlight">\(\{\ket{e'} = U\ket{e}\}\)</span>
-que la que tiene <span class="math notranslate nohighlight">\(V\)</span> sobre la original <span class="math notranslate nohighlight">\(\{\ket{e}\}\)</span>.</p>
-<p>Por ello,</p>
-<ul class="simple">
-<li><p>los <em>autovalores</em> de <span class="math notranslate nohighlight">\(V\)</span> y de <span class="math notranslate nohighlight">\(V'\)</span> son los <em>mismos</em> y</p></li>
-<li><p>los <em>autovectores</em> son los <em>rotados</em></p></li>
-</ul>
+<p>donde <span class="math notranslate nohighlight">\(U : \hat\bn \to \hat\bn'\)</span> en la esfera de Bloch.
+Así las puertas <span class="math notranslate nohighlight">\(X,Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span> son rotaciones de
+ángulo <span class="math notranslate nohighlight">\(\pi\)</span> en torno a los ejes <span class="math notranslate nohighlight">\(x,y\)</span> y <span class="math notranslate nohighlight">\(z\)</span> respectivamente.</p>
+<p>Por ejemplo, la puerta <span class="math notranslate nohighlight">\(U=H = U^\dagger\)</span> es una rotación de 180<span class="math notranslate nohighlight">\(^\circ\)</span> en torno al eje diagonal en el plano <span class="math notranslate nohighlight">\(XZ\)</span> que lleva el eje <span class="math notranslate nohighlight">\(z\)</span> al eje <span class="math notranslate nohighlight">\(x\)</span> y viceversa. Por tanto</p>
 <div class="math notranslate nohighlight">
 \[
-\lambda' = \lambda ~~~~~~\hbox{y}~~~~~~  \ket{\lambda}' = U\ket{\lambda}
+H Z H = X ~~~~,~~~~HXH = Z
 \]</div>
-<p>Comprobémoslo</p>
-<div class="math notranslate nohighlight">
-\[
-\fbox{$V \ket{\lambda}= \lambda\ket{\lambda}$} ~~\Rightarrow ~~~V'\ket{\lambda}' = (UVU^\dagger) U\ket{\lambda} = UV\ket{\lambda} =  U(\lambda\ket{\lambda}) = \lambda U\ket{\lambda} = \lambda\ket{\lambda}' ~~\Rightarrow ~~~ \fbox{$ V' \ket{\lambda}' = \lambda\ket{\lambda}'$}
-\]</div>
-<p>Por ejemplo</p>
+<p>Operando se puede verificar fácilmente esta identidad, que
+implica la equivalencia de circuitos siguiente</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/H_conjugation.png"><img alt="../../../_images/H_conjugation.png" src="../../../_images/H_conjugation.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/H_conjugation.png"><img alt="../../../_images/H_conjugation.png" src="../../../_images/H_conjugation.png" style="width: 450px;" /></a>
 </figure>
-<p>y,  equivalentemente, intercambiando <span class="math notranslate nohighlight">\(X \leftrightarrow Z\)</span>.</p>
-<ul class="simple">
-<li><p>Este tipo de equivalencia se sigue de las identidades algebráicas</p></li>
-</ul>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-HXH = Z ~~~~~&amp;&amp;~~ ~~~
-HZH = X \nonumber
-\end{eqnarray*}\]</div>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>que son fáciles de visualizar recordando que  <span class="math notranslate nohighlight">\(H\)</span> es una rotación de 180<span class="math notranslate nohighlight">\(^\circ\)</span> en torno al eje diagonal en el plano <span class="math notranslate nohighlight">\(XZ\)</span></p>
-<ul class="simple">
-<li><p>Análogamente</p></li>
-</ul>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-S X S^\dagger  = Y~~~~~&amp;&amp;~~~ ~~~
-S Y S^\dagger = -X  ~~~~~~~~ S Z S^\dagger = Z\nonumber\\
-\end{eqnarray*}\]</div>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>también  son fáciles de visualizar recordando que <span class="math notranslate nohighlight">\(S=\sqrt{Z}\)</span> es una rotación de <span class="math notranslate nohighlight">\(90^\circ\)</span> en torno al eje <span class="math notranslate nohighlight">\(Z\)</span>.</p>
-</section>
-<section id="conjugacion-de-una-exponencial">
-<h3>Conjugación de una exponencial<a class="headerlink" href="#conjugacion-de-una-exponencial" title="Permalink to this heading">#</a></h3>
-<p>Muchas puertas unitarias son de la forma <span class="math notranslate nohighlight">\(V = e^{\alpha A}\)</span>.</p>
-<p>Por ejemplo, si  <span class="math notranslate nohighlight">\(A = \hat{\bf n}\cdot \boldsymbol{\sigma} \)</span> entonces <span class="math notranslate nohighlight">\(  ~\Rightarrow ~V= R_{\hat{\bf n}}(\theta)\)</span> es el operador que rota un ángulo <span class="math notranslate nohighlight">\(\theta\)</span> en torno al vector <span class="math notranslate nohighlight">\(\hat{\bf n}\)</span> en la esfera de Bloch.</p>
-<div class="math notranslate nohighlight">
-\[
- R_{\hat{\bf n}}(\theta) = e^{-i\frac{\theta}{2}\hat{\bf n}\cdot \boldsymbol{\sigma}}
-\]</div>
-<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Lema</b>:</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">La conjugación de una exponencial se exponencia</p>
-</div>
-</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-U e^{\alpha A} U^\dagger &amp;=&amp;  U \left(1 + \alpha A  + \frac{1}{2} \alpha^2 A^2 + ... \right) U^\dagger \\ \rule{0mm}{8mm}
-&amp;=&amp; 1 + \alpha UAU^\dagger + \frac{1}{2}\alpha^2 UAU^\dagger U AU^\dagger + ... \\ \rule{0mm}{8mm}
-&amp;=&amp; e^{ \alpha UAU^\dagger} 
-\end{eqnarray*}\]</div>
-<p>Para el caso <span class="math notranslate nohighlight">\(A = \hat{\bf n}\cdot \boldsymbol{\sigma} \)</span>  la conjugación es</p>
-<div class="math notranslate nohighlight">
-\[
-U A U^\dagger ~\to ~U (\hat{\bf n}\cdot \boldsymbol{\sigma} ) U^\dagger = (U\hat{\bf n})\cdot  \boldsymbol{\sigma}
-\]</div>
-<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Corolario</b>:</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text"><span class="math notranslate nohighlight">\(~\)</span> <i>la conjugación de una rotación en torno a un eje produce una rotación en torno al eje conjugado</i></p>
-<div class="math notranslate nohighlight">
-\[
-U R_{\hat{\bf n}}(\theta) U^\dagger = R_{U\hat{\bf n}}(\theta)
-\]</div>
-</div>
-</div>
-<p>Por ejemplo:</p>
+<p>Las conjugaciones anteriores se extienden a rotaciones de ángulos arbitrarios. Por ejemplo:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 H R_z(\theta) H &amp;=&amp; e^{-i \theta/2 HZH} =  e^{-i (\theta/2) X} \\ \rule{0mm}{8mm}
@@ -647,23 +604,30 @@ H R_z(\theta) H &amp;=&amp; e^{-i \theta/2 HZH} =  e^{-i (\theta/2) X} \\ \rule{
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/HRzHconjugation.png"><img alt="../../../_images/HRzHconjugation.png" src="../../../_images/HRzHconjugation.png" style="width: 700px;" /></a>
 </figure>
+<p>Análogamente encontramos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+S X S^\dagger  = Y  ~~~~~~~~~~~~~
+S Y S^\dagger = -X  ~~~~~~~~~~~~ S Z S^\dagger = Z\nonumber\\
+\end{split}\]</div>
+<p>también  son fáciles de visualizar recordando que <span class="math notranslate nohighlight">\(S=\sqrt{Z}\)</span> es una rotación de <span class="math notranslate nohighlight">\(90^\circ\)</span> en torno al eje <span class="math notranslate nohighlight">\(Z\)</span>, que lleva el eje <span class="math notranslate nohighlight">\(X\)</span> al eje <span class="math notranslate nohighlight">\(Y\)</span></p>
 </section>
-<section id="cubits">
-<h3>2 cúbits<a class="headerlink" href="#cubits" title="Permalink to this heading">#</a></h3>
+<section id="circuitos-de-2-cubits">
+<h3>Circuitos de 2 cúbits<a class="headerlink" href="#circuitos-de-2-cubits" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>La puerta  controlada <span class="math notranslate nohighlight">\(\cg{Z} =  {\rm diag}(1,1,1,-1)\)</span>   es simétrica ya que lo único que hace, es cambiar de signo al estado <span class="math notranslate nohighlight">\(\ket{11}\)</span>. Es decir</p></li>
+<li><p>La puerta  controlada <span class="math notranslate nohighlight">\(\cg{Z} =  {\rm diag}(1,1,1,-1)\)</span>   es simétrica ya que lo único que hace es cambiar de signo al estado <span class="math notranslate nohighlight">\(\ket{11}\)</span>. Es decir</p></li>
 </ul>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_Z.png"><img alt="../../../_images/Equiv_Z.png" src="../../../_images/Equiv_Z.png" style="width: 300px;" /></a>
 </figure>
 <p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span> En realidad, <span class="math notranslate nohighlight">\(\cg{Z}\)</span> es un caso particular de   <span class="math notranslate nohighlight">\(\cg{P(\phi)} = {\rm diag} (1,1,1, e^{i\phi})\)</span>, para la cual la equivalencia es la misma.</p>
 <ul class="simple">
-<li><p>Otra equivalencia importante es</p></li>
+<li><p>Una equivalencia importante es</p></li>
 </ul>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_HH.png"><img alt="../../../_images/Equiv_HH.png" src="../../../_images/Equiv_HH.png" style="width: 400px;" /></a>
 </figure>
-<p>Para probarla, observemos que las tres puertas del segundo cúbit se pueden componer para dar <span class="math notranslate nohighlight">\(HXH=Z\)</span>. Por el contrario, las dos puertas de Hadamard en el primer cúbit no se pueden multiplicar al haber un control entre ellas.
+<p>Para probar esta identidad  observemos que las tres puertas del segundo cúbit se pueden componer para dar <span class="math notranslate nohighlight">\(HXH=Z\)</span>. Por el contrario, las dos puertas de Hadamard en el primer cúbit no se pueden multiplicar al haber un control entre ellas.
 Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span class="math notranslate nohighlight">\(\cg{Z}\)</span> y, finalmente, conjugar en el primer cúbit <span class="math notranslate nohighlight">\(HZH=X\)</span>.</p>
 <ul class="simple">
 <li><p>Otra  equivalencia nada intuitiva pero muy importante relaciona tres operaciones CNOT con la permutación U<span class="math notranslate nohighlight">\(_{\rm SWAP}\)</span></p></li>
@@ -671,7 +635,8 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_CNOTs.png"><img alt="../../../_images/Equiv_CNOTs.png" src="../../../_images/Equiv_CNOTs.png" style="width: 400px;" /></a>
 </figure>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>No hay una forma sencilla de probar esta identidad, así que lo recomendable es escribir las matrices asociadas a cada miembro y comprobar que son iguales</p>
+<p>No hay una forma sencilla de probar esta identidad, así que lo recomendable es escribir las matrices asociadas a cada miembro y comprobar que son iguales.</p>
+<p>Esta identidad es tan importante que, de hecho es la forma en la que simplementa el operador U<span class="math notranslate nohighlight">\(_{\rm SWAP}\)</span> en un ordenador cuántico.</p>
 <ul class="simple">
 <li><p>La puerta de phase global controlada, <span class="math notranslate nohighlight">\(\cg{K_\phi} = {\rm diag} (1,1,e^{i\phi}, e^{i\phi})\)</span>, secretamente, no es una puerta controlada</p></li>
 </ul>
@@ -681,9 +646,10 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 <p>También podemos comprobar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
-<span class="n">U_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;unitary_simulator&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit_aer</span> <span class="kn">import</span> <span class="n">UnitarySimulator</span>
+
+<span class="n">U_simulator</span> <span class="o">=</span> <span class="n">UnitarySimulator</span>
 
 <span class="n">qc_left</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">qc_right</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -696,22 +662,22 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 <span class="nb">print</span><span class="p">(</span><span class="n">qc_left</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">qc_right</span><span class="p">)</span>
 
-<span class="n">U_left</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_left</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="n">U_simulator</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">()</span>
-<span class="n">U_right</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc_right</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="n">U_simulator</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">()</span>
+<span class="n">U_left</span> <span class="o">=</span> <span class="n">U_simulator</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc_left</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">()</span>
+<span class="n">U_right</span> <span class="o">=</span> <span class="n">U_simulator</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc_right</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">U_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;unitary_simulator&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">qc_left</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">qc_right</span><span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;Aer&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          ┌───┐     
+q_0: ──■──┤ X ├──■──
+     ┌─┴─┐└─┬─┘┌─┴─┐
+q_1: ┤ X ├──■──┤ X ├
+     └───┘     └───┘
+        
+q_0: ─X─
+      │ 
+q_1: ─X─
+        
 </pre></div>
 </div>
 </div>
@@ -719,54 +685,34 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 <p>podemos comprobar que las matrices que representan los circuitos coinciden</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
-<span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_left</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_left = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+<span class="n">display</span><span class="p">(</span><span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_left</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39; U_</span><span class="si">{left}</span><span class="s1"> = &#39;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_right</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39; U_</span><span class="si">{right}</span><span class="s1"> = &#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_left</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_left = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
-</pre></div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}
+ U_{left} = 
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 1 &amp; 0  \\
+ 0 &amp; 1 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 1  \\
+ \end{bmatrix}
+\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}
+ U_{right} = 
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 1 &amp; 0  \\
+ 0 &amp; 1 &amp; 0 &amp; 0  \\
+ 0 &amp; 0 &amp; 0 &amp; 1  \\
+ \end{bmatrix}
+\end{split}\]</div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_right</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_right = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">array_to_latex</span><span class="p">(</span><span class="n">U_right</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">text{U_right = }</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;U_right&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Demuestra las equivalencia de circuitos anteriores de dos formas:</p>
-<ul class="simple">
-<li><p>Sobre el papel,  multiplicando las matrices asociadas</p></li>
-<li><p>En qiskit, componiendo los circuitos y extrayendo el operador unitario asociado</p></li>
-</ul>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Comprueba la equivalencia de los dos circuitos siguientes, siempre que se verifique que <span class="math notranslate nohighlight">\(V^2 = U\)</span></p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/CCUdecomposition.png"><img alt="../../../_images/CCUdecomposition.png" src="../../../_images/CCUdecomposition.png" style="width: 450px;" /></a>
-</figure>
 </div>
 </section>
 </section>
@@ -777,7 +723,11 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 <p class="sd-card-text"><b>Definición</b>:</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Se define un <i>operador de Clifford</i>, <span class="math notranslate nohighlight">\(U\)</span> como aquel que conjuga un operador de Pauli a otro operador de Pauli.</p>
+<p class="sd-card-text">Se define un <i>operador de Clifford</i>, <span class="math notranslate nohighlight">\(C\)</span>, como aquel que conjuga un operador de Pauli <span class="math notranslate nohighlight">\(P\in \{ X,Y,Z\} \)</span> a otro operador de Pauli <span class="math notranslate nohighlight">\(P'\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+C P C^{\dagger} = P'
+\]</div>
 </div>
 </div>
 <p>Los propios operadores de Pauli son operadores de Clifford.  La conjugación correspondiente simplemente refleja el operador de Pauli. Por ejemplo con <span class="math notranslate nohighlight">\(U=Z\)</span></p>
@@ -785,69 +735,85 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 \[
 ZXZ = -X~~~~~~~~~ZYZ = -Y ~~~~~~~~~ZZZ = Z 
 \]</div>
-<p>Pero vemos que también <span class="math notranslate nohighlight">\(H\)</span> y <span class="math notranslate nohighlight">\(S\)</span> son de Clifford.
-Por el contrario <span class="math notranslate nohighlight">\(T\)</span> no es un operador de Clifford.</p>
-<div class="note admonition">
-<p class="admonition-title">Notar</p>
+<ul class="simple">
+<li><p>también <span class="math notranslate nohighlight">\(H\)</span> y <span class="math notranslate nohighlight">\(S\)</span> son de Clifford</p></li>
+<li><p>por el contrario, <span class="math notranslate nohighlight">\(T\)</span> no es un operador de Clifford</p></li>
+</ul>
 <p>La forma más fácil de calcular estas conjugaciones es  recordar el álgebra de operadores de Pauli</p>
 <div class="math notranslate nohighlight">
 \[
 X Y = i Z ~~~~~ Y Z = i X ~~~~~ ZX = iY
 \]</div>
-<p>donde todas involucran a <span class="math notranslate nohighlight">\(X,Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span> en orden cíclico.</p>
-<p>También el hecho de que dos operadores de Pauli distintos anti-conmutan</p>
+<p>donde todas involucran a <span class="math notranslate nohighlight">\(X,Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span> en orden cíclico.
+También el hecho de que dos operadores de Pauli distintos anti-conmutan</p>
 <div class="math notranslate nohighlight">
 \[
 \{X,Y\} = XY + YX = 0
 \]</div>
-<p>e igualmente para <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span></p>
+<p>e igualmente para <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span>. Además, que <span class="math notranslate nohighlight">\(XX = YY = ZZ = I\)</span>.</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<p>si <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> son operadores de Clifford, su producto <span class="math notranslate nohighlight">\(C = AB\)</span> también lo es. Efectivamente</p>
+<div class="math notranslate nohighlight">
+\[
+C P C^\dagger = AB P B^\dagger A^\dagger = A P' A^\dagger = P''
+\]</div>
 </div>
-<p>Esta definición se extiende a puertas multi-cúbits. Un operador de Clifford será aquel que conjuga una cadena de Pauli para dar otra cadena de Pauli. Por ejemplo</p>
+<p>La clase de Clifford se extiende a puertas  multi-cúbits. Un <em>operador de Clifford</em> será aquel que conjuga una cadena de Pauli para dar otra cadena de Pauli. Por ejemplo</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-(XXH) \, (YZX) \,  (XXH)^\dagger &amp;=&amp; XXH \otimes YZX \otimes XXH \\ \rule{0mm}{10mm}
-&amp;=&amp; XYX \otimes  XZX \otimes HXH \\ \rule{0mm}{10mm}
-&amp;=&amp; (-Y)\otimes (-Z) \otimes Z \\ \rule{0mm}{10mm} &amp;=&amp; YZZ
+(SXH) \, (YZX) \,  (S XH)^\dagger &amp;=&amp; (S\otimes X\otimes H) \cdot Y\otimes Z\otimes X \cdot (S^\dagger \otimes X\otimes H) \\ \rule{0mm}{10mm} 
+&amp;=&amp; SYS^\dagger \otimes  XZX \otimes HXH \\ \rule{0mm}{10mm}
+&amp;=&amp; (-Z)\otimes (-Z) \otimes Z \\ \rule{0mm}{10mm} &amp;=&amp; ZZZ
 \end{eqnarray*}\]</div>
 <p>También podemos conjugar operadores obtenidos por exponenciación</p>
 <div class="math notranslate nohighlight">
 \[
-(XXH) \, e^{aYZX} \,  (XXH)^\dagger =e^{a XXH \otimes XZX \otimes XXH} =  e^{a YZZ}
+(SXH) \, e^{aYZX} \,  (SXH)^\dagger =e^{a SXH \cdot XZX \cdot S^\dagger XH} =  e^{a ZZZ}
 \]</div>
-<p>Para 2 cúbits la <em>clase de Clifford</em> admite puertas controladas.</p>
+<p>Para 2 cúbits la <em>clase de Clifford</em> admite puertas controladas. La conjugación siguiente</p>
 <div class="math notranslate nohighlight">
 \[
 \cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
 \]</div>
-<p>que copia el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit</p>
-<p>Esta identidad se puede demostrar gráficamente</p>
+<p>copia el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit. Podemos  demostrar gráficamente esta identidad</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 800px;" /></a>
 </figure>
+</section>
 <section id="computacion-cuantica-universal">
-<h3>Computación Cuántica Universal<a class="headerlink" href="#computacion-cuantica-universal" title="Permalink to this heading">#</a></h3>
-<p>El objetivo de un <em>computador cuántico universal</em> es el de ser capaz de implementar el operador unitario más general</p>
+<h2>Computación Cuántica Universal<a class="headerlink" href="#computacion-cuantica-universal" title="Permalink to this heading">#</a></h2>
+<section id="teorema-de-descomposicion">
+<h3>Teorema de descomposición<a class="headerlink" href="#teorema-de-descomposicion" title="Permalink to this heading">#</a></h3>
+<p>En el paradigma de computador cuántico de Deutsch, el objetivo es ser capaz de implementar el operador unitario más general</p>
 <div class="math notranslate nohighlight">
 \[
 U  = \sum_x \ket{f(x)}\bra{x}
 \]</div>
-<p>donde <span class="math notranslate nohighlight">\(f: x \to f(x)\)</span> es una función arbitraria invertible.</p>
+<p>donde <span class="math notranslate nohighlight">\(f: x \to f(x)\)</span> es una función arbitraria invertible. El reto tecnológico es que sólamente seamos capaces de implementar puertas simples de uno y dos cúbits. El siguiente teorema es un primer paso en esa dirección.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>: </i>Barenco et. al. 1995):</i></p>
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">Cualquier operador unitario <span class="math notranslate nohighlight">\(U_n\)</span> sobre <span class="math notranslate nohighlight">\(n\)</span> cúbits puede expresarse como el producto de</p>
-<ul class="simple">
-<li><p class="sd-card-text">puertas continuas de <i>un cubit</i></p></li>
-<li><p class="sd-card-text">puertas CNOT.</p></li>
-</ul>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(~~~\)</span>-  rotaciones arbitrarias  de <i>un cubit</i></p>
+<p class="sd-card-text"><span class="math notranslate nohighlight">\(~~~\)</span>-  puertas CNOT.</p>
 </div>
 </div>
+<p>Un ejemplo de este teorema ya lo hemos visto en la descomposición de la puerta <span class="math notranslate nohighlight">\(U_{SWAP}\)</span> como producto de tres <span class="math notranslate nohighlight">\(\hbox{CNOT}\)</span>.</p>
+<p>Otro caso lo observamos en  la siguiente  equivalencia de circuitos para la puerta controlada <span class="math notranslate nohighlight">\(U = \cg{P_\phi}\)</span></p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_Phase.png"><img alt="../../../_images/Equiv_Phase.png" src="../../../_images/Equiv_Phase.png" style="width: 600px;" /></a>
 </figure>
-<p><strong>Prueba</strong>: consta de varios pasos</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Comprueba la equivalencia de los dos circuitos siguientes, siempre que se verifique que <span class="math notranslate nohighlight">\(V^2 = U\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/CCUdecomposition.png"><img alt="../../../_images/CCUdecomposition.png" src="../../../_images/CCUdecomposition.png" style="width: 450px;" /></a>
+</figure>
+</div>
+<p>No vamos a probar rigurosamente el teorema anterior, pero sí señalar los pasos más importantes, que son 4:</p>
 <ol class="arabic simple">
 <li><p>cualquier operador <span class="math notranslate nohighlight">\(U_n\)</span> sobre <span class="math notranslate nohighlight">\(n\)</span> cúbits se puede descomponer como <em>producto de operadores</em> <span class="math notranslate nohighlight">\(\cg{^kU}\)</span> controlados por <span class="math notranslate nohighlight">\(k\)</span> cúbits</p></li>
 </ol>
@@ -898,41 +864,35 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 \end{split}\]</div>
 <p class="sd-card-text"><i> Nota: </i>: <span class="math notranslate nohighlight">\(U\in U(2)\)</span>  es un operador unitario y  su determinante es una fase <span class="math notranslate nohighlight">\(\det U = e^{i\delta}\)</span>.     Por su parte <span class="math notranslate nohighlight">\(\det(AXBXC) = 1\)</span>, y por tanto es un elemento de <span class="math notranslate nohighlight">\(SU(2)\)</span>.  Por esta razón es necesario añadir la fase <span class="math notranslate nohighlight">\(e^{i\delta}\)</span> para obtener un operador unitario general.</p>
 </div>
-</details><section id="puertas-universales">
-<h4>Puertas universales<a class="headerlink" href="#puertas-universales" title="Permalink to this heading">#</a></h4>
+</details></section>
+<section id="computacion-cuantica-digital">
+<h3>Computación cuántica digital<a class="headerlink" href="#computacion-cuantica-digital" title="Permalink to this heading">#</a></h3>
+<p>La descomposición del teorema de Barenco es  una identidad exacta que permite descomponer un conjunto infinito y continuo de operadores <span class="math notranslate nohighlight">\(U_n\)</span> en puertas CNOT y puertas <em>continuas</em> <span class="math notranslate nohighlight">\(U\)</span>. Hasta este punto, estaríamos hablando de un tipo de computación <em>analógica</em> puesto que las puertas de 1 cúbit han de ser rotaciones de ángulos reales arbitrarios.</p>
+<p>Sin embargo hay dos aspectos que aconsejan usar, en lugar de puertas contínuas, un <em>conjunto discreto de puertas</em></p>
 <ul class="simple">
-<li><p>La descomposición del teorema de Barenco es  una identidad exacta capaz de descomponer un conjunto infinito y continuo de operadores <span class="math notranslate nohighlight">\(U_n\)</span> en puertas CNOT y puertas <em>continuas</em> <span class="math notranslate nohighlight">\(U\)</span></p></li>
+<li><p>El control de la precisión. Sin dichas puertas no tienen error, entonces el error está en la truncación de los registros, igual que ocurre en computación clásica digital</p></li>
+<li><p>La computación cuántica <em>resistentes a errores (“fault tolerant”)</em> demanda la discretización del proceso de computación. En el fondo consiste en detectar un <em>mal funcionamiento</em> de una puerta discreta <span class="math notranslate nohighlight">\(X, Y\)</span> ó <span class="math notranslate nohighlight">\(Z\)</span> y coregirlo antes de que se propague.</p></li>
 </ul>
-<ul class="simple">
-<li><p>La computación cuántica <em>resistentes a errores (“fault tolerant”)</em> demanda la <strong>discretización</strong> del proceso de computación.</p></li>
-</ul>
-<ul class="simple">
-<li><p>Existe un <em>conjunto discreto de puertas universales</em> susceptibles de ser programadas de manera resistente a errores</p></li>
-</ul>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Puede ser diferente dependiendo de la plataforma utilizada.</p>
-<ul class="simple">
-<li><p>En circuitos superconductores</p></li>
-</ul>
-<div class="amsmath math notranslate nohighlight" id="equation-2a497073-97b8-4d4a-903f-a52e5be65836">
-<span class="eqno">(17)<a class="headerlink" href="#equation-2a497073-97b8-4d4a-903f-a52e5be65836" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<p>Dependiendo de la plataforma utilizada para construir un ordenador cuántico, existen uno o varios <em>conjuntos discretos de puertas universales</em> nativas susceptibles de ser programadas de manera resistente a errores</p>
+<p>Es importante relacionar las puertas universales con <em>puertas nativas</em>. Por ejemplo,
+en circuitos superconductores tenemos varias opciones</p>
+<div class="amsmath math notranslate nohighlight" id="equation-947e6e7b-aec4-4427-9cbe-1b81e6518637">
+<span class="eqno">(17)<a class="headerlink" href="#equation-947e6e7b-aec4-4427-9cbe-1b81e6518637" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \hbox{Shor basis}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
 \end{eqnarray}\]</div>
-<ul class="simple">
-<li><p>Es importante relacionar las puertas universales con <em>puertas nativas</em></p></li>
-</ul>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>Por ejemplo, en ordenadores de iones atrapados hay las siguientes <a class="reference external" href="https://ionq.com/docs/getting-started-with-native-gates#introducing-the-native-gates">puertas nativas</a></p>
+<p>En ordenadores de iones atrapados hay las siguientes <a class="reference external" href="https://ionq.com/docs/getting-started-with-native-gates#introducing-the-native-gates">puertas nativas</a></p>
 <div class="math notranslate nohighlight">
 \[
 \{ \hbox{GPi},\hbox{Virtual}Z, \hbox{MS}\} 
 \]</div>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>donde
+<p>donde
 $<span class="math notranslate nohighlight">\(
 \hbox{GPi} = \begin{bmatrix} 0 &amp; e^{-i\phi} \\e^{i\phi} &amp; 0 \end{bmatrix}~~~,~~~
 \hbox{Virtual}Z = \begin{bmatrix} e^{-i\phi} &amp; 0 \\ 0 &amp; e^{i\phi} \end{bmatrix} ~~,~~~~
 \)</span>$</p>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span> y la puerta de Mølmer-Sørensen</p>
+<p>y la puerta de Mølmer-Sørensen</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 MS(\phi_1,\phi_2) = \frac{1}{\sqrt{2}}
@@ -941,6 +901,11 @@ MS(\phi_1,\phi_2) = \frac{1}{\sqrt{2}}
 -ie^{i(\phi_1+\phi_2)} &amp; 0 &amp; 0 &amp; 1 
 \end{bmatrix}
 \end{split}\]</div>
+<section id="teorema-de-solovay-kitaev">
+<h4>Teorema de Solovay Kitaev<a class="headerlink" href="#teorema-de-solovay-kitaev" title="Permalink to this heading">#</a></h4>
+<p>Ya sabemos que un ordenador cuántico consigue una ganancia en memoria de trabajo exponencial de forma nativa: <span class="math notranslate nohighlight">\(n~ \hbox{cúbits} \to 2^n ~\hbox{registros}\)</span>.
+Podría pasar que esta ganancia exponencial se viese compensada por un crecimiento exponencial en la profundidad del circuito. Entonces nos encontraríamos de nuevo con una barrera infranqueable para atacar problemas complejos.</p>
+<p>El siguiente teorema pone las cosas en orden. Afirma que, por lo que respecta a la precisión de cálculo, la profundidad del circuito crece de forma logaritmica</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>: </i>Solovay Kitaev et. al. 1995</i></p>
@@ -950,7 +915,7 @@ MS(\phi_1,\phi_2) = \frac{1}{\sqrt{2}}
 <span class="math notranslate nohighlight">\(R\)</span> en el siguiente sentido de proximidad</p>
 <div class="math notranslate nohighlight">
 \[
-\hbox{max}_{\ket{\psi}} || (U - R)\ket{\psi} ||&lt;\epsilon
+\hbox{max}_{\ket{\psi}\in \Hil} \, \| (U - R)\ket{\psi} \|&lt;\epsilon
 \]</div>
 <p class="sd-card-text">donde la secuencia aproximante <span class="math notranslate nohighlight">\(R\)</span> involucra   <span class="math notranslate nohighlight">\(\leq {\cal O}(\log^2(1/\epsilon))\)</span> puertas de un conjunto discreto universal,</p>
 </div>
@@ -995,16 +960,11 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">transpile</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">QuantumRegister</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;Aer&#39; from &#39;qiskit&#39; (/Users/javier/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/__init__.py)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
 </pre></div>
 </div>
+<img alt="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" src="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1017,14 +977,10 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tamaño=&#39;</span><span class="p">,</span><span class="n">qc</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;qc&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tamaño= 6
+puertas no locales= 2
+anchura= 3
+profundidad= 4
 </pre></div>
 </div>
 </div>
@@ -1037,15 +993,7 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">qc_dec</span><span class="o">=</span><span class="n">qc</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;qc&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" src="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1058,14 +1006,10 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;complejidad=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;qc_dec&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complejidad= 8
+puertas no locales= 4
+anchura= 3
+profundidad= 6
 </pre></div>
 </div>
 </div>
@@ -1244,14 +1188,15 @@ A parte de la mencionada <b> P <span class="math notranslate nohighlight">\(\sub
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion-de-una-exponencial">Conjugación de una exponencial</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cubits">2 cúbits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-1-cubit-conjugacion">Circuitos de 1 cúbit: conjugación</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-2-cubits">Circuitos de 2 cúbits</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#puertas-universales">Puertas universales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-digital">Computación cuántica digital</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-solovay-kitaev">Teorema de Solovay Kitaev</a></li>
 </ul>
 </li>
 </ul>
