@@ -488,7 +488,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 17, 2024 | 4 min read</p>
+<div><p>Mar 21, 2024 | 4 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -588,16 +588,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">qiskit.quantum_info</span> <span class="kn">import</span> <span class="n">Statevector</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">qiskit_aer</span> <span class="kn">import</span> <span class="n">AerSimulator</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="s1">&#39;definimos un estado de entrada en H^3$&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">psi</span> <span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit_aer&#39;
+<div class="output text_latex math notranslate nohighlight">
+\[\frac{1}{4} |000\rangle- \frac{1}{2} |001\rangle- \frac{1}{2} |010\rangle+\frac{1}{4} |011\rangle+\frac{1}{4} |100\rangle+\frac{1}{2} |110\rangle- \frac{1}{4} |111\rangle\]</div>
+<img alt="../../../_images/68432c072b53509bc8ae2313abcfa9e414371b4d44186d109e0a473bc5b939d2.png" src="../../../_images/68432c072b53509bc8ae2313abcfa9e414371b4d44186d109e0a473bc5b939d2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cuentas= {&#39;000&#39;: 6203, &#39;010&#39;: 25152, &#39;100&#39;: 6185, &#39;001&#39;: 25040, &#39;110&#39;: 24887, &#39;011&#39;: 6233, &#39;111&#39;: 6300}
+</pre></div>
+</div>
+<img alt="../../../_images/065fc2703f23b96afb9278ac1ab2672cc2bc1c425c4508954d86b6c23db79f26.png" src="../../../_images/065fc2703f23b96afb9278ac1ab2672cc2bc1c425c4508954d86b6c23db79f26.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Probabilidades= {&#39;000&#39;: 0.06203, &#39;010&#39;: 0.25152, &#39;100&#39;: 0.06185, &#39;001&#39;: 0.2504, &#39;110&#39;: 0.24887, &#39;011&#39;: 0.06233, &#39;111&#39;: 0.063}
 </pre></div>
 </div>
 </div>
@@ -794,7 +792,7 @@ YIZ =
  0 &amp; 0 &amp; 0 &amp; - i &amp; 0 &amp; 0 &amp; 0 &amp; 0  \\
  \end{bmatrix}
 \end{split}\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a_203 =  (0.023427498612554942+0.0872531957588958j)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a_203 =  (-0.07653240381330405+0.09233241116592042j)
 </pre></div>
 </div>
 </div>
@@ -851,16 +849,9 @@ YIZ =
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="s1">&#39;aprovechamos el diccionatio &quot;probs_psi&quot; creado al principio de este capítulo&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">mean</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span><span class="n">probs</span>  <span class="ow">in</span> <span class="n">probs_psi</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">mean</span> <span class="o">+=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">bit</span><span class="p">)</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">bitstring</span><span class="p">]))</span> <span class="o">*</span> <span class="n">probs</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&lt;ZZZ&gt;_shots =&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;probs_psi&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ZZZ&gt;_shots = -0.25354
+&lt;ZZZ&gt;_analitico = -0.25
+sigma =  0.9673249032253848
 </pre></div>
 </div>
 </div>
@@ -898,16 +889,9 @@ YIZ =
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="s1">&#39; ahora generamos el circuito que mide en la base ZXY&#39;</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">qc</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span> <span class="n">qr</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">add_multimeasure_XYZ</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="s1">&#39;ZXY&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;psi&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;110&#39;: 3169, &#39;001&#39;: 3136, &#39;100&#39;: 15799, &#39;101&#39;: 15558, &#39;000&#39;: 3150, &#39;010&#39;: 28133, &#39;111&#39;: 3124, &#39;011&#39;: 27931}
+&lt;ZXY&gt; = -0.00384
+&lt;ZXY&gt;_analitico = 0j
 </pre></div>
 </div>
 </div>
@@ -1008,18 +992,7 @@ p_{0}-p_{1} = \frac{n_{0}}{N} - \frac{n_{1}}{N} = \langle X\rangle_{ancilla}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="s1">&#39;creamos el circuito con el operador controlado&#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">qc_Had</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qra</span><span class="p">,</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">qc_Had</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">psi</span><span class="p">,</span><span class="n">qr</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">qc_Had</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qra</span><span class="p">)</span>  
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">qc_Had</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CZZZ_gate</span><span class="p">,</span><span class="n">qra</span><span class="p">[:]</span> <span class="o">+</span> <span class="n">qr</span><span class="p">[:])</span>
-
-<span class="ne">NameError</span>: name &#39;psi&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../../_images/c883802e67fd25cc94d61b3617b7ffa85eeadbaf580ee22e2764a6a4fe406f07.png" src="../../../_images/c883802e67fd25cc94d61b3617b7ffa85eeadbaf580ee22e2764a6a4fe406f07.png" />
 </div>
 </div>
 <p>Ejecutamos y obtenemos el valor esperado</p>

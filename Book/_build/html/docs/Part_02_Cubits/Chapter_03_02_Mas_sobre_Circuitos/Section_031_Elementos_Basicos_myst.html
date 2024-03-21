@@ -462,9 +462,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-1-cubit-conjugacion">Circuitos de 1 cúbit: conjugación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-2-cubits">Circuitos de 2 cúbits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
@@ -475,11 +476,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-calidad-en-circuitos">Medidas de calidad en circuitos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-computacional">Complejidad computacional</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-clasica">Complejidad clásica:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-cuantica">Complejidad cuántica:</a></li>
-</ul>
-</li>
 </ul>
             </nav>
         </div>
@@ -492,7 +488,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 17, 2024 | 11 min read</p>
+<div><p>Mar 21, 2024 | 10 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -612,37 +608,49 @@ S Y S^\dagger = -X  ~~~~~~~~~~~~ S Z S^\dagger = Z\nonumber\\
 \end{split}\]</div>
 <p>también  son fáciles de visualizar recordando que <span class="math notranslate nohighlight">\(S=\sqrt{Z}\)</span> es una rotación de <span class="math notranslate nohighlight">\(90^\circ\)</span> en torno al eje <span class="math notranslate nohighlight">\(Z\)</span>, que lleva el eje <span class="math notranslate nohighlight">\(X\)</span> al eje <span class="math notranslate nohighlight">\(Y\)</span></p>
 </section>
-<section id="circuitos-de-2-cubits">
-<h3>Circuitos de 2 cúbits<a class="headerlink" href="#circuitos-de-2-cubits" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>La puerta  controlada <span class="math notranslate nohighlight">\(\cg{Z} =  {\rm diag}(1,1,1,-1)\)</span>   es simétrica ya que lo único que hace es cambiar de signo al estado <span class="math notranslate nohighlight">\(\ket{11}\)</span>. Es decir</p></li>
-</ul>
+<section id="circuitos-con-controles">
+<h3>Circuitos con controles<a class="headerlink" href="#circuitos-con-controles" title="Permalink to this heading">#</a></h3>
+<p>La puerta  controlada <span class="math notranslate nohighlight">\(\cg{Z} =  {\rm diag}(1,1,1,-1)\)</span>   es simétrica ya que lo único que hace es cambiar de signo al estado <span class="math notranslate nohighlight">\(\ket{11}\)</span>. Es decir</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_Z.png"><img alt="../../../_images/Equiv_Z.png" src="../../../_images/Equiv_Z.png" style="width: 300px;" /></a>
 </figure>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span> En realidad, <span class="math notranslate nohighlight">\(\cg{Z}\)</span> es un caso particular de   <span class="math notranslate nohighlight">\(\cg{P(\phi)} = {\rm diag} (1,1,1, e^{i\phi})\)</span>, para la cual la equivalencia es la misma.</p>
-<ul class="simple">
-<li><p>Una equivalencia importante es</p></li>
-</ul>
+<p>En realidad, <span class="math notranslate nohighlight">\(\cg{Z}\)</span> es un caso particular de   <span class="math notranslate nohighlight">\(\cg{P(\phi)} = {\rm diag} (1,1,1, e^{i\phi})\)</span>, para la cual la equivalencia es la misma.</p>
+<p>Una equivalencia importante es</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_HH.png"><img alt="../../../_images/Equiv_HH.png" src="../../../_images/Equiv_HH.png" style="width: 400px;" /></a>
 </figure>
 <p>Para probar esta identidad  observemos que las tres puertas del segundo cúbit se pueden componer para dar <span class="math notranslate nohighlight">\(HXH=Z\)</span>. Por el contrario, las dos puertas de Hadamard en el primer cúbit no se pueden multiplicar al haber un control entre ellas.
 Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span class="math notranslate nohighlight">\(\cg{Z}\)</span> y, finalmente, conjugar en el primer cúbit <span class="math notranslate nohighlight">\(HZH=X\)</span>.</p>
-<ul class="simple">
-<li><p>Otra  equivalencia nada intuitiva pero muy importante relaciona tres operaciones CNOT con la permutación U<span class="math notranslate nohighlight">\(_{\rm SWAP}\)</span></p></li>
-</ul>
+<p>Otra  equivalencia nada intuitiva pero muy importante relaciona tres operaciones CNOT con la permutación U<span class="math notranslate nohighlight">\(_{\rm SWAP}\)</span></p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_CNOTs.png"><img alt="../../../_images/Equiv_CNOTs.png" src="../../../_images/Equiv_CNOTs.png" style="width: 400px;" /></a>
 </figure>
 <p>No hay una forma sencilla de probar esta identidad, así que lo recomendable es escribir las matrices asociadas a cada miembro y comprobar que son iguales.</p>
 <p>Esta identidad es tan importante que, de hecho es la forma en la que simplementa el operador U<span class="math notranslate nohighlight">\(_{\rm SWAP}\)</span> en un ordenador cuántico.</p>
-<ul class="simple">
-<li><p>La puerta de phase global controlada, <span class="math notranslate nohighlight">\(\cg{K_\phi} = {\rm diag} (1,1,e^{i\phi}, e^{i\phi})\)</span>, secretamente, no es una puerta controlada</p></li>
-</ul>
+<p>La puerta de phase global controlada, <span class="math notranslate nohighlight">\(\cg{K_\phi} = {\rm diag} (1,1,e^{i\phi}, e^{i\phi})\)</span>, secretamente, no es una puerta controlada</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_Kphase.png"><img alt="../../../_images/Equiv_Kphase.png" src="../../../_images/Equiv_Kphase.png" style="width: 330px;" /></a>
 </figure>
+<p>La conjugación mediante puertas controladas conduce a operadores factorizados</p>
+<div class="math notranslate nohighlight">
+\[
+\cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
+\]</div>
+<p>copia el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit. Podemos  demostrar gráficamente esta identidad</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 800px;" /></a>
+</figure>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>demuestra las siguientes identidades entre circuitos</p>
+<p>\begin{array}{lcl}
+\cg{X}(Y\otimes I)\cg{X} = Y\otimes X ~~~~~ &amp;&amp;   \cg{X}(Z\otimes I)\cg{X} = Z\otimes I  \
+\cg{X}(I\otimes X)\cg{X} = I\otimes X ~~~~~ &amp;&amp;   \cg{X}(I\otimes Y)\cg{X} = Z\otimes Y  \
+\cg{X}(I\otimes Z)\cg{X} = Z\otimes Z ~~~~~ &amp;&amp; \
+(R_z(\theta)\otimes I ) \cg{X} = \cg{X} (R_z(\theta)\otimes I ) &amp;&amp;
+(R_x(\theta)\otimes I ) \cg{X} = \cg{X} (R_x(\theta)\otimes I )
+\end{array}</p>
+</div>
 <p>También podemos comprobar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -716,14 +724,36 @@ q_1: ─X─
 </div>
 </section>
 </section>
+<section id="medidas-y-controles">
+<h2>Medidas y controles<a class="headerlink" href="#medidas-y-controles" title="Permalink to this heading">#</a></h2>
+<p>En muchas instancias el resultado de una medida se utiliza para efectuar una operación condicionada sobre un cierto cúbit. Es el caso de la teleportación o la codificación superdensa.</p>
+<p>En estos casos hay una equivalencia de circuitos que responde al siguiente principio</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>: </i>Principio de la medida diferida</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Las medidas pueden siempre moverse de un lugar intermedio en un circuito, al final del mismo. Si los resultados de las medidas se usan para operaciones controladas clásicamente, estas pueden remplazarse por operadores condicionados cuánticamente</p>
+</div>
+</div>
+<p>La siguiente imagen ilustra la equivalencia de circuitos a que se refiere el teorema anterior.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/deferred_meas.png"><img alt="../../../_images/deferred_meas.png" src="../../../_images/deferred_meas.png" style="width: 500px;" /></a>
+</figure>
+<p>La tercera figura es sólo notación en la que directamente un aparato de medida controla un operador.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>demuestra la equivalencia de los circuitos anteriores.</p>
+</div>
+</section>
 <section id="operadores-de-clifford">
 <h2>Operadores de Clifford<a class="headerlink" href="#operadores-de-clifford" title="Permalink to this heading">#</a></h2>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Definición</b>:</p>
+<p class="sd-card-text"><b>Definición</b>: </i>Operador de Clifford</i></p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Se define un <i>operador de Clifford</i>, <span class="math notranslate nohighlight">\(C\)</span>, como aquel que conjuga un operador de Pauli <span class="math notranslate nohighlight">\(P\in \{ X,Y,Z\} \)</span> a otro operador de Pauli <span class="math notranslate nohighlight">\(P'\)</span></p>
+<p class="sd-card-text">Se define un operador de Clifford, <span class="math notranslate nohighlight">\(C\)</span>, como aquel que conjuga un operador de Pauli <span class="math notranslate nohighlight">\(P\in \{ X,Y,Z\} \)</span> a otro operador de Pauli <span class="math notranslate nohighlight">\(P'\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 C P C^{\dagger} = P'
@@ -751,14 +781,6 @@ También el hecho de que dos operadores de Pauli distintos anti-conmutan</p>
 \{X,Y\} = XY + YX = 0
 \]</div>
 <p>e igualmente para <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span>. Además, que <span class="math notranslate nohighlight">\(XX = YY = ZZ = I\)</span>.</p>
-<div class="note admonition">
-<p class="admonition-title">Notar</p>
-<p>si <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> son operadores de Clifford, su producto <span class="math notranslate nohighlight">\(C = AB\)</span> también lo es. Efectivamente</p>
-<div class="math notranslate nohighlight">
-\[
-C P C^\dagger = AB P B^\dagger A^\dagger = A P' A^\dagger = P''
-\]</div>
-</div>
 <p>La clase de Clifford se extiende a puertas  multi-cúbits. Un <em>operador de Clifford</em> será aquel que conjuga una cadena de Pauli para dar otra cadena de Pauli. Por ejemplo</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
@@ -771,15 +793,19 @@ C P C^\dagger = AB P B^\dagger A^\dagger = A P' A^\dagger = P''
 \[
 (SXH) \, e^{aYZX} \,  (SXH)^\dagger =e^{a SXH \cdot XZX \cdot S^\dagger XH} =  e^{a ZZZ}
 \]</div>
-<p>Para 2 cúbits la <em>clase de Clifford</em> admite puertas controladas. La conjugación siguiente</p>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<ul class="simple">
+<li><p>si <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> son operadores de Clifford, su producto <span class="math notranslate nohighlight">\(C = AB\)</span> también lo es. Efectivamente</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
-\cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
+C P C^\dagger = AB P B^\dagger A^\dagger = A P' A^\dagger = P''
 \]</div>
-<p>copia el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit. Podemos  demostrar gráficamente esta identidad</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 800px;" /></a>
-</figure>
+<ul class="simple">
+<li><p>La relevancia de la clase de Clifford es que los circuitos cuánticos compuestos de puertas de este conjunto son simulables eficientemente en un computador clásico.</p></li>
+</ul>
+</div>
 </section>
 <section id="computacion-cuantica-universal">
 <h2>Computación Cuántica Universal<a class="headerlink" href="#computacion-cuantica-universal" title="Permalink to this heading">#</a></h2>
@@ -816,8 +842,6 @@ U  = \sum_x \ket{f(x)}\bra{x}
 <p>No vamos a probar rigurosamente el teorema anterior, pero sí señalar los pasos más importantes, que son 4:</p>
 <ol class="arabic simple">
 <li><p>cualquier operador <span class="math notranslate nohighlight">\(U_n\)</span> sobre <span class="math notranslate nohighlight">\(n\)</span> cúbits se puede descomponer como <em>producto de operadores</em> <span class="math notranslate nohighlight">\(\cg{^kU}\)</span> controlados por <span class="math notranslate nohighlight">\(k\)</span> cúbits</p></li>
-</ol>
-<ol class="arabic simple" start="2">
 <li><p>los operadores <span class="math notranslate nohighlight">\(\hbox{C}^kU\)</span> se pueden descomponer como productos de un  operador <span class="math notranslate nohighlight">\(\cg{U}\)</span> y puertas de Toffoli CCNOT</p></li>
 </ol>
 <p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>En general para <span class="math notranslate nohighlight">\(\cg{^kU}\)</span> necesitamos <span class="math notranslate nohighlight">\(k-1\)</span> ancillas</p>
@@ -868,16 +892,16 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 <section id="computacion-cuantica-digital">
 <h3>Computación cuántica digital<a class="headerlink" href="#computacion-cuantica-digital" title="Permalink to this heading">#</a></h3>
 <p>La descomposición del teorema de Barenco es  una identidad exacta que permite descomponer un conjunto infinito y continuo de operadores <span class="math notranslate nohighlight">\(U_n\)</span> en puertas CNOT y puertas <em>continuas</em> <span class="math notranslate nohighlight">\(U\)</span>. Hasta este punto, estaríamos hablando de un tipo de computación <em>analógica</em> puesto que las puertas de 1 cúbit han de ser rotaciones de ángulos reales arbitrarios.</p>
-<p>Sin embargo hay dos aspectos que aconsejan usar, en lugar de puertas contínuas, un <em>conjunto discreto de puertas</em></p>
-<ul class="simple">
-<li><p>El control de la precisión. Sin dichas puertas no tienen error, entonces el error está en la truncación de los registros, igual que ocurre en computación clásica digital</p></li>
+<p>Sin embargo hay dos aspectos que aconsejan usar, en lugar de puertas continuas, un <em>conjunto discreto de puertas</em></p>
+<ol class="arabic simple">
+<li><p>El control de la precisión. Si dichas puertas no tuviesen error, entonces el error estaría en la truncación de los registros, igual que ocurre en computación clásica digital</p></li>
 <li><p>La computación cuántica <em>resistentes a errores (“fault tolerant”)</em> demanda la discretización del proceso de computación. En el fondo consiste en detectar un <em>mal funcionamiento</em> de una puerta discreta <span class="math notranslate nohighlight">\(X, Y\)</span> ó <span class="math notranslate nohighlight">\(Z\)</span> y coregirlo antes de que se propague.</p></li>
-</ul>
+</ol>
 <p>Dependiendo de la plataforma utilizada para construir un ordenador cuántico, existen uno o varios <em>conjuntos discretos de puertas universales</em> nativas susceptibles de ser programadas de manera resistente a errores</p>
 <p>Es importante relacionar las puertas universales con <em>puertas nativas</em>. Por ejemplo,
 en circuitos superconductores tenemos varias opciones</p>
-<div class="amsmath math notranslate nohighlight" id="equation-947e6e7b-aec4-4427-9cbe-1b81e6518637">
-<span class="eqno">(17)<a class="headerlink" href="#equation-947e6e7b-aec4-4427-9cbe-1b81e6518637" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b66a6fd1-8f8b-4ab4-8c4a-6f2d81e9f2fc">
+<span class="eqno">(17)<a class="headerlink" href="#equation-b66a6fd1-8f8b-4ab4-8c4a-6f2d81e9f2fc" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \hbox{Shor basis}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
@@ -926,19 +950,86 @@ Podría pasar que esta ganancia exponencial se viese compensada por un crecimien
 </section>
 <section id="medidas-de-calidad-en-circuitos">
 <h2>Medidas de calidad en circuitos<a class="headerlink" href="#medidas-de-calidad-en-circuitos" title="Permalink to this heading">#</a></h2>
+<p>A la hora de comparar algoritmos es deseable poder caracterizar los circuitos que intervienen.
+Consideremos el siguiente circuito.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">s</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/eda8f2760ff7757c2f17ce3a44648150a5606e9d3e1eecad54bed38bda1454d0.png" src="../../../_images/eda8f2760ff7757c2f17ce3a44648150a5606e9d3e1eecad54bed38bda1454d0.png" />
+</div>
+</div>
 <p>Alguna medidas cuantitativas  permiten comparar la calidad de distintos circuitos que efectúan la misma tarea.</p>
 <ul class="simple">
-<li><p><strong>anchura</strong>= es el número total de cúbits  que necesita.</p></li>
+<li><p><strong>anchura</strong> <em>(width)</em>: es el número total de registros cuánticos y clásicos  que necesita.</p></li>
 </ul>
 <p>El uso de ancillas incrementa la anchura de un circuito, y por tanto, reduce su calidad en comparación con otro circuito que tenga menor anchura.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">width</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>anchura= 7
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
-<li><p><strong>coste</strong>= el número de puertas presentes en el mismo.</p></li>
+<li><p><strong>tamaño =  coste</strong> <em>(size)</em>: el número de puertas  y aparatos de medida presentes en el mismo.</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tamaño=&#39;</span><span class="p">,</span><span class="n">qc</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tamaño= 14
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
-<li><p><strong>complejidad</strong>= es una medida estandarizada asociada al número de <em>puertas elementales</em> en las que puede descomponerse un circuito.</p></li>
+<li><p><strong>complejidad</strong>= es una medida de la <em>produndidad real</em> asociada al número de <em>puertas elementales</em> en las que se descompone un circuito.</p></li>
 </ul>
 <p>Es un número a reducir. Sin embargo no es una medida inambigua ya que depende de la librería utilizada. Por ejemplo, si ésta es la NCT, entonces el coste del <a class="reference internal" href="#Toffolidecomposition"><span class="xref myst">circuito</span></a> es 1. Sin embargo, si la librería es la tomada por <span class="math notranslate nohighlight">\( \{ H, S, T, \hbox{CNOT}\} \)</span>
 entonces el coste sube hasta 7. Por ello, a la hora de comparar circuitos es importante definirlos en la misma base.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_dec</span><span class="o">=</span><span class="n">qc</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;complejidad=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+<span class="n">qc_dec</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complejidad= 16
+</pre></div>
+</div>
+<img alt="../../../_images/13e66e14fb231a8eb8862c229aa4db02bf8bef558957fa09c06b9e3419434f76.png" src="../../../_images/13e66e14fb231a8eb8862c229aa4db02bf8bef558957fa09c06b9e3419434f76.png" />
+</div>
+</div>
 <ul class="simple">
 <li><p><strong>profundidad</strong>= para evaluar la <em>profundidad</em>  es necesario agrupar todas las puertas  que se puedan realizar en paralelo en cortes temporales de duración <span class="math notranslate nohighlight">\(\Delta\)</span> (pulso).</p></li>
 </ul>
@@ -946,8 +1037,36 @@ entonces el coste sube hasta 7. Por ello, a la hora de comparar circuitos es imp
 Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span class="xref myst">circuito que descompone <span class="math notranslate nohighlight">\(U\)</span></span></a>   tiene un coste igual a 6, pero una profundidad igual a 5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">transpile</span><span class="p">,</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">QuantumRegister</span>
-<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;profundidad=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">depth</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profundidad= 5
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><strong>factores unitarios</strong>= un circuito es un operador unitario que puede estar formado por <span class="math notranslate nohighlight">\(r\)</span> factores <span class="math notranslate nohighlight">\(U = U_1 U_2...U_r\)</span>. En el circuito cada factor se corresponde con un grupo de cúbits que están desconectados de los demás. Esto sólo afecta a las puertas lógicas, no a los aparatos de medida, que siempre son locales.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;factores unitarios =&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_unitary_factors</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>factores unitarios = 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>No es evidente este resultado a priori, pero si permutamos los cúbits 2 y 3 el circuito muestra claramente esta factorización</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
 
 <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -955,170 +1074,22 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">s</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">t</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
-  self._style, def_font_ratio = load_style(self._style)
-</pre></div>
-</div>
-<img alt="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" src="../../../_images/f132ba8abbb3e4d6d36b08daf2d15562924bb2faecdcece4cfa7790cb478fc02.png" />
+<img alt="../../../_images/204de48870f051a2781f32471d19e1a8ffdebdc94c06e33c5088fa4b4473586a.png" src="../../../_images/204de48870f051a2781f32471d19e1a8ffdebdc94c06e33c5088fa4b4473586a.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tamaño=&#39;</span><span class="p">,</span><span class="n">qc</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;profundidad=&#39;</span><span class="p">,</span> <span class="n">qc</span><span class="o">.</span><span class="n">depth</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tamaño= 6
-puertas no locales= 2
-anchura= 3
-profundidad= 4
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc_dec</span><span class="o">=</span><span class="n">qc</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
-<span class="n">qc_dec</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" src="../../../_images/a0b493616566862f5aab7f8163178b2b719de5aaf652b52dd845a5a6da121e4c.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;complejidad=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;puertas no locales=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_nonlocal_gates</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;anchura=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;profundidad=&#39;</span><span class="p">,</span> <span class="n">qc_dec</span><span class="o">.</span><span class="n">depth</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complejidad= 8
-puertas no locales= 4
-anchura= 3
-profundidad= 6
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from qiskit import IBMQ</span>
-<span class="c1">#IBMQ.load_account()</span>
-<span class="c1">#provider = IBMQ.get_provider(hub=&#39;ibm-q&#39;)</span>
-<span class="c1">#provider.backends()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#backend = provider.get_backend(&quot;ibmq_lima&quot;)</span>
-<span class="c1">#backend.configuration().basis_gates</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###qc_trans = transpile(qc_dec)</span>
-<span class="c1">#qc_trans = transpile(qc,backend)</span>
-<span class="c1">#qc_trans.draw(&#39;mpl&#39;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(&#39;complejidad=&#39;, qc_trans.size())</span>
-<span class="c1">#print(&#39;puertas no locales=&#39;, qc_trans.num_nonlocal_gates())</span>
-<span class="c1">#print(&#39;anchura=&#39;, qc_trans.num_qubits)</span>
-<span class="c1">#print(&#39;profundidad=&#39;, qc_trans.depth())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<ol class="arabic simple">
-<li><p>Programa y ejecuta un circuito de 16 cúbits que prepare el estado <span class="math notranslate nohighlight">\(\ket{00\ldots 0} \to \frac{1}{\sqrt{2}}\left(\ket{00\ldots 0} + \ket{11\ldots 1}\right) \)</span></p></li>
-<li><p>Modifica la posición de los controladores hasta reducir la profundidad a 5.</p></li>
-</ol>
-</div>
-</section>
-<section id="complejidad-computacional">
-<h2>Complejidad computacional<a class="headerlink" href="#complejidad-computacional" title="Permalink to this heading">#</a></h2>
-<p>Un algoritmo es una descomposición de una función en composición de un conjunto de <em>funciones primitivas</em></p>
-<p>A la hora de comparar estrategias de computación es necesario  analizar el coste relativo de diferentes algoritmos. Esta es la labor de teoría de la complejidad computacional.</p>
-<p>Como regla general, cada <em>modelo computacional</em> reducirá un problema complejo a una serie de pasos elementales (<em>operaciones primitivas</em>), a los que les asignaremos un coste computacional 1.</p>
-<p>La teoría de la <em>complejidad computacional</em> agrupa problemas por clases en las que el uso de recursos computacionales (tiempo o espacio) crece de forma similar.</p>
-<section id="complejidad-clasica">
-<h3>Complejidad clásica:<a class="headerlink" href="#complejidad-clasica" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>P</strong> ( <em>Polinómica</em>):  decimos que un problema pertenece a esta clase si puede ser resuelto en un tiempo (<span class="math notranslate nohighlight">\(t \sim \)</span>número de pasos) polinómico en el tamaño <span class="math notranslate nohighlight">\(n\)</span> del dato de entrada <span class="math notranslate nohighlight">\(t\sim \exists k \Rightarrow  {\cal O}(n^k)\, \)</span>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>BPP</strong> (“<em>Bounded probabilistic polynomial</em>”): problemas que se pueden resolver mediante una máquina de Turing probabilística en tiempo polinómico y con una probabilidad de error <span class="math notranslate nohighlight">\(\leq 1/3\)</span> para cualquier dato de entrada.</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>NP</strong> (“<em>No determinista Polinómica</em>”): clase de problemas que pueden ser  <em>verificados</em> en tiempo polinómico,
-pero carecen de un algoritmo para ser resueltos en tiempo polinómico.</p></li>
-</ul>
-<p>Es evidente que <strong>P</strong><span class="math notranslate nohighlight">\(\subseteq\)</span> <strong>NP</strong>. No es evidente, aunque sí conjeturado, que <strong>P</strong><span class="math notranslate nohighlight">\(\neq\)</span> <strong>NP</strong>, siendo este un problema central en matemáticas.</p>
-<ul class="simple">
-<li><p><strong>NPC</strong> (<em>NP-Completa</em>): es un subconjunto de <strong>NPC</strong><span class="math notranslate nohighlight">\(\subset\)</span><strong>NP</strong> que contiene a los problemas más difíciles en esta clase.</p></li>
-</ul>
-<p>Un problema es <strong>NPC</strong> si cualquier  problema en <strong>NP</strong> puede aplicarse al mismo  mediante un algoritmo de coste polinómico.</p>
-<p>La importancia de esta subclase es que la resolución eficiente de uno solo de sus elementos implica lo mismo para toda la clase, o lo que es igual implicaría que <strong>NP</strong> = <strong>P</strong>.</p>
-<p>Ejemplos de esta clase son  el <em>problema del viajante</em> y  el de la <em>satisfabilidad booleana</em>.</p>
-<ul class="simple">
-<li><p><strong>PSPACE</strong>. Clase de problemas con necesidades de <em>memoria</em> exponencial en el tamaño del problema.</p></li>
-</ul>
-<div class="tip admonition">
-<p class="admonition-title">Ejemplos</p>
-<ul class="simple">
-<li><p>ejemplos de la clase <b>NP</b>: la <i>factorización entera</i>, o la evaluación de  <i>logaritmos discretos</i>,…</p></li>
-<li><p>ejemplos de la clase <b>NPC</b> son el <i>problema del viajante</i>, la <i>coloración de grafos</i>,</p></li>
-</ul>
-</div>
-</section>
-<section id="complejidad-cuantica">
-<h3>Complejidad cuántica:<a class="headerlink" href="#complejidad-cuantica" title="Permalink to this heading">#</a></h3>
-<p>Decimos que un circuito es <em>eficiente</em> (<em>no-eficiente</em>) si su <em>coste</em> escala de forma <em>polinómica</em> (<em>exponencial</em>)  con la anchura del circuito.</p>
-<p>La descomposición de un operador unitario genérico <span class="math notranslate nohighlight">\(U(n)\)</span> no será eficiente, puesto que viene especificado por un número exponencial <span class="math notranslate nohighlight">\(\sim 2^n\times 2^n\)</span> de parámetros.</p>
-<p>Al igual que en computación clásica existen clases de complejidad cuánticas asociadas a familias de problemas que escalan de la misma manera.</p>
-<ul class="simple">
-<li><p><strong>BQP</strong> (<em>Bounded Quantum Polynomial</em>): clase de problemas para los que existe un algoritmos cuántico de coste polinómico y con una probabilidad de error <span class="math notranslate nohighlight">\(\leq 3\)</span>. Es el análogo cuántico de la clase <strong>BPP</strong>.</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>quantum NP</strong>: clase de problemas que admiten un circuito polinómico en el número de cúbits que <em>verifica</em>  una eventual solución con probabilidad 1 si es correcta, y <em>rechaza</em> cualquier resultado que no sea solución con la misma probabilidad.</p></li>
-</ul>
-<ul class="simple">
-<li><p><strong>QMA</strong> (<em>Quantum Merlin-Arthur</em>): admitiendo una probabilidad de error <span class="math notranslate nohighlight">\(\leq 1/3\)</span> en la clase <strong>quantum NP</strong> obtenemos el análogo cuántico de la clase <strong>NP</strong>.  Existe una clase <strong>QMA</strong>-completa que contiene los problemas más duros en esta categoría. ´</p></li>
-</ul>
-<div class="tip admonition">
-<p class="admonition-title">Ejemplos</p>
-<p>El ejemplo más famoso de problema  <b>QMA</b>-completo es determinar si la energía <span class="math notranslate nohighlight">\(E_0\)</span> del estado fundamental de un Hamiltoniano <span class="math notranslate nohighlight">\(k-\)</span>local es <span class="math notranslate nohighlight">\(E_0\leq a\)</span> o bien <span class="math notranslate nohighlight">\(E_0\geq a + 1/poly(n)\)</span>.</p>
-</div>
-<div class="note admonition">
-<p class="admonition-title">Notar</p>
-<p>La teoría de la complejidad computacional intenta establecer relaciones de inclusión entre estas clases.
-A parte de la mencionada <b> P <span class="math notranslate nohighlight">\(\subseteq\)</span> NP </b> se  puede probar que</p>
-</div>
-</section>
 </section>
 </section>
 
@@ -1189,9 +1160,10 @@ A parte de la mencionada <b> P <span class="math notranslate nohighlight">\(\sub
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-1-cubit-conjugacion">Circuitos de 1 cúbit: conjugación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-2-cubits">Circuitos de 2 cúbits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operadores-de-clifford">Operadores de Clifford</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
@@ -1202,11 +1174,6 @@ A parte de la mencionada <b> P <span class="math notranslate nohighlight">\(\sub
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-calidad-en-circuitos">Medidas de calidad en circuitos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-computacional">Complejidad computacional</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-clasica">Complejidad clásica:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complejidad-cuantica">Complejidad cuántica:</a></li>
-</ul>
-</li>
 </ul>
   </nav></div>
 
