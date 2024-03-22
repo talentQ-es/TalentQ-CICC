@@ -466,17 +466,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-clifford">Circuitos de Clifford</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-cubit">Un cúbit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-cubits">Multi-cúbits</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-digital">Computación cuántica digital</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-solovay-kitaev">Teorema de Solovay Kitaev</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-clifford">Circuitos de Clifford</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-calidad-en-circuitos">Medidas de calidad en circuitos</a></li>
@@ -634,29 +630,6 @@ Es sencillo comprobar que el resultado de los dos circuitos siguientes es el mis
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/control_conj_XY.png"><img alt="../../../_images/control_conj_XY.png" src="../../../_images/control_conj_XY.png" style="width: 700px;" /></a>
 </figure>
-<p>Las puertas controladas son más difíciles de implementar  físicamente que las elementales. En ocasiones, la conjugacion por dos puertas controladas conduce a un operador factorizado</p>
-<div class="math notranslate nohighlight">
-\[
-\cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
-\]</div>
-<p>Vemos que esta conjugación <em>copia</em> el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit. Podemos  demostrar gráficamente esta identidad</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 700px;" /></a>
-</figure>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>demuestra las siguientes identidades entre circuitos</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}   
-\begin{array}{lcl}
-\cg{X}(Y\otimes I)\cg{X} = Y\otimes X ~~~~~ &amp;&amp;   \cg{X}(Z\otimes I)\cg{X} = Z\otimes I  \\
-\cg{X}(I\otimes X)\cg{X} = I\otimes X ~~~~~ &amp;&amp;   \cg{X}(I\otimes Y)\cg{X} = Z\otimes Y  \\
-\cg{X}(I\otimes Z)\cg{X} = Z\otimes Z ~~~~~ &amp;&amp; \\
-(R_z(\theta)\otimes I ) \cg{X} = \cg{X} (R_z(\theta)\otimes I ) &amp;&amp; 
-(R_x(\theta)\otimes I ) \cg{X} = \cg{X} (R_x(\theta)\otimes I )
-\end{array}    
-\end{split}\]</div>
-</div>
 <p>Podemos verificar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,91 +725,6 @@ q_1: ─X─
 <p>demuestra la equivalencia de los circuitos anteriores.</p>
 </div>
 </section>
-<section id="circuitos-de-clifford">
-<h2>Circuitos de Clifford<a class="headerlink" href="#circuitos-de-clifford" title="Permalink to this heading">#</a></h2>
-<section id="un-cubit">
-<h3>Un cúbit<a class="headerlink" href="#un-cubit" title="Permalink to this heading">#</a></h3>
-<p>Los operadores de Pauli <span class="math notranslate nohighlight">\(P = \{X,Y,Z\}\)</span>  forman un conjunto especial de operadores a los que asociamos bases ortogonales <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1}\}\)</span>, <span class="math notranslate nohighlight">\(\{\ket{+},\ket{-}\}\)</span> y <span class="math notranslate nohighlight">\(\{\ket{+i},\ket{-i}\}\)</span> respectivamente.</p>
-<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Definición</b>: </i>Operador de Clifford</i></p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Se define un operador de Clifford de un cúbit, <span class="math notranslate nohighlight">\(C \)</span>, como aquel que conjuga un operador  de Pauli <span class="math notranslate nohighlight">\(P \)</span> a otro operador de Pauli <span class="math notranslate nohighlight">\(P'\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-C P C^{\dagger} = P'
-\]</div>
-</div>
-</div>
-<p>Ya hemos visto algunos ejemplos de conjugaciones de este tipo en una sección de equivalencia de circuitos.</p>
-<ul class="simple">
-<li><p>Los propios operadores de Pauli son operadores de Clifford.  La conjugación correspondiente simplemente refleja el operador de Pauli. Por ejemplo, con <span class="math notranslate nohighlight">\(C=Z\)</span></p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-ZXZ = -X~~~~~~~~~ZYZ = -Y ~~~~~~~~~ZZZ = Z 
-\]</div>
-<ul class="simple">
-<li><p>también <span class="math notranslate nohighlight">\(H\)</span> y <span class="math notranslate nohighlight">\(S\)</span> son de Clifford</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-H Z H = X~~~~~,~~~~~H X H = Z ~~~~~,~~~~~ S X S^\dagger =  Y ~~~~~~ , ~~~~~ S Y S^\dagger =  -X~~...
-\]</div>
-<p>Muy importante: si <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> son operadores de Clifford, su producto <span class="math notranslate nohighlight">\(C = AB\)</span> también lo es. Efectivamente</p>
-<div class="math notranslate nohighlight">
-\[
-C P C^\dagger = AB P B^\dagger A^\dagger = A P' A^\dagger = P''
-\]</div>
-<p>Este hecho implica que podemos generar todos los operadores de Clifford por composición de un cierto conjunto basico que se suele tomar como</p>
-<div class="math notranslate nohighlight">
-\[
-C = \{ S,H\}
-\]</div>
-<p>Componiendo <span class="math notranslate nohighlight">\(S\)</span> y <span class="math notranslate nohighlight">\(H\)</span> se puede llevar cualquiera de los tres ejes <span class="math notranslate nohighlight">\(x,y\)</span> y <span class="math notranslate nohighlight">\(z\)</span> uno al otro. Por tanto, realizar todas las conjugaciones posibles de operadores de Pauli entre sí. Por ejemplo
-$<span class="math notranslate nohighlight">\(
-Z Z = S^2~~~~,~~~~X = H Z H = H S^2 H ~~~~,~~~~~  Y = SXS^\dagger  = SHS^2 HS^\dagger 
-\)</span>$</p>
-</section>
-<section id="multi-cubits">
-<h3>Multi-cúbits<a class="headerlink" href="#multi-cubits" title="Permalink to this heading">#</a></h3>
-<p>La clase de Clifford se extiende a puertas  multi-cúbits. Para ello es necesario generalizar los operadores de Pauli, a <em>cadenas</em> de Pauli <span class="math notranslate nohighlight">\(P_n\)</span>, generadas por el producto tensorial de <span class="math notranslate nohighlight">\(n\)</span> elementos <span class="math notranslate nohighlight">\(I,X,Y,Z\)</span>. Por ejemplo <span class="math notranslate nohighlight">\(P_3 = YZX\in \Lin(\Hil^{\otimes 3})\)</span> será una cadena de Pauli</p>
-<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Definición</b>: </i>Operador de Clifford</i></p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Se define un operador de Clifford <span class="math notranslate nohighlight">\(C\in \Lin(\Hil^{\otimes n}) \)</span>, como aquel que conjuga una cadena  de Pauli <span class="math notranslate nohighlight">\(P_n \)</span> para dar otra cadena  de Pauli <span class="math notranslate nohighlight">\(P'_n\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-C P_n C^{\dagger} = P'_n
-\]</div>
-</div>
-</div>
-<p>Por ejemplo</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-(SXH) \, (YZX) \,  (S XH)^\dagger &amp;=&amp; (S\otimes X\otimes H) \cdot Y\otimes Z\otimes X \cdot (S^\dagger \otimes X\otimes H) \\ \rule{0mm}{10mm} 
-&amp;=&amp; SYS^\dagger \otimes  XZX \otimes HXH \\ \rule{0mm}{10mm}
-&amp;=&amp; (-Z)\otimes (-Z) \otimes Z \\ \rule{0mm}{10mm} &amp;=&amp; ZZZ
-\end{eqnarray*}\]</div>
-<p>Estaríamos tentados a pensar que podemos generar todos los operadores de la clase de Pauli mediante productos tensoriales de la base <span class="math notranslate nohighlight">\(C_n = \{S,H\}^{\otimes n}\)</span>.</p>
-<p>Sin embargo esto no es así debido a que esto solo generaría operadores factorizables. La respuesta la hemos visto en una sección anterior: la conjugación mediante una puerta <span class="math notranslate nohighlight">\(\cg{X}\)</span> también es de Clifford. En resumen, podemos tomar como
-generadores de la puertas multi-cúbit de Clifford, al siguiente conjunto básico</p>
-<div class="math notranslate nohighlight">
-\[
-C_n = \{ S, H, \cg{X} \}
-\]</div>
-<p>mediante composición y producto tensorial entre sí y con la identidad <span class="math notranslate nohighlight">\(I\)</span>.</p>
-<div class="note admonition">
-<p class="admonition-title">Notar</p>
-<ul class="simple">
-<li><p>La relevancia de la clase de Clifford es que los circuitos cuánticos compuestos de puertas de este conjunto son simulables eficientemente en un computador clásico.</p></li>
-</ul>
-</div>
-</section>
-</section>
 <section id="computacion-cuantica-universal">
 <h2>Computación Cuántica Universal<a class="headerlink" href="#computacion-cuantica-universal" title="Permalink to this heading">#</a></h2>
 <section id="teorema-de-descomposicion">
@@ -930,9 +818,9 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 <p>Dependiendo de la plataforma utilizada para construir un ordenador cuántico, existen uno o varios <em>conjuntos discretos de puertas universales</em> nativas susceptibles de ser programadas de manera resistente a errores</p>
 <p>Es importante relacionar las puertas universales con <em>puertas nativas</em>. Por ejemplo,
 en circuitos superconductores tenemos varias opciones</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd61e824-b450-4b7c-9e5e-e9bd8e8946af">
-<span class="eqno">(17)<a class="headerlink" href="#equation-dd61e824-b450-4b7c-9e5e-e9bd8e8946af" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
-\hbox{Shor basis}~~
+<div class="amsmath math notranslate nohighlight" id="equation-ec42b38c-68c1-408d-8502-937b57a7b305">
+<span class="eqno">(17)<a class="headerlink" href="#equation-ec42b38c-68c1-408d-8502-937b57a7b305" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\hbox{base de Shor}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
 \end{eqnarray}\]</div>
@@ -976,6 +864,92 @@ Podría pasar que esta ganancia exponencial se viese compensada por un crecimien
 </div>
 <p>Referencia: M.A. Nielsen y L.I. Chuang <em>Quantum Computation and Quantum Information</em>, pág. 197.</p>
 </section>
+</section>
+<section id="circuitos-de-clifford">
+<h3>Circuitos de Clifford<a class="headerlink" href="#circuitos-de-clifford" title="Permalink to this heading">#</a></h3>
+<p>Observemos la base de Shor <span class="math notranslate nohighlight">\(\{H,T,\cg{X}\}\)</span>. Recordemos que <span class="math notranslate nohighlight">\(T^2 = S\)</span> es una rotación de <span class="math notranslate nohighlight">\(\pi/4\)</span> en torno al eje <span class="math notranslate nohighlight">\(Z\)</span>. ¿Qué pasaría si consideramos  la base <span class="math notranslate nohighlight">\(\{H,S,\cg{X}\}\)</span>? Aparentemente poco. Sin embargo estos operadores tiene una propiedad importante que los caracteriza.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Operador de Clifford</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Se define un operador de Clifford <span class="math notranslate nohighlight">\(C\in \Lin(\Hil^{\otimes n}) \)</span>, como aquel que conjuga una cadena  de Pauli <span class="math notranslate nohighlight">\(P \)</span> para dar otra cadena  de Pauli <span class="math notranslate nohighlight">\(P'\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+C P C^{\dagger} = P'
+\]</div>
+</div>
+</div>
+<p>Por ejemplo, sea <span class="math notranslate nohighlight">\(P = YZX\)</span>,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+(SXH) \, (YZX) \,  (SXH)^\dagger &amp;=&amp; (S\otimes X\otimes H) \cdot Y\otimes Z\otimes X \cdot (S^\dagger \otimes X\otimes H) \\ \rule{0mm}{10mm} 
+&amp;=&amp; SYS^\dagger \otimes  XZX \otimes HXH \\ \rule{0mm}{10mm}
+&amp;=&amp; (-Z)\otimes (-Z) \otimes Z \\ \rule{0mm}{10mm} &amp;=&amp; ZZZ
+\end{eqnarray*}\]</div>
+<p>es decir <span class="math notranslate nohighlight">\(P' = ZZZ\)</span>. En este caso, <span class="math notranslate nohighlight">\(C\)</span> es un operador de Clifford porque está compuesto de un producto tensorial de operadores de Clifford de un cúbit.
+Los propios operadores de Pauli son operadores de Clifford.  La conjugación correspondiente simplemente refleja el operador de Pauli. Por ejemplo, con <span class="math notranslate nohighlight">\(C=Z\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+ZXZ = -X~~~~~~~~~ZYZ = -Y ~~~~~~~~~ZZZ = Z 
+\]</div>
+<p>también <span class="math notranslate nohighlight">\(H\)</span> y <span class="math notranslate nohighlight">\(S\)</span> son de Clifford</p>
+<div class="math notranslate nohighlight">
+\[
+H Z H = X~~~~~,~~~~~H X H = Z ~~~~~,~~~~~ S X S^\dagger =  Y ~~~~~~ , ~~~~~ S Y S^\dagger =  -X~~...
+\]</div>
+<p>Muy importante: si <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> son operadores de Clifford, su producto <span class="math notranslate nohighlight">\(C = AB\)</span> también lo es. Efectivamente</p>
+<div class="math notranslate nohighlight">
+\[
+C P C^\dagger = AB P B^\dagger A^\dagger = A P' A^\dagger = P''
+\]</div>
+<p>Esto quiere decir que deberíamos poder generar todos los operadores de Clifford a partir de una base. De un cúbit es fácil ver que <span class="math notranslate nohighlight">\(\{ S,H \}\)</span> son una tal base</p>
+<div class="math notranslate nohighlight">
+\[
+Z  = S^2~~~~,~~~~X = H Z H = H S^2 H ~~~~,~~~~~  Y = SXS^\dagger  = SHS^2 HS^\dagger 
+\]</div>
+<p>Sin embargo, en el caso de cadenas de Pauli, hay un nuevo generador de operadores de Clifford: el operador <span class="math notranslate nohighlight">\(\cg{X}\)</span>. Efectivamente, por ejemplo sobre la cadena de Pauli <span class="math notranslate nohighlight">\(X I \)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
+\]</div>
+<p>Vemos que esta conjugación de Clifford <em>copia</em> el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit. Podemos  demostrar gráficamente esta identidad</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 700px;" /></a>
+</figure>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>demuestra las siguientes identidades entre circuitos</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}   
+\begin{array}{lcl}
+\cg{X}(Y\otimes I)\cg{X} = Y\otimes X ~~~~~ &amp;&amp;   \cg{X}(Z\otimes I)\cg{X} = Z\otimes I  \\
+\cg{X}(I\otimes X)\cg{X} = I\otimes X ~~~~~ &amp;&amp;   \cg{X}(I\otimes Y)\cg{X} = Z\otimes Y  \\
+\cg{X}(I\otimes Z)\cg{X} = Z\otimes Z ~~~~~ &amp;&amp; \\
+(R_z(\theta)\otimes I ) \cg{X} = \cg{X} (R_z(\theta)\otimes I ) &amp;&amp; 
+(R_x(\theta)\otimes I ) \cg{X} = \cg{X} (R_x(\theta)\otimes I )
+\end{array}    
+\end{split}\]</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Definición</b>: </i>Operador de Clifford</i></p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">Los operadores de Clifford pueden ser generados como composición del siguiente conjunto de operadores</p>
+<div class="math notranslate nohighlight">
+\[
+\{ H, S , \cg{X} \}
+\]</div>
+</div>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Resumen</p>
+<ul class="simple">
+<li><p>Un circuito que expresa la descomposición de un operador de Clifford se denomina <em>circuito de Clifford</em>.</p></li>
+<li><p>La relevancia de los circuitos de Clifford es que son emulables eficientemente en un computador clásico.</p></li>
+</ul>
+</div>
 </section>
 </section>
 <section id="medidas-de-calidad-en-circuitos">
@@ -1194,17 +1168,13 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-clifford">Circuitos de Clifford</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#un-cubit">Un cúbit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-cubits">Multi-cúbits</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-digital">Computación cuántica digital</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-solovay-kitaev">Teorema de Solovay Kitaev</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-de-clifford">Circuitos de Clifford</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-calidad-en-circuitos">Medidas de calidad en circuitos</a></li>
