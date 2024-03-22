@@ -488,7 +488,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 21, 2024 | 10 min read</p>
+<div><p>Mar 22, 2024 | 10 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -527,7 +527,7 @@ document.write(`
 </div>
 </details>
 </div>
-<p>Algunos recursos en programación cuántica serán de uso muy frecuente y, por eso, vamos a detenernos en ellos en este capítulo</p>
+<p>En este capítulo vamos a detenernos en algunos <em>recursos en programación cuántica</em> que serán de uso muy frecuente.</p>
 <section id="retroceso-de-fase">
 <h2>Retroceso de Fase<a class="headerlink" href="#retroceso-de-fase" title="Permalink to this heading">#</a></h2>
 <p>Hemos estudiado ya el operador controlado <span class="math notranslate nohighlight">\(\cg{U}\)</span>. Es un error frecuente pensar que el cúbit controlador no se modifica. Un caso importante ocurre cuando el operador <span class="math notranslate nohighlight">\(U\)</span> actúa sobre uno de sus autoestados
@@ -631,27 +631,39 @@ Sin embargo, usando la  equivalencia anterior podemos invertir la puerta <span c
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_Kphase.png"><img alt="../../../_images/Equiv_Kphase.png" src="../../../_images/Equiv_Kphase.png" style="width: 330px;" /></a>
 </figure>
-<p>La conjugación mediante puertas controladas conduce a operadores factorizados</p>
+<p>Hay que tener cuidado a la hora de pasar operadores de Pauli por encima de un control
+Es sencillo comprobar que el resultado de los dos circuitos siguientes es el mismo, por tanto son equivalentes.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/control_conj_Z.png"><img alt="../../../_images/control_conj_Z.png" src="../../../_images/control_conj_Z.png" style="width: 400px;" /></a>
+</figure>
+<p>En cambio, la conjugación por <span class="math notranslate nohighlight">\(X\)</span> o por <span class="math notranslate nohighlight">\(Y\)</span> cambia el cúbit de control de <span class="math notranslate nohighlight">\(\ket{1}\)</span> a <span class="math notranslate nohighlight">\(\ket{0}\)</span>, lo cual se representa con un botón vacío</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/control_conj_XY.png"><img alt="../../../_images/control_conj_XY.png" src="../../../_images/control_conj_XY.png" style="width: 700px;" /></a>
+</figure>
+<p>Las puertas controladas son más difíciles de implementar  físicamente que las elementales. En ocasiones, la conjugacion por dos puertas controladas conduce a un operador factorizado</p>
 <div class="math notranslate nohighlight">
 \[
 \cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
 \]</div>
-<p>copia el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit. Podemos  demostrar gráficamente esta identidad</p>
+<p>Vemos que esta conjugación <em>copia</em> el operador <span class="math notranslate nohighlight">\(X\)</span> en el segundo cúbit. Podemos  demostrar gráficamente esta identidad</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 800px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/clone_X.png"><img alt="../../../_images/clone_X.png" src="../../../_images/clone_X.png" style="width: 700px;" /></a>
 </figure>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
 <p>demuestra las siguientes identidades entre circuitos</p>
-<p>\begin{array}{lcl}
-\cg{X}(Y\otimes I)\cg{X} = Y\otimes X ~~~~~ &amp;&amp;   \cg{X}(Z\otimes I)\cg{X} = Z\otimes I  \
-\cg{X}(I\otimes X)\cg{X} = I\otimes X ~~~~~ &amp;&amp;   \cg{X}(I\otimes Y)\cg{X} = Z\otimes Y  \
-\cg{X}(I\otimes Z)\cg{X} = Z\otimes Z ~~~~~ &amp;&amp; \
-(R_z(\theta)\otimes I ) \cg{X} = \cg{X} (R_z(\theta)\otimes I ) &amp;&amp;
+<div class="math notranslate nohighlight">
+\[\begin{split}   
+\begin{array}{lcl}
+\cg{X}(Y\otimes I)\cg{X} = Y\otimes X ~~~~~ &amp;&amp;   \cg{X}(Z\otimes I)\cg{X} = Z\otimes I  \\
+\cg{X}(I\otimes X)\cg{X} = I\otimes X ~~~~~ &amp;&amp;   \cg{X}(I\otimes Y)\cg{X} = Z\otimes Y  \\
+\cg{X}(I\otimes Z)\cg{X} = Z\otimes Z ~~~~~ &amp;&amp; \\
+(R_z(\theta)\otimes I ) \cg{X} = \cg{X} (R_z(\theta)\otimes I ) &amp;&amp; 
 (R_x(\theta)\otimes I ) \cg{X} = \cg{X} (R_x(\theta)\otimes I )
-\end{array}</p>
+\end{array}    
+\end{split}\]</div>
 </div>
-<p>También podemos comprobar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
+<p>Podemos verificar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -690,7 +702,7 @@ q_1: ─X─
 </div>
 </div>
 </div>
-<p>podemos comprobar que las matrices que representan los circuitos coinciden</p>
+<p>comprobemos que las matrices que representan los circuitos coinciden</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
@@ -900,8 +912,8 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 <p>Dependiendo de la plataforma utilizada para construir un ordenador cuántico, existen uno o varios <em>conjuntos discretos de puertas universales</em> nativas susceptibles de ser programadas de manera resistente a errores</p>
 <p>Es importante relacionar las puertas universales con <em>puertas nativas</em>. Por ejemplo,
 en circuitos superconductores tenemos varias opciones</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b66a6fd1-8f8b-4ab4-8c4a-6f2d81e9f2fc">
-<span class="eqno">(17)<a class="headerlink" href="#equation-b66a6fd1-8f8b-4ab4-8c4a-6f2d81e9f2fc" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-d63b6f90-982d-4487-8de1-0f48d6264158">
+<span class="eqno">(17)<a class="headerlink" href="#equation-d63b6f90-982d-4487-8de1-0f48d6264158" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \hbox{Shor basis}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
