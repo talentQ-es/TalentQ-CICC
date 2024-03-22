@@ -527,7 +527,7 @@ document.write(`
 </div>
 </details>
 </div>
-<p>Algunos recursos en programación cuántica serán de uso muy frecuente y, por eso, vamos a detenernos en ellos en este capítulo</p>
+<p>En este capítulo vamos a detenernos en algunos <em>recursos en programación cuántica</em> que serán de uso muy frecuente.</p>
 <section id="retroceso-de-fase">
 <h2>Retroceso de Fase<a class="headerlink" href="#retroceso-de-fase" title="Permalink to this heading">#</a></h2>
 <p>Hemos estudiado ya el operador controlado <span class="math notranslate nohighlight">\(\cg{U}\)</span>. Es un error frecuente pensar que el cúbit controlador no se modifica. Un caso importante ocurre cuando el operador <span class="math notranslate nohighlight">\(U\)</span> actúa sobre uno de sus autoestados
@@ -640,7 +640,7 @@ Es sencillo comprobar que el resultado de los dos circuitos siguientes es el mis
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/control_conj_XY.png"><img alt="../../../_images/control_conj_XY.png" src="../../../_images/control_conj_XY.png" style="width: 700px;" /></a>
 </figure>
-<p>Las puertas controladas son más difíciles de implementar en  físicamente que las elementales. En ocasiones, la conjugacion por dos puertas controladas conduce a un operador factorizado</p>
+<p>Las puertas controladas son más difíciles de implementar  físicamente que las elementales. En ocasiones, la conjugacion por dos puertas controladas conduce a un operador factorizado</p>
 <div class="math notranslate nohighlight">
 \[
 \cg{X} \, (X\otimes I)\,  \cg{X} = X \otimes X
@@ -653,7 +653,7 @@ Es sencillo comprobar que el resultado de los dos circuitos siguientes es el mis
 <p class="admonition-title">Ejercicio</p>
 <p>demuestra las siguientes identidades entre circuitos</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[\begin{split}   
 \begin{array}{lcl}
 \cg{X}(Y\otimes I)\cg{X} = Y\otimes X ~~~~~ &amp;&amp;   \cg{X}(Z\otimes I)\cg{X} = Z\otimes I  \\
 \cg{X}(I\otimes X)\cg{X} = I\otimes X ~~~~~ &amp;&amp;   \cg{X}(I\otimes Y)\cg{X} = Z\otimes Y  \\
@@ -663,7 +663,7 @@ Es sencillo comprobar que el resultado de los dos circuitos siguientes es el mis
 \end{array}    
 \end{split}\]</div>
 </div>
-<p>También podemos comprobar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
+<p>Podemos verificar la veracidad de las anteriores identidades programando los circuitos de ambos miembros</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
@@ -702,7 +702,7 @@ q_1: ─X─
 </div>
 </div>
 </div>
-<p>podemos comprobar que las matrices que representan los circuitos coinciden</p>
+<p>comprobemos que las matrices que representan los circuitos coinciden</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
@@ -912,8 +912,8 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 <p>Dependiendo de la plataforma utilizada para construir un ordenador cuántico, existen uno o varios <em>conjuntos discretos de puertas universales</em> nativas susceptibles de ser programadas de manera resistente a errores</p>
 <p>Es importante relacionar las puertas universales con <em>puertas nativas</em>. Por ejemplo,
 en circuitos superconductores tenemos varias opciones</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e5681f79-f35b-4643-89c9-cc7ea7306c80">
-<span class="eqno">(17)<a class="headerlink" href="#equation-e5681f79-f35b-4643-89c9-cc7ea7306c80" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-d63b6f90-982d-4487-8de1-0f48d6264158">
+<span class="eqno">(17)<a class="headerlink" href="#equation-d63b6f90-982d-4487-8de1-0f48d6264158" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \hbox{Shor basis}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
