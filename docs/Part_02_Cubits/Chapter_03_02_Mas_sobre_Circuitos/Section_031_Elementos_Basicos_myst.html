@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Circuitería cuántica elemental &#8212; Curso de Introducción a la Computación Cuántica</title>
+    <title>Computación Cuántica Universal &#8212; Curso de Introducción a la Computación Cuántica</title>
   
   
   
@@ -243,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Circuitería cuántica elemental</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Computación Cuántica Universal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Section_032_CompClasica_myst.html">Circuitos para computación clásica</a></li>
 </ul>
 </li>
@@ -449,7 +449,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Circuitería cuántica elemental</h1>
+    <h1>Computación Cuántica Universal</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -459,14 +459,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuiteria-basica">Circuitería básica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-digital">Computación cuántica digital</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-solovay-kitaev">Teorema de Solovay Kitaev</a></li>
@@ -488,13 +491,13 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 22, 2024 | 10 min read</p>
+<div><p>Mar 23, 2024 | 10 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
 </figure>
-<section class="tex2jax_ignore mathjax_ignore" id="circuiteria-cuantica-elemental">
-<h1>Circuitería cuántica elemental<a class="headerlink" href="#circuiteria-cuantica-elemental" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="computacion-cuantica-universal">
+<h1>Computación Cuántica Universal<a class="headerlink" href="#computacion-cuantica-universal" title="Permalink to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
@@ -528,52 +531,14 @@ document.write(`
 </div>
 </details>
 </div>
+<section id="circuiteria-basica">
+<h2>Circuitería básica<a class="headerlink" href="#circuiteria-basica" title="Permalink to this heading">#</a></h2>
 <p>En este capítulo vamos a detenernos en algunos <em>recursos en programación cuántica</em> que serán de uso muy frecuente.</p>
-<section id="retroceso-de-fase">
-<h2>Retroceso de Fase<a class="headerlink" href="#retroceso-de-fase" title="Permalink to this heading">#</a></h2>
-<p>Hemos estudiado ya el operador controlado <span class="math notranslate nohighlight">\(\cg{U}\)</span>. Es un error frecuente pensar que el cúbit controlador no se modifica. Un caso importante ocurre cuando el operador <span class="math notranslate nohighlight">\(U\)</span> actúa sobre uno de sus autoestados
-(recuerda que los autovalores de  un operador unitario son fases puras)</p>
-<div class="math notranslate nohighlight">
-\[
-U\ket{u} = e^{i\lambda} \ket{u}
-\]</div>
-<p>Supongamos que por el <em>cúbit controlador</em> circula una superposición <span class="math notranslate nohighlight">\((a\ket{0}+b\ket{1})\)</span> y un autoestado <span class="math notranslate nohighlight">\(\ket{u}\)</span> de <span class="math notranslate nohighlight">\(U\)</span> por el cúbit controlado. La acción de <span class="math notranslate nohighlight">\(\cg{U}\)</span> es</p>
-<div class="math notranslate nohighlight">
-\[
-\cg{U}: (a\ket{0} + b\ket{1})\otimes \ket{u} ~\to ~ a\ket{0}\ket{u} + b \ket{1}e^{i\lambda}\ket{u}  = \left( a\ket{0}\ket{u} + be^{i\lambda} \ket{1} \rule{0mm}{4mm} \right)\otimes \ket{u}
-\]</div>
-<p>En resultado final es que la fase <span class="math notranslate nohighlight">\(e^{i\lambda}\)</span> ha <strong>modificado</strong> el estado de entrada, mientras que el segundo cúbit no ha cambiado.</p>
-<p>El punto es que, en el segundo paso, la fase generada por la acción de U <em>no pertenece</em> realmente a ninguno de los dos espacios sino al producto. De modo que puede adscribirse al primer espacio, como hemos hecho en el último paso.
-De ahí el nombre de <em>retroceso de fase</em>, en inglés “phase kickback”.</p>
-<p>El siguiente circuito resume la acción de retroceso de fase</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/phase_kickback.png"><img alt="../../../_images/phase_kickback.png" src="../../../_images/phase_kickback.png" style="width: 300px;" /></a>
-</figure>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Programa un circuito en el que  <span class="math notranslate nohighlight">\(U = P(\phi)\)</span> sea el operador de fase y el estado en el primer cúbit es <span class="math notranslate nohighlight">\(\ket{0}\)</span> y en el segundo es <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
-<ul class="simple">
-<li><p>Usando el <em>statevector_simulator</em> representa el estado de salida para distintos de valores de <span class="math notranslate nohighlight">\(\phi\in [0,2\pi]\)</span></p></li>
-<li><p>¿en qué plano rota el vector del primer cúbit? ¿Cómo podemos cambiar dicho plano de rotación?</p></li>
-</ul>
-</div>
-<p>Un caso muy frecuente ocurre cuando <span class="math notranslate nohighlight">\(U = X\)</span>, es decir <span class="math notranslate nohighlight">\(\cg{U} = \hbox{CNOT}\)</span>. Los autovalores de <span class="math notranslate nohighlight">\(X\)</span> son los que forman la base <span class="math notranslate nohighlight">\(\ket{\pm}\)</span>. En el caso de <span class="math notranslate nohighlight">\(\ket{-}\)</span> tendremos
-que la fase es <span class="math notranslate nohighlight">\(e^{i\pi} = -1\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-X \ket{-} = (-1) \ket{-}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\cg{X} \big( \ket{x}\otimes \ket{-}\big) ~=~ \ket{x} X^x\ket{-} =  (-1)^x \ket{x} \otimes \ket{-}
-\]</div>
-<p>El retroceso de fase consigue de esta manera imprimir el valor del cúbit de control en una fase.</p>
-</section>
 <section id="circuitos-equivalentes">
-<h2>Circuitos Equivalentes<a class="headerlink" href="#circuitos-equivalentes" title="Permalink to this heading">#</a></h2>
+<h3>Circuitos Equivalentes<a class="headerlink" href="#circuitos-equivalentes" title="Permalink to this heading">#</a></h3>
 <p>Los circuitos son una representación gráfica de la descomposición de un cierto operador unitarios en un producto de puertas locales y de dos o más cúbits. Esta descomposición no es única, lo cuál permite compilar un circuito de forma que se elija la descomposición más ventajosa. Vamos a ver algunas equivalencias que permiten, en ocasiones reducir la profundidad de un circuito, y en otras, entender mejor el funcionamiento del circuito.</p>
 <section id="conjugacion">
-<h3>Conjugación<a class="headerlink" href="#conjugacion" title="Permalink to this heading">#</a></h3>
+<h4>Conjugación<a class="headerlink" href="#conjugacion" title="Permalink to this heading">#</a></h4>
 <p>Cualquier operador, <span class="math notranslate nohighlight">\(O\)</span>, formado por productos de operadores del conjunto <span class="math notranslate nohighlight">\(C = \{X,Y,Z,H,S\}\)</span> conjuga lo operadores de Pauli <span class="math notranslate nohighlight">\(P = \{ X,Y,Z\}\)</span> entre sí</p>
 <div class="math notranslate nohighlight">
 \[
@@ -599,7 +564,7 @@ H R_z(\theta) H &amp;=&amp; e^{-i \theta/2 HZH} =  e^{-i (\theta/2) X} \\ \rule{
 </figure>
 </section>
 <section id="circuitos-con-controles">
-<h3>Circuitos con controles<a class="headerlink" href="#circuitos-con-controles" title="Permalink to this heading">#</a></h3>
+<h4>Circuitos con controles<a class="headerlink" href="#circuitos-con-controles" title="Permalink to this heading">#</a></h4>
 <p>La puerta  controlada <span class="math notranslate nohighlight">\(\cg{Z} =  {\rm diag}(1,1,1,-1)\)</span>   es simétrica ya que lo único que hace es cambiar de signo al estado <span class="math notranslate nohighlight">\(\ket{11}\)</span>. Es decir</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Equiv_Z.png"><img alt="../../../_images/Equiv_Z.png" src="../../../_images/Equiv_Z.png" style="width: 300px;" /></a>
@@ -704,7 +669,7 @@ q_1: ─X─
 </section>
 </section>
 <section id="medidas-y-controles">
-<h2>Medidas y controles<a class="headerlink" href="#medidas-y-controles" title="Permalink to this heading">#</a></h2>
+<h3>Medidas y controles<a class="headerlink" href="#medidas-y-controles" title="Permalink to this heading">#</a></h3>
 <p>En muchas instancias el resultado de una medida se utiliza para efectuar una operación condicionada sobre un cierto cúbit. Es el caso de la teleportación o la codificación superdensa.</p>
 <p>En estos casos hay una equivalencia de circuitos que responde al siguiente principio</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
@@ -725,8 +690,49 @@ q_1: ─X─
 <p>demuestra la equivalencia de los circuitos anteriores.</p>
 </div>
 </section>
-<section id="computacion-cuantica-universal">
-<h2>Computación Cuántica Universal<a class="headerlink" href="#computacion-cuantica-universal" title="Permalink to this heading">#</a></h2>
+<section id="retroceso-de-fase">
+<h3>Retroceso de Fase<a class="headerlink" href="#retroceso-de-fase" title="Permalink to this heading">#</a></h3>
+<p>Hemos estudiado ya el operador controlado <span class="math notranslate nohighlight">\(\cg{U}\)</span>. Es un error frecuente pensar que el cúbit controlador no se modifica. Un caso importante ocurre cuando el operador <span class="math notranslate nohighlight">\(U\)</span> actúa sobre uno de sus autoestados
+(recuerda que los autovalores de  un operador unitario son fases puras)</p>
+<div class="math notranslate nohighlight">
+\[
+U\ket{u} = e^{i\lambda} \ket{u}
+\]</div>
+<p>Supongamos que por el <em>cúbit controlador</em> circula una superposición <span class="math notranslate nohighlight">\((a\ket{0}+b\ket{1})\)</span> y un autoestado <span class="math notranslate nohighlight">\(\ket{u}\)</span> de <span class="math notranslate nohighlight">\(U\)</span> por el cúbit controlado. La acción de <span class="math notranslate nohighlight">\(\cg{U}\)</span> es</p>
+<div class="math notranslate nohighlight">
+\[
+\cg{U}: (a\ket{0} + b\ket{1})\otimes \ket{u} ~\to ~ a\ket{0}\ket{u} + b \ket{1}e^{i\lambda}\ket{u}  = \left( a\ket{0}\ket{u} + be^{i\lambda} \ket{1} \rule{0mm}{4mm} \right)\otimes \ket{u}
+\]</div>
+<p>En resultado final es que la fase <span class="math notranslate nohighlight">\(e^{i\lambda}\)</span> ha <strong>modificado</strong> el estado de entrada, mientras que el segundo cúbit no ha cambiado.</p>
+<p>El punto es que, en el segundo paso, la fase generada por la acción de U <em>no pertenece</em> realmente a ninguno de los dos espacios sino al producto. De modo que puede adscribirse al primer espacio, como hemos hecho en el último paso.
+De ahí el nombre de <em>retroceso de fase</em>, en inglés “phase kickback”.</p>
+<p>El siguiente circuito resume la acción de retroceso de fase</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/phase_kickback.png"><img alt="../../../_images/phase_kickback.png" src="../../../_images/phase_kickback.png" style="width: 300px;" /></a>
+</figure>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Programa un circuito en el que  <span class="math notranslate nohighlight">\(U = P(\phi)\)</span> sea el operador de fase y el estado en el primer cúbit es <span class="math notranslate nohighlight">\(\ket{0}\)</span> y en el segundo es <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
+<ul class="simple">
+<li><p>Usando el <em>statevector_simulator</em> representa el estado de salida para distintos de valores de <span class="math notranslate nohighlight">\(\phi\in [0,2\pi]\)</span></p></li>
+<li><p>¿en qué plano rota el vector del primer cúbit? ¿Cómo podemos cambiar dicho plano de rotación?</p></li>
+</ul>
+</div>
+<p>Un caso muy frecuente ocurre cuando <span class="math notranslate nohighlight">\(U = X\)</span>, es decir <span class="math notranslate nohighlight">\(\cg{U} = \hbox{CNOT}\)</span>. Los autovalores de <span class="math notranslate nohighlight">\(X\)</span> son los que forman la base <span class="math notranslate nohighlight">\(\ket{\pm}\)</span>. En el caso de <span class="math notranslate nohighlight">\(\ket{-}\)</span> tendremos
+que la fase es <span class="math notranslate nohighlight">\(e^{i\pi} = -1\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+X \ket{-} = (-1) \ket{-}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\cg{X} \big( \ket{x}\otimes \ket{-}\big) ~=~ \ket{x} X^x\ket{-} =  (-1)^x \ket{x} \otimes \ket{-}
+\]</div>
+<p>El retroceso de fase consigue de esta manera imprimir el valor del cúbit de control en una fase.</p>
+</section>
+</section>
+<section id="id1">
+<h2>Computación Cuántica Universal<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <section id="teorema-de-descomposicion">
 <h3>Teorema de descomposición<a class="headerlink" href="#teorema-de-descomposicion" title="Permalink to this heading">#</a></h3>
 <p>En el paradigma de computador cuántico de Deutsch, el objetivo es ser capaz de implementar el operador unitario más general</p>
@@ -818,8 +824,8 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 <p>Dependiendo de la plataforma utilizada para construir un ordenador cuántico, existen uno o varios <em>conjuntos discretos de puertas universales</em> nativas susceptibles de ser programadas de manera resistente a errores</p>
 <p>Es importante relacionar las puertas universales con <em>puertas nativas</em>. Por ejemplo,
 en circuitos superconductores tenemos varias opciones</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ec42b38c-68c1-408d-8502-937b57a7b305">
-<span class="eqno">(17)<a class="headerlink" href="#equation-ec42b38c-68c1-408d-8502-937b57a7b305" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-18c2331b-cf06-4ebe-82a2-af184f69b227">
+<span class="eqno">(17)<a class="headerlink" href="#equation-18c2331b-cf06-4ebe-82a2-af184f69b227" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \hbox{base de Shor}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
@@ -933,7 +939,7 @@ Z  = S^2~~~~,~~~~X = H Z H = H S^2 H ~~~~,~~~~~  Y = SXS^\dagger  = SHS^2 HS^\da
 </div>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Definición</b>: </i>Operador de Clifford</i></p>
+<p class="sd-card-text"><b>Teorema</b>:</p>
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">Los operadores de Clifford pueden ser generados como composición del siguiente conjunto de operadores</p>
@@ -1161,14 +1167,17 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuiteria-basica">Circuitería básica</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-equivalentes">Circuitos Equivalentes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-universal">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Computación Cuántica Universal</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-descomposicion">Teorema de descomposición</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-cuantica-digital">Computación cuántica digital</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#teorema-de-solovay-kitaev">Teorema de Solovay Kitaev</a></li>
