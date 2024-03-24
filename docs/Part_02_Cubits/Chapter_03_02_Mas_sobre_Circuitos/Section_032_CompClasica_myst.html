@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Circuitos para computación clásica &#8212; Curso de Introducción a la Computación Cuántica</title>
+    <title>Funciones y oráculos &#8212; Curso de Introducción a la Computación Cuántica</title>
   
   
   
@@ -243,7 +243,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../Chapter_03_01_Mas_sobre_circuitos_myst.html">Más cosas sobre circuitos</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Section_031_Elementos_Basicos_myst.html">Computación Cuántica Universal</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Circuitos para computación clásica</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Funciones y oráculos</a></li>
 </ul>
 </li>
 </ul>
@@ -448,7 +448,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Circuitos para computación clásica</h1>
+    <h1>Funciones y oráculos</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -459,17 +459,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-clasica-universal">Computación clásica universal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-un-estado-inicial">Preparación de un estado inicial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-digitales">Funciones digitales</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivacion">Motivación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Funciones digitales</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-funciones-binarias-los-min-terminos">Construcción de funciones binarias. Los min-términos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-binaria-lineal">Funcion binaria lineal:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-un-estado">Preparación de un estado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculos">Oráculos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-digitales">Funciones digitales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-cuantica-de-funciones">Evaluación cuántica de funciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculo-booleano">Oráculo Booleano</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculos-de-fase">Oráculos  de  fase</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculos-booleanos-y-de-fase">Oráculos <i> booleanos </i> y de fase</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculo-booleano">Oráculo <em>booleano</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculo-de-fase">Oráculo de fase</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-funciones-binarias">Construcción de funciones binarias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-binaria-lineal">Funcion binaria lineal:</a></li>
 </ul>
 </li>
 </ul>
@@ -484,13 +483,13 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 23, 2024 | 5 min read</p>
+<div><p>Mar 25, 2024 | 6 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
 </figure>
-<section class="tex2jax_ignore mathjax_ignore" id="circuitos-para-computacion-clasica">
-<h1>Circuitos para computación clásica<a class="headerlink" href="#circuitos-para-computacion-clasica" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="funciones-y-oraculos">
+<h1>Funciones y oráculos<a class="headerlink" href="#funciones-y-oraculos" title="Permalink to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\( \newcommand{\bra}[1]{\langle #1|} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\ket}[1]{|#1\rangle} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
@@ -515,7 +514,7 @@ document.write(`
 </div>
 <section id="computacion-clasica-universal">
 <h2>Computación clásica universal<a class="headerlink" href="#computacion-clasica-universal" title="Permalink to this heading">#</a></h2>
-<p>En computación clásica, la únidad de información es el bit, una variable entersa <span class="math notranslate nohighlight">\(x = 0,1 \in {\mathbb Z}_2\)</span>. Las puertas lógicas elementales son,</p>
+<p>En computación clásica, la únidad de información es el bit, una variable entera <span class="math notranslate nohighlight">\(x = 0,1 \in {\mathbb Z}_2\)</span>. Las puertas lógicas elementales son,</p>
 <ul class="simple">
 <li><p>sobre un bit, la puerta NOT <span class="math notranslate nohighlight">\(x\to \neq x = x\oplus 1\)</span>,</p></li>
 <li><p>sobre dos bits las puertas AND, OR, XOR, y NAND</p></li>
@@ -559,8 +558,7 @@ dificultad:</p>
 <p>Sin embargo si mantenemos memoria del primer registro, <span class="math notranslate nohighlight">\(x\)</span> la función XOR se vuelve invertible</p>
 <div class="math notranslate nohighlight">
 \[ \hbox{XOR} : ( 00,01,10,11) \to  (00, 01, 11, 10 )\]</div>
-<p>No así las demás, que necesitan incluir un bit extra (auxiliar).</p>
-<p>Este formalismo, denominando, <em>computación clásica reversible</em> es una rama de la computación clásica.</p>
+<p>No así las demás, que necesitan incluir un bit extra (auxiliar).  Este formalismo, denominando, <em>computación clásica reversible</em> es una rama de la computación clásica.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
@@ -584,7 +582,7 @@ dificultad:</p>
 \[  
 \hbox{AND}  ~\to~ {\rm CCNOT} \ket{x,y,0} = \ket{x,y, x  \land y} 
 \]</div>
-<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>es directamente la acción de la puerta CCNOT</p>
+<p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>es directamente la acción de la puerta <span class="math notranslate nohighlight">\(\hbox{CCNOT}\)</span></p>
 <ul class="simple">
 <li><p>La implementación de <span class="math notranslate nohighlight">\(\hbox{OR}\)</span> se basa en el <em>teorema de Morgan</em>:
 <span class="math notranslate nohighlight">\(
@@ -593,7 +591,7 @@ x\lor y = \neg(\neg x\land \neg y)\, .
 </ul>
 <div class="math notranslate nohighlight">
 \[
-{\rm OR} ~\to~  (X\otimes X\otimes X){\rm CCNOT} (X\otimes X \otimes I) \ket{x,y,0} = \ket{x,y, x \lor y}
+{\rm OR} ~\to~  (X\otimes X\otimes X)\, {\rm CCNOT} \, (X\otimes X \otimes I) \ket{x,y,0} = \ket{x,y, x \lor y}
 \]</div>
 <p><span class="math notranslate nohighlight">\(\rule{7mm}{0mm}\)</span>y el producto de operadores ejecuta la instrucción indicada en el miembro de la derecha.</p>
 <ul class="simple">
@@ -611,9 +609,9 @@ x\lor y = \neg(\neg x\land \neg y)\, .
 {\rm NAND} ~\to~  (I\otimes I\otimes X) {\rm CCNOT}  \ket{x,y, 0} =  \ket{x,y, \neg (x \land y)}  
 \]</div>
 </section>
-<section id="preparacion-de-un-estado-inicial">
-<h2>Preparación de un estado inicial<a class="headerlink" href="#preparacion-de-un-estado-inicial" title="Permalink to this heading">#</a></h2>
-<p>Muchos algoritmos cuánticos se benefician de la preparación de un estado inicial adecuado. En general esta es una operació no eficiente porque implica actuar sobre <span class="math notranslate nohighlight">\({\cal O}(2^n)\)</span> registros</p>
+<section id="preparacion-de-un-estado">
+<h2>Preparación de un estado<a class="headerlink" href="#preparacion-de-un-estado" title="Permalink to this heading">#</a></h2>
+<p>Muchos algoritmos cuánticos se benefician de la preparación de un estado inicial concreto</p>
 <div class="math notranslate nohighlight">
 \[
 U : \ket{0} \to  \sum_{i=0}^{2^n-1} c_i\ket{i}
@@ -657,60 +655,127 @@ U= \begin{bmatrix} e^{i\gamma_1} &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; e^{i\gamma_2
 \ket{\psi} = \frac{1}{4}\left( \rule{0mm}{5mm} \ket{000}-3\ket{001}-\ket{010} +2\ket{110}-\ket{111} \right).
 \]</div>
 </div>
-<p>Evidentemente este circuito no puede ser eficiente puesto que es necesario ajustar un número <span class="math notranslate nohighlight">\(2*2^n\)</span> de parámetros.</p>
-<p>En algunos casos, sí que es posible encontrar un circuito eficiente.</p>
-<p>Por ejemplo el estado inicial que es una superposición homogénea de elementos de la base</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Evidentemente, en el caso general, este circuito no puede ser eficiente puesto que es necesario aplicar al menos un número <span class="math notranslate nohighlight">\(2*2^n\)</span> de parámetros que involucran los coeficientes.</p>
+<p>En algunos casos particulares que gozan de cierta simetría, sí que es posible encontrar un circuito eficiente.
+El caso extremo lo representa una superposición homogénea de elementos de la base</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{\psi} = W \ket{0}  = \ket{+}^{\otimes n}= \frac{1}{\sqrt{n}}\sum_{i=1}^{2^n-1} \ket{i}
 \]</div>
-<p>se obtiene con un circuito de  <strong>coste</strong> = <span class="math notranslate nohighlight">\(n~\)</span>  y <span class="math notranslate nohighlight">\(~\)</span> <strong>profundidad</strong>=1</p>
+<p>se obtiene con un circuito de  <strong>coste</strong> = <span class="math notranslate nohighlight">\(n~\)</span>  y <span class="math notranslate nohighlight">\(~\)</span> <strong>profundidad</strong>=1, la puerta de Walsh-Hadamard</p>
+</div>
 </section>
+<section id="oraculos">
+<h2>Oráculos<a class="headerlink" href="#oraculos" title="Permalink to this heading">#</a></h2>
+<p>Una clase de problemas en los que la computación cuántica promete alcanzar una ventaja con respecto a la clásica se denominan  <i>algoritmos de interrogación de oráculo</i>. Este tipo de problemas consiste en la clasificación de funciones clásicas atendiendo a alguna propiedad. Clásicamente la complejidad de este tipo de problemas crece exponencialmente porque exige examinar una fracción finita del número total de funciones.</p>
+<p>Para poder establecer la ventaja potencial de un algoritmo cuántico sobre el clásico debemos ser capaces de evaluar dichas funciones sin desvelar cómo están hechas.  Los operadores que implementan dichas funcionaes son cajas negras llamadas <strong>oráculos</strong>. Sólo nos está permitido <em>invocarlas</em> tantas veces como deseemos.</p>
+<p>Generar un oráculo puede ser un problema de complejidad alta. Esta complejidad no forma parte del algoritmo de interrogación.</p>
 <section id="funciones-digitales">
-<h2>Funciones digitales<a class="headerlink" href="#funciones-digitales" title="Permalink to this heading">#</a></h2>
-<section id="motivacion">
-<h3>Motivación<a class="headerlink" href="#motivacion" title="Permalink to this heading">#</a></h3>
-<p>Una clase de problemas en los que la computación cuántica promete alcanzar una ventaja con respecto a la clásica se denominan  <i>algoritmos de interrogación de oráculo</i></p>
-<p>Involucra la clasificación funciones clásicas según propiedades escogidas de un cuerto conjunto</p>
-<p>Genéricamente, como el propio conjunto de funciones,  se trata de un problema de complejidad NP</p>
-<ul class="simple">
-<li><p>Estas  <em>funciones clásicas</em> son cajas negras llamadas <strong>oráculos</strong> que sólo podemos <em>invocar</em> tantas veces como se desee.</p></li>
-<li><p>El conjunto de <em>clases</em> al que, <em>a priori</em> pueden pertenecer ser denominan <strong>promesas</strong></p></li>
-</ul>
-<p>Para poner a prueba un algoritmo de interrogación de oráculo es necesario construirlos aunque serán secretos para el usuario.</p>
-</section>
-<section id="id1">
-<h3>Funciones digitales<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>Un proceso de computación clásica descompone en puertas elementales una <em>función digital</em></p>
+<h3>Funciones digitales<a class="headerlink" href="#funciones-digitales" title="Permalink to this heading">#</a></h3>
+<p>Un computador clásico es capaz de ejecutar funciones digitales</p>
 <div class="math notranslate nohighlight">
 \[
 f : \{0,1\}^n ~~\to ~~\{0,1\}^m
 \]</div>
-<p>La construcción de <span class="math notranslate nohighlight">\(f\)</span> es equivalente a la especificación de <span class="math notranslate nohighlight">\(m\)</span> funciones  <span class="math notranslate nohighlight">\(f_1,f_2,...,f_m\)</span> <strong>binarias</strong></p>
+<p>descomponiendo la ejecución en puertas elementales.
+La construcción de <span class="math notranslate nohighlight">\(f\)</span> es equivalente a la especificación de <span class="math notranslate nohighlight">\(m\)</span> funciones  <span class="math notranslate nohighlight">\(f_1,f_2,...,f_m\)</span> <strong>binarias</strong></p>
 <div class="math notranslate nohighlight">
 \[
 f_i : \{0,1\}^n ~~\to ~~\{0,1\}
 \]</div>
-<p>Es evidente que ninguna función binaria es invertible para <span class="math notranslate nohighlight">\(m\geq 2\)</span>.</p>
-<p>Si queremos englobar la computación clásica dentro de la cuántica, este hecho representa un inconveniente, debido a que los circuitos cuánticos son, por naturaleza, invertibles.</p>
-<p>La manera más simple de fabricar, a partir de un mapa no invertible <span class="math notranslate nohighlight">\(f\)</span>, otro invertible <span class="math notranslate nohighlight">\(U_f\)</span>, implica <em>conservar</em> los valores de la variables iniciales</p>
+<p>Es evidente que ninguna función binaria es invertible para <span class="math notranslate nohighlight">\(n\geq 2\)</span>.
+Al igual que vimos anteriormente, para formular una función binaria como un circuito cuántico este hecho representa un inconveniente, debido a que éstos son, por naturaleza, invertibles.</p>
+</section>
+<section id="evaluacion-cuantica-de-funciones">
+<h3>Evaluación cuántica de funciones<a class="headerlink" href="#evaluacion-cuantica-de-funciones" title="Permalink to this heading">#</a></h3>
+<p>La manera más simple de fabricar, a partir de un mapa no invertible <span class="math notranslate nohighlight">\(f\)</span>, un operador lineal <span class="math notranslate nohighlight">\(U_f\)</span>, invertible, implica <em>conservar</em> los valores de la variables iniciales</p>
 <p>Para <span class="math notranslate nohighlight">\(f:\{0,1\}^n \to \{0,1\}\)</span> necesitamos un total de <span class="math notranslate nohighlight">\(n+1\)</span> cúbits:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(n\)</span> cúbits que contienen el argumento de la función, <span class="math notranslate nohighlight">\(\ket{x}_n \in \mathbb{C}^n\)</span>,</p></li>
-<li><p>1 cúbit que guardará el resultado, <span class="math notranslate nohighlight">\(\ket{y} \in \mathbb{C}\)</span>.</p></li>
+<li><p>una ancilla que guardará el resultado, <span class="math notranslate nohighlight">\(\ket{y} \in \mathbb{C}\)</span>.</p></li>
 </ul>
-<p>Sea <span class="math notranslate nohighlight">\(U_f\)</span> el siguiente operador</p>
+<p>Recordemos que, para definir un operador, debemos especificar cómo actúa sobre todos los elementos de una base.
+Sea <span class="math notranslate nohighlight">\(\ket{x}\ket{y}\)</span> una base de <span class="math notranslate nohighlight">\(\Hil^{\otimes n+1}\)</span>. Asociaremos a la función <span class="math notranslate nohighlight">\(f(x)\)</span> el siguiente operador  <span class="math notranslate nohighlight">\(U_f\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 U_f : \ket{x}\ket{y} \longrightarrow \ket{x} \ket{ y \oplus f(x) }
 \end{equation*}\]</div>
 <p>Donde <span class="math notranslate nohighlight">\(\oplus\)</span> indica suma módulo 2.</p>
-<p>Es evidente de la definición que <span class="math notranslate nohighlight">\(U_f\cdot U_f = I\)</span>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>prueba que <span class="math notranslate nohighlight">\(U_f\)</span> es unitario, además de ser hermítico.</p>
+</div>
+<details>
+<summary><p style="text-align: right ;color: navy"> >> Solución </p></summary>
+<p>Por un lado que <span class="math notranslate nohighlight">\(U_f\)</span> es su propio inverso <span class="math notranslate nohighlight">\(U_f U_f =I\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+U_fU_f \ket{x}\ket{y} = U_f \ket{x}\ket{y\oplus f(x)} = \ket{x}\ket{y\oplus 2 f(x)} = \ket{x}\ket{y}
+\]</div>
+<p>Es decir <span class="math notranslate nohighlight">\(U_f = U_f^{-1}\)</span>. Para ver que es hermítico notemos que el operador <span class="math notranslate nohighlight">\(U_f\)</span> se escribe en la forma</p>
+<div class="math notranslate nohighlight">
+\[
+U_f = \sum_{x,y} \ket{x}\ket{y \oplus f(x)}\bra{x}\bra{y}
+\]</div>
+<p>con lo que</p>
+<div class="math notranslate nohighlight">
+\[    
+U_f^\dagger = \sum_{x,y} \ket{x}\ket{y}\bra{x}\bra{y \oplus f(x)}
+\]</div>
+<p>Definamos la nueva etiqueta <span class="math notranslate nohighlight">\(z = y \oplus f(x) \Rightarrow y = z \oplus f(x)\)</span>. Entonces</p>
+<div class="math notranslate nohighlight">
+\[    
+U_f^\dagger = \sum_{x,z} \ket{x}\ket{z\oplus f(x)}\bra{x}\bra{z} = U_f
+\]</div>
+<div class="docutils">
+</div>
+<section id="oraculo-booleano">
+<h4>Oráculo Booleano<a class="headerlink" href="#oraculo-booleano" title="Permalink to this heading">#</a></h4>
+<p>Si lo único que deseamos es codificar la función <span class="math notranslate nohighlight">\(f(x)\)</span> en una serie de cúbits, es suficiente con
+inicialiar la ancilla en el estado <span class="math notranslate nohighlight">\(\ket{0}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+U_f\,  \ket{x}\otimes\ket{0} = \ket{x}\ket{f(x)}
+\]</div>
+<p>Oráculos basados en esta codificación se denominan <strong>oráculos booleanos</strong>.</p>
 </section>
-<section id="construccion-de-funciones-binarias-los-min-terminos">
-<h3>Construcción de funciones binarias. Los min-términos<a class="headerlink" href="#construccion-de-funciones-binarias-los-min-terminos" title="Permalink to this heading">#</a></h3>
-<p>Es muy sencillo establecer un método general para construir funciones binarias de la forma <span class="math notranslate nohighlight">\(f: \{0, 1\}^n \rightarrow \{0, 1\}\)</span>.</p>
-<p>Consideremos la siguiente tabla de verdad para una función <span class="math notranslate nohighlight">\(f: \{0, 1\}^3 \rightarrow \{0, 1\}\)</span> concreta.</p>
+<section id="oraculos-de-fase">
+<h4>Oráculos  de  fase<a class="headerlink" href="#oraculos-de-fase" title="Permalink to this heading">#</a></h4>
+<p>Nada nos impide inicializar la ancilla, en lugar de en el estado <span class="math notranslate nohighlight">\(\ket{0}\)</span>, en el estado <span class="math notranslate nohighlight">\(\ket{-}\)</span></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">los estados <span class="math notranslate nohighlight">\(\ket{x}\otimes \ket{\pm}\)</span> son autovectores de <span class="math notranslate nohighlight">\(U_f\)</span> son con autovalores <span class="math notranslate nohighlight">\(+1\)</span> y <span class="math notranslate nohighlight">\((-1)^{f(x)}\)</span> respectivamente</p>
+</div>
+</div>
+<details>
+<summary><p style="text-align: right ;color: navy"> >> Prueba: </p></summary>
+<p>por un lado sabemos que los <em>autovalores</em> deben ser <span class="math notranslate nohighlight">\(\pm 1\)</span> dado que <span class="math notranslate nohighlight">\(U_f^2 = I\)</span>.
+Veamos cada caso</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+U_f\ket{x}\otimes \ket{+} &amp;=&amp; \ket{x}\otimes \frac{1}{\sqrt{2}}\left( \rule{0mm}{6mm}\ket{0\oplus f(x)}+\ket{1\oplus f(x)} \right) = \ket{x}\otimes \ket{+} \nonumber\\
+U_f\ket{x}\otimes \ket{-} &amp;=&amp; \ket{x}\otimes \frac{1}{\sqrt{2}}\left( \rule{0mm}{6mm} \ket{0\oplus f(x)}-\ket{1\oplus f(x)}\right) = (-1)^{f(x)} \ket{x}\otimes \ket{-}
+\end{eqnarray*}\]</div>
+<div class="docutils">
+<p>Este teorema implica que</p>
+<div class="math notranslate nohighlight">
+\[
+U_f\, \ket{x}\otimes \ket{-} = (-1)^{f(x)} \ket{x}\otimes \ket{-}
+\]</div>
+<p>Vemos que se produce un típico efecto de <em>retroceso de fase</em>:
+especificando <span class="math notranslate nohighlight">\(\ket{y} = \ket{-}\)</span> codificamos <span class="math notranslate nohighlight">\(f(x)\)</span> en <em>la fase</em> <span class="math notranslate nohighlight">\(~\to ~(-1)^{f(x)} = e^{i\pi f(x)}\)</span></p>
+<p>Oráculos basados en esta codificación se denominan <strong>oráculos de fase</strong></p>
+</div>
+</section>
+</section>
+<section id="construccion-de-funciones-binarias">
+<h3>Construcción de funciones binarias<a class="headerlink" href="#construccion-de-funciones-binarias" title="Permalink to this heading">#</a></h3>
+<p>Es muy sencillo establecer un método general para construir el circuito que implementa la función <span class="math notranslate nohighlight">\(f: \{0, 1\}^n \rightarrow \{0, 1\}\)</span> si conocemos la tabla completa de valores.   Por ejemplo, consideremos la siguiente tabla de verdad para una función <span class="math notranslate nohighlight">\(f: \{0, 1\}^3 \rightarrow \{0, 1\}\)</span> concreta</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{cccc}
@@ -726,13 +791,14 @@ U_f : \ket{x}\ket{y} \longrightarrow \ket{x} \ket{ y \oplus f(x) }
 \hline 
 \end{array}
 \end{split}\]</div>
-<p>La idea es considerar exclusivamente los términos que tienen como salida la variable 1, que denominaremos <b>min-términos</b>.</p>
-<p>Por ejemplo hay un min-término de la forma <span class="math notranslate nohighlight">\(101 \to 1\)</span> que se puede obtener mediante una puerta como la siguiente</p>
+<p>Vamos a ver cómo construir el operador <span class="math notranslate nohighlight">\(U_f\)</span> en la codificación booleana.</p>
+<p>La idea es considerar exclusivamente los términos que tienen como salida la variable 1, que denominaremos <b>min-términos</b>.
+Por ejemplo hay un min-término de la forma <span class="math notranslate nohighlight">\(101 \to 1\)</span> que se puede obtener mediante una puerta controlada como la siguiente</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/ctrl5.png"><img alt="../../../_images/ctrl5.png" src="../../../_images/ctrl5.png" style="width: 100px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/ctrl5.png"><img alt="../../../_images/ctrl5.png" src="../../../_images/ctrl5.png" style="width: 120px;" /></a>
 </figure>
-<p>Cada min-término llevará asociada una puerta condicionada diferente. Su composición define la función <span class="math notranslate nohighlight">\(f\)</span></p>
-<p>Para el caso de la tabla de verdad anterior, el circuito correspondiente vendrá dado por:</p>
+<p>Cada min-término llevará asociada una puerta condicionada diferente. Su composición define la función <span class="math notranslate nohighlight">\(f\)</span>
+Para el caso de la tabla de verdad anterior, el circuito correspondiente vendrá dado por:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
@@ -752,11 +818,16 @@ U_f : \ket{x}\ket{y} \longrightarrow \ket{x} \ket{ y \oplus f(x) }
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/8fb7f238a8107852ef0fe630f369ab5af28cc789bc8fd1c597a5feb758fc1bbc.png" src="../../../_images/8fb7f238a8107852ef0fe630f369ab5af28cc789bc8fd1c597a5feb758fc1bbc.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
+  self._style, def_font_ratio = load_style(self._style)
+</pre></div>
+</div>
+<img alt="../../../_images/5b41b2232a4672f6b734b4b1432a6405496d203f5bcb230de1afba84466eccdf.png" src="../../../_images/5b41b2232a4672f6b734b4b1432a6405496d203f5bcb230de1afba84466eccdf.png" />
 </div>
 </div>
-<p>donde hemos hecho uso de la puerta multicontrolada <a class="reference external" href="https://qiskit.org/documentation/stubs/qiskit.circuit.library.MCXGate.html?highlight=mcxgate#qiskit.circuit.library.MCXGate">MCXGate</a> de qiskit</p>
-<p>Vamos a implementar una función <span class="math notranslate nohighlight">\(f:\{0,1\}^4\to \{0,1\}^4\)</span> dada por la siguiente <em>tabla de verdad</em></p>
+<p>donde hemos hecho uso de la puerta multicontrolada <a class="reference external" href="https://qiskit.org/documentation/stubs/qiskit.circuit.library.MCXGate.html?highlight=mcxgate#qiskit.circuit.library.MCXGate">MCXGate</a> de qiskit.</p>
+<p>Para implementar una función digital <span class="math notranslate nohighlight">\(f:\{0,1\}^n\to \{0,1\}^m\)</span> lo único que tenemos que hacer es conocer la lista de  salidas. La longitud en bits de las salidas será <span class="math notranslate nohighlight">\(m\)</span>. El número de salidas será <span class="math notranslate nohighlight">\(n\)</span>, con lo que, de la tabla podemos deducir todo lo que necesitamos.</p>
+<p>Por ejemplo la siguiente <em>tabla de verdad</em> se corresponde con una función  <span class="math notranslate nohighlight">\(f:\{0,1\}^4\to \{0,1\}^4\)</span>, es decir, <span class="math notranslate nohighlight">\(n=m=4\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{cc|cc}
@@ -772,98 +843,57 @@ U_f : \ket{x}\ket{y} \longrightarrow \ket{x} \ket{ y \oplus f(x) }
 \hline 
 \end{array}
 \end{split}\]</div>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Completa el código que genera un circuito que implementa la siguiente función digital</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solución<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if output_bit ==&#39;1&#39;:
-    qc.append(MCXGate(len(input_str), ctrl_state=ctrl_state),qr_input[:]+[qr_output[j]])
-</pre></div>
-</div>
-</div>
-</details></div>
+<p>¡Vamos a programar!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span>
-<span class="kn">from</span> <span class="nn">qiskit.circuit.library</span> <span class="kn">import</span> <span class="n">MCXGate</span>
-
-
-<span class="k">def</span> <span class="nf">oracle</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">):</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">oracle</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">):</span> 
     
     <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">)))</span>  <span class="c1">#dimension del registro de entrada |x&gt; </span>
     <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>             <span class="c1">#dimension del registro de salida |f(x)&gt;</span>
-    
+<span class="c1">#    print(m)</span>
     <span class="c1">#generamos todos los posibles inputs en binario, completando con ceros hasta tener strings de n bits</span>
     <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="c1">#    print(f_outputs[0])</span>
     
     <span class="n">qr_input</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;input&#39;</span><span class="p">)</span>
     <span class="n">qr_output</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
     <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr_input</span><span class="p">,</span> <span class="n">qr_output</span><span class="p">)</span>
 
-
     <span class="c1"># Hacemos un bucle sobre los inputs</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">input_str</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
         <span class="n">ctrl_state</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">input_str</span><span class="p">[::],</span><span class="mi">2</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ctrl_state</span><span class="p">)</span>
         <span class="c1"># Para cada input, i, haz un bucle sobre cada bit del output     </span>
         <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">output_bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
-<span class="c1">###</span>
+<span class="c1">#            print(j,output)</span>
             <span class="k">if</span> <span class="n">output_bit</span> <span class="o">==</span><span class="s1">&#39;1&#39;</span><span class="p">:</span>
-                <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MCXGate</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_str</span><span class="p">),</span> <span class="n">ctrl_state</span><span class="o">=</span><span class="n">ctrl_state</span><span class="p">),</span><span class="n">qr_input</span><span class="p">[:]</span><span class="o">+</span><span class="p">[</span><span class="n">qr_output</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>  
+                <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MCXGate</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_str</span><span class="p">),</span> <span class="n">ctrl_state</span><span class="o">=</span><span class="n">ctrl_state</span><span class="p">),</span><span class="n">qr_input</span><span class="p">[:]</span><span class="o">+</span><span class="p">[</span><span class="n">qr_output</span><span class="p">[</span><span class="n">m</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>  
 
     <span class="k">return</span> <span class="n">qc</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>La función se especifica mediante una lista de <em>strings</em> binarios</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> 
-<span class="n">f_outputs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1111&#39;</span><span class="p">,</span> <span class="s1">&#39;1011&#39;</span><span class="p">,</span> <span class="s1">&#39;0011&#39;</span><span class="p">,</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span> <span class="s1">&#39;0101&#39;</span><span class="p">,</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">f_out_1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1111&#39;</span><span class="p">,</span> <span class="s1">&#39;1011&#39;</span><span class="p">,</span> <span class="s1">&#39;0011&#39;</span><span class="p">,</span> <span class="s1">&#39;1000&#39;</span><span class="p">,</span> <span class="s1">&#39;0101&#39;</span><span class="p">,</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span> 
                <span class="s1">&#39;0000&#39;</span><span class="p">,</span> <span class="s1">&#39;1110&#39;</span><span class="p">,</span> <span class="s1">&#39;0101&#39;</span><span class="p">,</span> <span class="s1">&#39;0100&#39;</span><span class="p">,</span> <span class="s1">&#39;0000&#39;</span><span class="p">,</span> <span class="s1">&#39;1110&#39;</span><span class="p">,</span> 
                <span class="s1">&#39;1111&#39;</span><span class="p">,</span> <span class="s1">&#39;1011&#39;</span><span class="p">,</span> <span class="s1">&#39;0011&#39;</span><span class="p">,</span> <span class="s1">&#39;1000&#39;</span><span class="p">]</span>
 
-<span class="n">f_outputs</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;000&#39;</span><span class="p">,</span> <span class="s1">&#39;001&#39;</span><span class="p">,</span> <span class="s1">&#39;010&#39;</span><span class="p">,</span> <span class="s1">&#39;011&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="s1">&#39;101&#39;</span><span class="p">,</span> <span class="s1">&#39;110&#39;</span><span class="p">,</span> <span class="s1">&#39;111&#39;</span><span class="p">]</span>
+<span class="n">f_out_2</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;000&#39;</span><span class="p">,</span> <span class="s1">&#39;001&#39;</span><span class="p">,</span> <span class="s1">&#39;010&#39;</span><span class="p">,</span> <span class="s1">&#39;011&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="s1">&#39;101&#39;</span><span class="p">,</span> <span class="s1">&#39;110&#39;</span><span class="p">,</span> <span class="s1">&#39;111&#39;</span><span class="p">]</span>
     
+<span class="n">f_out_3</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">]</span>
 
-    
-<span class="n">oracle</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="n">oracle</span><span class="p">(</span><span class="n">f_out_3</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;000&#39;, &#39;001&#39;, &#39;010&#39;, &#39;011&#39;, &#39;100&#39;, &#39;101&#39;, &#39;110&#39;, &#39;111&#39;]
-0 0
-1 1
-2 2
-3 3
-4 4
-5 5
-6 6
-7 7
-</pre></div>
+<img alt="../../../_images/6ea93904e4084bad5783935d18a26a49042dbce873eaad969ab317534a694ba8.png" src="../../../_images/6ea93904e4084bad5783935d18a26a49042dbce873eaad969ab317534a694ba8.png" />
 </div>
-<div class="output text_html"><pre style="word-wrap: normal;white-space: pre;background: #fff0;line-height: 1.1;font-family: &quot;Courier New&quot;,Courier,monospace">                                                                      
- input_0: ──■────o────■────■────o────■────■────o────o────■────■────■──
-            │    │    │    │    │    │    │    │    │    │    │    │  
- input_1: ──o────■────■────■────o────o────o────■────■────■────■────■──
-            │    │    │    │    │    │    │    │    │    │    │    │  
- input_2: ──o────o────o────o────■────■────■────■────■────■────■────■──
-          ┌─┴─┐  │    │  ┌─┴─┐  │    │  ┌─┴─┐  │    │    │    │  ┌─┴─┐
-output_0: ┤ X ├──┼────┼──┤ X ├──┼────┼──┤ X ├──┼────┼────┼────┼──┤ X ├
-          └───┘┌─┴─┐┌─┴─┐└───┘  │    │  └───┘  │  ┌─┴─┐  │  ┌─┴─┐└───┘
-output_1: ─────┤ X ├┤ X ├───────┼────┼─────────┼──┤ X ├──┼──┤ X ├─────
-               └───┘└───┘     ┌─┴─┐┌─┴─┐     ┌─┴─┐└───┘┌─┴─┐└───┘     
-output_2: ────────────────────┤ X ├┤ X ├─────┤ X ├─────┤ X ├──────────
-                              └───┘└───┘     └───┘     └───┘          </pre></div></div>
 </div>
+<p>Evaluemos este circuito</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">3</span>
@@ -874,7 +904,7 @@ output_2: ────────────────────┤ X ├�
 
 
 <span class="n">qc</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oracle</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">)</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(),</span><span class="n">qr_in</span><span class="p">[:]</span><span class="o">+</span><span class="n">qr_out</span><span class="p">[:])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oracle</span><span class="p">(</span><span class="n">f_out_2</span><span class="p">)</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(),</span><span class="n">qr_in</span><span class="p">[:]</span><span class="o">+</span><span class="n">qr_out</span><span class="p">[:])</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr_out</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
@@ -882,56 +912,44 @@ output_2: ────────────────────┤ X ├�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;000&#39;, &#39;001&#39;, &#39;010&#39;, &#39;011&#39;, &#39;100&#39;, &#39;101&#39;, &#39;110&#39;, &#39;111&#39;]
-0 0
-1 1
-2 2
-3 3
-4 4
-5 5
-6 6
-7 7
-</pre></div>
-</div>
-<img alt="../../../_images/6d47af669651a5aafdb485b3fe2b414afa10843e8129910ba0e5ea715ac1acad.png" src="../../../_images/6d47af669651a5aafdb485b3fe2b414afa10843e8129910ba0e5ea715ac1acad.png" />
+<img alt="../../../_images/13383590c91cf1830b55c4d4de072dca27d5dd8834fd10aa4ea8f4b55d840f40.png" src="../../../_images/13383590c91cf1830b55c4d4de072dca27d5dd8834fd10aa4ea8f4b55d840f40.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
 
-<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">M_backend</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">keys</span><span class="p">,</span><span class="n">values</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:b}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">keys</span><span class="p">),</span><span class="n">values</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">M_backend</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;Aer&#39; from &#39;qiskit&#39; (/Users/javier/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/__init__.py)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100 1.0
 </pre></div>
 </div>
 </div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
-<p>Escribe una función <span class="math notranslate nohighlight">\(f:S^n\to S\)</span>  que  produzca aleatoriamente <span class="math notranslate nohighlight">\(f(x) = \pm 1\)</span> de forma <i>equilibrada</i> (es decir, tantos <span class="math notranslate nohighlight">\(f(x)= +1\)</span> como <span class="math notranslate nohighlight">\(f(x)= -1\)</span>).</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solución<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">Ver por ejemplo la solución del qiskit textbook:<a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/deutsch-jozsa.html">https://qiskit.org/textbook/ch-algorithms/deutsch-jozsa.html</a>   sección 4.4</p>
+<p>Escribe una función <i>balanced_binary(n)</i> para <span class="math notranslate nohighlight">\(f:S^n\to S\)</span>  tal que <span class="math notranslate nohighlight">\(f(x) = \pm 1\)</span> aleatoriamente y de forma <i>equilibrada</i> (es decir, tantos <span class="math notranslate nohighlight">\(f(x)= +1\)</span> como <span class="math notranslate nohighlight">\(f(x)= -1\)</span>).</p>
 </div>
-</details></div>
+<details>
+<summary><p style="text-align: right ;color: navy"> >> Solución </p></summary>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">balanced_binary</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">n_elementos</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">valores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n_elementos</span><span class="o">/</span><span class="mi">2</span><span class="p">))]</span> <span class="o">+</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n_elementos</span><span class="o">/</span><span class="mi">2</span><span class="p">))])</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">valores</span><span class="p">)</span>
+        <span class="n">f_outputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">valores</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">oracle</span><span class="p">(</span><span class="n">f_outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="docutils">
+</div>
+<p>Evidentemente la complejidad de este método para codificar una función binaria no escala bien porque exige una puerta condicionada por cada min-término. En general este número crecerá como una fracción del número de posibles entradas <span class="math notranslate nohighlight">\(2^n\)</span>.</p>
+<p>Para alguna función concreta, es posible que el circuito requiera  un número de puertas que sólo sea proporcional a <span class="math notranslate nohighlight">\(n\)</span>. Vamos a ver un caso así en el siguiente ejemplo</p>
 </section>
 <section id="funcion-binaria-lineal">
 <h3>Funcion binaria lineal:<a class="headerlink" href="#funcion-binaria-lineal" title="Permalink to this heading">#</a></h3>
@@ -940,33 +958,14 @@ Solución<div class="sd-summary-down docutils">
 \[\begin{equation*}
 f(x;a) = a \cdot x = a_{n-1} x_{n-1} \oplus a_{n-2} x_{n-2} \oplus \cdots \oplus a_{0} x_{0}\; ,
 \end{equation*}\]</div>
-<p>donde  <span class="math notranslate nohighlight">\(\oplus\)</span> es la suma módulo 2.</p>
-<p>Por ejemplo, el circuito que implementa esta función cuando <span class="math notranslate nohighlight">\(a=11010\)</span> es el siguiente</p>
+<p>donde  <span class="math notranslate nohighlight">\(\oplus\)</span> es la <em>suma módulo 2</em>, por lo que el resultado sólo puede ser 0 ó 1.</p>
+<p>El circuito que implementa esta función sólo requiere una puerta <span class="math notranslate nohighlight">\(\hbox{CNOT}\)</span> por cada valor de <span class="math notranslate nohighlight">\(a_i=1\)</span>. Por ejemplo, tomemos <span class="math notranslate nohighlight">\(a=01011\)</span></p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/linear_function.png"><img alt="../../../_images/linear_function.png" src="../../../_images/linear_function.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/linear_function.png"><img alt="../../../_images/linear_function.png" src="../../../_images/linear_function.png" style="width: 350px;" /></a>
 </figure>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Completa el siguiente código que genera el circuito asociado a la función binaria lineal <span class="math notranslate nohighlight">\(f(x;a)\)</span>.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Solución<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for i, aq in enumerate(reversed(a)):
-    if aq == &#39;1&#39;:
-         qc.cx(qr_in[i],qr_out) 
-</pre></div>
-</div>
-</div>
-</details></div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
-
-<span class="k">def</span> <span class="nf">linear_circuit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">linear_circuit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
        
     <span class="k">assert</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 
@@ -984,12 +983,9 @@ Solución<div class="sd-summary-down docutils">
     <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
     <span class="s1">&#39;codificamos la función lineal x.a &#39;</span>
-<span class="c1">###</span>
-<span class="c1">#</span>
-<span class="c1">#        Tu solución aquí</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-<span class="c1">####</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">aq</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">aq</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+             <span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="n">qr_in</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">qr_out</span><span class="p">)</span> 
             
     <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
     <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr_out</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">cr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1011,90 +1007,29 @@ Solución<div class="sd-summary-down docutils">
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/b2c46978241f12d0099ce42274ea64a8ab8f2b892a87d519e13ab81a6e65b33b.png" src="../../../_images/b2c46978241f12d0099ce42274ea64a8ab8f2b892a87d519e13ab81a6e65b33b.png" />
+<img alt="../../../_images/366e7052191ac3075ff191527e249d78605509b5f1d45f0dbe102fd6bee0b626.png" src="../../../_images/366e7052191ac3075ff191527e249d78605509b5f1d45f0dbe102fd6bee0b626.png" />
 </div>
 </div>
 <p>La función <span class="math notranslate nohighlight">\(a\cdot x = (1 + 0 + 0 + 1)mod(2) = 0\)</span>. Vamos a ver si este resultado es el hallado</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">n_tiradas</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_tiradas</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-<span class="n">counts</span>     <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">M_backend</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="n">n_tiradas</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
-<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">n_tiradas</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;Aer&#39; from &#39;qiskit&#39; (/Users/javier/opt/anaconda3/envs/TalentQ2/lib/python3.11/site-packages/qiskit/__init__.py)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 1.0}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
-<p>Sea sobre el conjunto de valores <span class="math notranslate nohighlight">\(x\in \{0,1,2,3\}\)</span> la función <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>. Halla la tabla de verdad en binario y construye el oráculo que implementa esta función.</p>
-</div>
-</section>
-</section>
-<section id="oraculos-booleanos-y-de-fase">
-<h2>Oráculos <i> booleanos </i> y de fase<a class="headerlink" href="#oraculos-booleanos-y-de-fase" title="Permalink to this heading">#</a></h2>
-<p>En la sección anterior hemos definido el operador  <span class="math notranslate nohighlight">\(U_f\)</span> usando un cúbit ancilla</p>
-<div class="math notranslate nohighlight">
-\[
-U_f \ket{x}\otimes\ket{y} = \ket{x}\ket{y + f(x)}
-\]</div>
-<p>Podemos usar <span class="math notranslate nohighlight">\(U_f\)</span> de 2 maneras distintas para <em>codificar el oráculo</em> de una función binaria <span class="math notranslate nohighlight">\(f(x)\)</span></p>
-<section id="oraculo-booleano">
-<h3>Oráculo <em>booleano</em><a class="headerlink" href="#oraculo-booleano" title="Permalink to this heading">#</a></h3>
-<div class="math notranslate nohighlight">
-\[
-U_f \ket{x}\otimes\ket{0} = \ket{x}\ket{f(x)}
-\]</div>
-<div class="attention admonition">
-<p class="admonition-title">En resumen</p>
-<ul class="simple">
-<li><p>Especificando <span class="math notranslate nohighlight">\(\ket{y}=\ket{0}\)</span> codificamos la función <span class="math notranslate nohighlight">\(f(x)\)</span>  en el <em>estado del segundo cúbit</em></p></li>
-<li><p>Oráculos basados en esta codificación se denominan <strong>oráculos booleanos</strong></p></li>
-</ul>
-</div>
-</section>
-<section id="oraculo-de-fase">
-<h3>Oráculo de fase<a class="headerlink" href="#oraculo-de-fase" title="Permalink to this heading">#</a></h3>
-<p>Nada nos impide inicializar la ancilla en un <em>autovector</em> de <span class="math notranslate nohighlight">\(U_f\)</span></p>
-<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Teorema</b>:</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">Los autovectores de <span class="math notranslate nohighlight">\(U_f\)</span> son los estados <span class="math notranslate nohighlight">\(\ket{x}\otimes \ket{\pm}\)</span></p>
-</div>
-</div>
-<p><em>Prueba:</em></p>
-<p>Por un lado sabemos que los <em>autovalores</em> deben ser <span class="math notranslate nohighlight">\(\pm 1\)</span> dado que <span class="math notranslate nohighlight">\(U_f^2 = I\)</span>.
-Veamos cada caso</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-U_f\ket{x}\otimes \ket{+} &amp;=&amp; \ket{x}\otimes \frac{1}{\sqrt{2}}\left( \rule{0mm}{6mm}\ket{0\oplus f(x)}+\ket{1\oplus f(x)} \right) = \ket{x}\otimes \ket{+} \nonumber\\
-U_f\ket{x}\otimes \ket{-} &amp;=&amp; \ket{x}\otimes \frac{1}{\sqrt{2}}\left( \rule{0mm}{6mm} \ket{0\oplus f(x)}-\ket{1\oplus f(x)}\right) = (-1)^{f(x)} \ket{x}\otimes \ket{-}
-\end{eqnarray*}\]</div>
-<p>donde vemos que se produce un típico efecto de <em>retroceso de fase</em></p>
-<div class="attention admonition">
-<p class="admonition-title">En resumen</p>
-<ul class="simple">
-<li><p>Especificando <span class="math notranslate nohighlight">\(\ket{y} = \ket{-}\)</span> codificamos <span class="math notranslate nohighlight">\(f(x)\)</span> en <em>la fase</em> <span class="math notranslate nohighlight">\(~\to ~(-1)^{f(x)} = e^{i\pi f(x)}\)</span></p></li>
-<li><p>Oráculos basados en esta codificación se denominan <strong>oráculos de fase</strong></p></li>
-</ul>
+<p>sea la función <span class="math notranslate nohighlight">\(f(x) = x^2\)</span>, evaluadad sobre el conjunto de valores <span class="math notranslate nohighlight">\(x\in \{0,1,2,3\}\)</span> . Halla la tabla de verdad en binario y construye el oráculo que implementa esta función.</p>
 </div>
 </section>
 </section>
@@ -1156,17 +1091,16 @@ U_f\ket{x}\otimes \ket{-} &amp;=&amp; \ket{x}\otimes \frac{1}{\sqrt{2}}\left( \r
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computacion-clasica-universal">Computación clásica universal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-un-estado-inicial">Preparación de un estado inicial</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-digitales">Funciones digitales</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivacion">Motivación</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Funciones digitales</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-funciones-binarias-los-min-terminos">Construcción de funciones binarias. Los min-términos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-binaria-lineal">Funcion binaria lineal:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparacion-de-un-estado">Preparación de un estado</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculos">Oráculos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funciones-digitales">Funciones digitales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-cuantica-de-funciones">Evaluación cuántica de funciones</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculo-booleano">Oráculo Booleano</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculos-de-fase">Oráculos  de  fase</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculos-booleanos-y-de-fase">Oráculos <i> booleanos </i> y de fase</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculo-booleano">Oráculo <em>booleano</em></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oraculo-de-fase">Oráculo de fase</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#construccion-de-funciones-binarias">Construcción de funciones binarias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funcion-binaria-lineal">Funcion binaria lineal:</a></li>
 </ul>
 </li>
 </ul>
