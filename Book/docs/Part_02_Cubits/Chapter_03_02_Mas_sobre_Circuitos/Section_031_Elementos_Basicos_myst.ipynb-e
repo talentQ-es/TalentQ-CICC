@@ -18,7 +18,7 @@
     "\n",
     "\n",
     "\n",
-    "# Circuitería cuántica elemental \n",
+    "# Computación Cuántica Universal\n",
     "\n",
     "$ \\newcommand{\\bra}[1]{\\langle #1|} $\n",
     "$ \\newcommand{\\ket}[1]{|#1\\rangle} $\n",
@@ -64,93 +64,9 @@
    "id": "04dfb069",
    "metadata": {},
    "source": [
+    "## Circuitería básica\n",
+    "\n",
     "En este capítulo vamos a detenernos en algunos *recursos en programación cuántica* que serán de uso muy frecuente. \n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "988829b2",
-   "metadata": {
-    "slideshow": {
-     "slide_type": "slide"
-    }
-   },
-   "source": [
-    "## Retroceso de Fase\n",
-    "\n",
-    " Hemos estudiado ya el operador controlado $\\cg{U}$. Es un error frecuente pensar que el cúbit controlador no se modifica. Un caso importante ocurre cuando el operador $U$ actúa sobre uno de sus autoestados \n",
-    "(recuerda que los autovalores de  un operador unitario son fases puras)\n",
-    "\n",
-    "<br>\n",
-    "$$\n",
-    "U\\ket{u} = e^{i\\lambda} \\ket{u}\n",
-    "$$\n",
-    "<br>\n",
-    "\n",
-    " Supongamos que por el *cúbit controlador* circula una superposición $(a\\ket{0}+b\\ket{1})$ y un autoestado $\\ket{u}$ de $U$ por el cúbit controlado. La acción de $\\cg{U}$ es\n",
-    "<br>\n",
-    "<br>\n",
-    "\n",
-    "$$\n",
-    "\\cg{U}: (a\\ket{0} + b\\ket{1})\\otimes \\ket{u} ~\\to ~ a\\ket{0}\\ket{u} + b \\ket{1}e^{i\\lambda}\\ket{u}  = \\left( a\\ket{0}\\ket{u} + be^{i\\lambda} \\ket{1} \\rule{0mm}{4mm} \\right)\\otimes \\ket{u}\n",
-    "$$\n",
-    "<br>\n",
-    "\n",
-    "\n",
-    " En resultado final es que la fase $e^{i\\lambda}$ ha **modificado** el estado de entrada, mientras que el segundo cúbit no ha cambiado. \n",
-    "\n",
-    "El punto es que, en el segundo paso, la fase generada por la acción de U *no pertenece* realmente a ninguno de los dos espacios sino al producto. De modo que puede adscribirse al primer espacio, como hemos hecho en el último paso. \n",
-    "De ahí el nombre de *retroceso de fase*, en inglés \"phase kickback\". \n",
-    "\n",
-    "El siguiente circuito resume la acción de retroceso de fase\n",
-    "\n",
-    "<br>\n",
-    "::::{figure} images/phase_kickback.png\n",
-    ":width: 300px\n",
-    ":align: center\n",
-    "\n",
-    "::::\n",
-    "<br>\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "c3bded23",
-   "metadata": {},
-   "source": [
-    "::::::{admonition} Ejercicio\n",
-    ":class: tip\n",
-    "\n",
-    "\n",
-    "    \n",
-    "Programa un circuito en el que  $U = P(\\phi)$ sea el operador de fase y el estado en el primer cúbit es $\\ket{0}$ y en el segundo es $\\ket{1}$. \n",
-    "    \n",
-    "    \n",
-    "- Usando el *statevector_simulator* representa el estado de salida para distintos de valores de $\\phi\\in [0,2\\pi]$ \n",
-    "    \n",
-    "- ¿en qué plano rota el vector del primer cúbit? ¿Cómo podemos cambiar dicho plano de rotación?\n",
-    "::::::\n"
-   ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "cf7275b2",
-   "metadata": {},
-   "source": [
-    "Un caso muy frecuente ocurre cuando $U = X$, es decir $\\cg{U} = \\hbox{CNOT}$. Los autovalores de $X$ son los que forman la base $\\ket{\\pm}$. En el caso de $\\ket{-}$ tendremos\n",
-    "que la fase es $e^{i\\pi} = -1$\n",
-    "\n",
-    "$$\n",
-    "X \\ket{-} = (-1) \\ket{-}\n",
-    "$$\n",
-    "\n",
-    "\n",
-    "\n",
-    "$$\n",
-    "\\cg{X} \\big( \\ket{x}\\otimes \\ket{-}\\big) ~=~ \\ket{x} X^x\\ket{-} =  (-1)^x \\ket{x} \\otimes \\ket{-}\n",
-    "$$\n",
-    "\n",
-    "El retroceso de fase consigue de esta manera imprimir el valor del cúbit de control en una fase. "
    ]
   },
   {
@@ -162,12 +78,12 @@
     }
    },
    "source": [
-    "## Circuitos Equivalentes\n",
+    "### Circuitos Equivalentes\n",
     "\n",
     "Los circuitos son una representación gráfica de la descomposición de un cierto operador unitarios en un producto de puertas locales y de dos o más cúbits. Esta descomposición no es única, lo cuál permite compilar un circuito de forma que se elija la descomposición más ventajosa. Vamos a ver algunas equivalencias que permiten, en ocasiones reducir la profundidad de un circuito, y en otras, entender mejor el funcionamiento del circuito.\n",
     "\n",
     "\n",
-    "###  Conjugación\n",
+    "####  Conjugación\n",
     "\n",
     "Cualquier operador, $O$, formado por productos de operadores del conjunto $C = \\{X,Y,Z,H,S\\}$ conjuga lo operadores de Pauli $P = \\{ X,Y,Z\\}$ entre sí\n",
     "\n",
@@ -222,7 +138,7 @@
     }
    },
    "source": [
-    "### Circuitos con controles\n",
+    "#### Circuitos con controles\n",
     "\n",
     "La puerta  controlada $\\cg{Z} =  {\\rm diag}(1,1,1,-1)$   es simétrica ya que lo único que hace es cambiar de signo al estado $\\ket{11}$. Es decir\n",
     "\n",
@@ -478,7 +394,7 @@
    "id": "d84307f8",
    "metadata": {},
    "source": [
-    "## Medidas y controles\n",
+    "### Medidas y controles\n",
     "\n",
     "En muchas instancias el resultado de una medida se utiliza para efectuar una operación condicionada sobre un cierto cúbit. Es el caso de la teleportación o la codificación superdensa. \n",
     "\n",
@@ -511,6 +427,92 @@
     "\n",
     "<br> demuestra la equivalencia de los circuitos anteriores.  \n",
     "::::::\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "988829b2",
+   "metadata": {
+    "slideshow": {
+     "slide_type": "slide"
+    }
+   },
+   "source": [
+    "### Retroceso de Fase\n",
+    "\n",
+    " Hemos estudiado ya el operador controlado $\\cg{U}$. Es un error frecuente pensar que el cúbit controlador no se modifica. Un caso importante ocurre cuando el operador $U$ actúa sobre uno de sus autoestados \n",
+    "(recuerda que los autovalores de  un operador unitario son fases puras)\n",
+    "\n",
+    "<br>\n",
+    "$$\n",
+    "U\\ket{u} = e^{i\\lambda} \\ket{u}\n",
+    "$$\n",
+    "<br>\n",
+    "\n",
+    " Supongamos que por el *cúbit controlador* circula una superposición $(a\\ket{0}+b\\ket{1})$ y un autoestado $\\ket{u}$ de $U$ por el cúbit controlado. La acción de $\\cg{U}$ es\n",
+    "<br>\n",
+    "<br>\n",
+    "\n",
+    "$$\n",
+    "\\cg{U}: (a\\ket{0} + b\\ket{1})\\otimes \\ket{u} ~\\to ~ a\\ket{0}\\ket{u} + b \\ket{1}e^{i\\lambda}\\ket{u}  = \\left( a\\ket{0}\\ket{u} + be^{i\\lambda} \\ket{1} \\rule{0mm}{4mm} \\right)\\otimes \\ket{u}\n",
+    "$$\n",
+    "<br>\n",
+    "\n",
+    "\n",
+    " En resultado final es que la fase $e^{i\\lambda}$ ha **modificado** el estado de entrada, mientras que el segundo cúbit no ha cambiado. \n",
+    "\n",
+    "El punto es que, en el segundo paso, la fase generada por la acción de U *no pertenece* realmente a ninguno de los dos espacios sino al producto. De modo que puede adscribirse al primer espacio, como hemos hecho en el último paso. \n",
+    "De ahí el nombre de *retroceso de fase*, en inglés \"phase kickback\". \n",
+    "\n",
+    "El siguiente circuito resume la acción de retroceso de fase\n",
+    "\n",
+    "<br>\n",
+    "::::{figure} images/phase_kickback.png\n",
+    ":width: 300px\n",
+    ":align: center\n",
+    "\n",
+    "::::\n",
+    "<br>\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "c3bded23",
+   "metadata": {},
+   "source": [
+    "::::::{admonition} Ejercicio\n",
+    ":class: tip\n",
+    "\n",
+    "\n",
+    "    \n",
+    "Programa un circuito en el que  $U = P(\\phi)$ sea el operador de fase y el estado en el primer cúbit es $\\ket{0}$ y en el segundo es $\\ket{1}$. \n",
+    "    \n",
+    "    \n",
+    "- Usando el *statevector_simulator* representa el estado de salida para distintos de valores de $\\phi\\in [0,2\\pi]$ \n",
+    "    \n",
+    "- ¿en qué plano rota el vector del primer cúbit? ¿Cómo podemos cambiar dicho plano de rotación?\n",
+    "::::::\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cf7275b2",
+   "metadata": {},
+   "source": [
+    "Un caso muy frecuente ocurre cuando $U = X$, es decir $\\cg{U} = \\hbox{CNOT}$. Los autovalores de $X$ son los que forman la base $\\ket{\\pm}$. En el caso de $\\ket{-}$ tendremos\n",
+    "que la fase es $e^{i\\pi} = -1$\n",
+    "\n",
+    "$$\n",
+    "X \\ket{-} = (-1) \\ket{-}\n",
+    "$$\n",
+    "\n",
+    "\n",
+    "\n",
+    "$$\n",
+    "\\cg{X} \\big( \\ket{x}\\otimes \\ket{-}\\big) ~=~ \\ket{x} X^x\\ket{-} =  (-1)^x \\ket{x} \\otimes \\ket{-}\n",
+    "$$\n",
+    "\n",
+    "El retroceso de fase consigue de esta manera imprimir el valor del cúbit de control en una fase. "
    ]
   },
   {
@@ -868,14 +870,12 @@
     "::::::\n",
     "\n",
     "::::::{card} \n",
-    "<b>Definición</b>: </i>Operador de Clifford</i> \n",
+    "<b>Teorema</b>:  \n",
     "\n",
     "^^^\n",
-    "<br>    \n",
     "Los operadores de Clifford pueden ser generados como composición del siguiente conjunto de operadores\n",
     "<br>\n",
     "<br>\n",
-    "\n",
     "$$\n",
     "\\{ H, S , \\cg{X} \\}\n",
     "$$  \n",

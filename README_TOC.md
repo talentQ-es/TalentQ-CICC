@@ -30,5 +30,5 @@
         - **[Entrelazamiento en acción](./Notebooks/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.ipynb)**
 
     - **[Más cosas sobre circuitos](./Notebooks/Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.md)**
-        - **[Circuitería cuántica elemental ](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb)**
-        - **[Circuitos para computación clásica ](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.ipynb)**
+        - **[Computación Cuántica Universal](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb)**
+        - **[Funciones y oráculos ](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.ipynb)**
