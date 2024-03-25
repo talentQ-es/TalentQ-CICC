@@ -67,13 +67,13 @@
    },
    "source": [
     " Sea $U$ un operador unitario y  $\\ket{u}$ un autovector. Por ser unitario, su autovalor es una fase compleja \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "$$\n",
     "U \\ket{u} = e^{2\\pi i \\varphi} \\ket{u}\\, ,\n",
     "$$\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -102,7 +102,7 @@
     "::::::{admonition} Notar\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "Los autovalores  $\\lambda = e^{i2\\pi \\varphi}=e^{i2\\pi (\\varphi+n)}$  son iguales, para cualquier $n\\in {\\mathbb Z}$ entero. Por tanto será suficiente considerar valores de $\\varphi$ en el intervalo\n",
     "    \n",
     "$$\\varphi \\in [0,1)$$\n",
@@ -122,13 +122,13 @@
    },
    "source": [
     "\n",
-    "\n",
+    "<br>\n",
     "::::{figure} ./figuras/QPE.png\n",
     ":width: 500px\n",
     ":align: center\n",
     "\n",
     "::::\n",
-    ""
+    "<br>"
    ]
   },
   {
@@ -186,8 +186,8 @@
    },
    "source": [
     "**La clave**: cuando $\\ket{u}$ es un <i>autoestado</i>  de $U$, se produce un <i>retroceso de fase</i> \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\\begin{eqnarray*}\n",
     " \\frac{1}{2^{t/2}} \\sum_{y\\in S_t} \\ket{y} U^{y}\\ket{u}  ~= ~  \\frac{1}{2^{t/2}} \\sum_{y\\in S_t} \\ket{y} \\otimes e^{2\\pi i \\varphi y}  \\ket{u} ~= ~ \\frac{1}{2^{t/2}} \\sum_{y\\in S_t} e^{2\\pi i (2^t \\varphi)  y/2^t} \\ket{y} \\otimes \\ket{u}  \\label{fase1}  \n",
     "\\end{eqnarray*}"
@@ -240,9 +240,9 @@
     "::::::{admonition} Ejemplo\n",
     ":class: tip\n",
     "\n",
-    "\n",
+    "<br>\n",
     "Si $\\varphi = 0.4375 \\in [0,1) $ entonces\n",
-    "\n",
+    "<br>\n",
     "    \n",
     "- $ 2^2 \\varphi = 1.75 \\Rightarrow a=1~,~\\delta = 0.75$ \n",
     "- $ 2^3 \\varphi = 3.5~ \\Rightarrow a=3~,~\\delta = 0.5$ \n",
@@ -261,13 +261,13 @@
    },
    "source": [
     "Vamos a terminar el circuito\n",
-    "\n",
+    "<br>\n",
     "::::{figure} ./figuras/QPE.png\n",
     ":width: 500px\n",
     ":align: center\n",
     "\n",
     "::::\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -280,8 +280,8 @@
    "source": [
     "\n",
     "Introduciendo el cambio de variable $2^t \\varphi  =a + \\delta$  vamos a efectuar la transformada de Fourier inversa en el primer registro\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "\\begin{eqnarray*}\n",
     "U^\\dagger_{TFC} \\frac{1}{\\sqrt{2^t}} \\sum_{y=0}^{2^t-1} e^{2\\pi i  \\, (a + \\delta) y/2^t} \\ket{y} &=&\\frac{1}{\\sqrt{2^t}} \\sum_{y=0}^{2^t-1} e^{2\\pi i  \\, (a + \\delta) y/2^t} U^\\dagger_{TFC} \\ket{y}\n",
@@ -290,7 +290,7 @@
     "~&=&~ \\frac{1}{2^{t}} \\sum_{x=0}^{2^t-1} \\sum_{y=0}^{2^t-1}  e^{2\\pi i (a + \\delta  -x) y/2^t} \\ket{x}  ~ \\equiv ~ \\ket{\\Phi}\n",
     "\\end{eqnarray*}\n",
     "\n",
-    ""
+    "<br>"
    ]
   },
   {
@@ -304,8 +304,8 @@
     "Si $\\underline{\\delta = 0}:~$  es decir, si $2^t\\varphi$ fuese un entero $a\\in S_t = \\{0, \\ldots, 2^t-1\\}$, \n",
     " entonces el resultado\n",
     "sería  <b>exactamente</b> $\\ket{\\Phi} = \\ket{a} = \\ket{2^t\\varphi}$ \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\\begin{eqnarray*}\n",
     "\\ket{\\Phi} &=&  \\sum_{x=0}^{2^t-1} \\frac{1}{2^{t}}  \\left(\\sum_{y=0}^{2^t-1}  e^{2\\pi i (a-x) y/2^t} \\right)\\ket{x}  \\\\  \\rule{0mm}{10mm}\n",
     "&=&  \\sum_{x=0}^{2^t-1}  \\frac{1}{2^{t}} \\left(2^t \\delta_{x,a} \\right)\\ket{x}\\\\ \\rule{0mm}{10mm}\n",
@@ -347,14 +347,14 @@
     "Si $\\underline{\\delta \\neq 0}:~$ \n",
     "\n",
     "- El estado en el primer registro  $\\ket{\\Phi} = \\sum_{x=0}^{2^t-1} f(x) \\ket{x}$ será una superposición. \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "$$\n",
     "\\ket{\\Phi} =  \\sum_{x=0}^{2^t-1} \\left( \\frac{1}{2^{t}}\\sum_{y=0}^{2^t-1}  e^{2\\pi i (a + \\delta  -x) y/2^t} \\right) \\ket{x}  \n",
     "= \\sum_{x=0}^{2^t-1} f(x) \\ket{x}\n",
     "$$\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -381,17 +381,17 @@
     "### Ejemplo\n",
     "\n",
     "Vamos a estudiar esta distribución analizando el operador unitario de fase\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "$$\n",
     "U =  \\begin{bmatrix} e^{2\\pi i \\phi_0} & 0 \\\\ 0 & e^{2\\pi i\\phi_1}\\end{bmatrix} \n",
     "$$\n",
-    "\n",
+    "<br>\n",
     "\n",
     "que tiene por autoestados  $\\ket{0}$ y $\\ket{1}$ con autovalores $e^{2\\pi\\phi_0}$ y $e^{2\\pi \\phi_1}$ respectivamente. \n",
-    "\n",
-    ""
+    "<br>\n",
+    "<br>"
    ]
   },
   {
@@ -404,8 +404,8 @@
    "source": [
     "\n",
     "Para programar este operador notamos que \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "$$\n",
     "U =  \n",
@@ -413,7 +413,7 @@
     "\\begin{bmatrix} 1 & 0 \\\\ 0 & e^{2\\pi i(\\phi_0+\\phi_1)}\\end{bmatrix} = \n",
     "R_z(\\theta = -4\\pi \\phi_0) \\cdot P(\\theta = 2\\pi (\\phi_1+\\phi_0))\n",
     "$$\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -680,8 +680,8 @@
     "Para una mantisa fija, $\\delta \\Rightarrow  \\phi = a+\\delta$ las distintas medidas del estado resultante $\\ket{m}$ se distribuirán en el torno a un *valor central* $\\ket{a} = \\ket{[2^t\\varphi]} $.\n",
     "\n",
     " Escribiendo $\\ket{m=a+l}$  podemos obtener la *distribución de probabilidad* $p(m) = p(\\delta, l)$ de medir $m=a+l$\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "\\begin{eqnarray*}\n",
     "p(\\delta, l) ~~&=&~~ \\left\\vert \\,  \\bra{a+ l} \\,  \\frac{1}{2^{t}}\\sum_{x=0}^{2^t-1}   \\sum_{y=0}^{2^t-1}  e^{2\\pi i (\\delta + a -x) y/2^t} \\ket{x}  \\,  \\right\\vert^2  ~~ \\stackrel{x= a + l}{=} ~~\n",
@@ -714,8 +714,8 @@
     "$$\n",
     "\\geq   \\frac{1}{2^{2t}} \\left(\\frac{2 (\\delta-l)}{\\pi(\\delta-l)/2^t }\\right)^2 = \\left(\\frac{2}{\\pi}\\right)^2 \\sim 0.405\n",
     "$$\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "donde hemos usado que   $\\pi x\\geq \\sin(\\pi x) \\geq 2 x$ para $x\\in [ 0,\\pi/2 ]$.\n"
    ]
@@ -729,16 +729,16 @@
    },
    "source": [
     "A $\\delta$ fijo  hasta $\\delta = 0.5$, vemos que la probabilidad está *picada* en $l=0$, es decir en $m=a$. A partir de ahí, como es de esperar, está picada en $l=1$. \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "::::{figure} ./figuras/xprobeigenvalues.png\n",
     ":width: 400px\n",
     ":align: center\n",
     "::::\n",
     "\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "La probabilidad nunca es menor de 0.405 en su máximo."
    ]
   },
@@ -751,14 +751,14 @@
    },
    "source": [
     "A $l = 0$ fijo, la probabilidad de encontrar $m=a+0=a$ es 1 cuando $\\delta=0$ y decrece con $\\delta$. \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "::::{figure} ./figuras/xmaxprobeigen.png\n",
     ":width: 400px\n",
     ":align: center\n",
     "::::\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "Cuando $l=1$ la probabilidad máxima corresponde al número $m=a+1$.\n"
    ]
   },
@@ -787,10 +787,10 @@
     "<b>Teorema</b>:  \n",
     "\n",
     "^^^\n",
-    "    \n",
+    "<br>    \n",
     "El algoritmo QPE (Quantum Phase Estimation) es capaz de producir ua <i>estimación $m$ de orden $k$</i>  para la fase $\\varphi$ (en el sentido de que  $|\\varphi- m/2^t |<2^{-k}$) con una  probabilidad $1-\\epsilon$,  tomando una dimensión del espacio de representación\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "$$\n",
     "t \\geq k  + \\left[ \\log\\left(1 + \\frac{1}{2\\epsilon}\\right) \\right] \\label{tedeene}\n",
     "$$\n",
@@ -1072,12 +1072,12 @@
     "<b>Definición</b>: </i>Orden modular</i> \n",
     "\n",
     "^^^\n",
-    "\n",
-    "\n",
-    "Sean $m,N \\in {\\mathbb N}$ dos enteros $m<N$ coprimos (sin divisores  comunes).\n",
+    "<br>\n",
+    "<br>\n",
+    "Sean $m,N \\in {\\mathbb N}$ dos enteros $m<N$ coprimos (sin divisores  comunes).<br><br>\n",
     "Definimos el <b> orden de $m$ módulo $N$</b> como el  menor entero positivo, $r$, tal que $m^r = 1$ mod$N$.\n",
     "::::::\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -1140,12 +1140,12 @@
     "::::::{admonition} Nota\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "En general, si $N=2^n$, clásicamente no existen algoritmos capaces de resolver este problema en un número  de pasos que sea <i> polinómico en $n$</i>. \n",
     "\n",
     "Por el contrario, verificar si un $r$ es solución es fácil.\n",
-    "\n",
-    " \n",
+    "<br>\n",
+    "<br> \n",
     "    \n",
     "Nos hallamos ante un problema de tipo NP.\n",
     "::::::\n"
@@ -1197,7 +1197,7 @@
     "::::::{admonition} Nota\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "Un oráculo general que funcione para cualquier $(m,N)$ no es conocido.\n",
     "::::::\n"
    ]
@@ -1259,7 +1259,7 @@
     "::::::{admonition} Notar\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "    \n",
     "\n",
     "- La acción de $U_f$ parece mucho a la de un operador controlado $\\cg{U}\\ket{x}\\ket{y} = \\ket{x}U^x\\ket{y}$. Sin embargo ahora $x = 0,1,...,2^t-1$ es un entero. El circuito que implementa $U_f$ es precisamente el que se utiliza en el circuito de QPE. \n",
@@ -1294,12 +1294,12 @@
    },
    "source": [
     "Si *conociésemos* $r$ podríamos construir el siguiente conjunto de $r$  vectores $\\ket{u_s}$ con $s=0,...,r-1$ \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "$$\n",
     "\\ket{u_s} = \\frac{1}{\\sqrt{r}} \\sum_{j=0}^{r-1} e^{-2\\pi i \\frac{s }{r}j} U^j\\ket{1}\n",
     "$$\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -1314,20 +1314,20 @@
     "<b>Teorema</b>:  \n",
     "\n",
     "^^^\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     " Los vectores   $\\{\\ket{u_s}\\}$   forman un conjunto de <i>autovectores</i> de  $U$ con <i>autovalores</i> $e^{2\\pi i s/r}~$. Es decir\n",
-    "    \n",
-    "\n",
+    "<br>    \n",
+    "<br>\n",
     "$$\n",
     "U\\ket{ u_s} = e^{i\\varphi_s} \\ket{u_s}\n",
     "$$\n",
-    "\n",
+    "<br>\n",
     "con \n",
     "$$\n",
     "\\varphi_s = s/r~~~~~~ s=0,...,r-1\n",
     "$$\n",
-    "\n",
+    "<br>\n",
     "::::::\n"
    ]
   },
@@ -1373,15 +1373,15 @@
    "source": [
     "Una *observación importante* nos permite soslayar esta dificultad: vamos a tomar una *combinación homogénea* de los autoestados $\\ket{u_s}$\n",
     "\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\\begin{eqnarray}\n",
     "\\frac{1}{\\sqrt{r}} \\sum_{s=0}^{r-1}\\ket{u_s}   &=& \\frac{1}{\\sqrt{r}} \\sum_{s=0}^{r-1} \\left(  \\frac{1}{\\sqrt{r}}   \\sum_{j=0}^{r-1} e^{-2\\pi i  sj/r} U^{j}\\ket{1} \\right) ~=~ \\frac{1}{r}   \\sum_{j=0}^{r-1} \\left(  \\sum_{s=0}^{r-1}e^{-2\\pi i  sj/r} \\right)U^{j}\\ket{1} \\nonumber\\\\ \n",
     "\\rule{0mm}{12mm}\n",
     "&=&   \\frac{1}{r}   \\sum_{j=0}^{r-1} \\, (r \\delta_{j,0}) \\,  U^{j}\\ket{1} = U^0\\ket{1} \\nonumber\\\\  \\rule{0mm}{10mm}\n",
     "&=& \\ket{1}\n",
     "\\end{eqnarray}\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -1517,7 +1517,7 @@
     "::::::{admonition} Ejercicio\n",
     ":class: tip\n",
     "\n",
-    "\n",
+    "<br>\n",
     "Construye un circuito con esta puerta y verifica que reproduce la lista $m^x$ mod 15 con $x=0,1,2,...$\n",
     "::::::\n"
    ]
@@ -1747,7 +1747,7 @@
     "::::::{admonition} Notar\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "\n",
     "- En el caso más general $\\varphi_s = 2^t s/r \\notin {\\mathbb Z}$ no será un entero\n",
     "    \n",

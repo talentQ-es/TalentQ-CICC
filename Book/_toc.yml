@@ -5,7 +5,7 @@ parts:
   chapters:
   - file:  docs/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb
   - file:  docs/Part_00_Intro/Chapter_00_Prólogo_myst.ipynb-e
-- caption:  Las Reglas del Juego
+- caption:  Las reglas del juego
   chapters:
   - file:  docs/Part_01_Formalismo/Chapter_01_01_formalismo_matematico_myst.md
     sections:
@@ -16,7 +16,7 @@ parts:
     - file:  docs/Part_01_Formalismo/Chapter_01_02_Formalismo_matemático/Section_01_05_Probabilidades_myst.ipynb
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb
   - file:  docs/Part_01_Formalismo/Chapter_02_01_Fundamentos_MC_myst.ipynb-e
-- caption:  De Cúbits y sus Cosas
+- caption:  De cúbito
   chapters:
   - file:  docs/Part_02_Cubits/Chapter_01_01_Circuitos_1_cubit_myst.md
     sections:
@@ -31,3 +31,13 @@ parts:
     sections:
     - file:  docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb
     - file:  docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.ipynb
+- caption:  Algoritmos cuánticos
+  chapters:
+  - file:  docs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.ipynb
+  - file:  docs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.ipynb-e
+  - file:  docs/Part_03_Algoritmos/Chapter_042_QFT_myst.ipynb
+  - file:  docs/Part_03_Algoritmos/Chapter_042_QFT_myst.ipynb-e
+  - file:  docs/Part_03_Algoritmos/Chapter_043_QPE_myst.ipynb
+  - file:  docs/Part_03_Algoritmos/Chapter_043_QPE_myst.ipynb-e
+  - file:  docs/Part_03_Algoritmos/Chapter_044_Grover_myst.ipynb
+  - file:  docs/Part_03_Algoritmos/Chapter_044_Grover_myst.ipynb-e

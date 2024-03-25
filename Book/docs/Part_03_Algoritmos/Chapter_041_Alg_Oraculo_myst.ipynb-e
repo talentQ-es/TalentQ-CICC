@@ -112,12 +112,12 @@
     "Vamos a estudiar el siguiente circuito\n",
     "\n",
     "\n",
-    "\n",
+    "<br>\n",
     "::::{figure} ./figuras/Busqueda_Oraculo.png\n",
     ":width: 500px\n",
     ":align: center\n",
     "::::\n",
-    ""
+    "<br>"
    ]
   },
   {
@@ -152,7 +152,7 @@
     "\\rule{0mm}{12mm}\n",
     "&=&   \\frac{1}{2^n} \\sum_{x,y=0}^{2^n-1}(-1)^{f(x)+ x \\cdot y}\\ket{y}\\otimes \\ket{-}   ~~~~ \\hbox{interferencia } \n",
     "\\end{eqnarray*}\n",
-    "\n",
+    "<br>\n",
     "donde\n",
     "\n",
     "$$x\\cdot y = x_{n-1}y_{n-1} \\oplus x_{n-2}y_{n-2} \\oplus ...  \\oplus x_{0}y_{0}$$ \n"
@@ -198,12 +198,12 @@
     "\n",
     "- **Promesa**: $f$ pertenece a una de las dos clases siguientes:  *constante* ($C \\Rightarrow f(x)$ igual para todo $x$) o *equilibrada* ($E\\Rightarrow f(x)$ igual para la mitad)\n",
     "\n",
-    "\n",
+    "<br>\n",
     "\n",
     "\n",
     "- **Problema**: descubrir si $f$ es de clase  $C$ ó $E$\n",
     "\n",
-    "\n",
+    "<br>\n",
     "\n",
     "\n",
     "::::::{admonition} Notar\n",
@@ -226,8 +226,8 @@
     "\n",
     "-  **Solución**: corremos el circuito una vez y medimos sobre el estado $~\\ket{\\Phi}$ \n",
     "\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "\n",
     "$\\to ~$ si $f \\in C$  es <b>constante</b>  $~\\Rightarrow~ f(x) = f_0 ~\\forall x ~~~\\Rightarrow~~~$ la probabilidad de obtener $ \\ket{0^n}~$ es  $ 1$  \n",
@@ -280,7 +280,7 @@
     "\n",
     "\n",
     "En este caso  $f(x)=\\pm 1$ está distribuida de forma equilibrada $~\\Rightarrow$\n",
-    "\n",
+    "<br>\n",
     "\n",
     "\\begin{eqnarray*}\n",
     "\\braket{0^n}{\\Phi} &=& \\bra{0^n} \\sum_{y=0}^{2^n-1}\\left( \\frac{1}{2^n}\\sum_{x=0}^{2^n-1}(-1)^{f(x) + x \\cdot y} \\right)\\ket{y} \\nonumber\\\\ \\rule{0mm}{15mm}\n",
@@ -301,8 +301,8 @@
     }
    },
    "source": [
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "::::::{admonition} Ejercicio\n",
     ":class: tip\n",
@@ -335,14 +335,14 @@
     "\n",
     "\n",
     "-  **Promesa**: $f$ es una *función lineal*, definida por una cadena de bits $a \\in \\{0,1\\}^n$\n",
-    "\n",
+    "<br>\n",
     "$$f(x) = a\\cdot x  = a_{n-1} x_{n-1} \\oplus ....\\oplus a_0 x_0$$\n",
-    "\n",
+    "<br>\n",
     "\n",
     "- **Problema**: hallar $a = a_{n-1} \\ldots a_0$ \n",
     "\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "::::::{admonition} Nota\n",
     ":class: note\n",
@@ -389,7 +389,7 @@
     "::::::{admonition} Notar\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "En ambos casos, la <i>clave</i> está en <i>concentrar</i> la  probabilidad de la solución en la amplitud de un sólo estado.     \n",
     "::::::\n"
    ]
@@ -637,20 +637,20 @@
     "\n",
     "\n",
     "Supongamos que $a = 01011$ y que el oráculo que implementa la función lineal es \n",
-    "\n",
-    "  \n",
+    "<br>\n",
+    "<br>  \n",
     "    \n",
     "::::{figure} ./figuras/BV_circuit.png\n",
     ":width: 300px\n",
     ":align: center\n",
     "::::\n",
     "\n",
-    "    \n",
+    "<br>    \n",
     "Insertando dicho oráculo en el algoritmo de búsqueda, y \n",
-    "\n",
+    "<br>\n",
     "    \n",
     "-  recordando que $\\ket{-} = H \\ket{1}$ \n",
-    "\n",
+    "<br>\n",
     "-  usando la equivalencia de circuitos \n",
     "\n",
     "\n",
@@ -724,7 +724,7 @@
     }
    },
    "source": [
-    "Ejemplo: \n",
+    "Ejemplo: <br>\n",
     "\n",
     "$$\n",
     "\\begin{array}{cc|cc}\n",
@@ -741,7 +741,7 @@
     "\\end{array}\n",
     "$$\n",
     "\n",
-    "\n"
+    "<br>\n"
    ]
   },
   {
@@ -766,7 +766,7 @@
     "::::::{admonition} Notar\n",
     ":class: note\n",
     "\n",
-    "\n",
+    "<br>\n",
     "<i>Clásicamente</i> necesitaríamos inspeccionar ${\\cal O}(n 2^n)$ términos\n",
     "::::::\n"
    ]
@@ -780,9 +780,9 @@
    },
    "source": [
     "El circuito es *el mismo*, pero ahora involucra $n$ cúbits para codificar la *imagen* de $f$\n",
-    "\n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
+    "<br>\n",
     "\n",
     "::::{figure} ./figuras/SimonCircuit.png\n",
     ":width: 500px\n",
@@ -800,7 +800,7 @@
    "source": [
     "Notar la diferencia con los casos anteriores: \n",
     "\n",
-    "-   ahora en la entrada de la ancilla ponemos $\\ket{0}_n$ \n",
+    "-   ahora en la entrada de la ancilla ponemos $\\ket{0}_n$ <br>\n",
     "$\\Rightarrow$ como consecuencia el oráculo aplica $f(x)$ de forma *booleana*\n",
     "\n",
     "\n",
@@ -820,7 +820,7 @@
    },
    "source": [
     "-  después de aplicar e oráculo el estado está entrelazado! \n",
-    "\n",
+    "<br>\n",
     "$\\Rightarrow$ si hacemos una medida del segundo registro \n",
     "  el  n-cúbit en segundo registro colapsará a un cierto estado \n",
     "$~\\ket{f(x_0)} $"
@@ -837,12 +837,12 @@
     "\n",
     "\n",
     "- en virtud de la *promesa* $\\ket{f(x_0)} = \\ket{f(x_0\\oplus s)}$, el primer registro colapsará a una *superposición de dos estados*  \n",
-    "\n",
-    "\n",
+    "<br>\n",
+    "<br>\n",
     "$$\n",
     "\\ket{\\psi} = \\frac{1}{\\sqrt{2}} \\left( \\rule{0mm}{4mm} \\ket{x_0} + \\ket{x_0 \\oplus s} \\right)\n",
     "$$\n",
-    "\n",
+    "<br>\n",
     "\n",
     "$\\rule{8mm}{0mm}$justo antes de la barrera\n"
    ]
@@ -912,7 +912,7 @@
     "s\\cdot y^{(n)} (\\hbox{mod(2)}) ~=~ s_{n-1}y^{(p)}_{n-1} \\oplus s_{n-2}y^{(n)}_{n-2} \\oplus \\ldots \\oplus s_0 y^{(n)}_0 &~=~& 0 \\nonumber\\\\\n",
     "\\end{eqnarray*}\n",
     "\n",
-    "\n",
+    "<br>\n",
     "donde todas las suma se entienden módulo dos.\n",
     "Por un lado $s=s_{n-1}\\ldots s_0$ son nuestras incógnitas y, por otro, $y^{(a)} = y^{(a)}_{n-1}\\ldots y^{(a)}_0$ los coeficientes conocidos como resultado de las medidas"
    ]
