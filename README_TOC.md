@@ -24,11 +24,11 @@
         - **[Circuitos de un cúbit](./Notebooks/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_021_Cubits_myst.ipynb)**
         - **[El arte de medir I](./Notebooks/Part_02_Cubits/Chapter_01_02_Circuitos_1_cubit/Section_024_El_Arte_de_Medir_I_myst.ipynb)**
 
-    - **[Muchos cúbits juntos](./Notebooks/Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.md)**
+    - **[Muchos cúbits](./Notebooks/Part_02_Cubits/Chapter_02_01_Circuitos_multicubit_myst.md)**
         - **[Multi-cúbits](./Notebooks/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_025_Multicubits_myst.ipynb)**
         - **[El arte de medir II](./Notebooks/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_026_El_Arte_de_Medir_II_myst.ipynb)**
         - **[Entrelazamiento en acción](./Notebooks/Part_02_Cubits/Chapter_02_02_Circuitos_multicubit/Section_027_Entrelazamiento_myst.ipynb)**
 
-    - **[Más cosas sobre circuitos](./Notebooks/Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.md)**
-        - **[Computación Cuántica Universal](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb)**
+    - **[Circuitería básica](./Notebooks/Part_02_Cubits/Chapter_03_01_Mas_sobre_circuitos_myst.md)**
+        - **[Computación cuántica universal](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb)**
         - **[Funciones y oráculos ](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.ipynb)**

@@ -19,7 +19,7 @@ kernelspec:
 ::::
 
 (sec_Mas_cosas_sobre_circuitos)=
-# Más cosas sobre circuitos
+# Circuitería  básica
 
 Aquí vamos a ver más cosas sobre circuitos.
 
