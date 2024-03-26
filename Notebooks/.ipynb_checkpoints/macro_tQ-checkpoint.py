@@ -95,14 +95,16 @@ def draw_vector(x=1,y=0,vname="v",show_name=False,vcolor="b",sides=False,side_co
     
     if sides:
         draw_sides(x,y,side_color)
-
+        
+        
 def plot_complex_number(z,show_name=False,vcolor="b",sides=False,side_color="b",lwidth=1):
      x = z.real
      y = z.imag        
      plot_2D_plane(left=-int(abs(x))-1,right=int(abs(x))+1,up=int(abs(y))+1,down=-int(abs(y))-1,fsize=(8,8))
-     draw_vector(x=x,y=y,vname=False,show_name=False,vcolor="b",sides=False,side_color="b",lwidth=1)
+     draw_vector(x=x,y=y,vname=False,show_name=False,vcolor=vcolor,sides=False,side_color=side_color,lwidth=1)
 
-    
+
+   
 def place_text(x,y,text,tcolor="blue"):
     plt.text(x,y,text,color=tcolor)
     
@@ -158,7 +160,7 @@ def random_ket(d, seed = None):
     ket /= norm(ket)
     return np.reshape(ket,[d,1])
     
-def random_probs(r):
+def random_prob_dist(r):
     rp = np.random.rand(r)
     rp /= np.sum(rp)
     return rp
@@ -227,6 +229,15 @@ def get_probs(counts): # frecuencias_dict es un diccionario con la estadística 
     
     return  prob_dict
 
+##############################################################################################
+# función que genera un dicionario de registros binarios y cuentas enteras a partir de la salida de sampler
+
+
+def dist2counts(prob_dist,n,nshots): #n is the number of qubits
+    counts = {}
+    for key,value in prob_dist.items():
+        counts[format(key, 'b').zfill(n)]=int(value*nshots)
+    return counts
 
 
 

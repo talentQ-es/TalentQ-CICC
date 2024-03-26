@@ -229,6 +229,15 @@ def get_probs(counts): # frecuencias_dict es un diccionario con la estadística 
     
     return  prob_dict
 
+##############################################################################################
+# función que genera un dicionario de registros binarios y cuentas enteras a partir de la salida de sampler
+
+
+def dist2counts(prob_dist,n,nshots): #n is the number of qubits
+    counts = {}
+    for key,value in prob_dist.items():
+        counts[format(key, 'b').zfill(n)]=int(value*nshots)
+    return counts
 
 
 
