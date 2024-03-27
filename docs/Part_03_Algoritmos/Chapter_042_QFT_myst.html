@@ -467,10 +467,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-transformada-de-fourier-cuantica">La Transformada de Fourier Cuántica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion">Implementación:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-un-periodo">Búsqueda de un período</a><ul class="nav section-nav flex-column">
@@ -489,7 +486,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 26, 2024 | 7 min read</p>
+<div><p>Mar 27, 2024 | 7 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -501,7 +498,8 @@ document.write(`
 <span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
-<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span></p>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Lin}{{\hbox{Lin}}} \)</span></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -522,56 +520,55 @@ document.write(`
 </div>
 <section id="la-transformada-de-fourier-cuantica">
 <h2>La Transformada de Fourier Cuántica<a class="headerlink" href="#la-transformada-de-fourier-cuantica" title="Permalink to this heading">#</a></h2>
-<p>La <em>transformada de Fourier Cuántica</em> es una operación unitaria  <span class="math notranslate nohighlight">\(U_{TFC}\in{\rm L}(\Hil)\)</span></p>
-<p>Su acción transforma los elementos la <em>base computacional</em>  a una nueva  <em>base de Fourier</em></p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La <i>transformada de Fourier Cuántica</i> es una operación unitaria  <span class="math notranslate nohighlight">\(U_{TFC}\in \Lin(\Hil)\)</span>.
+que transforma los elementos la <i>base computacional</i> <span class="math notranslate nohighlight">\(\{\ket{x}\}\)</span>  a la <i>base de Fourier</i> <span class="math notranslate nohighlight">\(\{\ket{\tilde x}\}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-U_{TFC}: \ket{x} \to {\ket{\tilde x}} = \frac{1}{\sqrt{N}}\sum_{y}\omega^{xy}\ket{y} =   \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i  xy /N} \ket{y} 
+U_{TFC}: \ket{x} \to {\ket{\tilde x}} =   \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i  xy /N} \ket{y} 
 \]</div>
-<p>donde  <span class="math notranslate nohighlight">\(~~\omega = e^{2\pi i  /N}~~\)</span> y
-<span class="math notranslate nohighlight">\(~~x,\tilde x=0,...,N-1 = 2^n-1~~\)</span></p>
+<p class="sd-card-text">donde  <span class="math notranslate nohighlight">\(~~x,y,\tilde x=0,...,N-1 = 2^n-1~~\)</span></p>
+</div>
+</div>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
-<p>comparar esta expresión con la de la transformada de Walsh-Hadamard</p>
+<p>Comparar esta expresión con la de la transformada de Walsh-Hadamard</p>
 <div class="math notranslate nohighlight">
 \[
-W: \ket{x} \to \ket{\tilde x} =  \frac{1}{\sqrt{N}}\sum_{y}(-1)^{xy}\ket{y} =   \frac{1}{\sqrt{N}}\sum_{y} e^{i\pi   xy} \ket{y} 
+W: \ket{x} \to \ket{\tilde x} =  \frac{1}{\sqrt{N}}\sum_{y}(-1)^{xy}\ket{y} =   \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i \,   xy/2} \ket{y} 
 \]</div>
-<p>que es formalmente igual, pero con <span class="math notranslate nohighlight">\(\omega = e^{2\pi i/2} = -1\)</span>.</p>
-<p>Ya hemos visto cómo este factor produce <em>interferencias</em> interesantes que conducen a soluciones como la del problema de Simon.</p>
+<p>Ya hemos visto cómo el factor <span class="math notranslate nohighlight">\((-1)^{xy}= e^{2\pi i   xy/2}\)</span> produce <em>interferencias</em> interesantes que conducen a soluciones como la del problema de Simon</p>
 </div>
-<p>El nuevo factor <span class="math notranslate nohighlight">\(\omega = e^{2\pi i/N}\)</span> también sirve para producir interferencias destructivas y constructivas interesantes.</p>
-<p>Esto se debe esencialmente a la importante fórmula de <a class="reference internal" href="#../00_Formalismo/01_Numeros_Complejos.ipynb#ejempnc"><span class="xref myst">suma nula</span></a> que hemos estudiado en el tema de números complejos</p>
+<p>El nuevo factor <span class="math notranslate nohighlight">\( e^{2\pi i/N}\)</span> también sirve para producir interferencias destructivas y constructivas interesantes.</p>
+<p>Esto se debe esencialmente a la importante fórmula de <a class="reference internal" href="#../00_Formalismo/01_Numeros_Complejos.ipynb#ejempnc"><span class="xref myst">suma nula</span></a> que hemos estudiado en el tema de Números Complejos</p>
 <div class="math notranslate nohighlight">
 \[
 \fbox{$ \displaystyle
-\frac{1}{N} \sum_{y=0}^{N} e^{2\pi i xy/N} = \delta_{x \, 0 {\rm mod}N}$}
+ \sum_{y=0}^{N} e^{2\pi i xy/N} = N \delta_{x\,{\rm mod}N, 0} $}
 \]</div>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
-<p>utiliza esta expresión para demostrar que, invirtiendo los signos de las fases obtenemos la TFC inversa. Es decir, demuestra que, si</p>
+<p>Utiliza esta expresión para demostrar que, invirtiendo los signos de las fases obtenemos la TFC inversa. Es decir, demuestra que, si</p>
 <div class="math notranslate nohighlight">
 \[
 U^{-1}_{TFC}\ket{x}  =  \frac{1}{\sqrt{N}}\sum_{y} e^{-2\pi i  xy /N} \ket{y} 
 \]</div>
-<p>se sigue que</p>
-<div class="math notranslate nohighlight">
-\[
+<p>se sigue que <span class="math notranslate nohighlight">\(
 U_{TFC}^{-1}(U_{TFC} \ket{x}) ) \ket{x}
-\]</div>
-<p>Esto confirma que es un operador unitario <span class="math notranslate nohighlight">\(U_{TFC}^{-1} = U_{TFC}^\dagger\)</span>.</p>
+\)</span>.  Esto confirma que es un operador unitario <span class="math notranslate nohighlight">\(U_{TFC}^{-1} = U_{TFC}^\dagger\)</span>.</p>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
-<p>por supuesto, la operación <span class="math notranslate nohighlight">\(U_{TFC}\)</span> no está restringida a elementos de la base computacional.</p>
-<p>Actuando sobre un vector <span class="math notranslate nohighlight">\(\ket{f} = \sum_x f(x)\ket{x}\)</span> de componentes <span class="math notranslate nohighlight">\(f(x)\)</span> en la base <span class="math notranslate nohighlight">\(\ket{x}\)</span> obtendremos otro vector</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\ket{\tilde f} &amp;=&amp; U_{TCF}\ket{f} = \sum_x f(x) U_{TCF}\ket{x} \nonumber\\
-&amp;=&amp; \sum_x f(x) \frac{1}{\sqrt{N}}\sum_y e^{2\pi i xy} \ket{y}\\
-&amp;=&amp;  \sum_y\left( \frac{1}{\sqrt{N}}\sum_x f(x) e^{2\pi i xy}\right) \ket{y}\\
-    &amp;=&amp; \sum_y \tilde f(y) \ket{y}
-\end{eqnarray*}\]</div>
+<p>Actuando con <span class="math notranslate nohighlight">\(U_{TFC}\)</span> sobre un vector <span class="math notranslate nohighlight">\(\ket{f} = \sum_x f(x)\ket{x}\)</span> de componentes <span class="math notranslate nohighlight">\(f(x)\)</span> en la base <span class="math notranslate nohighlight">\(\ket{x}\)</span> obtendremos otro vector</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{\tilde f} = U_{TCF}\ket{f} = \sum_x f(x) U_{TCF}\ket{x} ~=~\sum_x f(x) \frac{1}{\sqrt{N}}\sum_y e^{2\pi i xy} \ket{y} =   \sum_y\left( \frac{1}{\sqrt{N}}\sum_x f(x) e^{2\pi i xy}\right) \ket{y}  
+   = \sum_y \tilde f(y) \ket{y}
+\]</div>
 <p>donde las nuevas componentes <span class="math notranslate nohighlight">\(\tilde f(x)\)</span> ahora son</p>
 <div class="math notranslate nohighlight">
 \[
@@ -580,20 +577,16 @@ U_{TFC}^{-1}(U_{TFC} \ket{x}) ) \ket{x}
 <p>Esta regla define lo que <em>clásicamente</em> se conoce como la <em>Transformada de Fourier Discreta</em> (TFD) del conjunto de datos</p>
 <div class="math notranslate nohighlight">
 \[
-\{f(0),f(1),...,f(N-1)\}~ \stackrel{\hbox{TFD}}{\longrightarrow}~ \{\tilde f(0),\tilde f(1),...,\tilde f(N-1)\}\]</div>
+\{f(0),f(1),...,f(N-1)\}~ \stackrel{\hbox{TFD}}{\longrightarrow}~ \{\tilde f(0),\tilde f(1),...,\tilde f(N-1)\}
+\]</div>
+<p>La TFD es una operación de coste polinómico en <span class="math notranslate nohighlight">\(N = 2^n\)</span>, es decir, exponencial en <span class="math notranslate nohighlight">\(n\)</span>.</p>
 </div>
-<p><span class="math notranslate nohighlight">\(\bullet\)</span> En general, los elementos de matriz serán evidentemente, las fases</p>
+<p>Los elementos de matriz serán</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\bra{x} U_{TFC} \ket{y} =  \frac{1}{\sqrt{N}} e^{2\pi i  x y/N} =\frac{1}{\sqrt{N}} \omega^{xy}
- = \frac{1}{\sqrt{N}} \begin{bmatrix}
-1&amp;1&amp;1&amp;1&amp;\cdots &amp;1 \\
-1&amp;\omega_N&amp;\omega_N^2&amp;\omega_N^3&amp;\cdots&amp;\omega_N^{N-1} \\
-1&amp;\omega_N^2&amp;\omega_N^4&amp;\omega_N^6&amp;\cdots&amp;\omega_N^{2(N-1)}\\ 1&amp;\omega_N^3&amp;\omega_N^6&amp;\omega_N^9&amp;\cdots&amp;\omega_N^{3(N-1)}\\
-\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
-1&amp;\omega_N^{N-1}&amp;\omega_N^{2(N-1)}&amp;\omega_N^{3(N-1)}&amp;\cdots&amp;\omega_N^{(N-1)(N-1)}
-\end{bmatrix}
-\end{split}\]</div>
+\[
+\bra{x} U_{TFC} \ket{y} =  \frac{1}{\sqrt{N}} e^{2\pi i  x y/N} \, . 
+\]</div>
+<p>La suma de cualquier fila o columna de esta matriz da cero, excepto la primera fila o columna.</p>
 <div class="tip admonition">
 <p class="admonition-title">Ejemplo</p>
 <p><span class="math notranslate nohighlight">\(\bullet\)</span> Para <span class="math notranslate nohighlight">\(n=1 \to \omega = e^{2\pi i /2^1} = -1\)</span> y   la TFC no es otra que la puerta de Hadamard</p>
@@ -613,79 +606,46 @@ U_{TFC}\ket{0} = \ket{+}~~~~~~~~~,~~~~~~~~~~  U_{TFC}\ket{1} = \ket{-}
 U_{TFC} =\frac{1}{2}
 \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; -i &amp; -1 &amp; i \\ 1 &amp; - 1 &amp; 1 &amp; - 1 \\ 1 &amp; i &amp; -1 &amp; -i  \end{bmatrix}
 \end{split}\]</div>
-<p>Observar que la suma de cualquier columna o fila que no sean las primeras da cero</p>
+<p>Se comprueba que la suma de cualquier columna o fila que no sean las primeras da cero</p>
 </div>
+<p>Es relativamente fácil visualizar los estados de la base computacional <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}...x_0}\)</span> porque son factorizables. Sobre un conjunto de esferas de Bloch son vectores verticales que apuntan hacia arríba <span class="math notranslate nohighlight">\(\ket{0}\)</span> o hacia abajo <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
+<p>Los vectore de la base de Fourier, <span class="math notranslate nohighlight">\(\ket{\tilde x} = \ket{\tilde x_{n-1}...\tilde x_0}\)</span> son también fáciles de visualizar. Vamos a ver esto</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Los vectores de la <i>base de Fourier</i> son estados <i>factorizables</i> en productos de estados de un cúbit que se sitúan <i>sobre el ecuador</i> de la esfera de Bloch</p>
+<p class="sd-card-text">Los vectores de la <i>base de Fourier</i> son estados <i>factorizables</i> en productos de estados de un cúbit que se sitúan sobre <i> el ecuador</i> de la esfera de Bloch</p>
 </div>
 </div>
-<p><em>Base computacional</em> | <em>Base de Fourier</em></p>
-<ul class="simple">
-<li><p>| -
-<img alt="alt" src="https://qiskit.org/textbook/ch-algorithms/images/zbasis-counting.gif" /> | <img alt="alt" src="https://qiskit.org/textbook/ch-algorithms/images/fourierbasis-counting.gif" /></p></li>
-</ul>
-<p>Animaciones extraídas de <a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/quantum-fourier-transform.html">Qiskit Texbook</a></p>
-<p><strong>Prueba</strong></p>
-<p><em>Notación</em> : un número  <span class="math notranslate nohighlight">\(x\in {\mathbb Q} \)</span> puede representarse en base 2</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-x  
-&amp;=&amp;  x_{n-1}2^{n-1}   +   \cdots + x_1 2^1+ x_0 2^0    +  x_{-1}2^{-1} +  \cdots  +   x_{-m}2^{-m}\, \\ \rule{0mm}{10mm}
-&amp;=&amp;
-x_{n-1} \cdots x_1 x_0\, .\, x_{-1}  \cdots x_{-m} \nonumber\\ \rule{0mm}{10mm}
-&amp;=&amp;  x_{n-1} \cdots x_1 x_0 + 0.x_{-1}  \cdots x_{-m} 
-\end{eqnarray*}\]</div>
-<p>en particular, si <span class="math notranslate nohighlight">\(y\in S_n =[0,...,2^n-1],~\)</span> en base 2 tendríamos</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-y &amp;=&amp; y_{n-1} \ldots   y_2y_1 y_0 \nonumber\\  \rule{0mm}{12mm}
-y/2&amp;~=~&amp;  y_{n-1}...y_2y_1 + 0. y_0 \nonumber\\ \rule{0mm}{12mm}
-y/2^2 &amp;~=~&amp;  y_{n-1}...y_2 + 0.y_1 y_0 \nonumber\\ \rule{0mm}{12mm}
-&amp;\vdots &amp; \nonumber \\ \rule{0mm}{12mm}
-y/2^n &amp;~=~&amp;   0.y_{n-1}y_{n-2}...y_0 \, 
-\end{eqnarray*}\]</div>
-<p>Ahora vamos a estudiar la acción de <span class="math notranslate nohighlight">\(U_{\rm TFC}\)</span> sobre un elemento <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}}\ket{x_{n-2}}... \ket{x_0}\)</span>
+<p>Ahora vamos a estudiar la acción de <span class="math notranslate nohighlight">\(U_{\rm TFC}\)</span> sobre un elemento <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}... x_0}\)</span>
 de la base computacional</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
- \ket{\tilde x}  ~\equiv ~  U_{\rm TFC}\ket{x}  &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y=0}^{2^n-1} e^{2\pi i  xy/2^n}\ket{y} \label{TFC}
+<div class="amsmath math notranslate nohighlight" id="equation-ac83c853-8f89-4633-b3da-44182e85ebb8">
+<span class="eqno">(19)<a class="headerlink" href="#equation-ac83c853-8f89-4633-b3da-44182e85ebb8" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+ \ket{\tilde x}  ~\equiv ~  U_{\rm TFC}\ket{x}  &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y=0}^{2^n-1} e^{2\pi i  xy/2^n}\ket{y}  
 \nonumber\\ \rule{0mm}{14mm}
 &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y_1,...,y_n=\{0,1\}} e^{ 2\pi i x \left( y_{n-1}2^{n-1} + y_{n-2}2^{n-2}  + ... + y_0\right)/2^n } \ket{y_{n-1}}\ket{y_{n-2}}\ldots \ket{ y_0}
 \nonumber\\ \rule{0mm}{14mm} 
 &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y_1,...,y_n=\{0,1\}} e^{2\pi i x \left(\frac{y_{n-1}}{2} + \frac{y_{n-2}}{2^2}  + ... + \frac{y_0}{2^n}\right) } \ket{y_{n-1}}\ket{y_{n-2}}\ldots \ket{ y_0}
-\end{eqnarray*}\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\hspace{1cm}&amp;=&amp;  \frac{1}{\sqrt{N}} \left( \ket{0} + e^{2\pi i \frac{x}{2}}\ket{1}\right)\left( \ket{0} + e^{2\pi i \frac{x}{2^2}}\ket{1}\right)...\left( \ket{0} + e^{2\pi i \frac{x}{2^n}}\ket{1}\right)
+\nonumber\\ \rule{0mm}{14mm} 
+&amp;=&amp;  \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i \frac{x}{2}}\ket{1}\right) \frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i \frac{x}{2^2}}\ket{1}\right)...\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i \frac{x}{2^n}}\ket{1}\right)
 \nonumber\\ 
-%\pause
-\rule{0mm}{14mm}
-&amp;=&amp; \frac{1}{\sqrt{N}} \left( \ket{0} + e^{2\pi i \, 0.x_0}\ket{1}\right)\left( \ket{0} + e^{2\pi i \, 0.x_1x_0}\ket{1}\right)...\left( \ket{0} + e^{2\pi i \, 0.x_{n-1}...x_0}\ket{1}\right)   \nonumber \\
 \rule{0mm}{14mm}
 &amp;\equiv &amp; ~~ \ket{\tilde x_{n-1}}\ket{\tilde x_{n-2}}\cdots \ket{\tilde x_{0}}   
-\end{eqnarray*}\]</div>
-<p>Hemos usado que las partes enteras de <span class="math notranslate nohighlight">\(x\)</span> no contribuyen a las fases</p>
-<div class="math notranslate nohighlight">
-\[
-e^{2\pi i x/2} = e^{2\pi i (x_{n-1}...x_1 + 0. x_0)}= e^{2\pi i (x_{n-1}...x_1)}e^{2\pi i \, 0. x_0} = e^{2\pi i\, 0.x_0}
-\]</div>
+\end{eqnarray}\]</div>
 <div class="note admonition">
 <p class="admonition-title">Nota</p>
 <p>La última expresión es tan útil e importante que casi podríamos tomarla como definición de la Transformada de Fourier Cuántica.</p>
 <ul class="simple">
 <li><p>tal y como prometimos, el resultado es un estado factorizado   <span class="math notranslate nohighlight">\(\ket{\tilde x} = \ket{\tilde x_{n-1}}\ket{\tilde x_{n-2}}\cdots \ket{\tilde x_{0}} \)</span></p></li>
-<li><p>los estados de un cúbit <span class="math notranslate nohighlight">\(\ket{\tilde x_k}\)</span>  viven en el ecuador de la esfera de Bloch</p></li>
+<li><p>cada de un cúbit <span class="math notranslate nohighlight">\(\ket{\tilde x_k}\)</span>  <i>vive</i> en el ecuador de la esfera de Bloch, con una fase <span class="math notranslate nohighlight">\(\phi = 2\pi x/2^{n-k}\)</span></p></li>
 </ul>
 </div>
 <section id="circuito-asociado-a-una-tfc">
 <h3>Circuito asociado a una TFC<a class="headerlink" href="#circuito-asociado-a-una-tfc" title="Permalink to this heading">#</a></h3>
 <p>Veamos el circuito</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/QFT2.png"><img alt="../../_images/QFT2.png" src="../../_images/QFT2.png" style="width: 800px;" /></a>
+<figure class="align-left">
+<a class="reference internal image-reference" href="../../_images/QFT2.png"><img alt="../../_images/QFT2.png" src="../../_images/QFT2.png" style="width: 850px;" /></a>
 </figure>
 <p>Solo involucra</p>
 <ul class="simple">
@@ -696,48 +656,44 @@ e^{2\pi i x/2} = e^{2\pi i (x_{n-1}...x_1 + 0. x_0)}= e^{2\pi i (x_{n-1}...x_1)}
 \[\begin{split}
 R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bmatrix}  ~~~\Leftrightarrow ~~~R_k\ket{y} = e^{2\pi i\frac{y}{2^k}} \ket{y}
 \end{split}\]</div>
-<p>que aparece de forma controlada <span class="math notranslate nohighlight">\(\cg{R_k}\)</span>.</p>
-<p>Será util escribir la <em>acción</em> de <span class="math notranslate nohighlight">\(\cg R_k\)</span> en la forma siguiente, si <span class="math notranslate nohighlight">\(\ket{x}\)</span> es el cúbit de control</p>
+<p>que aparece de forma controlada <span class="math notranslate nohighlight">\(\cg{R_k}\)</span>.
+Será util escribir la <em>acción</em> de <span class="math notranslate nohighlight">\(\cg R_k\)</span> en la forma siguiente: supongamos que <span class="math notranslate nohighlight">\(\ket{x}\)</span> es el cúbit de control y <span class="math notranslate nohighlight">\(\ket{y}\)</span> el cúbit controlado</p>
 <div class="math notranslate nohighlight">
-\[
-\cg{R_k}\ket{x}\ket{y} = \ket{x}R^{x}_{k}\ket{y}  = \ket{x}  e^{2 \pi i   \frac{y}{2^{k}}x}\ket{y}
-\]</div>
-<p>Vamos a analizar la acción del primer bloque</p>
-<div class="math notranslate nohighlight">
-\[
-(H\ket{x_{n-1}})\ket{x_{n-2}...x_0} =\left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\left(\rule{0mm}{3mm} R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}  = 
+\[\begin{split}
+\cg{R_k}\ket{y}\ket{x} = R^{x}_{k}\ket{y}\ket{x}  =  e^{2 \pi i   \frac{x}{2^{k}}y}\ket{y} \ket{x}
+ \to  \left\{ \begin{array}{l}  \ket{0}\ket{x} \\ \rule{0mm}{10mm}  e^{2 \pi i   \frac{x}{2^{k}}} \ket{1}\ket{x} \end{array} \right.
+\end{split}\]</div>
+<p>Vamos a analizar la acción del primer bloque sobre el cúbit <span class="math notranslate nohighlight">\(\ket{x_{n-1}}\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-fdb94860-8d22-408f-99bc-b180d395d827">
+<span class="eqno">(20)<a class="headerlink" href="#equation-fdb94860-8d22-408f-99bc-b180d395d827" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+(H\ket{x_{n-1}})\ket{x_{n-2}...x_0} &amp;=&amp;\left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0}
+\\ \rule{0mm}{12mm}
+\left(\rule{0mm}{3mm} R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}  &amp;=&amp; 
  \left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2} + \frac{x_{n-2}}{2^2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0} 
-\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-&amp;\vdots&amp; \nonumber\\
-\left(\rule{0mm}{5mm}R_{{(n-1)}}^{x_{0}} ... R_{3} ^{x_{n-3}}  R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}&amp; =&amp; 
-\left( \ket{0} + e^{2\pi i \, \left(\frac{x_{n-1}}{2} + \frac{x_{n-2}}{2^2}+\ldots \frac{x_0}{2^n}\right)}  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ 
-\rule{0mm}{5mm}
- &amp; =&amp; 
-\left( \rule{0mm}{5mm}\ket{0} + e^{2\pi i \, 0.x_{n-1}\cdots x_0}  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ \rule{0mm}{12mm}
+\\
+&amp;\vdots&amp; \nonumber\\ \rule{0mm}{12mm}
+\left(\rule{0mm}{5mm}R_{{(n-1)}}^{x_{0}} ... R_{3} ^{x_{n-3}}  R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}
+&amp; =&amp; 
+\left( \ket{0} + e^{2\pi i \, \left(\frac{x_{n-1}}{2} + \frac{x_{n-2}}{2^2}+\ldots \frac{x_0}{2^n}\right)}  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ \rule{0mm}{10mm}
+&amp;=&amp; 
+\left( \ket{0} + e^{2\pi i \,  \frac{x}{2^n} }  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ \rule{0mm}{10mm}
 &amp; \equiv&amp;  \ket{\tilde x_{0}} \ket{x_{n-2}... x_1x_0} \nonumber
-\end{eqnarray*}\]</div>
-<p>El primer bloque ha generado el estado ecuatorial <span class="math notranslate nohighlight">\(\ket{\tilde x_0}\)</span> pero ¡<em>en la posición equivocada</em>!</p>
-<p>Si repetimos el mismo procedimiento con los siguientes cúbits <span class="math notranslate nohighlight">\(\ket{x_{n-2}}\)</span> de forma sucesiva, obtendremos finalmente</p>
+\end{eqnarray}\]</div>
+<p>Observamos que el primer bloque transformado el estado <span class="math notranslate nohighlight">\(\ket{x_{n-1}}\)</span> en el estado ecuatorial <span class="math notranslate nohighlight">\(\ket{\tilde x_0}\)</span>.
+Si repetimos el mismo procedimiento con los bloques que actúan sobre los siguientes cúbits obtendremos finalmente</p>
 <div class="math notranslate nohighlight">
 \[
  \ket{\tilde x_{0}}\ket{\tilde x_{1}}  ... \ket{\tilde{x}_{n-2}} \ket{\tilde x_{n-1}}
 \]</div>
-<p>que es <em>casi</em> el estado que estábamos buscando</p>
-<p>La parte final del circuito introduce los operadores de SWAP que rectifican el orden de los cúbits</p>
+<p>que es <em>casi</em> el estado que estábamos buscando.
+La parte final del circuito introduce los operadores de SWAP que rectifican el orden de los cúbits</p>
 <div class="math notranslate nohighlight">
 \[
 \hbox{SWAP}^{\otimes n} \,  (\ket{\tilde x_{0}}  ...  \ket{\tilde x_{n-1}} ) ~=~ 
 \ket{\tilde x_{n-1}} ... \ket{\tilde{x}_{0}} ~~ \equiv ~~ \ket{\tilde x}
 \]</div>
-<section id="implementacion">
-<h4>Implementación:<a class="headerlink" href="#implementacion" title="Permalink to this heading">#</a></h4>
-<p>Vamos a generar una puerta TFC que efectúe una Tranformada de Fourier Cuántica</p>
+<p>¡A programar!</p>
+<p>Vamos a programar el circuito de TFC</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">TFC</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -751,7 +707,6 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
         <span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TFC&#39;</span><span class="p">)</span>
-        
 </pre></div>
 </div>
 </div>
@@ -771,7 +726,7 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
 <img alt="../../_images/c62c2b43b2cacd209c441880810b87274837f993377f151d2fecc9adf2c8dc88.png" src="../../_images/c62c2b43b2cacd209c441880810b87274837f993377f151d2fecc9adf2c8dc88.png" />
 </div>
 </div>
-<p>y también su inverso</p>
+<p>Programar el inverso es tan fácil como tomar el adjunto: invertir el orden de las puertas y conjugar las fases</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">TFC_adj</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -799,23 +754,13 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
 <img alt="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" src="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TFC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" src="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" />
-</div>
-</div>
 <p>Ahora podemos inicializar un estado y obtener el estado TFC asociado</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creamos el circuito </span>
-<span class="n">num_qubits</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qr&#39;</span><span class="p">)</span>
-<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cr&#39;</span><span class="p">)</span>
+<span class="n">nqubits</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">nqubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qr&#39;</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">nqubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cr&#39;</span><span class="p">)</span>
 <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;QFT&quot;</span><span class="p">)</span>
 
 <span class="c1"># Inicialización 1 de un estado de entrada</span>
@@ -838,24 +783,73 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" src="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">18</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># añadimos la TFC</span>
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">),</span><span class="n">qr</span><span class="p">[:])</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;num_qubits&#39; is not defined
+</pre></div>
 </div>
 </div>
-<p>Ahora puedes variar el estado de entrada y obervar el resultado a la salida.</p>
+</div>
+<p>Ahora puedes variar el estado de entrada y observar el resultado a la salida.</p>
 <p>Por ejemplo la TFC del estado superposición  uniforme  <span class="math notranslate nohighlight">\(\ket{+\ldots+}= \frac{1}{\sqrt{N}}\sum_{i} \ket{i}\)</span> es el estado <span class="math notranslate nohighlight">\(|0 \ldots 0&gt;\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
 
-<span class="n">M_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span><span class="o">=</span><span class="n">M_simulator</span><span class="p">,</span><span class="n">shots</span> <span class="o">=</span><span class="mi">10000</span> <span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
-<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">num_qubits</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d9f630cdcdba68b6e6f2f14b6009a61abc6d098e866424b3a166cb9823e18f3b.png" src="../../_images/d9f630cdcdba68b6e6f2f14b6009a61abc6d098e866424b3a166cb9823e18f3b.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">num_qubits</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
+
+<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/primitives/base/base_sampler.py:134,</span> in <span class="ni">BaseSampler.run</span><span class="nt">(self, circuits, parameter_values, **run_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Run the job of the sampling of bitstrings.</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span><span class="sd"> Args:</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span><span class="sd">     ValueError: Invalid arguments are given.</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="c1"># Singular validation</span>
+<span class="ne">--&gt; </span><span class="mi">134</span> <span class="n">circuits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_circuits</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span> <span class="n">parameter_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_parameter_values</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="n">parameter_values</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">default</span><span class="o">=</span><span class="p">[()]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">circuits</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="c1"># Cross-validation</span>
+
+<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/primitives/base/base_sampler.py:176,</span> in <span class="ni">BaseSampler._validate_circuits</span><span class="nt">(cls, circuits)</span>
+<span class="g g-Whitespace">    </span><span class="mi">170</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">171</span>             <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">-th circuit does not have any classical bit. &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span>             <span class="s2">&quot;Sampler requires classical bits, plus measurements &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>             <span class="s2">&quot;on the desired qubits.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">175</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">_has_measure</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">176</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>             <span class="sa">f</span><span class="s2">&quot;The </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">-th circuit does not have Measure instruction. &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">178</span>             <span class="s2">&quot;Without measurements, the circuit cannot be sampled from.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="k">return</span> <span class="n">circuits</span>
+
+<span class="ne">ValueError</span>: The 0-th circuit does not have Measure instruction. Without measurements, the circuit cannot be sampled from.
+</pre></div>
+</div>
 </div>
 </div>
 <p>Es importante correr este circuito para distintos estados iniciales</p>
@@ -871,7 +865,6 @@ la Transformada de Fourier Discreta (TFD) precisa de <span class="math notransla
 <li><p>Por tanto, el punto estará en ser capaces de <b>encontrar problemas</b> en los que la TFC sea un ingrediente que aporte una ventaja exponencial</p></li>
 </ul>
 </div>
-</section>
 </section>
 </section>
 <section id="busqueda-de-un-periodo">
@@ -964,8 +957,8 @@ P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valores de f(x) en un período : [3 4 6 5]
-[&#39;011&#39;, &#39;100&#39;, &#39;110&#39;, &#39;101&#39;, &#39;011&#39;, &#39;100&#39;, &#39;110&#39;, &#39;101&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valores de f(x) en un período : [3 1 4 2]
+[&#39;011&#39;, &#39;001&#39;, &#39;100&#39;, &#39;010&#39;, &#39;011&#39;, &#39;001&#39;, &#39;100&#39;, &#39;010&#39;]
 </pre></div>
 </div>
 </div>
@@ -978,11 +971,7 @@ P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
-  self._style, def_font_ratio = load_style(self._style)
-</pre></div>
-</div>
-<img alt="../../_images/e4bcfec279f0ba847cae1834f87d6551bf9f659ee4c0bc411d51bad2f8d2147e.png" src="../../_images/e4bcfec279f0ba847cae1834f87d6551bf9f659ee4c0bc411d51bad2f8d2147e.png" />
+<img alt="../../_images/e8ee86fb7988c9f63b39cd49bc34e5badb8d49465e2fcd4152ce18c7b8020874.png" src="../../_images/e8ee86fb7988c9f63b39cd49bc34e5badb8d49465e2fcd4152ce18c7b8020874.png" />
 </div>
 </div>
 <p>Ahora generamos el <em>Circuito de Búsqueda de Periodo</em> y correrlo en dos casos parecidos.</p>
@@ -1041,7 +1030,7 @@ P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">Nn</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#rango</span>
 <span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">Nm</span> <span class="o">=</span> <span class="n">N</span>  <span class="c1"># esta opción no es obligatoria. Sólo es necesario que N&#39;&gt;P</span>
@@ -1060,7 +1049,7 @@ P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" src="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" />
+<img alt="../../_images/cb70ae2d62acebaa8c95ae1344b14fa228e2b89874fa88bce1b43f1b71cc3c3c.png" src="../../_images/cb70ae2d62acebaa8c95ae1344b14fa228e2b89874fa88bce1b43f1b71cc3c3c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1081,7 +1070,25 @@ P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8763febd5b8626544c63bd29ee2ade89a93bb2f556d68c516da3a1fa3ecdfc42.png" src="../../_images/8763febd5b8626544c63bd29ee2ade89a93bb2f556d68c516da3a1fa3ecdfc42.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">QiskitError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">job</span>     <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="n">shots_exe</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">result</span>  <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">counts</span>  <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+
+<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/result/result.py:289,</span> in <span class="ni">Result.get_counts</span><span class="nt">(self, experiment)</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span>         <span class="n">dict_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">statevector</span><span class="o">.</span><span class="n">Statevector</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span><span class="o">.</span><span class="n">probabilities_dict</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">15</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">288</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">289</span>         <span class="k">raise</span> <span class="n">QiskitError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;No counts for experiment &quot;</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">291</span> <span class="c1"># Return first item of dict_list if size is 1</span>
+<span class="g g-Whitespace">    </span><span class="mi">292</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dict_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+
+<span class="ne">QiskitError</span>: &#39;No counts for experiment &quot;0&quot;&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <ul class="simple">
@@ -1105,45 +1112,14 @@ P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">projected_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="p">)[</span><span class="mi">2</span><span class="p">][:</span><span class="n">n</span><span class="p">]</span> <span class="ow">and</span> <span class="n">v</span><span class="o">&gt;</span><span class="mi">300</span> <span class="p">}</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#post-selección</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">projected_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="p">)[</span><span class="mi">2</span><span class="p">][:</span><span class="n">n</span><span class="p">]</span> <span class="ow">and</span> <span class="n">v</span><span class="o">&gt;</span><span class="mi">300</span> <span class="p">}</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#print(projected_counts)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">plot_histogram</span><span class="p">(</span><span class="n">projected_counts</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plot_histogram</span><span class="p">(</span><span class="n">projected_counts</span><span class="p">)</span>
 
-<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/utils/deprecation.py:172,</span> in <span class="ni">deprecate_arg.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">172</span>     <span class="n">_maybe_warn_and_rename_kwarg</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span>         <span class="n">args</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span>         <span class="n">func_name</span><span class="o">=</span><span class="n">func_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="n">original_func_co_varnames</span><span class="o">=</span><span class="n">wrapper</span><span class="o">.</span><span class="n">__original_func_co_varnames</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">177</span>         <span class="n">old_arg_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span>         <span class="n">new_alias</span><span class="o">=</span><span class="n">new_alias</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="n">warning_msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span>         <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span>         <span class="n">predicate</span><span class="o">=</span><span class="n">predicate</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/utils/deprecation.py:339,</span> in <span class="ni">_maybe_warn_and_rename_kwarg</span><span class="nt">(args, kwargs, func_name, original_func_co_varnames, old_arg_name, new_alias, warning_msg, category, predicate)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2"> received both </span><span class="si">{</span><span class="n">new_alias</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">old_arg_name</span><span class="si">}</span><span class="s2"> (deprecated).&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">val</span> <span class="o">=</span> <span class="n">arg_names_to_values</span><span class="p">[</span><span class="n">old_arg_name</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">339</span> <span class="k">if</span> <span class="n">predicate</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">predicate</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/counts_visualization.py:54,</span> in <span class="ni">_is_deprecated_data_format</span><span class="nt">(data)</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">for</span> <span class="n">dat</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="p">(</span><span class="n">QuasiDistribution</span><span class="p">,</span> <span class="n">ProbDistribution</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span>
-<span class="ne">---&gt; </span><span class="mi">54</span>         <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">values</span><span class="p">())),</span> <span class="nb">float</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="k">return</span> <span class="kc">True</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">return</span> <span class="kc">False</span>
-
-<span class="ne">StopIteration</span>: 
+<span class="ne">NameError</span>: name &#39;counts&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1163,8 +1139,15 @@ P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{Ns} ~  []
-phi_s []
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># extraemos las &#39;keys&#39; del segundo registro, rechazando el 00...0 que siempre está</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">Ns_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:],</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span>  <span class="n">keys</span> <span class="ow">in</span> <span class="n">projected_counts</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># el +1 es para comerse el espacio p.ej en &#39;101 1101&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{Ns}</span><span class="s1"> ~ &#39;</span><span class="p">,</span> <span class="n">Ns_list</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># dividiendo por N</span>
+
+<span class="ne">NameError</span>: name &#39;projected_counts&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1187,17 +1170,14 @@ phi_s []
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">P_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">P_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el valor entero del promedio =&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">P_list</span><span class="p">)))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el valor entero del promedio =&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">P_list</span><span class="p">)))</span>
 
-<span class="ne">ZeroDivisionError</span>: division by zero
+<span class="ne">NameError</span>: name &#39;phis_list&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1214,7 +1194,13 @@ phi_s []
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="p">[</span><span class="n">Fraction</span><span class="p">(</span><span class="n">phis_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">))]</span>
+
+<span class="ne">NameError</span>: name &#39;phis_list&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1232,7 +1218,12 @@ phi_s []
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="p">[</span><span class="n">Fraction</span><span class="p">(</span><span class="n">phis_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">limit_denominator</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">)))]</span>
+
+<span class="ne">NameError</span>: name &#39;phis_list&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1313,10 +1304,7 @@ phi_s []
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-transformada-de-fourier-cuantica">La Transformada de Fourier Cuántica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion">Implementación:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-un-periodo">Búsqueda de un período</a><ul class="nav section-nav flex-column">
