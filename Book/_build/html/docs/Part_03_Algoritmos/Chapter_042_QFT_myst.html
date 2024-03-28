@@ -467,10 +467,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-transformada-de-fourier-cuantica">La Transformada de Fourier Cuántica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion">Implementación:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventaja-exponencial">Ventaja exponencial</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-un-periodo">Búsqueda de un período</a><ul class="nav section-nav flex-column">
@@ -489,7 +487,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 26, 2024 | 7 min read</p>
+<div><p>Mar 29, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -501,7 +499,8 @@ document.write(`
 <span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
-<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span></p>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\Lin}{{\hbox{Lin}}} \)</span></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -513,87 +512,84 @@ document.write(`
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../&#39;</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">macro_tQ</span> <span class="k">as</span> <span class="nn">tQ</span>
-
-<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
 </pre></div>
 </div>
 </div>
 </details>
 </div>
+<p>La transformada de Fourier cuántica  es la <em>joya de la corona</em> de la algoritmia cuántica porque supone una ganancia exponencial. El número de aplicaciones que tiene es muy alto. En este capítulo estudiaremos sólo una: la búsqueda de un periodo.</p>
 <section id="la-transformada-de-fourier-cuantica">
 <h2>La Transformada de Fourier Cuántica<a class="headerlink" href="#la-transformada-de-fourier-cuantica" title="Permalink to this heading">#</a></h2>
-<p>La <em>transformada de Fourier Cuántica</em> es una operación unitaria  <span class="math notranslate nohighlight">\(U_{TFC}\in{\rm L}(\Hil)\)</span></p>
-<p>Su acción transforma los elementos la <em>base computacional</em>  a una nueva  <em>base de Fourier</em></p>
-<div class="math notranslate nohighlight">
-\[
-U_{TFC}: \ket{x} \to {\ket{\tilde x}} = \frac{1}{\sqrt{N}}\sum_{y}\omega^{xy}\ket{y} =   \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i  xy /N} \ket{y} 
-\]</div>
-<p>donde  <span class="math notranslate nohighlight">\(~~\omega = e^{2\pi i  /N}~~\)</span> y
-<span class="math notranslate nohighlight">\(~~x,\tilde x=0,...,N-1 = 2^n-1~~\)</span></p>
-<div class="note admonition">
-<p class="admonition-title">Notar</p>
-<p>comparar esta expresión con la de la transformada de Walsh-Hadamard</p>
-<div class="math notranslate nohighlight">
-\[
-W: \ket{x} \to \ket{\tilde x} =  \frac{1}{\sqrt{N}}\sum_{y}(-1)^{xy}\ket{y} =   \frac{1}{\sqrt{N}}\sum_{y} e^{i\pi   xy} \ket{y} 
-\]</div>
-<p>que es formalmente igual, pero con <span class="math notranslate nohighlight">\(\omega = e^{2\pi i/2} = -1\)</span>.</p>
-<p>Ya hemos visto cómo este factor produce <em>interferencias</em> interesantes que conducen a soluciones como la del problema de Simon.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
 </div>
-<p>El nuevo factor <span class="math notranslate nohighlight">\(\omega = e^{2\pi i/N}\)</span> también sirve para producir interferencias destructivas y constructivas interesantes.</p>
-<p>Esto se debe esencialmente a la importante fórmula de <a class="reference internal" href="#../00_Formalismo/01_Numeros_Complejos.ipynb#ejempnc"><span class="xref myst">suma nula</span></a> que hemos estudiado en el tema de números complejos</p>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">La <i>transformada de Fourier Cuántica</i> es una operación unitaria  <span class="math notranslate nohighlight">\(U_{TFC}\in \Lin(\Hil)\)</span>
+que transforma  la <i>base computacional</i> <span class="math notranslate nohighlight">\(\{\ket{x}\}\)</span>  a la <i>base de Fourier</i> <span class="math notranslate nohighlight">\(\{\ket{\tilde x}\}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-\fbox{$ \displaystyle
-\frac{1}{N} \sum_{y=0}^{N} e^{2\pi i xy/N} = \delta_{x \, 0 {\rm mod}N}$}
+U_{TFC}: \ket{x} \to {\ket{\tilde x}} =   \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i  xy /N} \ket{y} 
 \]</div>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>utiliza esta expresión para demostrar que, invirtiendo los signos de las fases obtenemos la TFC inversa. Es decir, demuestra que, si</p>
-<div class="math notranslate nohighlight">
-\[
-U^{-1}_{TFC}\ket{x}  =  \frac{1}{\sqrt{N}}\sum_{y} e^{-2\pi i  xy /N} \ket{y} 
-\]</div>
-<p>se sigue que</p>
-<div class="math notranslate nohighlight">
-\[
-U_{TFC}^{-1}(U_{TFC} \ket{x}) ) \ket{x}
-\]</div>
-<p>Esto confirma que es un operador unitario <span class="math notranslate nohighlight">\(U_{TFC}^{-1} = U_{TFC}^\dagger\)</span>.</p>
+<p class="sd-card-text">donde  <span class="math notranslate nohighlight">\(~~x,y,\tilde x=0,...,N-1 = 2^n-1~~\)</span></p>
+</div>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
-<p>por supuesto, la operación <span class="math notranslate nohighlight">\(U_{TFC}\)</span> no está restringida a elementos de la base computacional.</p>
-<p>Actuando sobre un vector <span class="math notranslate nohighlight">\(\ket{f} = \sum_x f(x)\ket{x}\)</span> de componentes <span class="math notranslate nohighlight">\(f(x)\)</span> en la base <span class="math notranslate nohighlight">\(\ket{x}\)</span> obtendremos otro vector</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\ket{\tilde f} &amp;=&amp; U_{TCF}\ket{f} = \sum_x f(x) U_{TCF}\ket{x} \nonumber\\
-&amp;=&amp; \sum_x f(x) \frac{1}{\sqrt{N}}\sum_y e^{2\pi i xy} \ket{y}\\
-&amp;=&amp;  \sum_y\left( \frac{1}{\sqrt{N}}\sum_x f(x) e^{2\pi i xy}\right) \ket{y}\\
-    &amp;=&amp; \sum_y \tilde f(y) \ket{y}
-\end{eqnarray*}\]</div>
+<p>Comparar esta expresión con la de la transformada de Walsh-Hadamard</p>
+<div class="math notranslate nohighlight">
+\[
+W: \ket{x} \to \ket{\tilde x} =  \frac{1}{\sqrt{N}}\sum_{y}(-1)^{xy}\ket{y} =   \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i \,   xy/2} \ket{y} 
+\]</div>
+<p>Ya hemos visto cómo la fase <span class="math notranslate nohighlight">\((-1)^{xy}= e^{2\pi i   xy/2}\)</span> produce <em>interferencias</em> interesantes que concentran la probabilidad en soluciones a problemas como el de Simon</p>
+</div>
+<p>La fase <span class="math notranslate nohighlight">\( e^{2\pi i/N}\)</span> también sirve para producir interferencias destructivas y constructivas interesantes. Esto se debe esencialmente a la importante <em>fórmula de suma nula</em> que hemos estudiado en el tema de Números Complejos</p>
+<div class="amsmath math notranslate nohighlight" id="equation-65b400e9-008e-47d1-87ed-95ce8893ed68">
+<span class="eqno">(19)<a class="headerlink" href="#equation-65b400e9-008e-47d1-87ed-95ce8893ed68" title="Permalink to this equation">#</a></span>\[\begin{equation}
+ \sum_{y=0}^{N} e^{2\pi i xy/N} = N \delta_{x, 0}  
+\end{equation}\]</div>
+<p>La unitariedad de <span class="math notranslate nohighlight">\(U_{TFC}\)</span> es equivalente a que la base de Fourier también sea ortonormal. Para demostrar esto sólo es necesaria la fórmula de suma nula</p>
+<div class="amsmath math notranslate nohighlight" id="equation-01974a9c-30e7-4572-af72-7483ca912393">
+<span class="eqno">(20)<a class="headerlink" href="#equation-01974a9c-30e7-4572-af72-7483ca912393" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\braket{\tilde x'}{\tilde x} &amp;=&amp; \left(\bra{y'}\frac{1}{\sqrt{N}}\sum_{y'} e^{-2\pi i  x'y' /N}\right)
+\left( \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i  xy /N} \ket{y} \right) \nonumber \\ \rule{0mm}{12mm}
+&amp;=&amp; \frac{1}{N} \sum_{y'y} e^{-2\pi i  x'y' /N} e^{2\pi i  xy /N} \braket{y'}{y}\nonumber\\ \rule{0mm}{12mm}
+&amp;=&amp;  \frac{1}{N} \sum_{y} e^{2\pi i  (x-x')y /N} = \delta_{x',x}
+\end{eqnarray}\]</div>
+<p>Este resultado equivale a probar que <span class="math notranslate nohighlight">\(U_{TFC}\)</span> es un operador unitario. Esto quiere decir que
+el operador inverso se obtiene invirtiendo los signos de las fases</p>
+<div class="math notranslate nohighlight">
+\[
+U^{-1}_{TFC}\ket{x} = U^{\dagger}_{TFC}\ket{x}   =  \frac{1}{\sqrt{N}}\sum_{y} e^{-2\pi i  xy /N} \ket{y} 
+\]</div>
+<p>Los elementos de matriz del operador <span class="math notranslate nohighlight">\(U_{TFC}\)</span> son la siguientes fases</p>
+<div class="math notranslate nohighlight">
+\[
+\bra{x} U_{TFC} \ket{y} =  \frac{1}{\sqrt{N}} e^{2\pi i  x y/N} \, . 
+\]</div>
+<p>Como consecuencia de la formula de <em>suma nula</em>, la  suma de cualquier fila o columna de esta matriz es nula, excepto para la primera fila o columna.</p>
+<div class="note admonition">
+<p class="admonition-title">Notar (TFC y TFD)</p>
+<p>Actuando con <span class="math notranslate nohighlight">\(U_{TFC}\)</span> sobre un vector <span class="math notranslate nohighlight">\(\ket{f} = \sum_x f(x)\ket{x}\)</span> de componentes <span class="math notranslate nohighlight">\(f(x)\)</span> en la base <span class="math notranslate nohighlight">\(\ket{x}\)</span> obtendremos otro vector</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b74f3c13-453f-4f77-a2cb-9a07fce7f41d">
+<span class="eqno">(21)<a class="headerlink" href="#equation-b74f3c13-453f-4f77-a2cb-9a07fce7f41d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\ket{\tilde f} = U_{TCF}\ket{f} &amp;=&amp; \sum_x f(x) U_{TCF}\ket{x} ~=~\sum_x f(x) \frac{1}{\sqrt{N}}\sum_y e^{2\pi i xy} \ket{y} 
+\\ \rule{0mm}{12mm}
+&amp;=&amp;    \sum_y\left( \frac{1}{\sqrt{N}}\sum_x f(x) e^{2\pi i xy}\right) \ket{y} ~=~  \sum_y \tilde f(y) \ket{y}
+\end{eqnarray}\]</div>
 <p>donde las nuevas componentes <span class="math notranslate nohighlight">\(\tilde f(x)\)</span> ahora son</p>
 <div class="math notranslate nohighlight">
 \[
 \boxed{\tilde f(y) = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1} e^{2\pi i yx} f(x)}
 \]</div>
-<p>Esta regla define lo que <em>clásicamente</em> se conoce como la <em>Transformada de Fourier Discreta</em> (TFD) del conjunto de datos</p>
+<p>Esta ecuación define lo que  se conoce como la <em>Transformada de Fourier Discreta</em> (TFD) entre dos conjuntos de datos</p>
 <div class="math notranslate nohighlight">
 \[
-\{f(0),f(1),...,f(N-1)\}~ \stackrel{\hbox{TFD}}{\longrightarrow}~ \{\tilde f(0),\tilde f(1),...,\tilde f(N-1)\}\]</div>
+\{f(0),f(1),...,f(N-1)\}~ \stackrel{\hbox{TFD}}{\longleftrightarrow}~ \{\tilde f(0),\tilde f(1),...,\tilde f(N-1)\}
+\]</div>
+<p>Por ejemplo, la TFD discreta de una función <em>delta</em> <span class="math notranslate nohighlight">\(f(x) = \delta_{x,x_0}\)</span> es la función <em>onda plana</em>
+<span class="math notranslate nohighlight">\(\tilde f(y) = e^{2\pi i yx_0}\)</span> y vicerversa.</p>
 </div>
-<p><span class="math notranslate nohighlight">\(\bullet\)</span> En general, los elementos de matriz serán evidentemente, las fases</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\bra{x} U_{TFC} \ket{y} =  \frac{1}{\sqrt{N}} e^{2\pi i  x y/N} =\frac{1}{\sqrt{N}} \omega^{xy}
- = \frac{1}{\sqrt{N}} \begin{bmatrix}
-1&amp;1&amp;1&amp;1&amp;\cdots &amp;1 \\
-1&amp;\omega_N&amp;\omega_N^2&amp;\omega_N^3&amp;\cdots&amp;\omega_N^{N-1} \\
-1&amp;\omega_N^2&amp;\omega_N^4&amp;\omega_N^6&amp;\cdots&amp;\omega_N^{2(N-1)}\\ 1&amp;\omega_N^3&amp;\omega_N^6&amp;\omega_N^9&amp;\cdots&amp;\omega_N^{3(N-1)}\\
-\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
-1&amp;\omega_N^{N-1}&amp;\omega_N^{2(N-1)}&amp;\omega_N^{3(N-1)}&amp;\cdots&amp;\omega_N^{(N-1)(N-1)}
-\end{bmatrix}
-\end{split}\]</div>
 <div class="tip admonition">
 <p class="admonition-title">Ejemplo</p>
 <p><span class="math notranslate nohighlight">\(\bullet\)</span> Para <span class="math notranslate nohighlight">\(n=1 \to \omega = e^{2\pi i /2^1} = -1\)</span> y   la TFC no es otra que la puerta de Hadamard</p>
@@ -613,134 +609,96 @@ U_{TFC}\ket{0} = \ket{+}~~~~~~~~~,~~~~~~~~~~  U_{TFC}\ket{1} = \ket{-}
 U_{TFC} =\frac{1}{2}
 \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; -i &amp; -1 &amp; i \\ 1 &amp; - 1 &amp; 1 &amp; - 1 \\ 1 &amp; i &amp; -1 &amp; -i  \end{bmatrix}
 \end{split}\]</div>
-<p>Observar que la suma de cualquier columna o fila que no sean las primeras da cero</p>
+<p>Se comprueba que la suma de cualquier columna o fila que no sean las primeras da cero</p>
 </div>
+<p>Es relativamente fácil visualizar los estados de la base computacional <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}...x_0}\)</span> porque son factorizables. Sobre un conjunto de esferas de Bloch son vectores verticales que apuntan hacia arríba <span class="math notranslate nohighlight">\(\ket{0}\)</span> o hacia abajo <span class="math notranslate nohighlight">\(\ket{1}\)</span>.</p>
+<p>Los vectores de la base de Fourier, <span class="math notranslate nohighlight">\(\ket{\tilde x} = \ket{\tilde x_{n-1}...\tilde x_0}\)</span> son también fáciles de visualizar. Vamos a ver esto</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Los vectores de la <i>base de Fourier</i> son estados <i>factorizables</i> en productos de estados de un cúbit que se sitúan <i>sobre el ecuador</i> de la esfera de Bloch</p>
+<p class="sd-card-text">En <span class="math notranslate nohighlight">\(\Hil^{\otimes n}\)</span>, los vectores de la <i>base de Fourier</i> son el productos de <span class="math notranslate nohighlight">\(n\)</span> estados de un cúbit que se sitúan sobre <i> el ecuador</i> de la esfera de Bloch</p>
 </div>
 </div>
-<p><em>Base computacional</em> | <em>Base de Fourier</em></p>
-<ul class="simple">
-<li><p>| -
-<img alt="alt" src="https://qiskit.org/textbook/ch-algorithms/images/zbasis-counting.gif" /> | <img alt="alt" src="https://qiskit.org/textbook/ch-algorithms/images/fourierbasis-counting.gif" /></p></li>
-</ul>
-<p>Animaciones extraídas de <a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/quantum-fourier-transform.html">Qiskit Texbook</a></p>
-<p><strong>Prueba</strong></p>
-<p><em>Notación</em> : un número  <span class="math notranslate nohighlight">\(x\in {\mathbb Q} \)</span> puede representarse en base 2</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-x  
-&amp;=&amp;  x_{n-1}2^{n-1}   +   \cdots + x_1 2^1+ x_0 2^0    +  x_{-1}2^{-1} +  \cdots  +   x_{-m}2^{-m}\, \\ \rule{0mm}{10mm}
-&amp;=&amp;
-x_{n-1} \cdots x_1 x_0\, .\, x_{-1}  \cdots x_{-m} \nonumber\\ \rule{0mm}{10mm}
-&amp;=&amp;  x_{n-1} \cdots x_1 x_0 + 0.x_{-1}  \cdots x_{-m} 
-\end{eqnarray*}\]</div>
-<p>en particular, si <span class="math notranslate nohighlight">\(y\in S_n =[0,...,2^n-1],~\)</span> en base 2 tendríamos</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-y &amp;=&amp; y_{n-1} \ldots   y_2y_1 y_0 \nonumber\\  \rule{0mm}{12mm}
-y/2&amp;~=~&amp;  y_{n-1}...y_2y_1 + 0. y_0 \nonumber\\ \rule{0mm}{12mm}
-y/2^2 &amp;~=~&amp;  y_{n-1}...y_2 + 0.y_1 y_0 \nonumber\\ \rule{0mm}{12mm}
-&amp;\vdots &amp; \nonumber \\ \rule{0mm}{12mm}
-y/2^n &amp;~=~&amp;   0.y_{n-1}y_{n-2}...y_0 \, 
-\end{eqnarray*}\]</div>
-<p>Ahora vamos a estudiar la acción de <span class="math notranslate nohighlight">\(U_{\rm TFC}\)</span> sobre un elemento <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}}\ket{x_{n-2}}... \ket{x_0}\)</span>
+<p>Vamos a estudiar paso a paso la acción de <span class="math notranslate nohighlight">\(U_{\rm TFC}\)</span> sobre un elemento <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}... x_0}\)</span>
 de la base computacional</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
- \ket{\tilde x}  ~\equiv ~  U_{\rm TFC}\ket{x}  &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y=0}^{2^n-1} e^{2\pi i  xy/2^n}\ket{y} \label{TFC}
+<div class="amsmath math notranslate nohighlight" id="equation-b189c94e-a03e-4807-8872-085b84727478">
+<span class="eqno">(22)<a class="headerlink" href="#equation-b189c94e-a03e-4807-8872-085b84727478" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+ \ket{\tilde x}  ~\equiv ~  U_{\rm TFC}\ket{x}  &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y=0}^{2^n-1} e^{2\pi i  xy/2^n}\ket{y}  
 \nonumber\\ \rule{0mm}{14mm}
 &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y_1,...,y_n=\{0,1\}} e^{ 2\pi i x \left( y_{n-1}2^{n-1} + y_{n-2}2^{n-2}  + ... + y_0\right)/2^n } \ket{y_{n-1}}\ket{y_{n-2}}\ldots \ket{ y_0}
 \nonumber\\ \rule{0mm}{14mm} 
 &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y_1,...,y_n=\{0,1\}} e^{2\pi i x \left(\frac{y_{n-1}}{2} + \frac{y_{n-2}}{2^2}  + ... + \frac{y_0}{2^n}\right) } \ket{y_{n-1}}\ket{y_{n-2}}\ldots \ket{ y_0}
-\end{eqnarray*}\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\hspace{1cm}&amp;=&amp;  \frac{1}{\sqrt{N}} \left( \ket{0} + e^{2\pi i \frac{x}{2}}\ket{1}\right)\left( \ket{0} + e^{2\pi i \frac{x}{2^2}}\ket{1}\right)...\left( \ket{0} + e^{2\pi i \frac{x}{2^n}}\ket{1}\right)
+\nonumber\\ \rule{0mm}{14mm} 
+&amp;=&amp;  \frac{1}{\sqrt{2}} \left( \ket{0} + e^{2\pi i \frac{x}{2}}\ket{1}\right) \frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i \frac{x}{2^2}}\ket{1}\right)...\frac{1}{\sqrt{2}}\left( \ket{0} + e^{2\pi i \frac{x}{2^n}}\ket{1}\right)
 \nonumber\\ 
-%\pause
-\rule{0mm}{14mm}
-&amp;=&amp; \frac{1}{\sqrt{N}} \left( \ket{0} + e^{2\pi i \, 0.x_0}\ket{1}\right)\left( \ket{0} + e^{2\pi i \, 0.x_1x_0}\ket{1}\right)...\left( \ket{0} + e^{2\pi i \, 0.x_{n-1}...x_0}\ket{1}\right)   \nonumber \\
 \rule{0mm}{14mm}
 &amp;\equiv &amp; ~~ \ket{\tilde x_{n-1}}\ket{\tilde x_{n-2}}\cdots \ket{\tilde x_{0}}   
-\end{eqnarray*}\]</div>
-<p>Hemos usado que las partes enteras de <span class="math notranslate nohighlight">\(x\)</span> no contribuyen a las fases</p>
-<div class="math notranslate nohighlight">
-\[
-e^{2\pi i x/2} = e^{2\pi i (x_{n-1}...x_1 + 0. x_0)}= e^{2\pi i (x_{n-1}...x_1)}e^{2\pi i \, 0. x_0} = e^{2\pi i\, 0.x_0}
-\]</div>
-<div class="note admonition">
-<p class="admonition-title">Nota</p>
+\end{eqnarray}\]</div>
 <p>La última expresión es tan útil e importante que casi podríamos tomarla como definición de la Transformada de Fourier Cuántica.</p>
 <ul class="simple">
 <li><p>tal y como prometimos, el resultado es un estado factorizado   <span class="math notranslate nohighlight">\(\ket{\tilde x} = \ket{\tilde x_{n-1}}\ket{\tilde x_{n-2}}\cdots \ket{\tilde x_{0}} \)</span></p></li>
-<li><p>los estados de un cúbit <span class="math notranslate nohighlight">\(\ket{\tilde x_k}\)</span>  viven en el ecuador de la esfera de Bloch</p></li>
+<li><p>cada de un cúbit <span class="math notranslate nohighlight">\(\ket{\tilde x_k}\)</span>  <i>vive</i> en el ecuador de la esfera de Bloch, con una fase <span class="math notranslate nohighlight">\(\phi = 2\pi x/2^{n-k}\)</span></p></li>
 </ul>
-</div>
 <section id="circuito-asociado-a-una-tfc">
 <h3>Circuito asociado a una TFC<a class="headerlink" href="#circuito-asociado-a-una-tfc" title="Permalink to this heading">#</a></h3>
-<p>Veamos el circuito</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/QFT2.png"><img alt="../../_images/QFT2.png" src="../../_images/QFT2.png" style="width: 800px;" /></a>
+<p>El objetivo ahora es diseñar un circuito que realice la TFC sobre todo los estados de la base. Por linealidad, lo hará sobre cualquier estado. Estudiemos ahora el siguiente circuito</p>
+<figure class="align-left">
+<a class="reference internal image-reference" href="../../_images/QFT2.png"><img alt="../../_images/QFT2.png" src="../../_images/QFT2.png" style="width: 850px;" /></a>
 </figure>
-<p>Solo involucra</p>
+<p>solo involucra</p>
 <ul class="simple">
-<li><p>la puerta de Hadamard <span class="math notranslate nohighlight">\(H\)</span> y</p></li>
-<li><p>la puerta <em>puerta de fase discreta</em> <span class="math notranslate nohighlight">\(R_k \equiv P(\phi = \pi/2^{k-1})\)</span></p></li>
+<li><p>la puerta de Hadamard <span class="math notranslate nohighlight">\(H\)</span>, que es la encargada de poner el cúbit eje <span class="math notranslate nohighlight">\(X\)</span></p></li>
+<li><p>la puerta <em>puerta de fase discreta</em> <span class="math notranslate nohighlight">\(R_k \equiv P(\phi = \pi/2^{k-1})\)</span>, que rota el cúbit en el plano ecuatorial <span class="math notranslate nohighlight">\(XY\)</span></p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bmatrix}  ~~~\Leftrightarrow ~~~R_k\ket{y} = e^{2\pi i\frac{y}{2^k}} \ket{y}
 \end{split}\]</div>
-<p>que aparece de forma controlada <span class="math notranslate nohighlight">\(\cg{R_k}\)</span>.</p>
-<p>Será util escribir la <em>acción</em> de <span class="math notranslate nohighlight">\(\cg R_k\)</span> en la forma siguiente, si <span class="math notranslate nohighlight">\(\ket{x}\)</span> es el cúbit de control</p>
+<p>que aparece de forma controlada <span class="math notranslate nohighlight">\(\cg{R_k}\)</span>.
+Será util escribir la <em>acción</em> de <span class="math notranslate nohighlight">\(\cg R_k\)</span> en la forma siguiente: supongamos que <span class="math notranslate nohighlight">\(\ket{x}\)</span> es el cúbit de control y <span class="math notranslate nohighlight">\(\ket{y}\)</span> el cúbit controlado</p>
 <div class="math notranslate nohighlight">
-\[
-\cg{R_k}\ket{x}\ket{y} = \ket{x}R^{x}_{k}\ket{y}  = \ket{x}  e^{2 \pi i   \frac{y}{2^{k}}x}\ket{y}
-\]</div>
+\[\begin{split}
+\cg{R_k}\ket{y}\ket{x} = R^{x}_{k}\ket{y}\ket{x}  =  e^{2 \pi i   \frac{x}{2^{k}}y}\ket{y} \ket{x}
+ \to  \left\{ \begin{array}{l}  \ket{0}\ket{x} \\ \rule{0mm}{10mm}  e^{2 \pi i   \frac{x}{2^{k}}} \ket{1}\ket{x} \end{array} \right.
+\end{split}\]</div>
 <p>Vamos a analizar la acción del primer bloque</p>
-<div class="math notranslate nohighlight">
-\[
-(H\ket{x_{n-1}})\ket{x_{n-2}...x_0} =\left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0}
-\]</div>
-<div class="math notranslate nohighlight">
-\[
-\left(\rule{0mm}{3mm} R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}  = 
+<div class="amsmath math notranslate nohighlight" id="equation-bd6fa2a9-c514-43f8-972e-d3ce7c7d85e2">
+<span class="eqno">(23)<a class="headerlink" href="#equation-bd6fa2a9-c514-43f8-972e-d3ce7c7d85e2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+(H\ket{x_{n-1}})\ket{x_{n-2}...x_0} &amp;=&amp;\left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0}
+\\ \rule{0mm}{12mm}
+\left(\rule{0mm}{3mm} R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}  &amp;=&amp; 
  \left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2} + \frac{x_{n-2}}{2^2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0} 
-\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-&amp;\vdots&amp; \nonumber\\
-\left(\rule{0mm}{5mm}R_{{(n-1)}}^{x_{0}} ... R_{3} ^{x_{n-3}}  R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}&amp; =&amp; 
-\left( \ket{0} + e^{2\pi i \, \left(\frac{x_{n-1}}{2} + \frac{x_{n-2}}{2^2}+\ldots \frac{x_0}{2^n}\right)}  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ 
-\rule{0mm}{5mm}
- &amp; =&amp; 
-\left( \rule{0mm}{5mm}\ket{0} + e^{2\pi i \, 0.x_{n-1}\cdots x_0}  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ \rule{0mm}{12mm}
+\\
+&amp;\vdots&amp; \nonumber\\ \rule{0mm}{12mm}
+\left(\rule{0mm}{5mm}R_{{n-1}}^{x_{0}} ... R_{3} ^{x_{n-3}}  R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}
+&amp; =&amp; 
+\left( \ket{0} + e^{2\pi i \, \left(\frac{x_{n-1}}{2} + \frac{x_{n-2}}{2^2}+\ldots \frac{x_0}{2^n}\right)}  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ \rule{0mm}{10mm}
+&amp;=&amp; 
+\left( \ket{0} + e^{2\pi i \,  \frac{x}{2^n} }  \ket{1} \right) \ket{x_{n-2}...x_0} \nonumber\\ \rule{0mm}{10mm}
 &amp; \equiv&amp;  \ket{\tilde x_{0}} \ket{x_{n-2}... x_1x_0} \nonumber
-\end{eqnarray*}\]</div>
-<p>El primer bloque ha generado el estado ecuatorial <span class="math notranslate nohighlight">\(\ket{\tilde x_0}\)</span> pero ¡<em>en la posición equivocada</em>!</p>
-<p>Si repetimos el mismo procedimiento con los siguientes cúbits <span class="math notranslate nohighlight">\(\ket{x_{n-2}}\)</span> de forma sucesiva, obtendremos finalmente</p>
+\end{eqnarray}\]</div>
+<p>Observamos que el primer bloque transforma el estado <span class="math notranslate nohighlight">\(\ket{x_{n-1}}\)</span> en el estado <em>ecuatorial</em> <span class="math notranslate nohighlight">\(\ket{\tilde x_0}\)</span>.
+Si repetimos el mismo procedimiento con los bloques que actúan sobre los siguientes cúbits obtendremos finalmente</p>
 <div class="math notranslate nohighlight">
 \[
  \ket{\tilde x_{0}}\ket{\tilde x_{1}}  ... \ket{\tilde{x}_{n-2}} \ket{\tilde x_{n-1}}
 \]</div>
-<p>que es <em>casi</em> el estado que estábamos buscando</p>
-<p>La parte final del circuito introduce los operadores de SWAP que rectifican el orden de los cúbits</p>
+<p>que es <em>casi</em> el estado que estábamos buscando.
+La parte final del circuito introduce los operadores de SWAP que rectifican el orden de los cúbits</p>
 <div class="math notranslate nohighlight">
 \[
 \hbox{SWAP}^{\otimes n} \,  (\ket{\tilde x_{0}}  ...  \ket{\tilde x_{n-1}} ) ~=~ 
 \ket{\tilde x_{n-1}} ... \ket{\tilde{x}_{0}} ~~ \equiv ~~ \ket{\tilde x}
 \]</div>
-<section id="implementacion">
-<h4>Implementación:<a class="headerlink" href="#implementacion" title="Permalink to this heading">#</a></h4>
-<p>Vamos a generar una puerta TFC que efectúe una Tranformada de Fourier Cuántica</p>
+<p>¡A programar!</p>
+<p>Vamos a programar el circuito de TFC</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">TFC</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+
+<span class="k">def</span> <span class="nf">TFC</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>    
 
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)):</span>
@@ -751,15 +709,8 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
         <span class="n">qc</span><span class="o">.</span><span class="n">swap</span><span class="p">(</span><span class="n">j</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TFC&#39;</span><span class="p">)</span>
-        
-</pre></div>
-</div>
-</div>
-</div>
-<p>podemos visualizar el circuito que hemos convertido en una puerta</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TFC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+
+<span class="n">TFC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -771,7 +722,7 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
 <img alt="../../_images/c62c2b43b2cacd209c441880810b87274837f993377f151d2fecc9adf2c8dc88.png" src="../../_images/c62c2b43b2cacd209c441880810b87274837f993377f151d2fecc9adf2c8dc88.png" />
 </div>
 </div>
-<p>y también su inverso</p>
+<p>Programar el inverso es tan fácil como tomar el adjunto: invertir el orden de las puertas y conjugar las fases</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">TFC_adj</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -785,13 +736,8 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
         <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">qc</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TFC_adj&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TFC_adj</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+
+<span class="n">TFC_adj</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -799,108 +745,97 @@ R_{k} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; e^{ 2\pi i\frac{1 }{2^{k}}} \end{bm
 <img alt="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" src="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TFC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">inverse</span><span class="p">()</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" src="../../_images/e698ffae32cb541365c36c703d82734b71e565bf0447d7770a900830ecb7bfb3.png" />
-</div>
-</div>
-<p>Ahora podemos inicializar un estado y obtener el estado TFC asociado</p>
+<p>Ahora podemos inicializar un estado cualquiera  y obtener el estado TFC asociado</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creamos el circuito </span>
-<span class="n">num_qubits</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qr&#39;</span><span class="p">)</span>
-<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cr&#39;</span><span class="p">)</span>
+<span class="n">nqubits</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">qr</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">nqubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qr&#39;</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">nqubits</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;cr&#39;</span><span class="p">)</span>
 <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;QFT&quot;</span><span class="p">)</span>
 
-<span class="c1"># Inicialización 1 de un estado de entrada</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">rx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">cx</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1">#qc.x(0)</span>
-
-<span class="c1"># Inicialización 2 de un estado de entrada</span>
-<span class="c1">#qc.h(range(num_qubits))</span>
+<span class="s1">&#39;Inicialización&#39;</span>
+<span class="c1">#qc.rx(np.pi/3,0)</span>
+<span class="c1">#qc.cx(0,2)</span>
+<span class="c1">#qc.x(3)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
         
-<span class="c1"># añadimos la TFC</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC</span><span class="p">(</span><span class="n">num_qubits</span><span class="p">),</span><span class="n">qr</span><span class="p">[:])</span>
-
+<span class="s1">&#39;añadimos la TFC&#39;</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC</span><span class="p">(</span><span class="n">nqubits</span><span class="p">),</span><span class="n">qr</span><span class="p">[:])</span>
 <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
-
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" src="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" />
+<img alt="../../_images/486e18796620fdc29cdf754fd9721b493a9995bb70061b335425fa595f1be963.png" src="../../_images/486e18796620fdc29cdf754fd9721b493a9995bb70061b335425fa595f1be963.png" />
 </div>
 </div>
-<p>Ahora puedes variar el estado de entrada y obervar el resultado a la salida.</p>
-<p>Por ejemplo la TFC del estado superposición  uniforme  <span class="math notranslate nohighlight">\(\ket{+\ldots+}= \frac{1}{\sqrt{N}}\sum_{i} \ket{i}\)</span> es el estado <span class="math notranslate nohighlight">\(|0 \ldots 0&gt;\)</span></p>
+<p>Ahora se puede variar el estado de entrada y observar el resultado a la salida.
+Por ejemplo la TFC del estado superposición  uniforme  <span class="math notranslate nohighlight">\(\ket{+\ldots+}= \frac{1}{\sqrt{N}}\sum_{i} \ket{i}\)</span> es el estado <span class="math notranslate nohighlight">\(|0 \ldots 0&gt;\)</span> y viceversa</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
+<span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
 
-<span class="n">M_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">backend</span><span class="o">=</span><span class="n">M_simulator</span><span class="p">,</span><span class="n">shots</span> <span class="o">=</span><span class="mi">10000</span> <span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">nqubits</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
+
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d9f630cdcdba68b6e6f2f14b6009a61abc6d098e866424b3a166cb9823e18f3b.png" src="../../_images/d9f630cdcdba68b6e6f2f14b6009a61abc6d098e866424b3a166cb9823e18f3b.png" />
+<img alt="../../_images/b6adfc5f65d9d10b4e9240fc2ce17763d5b969327eeaca47bb3d94c1b3d76410.png" src="../../_images/b6adfc5f65d9d10b4e9240fc2ce17763d5b969327eeaca47bb3d94c1b3d76410.png" />
 </div>
-</div>
-<p>Es importante correr este circuito para distintos estados iniciales</p>
-<div class="note admonition">
-<p class="admonition-title">Nota</p>
-<ul class="simple">
-<li><p>El número de puertas que hemos necesitado es <span class="math notranslate nohighlight">\(n\)</span> puertas de Hadamard y <span class="math notranslate nohighlight">\(n(n-1)/2\)</span> fases controladas <span class="math notranslate nohighlight">\(\cg{R}\)</span>. En total esto es un número de orden <span class="math notranslate nohighlight">\({\cal O}(n^2)\)</span>.</p></li>
-</ul>
-<p>Clásicamente, el algoritmo más eficiente para calcular
-la Transformada de Fourier Discreta (TFD) precisa de <span class="math notranslate nohighlight">\({\cal O}(n 2^n)\)</span> por tanto la TFC transforma un problema de tipo  <span class="math notranslate nohighlight">\(NP\)</span> en uno de tipo <span class="math notranslate nohighlight">\(P\)</span>.</p>
-<ul class="simple">
-<li><p>En realidad no hemos calculado la TFC, ya que del estado final no podemos deducir las fases  de los elementos de la base separadamente, lo cuál constituye la transformada de Fourier del qubit de entrada.</p></li>
-<li><p>Por tanto, el punto estará en ser capaces de <b>encontrar problemas</b> en los que la TFC sea un ingrediente que aporte una ventaja exponencial</p></li>
-</ul>
 </div>
 </section>
+<section id="ventaja-exponencial">
+<h3>Ventaja exponencial<a class="headerlink" href="#ventaja-exponencial" title="Permalink to this heading">#</a></h3>
+<p>Clásicamente, el algoritmo más eficiente para calcular la Transformada de Fourier Discreta (TFD) precisa de <span class="math notranslate nohighlight">\({\cal O}(n 2^n)\)</span> puertas lógicas.</p>
+<p>El número de puertas cuánticas que hemos necesitado es: <span class="math notranslate nohighlight">\(n\)</span> puertas de Hadamard  <span class="math notranslate nohighlight">\(+ \, n(n-1)/2\)</span> fases controladas <span class="math notranslate nohighlight">\(\cg{R}\)</span>. En total este un número crece como  <span class="math notranslate nohighlight">\({\cal O}(n^2)\)</span>.</p>
+<p>Por tanto la TFC transforma un problema de tipo  <span class="math notranslate nohighlight">\(NP\)</span> en uno de tipo <span class="math notranslate nohighlight">\(P\)</span></p>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>La TFC no es una TFD: del estado final no podemos deducir las fases  que constituyen las componentes transformadas.
+Esto es lo usual en computación cuántica: tenemos el estado, pero no podemos interrogarlo</p>
+<p>Ya sabemos lo que hay que hacer. El punto estará en <b>buscar problemas</b> en los que la TFC sea un ingrediente interno del cálculo que aporte una ventaja exponencial. Vamos a ver un caso paradigmático</p>
+</div>
 </section>
 </section>
 <section id="busqueda-de-un-periodo">
 <h2>Búsqueda de un período<a class="headerlink" href="#busqueda-de-un-periodo" title="Permalink to this heading">#</a></h2>
-<p>Una aplicación directa de la transformada de Fourier cuántica tiene que ver con funciones <span class="math notranslate nohighlight">\(f: S_n \to S_{m}\)</span> periódicas.</p>
+<p>Una aplicación directa de la transformada de Fourier cuántica tiene que ver con funciones <span class="math notranslate nohighlight">\(f: S_n \to S_{m}\)</span> y periódicas</p>
 <p><strong>Promesa:</strong> <span class="math notranslate nohighlight">\(f: S_n \to S_{m}\)</span> es suprayectiva con un sólo período <span class="math notranslate nohighlight">\(f(x+P) = f(x)\)</span>.</p>
 <p><strong>Problema</strong>:  encontrar <span class="math notranslate nohighlight">\(P\)</span> con un numero mínimo de consultas al oráculo.</p>
 <ul class="simple">
-<li><p>Para realizar los cálculos exactos supondremos que <span class="math notranslate nohighlight">\(~P~\)</span> divide  a <span class="math notranslate nohighlight">\(N=2^n\)</span>. Existe por tanto un <span class="math notranslate nohighlight">\(M\)</span>  tal que  <span class="math notranslate nohighlight">\(\Rightarrow PM = N\)</span>.</p></li>
-<li><p>El requisito de divisibilidad se puede relajar, es decir, basta con que  <span class="math notranslate nohighlight">\(N-M &lt; P M \leq N = 2^n \)</span>. Esto sólo lo estudiaremos numéricamente.</p></li>
+<li><p>Para realizar los cálculos exactos supondremos que <span class="math notranslate nohighlight">\(~P~\)</span> divide  a <span class="math notranslate nohighlight">\(N=2^n\)</span>. <strong>Existe</strong> por tanto un entero <span class="math notranslate nohighlight">\(L\)</span>  tal que  <span class="math notranslate nohighlight">\( LP = N\)</span>.</p></li>
+<li><p>El requisito de divisibilidad se puede relajar, es decir, basta con que  <span class="math notranslate nohighlight">\(N-L &lt; LP  \leq N = 2^n \)</span>. Esta posibilidad sólo la analizaremos numéricamente.</p></li>
 </ul>
-<p>Clásicamente necesitaríamos evaluar <span class="math notranslate nohighlight">\(f\)</span> un número de veces del orden de <span class="math notranslate nohighlight">\(2^n/2\)</span> para discernir entre las dos ultimas posibilidades <span class="math notranslate nohighlight">\(P=N/2\)</span> de <span class="math notranslate nohighlight">\(P=N\)</span>.</p>
 <div class="note admonition">
 <p class="admonition-title">Nota</p>
-<p>Adviértase la diferencia con el problema de Simon, donde la periodicidad era <span class="math notranslate nohighlight">\(f(x+r) = f(x)\)</span> para <span class="math notranslate nohighlight">\(x+r\)</span> una suma <i>bit a bit</i> mod 2</p>
+<p>Notar la diferencia con el algoritmo de Simon, donde la funcion <span class="math notranslate nohighlight">\(f:S_n\to S_n\)</span> es bivaluada en el sentido de que <span class="math notranslate nohighlight">\(f(x) = f(x\oplus s)\)</span> donde la suma se entiende bit a bit, módulo 2. Aquí <span class="math notranslate nohighlight">\(x+P\)</span> es una suma numérica (en cualquier base) de los números <span class="math notranslate nohighlight">\(x\)</span> y <span class="math notranslate nohighlight">\(P\)</span>.</p>
+<p>Clásicamente necesitaríamos evaluar <span class="math notranslate nohighlight">\(f\)</span> un número exponencial de veces <span class="math notranslate nohighlight">\(\sim N/2 = 2^n/2\)</span> para discernir entre las dos ultimas posibilidades <span class="math notranslate nohighlight">\(P=N/2\)</span> de <span class="math notranslate nohighlight">\(P=N\)</span>.</p>
 </div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Period_finding.png"><img alt="../../_images/Period_finding.png" src="../../_images/Period_finding.png" style="width: 800px;" /></a>
+</figure>
 <p>Comencemos analizando el algoritmos como si se tratase del problema de Simon</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-\ket{\Psi} &amp;=&amp; U_f (W\otimes I) \ket{0}_n  \ket{0}_m  \nonumber\\ \rule{0mm}{15mm}
+\ket{0}_n  \ket{0}_m ~\to ~U_f (W_n\otimes I) \ket{0}_n  \ket{0}_m  
 &amp;=&amp; \rule{0mm}{8mm}U_f   \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1} \ket{x}_n\ket{0}_m \nonumber\\ \rule{0mm}{15mm}
 &amp;=&amp;   \rule{0mm}{7mm} \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1} \ket{x}_n\ket{f(x)}_m \rule{0mm}{15mm}
 \end{eqnarray*}\]</div>
-<p>Veamos el caso <span class="math notranslate nohighlight">\(N/P\in {\mathbb Z}\)</span>, es decir, <span class="math notranslate nohighlight">\(P\)</span> divide a <span class="math notranslate nohighlight">\(N\)</span> en un número de tramos <span class="math notranslate nohighlight">\(M=N/P\)</span> entero.</p>
-<p>Rescribamos el entero <span class="math notranslate nohighlight">\(x\in S_n\)</span> en la forma siguiente: <span class="math notranslate nohighlight">\(~ x = lP +p~ = 0,\ldots, MP-1\)</span>, donde <span class="math notranslate nohighlight">\(~p=0,\ldots,P-1~\)</span> y <span class="math notranslate nohighlight">\(~l=0,\ldots,M-1~\)</span>.</p>
+<p>Veamos el caso <span class="math notranslate nohighlight">\(N/P\in {\mathbb Z}\)</span>, es decir, <span class="math notranslate nohighlight">\(P\)</span> divide a <span class="math notranslate nohighlight">\(N\)</span> en un número  entero  de tramos <span class="math notranslate nohighlight">\(L=N/P\)</span>.</p>
+<p>Rescribamos el entero <span class="math notranslate nohighlight">\(x\in S_n\)</span> en la forma siguiente: <span class="math notranslate nohighlight">\(~ x = lP +p~ = 0,\ldots, N-1\)</span>, donde <span class="math notranslate nohighlight">\(~p=0,\ldots,P-1~\)</span> y <span class="math notranslate nohighlight">\(~l=0,\ldots,L-1~\)</span>. El estado se representará en la forma</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-\ket{\Psi} &amp;=&amp; \rule{0mm}{7mm} \frac{1}{\sqrt{N}}  \sum_{p=0}^{P-1}\sum_{l=0}^{M-1}\ket{lP + p}\ket{f(lP+p)}\nonumber\\ \rule{0mm}{15mm}
-&amp;=&amp; \rule{0mm}{7mm}  \frac{1}{\sqrt{N}} \sum_{p=0}^{P-1}\left(\sum_{l=0}^{M-1}\ket{lP + p}\right)\ket{f(p)} 
+ \rule{0mm}{7mm} \frac{1}{\sqrt{N}}  \sum_{p=0}^{P-1}\sum_{l=0}^{L-1}\ket{lP + p}\ket{f(lP+p)} = \rule{0mm}{7mm}  \frac{1}{\sqrt{N}} \sum_{p=0}^{P-1}\left(\sum_{l=0}^{L-1}\ket{lP + p}\right)\ket{f(p)} 
 \end{eqnarray*}\]</div>
 <p>donde la última igualdad se sigue aplicando la condición de periodicidad de <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <p>Debido a esta propiedad,
@@ -908,268 +843,187 @@ si una evaluación del segundo registro da como resultado <span class="math notr
 registro es  una superposición normalizada</p>
 <div class="math notranslate nohighlight">
 \[
-\ket{\Psi'} = \frac{1}{\sqrt{M}}  \sum_{l=0}^{M-1}\ket{ lP + p_0}\, .
+\ket{\Psi} = \frac{1}{\sqrt{L}}  \sum_{l=0}^{L-1}\ket{ lP + p_0}\, .
 \]</div>
-<p>A continuación efectuamos sobre este estado una transformación de Fourier cuántica, usando que <span class="math notranslate nohighlight">\(N/P = M\)</span></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-\ket{\Psi'} = U_{\rm TFC} \ket{\Psi'} &amp;=&amp; \frac{1}{\sqrt{N M}} \sum_{y=0}^{N-1}   \sum_{l=0}^{M-1}e^{+2\pi i (p_0 + lP)y/N}\ket{y} \nonumber\\ \rule{0mm}{12mm}
-&amp;=&amp; \frac{1}{\sqrt{N M}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N} \left( \sum_{l=0}^{M-1} e^{+2\pi i ly/M}\right) \ket{y}   
-\end{eqnarray*}\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
- &amp;=&amp; \frac{1}{\sqrt{N M}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N}  \left( \rule{0mm}{3.5mm}M \delta_{y/M, s}\right) \ket{y} \nonumber\\ \rule{0mm}{15mm}
-&amp;=&amp; \sqrt{ \frac{M}{N}}  ~ \sum_{s=0}^{P-1} e^{+2\pi i p_0 sM/N}    \ket{sM}  \nonumber\\ \rule{0mm}{15mm}
+<p>En este punto, en el algoritmo de Simon, volveríamos a aplicar la puerta <span class="math notranslate nohighlight">\(W_n\)</span> para conseguir una interferencia constructiva. En este caso, al tratarse de una periodicidad numérica, no bit a bit, efectuaremos sobre el estado  una transformación de Fourier cuántica, usando que <span class="math notranslate nohighlight">\(N/P = M\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-b793e4de-f326-4d0f-80cd-d8d950ce5c8e">
+<span class="eqno">(24)<a class="headerlink" href="#equation-b793e4de-f326-4d0f-80cd-d8d950ce5c8e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\ket{\Psi'} = U_{\rm TFC} \ket{\Psi} &amp;=&amp; \frac{1}{\sqrt{N M}} \sum_{y=0}^{N-1}   \sum_{l=0}^{L-1}e^{+2\pi i (p_0 + lP)y/N}\ket{y} \nonumber\\ \rule{0mm}{12mm}
+&amp;=&amp; \frac{1}{\sqrt{N L}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N} \left( \sum_{l=0}^{L-1} e^{+2\pi i ly/L}\right) \ket{y}  \\ \rule{0mm}{15mm}
+ &amp;=&amp; \frac{1}{\sqrt{N L}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N}  \left( \rule{0mm}{3.5mm} L \delta_{y, sL}\right) \ket{y} \nonumber\\ \rule{0mm}{15mm}
+&amp;=&amp; \sqrt{ \frac{L}{N}}  ~ \sum_{s=0}^{P-1} e^{+2\pi i p_0 s L/N}    \ket{s L}  \nonumber\\ 
+\rule{0mm}{15mm}
 &amp;=&amp;\sqrt{ \frac{1}{P} }~ \sum_{s=0}^{P-1} e^{+2\pi i p_0 s/P }    \ket{sN/P}  
-\end{eqnarray*}\]</div>
-<p>El <strong>resultado</strong> es una <em>superposición homogénea</em> de estados <span class="math notranslate nohighlight">\(~\ket{y_s = sN/P}~\)</span> con <span class="math notranslate nohighlight">\(s=0,1,...\)</span></p>
+\end{eqnarray}\]</div>
+<p>El <strong>resultado</strong> es una <em>superposición homogénea</em> de estados <span class="math notranslate nohighlight">\(~\ket{y_s = sN/P}~\)</span> con <span class="math notranslate nohighlight">\(s=0,1,...P-1\)</span>. Al medir encontraremos las siguientes probabilidades:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 P(y) = \left\{ \begin{array}{cl} 1/P &amp; \hbox{si} ~ y = s N/P \in [ 0, N/P, 2N/P,..., (P-1)N/P ] \\ 0 &amp; \rule{0mm}{15mm}\hbox{si} ~ y \neq s N/P \end{array} \right.
 \end{split}\]</div>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/Period_finding.png"><img alt="../../_images/Period_finding.png" src="../../_images/Period_finding.png" style="width: 800px;" /></a>
-</figure>
-<ul class="simple">
-<li><p>Una acción repetida del circuito nos dará la lista completa <span class="math notranslate nohighlight">\(\{y_s\} = \{0, N/P, 2N/P,...\}\)</span>.</p></li>
-<li><p>Dividiendo por <span class="math notranslate nohighlight">\(N\)</span> obtenemos otra lista <span class="math notranslate nohighlight">\(\{\varphi_s\} = \{0,1/P,2/P,...,\}\)</span></p></li>
-<li><p>La extracción de <span class="math notranslate nohighlight">\(P\)</span> a partir de elementos de esta lista se puede efectuar mediante la expresión en <em>fracciones continuas</em></p></li>
-</ul>
+<p>La estrategia ahora es medir un número suficiente de veces, que permita obtener la lista completa</p>
+<div class="math notranslate nohighlight">
+\[\{y_s\} = \{0, N/P, 2N/P,...\}\]</div>
+<p>Dividiendo por <span class="math notranslate nohighlight">\(N\)</span> obtenemos otra lista</p>
+<div class="math notranslate nohighlight">
+\[\{\varphi_s\} = \{0,1/P,2/P,...,\}\]</div>
+<p>La extracción de <span class="math notranslate nohighlight">\(P\)</span> a partir de elementos de esta lista se puede efectuar de distintas formas. La más sencilla es evaluar la diferencia entre elementos sucesivos de la lista e invertir. También se puede hacer mediante la descomposición en <em>fracciones continuas</em></p>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>El conjunto de estados <span class="math notranslate nohighlight">\(\ket{sN/P}\)</span> es independiente de la medida <span class="math notranslate nohighlight">\(p_0\)</span>. Por tanto, podemos evitar la medida intermedia. Es el mismo efecto que vimos al estudiar el algoritmo de Simon.</p>
+</div>
 <section id="ejemplo">
 <h3>Ejemplo:<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
-<p>Vamos a fabricar una función <span class="math notranslate nohighlight">\(f: S_n \to S_{m}\)</span>  periódica con período <span class="math notranslate nohighlight">\(P\)</span> que se repita <span class="math notranslate nohighlight">\(M\)</span> veces, de modo que <span class="math notranslate nohighlight">\(M\)</span> = int<span class="math notranslate nohighlight">\((N/P)\)</span>.</p>
-<p>Necesitaremos dos registros, para <span class="math notranslate nohighlight">\(\ket{x}_n\ket{f(x)}_m\)</span> generales.</p>
+<p>Primero vamos a fabricar el oráculo asociado auna función <span class="math notranslate nohighlight">\(f: S_n \to S_{m}\)</span>  periódica con un período <span class="math notranslate nohighlight">\(P\)</span> que se repita <span class="math notranslate nohighlight">\(L\)</span> veces, de modo que <span class="math notranslate nohighlight">\(L\)</span> = int<span class="math notranslate nohighlight">\((N/P)\)</span>. Necesitaremos  dos registros, para implementar el operador unitario asociado</p>
+<div class="math notranslate nohighlight">
+\[ 
+U_f :\ket{x}_n\ket{0}_m ~~\to ~~\ket{x}_n\ket{f(x)}_m
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f_periodica</span><span class="p">(</span><span class="n">Nn</span><span class="p">,</span><span class="n">Nm</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">show_values</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span> <span class="c1"># hay argumentos Nn y Nm para el caso de funciones de S_n -&gt; S_m</span>
-    
-    <span class="n">M</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nn</span><span class="o">/</span><span class="n">P</span><span class="p">)</span>
-    <span class="n">values</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">Nm</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1">#seleccionamos P valores aleatorios entre 1 y Np </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">periodic_oracle</span><span class="p">(</span><span class="n">Nn</span><span class="p">,</span><span class="n">Nm</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">show_values</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+
+    <span class="n">L</span><span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nn</span><span class="o">/</span><span class="n">P</span><span class="p">)</span>
+    <span class="s1">&#39;seleccionamos P valores aleatorios entre 1 y Nm&#39;</span>
+    <span class="n">values</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">Nm</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
     <span class="k">if</span> <span class="n">show_values</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valores de f(x) en un período :&#39;</span><span class="p">,</span><span class="n">values</span><span class="p">)</span>
     
     <span class="n">fout</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Nn</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">P</span><span class="p">):</span>  
             <span class="k">if</span> <span class="n">p</span> <span class="o">+</span> <span class="n">m</span><span class="o">*</span><span class="n">P</span> <span class="o">&lt;</span> <span class="n">Nn</span><span class="p">:</span>
                 <span class="n">fout</span><span class="p">[</span><span class="n">p</span> <span class="o">+</span> <span class="n">m</span><span class="o">*</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
 <span class="c1">#    print(&#39;tabla binaria de verdad completa de la función f(x):&#39;,  fout)</span>
     <span class="n">fout_list</span> <span class="o">=</span> <span class="p">[</span><span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">fout</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">))))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fout</span><span class="p">]</span>
-    
-    <span class="k">return</span> <span class="n">fout_list</span>
-      
-<span class="n">fout_list</span> <span class="o">=</span> <span class="n">f_periodica</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="n">show_values</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>        
-<span class="nb">print</span><span class="p">(</span><span class="n">fout_list</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">tQ</span><span class="o">.</span><span class="n">binary_function</span><span class="p">(</span><span class="n">fout_list</span><span class="p">)</span>  
+
+<span class="n">periodic_oracle</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valores de f(x) en un período : [3 4 6 5]
-[&#39;011&#39;, &#39;100&#39;, &#39;110&#39;, &#39;101&#39;, &#39;011&#39;, &#39;100&#39;, &#39;110&#39;, &#39;101&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valores de f(x) en un período : [1 0 4 5]
 </pre></div>
 </div>
-</div>
-</div>
-<p>Implementamos esta función periódica en un oráculo binario que necesitara sendos registros de <span class="math notranslate nohighlight">\(n\)</span> y <span class="math notranslate nohighlight">\(m\)</span> cúbits</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">binary_function</span><span class="p">(</span><span class="n">fout_list</span><span class="p">)</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/circuit/matplotlib.py:266: FutureWarning: The default matplotlib drawer scheme will be changed to &quot;iqp&quot; in a following release. To silence this warning, specify the current default explicitly as style=&quot;clifford&quot;, or the new default as style=&quot;iqp&quot;.
   self._style, def_font_ratio = load_style(self._style)
 </pre></div>
 </div>
-<img alt="../../_images/e4bcfec279f0ba847cae1834f87d6551bf9f659ee4c0bc411d51bad2f8d2147e.png" src="../../_images/e4bcfec279f0ba847cae1834f87d6551bf9f659ee4c0bc411d51bad2f8d2147e.png" />
+<img alt="../../_images/38bf1d05802e328aa68f9eb67a8ffaa7199ca636d816b0dcab2e3834105c0b82.png" src="../../_images/38bf1d05802e328aa68f9eb67a8ffaa7199ca636d816b0dcab2e3834105c0b82.png" />
 </div>
 </div>
-<p>Ahora generamos el <em>Circuito de Búsqueda de Periodo</em> y correrlo en dos casos parecidos.</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\( n=m=7~\to~N=2^7 ~,~ P = 4 ~~~\hbox{  es decir  } ~~~ N/P = 32 \in {\mathbb Z} \)</span></p></li>
-</ol>
-<p><span class="math notranslate nohighlight">\(\rule{8mm}{0mm}\)</span>En este caso tenemos un número exacto de <span class="math notranslate nohighlight">\(32\)</span> repeticiones de un período de <span class="math notranslate nohighlight">\(P=4\)</span> elementos</p>
-<ol class="arabic simple" start="2">
-<li><p><span class="math notranslate nohighlight">\( n=m=7~\to N=2^7 ~, ~ P = 5 ~~~\hbox{  es decir  } ~~~ N/P = 25.6 \notin {\mathbb Z} \)</span></p></li>
-</ol>
-<p><span class="math notranslate nohighlight">\(\rule{8mm}{0mm}\)</span>En este caso después de 25 repeticiones, aun queda una cadenad de  <span class="math notranslate nohighlight">\(0.6 P\)</span> valores  hasta completar <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">7</span>
-<span class="c1">#dominio</span>
-<span class="n">Nn</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span>
-<span class="c1">#rango</span>
-<span class="n">Nm</span> <span class="o">=</span> <span class="n">N</span>  <span class="c1"># esta opción no es obligatoria. Sólo es necesario que N&#39;&gt;P</span>
-<span class="c1">#período</span>
-<span class="n">P</span> <span class="o">=</span><span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">period_finder</span><span class="p">(</span><span class="n">oracle</span><span class="p">):</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;N = 2^n =&#39;</span><span class="p">,</span><span class="n">Nn</span><span class="p">,</span> <span class="s1">&#39; P =&#39;</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="s1">&#39; M =&#39;</span><span class="p">,</span> <span class="n">N</span><span class="o">/</span><span class="n">P</span><span class="p">)</span>
+    <span class="s1">&#39;el número de cúbits se obtiene del oráculo&#39;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">oracle</span><span class="o">.</span><span class="n">num_qubits</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># el oráculo que genera una funcion períodica con valores f(0),f(1),...,f(P-1) que se repiten M veces (aprox)</span>
-<span class="n">fout_list</span> <span class="o">=</span> <span class="n">f_periodica</span><span class="p">(</span><span class="n">Nn</span><span class="p">,</span><span class="n">Nm</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">show_values</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>        
-<span class="n">periodic_oracle</span> <span class="o">=</span> <span class="n">binary_function</span><span class="p">(</span><span class="n">fout_list</span><span class="p">)</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x+P)=f(x)&#39;</span><span class="p">)</span>
-
-<span class="n">qr_in</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">qr_out</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
-<span class="n">cr_in</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;meas_in&#39;</span><span class="p">)</span>
-<span class="n">cr_out</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;meas_out&#39;</span><span class="p">)</span>
-<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr_in</span><span class="p">,</span> <span class="n">qr_out</span><span class="p">,</span> <span class="n">cr_in</span><span class="p">,</span><span class="n">cr_out</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+    <span class="n">qr_in</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">qr_out</span> <span class="o">=</span> <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+    <span class="n">cr_in</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;meas_in&#39;</span><span class="p">)</span>
+<span class="c1">#    cr_out = ClassicalRegister(n, name=&#39;meas_out&#39;)</span>
+    <span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">qr_in</span><span class="p">,</span> <span class="n">qr_out</span><span class="p">,</span> <span class="n">cr_in</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
     
 
-<span class="c1"># Aplicamos la puerta de Walsh-Hadamard al primer registro</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr_in</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="s1">&#39;aplicamos la puerta de Walsh-Hadamard al primer registro&#39;</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr_in</span><span class="p">)</span>
+    <span class="s1">&#39;añadimos el oráculo&#39;</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oracle</span><span class="o">.</span><span class="n">to_gate</span><span class="p">(),</span><span class="n">qr_in</span><span class="p">[:]</span> <span class="o">+</span> <span class="n">qr_out</span><span class="p">[:])</span>    
+    <span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
-<span class="c1"># Añadimos el oráculo</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">periodic_oracle</span><span class="p">,</span><span class="n">qr_in</span><span class="p">[:]</span> <span class="o">+</span> <span class="n">qr_out</span><span class="p">[:])</span>    
-<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
+    <span class="s1">&#39;medimos el registro de los cúbits de |f(x)&gt;, este paso se puede evitar ¡compruebalo!&#39;</span>
+<span class="c1">#    qc.measure(qr_out, cr_out)</span>
+<span class="c1">#    qc.barrier()</span>
+    <span class="s1">&#39;aplicamos la Transformada de Fourier al primer registro&#39;</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="n">qr_in</span><span class="p">)</span>
+    
+    <span class="s1">&#39;Finalmente medimos el registro de los inputs |x&gt;&#39;</span>
+    <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr_in</span><span class="p">,</span> <span class="n">cr_in</span><span class="p">)</span>   
+    <span class="k">return</span> <span class="n">qc</span>
 
-<span class="c1"># Medimos el registro de los cúbits de |f(x)&gt;</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr_out</span><span class="p">,</span> <span class="n">cr_out</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-
-<span class="c1"># Aplicamos la Transformada de Fourier al primer registro</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="n">qr_in</span><span class="p">)</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
-
-<span class="c1"># Finalmente medimos el registro de los inputs |x&gt;</span>
-<span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr_in</span><span class="p">,</span> <span class="n">cr_in</span><span class="p">)</span>   
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">Nn</span><span class="o">=</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#rango</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">Nm</span> <span class="o">=</span> <span class="n">N</span>  <span class="c1"># esta opción no es obligatoria. Sólo es necesario que N&#39;&gt;P</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1">#período</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">P</span> <span class="o">=</span><span class="mi">5</span>
-
-<span class="ne">NameError</span>: name &#39;N&#39; is not defined
+<span class="c1">#period_finder(periodic_oracle(8,8,4)).draw(&#39;mpl&#39;)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Vamos a estudiar  el caso
+<span class="math notranslate nohighlight">\( n=m=7~\to~N=2^7 ~,~ P = 4 ~~~\hbox{  es decir  } ~~~ N/P = 32 \in {\mathbb Z} \)</span>
+en el que   <span class="math notranslate nohighlight">\(L = 32\)</span>.</p>
+<p>Es decir, esta función tiene un número entero de  repeticiones de un ciclo de <span class="math notranslate nohighlight">\(P=4\)</span> elementos</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" src="../../_images/56d01bf675688ff74bd1521d12a0b47f7d22ce60006dceae19ff7daaab0c7e1d.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">n</span>
+<span class="n">Nn</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span>
+<span class="n">Nm</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">m</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;N = 2^n =&#39;</span><span class="p">,</span><span class="n">Nn</span><span class="p">,</span> <span class="s1">&#39; P =&#39;</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="s1">&#39; L =&#39;</span><span class="p">,</span> <span class="n">Nn</span><span class="o">/</span><span class="n">P</span><span class="p">)</span>
 
-<span class="n">shots_exe</span> <span class="o">=</span> <span class="mi">20000</span>
-
-<span class="n">backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-<span class="n">job</span>     <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">backend</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="n">shots_exe</span><span class="p">)</span>
-<span class="n">result</span>  <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">counts</span>  <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
-
-<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+<span class="s1">&#39;ejecutamos el circuito&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">period_finder</span><span class="p">(</span><span class="n">periodic_oracle</span><span class="p">(</span><span class="n">Nn</span><span class="p">,</span><span class="n">Nm</span><span class="p">,</span><span class="n">P</span><span class="p">)),</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
 
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8763febd5b8626544c63bd29ee2ade89a93bb2f556d68c516da3a1fa3ecdfc42.png" src="../../_images/8763febd5b8626544c63bd29ee2ade89a93bb2f556d68c516da3a1fa3ecdfc42.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N = 2^n = 128  P = 4  L = 32.0
+valores de f(x) en un período : [24 97 93 48]
+</pre></div>
+</div>
+<img alt="../../_images/4e08a1b161982884bd265423c20059997c485002dada461bebb7dbb808627c30.png" src="../../_images/4e08a1b161982884bd265423c20059997c485002dada461bebb7dbb808627c30.png" />
 </div>
 </div>
+<p>Ahora procedemos de la siguiente manera:</p>
 <ul class="simple">
-<li><p>Si <span class="math notranslate nohighlight">\(N/P\)</span> es un entero la distribución es uniforme en unos pocos valores. Debemos seleccionar los que tienen un primer registro común</p></li>
+<li><p>seleccionamos los eventos más probables de la lista de cuentas. Filtraremos  las salidas que superen un umbral de probabilidad (o sea, de número de eventos)</p></li>
 </ul>
+<p>( Cuando <span class="math notranslate nohighlight">\(N/p \notin {\mathbb Z} \)</span>, hay que ajustar el umbral para seleccionar los eventos más probables)</p>
 <ul class="simple">
-<li><p>Si <span class="math notranslate nohighlight">\(N/P\)</span> no es un entero, observamos que, la distribución está muy picada en torno a unos pocos valores.</p></li>
+<li><p>Obtenemos la lista de valores enteros <span class="math notranslate nohighlight">\(\{N_s\}\)</span> que  forman la mejor aproximación a <span class="math notranslate nohighlight">\(\{s N/P\}\)</span></p></li>
+<li><p>Dividiendo por <span class="math notranslate nohighlight">\(N\)</span>, obtendremos la lista <span class="math notranslate nohighlight">\(\{\varphi_s\}\in [0,1)\)</span> que mejor aproximan los valores que buscamos <span class="math notranslate nohighlight">\(\{s/P\}~, s=1,2,..\)</span>.</p></li>
+<li><p>La última parte del post-procesado consiste en averiguar qué par de números enteros, <span class="math notranslate nohighlight">\(s\)</span> y <span class="math notranslate nohighlight">\(P\)</span> se esconden detrás de la lista <span class="math notranslate nohighlight">\(\{\varphi_s\}\)</span> encontrada.</p></li>
 </ul>
-<p>De haber corrido el circuito una sola vez, la probabilidad de obtener un valor fuera de esos picos es muy baja. Vamos a continuar trabajando con el colectivo de resultados y volveremos sobre esta observación al final.</p>
-<p>Ahora post-seleccionamos las salidas que tienen un mismo valor del primer registro y superan un umbral de probabilidad (número de eventos)</p>
-<p>( Cuando <span class="math notranslate nohighlight">\(N/p \notin {\mathbb Z} \)</span>, variar el umbral para seleccionar los picos de probabilidad)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#post-selección</span>
-
-<span class="n">projected_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="p">)[</span><span class="mi">2</span><span class="p">][:</span><span class="n">n</span><span class="p">]</span> <span class="ow">and</span> <span class="n">v</span><span class="o">&gt;</span><span class="mi">300</span> <span class="p">}</span>
-<span class="c1">#print(projected_counts)</span>
-<span class="n">plot_histogram</span><span class="p">(</span><span class="n">projected_counts</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span><span class="o">&gt;</span><span class="mi">100</span> <span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">filtered_counts</span><span class="p">)</span>
+<span class="c1">#plot_histogram(filtered_counts)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">StopIteration</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">projected_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="nb">list</span><span class="p">(</span><span class="n">counts</span><span class="p">)[</span><span class="mi">2</span><span class="p">][:</span><span class="n">n</span><span class="p">]</span> <span class="ow">and</span> <span class="n">v</span><span class="o">&gt;</span><span class="mi">300</span> <span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#print(projected_counts)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">plot_histogram</span><span class="p">(</span><span class="n">projected_counts</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/utils/deprecation.py:172,</span> in <span class="ni">deprecate_arg.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">170</span> <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">171</span> <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">172</span>     <span class="n">_maybe_warn_and_rename_kwarg</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span>         <span class="n">args</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">174</span>         <span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">175</span>         <span class="n">func_name</span><span class="o">=</span><span class="n">func_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span>         <span class="n">original_func_co_varnames</span><span class="o">=</span><span class="n">wrapper</span><span class="o">.</span><span class="n">__original_func_co_varnames</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">177</span>         <span class="n">old_arg_name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span>         <span class="n">new_alias</span><span class="o">=</span><span class="n">new_alias</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span>         <span class="n">warning_msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">180</span>         <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">181</span>         <span class="n">predicate</span><span class="o">=</span><span class="n">predicate</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">182</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">183</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/utils/deprecation.py:339,</span> in <span class="ni">_maybe_warn_and_rename_kwarg</span><span class="nt">(args, kwargs, func_name, original_func_co_varnames, old_arg_name, new_alias, warning_msg, category, predicate)</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2"> received both </span><span class="si">{</span><span class="n">new_alias</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">old_arg_name</span><span class="si">}</span><span class="s2"> (deprecated).&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">val</span> <span class="o">=</span> <span class="n">arg_names_to_values</span><span class="p">[</span><span class="n">old_arg_name</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">339</span> <span class="k">if</span> <span class="n">predicate</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">predicate</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="nn">File /opt/anaconda3/envs/TalentQ/lib/python3.11/site-packages/qiskit/visualization/counts_visualization.py:54,</span> in <span class="ni">_is_deprecated_data_format</span><span class="nt">(data)</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="k">for</span> <span class="n">dat</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dat</span><span class="p">,</span> <span class="p">(</span><span class="n">QuasiDistribution</span><span class="p">,</span> <span class="n">ProbDistribution</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span>
-<span class="ne">---&gt; </span><span class="mi">54</span>         <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dat</span><span class="o">.</span><span class="n">values</span><span class="p">())),</span> <span class="nb">float</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span>     <span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="k">return</span> <span class="kc">True</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">return</span> <span class="kc">False</span>
-
-<span class="ne">StopIteration</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;0000000&#39;: 260, &#39;0100000&#39;: 260, &#39;1000000&#39;: 245, &#39;1100000&#39;: 235}
 </pre></div>
 </div>
 </div>
 </div>
-<p>De la lectura del segundo registro obtenemos la lista de valores enteros <span class="math notranslate nohighlight">\(\{N_s\}\)</span> que  forman la mejor aproximación a <span class="math notranslate nohighlight">\(\{s N/P\}\)</span>.</p>
-<p>Dividiendo por <span class="math notranslate nohighlight">\(N\)</span>, obtendremos la lista <span class="math notranslate nohighlight">\(\{\varphi_s\}\in [0,1)\)</span> que mejor aproximan los valores que buscamos <span class="math notranslate nohighlight">\(\{s/P\}~, s=1,2,..\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extraemos las &#39;keys&#39; del segundo registro, rechazando el 00...0 que siempre está</span>
-<span class="n">Ns_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">keys</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">:],</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span>  <span class="n">keys</span> <span class="ow">in</span> <span class="n">projected_counts</span><span class="p">])[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># el +1 es para comerse el espacio p.ej en &#39;101 1101&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;extraemos las keys y las convertimos en decimal rechazando el 00...0 que siempre está&#39;</span>
+<span class="n">Ns_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span>  <span class="n">keys</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">filtered_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">1</span><span class="p">:]])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{Ns}</span><span class="s1"> ~ &#39;</span><span class="p">,</span> <span class="n">Ns_list</span><span class="p">)</span>
 
-<span class="c1"># dividiendo por N</span>
-<span class="n">phis_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ns_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">N</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ns_list</span><span class="p">))]</span>
+<span class="s1">&#39;dividiendo por N&#39;</span>
+<span class="n">phis_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">Ns_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">Nn</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Ns_list</span><span class="p">))]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;phi_s&#39;</span><span class="p">,</span> <span class="n">phis_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{Ns} ~  []
-phi_s []
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{Ns} ~  [32, 64, 96]
+phi_s [0.25, 0.5, 0.75]
 </pre></div>
 </div>
 </div>
 </div>
-<p>La última parte del post-procesado consiste en averiguar qué par de números enteros, <span class="math notranslate nohighlight">\(s\)</span> y <span class="math notranslate nohighlight">\(P\)</span> se esconden detrás de la lista <span class="math notranslate nohighlight">\(\{\varphi_s\}\)</span> encontrada.</p>
+<p>Extracción de <span class="math notranslate nohighlight">\(P\)</span>:</p>
 <p><strong>Estrategia 1</strong>: simplemente restando elementos sucesivos tenemos una lista</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1182,39 +1036,29 @@ phi_s []
 
 <span class="nb">print</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el valor entero del promedio =&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">P_list</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el valor entero del promedio de P es  =&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">P_list</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">P_list</span> <span class="o">=</span> <span class="p">[(</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">phis_list</span><span class="p">[</span><span class="n">s</span><span class="p">])</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;el valor entero del promedio =&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">P_list</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">P_list</span><span class="p">)))</span>
-
-<span class="ne">ZeroDivisionError</span>: division by zero
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4.0, 4.0]
+el valor entero del promedio de P es  = 4
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>Estrategia 2</strong>:</p>
-<p>Representar un número racional <span class="math notranslate nohighlight">\(a \in {\mathbb Q}\)</span> como un cociente de dos enteros <span class="math notranslate nohighlight">\(a = s/P\)</span>, es algo que se puede conseguir a partir de su expresión en  <a class="reference external" href="https://es.wikipedia.org/wiki/Fracci%C3%B3n_continua#:~:text=C%C3%A1lculo%20de%20una%20fracci%C3%B3n%20continua,-Consideremos%20un%20n%C3%BAmero&amp;amp;text=Para%20calcular%20la%20representaci%C3%B3n%20en,la%20diferencia%20y%20se%20repite">fracciones continuas</a></p>
-<p>La clase <a class="reference external" href="https://docs.python.org/3/library/fractions.html">Fraction</a> de python ya incorpora esta utilidad.</p>
+<p>Representar un número racional <span class="math notranslate nohighlight">\(a \in {\mathbb Q}\)</span> como un cociente de dos enteros <span class="math notranslate nohighlight">\(a = s/P\)</span>, es algo que se puede conseguir a partir de su expresión en  <a class="reference external" href="https://es.wikipedia.org/wiki/Fracci%C3%B3n_continua#:~:text=C%C3%A1lculo%20de%20una%20fracci%C3%B3n%20continua,-Consideremos%20un%20n%C3%BAmero&amp;amp;text=Para%20calcular%20la%20representaci%C3%B3n%20en,la%20diferencia%20y%20se%20repite">fracciones continuas</a> .
+La clase <a class="reference external" href="https://docs.python.org/3/library/fractions.html">Fraction</a> de python ya incorpora esta utilidad.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
-
 <span class="p">[</span><span class="n">Fraction</span><span class="p">(</span><span class="n">phis_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">phis_list</span><span class="p">))]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Fraction(1, 4), Fraction(1, 2), Fraction(3, 4)]
 </pre></div>
 </div>
 </div>
@@ -1232,12 +1076,17 @@ phi_s []
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Fraction(1, 4), Fraction(1, 2), Fraction(3, 4)]
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>En cualquier caso</strong>:  <em>verificar</em> si un valor es <em>solución o no</em> es una tarea que clásicamente se puede realizar de forma eficiente.</p>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>Repite ahora con valores <span class="math notranslate nohighlight">\(N =N_n=N_m=7\)</span> y <span class="math notranslate nohighlight">\(P=5\)</span>. Ahora <span class="math notranslate nohighlight">\(L =  N/P = 25.6 \notin {\mathbb Z}\)</span>.</p>
+<p>Observa la distribución de medidas. Ajusta el umbral para filtrar las más probables y repite el procedimiento para recuperar el valor de <span class="math notranslate nohighlight">\(P = 5\)</span>.</p>
+</div>
 <div class="note admonition">
 <p class="admonition-title">Nota (Advertencia!)</p>
 <p>El algoritmo de búsqueda de un periodo permite una ventaja exponencial si no contamos la profundidad del oráculo.</p>
@@ -1313,10 +1162,8 @@ phi_s []
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-transformada-de-fourier-cuantica">La Transformada de Fourier Cuántica</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementacion">Implementación:</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuito-asociado-a-una-tfc">Circuito asociado a una TFC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventaja-exponencial">Ventaja exponencial</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-de-un-periodo">Búsqueda de un período</a><ul class="nav section-nav flex-column">
