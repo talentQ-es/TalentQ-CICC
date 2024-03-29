@@ -33,7 +33,7 @@
         - **[Computación cuántica universal](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb)**
         - **[Funciones y oráculos ](./Notebooks/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.ipynb)**
 
-- **[ Algoritmos cuánticos](./Notebooks/Part_03_Algoritmos)**
+- **[ Algoritmos básicos](./Notebooks/Part_03_Algoritmos)**
 
     - **[Algoritmos de oráculo](./Notebooks/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.ipynb)**
 

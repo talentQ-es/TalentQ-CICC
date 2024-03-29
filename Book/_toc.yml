@@ -31,7 +31,7 @@ parts:
     sections:
     - file:  docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_031_Elementos_Basicos_myst.ipynb
     - file:  docs/Part_02_Cubits/Chapter_03_02_Mas_sobre_Circuitos/Section_032_CompClasica_myst.ipynb
-- caption:  Algoritmos cuánticos
+- caption:  Algoritmos básicos
   chapters:
   - file:  docs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.ipynb
   - file:  docs/Part_03_Algoritmos/Chapter_041_Alg_Oraculo_myst.ipynb-e
