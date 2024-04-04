@@ -432,7 +432,7 @@ with open(out_file, 'r') as f:
     for i in i_start_details_list:
         try:
             title_details = re.search(r'<i>(.*?)</i>', f_data[i]).group(1)
-            my_replace(f_data, i, ':::{dropdown} '+title_details+'\\n",\n')
+            my_replace(f_data, i, '::::::::::{dropdown} '+title_details+'\\n",\n')
 
         except Exception as error :
             print(f"\033[91m======\033[0m") 
@@ -452,9 +452,9 @@ with open(out_file, 'r') as f:
     for i in i_end_details_list:
         
         if f_data[i+1] == "   ]\n":
-            my_replace(f_data, i, ':::'+'\\n"\n')
+            my_replace(f_data, i, '::::::::::'+'\\n"\n')
         else:
-            my_replace(f_data, i, ':::'+'\\n",\n')
+            my_replace(f_data, i, '::::::::::'+'\\n",\n')
     
 
 with open(out_file, 'w') as f_out:
