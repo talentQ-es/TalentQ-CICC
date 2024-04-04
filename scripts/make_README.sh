@@ -8,14 +8,14 @@ README_TOC=README_TOC.md
 
 
 print_in_readme_toc(){
-    if echo $1 | grep "_myst.ipynb$" >/dev/null 2>&1 ; then
+    if echo $1 | grep ".ipynb$" >/dev/null 2>&1 ; then
         aux=$(cat $1 | grep "^    \"# " | head -n 1 | awk -F'\"# ' '{printf $2}' | sed 's/\\n\"//')
 
         path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
         # Eliminamos la " del final y hacemos echo
         echo "$2["${aux%?}"]("$path_to_readme")**"
 
-    elif echo $1 | grep "_myst.md$" >/dev/null 2>&1 ; then
+    elif echo $1 | grep ".md$" >/dev/null 2>&1 ; then
         aux=$(cat $1 | egrep "^# " | head -n 1 | awk -F"# " '{printf $2}')
 
         path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
@@ -33,8 +33,8 @@ print_in_readme_toc(){
 
 part_folders_orig=$(find $Notebook_folder -mindepth 1 -maxdepth 1 -type d -not -path '*/.*' | grep /Part_ |  sort)
 
-cat $Notebook_folder/index.md | egrep "^# " | head -n 1 > $README_TOC
-echo "## Índice" >> $README_TOC
+#cat $Notebook_folder/index.md | egrep "^# " | head -n 1 > $README_TOC
+echo "## Índice" > $README_TOC
 
 for i in $part_folders_orig; do
     echo >> $README_TOC
@@ -54,8 +54,8 @@ for i in $part_folders_orig; do
                 print_in_readme_toc $k "        - **" >> $README_TOC
             done
         else
+            
             if echo $j | egrep ".ipynb|.md"  2>&1 > /dev/null ; then
-
      	       echo >> $README_TOC
      	       print_in_readme_toc $j "    - **" >> $README_TOC
             fi
