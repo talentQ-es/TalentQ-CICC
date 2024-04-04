@@ -23,8 +23,10 @@ print_in_readme_toc(){
 
     elif echo $1 | egrep ".txt$" >/dev/null 2>&1; then
         path_to_readme=$(echo $3 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
-        echo "$2[" `cat $1`"]("$path_to_readme")**"
-
+        name=$(cat $1)
+        if ! [ -z "$name" ]; then 
+            echo "$2["$name"]("$path_to_readme")**"
+        fi
     fi
 }
 
@@ -42,6 +44,7 @@ for i in $part_folders_orig; do
     caption_part_txt=$(find $i -mindepth 1 -maxdepth 1 -not -path '*/.*' | grep ".txt")
 
     print_in_readme_toc $caption_part_txt "- **" $i >> $README_TOC
+
 
     path_chapters=$(find $i -mindepth 1 -maxdepth 1 -not -path '*/.*' | grep /Chapter_  | sort)
     for j in $path_chapters; do
