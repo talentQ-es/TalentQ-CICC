@@ -71,3 +71,5 @@ done
 
 
 jb build --all $Destination_folder
+
+./make_README.sh
