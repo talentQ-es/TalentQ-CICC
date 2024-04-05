@@ -1,5 +1,6 @@
 Notebook_folder=../Notebooks       # Path respecto a la carpeta scripts
 Notebook_folder_aux=.\\/Notebooks  # Path respecto a la raiz del repositorio
+Notebook_folder_aux_2=..\\/Notebooks  # Path respecto a la carpeta scripts
 Destination_folder=../Book         # Path respecto a la carpeta scripts
 Destination_folder_aux=..\\/Book   # Path respecto a la carpeta scripts
 SKIP=".ipynb_checkpoints|\/No_"
@@ -8,21 +9,22 @@ README_TOC=README_TOC.md
 
 
 print_in_readme_toc(){
+
     if echo $1 | grep ".ipynb$" >/dev/null 2>&1 ; then
         aux=$(cat $1 | grep "^    \"# " | head -n 1 | awk -F'\"# ' '{printf $2}' | sed 's/\\n\"//')
 
-        path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
+        path_to_readme=$(echo $1 | sed 's/'$Notebook_folder_aux_2'/'$Notebook_folder_aux'/g')
         # Eliminamos la " del final y hacemos echo
         echo "$2["${aux%?}"]("$path_to_readme")**"
 
     elif echo $1 | grep ".md$" >/dev/null 2>&1 ; then
         aux=$(cat $1 | egrep "^# " | head -n 1 | awk -F"# " '{printf $2}')
 
-        path_to_readme=$(echo $1 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
+        path_to_readme=$(echo $1 | sed 's/'$Notebook_folder_aux_2'/'$Notebook_folder_aux'/g')
         echo "$2["$aux"]("$path_to_readme")**"
 
     elif echo $1 | egrep ".txt$" >/dev/null 2>&1; then
-        path_to_readme=$(echo $3 | sed 's/'$Destination_folder_aux'\/docs/'$Notebook_folder_aux'/g')
+        path_to_readme=$(echo $3 | sed 's/'$Notebook_folder_aux_2'/'$Notebook_folder_aux'/g')
         name=$(cat $1)
         echo "$2["$name"]("$path_to_readme")**"
 
