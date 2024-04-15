@@ -528,18 +528,40 @@ document.write(`
 </div>
 <section id="una-aguja-en-un-pajar">
 <h2>Una aguja en un pajar<a class="headerlink" href="#una-aguja-en-un-pajar" title="Permalink to this heading">#</a></h2>
-<p>El <strong>algoritmo de Grover</strong>  es un <em>algoritmo de búsqueda en bases de datos no estructuradas</em>.</p>
-<p>Una guía telefónica es una base <em>estructurada alfabéticamente</em> si lo que buscamos es un teléfono a partir de un nombre.</p>
-<p>A la inversa, encontrar el usuario al que pertenece un cierto teléfono es una busqueda <em>no estructurada</em>.</p>
-<p>Si hay <span class="math notranslate nohighlight">\(N\)</span> teléfonos, el número medio de veces que tendremos que consultar la base de datos crecerá como <span class="math notranslate nohighlight">\(N\)</span>.</p>
-<p>El algoritmos de Grover permite efectuar esta tarea en un número de pasos que crece como   <span class="math notranslate nohighlight">\({\cal O}(\sqrt{N})\)</span>.</p>
+<p><strong>Promesa:</strong> disponemos de un <em>oráculo</em> que implementa una función <span class="math notranslate nohighlight">\(f: x\to f(x) =  0,1\)</span> donde <span class="math notranslate nohighlight">\(x \in S_n = 0,1,..., 2^{n-1}\)</span>, con la siguiente propiedad: existe un único valor <span class="math notranslate nohighlight">\(x = w\)</span> tal que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f (x) = \left\{ 
+\begin{array}{rcl} 1 &amp;\hbox{si} &amp; x = w\\ 0 &amp;\hbox{si} &amp; x \neq w \end{array} \right.
+\end{split}\]</div>
+<p><strong>Problema:</strong> descubrir <span class="math notranslate nohighlight">\(x\)</span> con el mínimo número de consultas al oráculo.</p>
+<p>En el peor de los casos, el proceso es análogo al de buscar una aguja en un pajar, o el nombre de un cliente de la guía telefónica asociado a un número concreto. La función <span class="math notranslate nohighlight">\(f(x)\)</span> es la función <em>comparar con un patrón solución</em> que da 1 sólo cuando se acierta. También puede tratarse de una función que da 1 cuando <span class="math notranslate nohighlight">\(w\)</span> es la solución de algún problema algebráico de fácil verificación.</p>
+<p>Si <span class="math notranslate nohighlight">\(N = 2^N\)</span> es la cardinalidad de la base de datos, el algoritmos de Grover permite efectuar esta tarea en un número de pasos que crece como   <span class="math notranslate nohighlight">\({\cal O}(\sqrt{N})\)</span>.</p>
 <p>La ganancia por tanto, no es exponencial, como en el caso de la transformada de Fourier cuántica. No es fácil saber <em>a priori</em> si un algoritmo va a tener una ganancia exponencial o no.</p>
 <section id="el-plano-de-grover">
 <h3>El plano de Grover<a class="headerlink" href="#el-plano-de-grover" title="Permalink to this heading">#</a></h3>
-<p>Nuestra <em>base de datos</em> <span class="math notranslate nohighlight">\(x\in S_n\)</span> se convierte en la <em>base computacional</em> de <span class="math notranslate nohighlight">\(n\)</span> cúbits, <span class="math notranslate nohighlight">\(\{\ket{x}\}\)</span></p>
-<p>La <em>aguja en el pajar</em> que queremos encontrar será un cierto vector <span class="math notranslate nohighlight">\(\ket{w}\)</span>.</p>
-<p>En esta sección supondremos que es único.</p>
-<p>Como de costumbre, la estrategia cuántica comienza introduciendo  una superposición uniforme de la elementos de la base</p>
+<p>Nuestra <em>base de datos</em> <span class="math notranslate nohighlight">\(x\in S_n\)</span> se convierte en la <em>base computacional</em> de <span class="math notranslate nohighlight">\(n\)</span> cúbits, <span class="math notranslate nohighlight">\(\{\ket{x}\}\)</span>.
+La <em>aguja en el pajar</em> que queremos encontrar será, ahora, un cierto vector <span class="math notranslate nohighlight">\(\ket{w}\)</span>, tal que</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U_f \ket{x}\ket{0} = \left\{ 
+\begin{array}{rcl} \ket{x}\ket{\omega} &amp;\hbox{si} &amp; x = w\\ \ket{x}\ket{0} &amp;\hbox{si} &amp; x \neq w \end{array} \right.
+\end{split}\]</div>
+<p>Aquí <span class="math notranslate nohighlight">\(U_f\)</span> será el  <i>oráculo booleano</i>  asociado a la función de búsqueda</p>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>La implementación de esta función es trivial porque sólo contiene un <i>min-term</i> <span class="math notranslate nohighlight">\(f(x=w)=1\)</span>. Por supuesto, este es desconocido para el usuario del oráculo.
+También podemos implementar esta función como un <i>oráculo de fase</i>, preparando la ancilla en el estado <span class="math notranslate nohighlight">\(\ket{-}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+U_f \ket{x}\ket{-} = (-1)^{f(x)}\ket{x}\ket{-} ~= ~ \left\{ \begin{array}{lcc}
+             -\ket{x}\ket{-} &amp;   \hbox{si}  &amp; x = w \\ \rule{0mm}{6mm}
+              \, ~~\ket{x}\ket{-} &amp;  \hbox{si} &amp; x \neq w \end{array}
+   \right..
+\end{split}\]</div>
+<p>En resumen cada reflexión <span class="math notranslate nohighlight">\(U_f\)</span> es equivalente a una consulta al oráculo.</p>
+</div>
+<p>Como de costumbre, la estrategia cuántica comienza introduciendo  una superposición uniforme de elementos de la base</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 \ket{s} = H^{\otimes n}\ket{0} = \frac{1}{\sqrt{N}}\sum_{x=0}^{N-1} \ket{x}
@@ -600,29 +622,6 @@ R_w\ket{s} ~=~ \left( I - 2\ket{w}\bra{w}\rule{0mm}{8mm}\right)\ket{s} ~ = ~ -\f
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/Grover2.png"><img alt="../../_images/Grover2.png" src="../../_images/Grover2.png" style="width: 600px;" /></a>
 </figure>
-<div class="note admonition">
-<p class="admonition-title">Nota</p>
-<p>El marcador es la parte del algoritmo que <i>conoce</i> la solución.</p>
-<p>Podemos formalizar el <i>marcador</i> como la <i>consulta al oráculo</i> <span class="math notranslate nohighlight">\(O_f\)</span> asociado a una función que  <i>reconoce</i> la solución cuando la ve</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-f_w(x) = \left\{ \begin{array}{lcc}
-             1 &amp;   \hbox{si}  &amp; x = w \\
-              0 &amp;  \hbox{si} &amp; x \neq w \end{array}
-   \right..
-\end{equation*}\]</div>
-<p>Al igual que cuando buscas una aguja en un pajar, saber cómo es una aguja no te ayuda a encontrarla,  si te encuentras con ella, reconocerla es una operacion de coste unidad.</p>
-<p>La implementación de esta función es trivial porque sólo contiene un <i>min-term</i> <span class="math notranslate nohighlight">\(f_w(x=w)=1\)</span>. Podemos
-implementar esta función como un <i>oráculo de fase</i>, preparando la ancilla en el estado <span class="math notranslate nohighlight">\(\ket{-}\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-O_f \ket{x}\ket{-} = (-1)^{f_w(x)}\ket{x}\ket{-} ~= ~ \left\{ \begin{array}{lcc}
-             -\ket{x}\ket{-} &amp;   \hbox{si}  &amp; x = w \\ \rule{0mm}{6mm}
-              \, ~~\ket{x}\ket{-} &amp;  \hbox{si} &amp; x \neq w \end{array}
-   \right..
-\end{split}\]</div>
-<p>En resumen cada reflexión <span class="math notranslate nohighlight">\(U_w\)</span> es equivalente a una consulta al oráculo.</p>
-</div>
 <ul class="simple">
 <li><p><strong>El difusor</strong>, <span class="math notranslate nohighlight">\( R_{s_\perp}\)</span>, es un reflector paralelo a <span class="math notranslate nohighlight">\(\ket{s_\perp}\)</span>, es decir,  perpendicular al estado inicial <span class="math notranslate nohighlight">\(\ket{s}\)</span>. Es un resultado que <span class="math notranslate nohighlight">\(R_{s_\perp} = - R_{s}\)</span></p></li>
 </ul>
@@ -655,8 +654,8 @@ En general tendremos que</p>
 G^k\ket{s}  = a_k\ket{w} + b_k \ket{s^\prime}
 \]</div>
 <p class="sd-card-text">para ciertos coeficientes <span class="math notranslate nohighlight">\(a_k, b_k\)</span>. Ahora operamos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47f0caa8-dea4-4849-853d-cf9babb03e11">
-<span class="eqno">(27)<a class="headerlink" href="#equation-47f0caa8-dea4-4849-853d-cf9babb03e11" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-b1f898f1-7c4b-4c1d-bfcf-cfd35f945d2a">
+<span class="eqno">(27)<a class="headerlink" href="#equation-b1f898f1-7c4b-4c1d-bfcf-cfd35f945d2a" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 G^k\ket{s} &amp; = &amp;a_k\ket{w} + b_k \ket{s^\prime} \\
 &amp;=&amp; -U_sU_w\left(a_{k-1}\ket{w} + b_{k-1} \ket{s^\prime}\right) \\
 &amp;=&amp; \left( 2 \ket{s}\bra{s} -I \right)\left(-a_{k-1}\ket{w} + b_{k-1}\ket{s^\prime}\right)\\
