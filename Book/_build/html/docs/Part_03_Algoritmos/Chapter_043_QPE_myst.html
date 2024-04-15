@@ -1088,8 +1088,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <p><strong>Prueba</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4e65d08d-7506-427d-9962-f7e66ac7b206">
-<span class="eqno">(25)<a class="headerlink" href="#equation-4e65d08d-7506-427d-9962-f7e66ac7b206" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-db1f7676-1331-4718-8e39-f0a8536ef69e">
+<span class="eqno">(25)<a class="headerlink" href="#equation-db1f7676-1331-4718-8e39-f0a8536ef69e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
 \nonumber\\
  &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
@@ -1100,8 +1100,8 @@ U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^
 <p>Podríamos sencillamente aplicar el algoritmo de estimación de fase para <em>extraer la serie</em> de valores de <span class="math notranslate nohighlight">\(\varphi_s = s/r\)</span> y de ahí recuperar el <em>orden modular</em> <span class="math notranslate nohighlight">\(r\)</span>.</p>
 <p>El problema es que, para generar <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span> necesitamos conocer <span class="math notranslate nohighlight">\(r\)</span>, que, <em>precisamente, es el dato  que buscamos</em></p>
 <p>Una <em>observación importante</em> nos permite soslayar esta dificultad: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-2ee91cf9-46fd-4667-b55c-2f5cbe4bd540">
-<span class="eqno">(26)<a class="headerlink" href="#equation-2ee91cf9-46fd-4667-b55c-2f5cbe4bd540" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-dd142bf6-f332-4f6e-9ce9-e244d0c00b71">
+<span class="eqno">(26)<a class="headerlink" href="#equation-dd142bf6-f332-4f6e-9ce9-e244d0c00b71" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
 \rule{0mm}{12mm}
 &amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
