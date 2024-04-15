@@ -491,7 +491,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Mar 29, 2024 | 6 min read</p>
+<div><p>Apr 14, 2024 | 6 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -522,10 +522,10 @@ document.write(`
 </div>
 <section id="computacion-clasica-universal">
 <h2>Computación clásica universal<a class="headerlink" href="#computacion-clasica-universal" title="Permalink to this heading">#</a></h2>
-<p>En computación clásica, la únidad de información es el bit, una variable entera <span class="math notranslate nohighlight">\(x = 0,1 \in {\mathbb Z}_2\)</span>. Las puertas lógicas elementales son,</p>
+<p>En computación clásica, la únidad de información es el bit, una variable entera <span class="math notranslate nohighlight">\(x = 0,1\)</span> o, lo que es equivalente <span class="math notranslate nohighlight">\(x \in {\mathbb Z}_2\)</span>. Las puertas lógicas elementales son,</p>
 <ul class="simple">
-<li><p>sobre un bit, la puerta NOT <span class="math notranslate nohighlight">\(x\to \neq x = x\oplus 1\)</span>,</p></li>
-<li><p>sobre dos bits las puertas AND, OR, XOR, y NAND</p></li>
+<li><p>sobre <em>un bit</em>: la puerta NOT <span class="math notranslate nohighlight">\(x\to \neq x = x\oplus 1\)</span>, donde la suma es módulo 2.</p></li>
+<li><p>sobre <em>dos bits</em>: las puertas AND, OR, XOR, y NAND se definen por las siguientes tablas de verdad</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -538,17 +538,19 @@ document.write(`
 \hline 
 \end{array}
 \end{split}\]</div>
+<p>El teorema de computación clásica universal está en la base de la construcción de ordenadores de propósito general. El teorema de computación universal permite ver que cualquier circuito digital se puede construir mediante composición de las puertas mencionadas en esta lista.</p>
+<p>De hecho, en realidad basta con una sola, que puede escogerse como la puerta <span class="math notranslate nohighlight">\({\rm NAND}\)</span></p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Teorema</b>: </i>Computación clásica universal</i></p>
+<p class="sd-card-text"><b>Teorema</b>: </i>Computación digital universal</i></p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Cualquier función</p>
+<p class="sd-card-text">La puerta <span class="math notranslate nohighlight">\({\rm NAND}\)</span> es universal</p>
 <div class="math notranslate nohighlight">
 \[
 f : \{0,1\}^n \to \{0,1\}^m
 \]</div>
-<p class="sd-card-text">puede construirse mediante una concatenación de puertas elementales NOT, AND, OR y XOR.</p>
+<p class="sd-card-text">las puertas <span class="math notranslate nohighlight">\({\rm AND, OR}\)</span> y <span class="math notranslate nohighlight">\({\rm XOR}\)</span> se pueden expresar en términos de ella</p>
 </div>
 </div>
 <p>Surge la cuestión acerca de si la computación cuántica podrá contendrá la clásica actuando sobre simples cúbits <span class="math notranslate nohighlight">\(\{\ket{0},\ket{1}\}\)</span> (sin superposiciones)</p>
