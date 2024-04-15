@@ -91,7 +91,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "<details><summary> >> <i>Demostración/Prueba/...</i> </summary>\n",
+    "<details><summary> >> <i>Demostración</i> </summary>\n",
     "    \n",
     "Una forma rápida de demostrar esto es analizar el determinante de la matriz $U$ asociada al operdor. El determinante del producto de dos matrices  tiene una propiedad importantísima, y es que factoriza\n",
     "\n",

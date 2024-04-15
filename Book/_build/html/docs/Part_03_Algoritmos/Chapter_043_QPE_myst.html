@@ -488,7 +488,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 14, 2024 | 7 min read</p>
+<div><p>Apr 15, 2024 | 7 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -528,11 +528,11 @@ document.write(`
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">por ser unitario, su autovalor es una fase compleja<br />
-<cr></p>
-<div class="math notranslate nohighlight">
-\[
+<cr>
+<cr>
+$<span class="math notranslate nohighlight">\(
 U \ket{u} = e^{2\pi i\varphi} \ket{u}
-\]</div>
+\)</span>$</p>
 </div>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -595,21 +595,13 @@ e^{i\varphi} = e^{i(\lambda_1 + \lambda_2 +...+\lambda_n)}
 <p>Ahora viene <strong>la clave</strong>: cuando <span class="math notranslate nohighlight">\(\ket{u}\)</span> es un <i>autoestado</i>  de <span class="math notranslate nohighlight">\(U\)</span>, <u>se produce un <i>retroceso de fase</i> </u></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
- \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} U^{y}\ket{u}  &amp;~= ~&amp;  \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} \otimes e^{2\pi i \varphi y}  \ket{u}  =  \frac{1}{2^{t/2}} \sum_{y\in S_t}e^{2\pi i \varphi y}  \ket{y} \otimes   \ket{u}   \\
+ \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} U^{y}\ket{u}  &amp;~= ~&amp;  \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} \otimes e^{2\pi i \varphi y}  \ket{u}  =  \frac{1}{2^{t/2}} \sum_{y\in S_t}e^{2\pi i \varphi y}  \ket{y} \otimes   \ket{u}   \\ \rule{0mm}{12mm}
  &amp;~\equiv ~&amp;   \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y}\otimes \ket{u}  \label{fase1}  
 \end{eqnarray*}\]</div>
-<p>Como en otras ocasiones, el segundo registro ya ha hecho su labor y podemos ignorarlo (una ancilla).</p>
-<p>En el primer registro hemos escrito la fase de manera que el estado <u>se parece la <i>transformada de Fourier</i> <span class="math notranslate nohighlight">\(\ket{\widetilde{2^t \varphi}}\)</span>   del vector <span class="math notranslate nohighlight">\(\ket{2^t \varphi}\)</span></u></p>
+<p>Como de costumbre, el segundo registro ya ha realizado su labor y podemos ignorarlo (es una ancilla). De modo que nos vamos a concentrar en el registro de contaje, de <span class="math notranslate nohighlight">\(t\)</span> cúbits. Según el circuito, nos falta por aplicar la transformada de Fourier inversa. Antes de hacerlo vamos a notar que <span class="math notranslate nohighlight">\(2^t\varphi\)</span> es un número que podemos escribir de la siguiente forma, separando la parte entera <span class="math notranslate nohighlight">\(a\)</span>, de la <em>mantisa</em> <span class="math notranslate nohighlight">\(\delta\)</span></p>
 <div class="math notranslate nohighlight">
 \[
-U_{TFC}\ket{2^t \varphi} =  \ket{\widetilde{2^t \varphi}}   =   \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y}  
-\]</div>
-<p>En realidad esta identificación sería correcta sólo si el número <span class="math notranslate nohighlight">\(2^t\varphi \in S_t\)</span> <em>fuese un entero</em>.</p>
-<p>Sin embargo <span class="math notranslate nohighlight">\(2^t\varphi \notin {\mathbb Z}\)</span> en general <b>¡ no será
-un entero </b>! Para poder analizar el caso general, vamos entonces a separar este número en sus partes <em>entera</em> <span class="math notranslate nohighlight">\(a\in {\mathbb Z}\)</span> y <em>mantisa</em> <span class="math notranslate nohighlight">\(\delta \in [0,1)\)</span></p>
-<div class="math notranslate nohighlight">
-\[
-2^t \varphi  =a + \delta 
+2^t \varphi  =a + \delta
 \]</div>
 <div class="tip admonition">
 <p class="admonition-title">Ejemplo</p>
@@ -623,44 +615,45 @@ un entero </b>! Para poder analizar el caso general, vamos entonces a separar es
 ya lo hemos cocinado así.</p>
 <p>Pero si <span class="math notranslate nohighlight">\(\varphi\)</span> fuese <em>irracional</em> no existiría ningún <span class="math notranslate nohighlight">\(t\)</span> para el cuál <span class="math notranslate nohighlight">\(2^t\varphi\)</span> no tenga mantisa.</p>
 </div>
-<p>Vamos a terminar el circuito. Nos falta aplicar una transformada de Fourier inversa en los registros de contaje <span class="math notranslate nohighlight">\(t\)</span>. Introduciendo el cambio de variable <span class="math notranslate nohighlight">\(2^t \varphi  =a + \delta\)</span>, obtenemos</p>
+<p>Ahora aplicamos la TFC inversa, que es igual a la adjunta,  al primer registro</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 U^\dagger_{TFC} \frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} \ket{y} &amp;=&amp;\frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} U^\dagger_{TFC} \ket{y}
 \\ \rule{0mm}{10mm}
-~&amp;=&amp;~ \frac{1}{\sqrt{2^t}}   \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta) y/2^t}\frac{1}{\sqrt{2^t}}\left( \sum_{x=0}^{2^t-1}e^{-2\pi i  yx/2^t}\ket{x} \right)   \\
-~&amp;=&amp;~ \frac{1}{2^{t}} \sum_{x=0}^{2^t-1} \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \ket{x}  ~ \equiv ~ \ket{\Phi}
+~&amp;=&amp;~ \frac{1}{\sqrt{2^t}}   \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta) y/2^t}\frac{1}{\sqrt{2^t}}\left( \sum_{x=0}^{2^t-1}e^{-2\pi i  yx/2^t}\ket{x} \right)   \\ \rule{0mm}{10mm}
+~&amp;=&amp;~ \frac{1}{2^{t}} \sum_{x=0}^{2^t-1} \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \ket{x}  \\
+&amp;~ \equiv ~ &amp; \ket{\Phi}
 \end{eqnarray*}\]</div>
 <p><span class="math notranslate nohighlight">\(\ket{\Phi}\)</span> es el <em>estado final en el registro de contaje</em>. Vamos a analizar su composición.</p>
-<p>Supongamos que  <u><span class="math notranslate nohighlight">\(\underline{\delta = 0}\)</span></u>.</p>
-<p>Es decir, si <span class="math notranslate nohighlight">\(2^t\varphi\)</span> fuese un entero <span class="math notranslate nohighlight">\(a\in S_t = \{0, \ldots, 2^t-1\}\)</span>,
-entonces el resultado
+<ul class="simple">
+<li><p>Supongamos que  <u><span class="math notranslate nohighlight">\(\underline{\delta = 0}\)</span></u>. Es decir, que <span class="math notranslate nohighlight">\(2^t\varphi\)</span> sea un entero <span class="math notranslate nohighlight">\(a\in S_t = \{0, \ldots, 2^t-1\}\)</span>.</p></li>
+</ul>
+<p>Entonces el resultado
 sería  <b>exactamente</b> <span class="math notranslate nohighlight">\(\ket{\Phi} = \ket{a} = \ket{2^t\varphi}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 \ket{\Phi} &amp;=&amp;  \sum_{x=0}^{2^t-1} \frac{1}{2^{t}}  \left(\sum_{y=0}^{2^t-1}  e^{2\pi i (a-x) y/2^t} \right)\ket{x}  \\  \rule{0mm}{10mm}
-&amp;=&amp;  \sum_{x=0}^{2^t-1}  \frac{1}{2^{t}} \left(2^t \delta_{x,a} \right)\ket{x}\\ \rule{0mm}{10mm}
+&amp;=&amp;  \sum_{x=0}^{2^t-1}  \frac{1}{2^{t}} \left(2^t \delta_{x,a} \right)\ket{x}\\ \rule{0mm}{8mm}
 &amp;=&amp; \ket{a}
 \end{eqnarray*}\]</div>
-<ul class="simple">
-<li><p>midiendo el primer registro obtendríamos, <strong>con probabilidad 1</strong>, el registro binario del número <span class="math notranslate nohighlight">\(a\in[0, 2^t-1]\)</span></p></li>
-<li><p>escribiendo <span class="math notranslate nohighlight">\(a\)</span> en base decimal, y normalizando por <span class="math notranslate nohighlight">\(2^t\)</span>, recuperaríamos la <em>fase</em> buscada <strong>de forma exacta</strong></p></li>
-</ul>
+<p>Midiendo el primer registro obtendríamos, <strong>con probabilidad 1</strong>, el registro binario del número <span class="math notranslate nohighlight">\(a\in[0, 2^t-1]\)</span></p>
+<p>Escribiendo <span class="math notranslate nohighlight">\(a\)</span> en base decimal, y normalizando por <span class="math notranslate nohighlight">\(2^t\)</span>, recuperaríamos la <em>fase</em> buscada <strong>de forma exacta</strong></p>
 <div class="math notranslate nohighlight">
 \[
  \varphi = \frac{a}{2^t}  \in [0,1)
 \]</div>
-<p>Supongamos ahora que  <span class="math notranslate nohighlight">\(\underline{\delta \neq 0}:~\)</span></p>
-<p>en este caso la transformada de Fourier inversa no produce un único estado, sino una superposición
-<span class="math notranslate nohighlight">\(\ket{\Phi} = \sum_{x=0}^{2^t-1} f(x) \ket{x}\)</span></p>
+<ul class="simple">
+<li><p>Supongamos ahora que  <span class="math notranslate nohighlight">\(\underline{\delta \neq 0}.~\)</span> Es decir,  <span class="math notranslate nohighlight">\(2^t\varphi\)</span> <strong>no</strong> es un entero.</p></li>
+</ul>
+<p>En este caso la transformada de Fourier inversa no produce un único estado, sino una superposición</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{\Phi} =  \sum_{x=0}^{2^t-1} \left( \frac{1}{2^{t}}\sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \right) \ket{x}  
 = \sum_{x=0}^{2^t-1} f(x) \ket{x}
 \]</div>
-<ul class="simple">
-<li><p>Una medida dará el registro binario de <em>un número entero</em> <span class="math notranslate nohighlight">\(x \in [0,2^t-1)\)</span> con distribución de probabilidad <span class="math notranslate nohighlight">\(p(x) = |f(x)|^2\)</span> centrada en <span class="math notranslate nohighlight">\(a=[2^t\varphi]\)</span></p></li>
-</ul>
+<p>Las amplitudes <span class="math notranslate nohighlight">\(f(x)\)</span> están evaluadas con <span class="math notranslate nohighlight">\(x\in S_t\)</span> números enteros. Pero la expresión es valida para cualquier número real <span class="math notranslate nohighlight">\(x\in {\mathbb R}\)</span>.</p>
+<p>Una medida dará el registro binario de <em>un número entero</em> <span class="math notranslate nohighlight">\(x \in [0,2^t-1)\)</span> con distribución de probabilidad <span class="math notranslate nohighlight">\(p(x) = |f(x)|^2\)</span> centrada en <span class="math notranslate nohighlight">\(a=[2^t\varphi]\)</span>.</p>
+<p>Por tanto, con una sucesión de tiradas podríamos reconstruir la distribución de probabilidad, y su media sería el valor buscado de <span class="math notranslate nohighlight">\(2^t\delta\)</span>.</p>
 <section id="ejemplo">
 <h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
 <p>Vamos a estudiar esta distribución analizando el operador unitario de fase</p>
@@ -1095,8 +1088,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <p><strong>Prueba</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-45b2b973-e789-4f16-a7c7-f4358730896d">
-<span class="eqno">(25)<a class="headerlink" href="#equation-45b2b973-e789-4f16-a7c7-f4358730896d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-4e65d08d-7506-427d-9962-f7e66ac7b206">
+<span class="eqno">(25)<a class="headerlink" href="#equation-4e65d08d-7506-427d-9962-f7e66ac7b206" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
 \nonumber\\
  &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
@@ -1107,8 +1100,8 @@ U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^
 <p>Podríamos sencillamente aplicar el algoritmo de estimación de fase para <em>extraer la serie</em> de valores de <span class="math notranslate nohighlight">\(\varphi_s = s/r\)</span> y de ahí recuperar el <em>orden modular</em> <span class="math notranslate nohighlight">\(r\)</span>.</p>
 <p>El problema es que, para generar <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span> necesitamos conocer <span class="math notranslate nohighlight">\(r\)</span>, que, <em>precisamente, es el dato  que buscamos</em></p>
 <p>Una <em>observación importante</em> nos permite soslayar esta dificultad: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-f7b05d62-1a0c-472e-87e8-a84903b46855">
-<span class="eqno">(26)<a class="headerlink" href="#equation-f7b05d62-1a0c-472e-87e8-a84903b46855" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-2ee91cf9-46fd-4667-b55c-2f5cbe4bd540">
+<span class="eqno">(26)<a class="headerlink" href="#equation-2ee91cf9-46fd-4667-b55c-2f5cbe4bd540" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
 \rule{0mm}{12mm}
 &amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
