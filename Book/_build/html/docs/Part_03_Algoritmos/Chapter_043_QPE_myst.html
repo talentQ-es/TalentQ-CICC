@@ -488,7 +488,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 04, 2024 | 6 min read</p>
+<div><p>Apr 14, 2024 | 7 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -500,7 +500,8 @@ document.write(`
 <span class="math notranslate nohighlight">\( \newcommand{\braket}[2]{\langle #1|#2\rangle} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\i}{{\color{blue} i}} \)</span>
 <span class="math notranslate nohighlight">\( \newcommand{\Hil}{{\cal H}} \)</span>
-<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span></p>
+<span class="math notranslate nohighlight">\( \newcommand{\cg}[1]{{\rm C}#1} \)</span>
+<span class="math notranslate nohighlight">\( \newcommand{\det}{{\rm det}}\)</span></p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -519,80 +520,120 @@ document.write(`
 </div>
 <section id="estimacion-cuantica-de-fase">
 <h2>Estimación Cuántica de Fase<a class="headerlink" href="#estimacion-cuantica-de-fase" title="Permalink to this heading">#</a></h2>
-<p>Sea <span class="math notranslate nohighlight">\(U\)</span> un operador unitario y  <span class="math notranslate nohighlight">\(\ket{u}\)</span> un autovector. Por ser unitario, su autovalor es una fase compleja</p>
+<p>Cuando se construya un computador cuántico capaz de realizar una Transformada de Fourier Cuántica, una de las aplicaciones más frecuentes será la Estimación Cuántica de Fase. Veamos cómo funciona.</p>
+<p>Sea <span class="math notranslate nohighlight">\(U\)</span> un operador unitario y  <span class="math notranslate nohighlight">\(\ket{u}\)</span> un autovector del espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span> de dimensión <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Lema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">por ser unitario, su autovalor es una fase compleja<br />
+<cr></p>
 <div class="math notranslate nohighlight">
 \[
-U \ket{u} = e^{2\pi i \varphi} \ket{u}\, ,
+U \ket{u} = e^{2\pi i\varphi} \ket{u}
 \]</div>
-<p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Promesa</strong>: <em>podemos preparar</em>  <span class="math notranslate nohighlight">\(\ket{u}\)</span> y aplicar el operador <span class="math notranslate nohighlight">\(U\)</span> <u>tantas veces como sea necesario</u></p>
+</div>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Una forma rápida de demostrar esto es analizar el determinante de la matriz <span class="math notranslate nohighlight">\(U\)</span> asociada al operdor. El determinante del producto de dos matrices  tiene una propiedad importantísima, y es que factoriza</p>
+<div class="math notranslate nohighlight">
+\[
+\det \, (A B) = (\det A) (\det B)
+\]</div>
+<p class="sd-card-text">De esta propiedad se deduce, como ya se vio en el capítulo de operadores, que el determinante de un operador es independiente de la base (lo mismo le pasaba a la traza).  También se deduce que el determinante de un operador unitario es una fase. Por un lado tenemos que</p>
+<div class="math notranslate nohighlight">
+\[
+\det (U U^\dagger) = (\det U)(\det U^{*t}) = (\det U)(\det U)^* = |\det U|^2
+\]</div>
+<p class="sd-card-text">Por otro</p>
+<div class="math notranslate nohighlight">
+\[    
+\det (U U^\dagger) = \det (U U^{-1}) = \det I = 1
+\]</div>
+<p class="sd-card-text">Es decir, el módulo de <span class="math notranslate nohighlight">\(\det U\)</span> es igual a 1, y por tanto <span class="math notranslate nohighlight">\(\det U = e^{i\varphi}\)</span>, una fase. En la base en la que <span class="math notranslate nohighlight">\(U\)</span> es diagonal, esta fase es el producto de  los elementos de la diagonal. Por tanto, todos los autovaleres deben ser fases</p>
+<div class="math notranslate nohighlight">
+\[
+e^{i\varphi} = e^{i(\lambda_1 + \lambda_2 +...+\lambda_n)}
+\]</div>
+<p class="sd-card-text">s&gt;
+&lt;/detail</p>
+</div>
+</details><p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Promesa</strong>: <em>podemos preparar</em>  <span class="math notranslate nohighlight">\(\ket{u}\)</span> y aplicar el operador <span class="math notranslate nohighlight">\(U\)</span> <u>tantas veces como sea necesario</u></p>
 <p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Problema</strong>:  calcular  la <u><em>mejor aproximación posible</em></u> a <span class="math notranslate nohighlight">\(\varphi\)</span>.</p>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
-<p>Los autovalores  <span class="math notranslate nohighlight">\(\lambda = e^{i2\pi \varphi}=e^{i2\pi (\varphi+n)}\)</span>  son iguales, para cualquier <span class="math notranslate nohighlight">\(n\in {\mathbb Z}\)</span> entero. Por tanto será suficiente considerar valores de <span class="math notranslate nohighlight">\(\varphi\)</span> en el intervalo</p>
+<p>Los autovalores  <span class="math notranslate nohighlight">\(\lambda = e^{i2\pi \varphi}=e^{i2\pi (\varphi+n)}\)</span>  son iguales, para cualquier <span class="math notranslate nohighlight">\(n\in {\mathbb Z}\)</span> entero. Por tanto, será suficiente considerar valores de <span class="math notranslate nohighlight">\(\varphi\)</span> en el intervalo</p>
 <div class="math notranslate nohighlight">
 \[\varphi \in [0,1)\]</div>
 <p>para generar <i>todos</i> los  posibles autovalores <span class="math notranslate nohighlight">\(\lambda\)</span> distintos.</p>
 </div>
+<p>El circuito  QPE (“Quantum Phase Estimation”) viene representado en la figura,  donde el primer registro tiene dimensión <span class="math notranslate nohighlight">\(t\)</span> y la entrada es el estado <span class="math notranslate nohighlight">\(\ket{0}_t\otimes \ket{u}\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t\)</span> es la dimensión del primer registro, o <em>registro de contaje</em>.  Su valor controlará <strong>la precisión de nuestra aproximación</strong> a <span class="math notranslate nohighlight">\(\varphi\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> es la dimensión del espacio <span class="math notranslate nohighlight">\(\Hil\)</span> al que pertenece  el vector <span class="math notranslate nohighlight">\(\ket{u}\)</span>, sobre el que actúa <span class="math notranslate nohighlight">\(U\)</span>.</p></li>
+</ul>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/QPE.png"><img alt="../../_images/QPE.png" src="../../_images/QPE.png" style="width: 500px;" /></a>
 </figure>
-<p>El circuito  QPE (“Quantum Phase Estimation”) viene representado en la figura,  donde el primer registro tiene dimensión <span class="math notranslate nohighlight">\(t\)</span> y la entrada es el estado <span class="math notranslate nohighlight">\(\ket{0}_t\otimes \ket{u}\)</span>.</p>
-<ul class="simple">
-<li><p>La dimensión <span class="math notranslate nohighlight">\(t\)</span> del primer registro <strong>controlará la precisión de nuestra aproximación</strong> a <span class="math notranslate nohighlight">\(\varphi\)</span>.</p></li>
-<li><p>La dimensión <span class="math notranslate nohighlight">\(n\)</span> del espacio al que pertenece <span class="math notranslate nohighlight">\(\ket{u}\)</span>  es la necesaria para servir de espacio de representación para <span class="math notranslate nohighlight">\(U\)</span>.</p></li>
-</ul>
-<p>Si el primer registro tiene <span class="math notranslate nohighlight">\(t\)</span> cúbits <span class="math notranslate nohighlight">\(\{\ket{y}\}\)</span> con <span class="math notranslate nohighlight">\(y \in S_t = 0,1,... 2^t-1\)</span></p>
-<p>Si el primer registro tiene <span class="math notranslate nohighlight">\(t\)</span> cúbits, el estado que genera el circuito justo antes de la transformada de Fourier</p>
+<p>Si el primer registro tiene <span class="math notranslate nohighlight">\(t\)</span> cúbits <span class="math notranslate nohighlight">\(\{\ket{y}\}\)</span> con <span class="math notranslate nohighlight">\(y \in S_t = 0,1,... 2^t-1\)</span> el estado que genera el circuito justo antes de la transformada de Fourier es el siguiente</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-\ket{0}_t \otimes \ket{u} ~ &amp;\stackrel{H^t}{\longrightarrow} &amp; ~  \sum_{y\in S_t}\ket{y} \otimes \ket{u} ~ =  \sum_{y_0...y_{t-1}=0,1}\ket{y_{t-1}}...\ket{y_0}\otimes \ket{u}  
+\ket{0}_t \otimes \ket{u} ~ &amp;\stackrel{H^{\otimes t}}{\longrightarrow} &amp; ({H^{\otimes t}} \ket{0}_t)\otimes \ket{u}
+ =  \frac{1}{2^{t/2}}  \sum_{y_0...y_{t-1}=0,1}\ket{y_{t-1}}...\ket{y_0}\otimes \ket{u}
 \\   \rule{0mm}{10mm}
- &amp;\stackrel{\cg{U^y}}{\longrightarrow} &amp; \sum_{y_0...y_{t-1}=0,1}\ket{y_{t-1}}...\ket{y_0}\otimes U^{y_{t-1}2^{t-1}}...U^{y_0 2^{0}} \ket{u} \\  \rule{0mm}{10mm}
- &amp;&amp; =    \sum_{y\in S_t} \ket{y} \,  U^{y_{t-1}2^{t-1}+ \ldots +y_0 2^0}\ket{u}  \\
- &amp;&amp; = \,    \sum_{y\in S_t} \ket{y} \,  U^y\ket{u} \rule{0mm}{10mm}
+ &amp;\stackrel{\prod_{i=0}^{t-1} \cg{U}^{2^i}}{\longrightarrow} &amp; \frac{1}{2^{t/2}} \sum_{y_0...y_{t-1}=0,1}\ket{y_{t-1}}...\ket{y_0}\otimes U^{y_{t-1}2^{t- 1}}...U^{y_0 2^{0}} \ket{u} \\  \rule{0mm}{10mm}
+ &amp;&amp; =   \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} \,  U^{y_{t-1}2^{t-1}+ \ldots +y_0 2^0}\ket{u}  \\
+ &amp;&amp; = \,  \frac{1}{2^{t/2}}  \sum_{y\in S_t} \ket{y} \,  U^y\ket{u} \rule{0mm}{10mm}
 \end{eqnarray*}\]</div>
-<p><strong>La clave</strong>: cuando <span class="math notranslate nohighlight">\(\ket{u}\)</span> es un <i>autoestado</i>  de <span class="math notranslate nohighlight">\(U\)</span>, se produce un <i>retroceso de fase</i></p>
+<p>Ahora viene <strong>la clave</strong>: cuando <span class="math notranslate nohighlight">\(\ket{u}\)</span> es un <i>autoestado</i>  de <span class="math notranslate nohighlight">\(U\)</span>, <u>se produce un <i>retroceso de fase</i> </u></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
- \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} U^{y}\ket{u}  ~= ~  \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} \otimes e^{2\pi i \varphi y}  \ket{u} ~= ~ \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y} \otimes \ket{u}  \label{fase1}  
+ \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} U^{y}\ket{u}  &amp;~= ~&amp;  \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} \otimes e^{2\pi i \varphi y}  \ket{u}  =  \frac{1}{2^{t/2}} \sum_{y\in S_t}e^{2\pi i \varphi y}  \ket{y} \otimes   \ket{u}   \\
+ &amp;~\equiv ~&amp;   \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y}\otimes \ket{u}  \label{fase1}  
 \end{eqnarray*}\]</div>
-<p><u>Observa el primer registro</u> : parece la <i>transformada de Fourier</i> <span class="math notranslate nohighlight">\(\ket{\widetilde{2^t \varphi}}\)</span>   del vector <span class="math notranslate nohighlight">\(\ket{2^t \varphi}\)</span></p>
+<p>Como en otras ocasiones, el segundo registro ya ha hecho su labor y podemos ignorarlo (una ancilla).</p>
+<p>En el primer registro hemos escrito la fase de manera que el estado <u>se parece la <i>transformada de Fourier</i> <span class="math notranslate nohighlight">\(\ket{\widetilde{2^t \varphi}}\)</span>   del vector <span class="math notranslate nohighlight">\(\ket{2^t \varphi}\)</span></u></p>
 <div class="math notranslate nohighlight">
 \[
-  \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y}  
-  = U_{TFC}\ket{2^t \varphi} =  \ket{\widetilde{2^t \varphi}}  
+U_{TFC}\ket{2^t \varphi} =  \ket{\widetilde{2^t \varphi}}   =   \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y}  
 \]</div>
-<p>Esto sería correcto si el número <span class="math notranslate nohighlight">\(2^t\varphi \in S_t\)</span> <em>fuese un entero</em></p>
+<p>En realidad esta identificación sería correcta sólo si el número <span class="math notranslate nohighlight">\(2^t\varphi \in S_t\)</span> <em>fuese un entero</em>.</p>
 <p>Sin embargo <span class="math notranslate nohighlight">\(2^t\varphi \notin {\mathbb Z}\)</span> en general <b>¡ no será
-un entero </b>!</p>
-<p>Vamos entonces a separarlo en la forma siguiente en sus partes <em>entera</em> <span class="math notranslate nohighlight">\(a\in {\mathbb Z}\)</span> y <em>mantisa</em> <span class="math notranslate nohighlight">\(\delta \in [0,1)\)</span></p>
+un entero </b>! Para poder analizar el caso general, vamos entonces a separar este número en sus partes <em>entera</em> <span class="math notranslate nohighlight">\(a\in {\mathbb Z}\)</span> y <em>mantisa</em> <span class="math notranslate nohighlight">\(\delta \in [0,1)\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 2^t \varphi  =a + \delta 
 \]</div>
 <div class="tip admonition">
 <p class="admonition-title">Ejemplo</p>
-<p>Si <span class="math notranslate nohighlight">\(\varphi = 0.4375 \in [0,1) \)</span> entonces</p>
+<p>Supongamos que la fase que queremos hallar sea: <span class="math notranslate nohighlight">\(\varphi = 0.4375 \in [0,1) \)</span>.  Entonces</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\( 2^2 \varphi = 1.75 \Rightarrow a=1~,~\delta = 0.75\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\( 2^3 \varphi = 3.5~ \Rightarrow a=3~,~\delta = 0.5\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\( 2^4 \varphi = 7  ~~~ \Rightarrow a=7~,~\delta = 0\)</span></p></li>
 </ul>
-<p>En el fondo esto es así porque <span class="math notranslate nohighlight">\(0.4375 = 7 / 2^{4}\)</span> pero si <span class="math notranslate nohighlight">\(\varphi\)</span> fuese <em>irracional</em> no existiría ningún <span class="math notranslate nohighlight">\(t\)</span> para el cuál <span class="math notranslate nohighlight">\(2^t\varphi\)</span> no tenga mantisa.</p>
+<p>Vemos que sólo cuando <span class="math notranslate nohighlight">\(t=4\)</span> obtenemos un número entero.     En el fondo esto es así porque <span class="math notranslate nohighlight">\(0.4375 = 7 / 2^{4}\)</span>
+ya lo hemos cocinado así.</p>
+<p>Pero si <span class="math notranslate nohighlight">\(\varphi\)</span> fuese <em>irracional</em> no existiría ningún <span class="math notranslate nohighlight">\(t\)</span> para el cuál <span class="math notranslate nohighlight">\(2^t\varphi\)</span> no tenga mantisa.</p>
 </div>
-<p>Vamos a terminar el circuito</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/QPE.png"><img alt="../../_images/QPE.png" src="../../_images/QPE.png" style="width: 500px;" /></a>
-</figure>
-<p>Introduciendo el cambio de variable <span class="math notranslate nohighlight">\(2^t \varphi  =a + \delta\)</span>  vamos a efectuar la transformada de Fourier inversa en el primer registro</p>
+<p>Vamos a terminar el circuito. Nos falta aplicar una transformada de Fourier inversa en los registros de contaje <span class="math notranslate nohighlight">\(t\)</span>. Introduciendo el cambio de variable <span class="math notranslate nohighlight">\(2^t \varphi  =a + \delta\)</span>, obtenemos</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 U^\dagger_{TFC} \frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} \ket{y} &amp;=&amp;\frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} U^\dagger_{TFC} \ket{y}
 \\ \rule{0mm}{10mm}
-~&amp;=&amp;~ \frac{1}{2^{t}}  \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta) y/2^t}\left( \sum_{x=0}^{2^t-1}e^{-2\pi i  yx/2^t}\ket{x} \right)   \\
+~&amp;=&amp;~ \frac{1}{\sqrt{2^t}}   \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta) y/2^t}\frac{1}{\sqrt{2^t}}\left( \sum_{x=0}^{2^t-1}e^{-2\pi i  yx/2^t}\ket{x} \right)   \\
 ~&amp;=&amp;~ \frac{1}{2^{t}} \sum_{x=0}^{2^t-1} \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \ket{x}  ~ \equiv ~ \ket{\Phi}
 \end{eqnarray*}\]</div>
-<p>Si <span class="math notranslate nohighlight">\(\underline{\delta = 0}:~\)</span>  es decir, si <span class="math notranslate nohighlight">\(2^t\varphi\)</span> fuese un entero <span class="math notranslate nohighlight">\(a\in S_t = \{0, \ldots, 2^t-1\}\)</span>,
+<p><span class="math notranslate nohighlight">\(\ket{\Phi}\)</span> es el <em>estado final en el registro de contaje</em>. Vamos a analizar su composición.</p>
+<p>Supongamos que  <u><span class="math notranslate nohighlight">\(\underline{\delta = 0}\)</span></u>.</p>
+<p>Es decir, si <span class="math notranslate nohighlight">\(2^t\varphi\)</span> fuese un entero <span class="math notranslate nohighlight">\(a\in S_t = \{0, \ldots, 2^t-1\}\)</span>,
 entonces el resultado
 sería  <b>exactamente</b> <span class="math notranslate nohighlight">\(\ket{\Phi} = \ket{a} = \ket{2^t\varphi}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
@@ -601,26 +642,24 @@ sería  <b>exactamente</b> <span class="math notranslate nohighlight">\(\ket{\Ph
 &amp;=&amp;  \sum_{x=0}^{2^t-1}  \frac{1}{2^{t}} \left(2^t \delta_{x,a} \right)\ket{x}\\ \rule{0mm}{10mm}
 &amp;=&amp; \ket{a}
 \end{eqnarray*}\]</div>
-<p>En este caso:</p>
 <ul class="simple">
-<li><p>midiendo el primer registro obtendríamos un registro binario del número <span class="math notranslate nohighlight">\(a\in[0, 2^t-1]\)</span></p></li>
-<li><p>con <span class="math notranslate nohighlight">\(a\)</span> recuperaríamos la <em>fase</em> buscada <em>de forma exacta</em>.</p></li>
+<li><p>midiendo el primer registro obtendríamos, <strong>con probabilidad 1</strong>, el registro binario del número <span class="math notranslate nohighlight">\(a\in[0, 2^t-1]\)</span></p></li>
+<li><p>escribiendo <span class="math notranslate nohighlight">\(a\)</span> en base decimal, y normalizando por <span class="math notranslate nohighlight">\(2^t\)</span>, recuperaríamos la <em>fase</em> buscada <strong>de forma exacta</strong></p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
  \varphi = \frac{a}{2^t}  \in [0,1)
 \]</div>
-<p>Si <span class="math notranslate nohighlight">\(\underline{\delta \neq 0}:~\)</span></p>
-<ul class="simple">
-<li><p>El estado en el primer registro  <span class="math notranslate nohighlight">\(\ket{\Phi} = \sum_{x=0}^{2^t-1} f(x) \ket{x}\)</span> será una superposición.</p></li>
-</ul>
+<p>Supongamos ahora que  <span class="math notranslate nohighlight">\(\underline{\delta \neq 0}:~\)</span></p>
+<p>en este caso la transformada de Fourier inversa no produce un único estado, sino una superposición
+<span class="math notranslate nohighlight">\(\ket{\Phi} = \sum_{x=0}^{2^t-1} f(x) \ket{x}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \ket{\Phi} =  \sum_{x=0}^{2^t-1} \left( \frac{1}{2^{t}}\sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \right) \ket{x}  
 = \sum_{x=0}^{2^t-1} f(x) \ket{x}
 \]</div>
 <ul class="simple">
-<li><p>Una medida dará el registro binario de <em>un número entero</em> <span class="math notranslate nohighlight">\(x \to m \in [0,2^t-1)\)</span> con distribución de probabilidad <span class="math notranslate nohighlight">\(p(m) = |f(m)|^2\)</span> centrada en <span class="math notranslate nohighlight">\(m=a=[2^t\varphi]\)</span></p></li>
+<li><p>Una medida dará el registro binario de <em>un número entero</em> <span class="math notranslate nohighlight">\(x \in [0,2^t-1)\)</span> con distribución de probabilidad <span class="math notranslate nohighlight">\(p(x) = |f(x)|^2\)</span> centrada en <span class="math notranslate nohighlight">\(a=[2^t\varphi]\)</span></p></li>
 </ul>
 <section id="ejemplo">
 <h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
@@ -630,7 +669,7 @@ sería  <b>exactamente</b> <span class="math notranslate nohighlight">\(\ket{\Ph
 U =  \begin{bmatrix} e^{2\pi i \phi_0} &amp; 0 \\ 0 &amp; e^{2\pi i\phi_1}\end{bmatrix} 
 \end{split}\]</div>
 <p>que tiene por autoestados  <span class="math notranslate nohighlight">\(\ket{0}\)</span> y <span class="math notranslate nohighlight">\(\ket{1}\)</span> con autovalores <span class="math notranslate nohighlight">\(e^{2\pi\phi_0}\)</span> y <span class="math notranslate nohighlight">\(e^{2\pi \phi_1}\)</span> respectivamente.</p>
-<p>Para programar este operador notamos que</p>
+<p>Para programar el oráculo que implementa este operador notamos que</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 U =  
@@ -650,7 +689,6 @@ R_z(\theta = -4\pi \phi_0) \cdot P(\theta = 2\pi (\phi_1+\phi_0))
     <span class="n">U</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;c_U(</span><span class="si">%f</span><span class="s2"> ,</span><span class="si">%f</span><span class="s2">)^</span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">phi0</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">phi1</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span><span class="n">power</span><span class="p">)</span>
     <span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="o">.</span><span class="n">control</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">U</span>
-    
 </pre></div>
 </div>
 </div>
@@ -688,7 +726,7 @@ phi1= 0.375  -&gt;   2^t*phi1 = a1 + delta1 =  3.0  , a1 = 3 =&gt; 011
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="mi">6</span> <span class="c1"># la dimensión del registro de evaluación </span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># la dimensiónd el espacio de representación del opeador U</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># la dimensión del espacio de representación del opeador U</span>
 
 <span class="n">qrt</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
 <span class="n">qra</span><span class="o">=</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;qr_U&quot;</span><span class="p">)</span> <span class="c1"># aquí 1 es la dimensión del espacio en el que opera U</span>
@@ -715,11 +753,6 @@ phi1= 0.375  -&gt;   2^t*phi1 = a1 + delta1 =  3.0  , a1 = 3 =&gt; 011
 <span class="c1"># aplicamos la QFT^-1 que está definida en macro.py </span>
 <span class="n">qpe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC_adj</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">qrt</span><span class="p">)</span>
 
-<span class="c1"># podemos hacerlo usando la librería de qiskit </span>
-<span class="c1">#from qiskit.circuit.library import QFT</span>
-<span class="c1">#qpe.append(QFT(len(qr),do_swaps=True).inverse(),qr)</span>
-
-
 <span class="n">qpe</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qrt</span><span class="p">,</span><span class="n">crt</span><span class="p">)</span>
 
 <span class="n">qpe</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
@@ -736,18 +769,20 @@ phi1= 0.375  -&gt;   2^t*phi1 = a1 + delta1 =  3.0  , a1 = 3 =&gt; 011
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;ejecutamos el circuito&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span> <span class="n">M_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
+
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3db278e9aa997a5af17e2190a4b2ed6b2969aa5d9821d4bc2d0f3380c07f3677.png" src="../../_images/3db278e9aa997a5af17e2190a4b2ed6b2969aa5d9821d4bc2d0f3380c07f3677.png" />
+<img alt="../../_images/d02165fccc5db96ffde8ea066aea357819496773646b4531486b2bf6dd510173.png" src="../../_images/d02165fccc5db96ffde8ea066aea357819496773646b4531486b2bf6dd510173.png" />
 </div>
 </div>
 <p>De aquí extraemos la aproximación que hemos obtenido.</p>
@@ -787,31 +822,36 @@ el error relativo es delta/(2^t phi) = -0.022727272727272645
 </div>
 </div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Ejercicio</p>
+<p>vuelve a ejecutar el circuito cambiando el valor de <span class="math notranslate nohighlight">\(\varphi_0\)</span>.</p>
+</div>
 </section>
 <section id="distribucion-de-medidas">
 <h3>Distribución de medidas<a class="headerlink" href="#distribucion-de-medidas" title="Permalink to this heading">#</a></h3>
-<p>Para una mantisa fija, <span class="math notranslate nohighlight">\(\delta \Rightarrow  \phi = a+\delta\)</span> las distintas medidas del estado resultante <span class="math notranslate nohighlight">\(\ket{m}\)</span> se distribuirán en el torno a un <em>valor central</em> <span class="math notranslate nohighlight">\(\ket{a} = \ket{[2^t\varphi]} \)</span>.</p>
-<p>Escribiendo <span class="math notranslate nohighlight">\(\ket{m=a+l}\)</span>  podemos obtener la <em>distribución de probabilidad</em> <span class="math notranslate nohighlight">\(p(m) = p(\delta, l)\)</span> de medir <span class="math notranslate nohighlight">\(m=a+l\)</span></p>
+<p>Para una mantisa fija, <span class="math notranslate nohighlight">\(\delta \Rightarrow  \phi = a+\delta\)</span> las distintas medidas del estado resultante <span class="math notranslate nohighlight">\(\ket{x}\)</span> se distribuirán en el torno a un <em>valor central</em> <span class="math notranslate nohighlight">\(\ket{a} = \ket{[2^t\varphi]} \)</span>.</p>
+<p>Escribiendo <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span>  podemos obtener la <em>distribución de probabilidad</em> <span class="math notranslate nohighlight">\(p(x) = p(\delta, l)\)</span> de medir <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 p(\delta, l) ~~&amp;=&amp;~~ \left\vert \,  \bra{a+ l} \,  \frac{1}{2^{t}}\sum_{x=0}^{2^t-1}   \sum_{y=0}^{2^t-1}  e^{2\pi i (\delta + a -x) y/2^t} \ket{x}  \,  \right\vert^2  ~~ \stackrel{x= a + l}{=} ~~
   \frac{1}{2^{2t}} \left\vert \,  \sum_{y=0}^{2^t-1} \left(e^{2\pi i (\delta-l) /2^t}\right)^y \,  \right\vert^2 
-\end{eqnarray*}\]</div>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
+\\ \rule{0mm}{10mm}
 &amp;=&amp; ~~  \frac{1}{2^{2t}} \left\vert\,  \frac{1- e^{2\pi i  \,  (\delta-l) }}{1- e^{2\pi i (\delta-l)/2^t}} \, \right\vert^2   ~= ~ 
-\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \, 
+\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \,  \\
 \end{eqnarray*}\]</div>
-<div class="math notranslate nohighlight">
-\[
-\geq   \frac{1}{2^{2t}} \left(\frac{2 (\delta-l)}{\pi(\delta-l)/2^t }\right)^2 = \left(\frac{2}{\pi}\right)^2 \sim 0.405
-\]</div>
-<p>donde hemos usado que   <span class="math notranslate nohighlight">\(\pi x\geq \sin(\pi x) \geq 2 x\)</span> para <span class="math notranslate nohighlight">\(x\in [ 0,\pi/2 ]\)</span>.</p>
-<p>A <span class="math notranslate nohighlight">\(\delta\)</span> fijo  hasta <span class="math notranslate nohighlight">\(\delta = 0.5\)</span>, vemos que la probabilidad está <em>picada</em> en <span class="math notranslate nohighlight">\(l=0\)</span>, es decir en <span class="math notranslate nohighlight">\(m=a\)</span>. A partir de ahí, como es de esperar, está picada en <span class="math notranslate nohighlight">\(l=1\)</span>.</p>
+<p>Vamos a graficar esta función para distintos valores de <span class="math notranslate nohighlight">\(l\)</span> a distintos valores de <span class="math notranslate nohighlight">\(\delta\)</span></p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/xprobeigenvalues.png"><img alt="../../_images/xprobeigenvalues.png" src="../../_images/xprobeigenvalues.png" style="width: 400px;" /></a>
 </figure>
-<p>La probabilidad nunca es menor de 0.405 en su máximo.</p>
+<p>Vemos que, efectivamente, hasta <span class="math notranslate nohighlight">\(\delta \leq 0.5\)</span>, la probabilidad está <em>picada</em> en <span class="math notranslate nohighlight">\(l=0\)</span> es decir en <span class="math notranslate nohighlight">\(x=a\)</span>. Para <span class="math notranslate nohighlight">\(\delta &gt;0.5\)</span>, está picada en <span class="math notranslate nohighlight">\(l=1\)</span>.</p>
+<p>En cualqier caso, la probabilidad nunca es menor de 0.405 en su máximo.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \,  
+ = 
+   \frac{1}{2^{2t}} \left(\frac{2 (\delta-l)}{\pi(\delta-l)/2^t }\right)^2 = \left(\frac{2}{\pi}\right)^2 \sim 0.405
+\]</div>
+<p>donde hemos usado que   <span class="math notranslate nohighlight">\(\pi x\geq \sin(\pi x) \geq 2 x\)</span> para <span class="math notranslate nohighlight">\(x\in [ 0,\pi/2 ]\)</span>.</p>
 <p>A <span class="math notranslate nohighlight">\(l = 0\)</span> fijo, la probabilidad de encontrar <span class="math notranslate nohighlight">\(m=a+0=a\)</span> es 1 cuando <span class="math notranslate nohighlight">\(\delta=0\)</span> y decrece con <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/xmaxprobeigen.png"><img alt="../../_images/xmaxprobeigen.png" src="../../_images/xmaxprobeigen.png" style="width: 400px;" /></a>
@@ -956,7 +996,7 @@ phi1= 0.3875  -&gt;   2^t*phi1 = a1 + delta1 =  3.1  , a1 = 1 =&gt; 011
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/531346cb0cfd4ec6d836c2fd8ab8e99762fb772a2648967f5caa268e336bd6aa.png" src="../../_images/531346cb0cfd4ec6d836c2fd8ab8e99762fb772a2648967f5caa268e336bd6aa.png" />
+<img alt="../../_images/b3d95ff592a936dee17da56b2dda563b10085a0458f5bad1ed8a2471e436456d.png" src="../../_images/b3d95ff592a936dee17da56b2dda563b10085a0458f5bad1ed8a2471e436456d.png" />
 </div>
 </div>
 </section>
@@ -1055,8 +1095,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <p><strong>Prueba</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e6edc9e3-2d25-4f9e-911f-75155d5b0076">
-<span class="eqno">(25)<a class="headerlink" href="#equation-e6edc9e3-2d25-4f9e-911f-75155d5b0076" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-45b2b973-e789-4f16-a7c7-f4358730896d">
+<span class="eqno">(25)<a class="headerlink" href="#equation-45b2b973-e789-4f16-a7c7-f4358730896d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
 \nonumber\\
  &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
@@ -1067,8 +1107,8 @@ U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^
 <p>Podríamos sencillamente aplicar el algoritmo de estimación de fase para <em>extraer la serie</em> de valores de <span class="math notranslate nohighlight">\(\varphi_s = s/r\)</span> y de ahí recuperar el <em>orden modular</em> <span class="math notranslate nohighlight">\(r\)</span>.</p>
 <p>El problema es que, para generar <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span> necesitamos conocer <span class="math notranslate nohighlight">\(r\)</span>, que, <em>precisamente, es el dato  que buscamos</em></p>
 <p>Una <em>observación importante</em> nos permite soslayar esta dificultad: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-661f70fb-1d34-468e-b456-8f9aa4a5e8af">
-<span class="eqno">(26)<a class="headerlink" href="#equation-661f70fb-1d34-468e-b456-8f9aa4a5e8af" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-f7b05d62-1a0c-472e-87e8-a84903b46855">
+<span class="eqno">(26)<a class="headerlink" href="#equation-f7b05d62-1a0c-472e-87e8-a84903b46855" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
 \rule{0mm}{12mm}
 &amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
@@ -1201,7 +1241,7 @@ U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5c48c256185ee6acb4dd9954a3b483cb71dc26661fd4c70758e85ac9ff2c667f.png" src="../../_images/5c48c256185ee6acb4dd9954a3b483cb71dc26661fd4c70758e85ac9ff2c667f.png" />
+<img alt="../../_images/c06265bd958c97512ee90a81de9d815e4166cb7d86de37f3d962b343ff63d898.png" src="../../_images/c06265bd958c97512ee90a81de9d815e4166cb7d86de37f3d962b343ff63d898.png" />
 </div>
 </div>
 <p>de aquí obtenemos la lista de valores enteros <span class="math notranslate nohighlight">\(2^t s/r\)</span></p>
