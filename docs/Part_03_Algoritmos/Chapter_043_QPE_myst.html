@@ -473,7 +473,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-modular">Orden  modular</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-programar">¡A programar!</a></li>
 </ul>
 </li>
 </ul>
@@ -628,15 +628,15 @@ U^\dagger_{TFC} \frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delt
 <li><p>Supongamos que  <u><span class="math notranslate nohighlight">\(\underline{\delta = 0}\)</span></u>. Es decir, que <span class="math notranslate nohighlight">\(2^t\varphi\)</span> sea un entero <span class="math notranslate nohighlight">\(a\in S_t = \{0, \ldots, 2^t-1\}\)</span>.</p></li>
 </ul>
 <p>Entonces el resultado
-sería  <b>exactamente</b> <span class="math notranslate nohighlight">\(\ket{\Phi} = \ket{a} = \ket{2^t\varphi}\)</span></p>
+sería  <i>exactamente</i> <span class="math notranslate nohighlight">\(\ket{\Phi} = \ket{a} = \ket{2^t\varphi}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 \ket{\Phi} &amp;=&amp;  \sum_{x=0}^{2^t-1} \frac{1}{2^{t}}  \left(\sum_{y=0}^{2^t-1}  e^{2\pi i (a-x) y/2^t} \right)\ket{x}  \\  \rule{0mm}{10mm}
 &amp;=&amp;  \sum_{x=0}^{2^t-1}  \frac{1}{2^{t}} \left(2^t \delta_{x,a} \right)\ket{x}\\ \rule{0mm}{8mm}
 &amp;=&amp; \ket{a}
 \end{eqnarray*}\]</div>
-<p>Midiendo el primer registro obtendríamos, <strong>con probabilidad 1</strong>, el registro binario del número <span class="math notranslate nohighlight">\(a\in[0, 2^t-1]\)</span></p>
-<p>Escribiendo <span class="math notranslate nohighlight">\(a\)</span> en base decimal, y normalizando por <span class="math notranslate nohighlight">\(2^t\)</span>, recuperaríamos la <em>fase</em> buscada <strong>de forma exacta</strong></p>
+<p>Midiendo el primer registro obtendríamos, con probabilidad 1, el registro binario del número <span class="math notranslate nohighlight">\(a\in[0, 2^t-1]\)</span></p>
+<p>Escribiendo <span class="math notranslate nohighlight">\(a\)</span> en base decimal, y normalizando por <span class="math notranslate nohighlight">\(2^t\)</span>, recuperaríamos la <em>fase</em> buscada de <em>forma exacta</em></p>
 <div class="math notranslate nohighlight">
 \[
  \varphi = \frac{a}{2^t}  \in [0,1)
@@ -711,8 +711,8 @@ Demostración<div class="sd-summary-down docutils">
 \]</div>
 <p class="sd-card-text">donde hemos usado que   <span class="math notranslate nohighlight">\(\pi x\geq \sin(\pi x) \geq 2 x\)</span> para <span class="math notranslate nohighlight">\(x\in [ 0,\pi/2 ]\)</span>.</p>
 </div>
-</details><p>Si varías <span class="math notranslate nohighlight">\(t\)</span> comprobaras que:  <strong>la anchura <span class="math notranslate nohighlight">\(t\)</span> del circuito de contaje</strong> determina la dispersion de la curva de probabilidad en torno al valor medio.</p>
-<p>Es decir, si queremos acotar por debajo la probabilida de aproximar el valor correcto de <span class="math notranslate nohighlight">\(\varphi\)</span>, la variable relevante que debemos controlar es la anchura <span class="math notranslate nohighlight">\(t\)</span> (ver Nielsen p. 224)</p>
+</details><p>Si varías <span class="math notranslate nohighlight">\(t\)</span> comprobaras que:  la anchura <span class="math notranslate nohighlight">\(t\)</span> del circuito de contaje determina la dispersion de la curva de probabilidad en torno al valor medio. A mayor valor de <span class="math notranslate nohighlight">\(t\)</span>, la distribución se vuelve más estrecha.</p>
+<p>Si queremos acotar por debajo la probabilidad de encontrar un valor de <span class="math notranslate nohighlight">\(x\)</span> que aproxime el valor correcto de <span class="math notranslate nohighlight">\(2^t\varphi\)</span> dentro de una cierta tolerancia, debemos aumentar <span class="math notranslate nohighlight">\(t\)</span> los suficiente. El siguiente teorema aclara definitivamente cuánto hay que hacerlo</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
@@ -720,7 +720,7 @@ Demostración<div class="sd-summary-down docutils">
 <div class="sd-card-body docutils">
 <p class="sd-card-text">El algoritmo QPE (Quantum Phase Estimation) es capaz de producir</p>
 <ul class="simple">
-<li><p class="sd-card-text">una <i>estimación <span class="math notranslate nohighlight">\(m\)</span> de orden <span class="math notranslate nohighlight">\(k\)</span></i>  para la fase <span class="math notranslate nohighlight">\(\varphi\)</span> (en el sentido de que  <span class="math notranslate nohighlight">\(|\varphi- m/2^t |&lt;2^{-k}\)</span>)</p></li>
+<li><p class="sd-card-text">una <i>estimación <span class="math notranslate nohighlight">\(x\)</span> de orden <span class="math notranslate nohighlight">\(k\)</span></i>  para la fase <span class="math notranslate nohighlight">\(\varphi\)</span> (en el sentido de que  <span class="math notranslate nohighlight">\(|\varphi- x/2^t |&lt;2^{-k}\)</span>)</p></li>
 <li><p class="sd-card-text">con una  probabilidad <span class="math notranslate nohighlight">\(1-\epsilon\)</span></p></li>
 </ul>
 <p class="sd-card-text">tomando una anchura del registro de contaje, <span class="math notranslate nohighlight">\(t\)</span>,  suficientemente alta</p>
@@ -730,7 +730,16 @@ t \geq k  + \left[ \log\left(1 + \frac{1}{2\epsilon}\right) \right] \label{tedee
 \]</div>
 </div>
 </div>
-</section>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">ver Nielsen Chuang p. 224).</p>
+</div>
+</details></section>
 <section id="ejemplo">
 <h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
 <p>Vamos a estudiar esta distribución analizando el operador unitario de fase</p>
@@ -852,7 +861,7 @@ phi1= 0.375  -&gt;   2^t*phi1 = a1 + delta1 =  3.0  , a1 = 3 =&gt; 011
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b3f47bd2d7df58a4a114ca78c2676f6ba16ccf3f829f49f6457512f88d96b7ef.png" src="../../_images/b3f47bd2d7df58a4a114ca78c2676f6ba16ccf3f829f49f6457512f88d96b7ef.png" />
+<img alt="../../_images/64aa52581536141779a7a675b9e5fb533c5054ab61a3c32391ff1e9efc7451e9.png" src="../../_images/64aa52581536141779a7a675b9e5fb533c5054ab61a3c32391ff1e9efc7451e9.png" />
 </div>
 </div>
 <p>De aquí extraemos la aproximación que hemos obtenido.</p>
@@ -899,16 +908,15 @@ el error relativo es delta/(2^t phi) = -0.022727272727272645
 </section>
 <section id="y-si-no-podemos-preparar-un-autoestado">
 <h3>¿y si no podemos preparar  un autoestado?<a class="headerlink" href="#y-si-no-podemos-preparar-un-autoestado" title="Permalink to this heading">#</a></h3>
-<p>Una de las premisas usadas en la sección anterior es la posibilidad de preparar el autoestado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> de <span class="math notranslate nohighlight">\(U\)</span></p>
-<p>En caso contrario, ¿qué <em>resultado</em> obtenemos después de usar el circuito de estimación cuántica de fase?</p>
-<p>Apliquemos el circuito anterior a un vector arbitrario <span class="math notranslate nohighlight">\(\ket{b}\)</span>. Genéricamente dicho vector admitirá una expansión de la forma</p>
+<p>Una de las premisas usadas en la sección anterior es la posibilidad de preparar el autoestado <span class="math notranslate nohighlight">\(\ket{u}\)</span> de <span class="math notranslate nohighlight">\(U\)</span></p>
+<p>En caso contrario, ¿qué <em>resultado</em> obtenemos después de usar el circuito de estimación cuántica de fase?. Vamos a aprovechar el hecho de que el conjunto <span class="math notranslate nohighlight">\(\{\ket{u_i}\}\)</span> de los autoestados de <span class="math notranslate nohighlight">\(U\)</span></p>
+<div class="math notranslate nohighlight">
+\[U\ket{u_i} = e^{2\pi i\varphi_i}\ket{u_i}\]</div>
+<p>forman una base del espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span>. Apliquemos el circuito anterior a un vector arbitrario <span class="math notranslate nohighlight">\(\ket{b}\)</span>. Genéricamente dicho vector admitirá una expansión de la forma</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{b} = \sum_{i=1}^N c_i \ket{u_i}
 \]</div>
-<p>en la <em>base de autovectores</em> de <span class="math notranslate nohighlight">\(U\)</span></p>
-<div class="math notranslate nohighlight">
-\[U\ket{u_i} = e^{2\pi i\varphi_i}\ket{u_i}\]</div>
 <p>Debido a la linealidad del circuito QPE, a la salida del mismo encontraremos una combinación lineal de estados
 de la forma</p>
 <div class="amsmath math notranslate nohighlight">
@@ -921,14 +929,14 @@ U_{QPE}\, :\,\ket{0}_t \left(\sum_{i=1}c_i\ket{u_i}\right) &amp;=&amp; \sum_{i=1
 \\
 &amp;=&amp; \sum_{i\in S_n}\sum_{x\in S_t} c_i \braket{x}{\Phi_i} \ket{x}\ket{u_i} 
 \end{eqnarray*}\]</div>
-<p>Midiendo en el primer registro <span class="math notranslate nohighlight">\(\ket{x}\hookrightarrow \ket{m}\)</span> obtendremos un número entero <span class="math notranslate nohighlight">\(\to m \)</span> con probabilidad</p>
+<p>Midiendo en el primer registro  obtendremos un número entero <span class="math notranslate nohighlight">\( x \)</span> asociado a un vector <span class="math notranslate nohighlight">\(\ket{x}\)</span> con probabilidad</p>
 <div class="math notranslate nohighlight">
 \[
-p(m) = \sum_i  |c_i|^2  |\braket{m}{\Phi_i}|^2   = \sum_i  |c_i|^2  p(\delta_i,l_i)
+p(x) = \sum_i  |c_i|^2  |\braket{x}{\Phi_i}|^2   = \sum_i  |c_i|^2  p(\delta_i,l_i)
 \]</div>
-<p>La probabilidad <span class="math notranslate nohighlight">\(p(m)\)</span> es una <strong>suma ponderada de distribuciones</strong> <span class="math notranslate nohighlight">\(p(\delta_i,l_i) =  |\braket{m}{\Phi_i}|^2\)</span>
-con  <span class="math notranslate nohighlight">\(m = a_i + l_i\)</span> <em>picadas</em> en torno  <span class="math notranslate nohighlight">\(l_i = 0\)</span>.</p>
-<p>Si <span class="math notranslate nohighlight">\(t\)</span> se escoge como en el teorema descrito anteriormente, el resultado será una aproximación <span class="math notranslate nohighlight">\(a_i\)</span> a <span class="math notranslate nohighlight">\(2^t\varphi_i\)</span> con una probabilidad de acierto de, al menos, <span class="math notranslate nohighlight">\(|c_i|^2 (1-\epsilon)\)</span>.</p>
+<p><strong>En resumen:</strong> la probabilidad <span class="math notranslate nohighlight">\(p(x)\)</span> es una <em>suma ponderada de distribuciones</em> <span class="math notranslate nohighlight">\(p(\delta_i,l_i) =  |\braket{x}{\Phi_i}|^2\)</span>
+con  <span class="math notranslate nohighlight">\(x = a_i + l_i\)</span> <em>picadas</em> en torno  <span class="math notranslate nohighlight">\(l_i = 0\)</span>.</p>
+<p>Si <span class="math notranslate nohighlight">\(t\)</span> se escoge como en el teorema descrito anteriormente, el resultado será una aproximación <span class="math notranslate nohighlight">\(x\)</span> a alguno de los valores  <span class="math notranslate nohighlight">\(2^t\varphi_i\)</span> con una probabilidad de acierto de, al menos, <span class="math notranslate nohighlight">\(|c_i|^2 (1-\epsilon)\)</span>.</p>
 <p><em>Ejemplo:</em></p>
 <p>Vamos a correr el circuito QPE inicializando para una  combinaciones <span class="math notranslate nohighlight">\(\ket{b} = \cos \theta/2 \ket{0} + \sin \theta/2
  \ket{1}= R_y(\theta)\ket{0}\)</span> de autoestados de <span class="math notranslate nohighlight">\(P(\varphi)\)</span>.</p>
@@ -1010,24 +1018,27 @@ phi1= 0.3875  -&gt;   2^t*phi1 = a1 + delta1 =  3.1  , a1 = 1 =&gt; 011
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;ejecutamos el circuito&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span> <span class="n">M_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
+
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2211190d1e92e0e27a32c64531daf38353ddb9aeaf56bdf5f735a2c1a5339e38.png" src="../../_images/2211190d1e92e0e27a32c64531daf38353ddb9aeaf56bdf5f735a2c1a5339e38.png" />
+<img alt="../../_images/4519c702a0af1c59140e5f5cac0d9dd66b726548498e49fe142bdda2f36fbc8d.png" src="../../_images/4519c702a0af1c59140e5f5cac0d9dd66b726548498e49fe142bdda2f36fbc8d.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="orden-modular">
 <h2>Orden  modular<a class="headerlink" href="#orden-modular" title="Permalink to this heading">#</a></h2>
+<p>A continuación vamos a estudiar un importante problema matemático que está debajo del algoritmo de Shor, que puede formularse como un problema de estimación de fase.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Definición</b>: </i>Orden modular</i></p>
@@ -1037,11 +1048,12 @@ phi1= 0.3875  -&gt;   2^t*phi1 = a1 + delta1 =  3.1  , a1 = 1 =&gt; 011
 Definimos el <b> orden de <span class="math notranslate nohighlight">\(m\)</span> módulo <span class="math notranslate nohighlight">\(N\)</span></b> como el  menor entero positivo, <span class="math notranslate nohighlight">\(r\)</span>, tal que <span class="math notranslate nohighlight">\(m^r = 1\)</span> mod<span class="math notranslate nohighlight">\(N\)</span>.</p>
 </div>
 </div>
-<p><strong>Problema</strong>: dados <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(N\)</span>,   hallar <span class="math notranslate nohighlight">\(r\)</span> con el número mínimo de operaciones.</p>
-<p><em>Ejemplo:</em></p>
+<p><strong>Promesa:</strong> <span class="math notranslate nohighlight">\(U\)</span> es el oráculo de una función modular <span class="math notranslate nohighlight">\((m,N)\)</span> de orden <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<p><strong>Problema:</strong>   hallar <span class="math notranslate nohighlight">\(r\)</span> con el número mínimo de operaciones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">}</span>   <span class="c1"># comprimos con 15</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Ejemplo&#39;</span>
+<span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">}</span>   <span class="c1"># comprimos con 15</span>
 <span class="n">m</span><span class="o">=</span><span class="mi">7</span>
 <span class="n">N</span><span class="o">=</span><span class="mi">15</span>
 <span class="p">[</span><span class="n">m</span><span class="o">**</span><span class="n">i</span><span class="o">%</span><span class="k">N</span> for i in range(17)]
@@ -1056,25 +1068,19 @@ Definimos el <b> orden de <span class="math notranslate nohighlight">\(m\)</span
 </div>
 <div class="note admonition">
 <p class="admonition-title">Nota</p>
-<p>En general, si <span class="math notranslate nohighlight">\(N=2^n\)</span>, clásicamente no existen algoritmos capaces de resolver este problema en un número  de pasos que sea <i> polinómico en <span class="math notranslate nohighlight">\(n\)</span></i>.</p>
-<p>Por el contrario, verificar si un <span class="math notranslate nohighlight">\(r\)</span> es solución es fácil.</p>
-<p>Nos hallamos ante un problema de tipo NP.</p>
+<ul class="simple">
+<li><p>En general, si <span class="math notranslate nohighlight">\(N=2^n\)</span>, clásicamente no existen algoritmos capaces de resolver este problema en un número  de pasos que sea <i> polinómico en <span class="math notranslate nohighlight">\(n\)</span></i>.
+Por el contrario, verificar si un <span class="math notranslate nohighlight">\(r\)</span> es solución es fácil.     Nos hallamos ante un problema de tipo NP.</p></li>
+<li><p>Como  <span class="math notranslate nohighlight">\(m^r = 1 = m^0\)</span>, a partir de ese momento la serie de valores <span class="math notranslate nohighlight">\(\{m^0,m^1,\ldots m^{r-1}\}\)</span> se repite.
+Por tanto, hallar el <i> orden modular </i> de <span class="math notranslate nohighlight">\(m\)</span> módulo <span class="math notranslate nohighlight">\(N\)</span>  es lo mismo que hallar la <i> periodicidad</i> de la función <span class="math notranslate nohighlight">\(f(x) = m^x\, \)</span>mod<span class="math notranslate nohighlight">\(N\)</span>.</p></li>
+</ul>
 </div>
-<div class="note admonition">
-<p class="admonition-title">Nota</p>
-<p>Como  <span class="math notranslate nohighlight">\(m^r = 1 = m^0\)</span>, a partir de ese momento la serie de valores <span class="math notranslate nohighlight">\(\{m^0,m^1,\ldots m^{r-1}\}\)</span> se repite.
-Por tanto, halla el <i> orden modular </i> de <span class="math notranslate nohighlight">\(m\)</span> módulo <span class="math notranslate nohighlight">\(N\)</span>  es lo mismo que hallar la <i> periodicidad</i> de la función <span class="math notranslate nohighlight">\(f(x) = m^x\, \)</span>mod<span class="math notranslate nohighlight">\(N\)</span>.</p>
-<p>Sin embargo, si tratamos de fabricar un oráculo para el operador unitario <span class="math notranslate nohighlight">\(U_f:\ket{x}\ket{y} \to \ket{x}\ket{m^x y \,{\rm mod} N}\)</span> nos encontraremos con una complejidad exponencial</p>
-</div>
-<p>Sea <span class="math notranslate nohighlight">\(U ; \Hil_n \to \Hil_n \)</span> un oráculo que actúa en la forma siguiente sobre la base <span class="math notranslate nohighlight">\(\{\ket{y}\}\)</span>  donde <span class="math notranslate nohighlight">\(y \in S_n = {0,1,...,N-1}\)</span>.</p>
+<p>Si tratamos de fabricar un oráculo para el operador unitario <span class="math notranslate nohighlight">\(U_f:\ket{x}\ket{y} \to \ket{x}\ket{m^x y \,{\rm mod} N}\)</span> nos encontraremos con una complejidad exponencial. En este caso, sin embargo, la estructura del problema permite una simplificación.</p>
+<p>Supongamos que sabemos implementar un oráculo <span class="math notranslate nohighlight">\(U ; \Hil_n \to \Hil_n \)</span>  que actúa en la forma siguiente sobre la base <span class="math notranslate nohighlight">\(\{\ket{y}\}\)</span>  donde <span class="math notranslate nohighlight">\(y \in S_n = {0,1,...,N-1}\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 U\ket{y }  = \ket{m y \,{\rm mod} N}
 \]</div>
-<div class="note admonition">
-<p class="admonition-title">Nota</p>
-<p>Un oráculo general que funcione para cualquier <span class="math notranslate nohighlight">\((m,N)\)</span> no es conocido.</p>
-</div>
 <p>La composición  <span class="math notranslate nohighlight">\(U^x = \underbrace{U\cdot U \cdots U}_{x}\)</span> genera todos los vectores que buscamos</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1089,20 +1095,16 @@ U^x\ket{y }  = U^{x-1}\ket{m y \,{\rm mod} N} =  U^{x-2}\ket{m^2 y \,{\rm mod} N
 U_f \ket{x}\ket{1}  = \ket{x}U^x\ket{1} = \ket{x}\ket{m^x \, {\rm mod} N }
 \]</div>
 <p>y buscar la periodicidad de <span class="math notranslate nohighlight">\(f(x+r) = f(x)\)</span> siguiento el método de la lección anterior.</p>
-<div class="note admonition">
-<p class="admonition-title">Notar</p>
-<ul class="simple">
-<li><p>La acción de <span class="math notranslate nohighlight">\(U_f\)</span> parece mucho a la de un operador controlado <span class="math notranslate nohighlight">\(\cg{U}\ket{x}\ket{y} = \ket{x}U^x\ket{y}\)</span>. Sin embargo ahora <span class="math notranslate nohighlight">\(x = 0,1,...,2^t-1\)</span> es un entero. El circuito que implementa <span class="math notranslate nohighlight">\(U_f\)</span> es precisamente el que se utiliza en el circuito de QPE.</p></li>
-<li><p>Con esta observación vemos que el circuito de QPE se parece mucho al que hemos usado en la búsqueda de un período en el tema anterior.</p></li>
-</ul>
-</div>
-<p>Vamos a aplicar el  método de <i> Estimación Cuántica de Fase</i> (QPE) al operador <span class="math notranslate nohighlight">\(U\)</span></p>
-<p>Recordemos que dicho método <u>nos pide evaluar el operador <span class="math notranslate nohighlight">\(U\)</span> sobre sus autovectores</u> <span class="math notranslate nohighlight">\(U\ket{u} = e^{i\varphi}\ket{u}\)</span>.</p>
-<p>Si <em>conociésemos</em> <span class="math notranslate nohighlight">\(r\)</span> podríamos construir el siguiente conjunto de <span class="math notranslate nohighlight">\(r\)</span>  vectores <span class="math notranslate nohighlight">\(\ket{u_s}\)</span> con <span class="math notranslate nohighlight">\(s=0,...,r-1\)</span></p>
+<p>La acción de <span class="math notranslate nohighlight">\(U_f\)</span> parece mucho a la de un operador controlado <span class="math notranslate nohighlight">\(\cg{U}\ket{x}\ket{y} = \ket{x}U^x\ket{y}\)</span>. Sin embargo ahora <span class="math notranslate nohighlight">\(x = 0,1,...,2^t-1\)</span> es un entero.</p>
+<p>Este operador controlado es exactamente  el que se utiliza en el circuito de QPE.
+Con esta observación vamos a aplicar el  método de <i> Estimación Cuántica de Fase</i> (QPE) al operador <span class="math notranslate nohighlight">\(U\)</span></p>
+<p>Recordemos que dicho método <u>nos pide evaluar el operador <span class="math notranslate nohighlight">\(U\)</span> sobre sus autovectores</u> <span class="math notranslate nohighlight">\(U\ket{u} = e^{i\varphi}\ket{u}\)</span>. Pero… ¿conocemos estos autovectores?
+Resulta que, si <em>conociésemos</em> <span class="math notranslate nohighlight">\(r\)</span> podríamos construir el siguiente conjunto de <span class="math notranslate nohighlight">\(r\)</span>  vectores <span class="math notranslate nohighlight">\(\ket{u_s}\)</span> con <span class="math notranslate nohighlight">\(s=0,...,r-1\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 \ket{u_s} = \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i \frac{s }{r}j} U^j\ket{1}
 \]</div>
+<p>Nótese el papel importante que juega ahora el estado de la base <span class="math notranslate nohighlight">\(\ket{1} = \ket{0...01}\)</span></p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
@@ -1111,7 +1113,7 @@ U_f \ket{x}\ket{1}  = \ket{x}U^x\ket{1} = \ket{x}\ket{m^x \, {\rm mod} N }
 <p class="sd-card-text">Los vectores   <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span>   forman un conjunto de <i>autovectores</i> de  <span class="math notranslate nohighlight">\(U\)</span> con <i>autovalores</i> <span class="math notranslate nohighlight">\(e^{2\pi i s/r}~\)</span>. Es decir</p>
 <div class="math notranslate nohighlight">
 \[
-U\ket{ u_s} = e^{i\varphi_s} \ket{u_s}
+U\ket{ u_s} = e^{2 \pi i\varphi_s} \ket{u_s}
 \]</div>
 <p class="sd-card-text">con
 $<span class="math notranslate nohighlight">\(
@@ -1119,9 +1121,15 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 </div>
 </div>
-<p><strong>Prueba</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-03e94b21-ce49-471c-bad0-bc0f3d530d3b">
-<span class="eqno">(25)<a class="headerlink" href="#equation-03e94b21-ce49-471c-bad0-bc0f3d530d3b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<div class="amsmath math notranslate nohighlight" id="equation-483d77b3-378e-4bed-8940-2ee560a39be1">
+<span class="eqno">(25)<a class="headerlink" href="#equation-483d77b3-378e-4bed-8940-2ee560a39be1" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
 \nonumber\\
  &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
@@ -1129,35 +1137,37 @@ U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^
 \nonumber\\
 &amp;=&amp; e^{2\pi i s/r} \ket{u_s}\, .  \rule{0mm}{8mm}
 \end{eqnarray}\]</div>
-<p>Podríamos sencillamente aplicar el algoritmo de estimación de fase para <em>extraer la serie</em> de valores de <span class="math notranslate nohighlight">\(\varphi_s = s/r\)</span> y de ahí recuperar el <em>orden modular</em> <span class="math notranslate nohighlight">\(r\)</span>.</p>
-<p>El problema es que, para generar <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span> necesitamos conocer <span class="math notranslate nohighlight">\(r\)</span>, que, <em>precisamente, es el dato  que buscamos</em></p>
-<p>Una <em>observación importante</em> nos permite soslayar esta dificultad: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-bd0034e8-8891-4947-8c4c-f0afc6ee9bc4">
-<span class="eqno">(26)<a class="headerlink" href="#equation-bd0034e8-8891-4947-8c4c-f0afc6ee9bc4" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+</div>
+</details><p>El problema es que <span class="math notranslate nohighlight">\(r\)</span> es, precisamente, ¡el dato que queremos encontrar!
+Una observación importante que nos permite soslayar esta dificultad es la siguiente: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-934a41a3-fdc9-4894-ae2f-287570287013">
+<span class="eqno">(26)<a class="headerlink" href="#equation-934a41a3-fdc9-4894-ae2f-287570287013" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
 \rule{0mm}{12mm}
 &amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
 &amp;=&amp; \ket{1}
 \end{eqnarray}\]</div>
-<p><u>¡El resultado es asombrosamente simple!</u>:</p>
-<p>si inicializamos el circuito de estimación de fase con el estado <span class="math notranslate nohighlight">\(\ket{0}_t\ket{1}_n\)</span> a la salida obtendremos una superposición uniforme</p>
+<p>¡El resultado es asombrosamente simple!:
+si inicializamos el circuito de estimación de fase con el estado <span class="math notranslate nohighlight">\(\ket{0}_t\ket{1}_n\)</span> a la salida obtendremos una superposición uniforme</p>
 <div class="math notranslate nohighlight">
 \[
-U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1} \ket{m_s}\otimes\ket{u_s}
+U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1} \ket{x_s}\otimes\ket{u_s}
 \]</div>
-<p>donde <span class="math notranslate nohighlight">\(m_s = 2^t s/r\)</span> siempre que <span class="math notranslate nohighlight">\(t\)</span> se haya elegido de forma que <span class="math notranslate nohighlight">\(~2^t s/r \in {\mathbb Z}\)</span> sea entero.</p>
+<p>donde <span class="math notranslate nohighlight">\(x_s = 2^t s/r\)</span> siempre que <span class="math notranslate nohighlight">\(t\)</span> se haya elegido de forma que todos los número <span class="math notranslate nohighlight">\(~2^t s/r \in {\mathbb Z}\)</span> sean enteros</p>
 <center> 
 <img src="./figuras/Orden_modular.png" width='60%' style='margin:left'/>
 </center>
-<section id="id1">
-<h3>Ejemplo:<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<section id="a-programar">
+<h3>¡A programar!<a class="headerlink" href="#a-programar" title="Permalink to this heading">#</a></h3>
 <p>Necesitamos un oráculo que implemente la operación</p>
 <div class="math notranslate nohighlight">
-\[U^{x }\ket{y} = \ket{m^x  y \,{\rm mod} N} \]</div>
+\[U\ket{y} = \ket{m  y \,{\rm mod} N} \]</div>
 <p>El siguiente código implementa este oráculo para <span class="math notranslate nohighlight">\(N=15\)</span> y <span class="math notranslate nohighlight">\(m\in \{2,4,7,8,11,13\}\)</span> coprimos, y lo convierte en una puerta controlada</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">c_amod15</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+
+<span class="k">def</span> <span class="nf">c_amod15</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">power</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Controlled multiplication by a mod 15&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">13</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;a&#39; must be 2,4,7,8,11 or 13&quot;</span><span class="p">)</span>
@@ -1186,7 +1196,6 @@ U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1
 </div>
 </div>
 </div>
-<p>Función definida en <a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/shor.html">Qiskit Textbook</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_amod15</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span> <span class="p">)</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
@@ -1200,6 +1209,13 @@ U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1
 </div>
 <img alt="../../_images/f8e410c73b3a92cfc763e9ed85d648b581e66e32521eb9b7b32439558e68bf8c.png" src="../../_images/f8e410c73b3a92cfc763e9ed85d648b581e66e32521eb9b7b32439558e68bf8c.png" />
 </div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<ul class="simple">
+<li><p>Función definida en <a class="reference external" href="https://qiskit.org/textbook/ch-algorithms/shor.html">Qiskit Textbook</a></p></li>
+<li><p>No hay una prescripción general para valores arbitrarios de <span class="math notranslate nohighlight">\(m\)</span> y <span class="math notranslate nohighlight">\(N\)</span> que no pase por escribir toda la tabla de verdad. No queremos eso porque sabemos que no es eficiente.</p></li>
+</ul>
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
@@ -1235,11 +1251,6 @@ U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1
 <span class="c1"># aplicamos la QFT^-1 que está definida en macro.py </span>
 <span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TFC_adj</span><span class="p">(</span><span class="n">t</span><span class="p">),</span><span class="n">qr</span><span class="p">)</span>
 
-<span class="c1"># podemos hacerlo usando la librería de qiskit </span>
-<span class="c1">#from qiskit.circuit.library import QFT</span>
-<span class="c1">#qpe.append(QFT(len(qr),do_swaps=True).inverse(),qr)</span>
-
-
 <span class="n">qc</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qr</span><span class="p">,</span><span class="n">cr</span><span class="p">)</span>
 
 <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
@@ -1253,20 +1264,20 @@ U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1
 <p>Ejecutamos el circuito y listamos los suceso más probables</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">M_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;ejecutamos el circuito&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span><span class="p">,</span> <span class="n">plot_bloch_multivector</span>
 
-<span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">M_simulator</span><span class="p">,</span><span class="n">shots</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">)</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
-<span class="n">counts</span>
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8f76b55341d9d21dd1fb2723b6883badec3c6eace118fa597d6d1059dfd554b3.png" src="../../_images/8f76b55341d9d21dd1fb2723b6883badec3c6eace118fa597d6d1059dfd554b3.png" />
+<img alt="../../_images/bbe54941b4482e6ed1810f1b9f4c7dbcc6526c89d7e2ad55a5311c7d72fdce9a.png" src="../../_images/bbe54941b4482e6ed1810f1b9f4c7dbcc6526c89d7e2ad55a5311c7d72fdce9a.png" />
 </div>
 </div>
 <p>de aquí obtenemos la lista de valores enteros <span class="math notranslate nohighlight">\(2^t s/r\)</span></p>
@@ -1408,7 +1419,7 @@ el valor entero del promedio = 4
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orden-modular">Orden  modular</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ejemplo:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-programar">¡A programar!</a></li>
 </ul>
 </li>
 </ul>
