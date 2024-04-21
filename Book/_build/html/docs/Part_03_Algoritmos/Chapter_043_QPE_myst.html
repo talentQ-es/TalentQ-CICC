@@ -467,8 +467,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-cuantica-de-fase">Estimación Cuántica de Fase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-de-probabilidad">Distribución de probabilidad</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-de-medidas">Distribución de medidas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#y-si-no-podemos-preparar-un-autoestado">¿y si no podemos preparar  un autoestado?</a></li>
 </ul>
 </li>
@@ -488,7 +488,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 17, 2024 | 7 min read</p>
+<div><p>Apr 21, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -520,19 +520,18 @@ document.write(`
 </div>
 <section id="estimacion-cuantica-de-fase">
 <h2>Estimación Cuántica de Fase<a class="headerlink" href="#estimacion-cuantica-de-fase" title="Permalink to this heading">#</a></h2>
-<p>Cuando se construya un computador cuántico capaz de realizar una Transformada de Fourier Cuántica, una de las aplicaciones más frecuentes será la Estimación Cuántica de Fase. Veamos cómo funciona.</p>
+<p>Cuando se construya un computador cuántico capaz de realizar una Transformada de Fourier Cuántica, una de las aplicaciones más frecuentes será la <em>Estimación Cuántica de Fase</em>. Veamos cómo funciona.</p>
 <p>Sea <span class="math notranslate nohighlight">\(U\)</span> un operador unitario y  <span class="math notranslate nohighlight">\(\ket{u}\)</span> un autovector del espacio de Hilbert <span class="math notranslate nohighlight">\(\Hil\)</span> de dimensión <span class="math notranslate nohighlight">\(n\)</span>.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Lema</b>:</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">por ser unitario, su autovalor es una fase compleja<br />
-<cr>
-<cr>
-$<span class="math notranslate nohighlight">\(
+<p class="sd-card-text">por ser unitario, su autovalor es una fase compleja</p>
+<div class="math notranslate nohighlight">
+\[
 U \ket{u} = e^{2\pi i\varphi} \ket{u}
-\)</span>$</p>
+\]</div>
 </div>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -562,17 +561,16 @@ Demostración<div class="sd-summary-down docutils">
 \[
 e^{i\varphi} = e^{i(\lambda_1 + \lambda_2 +...+\lambda_n)}
 \]</div>
-<p class="sd-card-text">s&gt;
-&lt;/detail</p>
+<p class="sd-card-text">s&gt;</p>
 </div>
-</details><p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Promesa</strong>: <em>podemos preparar</em>  <span class="math notranslate nohighlight">\(\ket{u}\)</span> y aplicar el operador <span class="math notranslate nohighlight">\(U\)</span> <u>tantas veces como sea necesario</u></p>
+</details><p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Promesa</strong>: <em>podemos preparar</em> el autoestado  <span class="math notranslate nohighlight">\(\ket{u}\)</span> y aplicar el operador <span class="math notranslate nohighlight">\(U\)</span> <u>tantas veces como sea necesario</u></p>
 <p><span class="math notranslate nohighlight">\(\Rightarrow~\)</span> <strong>Problema</strong>:  calcular  la <u><em>mejor aproximación posible</em></u> a <span class="math notranslate nohighlight">\(\varphi\)</span>.</p>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
 <p>Los autovalores  <span class="math notranslate nohighlight">\(\lambda = e^{i2\pi \varphi}=e^{i2\pi (\varphi+n)}\)</span>  son iguales, para cualquier <span class="math notranslate nohighlight">\(n\in {\mathbb Z}\)</span> entero. Por tanto, será suficiente considerar valores de <span class="math notranslate nohighlight">\(\varphi\)</span> en el intervalo</p>
 <div class="math notranslate nohighlight">
 \[\varphi \in [0,1)\]</div>
-<p>para generar <i>todos</i> los  posibles autovalores <span class="math notranslate nohighlight">\(\lambda\)</span> distintos.</p>
+<p>para generar <i>todos</i> los  posibles autovalores <span class="math notranslate nohighlight">\(\lambda\)</span> distintos</p>
 </div>
 <p>El circuito  QPE (“Quantum Phase Estimation”) viene representado en la figura,  donde el primer registro tiene dimensión <span class="math notranslate nohighlight">\(t\)</span> y la entrada es el estado <span class="math notranslate nohighlight">\(\ket{0}_t\otimes \ket{u}\)</span>.</p>
 <ul class="simple">
@@ -598,7 +596,7 @@ e^{i\varphi} = e^{i(\lambda_1 + \lambda_2 +...+\lambda_n)}
  \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} U^{y}\ket{u}  &amp;~= ~&amp;  \frac{1}{2^{t/2}} \sum_{y\in S_t} \ket{y} \otimes e^{2\pi i \varphi y}  \ket{u}  =  \frac{1}{2^{t/2}} \sum_{y\in S_t}e^{2\pi i \varphi y}  \ket{y} \otimes   \ket{u}   \\ \rule{0mm}{12mm}
  &amp;~\equiv ~&amp;   \frac{1}{2^{t/2}} \sum_{y\in S_t} e^{2\pi i (2^t \varphi)  y/2^t} \ket{y}\otimes \ket{u}  \label{fase1}  
 \end{eqnarray*}\]</div>
-<p>Como de costumbre, el segundo registro ya ha realizado su labor y podemos ignorarlo (es una ancilla). De modo que nos vamos a concentrar en el registro de contaje, de <span class="math notranslate nohighlight">\(t\)</span> cúbits. Según el circuito, nos falta por aplicar la transformada de Fourier inversa. Antes de hacerlo vamos a notar que <span class="math notranslate nohighlight">\(2^t\varphi\)</span> es un número que podemos escribir de la siguiente forma, separando la parte entera <span class="math notranslate nohighlight">\(a\)</span>, de la <em>mantisa</em> <span class="math notranslate nohighlight">\(\delta\)</span></p>
+<p>Como de costumbre, el segundo registro ya ha realizado su labor y podemos medirlo o ignorarlo (es una ancilla). De modo que nos vamos a concentrar en el <em>registro de contaje</em>, de <span class="math notranslate nohighlight">\(t\)</span> cúbits. Para completar el circuito sólo nos faltaría aplicar la transformada de Fourier inversa. Antes de hacerlo vamos a notar que <span class="math notranslate nohighlight">\(2^t\varphi\)</span> es, en general, un número real. Vamos a escribirlos separando la <em>parte entera</em> <span class="math notranslate nohighlight">\(a\)</span>, de la <em>mantisa</em> <span class="math notranslate nohighlight">\(\delta\)</span></p>
 <div class="math notranslate nohighlight">
 \[
 2^t \varphi  =a + \delta
@@ -611,20 +609,21 @@ e^{i\varphi} = e^{i(\lambda_1 + \lambda_2 +...+\lambda_n)}
 <li><p><span class="math notranslate nohighlight">\( 2^3 \varphi = 3.5~ \Rightarrow a=3~,~\delta = 0.5\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\( 2^4 \varphi = 7  ~~~ \Rightarrow a=7~,~\delta = 0\)</span></p></li>
 </ul>
-<p>Vemos que sólo cuando <span class="math notranslate nohighlight">\(t=4\)</span> obtenemos un número entero.     En el fondo esto es así porque <span class="math notranslate nohighlight">\(0.4375 = 7 / 2^{4}\)</span>
-ya lo hemos cocinado así.</p>
-<p>Pero si <span class="math notranslate nohighlight">\(\varphi\)</span> fuese <em>irracional</em> no existiría ningún <span class="math notranslate nohighlight">\(t\)</span> para el cuál <span class="math notranslate nohighlight">\(2^t\varphi\)</span> no tenga mantisa.</p>
+<p>Cuando <span class="math notranslate nohighlight">\(t=4\)</span> obtenemos un número entero.    En realidad  ya lo habíamos cocinado así  <span class="math notranslate nohighlight">\(0.4375 = 7 / 2^{4}\)</span>.
+Pero si <span class="math notranslate nohighlight">\(\varphi\)</span> es <em>irracional</em> no existirá ningún <span class="math notranslate nohighlight">\(t\)</span> para el cuál <span class="math notranslate nohighlight">\(2^t\varphi\)</span> no tenga mantisa.</p>
 </div>
 <p>Ahora aplicamos la TFC inversa, que es igual a la adjunta,  al primer registro</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-U^\dagger_{TFC} \frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} \ket{y} &amp;=&amp;\frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} U^\dagger_{TFC} \ket{y}
+U^\dagger_{TFC} \frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} \ket{y} 
+&amp;~~\stackrel{\hbox{linealidad}}{=} ~~&amp;\frac{1}{\sqrt{2^t}} \sum_{y=0}^{2^t-1} e^{2\pi i  \, (a + \delta) y/2^t} U^\dagger_{TFC} \ket{y}
 \\ \rule{0mm}{10mm}
 ~&amp;=&amp;~ \frac{1}{\sqrt{2^t}}   \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta) y/2^t}\frac{1}{\sqrt{2^t}}\left( \sum_{x=0}^{2^t-1}e^{-2\pi i  yx/2^t}\ket{x} \right)   \\ \rule{0mm}{10mm}
 ~&amp;=&amp;~ \frac{1}{2^{t}} \sum_{x=0}^{2^t-1} \sum_{y=0}^{2^t-1}  e^{2\pi i (a + \delta  -x) y/2^t} \ket{x}  \\
+\rule{0mm}{8mm}
 &amp;~ \equiv ~ &amp; \ket{\Phi}
 \end{eqnarray*}\]</div>
-<p><span class="math notranslate nohighlight">\(\ket{\Phi}\)</span> es el <em>estado final en el registro de contaje</em>. Vamos a analizar su composición.</p>
+<p><span class="math notranslate nohighlight">\(\ket{\Phi}\)</span> es el <em>estado final en el registro de contaje</em>. Vamos a analizar su composición, separando dos casos posibles para <span class="math notranslate nohighlight">\(\varphi\)</span>.</p>
 <ul class="simple">
 <li><p>Supongamos que  <u><span class="math notranslate nohighlight">\(\underline{\delta = 0}\)</span></u>. Es decir, que <span class="math notranslate nohighlight">\(2^t\varphi\)</span> sea un entero <span class="math notranslate nohighlight">\(a\in S_t = \{0, \ldots, 2^t-1\}\)</span>.</p></li>
 </ul>
@@ -654,6 +653,84 @@ sería  <b>exactamente</b> <span class="math notranslate nohighlight">\(\ket{\Ph
 <p>Las amplitudes <span class="math notranslate nohighlight">\(f(x)\)</span> están evaluadas con <span class="math notranslate nohighlight">\(x\in S_t\)</span> números enteros. Pero la expresión es valida para cualquier número real <span class="math notranslate nohighlight">\(x\in {\mathbb R}\)</span>.</p>
 <p>Una medida dará el registro binario de <em>un número entero</em> <span class="math notranslate nohighlight">\(x \in [0,2^t-1)\)</span> con distribución de probabilidad <span class="math notranslate nohighlight">\(p(x) = |f(x)|^2\)</span> centrada en <span class="math notranslate nohighlight">\(a=[2^t\varphi]\)</span>.</p>
 <p>Por tanto, con una sucesión de tiradas podríamos reconstruir la distribución de probabilidad, y su media sería el valor buscado de <span class="math notranslate nohighlight">\(2^t\delta\)</span>.</p>
+<section id="distribucion-de-probabilidad">
+<h3>Distribución de probabilidad<a class="headerlink" href="#distribucion-de-probabilidad" title="Permalink to this heading">#</a></h3>
+<p>Para una mantisa fija, <span class="math notranslate nohighlight">\(\delta \Rightarrow  2^t\varphi = a+\delta\)</span> las distintas medidas del estado resultante <span class="math notranslate nohighlight">\(\ket{x}\)</span> se distribuirán en el torno a <span class="math notranslate nohighlight">\(\ket{a}  \)</span>.</p>
+<p>Escribiendo <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span>  podemos obtener la <em>distribución de probabilidad</em> <span class="math notranslate nohighlight">\(p(x) = p(\delta, l)\)</span> de medir <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+p(\delta, l) = |\braket{a+l}{\Phi}|^2 ~~&amp;=&amp;~~ \left\vert \,  \bra{a+ l} \,  \frac{1}{2^{t}}\sum_{x=0}^{2^t-1}   \sum_{y=0}^{2^t-1}  e^{2\pi i (\delta + a -x) y/2^t} \ket{x}  \,  \right\vert^2  ~~ \stackrel{x= a + l}{=} ~~
+  \frac{1}{2^{2t}} \left\vert \,  \sum_{y=0}^{2^t-1} \left(e^{2\pi i (\delta-l) /2^t}\right)^y \,  \right\vert^2 
+\\ \rule{0mm}{10mm}
+&amp;=&amp; ~~  \frac{1}{2^{2t}} \left\vert\,  \frac{1- e^{2\pi i  \,  (\delta-l) }}{1- e^{2\pi i (\delta-l)/2^t}} \, \right\vert^2   ~= ~ 
+\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \,  \\
+\end{eqnarray*}\]</div>
+<p>donde en la última línea hemos sumado una <a class="reference internal" href="#*https://es.wikipedia.org/wiki/Serie_geom%C3%A9trica"><span class="xref myst">serie geométrica</span></a>.
+Vamos a graficar esta función para distintos valores de <span class="math notranslate nohighlight">\(\delta\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">deltalist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.7</span><span class="p">])</span>
+<span class="n">shift</span><span class="o">=-</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">xlist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">shift</span><span class="p">,</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">shift</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">delta</span> <span class="ow">in</span> <span class="n">deltalist</span><span class="p">:</span>
+    <span class="n">plist</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">delta</span><span class="o">-</span><span class="n">l</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">delta</span><span class="o">-</span><span class="n">l</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="n">t</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">xlist</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xlist</span><span class="p">,</span><span class="n">plist</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;delta = </span><span class="si">{</span><span class="n">delta</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(\delta, t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2d7de4a520d3a33c10adc8461a66f97cc06d12d3d275f6d22f454efaef068c77.png" src="../../_images/2d7de4a520d3a33c10adc8461a66f97cc06d12d3d275f6d22f454efaef068c77.png" />
+</div>
+</div>
+<p>El registo de contaje sólo puede dar <span class="math notranslate nohighlight">\(2^t\)</span> valores distintos que hemos escogido en el intervalo  <span class="math notranslate nohighlight">\(l \in [\hbox{shift},\, 2^{t}-1+\hbox{shift})\)</span>. Puedes mover shift.</p>
+<ul class="simple">
+<li><p>Cuando <span class="math notranslate nohighlight">\(\delta\ll 1\)</span> la distribución está muy picada en torno a <span class="math notranslate nohighlight">\(l=0\)</span>, es decir <span class="math notranslate nohighlight">\(x=a\)</span>.</p></li>
+<li><p>A medida que <span class="math notranslate nohighlight">\(\delta\)</span> se acerca a <span class="math notranslate nohighlight">\(0.5\)</span>  el valor máximo de <span class="math notranslate nohighlight">\(p(\delta,l)\)</span> diminuye, pero nunca es menor que <span class="math notranslate nohighlight">\(0.405\)</span>.</p></li>
+<li><p>Cuando <span class="math notranslate nohighlight">\(\delta &gt;0.5\)</span> la distribución empieza a mostrar que el valor más aproximado para <span class="math notranslate nohighlight">\(2^t\varphi\)</span> es el siguiente, con <span class="math notranslate nohighlight">\(l=1\)</span>. Es decir <span class="math notranslate nohighlight">\(x=a+1\)</span>.</p></li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Demostración<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Que la probabilidad nunca es menor de 0.405 en su máximo se puede probar analíticamente</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \,  
+ \geq 
+   \frac{1}{2^{2t}} \left(\frac{2 (\delta-l)}{\pi(\delta-l)/2^t }\right)^2 = \left(\frac{2}{\pi}\right)^2 \sim 0.405
+\]</div>
+<p class="sd-card-text">donde hemos usado que   <span class="math notranslate nohighlight">\(\pi x\geq \sin(\pi x) \geq 2 x\)</span> para <span class="math notranslate nohighlight">\(x\in [ 0,\pi/2 ]\)</span>.</p>
+</div>
+</details><p>Si varías <span class="math notranslate nohighlight">\(t\)</span> comprobaras que:  <strong>la anchura <span class="math notranslate nohighlight">\(t\)</span> del circuito de contaje</strong> determina la dispersion de la curva de probabilidad en torno al valor medio.</p>
+<p>Es decir, si queremos acotar por debajo la probabilida de aproximar el valor correcto de <span class="math notranslate nohighlight">\(\varphi\)</span>, la variable relevante que debemos controlar es la anchura <span class="math notranslate nohighlight">\(t\)</span> (ver Nielsen p. 224)</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+<p class="sd-card-text"><b>Teorema</b>:</p>
+</div>
+<div class="sd-card-body docutils">
+<p class="sd-card-text">El algoritmo QPE (Quantum Phase Estimation) es capaz de producir</p>
+<ul class="simple">
+<li><p class="sd-card-text">una <i>estimación <span class="math notranslate nohighlight">\(m\)</span> de orden <span class="math notranslate nohighlight">\(k\)</span></i>  para la fase <span class="math notranslate nohighlight">\(\varphi\)</span> (en el sentido de que  <span class="math notranslate nohighlight">\(|\varphi- m/2^t |&lt;2^{-k}\)</span>)</p></li>
+<li><p class="sd-card-text">con una  probabilidad <span class="math notranslate nohighlight">\(1-\epsilon\)</span></p></li>
+</ul>
+<p class="sd-card-text">tomando una anchura del registro de contaje, <span class="math notranslate nohighlight">\(t\)</span>,  suficientemente alta</p>
+<div class="math notranslate nohighlight">
+\[
+t \geq k  + \left[ \log\left(1 + \frac{1}{2\epsilon}\right) \right] \label{tedeene}
+\]</div>
+</div>
+</div>
+</section>
 <section id="ejemplo">
 <h3>Ejemplo<a class="headerlink" href="#ejemplo" title="Permalink to this heading">#</a></h3>
 <p>Vamos a estudiar esta distribución analizando el operador unitario de fase</p>
@@ -775,7 +852,7 @@ phi1= 0.375  -&gt;   2^t*phi1 = a1 + delta1 =  3.0  , a1 = 3 =&gt; 011
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d02165fccc5db96ffde8ea066aea357819496773646b4531486b2bf6dd510173.png" src="../../_images/d02165fccc5db96ffde8ea066aea357819496773646b4531486b2bf6dd510173.png" />
+<img alt="../../_images/b3f47bd2d7df58a4a114ca78c2676f6ba16ccf3f829f49f6457512f88d96b7ef.png" src="../../_images/b3f47bd2d7df58a4a114ca78c2676f6ba16ccf3f829f49f6457512f88d96b7ef.png" />
 </div>
 </div>
 <p>De aquí extraemos la aproximación que hemos obtenido.</p>
@@ -818,51 +895,6 @@ el error relativo es delta/(2^t phi) = -0.022727272727272645
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
 <p>vuelve a ejecutar el circuito cambiando el valor de <span class="math notranslate nohighlight">\(\varphi_0\)</span>.</p>
-</div>
-</section>
-<section id="distribucion-de-medidas">
-<h3>Distribución de medidas<a class="headerlink" href="#distribucion-de-medidas" title="Permalink to this heading">#</a></h3>
-<p>Para una mantisa fija, <span class="math notranslate nohighlight">\(\delta \Rightarrow  \phi = a+\delta\)</span> las distintas medidas del estado resultante <span class="math notranslate nohighlight">\(\ket{x}\)</span> se distribuirán en el torno a un <em>valor central</em> <span class="math notranslate nohighlight">\(\ket{a} = \ket{[2^t\varphi]} \)</span>.</p>
-<p>Escribiendo <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span>  podemos obtener la <em>distribución de probabilidad</em> <span class="math notranslate nohighlight">\(p(x) = p(\delta, l)\)</span> de medir <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span></p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{eqnarray*}
-p(\delta, l) ~~&amp;=&amp;~~ \left\vert \,  \bra{a+ l} \,  \frac{1}{2^{t}}\sum_{x=0}^{2^t-1}   \sum_{y=0}^{2^t-1}  e^{2\pi i (\delta + a -x) y/2^t} \ket{x}  \,  \right\vert^2  ~~ \stackrel{x= a + l}{=} ~~
-  \frac{1}{2^{2t}} \left\vert \,  \sum_{y=0}^{2^t-1} \left(e^{2\pi i (\delta-l) /2^t}\right)^y \,  \right\vert^2 
-\\ \rule{0mm}{10mm}
-&amp;=&amp; ~~  \frac{1}{2^{2t}} \left\vert\,  \frac{1- e^{2\pi i  \,  (\delta-l) }}{1- e^{2\pi i (\delta-l)/2^t}} \, \right\vert^2   ~= ~ 
-\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \,  \\
-\end{eqnarray*}\]</div>
-<p>Vamos a graficar esta función para distintos valores de <span class="math notranslate nohighlight">\(l\)</span> a distintos valores de <span class="math notranslate nohighlight">\(\delta\)</span></p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/xprobeigenvalues.png"><img alt="../../_images/xprobeigenvalues.png" src="../../_images/xprobeigenvalues.png" style="width: 400px;" /></a>
-</figure>
-<p>Vemos que, efectivamente, hasta <span class="math notranslate nohighlight">\(\delta \leq 0.5\)</span>, la probabilidad está <em>picada</em> en <span class="math notranslate nohighlight">\(l=0\)</span> es decir en <span class="math notranslate nohighlight">\(x=a\)</span>. Para <span class="math notranslate nohighlight">\(\delta &gt;0.5\)</span>, está picada en <span class="math notranslate nohighlight">\(l=1\)</span>.</p>
-<p>En cualqier caso, la probabilidad nunca es menor de 0.405 en su máximo.</p>
-<div class="math notranslate nohighlight">
-\[
-\frac{1}{2^{2t}} \left\vert \, \frac{\sin \pi   (\delta-l)}{\sin (\pi(\delta-l)/2^t)} \, \right\vert^2 \,  
- = 
-   \frac{1}{2^{2t}} \left(\frac{2 (\delta-l)}{\pi(\delta-l)/2^t }\right)^2 = \left(\frac{2}{\pi}\right)^2 \sim 0.405
-\]</div>
-<p>donde hemos usado que   <span class="math notranslate nohighlight">\(\pi x\geq \sin(\pi x) \geq 2 x\)</span> para <span class="math notranslate nohighlight">\(x\in [ 0,\pi/2 ]\)</span>.</p>
-<p>A <span class="math notranslate nohighlight">\(l = 0\)</span> fijo, la probabilidad de encontrar <span class="math notranslate nohighlight">\(m=a+0=a\)</span> es 1 cuando <span class="math notranslate nohighlight">\(\delta=0\)</span> y decrece con <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/xmaxprobeigen.png"><img alt="../../_images/xmaxprobeigen.png" src="../../_images/xmaxprobeigen.png" style="width: 400px;" /></a>
-</figure>
-<p>Cuando <span class="math notranslate nohighlight">\(l=1\)</span> la probabilidad máxima corresponde al número <span class="math notranslate nohighlight">\(m=a+1\)</span>.</p>
-<p>La <strong>anchura <span class="math notranslate nohighlight">\(t\)</span> del circuito auxiliar</strong> determina la anchura de la curva de probabilidad en torno al valor medio.</p>
-<p>Ello permite acotar la aproximación al valor real de la fase buscada según el siguiente teorema  (ver Nielsen p. 224)</p>
-<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
-<div class="sd-card-header docutils">
-<p class="sd-card-text"><b>Teorema</b>:</p>
-</div>
-<div class="sd-card-body docutils">
-<p class="sd-card-text">El algoritmo QPE (Quantum Phase Estimation) es capaz de producir ua <i>estimación <span class="math notranslate nohighlight">\(m\)</span> de orden <span class="math notranslate nohighlight">\(k\)</span></i>  para la fase <span class="math notranslate nohighlight">\(\varphi\)</span> (en el sentido de que  <span class="math notranslate nohighlight">\(|\varphi- m/2^t |&lt;2^{-k}\)</span>) con una  probabilidad <span class="math notranslate nohighlight">\(1-\epsilon\)</span>,  tomando una dimensión del espacio de representación</p>
-<div class="math notranslate nohighlight">
-\[
-t \geq k  + \left[ \log\left(1 + \frac{1}{2\epsilon}\right) \right] \label{tedeene}
-\]</div>
-</div>
 </div>
 </section>
 <section id="y-si-no-podemos-preparar-un-autoestado">
@@ -989,7 +1021,7 @@ phi1= 0.3875  -&gt;   2^t*phi1 = a1 + delta1 =  3.1  , a1 = 1 =&gt; 011
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b3d95ff592a936dee17da56b2dda563b10085a0458f5bad1ed8a2471e436456d.png" src="../../_images/b3d95ff592a936dee17da56b2dda563b10085a0458f5bad1ed8a2471e436456d.png" />
+<img alt="../../_images/2211190d1e92e0e27a32c64531daf38353ddb9aeaf56bdf5f735a2c1a5339e38.png" src="../../_images/2211190d1e92e0e27a32c64531daf38353ddb9aeaf56bdf5f735a2c1a5339e38.png" />
 </div>
 </div>
 </section>
@@ -1088,8 +1120,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <p><strong>Prueba</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5cb05509-686a-44e7-9859-dea8afd658d3">
-<span class="eqno">(25)<a class="headerlink" href="#equation-5cb05509-686a-44e7-9859-dea8afd658d3" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-03e94b21-ce49-471c-bad0-bc0f3d530d3b">
+<span class="eqno">(25)<a class="headerlink" href="#equation-03e94b21-ce49-471c-bad0-bc0f3d530d3b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
 \nonumber\\
  &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
@@ -1100,8 +1132,8 @@ U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^
 <p>Podríamos sencillamente aplicar el algoritmo de estimación de fase para <em>extraer la serie</em> de valores de <span class="math notranslate nohighlight">\(\varphi_s = s/r\)</span> y de ahí recuperar el <em>orden modular</em> <span class="math notranslate nohighlight">\(r\)</span>.</p>
 <p>El problema es que, para generar <span class="math notranslate nohighlight">\(\{\ket{u_s}\}\)</span> necesitamos conocer <span class="math notranslate nohighlight">\(r\)</span>, que, <em>precisamente, es el dato  que buscamos</em></p>
 <p>Una <em>observación importante</em> nos permite soslayar esta dificultad: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd3691ab-dc74-4c00-9cdb-8a7dfd547e0c">
-<span class="eqno">(26)<a class="headerlink" href="#equation-dd3691ab-dc74-4c00-9cdb-8a7dfd547e0c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-bd0034e8-8891-4947-8c4c-f0afc6ee9bc4">
+<span class="eqno">(26)<a class="headerlink" href="#equation-bd0034e8-8891-4947-8c4c-f0afc6ee9bc4" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
 \rule{0mm}{12mm}
 &amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
@@ -1234,7 +1266,7 @@ U_{QPE} : \ket{0}_t \otimes \ket{1}_n  ~ \to ~ \frac{1}{\sqrt{r}}\sum_{s=0}^{r-1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c06265bd958c97512ee90a81de9d815e4166cb7d86de37f3d962b343ff63d898.png" src="../../_images/c06265bd958c97512ee90a81de9d815e4166cb7d86de37f3d962b343ff63d898.png" />
+<img alt="../../_images/8f76b55341d9d21dd1fb2723b6883badec3c6eace118fa597d6d1059dfd554b3.png" src="../../_images/8f76b55341d9d21dd1fb2723b6883badec3c6eace118fa597d6d1059dfd554b3.png" />
 </div>
 </div>
 <p>de aquí obtenemos la lista de valores enteros <span class="math notranslate nohighlight">\(2^t s/r\)</span></p>
@@ -1370,8 +1402,8 @@ el valor entero del promedio = 4
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimacion-cuantica-de-fase">Estimación Cuántica de Fase</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-de-probabilidad">Distribución de probabilidad</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo">Ejemplo</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribucion-de-medidas">Distribución de medidas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#y-si-no-podemos-preparar-un-autoestado">¿y si no podemos preparar  un autoestado?</a></li>
 </ul>
 </li>
