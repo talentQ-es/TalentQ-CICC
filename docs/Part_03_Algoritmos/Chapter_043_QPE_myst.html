@@ -488,7 +488,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 21, 2024 | 8 min read</p>
+<div><p>Apr 22, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -659,7 +659,7 @@ sería  <i>exactamente</i> <span class="math notranslate nohighlight">\(\ket{\Ph
 <p>Escribiendo <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span>  podemos obtener la <em>distribución de probabilidad</em> <span class="math notranslate nohighlight">\(p(x) = p(\delta, l)\)</span> de medir <span class="math notranslate nohighlight">\(\ket{x}=\ket{a+l}\)</span></p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
-p(\delta, l) = |\braket{a+l}{\Phi}|^2 ~~&amp;=&amp;~~ \left\vert \,  \bra{a+ l} \,  \frac{1}{2^{t}}\sum_{x=0}^{2^t-1}   \sum_{y=0}^{2^t-1}  e^{2\pi i (\delta + a -x) y/2^t} \ket{x}  \,  \right\vert^2  ~~ \stackrel{x= a + l}{=} ~~
+p(\delta, l) = |\braket{a+l}{\Phi}|^2 ~~&amp;=&amp;~~ \left\vert \,   \,  \frac{1}{2^{t}}\sum_{x=0}^{2^t-1}   \sum_{y=0}^{2^t-1}  e^{2\pi i (\delta + a -x) y/2^t} \braket{a+ l}{x}  \,  \right\vert^2  ~~ \stackrel{x= a + l}{=} ~~
   \frac{1}{2^{2t}} \left\vert \,  \sum_{y=0}^{2^t-1} \left(e^{2\pi i (\delta-l) /2^t}\right)^y \,  \right\vert^2 
 \\ \rule{0mm}{10mm}
 &amp;=&amp; ~~  \frac{1}{2^{2t}} \left\vert\,  \frac{1- e^{2\pi i  \,  (\delta-l) }}{1- e^{2\pi i (\delta-l)/2^t}} \, \right\vert^2   ~= ~ 
@@ -1128,8 +1128,8 @@ Demostración<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-aea8ff1d-8986-4cd6-a447-be98d404096e">
-<span class="eqno">(25)<a class="headerlink" href="#equation-aea8ff1d-8986-4cd6-a447-be98d404096e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1b5d6afd-175d-48c6-bc2a-b66489ed98d3">
+<span class="eqno">(25)<a class="headerlink" href="#equation-1b5d6afd-175d-48c6-bc2a-b66489ed98d3" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
 \nonumber\\
  &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
@@ -1140,8 +1140,8 @@ U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^
 </div>
 </details><p>El problema es que <span class="math notranslate nohighlight">\(r\)</span> es, precisamente, ¡el dato que queremos encontrar!
 Una observación importante que nos permite soslayar esta dificultad es la siguiente: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-3cf13996-a322-4207-b6c8-08d631fe03a1">
-<span class="eqno">(26)<a class="headerlink" href="#equation-3cf13996-a322-4207-b6c8-08d631fe03a1" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-cb278b7c-c995-45d4-96e2-e1ea5574df46">
+<span class="eqno">(26)<a class="headerlink" href="#equation-cb278b7c-c995-45d4-96e2-e1ea5574df46" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
 \rule{0mm}{12mm}
 &amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
