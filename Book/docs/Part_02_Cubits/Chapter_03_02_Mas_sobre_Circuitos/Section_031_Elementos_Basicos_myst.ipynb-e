@@ -430,6 +430,28 @@
   },
   {
    "cell_type": "markdown",
+   "id": "0580e1b4",
+   "metadata": {},
+   "source": [
+    "### Reinicialización a cero\n",
+    "\n",
+    "\n",
+    "La las medidas intermedias sirven para poder efectuar operaciones controladas por un bit clásico. Veremos una utilización de este recurso cuando estudiemos la teleportación. Aquí vamos a ver cómo podemos utilizar dicha medida para reinicializar un cúbit al estado de partida $\\ket{0}$.\n",
+    "\n",
+    "En el siguiente circuto, $\\ket{\\psi} = a\\ket{0} + b\\ket{1}$ puede colapsar en el aparato de medida a $\\ket{0}$ ó a \n",
+    "$\\ket{1}$. En ambos casos, la salida del circuitos será el estado $\\ket{0}$\n",
+    "\n",
+    "<br>\n",
+    "::::{figure} images/reset.png\n",
+    ":width: 230px\n",
+    ":align: center\n",
+    "\n",
+    "::::\n",
+    "<br>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
    "id": "988829b2",
    "metadata": {
     "slideshow": {

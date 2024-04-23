@@ -467,7 +467,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#una-aguja-en-un-pajar">Una aguja en un pajar</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-plano-de-grover">El plano de Grover</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amplificacion-de-amplitud">Amplificación de amplitud</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotacion-de-grover">Rotación de Grover</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-circuito-de-grover">El circuito de Grover</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codificando-el-marcador-o-r-w">Codificando el marcador <span class="math notranslate nohighlight">\(O = R_w\)</span></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codificando-el-difusor-d-r-s-perp">Codificando el difusor <span class="math notranslate nohighlight">\(D = R_{s_\perp}\)</span></a></li>
@@ -497,7 +497,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 21, 2024 | 8 min read</p>
+<div><p>Apr 23, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -534,10 +534,10 @@ document.write(`
 f (x) = \left\{ 
 \begin{array}{rcl} 1 &amp;\hbox{si} &amp; x = w\\ 0 &amp;\hbox{si} &amp; x \neq w \end{array} \right.
 \end{split}\]</div>
-<p><strong>Problema:</strong> descubrir <span class="math notranslate nohighlight">\(x\)</span> con el mínimo número de consultas al oráculo.</p>
-<p>En el peor de los casos, el proceso es análogo al de buscar una aguja en un pajar, o el nombre de un cliente de la guía telefónica asociado a un número concreto. La función <span class="math notranslate nohighlight">\(f(x)\)</span> es la función <em>comparar con un patrón solución</em> que da 1 sólo cuando se acierta. También puede tratarse de una función que da 1 cuando <span class="math notranslate nohighlight">\(w\)</span> es la solución de algún problema algebráico de fácil verificación.</p>
+<p><strong>Reto:</strong> descubrir <span class="math notranslate nohighlight">\(w\)</span> con el mínimo número de consultas al oráculo.</p>
+<p>En el peor de los casos, el proceso es análogo al de buscar una aguja en un pajar, o el nombre de un cliente de la guía telefónica asociado a un número concreto. La función <span class="math notranslate nohighlight">\(f(x)\)</span> es la función <em>comparar con un patrón solución</em> que da 1 sólo cuando se acierta. También puede tratarse de una función que da 1 cuando <span class="math notranslate nohighlight">\(w\)</span> es la solución de algún problema algebráico de fácil verificación (por ejemplo un sudoku).</p>
 <p>Si <span class="math notranslate nohighlight">\(N = 2^N\)</span> es la cardinalidad de la base de datos, el algoritmos de Grover permite efectuar esta tarea en un número de pasos que crece como   <span class="math notranslate nohighlight">\({\cal O}(\sqrt{N})\)</span>.</p>
-<p>La ganancia por tanto, no es exponencial, como en el caso de la transformada de Fourier cuántica. No es fácil saber <em>a priori</em> si un algoritmo va a tener una ganancia exponencial o no.</p>
+<p>La ganancia por tanto, no es exponencial, como en el caso de la transformada de Fourier cuántica. De hecho, no es fácil saber <em>a priori</em> si un algoritmo va a tener una ganancia exponencial o no.</p>
 <section id="el-plano-de-grover">
 <h3>El plano de Grover<a class="headerlink" href="#el-plano-de-grover" title="Permalink to this heading">#</a></h3>
 <p>Nuestra <em>base de datos</em> <span class="math notranslate nohighlight">\(x\in S_n\)</span> se convierte en la <em>base computacional</em> de <span class="math notranslate nohighlight">\(n\)</span> cúbits, <span class="math notranslate nohighlight">\(\{\ket{x}\}\)</span>.
@@ -545,7 +545,7 @@ La <em>aguja en el pajar</em> que queremos encontrar será, ahora, un cierto vec
 <div class="math notranslate nohighlight">
 \[\begin{split}
 U_f \ket{x}\ket{0} = \left\{ 
-\begin{array}{rcl} \ket{x}\ket{\omega} &amp;\hbox{si} &amp; x = w\\ \ket{x}\ket{0} &amp;\hbox{si} &amp; x \neq w \end{array} \right.
+\begin{array}{rcl} \ket{x}\ket{1} &amp;\hbox{si} &amp; x = w\\ \ket{x}\ket{0} &amp;\hbox{si} &amp; x \neq w \end{array} \right.
 \end{split}\]</div>
 <p>Aquí <span class="math notranslate nohighlight">\(U_f\)</span> será el  <i>oráculo booleano</i>  asociado a la función de búsqueda</p>
 <div class="note admonition">
@@ -576,11 +576,11 @@ U_f \ket{x}\ket{-} = (-1)^{f(x)}\ket{x}\ket{-} ~= ~ \left\{ \begin{array}{lcc}
 \ket{s} = \frac{1}{\sqrt{N}}\sum_x \ket{x}  ~&amp;=&amp; ~
  \frac{1}{\sqrt{N}}\left(\ket{w} + \sum_{x \neq w} \ket{x} \right) 
 \end{eqnarray*}\]</div>
-<p>definiendo el vector unitario
+<p>Si ahora definimos el vector unitario
 $<span class="math notranslate nohighlight">\(
 \ket{s'} = \frac{1}{\sqrt{N-1}}\sum_{x \neq w} \ket{x} 
 \)</span>$</p>
-<p>encontramos</p>
+<p>podemos escribir el resultado en la forma siguiente</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 \ket{s} =  \frac{1}{\sqrt{N}} \ket{w} + \sqrt{\frac{N-1}{N}} \ket{s^\prime}.
@@ -588,13 +588,11 @@ $<span class="math notranslate nohighlight">\(
 <p>Eso quiere decir que:</p>
 <ul class="simple">
 <li><p>podemos pensar  en un subespacio de dimensión 2 (un <em>plano</em>) formado por los dos vectores <span class="math notranslate nohighlight">\(\{\ket{w},\ket{s'}\}\)</span></p></li>
-</ul>
-<ul class="simple">
 <li><p>en ese plano, nuestro estado <span class="math notranslate nohighlight">\(\ket{s}\)</span> es  un vector</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[\ket{s} = \sin{\theta}\ket{w} + \cos{\theta}\ket{s^\prime}\]</div>
-<p>caracterizado por el ángulo <span class="math notranslate nohighlight">\(\sin\theta = \frac{1}{\sqrt{N}}\)</span>,</p>
+<p>caracterizado por el ángulo <span class="math notranslate nohighlight">\(\sin\theta = \frac{1}{\sqrt{N}}\)</span>, como se puede observar en la figura siguiente</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/Grover1.png"><img alt="../../_images/Grover1.png" src="../../_images/Grover1.png" style="width: 600px;" /></a>
 </figure>
@@ -606,28 +604,32 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </div>
 </section>
-<section id="amplificacion-de-amplitud">
-<h3>Amplificación de amplitud<a class="headerlink" href="#amplificacion-de-amplitud" title="Permalink to this heading">#</a></h3>
+<section id="rotacion-de-grover">
+<h3>Rotación de Grover<a class="headerlink" href="#rotacion-de-grover" title="Permalink to this heading">#</a></h3>
 <p>La estrategia se basa en iterar una serie de operaciones que amplifiquen la amplitud de obtener el estado <span class="math notranslate nohighlight">\(\ket{w}\)</span>.</p>
-<p>Geométricamente, cada <em>iteración de Grover</em> es una composición de dos <a class="reference internal" href="#../00_Formalismo/01_Operadores.ipynb#reflect"><span class="xref myst"><em>reflectores</em></span></a> <span class="math notranslate nohighlight">\(~
-\fbox{\)</span>G = R_{s_\perp} R_w<span class="math notranslate nohighlight">\(}
-~\)</span>, donde</p>
+<p>Geométricamente, cada <em>iteración de Grover</em> es una composición de dos reflectores <span class="math notranslate nohighlight">\(G = R_{s_\perp} R_w\)</span>, donde</p>
 <ul class="simple">
-<li><p><strong>el marcador</strong>, <span class="math notranslate nohighlight">\(R_w\)</span>, produce una reflexión en la dirección <em>paralela</em> a  <span class="math notranslate nohighlight">\(\ket{w}\)</span></p></li>
+<li><p><strong>el marcador</strong>, <span class="math notranslate nohighlight">\(R_w\)</span>, produce una <em>reflexión paralela</em> a  <span class="math notranslate nohighlight">\(\ket{w}\)</span>. Esto es, invierte la componente asociada a <span class="math notranslate nohighlight">\(\ket{w}\)</span> y mantiene intactas todas las demás.
+Vamos a ver que un operador así tiene la siguiente forma</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-R_w\ket{s} ~=~ \left( I - 2\ket{w}\bra{w}\rule{0mm}{8mm}\right)\ket{s} ~ = ~ -\frac{1}{\sqrt{N}} \ket{w} + \sqrt{\frac{N-1}{N}} \ket{s^\prime}
+R_w  =  \left( I - 2\ket{w}\bra{w}\rule{0mm}{6mm}\right)
+\]</div>
+<p>Efectivamente, operando se llega inmediatamente a</p>
+<div class="math notranslate nohighlight">
+\[
+R_w\ket{s} ~=~ \left( I - 2\ket{w}\bra{w}\rule{0mm}{6mm}\right)\ket{s} ~ = ~ -\frac{1}{\sqrt{N}} \ket{w} + \sqrt{\frac{N-1}{N}} \ket{s^\prime}
 \]</div>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/Grover2.png"><img alt="../../_images/Grover2.png" src="../../_images/Grover2.png" style="width: 600px;" /></a>
 </figure>
 <ul class="simple">
-<li><p><strong>El difusor</strong>, <span class="math notranslate nohighlight">\( R_{s_\perp}\)</span>, es un reflector paralelo a <span class="math notranslate nohighlight">\(\ket{s_\perp}\)</span>, es decir,  perpendicular al estado inicial <span class="math notranslate nohighlight">\(\ket{s}\)</span>. Es un resultado que <span class="math notranslate nohighlight">\(R_{s_\perp} = - R_{s}\)</span></p></li>
+<li><p><strong>El difusor</strong>, es también un reflector. Esta vez, perpendicular a <span class="math notranslate nohighlight">\(\ket{s}\)</span>. O lo que es igual, paralelo al vector perpendicular <span class="math notranslate nohighlight">\(\ket{s_\perp}\)</span>.</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-R_{s_\perp} =  I - 2\ket{s_\perp}\bra{s_\perp}  =   2\ket{s}\bra{s}- I  = - R_s
+R_{s_\perp} =  I - 2\ket{s_\perp}\bra{s_\perp}  
 \]</div>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/Grover3.png"><img alt="../../_images/Grover3.png" src="../../_images/Grover3.png" style="width: 600px;" /></a>
@@ -636,81 +638,7 @@ R_{s_\perp} =  I - 2\ket{s_\perp}\bra{s_\perp}  =   2\ket{s}\bra{s}- I  = - R_s
 <p>Observamos que:</p>
 <ul class="simple">
 <li><p>el vector resultante sufre una rotación de ángulo <span class="math notranslate nohighlight">\(2\theta\)</span> en el  plano <span class="math notranslate nohighlight">\(\{\ket{w},\ket{s'}\}\)</span>.</p></li>
-</ul>
-<ul class="simple">
 <li><p>este hecho no depende de cómo sea <span class="math notranslate nohighlight">\(\ket{s}\)</span>, por tanto: es cierto <em>para cada iteración</em> <span class="math notranslate nohighlight">\(G\)</span> de Grover.</p></li>
-</ul>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-Demostración<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text">La demostración consiste en relacionar los vectores resultantes de aplicar el operador de Grover <span class="math notranslate nohighlight">\(k\)</span>  y <span class="math notranslate nohighlight">\(k-1\)</span> veces
-En general tendremos que</p>
-<div class="math notranslate nohighlight">
-\[
-G^k\ket{s}  = a_k\ket{w} + b_k \ket{s^\prime}
-\]</div>
-<p class="sd-card-text">para ciertos coeficientes <span class="math notranslate nohighlight">\(a_k, b_k\)</span>. Ahora operamos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-93602d32-7d4f-462d-80db-c81d16412583">
-<span class="eqno">(27)<a class="headerlink" href="#equation-93602d32-7d4f-462d-80db-c81d16412583" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
-G^k\ket{s} &amp; = &amp;a_k\ket{w} + b_k \ket{s^\prime} \\
-&amp;=&amp; -U_sU_w\left(a_{k-1}\ket{w} + b_{k-1} \ket{s^\prime}\right) \\
-&amp;=&amp; \left( 2 \ket{s}\bra{s} -I \right)\left(-a_{k-1}\ket{w} + b_{k-1}\ket{s^\prime}\right)\\
-&amp;=&amp; \left(a_{k-1}\ket{w} - b_{k-1}\ket{s^\prime}\right) + 2\ket{s} \left(-a_{k-1}\braket{s}{w}+b_{k-1}\braket{s}{s^\prime}\right) \\
-&amp;=&amp; a_{k-1}\ket{w} - b_{k-1}\ket{s^\prime} + 2\left(\frac{1}{\sqrt{N}}\ket{w} + \sqrt{\frac{N-1}{N}}\ket{s^\prime}\right) \left(-a_{k-1}\frac{1}{\sqrt{N}}+b_{k-1}\sqrt{\frac{N-1}{N}}\right) \\
-&amp;=&amp;\left(a_{k-1} - \frac{2}{N} a_{k-1} + 2\frac{\sqrt{N-1}}{N}\right)\ket{w} + \left(b_{k-1} - 2\frac{\sqrt{N-1}}{N}a_{k-1} + 2\frac{N-1}{N}b_{k-1}\right)\ket{s^\prime}.
-\end{eqnarray}\]</div>
-<p class="sd-card-text">Agrupando términos, esta ecuación se puede escribir en forma matricial como</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-a_k\\
-b_k
-\end{bmatrix}
-=
-\begin{bmatrix}
-\frac{N-2}{N} &amp; 2\frac{\sqrt{N-1}}{N}\\
--2\frac{\sqrt{N-1}}{N} &amp; \frac{N-2}{N}
-\end{bmatrix}
-\begin{bmatrix}
-a_{k-1}\\
-b_{k-1}
-\end{bmatrix}.
-\end{split}\]</div>
-<p class="sd-card-text">Es sencillo ver que esta matriz tiene determinante unidad, es decir, ha de ser una matriz de rotación</p>
-<div class="math notranslate nohighlight">
-\[\text{det}(G)=\frac{\left(N-2\right)^2}{N^2} + 4\frac{N-1}{N^2} = \frac{N^2 - 4N + 4}{N^2} + \frac{4N-4}{N^2} = 1\]</div>
-<p class="sd-card-text">Recordando</p>
-<div class="math notranslate nohighlight">
-\[\sin{\theta} = \frac{1}{\sqrt{N}}~~~\Rightarrow ~~~\cos{\theta} = \sqrt{\frac{N-1}{N}} \]</div>
-<div class="math notranslate nohighlight">
-\[\cos^2{\theta} - \sin^2{\theta} = \frac{N-2}{N} = \cos{2\theta}\]</div>
-<div class="math notranslate nohighlight">
-\[2\sin{\theta}\cos{\theta} =2\frac{\sqrt{N-2}}{N}= \sin{2\theta}\]</div>
-<p class="sd-card-text">se llega a</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}G=\begin{bmatrix}
-\cos{2\theta} &amp; \sin{2\theta}\\
--\sin{2\theta} &amp; \cos{2\theta}
-\end{bmatrix}\end{split}\]</div>
-<p class="sd-card-text">Esta es una matriz de rotación que gira un ángulo <span class="math notranslate nohighlight">\(2\theta\)</span> en sentido antihorario. Es elementar comprobar que</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-G^2  = \begin{bmatrix}
-\cos{4\theta} &amp; \sin{4\theta}\\
--\sin{4\theta} &amp; \cos{4\theta} 
-\end{bmatrix}
-\hspace{1cm}... \hspace{1cm}
-G^k = \begin{bmatrix}
-\cos{2k\theta} &amp; \sin{2k\theta}\\
--\sin{2k\theta} &amp; \cos{2k\theta}
-\end{bmatrix}
-\end{split}\]</div>
-</div>
-</details><ul class="simple">
 <li><p>la amplitud del estado <span class="math notranslate nohighlight">\(\ket{w}\)</span> aumenta a expensas de las amplitudes de los demás estados.</p></li>
 </ul>
 </section>
@@ -780,8 +708,15 @@ R_\psi = I - 2\ket{\psi}\bra{\psi} = V \left( I - 2\ket{0}\bra{0}\rule{0mm}{6mm}
 </div>
 <section id="codificando-el-marcador-o-r-w">
 <h4>Codificando el marcador <span class="math notranslate nohighlight">\(O = R_w\)</span><a class="headerlink" href="#codificando-el-marcador-o-r-w" title="Permalink to this heading">#</a></h4>
-<p>Comenzando por <span class="math notranslate nohighlight">\(R_w\)</span>, se trata de  un operador que depende del vector desconocido <span class="math notranslate nohighlight">\(w\)</span>. Por tanto esa etiqueta debe figurar como un argumento oculto de la función que sirva para construir el operador <span class="math notranslate nohighlight">\(V(w)\ket{0} = \ket{w}\)</span>.</p>
-<p>Simplemente es necesario añadir un operador <span class="math notranslate nohighlight">\(X\)</span> por cada <span class="math notranslate nohighlight">\(1\)</span> que haya en la versión binaria de <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<p>Comenzando por <span class="math notranslate nohighlight">\(\ket{\psi} = \ket{w}\)</span>, el reflector <span class="math notranslate nohighlight">\(R_w\)</span> es  un operador que depende del vector desconocido <span class="math notranslate nohighlight">\(\ket{w}\)</span>. Su acción es la reflexión</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_w \ket{x}  ~= ~ \left\{ \begin{array}{lcc}
+             -\ket{x}  &amp;   \hbox{si}  &amp; x = w \\ \rule{0mm}{6mm}
+              \, ~~\ket{x}  &amp;  \hbox{si} &amp; x \neq w \end{array}
+   \right.. 
+\end{split}\]</div>
+<p>Pero esta es, precisamente la acción del oráculo asociado a <span class="math notranslate nohighlight">\(f(x)\)</span>, implementado como orácuño de fase. Por tanto no estámos usando información prohibida. Sólo estamos invocando el oráculo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Rw</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>        
@@ -819,8 +754,10 @@ R_\psi = I - 2\ket{\psi}\bra{\psi} = V \left( I - 2\ket{0}\bra{0}\rule{0mm}{6mm}
 </section>
 <section id="codificando-el-difusor-d-r-s-perp">
 <h4>Codificando el difusor <span class="math notranslate nohighlight">\(D = R_{s_\perp}\)</span><a class="headerlink" href="#codificando-el-difusor-d-r-s-perp" title="Permalink to this heading">#</a></h4>
-<p>Recordemos que <span class="math notranslate nohighlight">\(R_{s_\perp} = - R_s\)</span>, el reflector <em>perpendicular</em> a <span class="math notranslate nohighlight">\(\ket{s}\)</span> es el negativo del reflector <em>paralelo</em>.</p>
-<p>Ahora codificamos el reflector <span class="math notranslate nohighlight">\(R_s\)</span>. En este caso el operador <span class="math notranslate nohighlight">\(V:\ket{0}\to\ket{s}\)</span> es la puerta de Walsh-Hadamard <span class="math notranslate nohighlight">\(V=H^{\otimes n}\)</span></p>
+<p>Ahora el papel de <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> lo jugará el vector perpendicular <span class="math notranslate nohighlight">\(\ket{s_\perp}\)</span>. Pero ¡no sabemos preparar este estado!</p>
+<p>Sin embargo es evidente que <span class="math notranslate nohighlight">\( R_{s_\perp} R_{s} = -I\)</span> porque el producto de reflexiones paralela y perpendicular a un vector acaba invirtiendo todas las componentes. Dicho de otra manera  <span class="math notranslate nohighlight">\(R_{s_\perp} = - R_s\)</span>. Y para <span class="math notranslate nohighlight">\(\ket{s}\)</span> si que tenemos una preparación <span class="math notranslate nohighlight">\(\ket{s} = H^n\ket{0}\)</span>.</p>
+<p>Por tanto, si elegimos codificar el reflector <span class="math notranslate nohighlight">\(R_s\)</span> estaremos cometiendo un error en un signo. Pero los signos globales son inobservables. Por tanto esperamos que no habrá ninguna diferencia entre usar un reflector  u otro.</p>
+<p>En este caso el operador <span class="math notranslate nohighlight">\(V:\ket{0}\to\ket{s}\)</span> es la puerta de Walsh-Hadamard <span class="math notranslate nohighlight">\(V=H^{\otimes n}\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Rs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>        
@@ -1505,7 +1442,7 @@ M_i= [4.938532541079283, 4.938532541079277]
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#una-aguja-en-un-pajar">Una aguja en un pajar</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-plano-de-grover">El plano de Grover</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#amplificacion-de-amplitud">Amplificación de amplitud</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rotacion-de-grover">Rotación de Grover</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#el-circuito-de-grover">El circuito de Grover</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codificando-el-marcador-o-r-w">Codificando el marcador <span class="math notranslate nohighlight">\(O = R_w\)</span></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#codificando-el-difusor-d-r-s-perp">Codificando el difusor <span class="math notranslate nohighlight">\(D = R_{s_\perp}\)</span></a></li>

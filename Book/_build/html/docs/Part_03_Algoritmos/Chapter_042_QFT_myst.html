@@ -487,7 +487,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 21, 2024 | 8 min read</p>
+<div><p>Apr 23, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -544,13 +544,13 @@ W: \ket{x} \to \ket{\tilde x} =  \frac{1}{\sqrt{N}}\sum_{y}(-1)^{xy}\ket{y} =   
 <p>Ya hemos visto cómo la fase <span class="math notranslate nohighlight">\((-1)^{xy}= e^{2\pi i   xy/2}\)</span> produce <em>interferencias</em> interesantes que concentran la probabilidad en soluciones a problemas como el de Simon</p>
 </div>
 <p>La fase <span class="math notranslate nohighlight">\( e^{2\pi i/N}\)</span> también sirve para producir interferencias destructivas y constructivas interesantes. Esto se debe esencialmente a la importante <em>fórmula de suma nula</em> que hemos estudiado en el tema de Números Complejos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fd1bc54f-f653-480f-84a1-684f9aabb281">
-<span class="eqno">(19)<a class="headerlink" href="#equation-fd1bc54f-f653-480f-84a1-684f9aabb281" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8fc1c226-b4b1-4edd-a783-cdcb24544b10">
+<span class="eqno">(19)<a class="headerlink" href="#equation-8fc1c226-b4b1-4edd-a783-cdcb24544b10" title="Permalink to this equation">#</a></span>\[\begin{equation}
  \sum_{y=0}^{N} e^{2\pi i xy/N} = N \delta_{x, 0}  
 \end{equation}\]</div>
 <p>La unitariedad de <span class="math notranslate nohighlight">\(U_{TFC}\)</span> es equivalente a que la base de Fourier también sea ortonormal. Para demostrar esto sólo es necesaria la fórmula de suma nula</p>
-<div class="amsmath math notranslate nohighlight" id="equation-39f6f3f5-469a-4fe9-9381-aec38b9db13c">
-<span class="eqno">(20)<a class="headerlink" href="#equation-39f6f3f5-469a-4fe9-9381-aec38b9db13c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1c1237b4-b619-44bf-95e7-3b8ce9331d03">
+<span class="eqno">(20)<a class="headerlink" href="#equation-1c1237b4-b619-44bf-95e7-3b8ce9331d03" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \braket{\tilde x'}{\tilde x} &amp;=&amp; \left(\bra{y'}\frac{1}{\sqrt{N}}\sum_{y'} e^{-2\pi i  x'y' /N}\right)
 \left( \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i  xy /N} \ket{y} \right) \nonumber \\ \rule{0mm}{12mm}
 &amp;=&amp; \frac{1}{N} \sum_{y'y} e^{-2\pi i  x'y' /N} e^{2\pi i  xy /N} \braket{y'}{y}\nonumber\\ \rule{0mm}{12mm}
@@ -571,8 +571,8 @@ U^{-1}_{TFC}\ket{x} = U^{\dagger}_{TFC}\ket{x}   =  \frac{1}{\sqrt{N}}\sum_{y} e
 <div class="note admonition">
 <p class="admonition-title">Notar (TFC y TFD)</p>
 <p>Actuando con <span class="math notranslate nohighlight">\(U_{TFC}\)</span> sobre un vector <span class="math notranslate nohighlight">\(\ket{f} = \sum_x f(x)\ket{x}\)</span> de componentes <span class="math notranslate nohighlight">\(f(x)\)</span> en la base <span class="math notranslate nohighlight">\(\ket{x}\)</span> obtendremos otro vector</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3ab819af-a1f7-4ae6-b802-8a750e68e5c0">
-<span class="eqno">(21)<a class="headerlink" href="#equation-3ab819af-a1f7-4ae6-b802-8a750e68e5c0" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-529cce12-b8c1-4565-bd66-ff4a1a71362d">
+<span class="eqno">(21)<a class="headerlink" href="#equation-529cce12-b8c1-4565-bd66-ff4a1a71362d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \ket{\tilde f} = U_{TCF}\ket{f} &amp;=&amp; \sum_x f(x) U_{TCF}\ket{x} ~=~\sum_x f(x) \frac{1}{\sqrt{N}}\sum_y e^{2\pi i xy} \ket{y} 
 \\ \rule{0mm}{12mm}
 &amp;=&amp;    \sum_y\left( \frac{1}{\sqrt{N}}\sum_x f(x) e^{2\pi i xy}\right) \ket{y} ~=~  \sum_y \tilde f(y) \ket{y}
@@ -623,8 +623,8 @@ U_{TFC} =\frac{1}{2}
 </div>
 <p>Vamos a estudiar paso a paso la acción de <span class="math notranslate nohighlight">\(U_{\rm TFC}\)</span> sobre un elemento <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}... x_0}\)</span>
 de la base computacional</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd01195f-416e-456b-b484-f7107245a862">
-<span class="eqno">(22)<a class="headerlink" href="#equation-dd01195f-416e-456b-b484-f7107245a862" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-7439aedb-a228-4050-9191-72aa3163ae84">
+<span class="eqno">(22)<a class="headerlink" href="#equation-7439aedb-a228-4050-9191-72aa3163ae84" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
  \ket{\tilde x}  ~\equiv ~  U_{\rm TFC}\ket{x}  &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y=0}^{2^n-1} e^{2\pi i  xy/2^n}\ket{y}  
 \nonumber\\ \rule{0mm}{14mm}
 &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y_1,...,y_n=\{0,1\}} e^{ 2\pi i x \left( y_{n-1}2^{n-1} + y_{n-2}2^{n-2}  + ... + y_0\right)/2^n } \ket{y_{n-1}}\ket{y_{n-2}}\ldots \ket{ y_0}
@@ -664,8 +664,8 @@ Será util escribir la <em>acción</em> de <span class="math notranslate nohighl
  \to  \left\{ \begin{array}{l}  \ket{0}\ket{x} \\ \rule{0mm}{10mm}  e^{2 \pi i   \frac{x}{2^{k}}} \ket{1}\ket{x} \end{array} \right.
 \end{split}\]</div>
 <p>Vamos a analizar la acción del primer bloque</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d16481c7-6fb6-400a-a246-695711f17688">
-<span class="eqno">(23)<a class="headerlink" href="#equation-d16481c7-6fb6-400a-a246-695711f17688" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-23a44c72-8a07-4590-a17f-77fc0bc7316c">
+<span class="eqno">(23)<a class="headerlink" href="#equation-23a44c72-8a07-4590-a17f-77fc0bc7316c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 (H\ket{x_{n-1}})\ket{x_{n-2}...x_0} &amp;=&amp;\left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0}
 \\ \rule{0mm}{12mm}
 \left(\rule{0mm}{3mm} R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}  &amp;=&amp; 
@@ -846,8 +846,8 @@ registro es  una superposición normalizada</p>
 \ket{\Psi} = \frac{1}{\sqrt{L}}  \sum_{l=0}^{L-1}\ket{ lP + p_0}\, .
 \]</div>
 <p>En este punto, en el algoritmo de Simon, volveríamos a aplicar la puerta <span class="math notranslate nohighlight">\(W_n\)</span> para conseguir una interferencia constructiva. En este caso, al tratarse de una periodicidad numérica, no bit a bit, efectuaremos sobre el estado  una transformación de Fourier cuántica, usando que <span class="math notranslate nohighlight">\(N/P = M\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-99fda430-eeca-468b-bb93-70781d934e70">
-<span class="eqno">(24)<a class="headerlink" href="#equation-99fda430-eeca-468b-bb93-70781d934e70" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1930b6b2-f72f-4795-ae4b-fdcd193cb35c">
+<span class="eqno">(24)<a class="headerlink" href="#equation-1930b6b2-f72f-4795-ae4b-fdcd193cb35c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \ket{\Psi'} = U_{\rm TFC} \ket{\Psi} &amp;=&amp; \frac{1}{\sqrt{N M}} \sum_{y=0}^{N-1}   \sum_{l=0}^{L-1}e^{+2\pi i (p_0 + lP)y/N}\ket{y} \nonumber\\ \rule{0mm}{12mm}
 &amp;=&amp; \frac{1}{\sqrt{N L}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N} \left( \sum_{l=0}^{L-1} e^{+2\pi i ly/L}\right) \ket{y}  \\ \rule{0mm}{15mm}
  &amp;=&amp; \frac{1}{\sqrt{N L}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N}  \left( \rule{0mm}{3.5mm} L \delta_{y, sL}\right) \ket{y} \nonumber\\ \rule{0mm}{15mm}
