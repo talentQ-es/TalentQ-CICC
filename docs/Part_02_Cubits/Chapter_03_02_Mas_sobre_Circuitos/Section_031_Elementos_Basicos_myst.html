@@ -470,6 +470,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinicializacion-a-cero">Reinicialización a cero</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
@@ -495,7 +496,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 22, 2024 | 10 min read</p>
+<div><p>Apr 23, 2024 | 10 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -691,6 +692,15 @@ q_1: ─X─
 <p>demuestra la equivalencia de los circuitos anteriores.</p>
 </div>
 </section>
+<section id="reinicializacion-a-cero">
+<h3>Reinicialización a cero<a class="headerlink" href="#reinicializacion-a-cero" title="Permalink to this heading">#</a></h3>
+<p>La las medidas intermedias sirven para poder efectuar operaciones controladas por un bit clásico. Veremos una utilización de este recurso cuando estudiemos la teleportación. Aquí vamos a ver cómo podemos utilizar dicha medida para reinicializar un cúbit al estado de partida <span class="math notranslate nohighlight">\(\ket{0}\)</span>.</p>
+<p>En el siguiente circuto, <span class="math notranslate nohighlight">\(\ket{\psi} = a\ket{0} + b\ket{1}\)</span> puede colapsar en el aparato de medida a <span class="math notranslate nohighlight">\(\ket{0}\)</span> ó a
+<span class="math notranslate nohighlight">\(\ket{1}\)</span>. En ambos casos, la salida del circuitos será el estado <span class="math notranslate nohighlight">\(\ket{0}\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/reset.png"><img alt="../../../_images/reset.png" src="../../../_images/reset.png" style="width: 230px;" /></a>
+</figure>
+</section>
 </section>
 <section id="retroceso-de-fase">
 <h2>Retroceso de Fase<a class="headerlink" href="#retroceso-de-fase" title="Permalink to this heading">#</a></h2>
@@ -825,8 +835,8 @@ C = R_z\left( \frac{\beta-\alpha}{2}\right)\end{array}
 <p>Dependiendo de la plataforma utilizada para construir un ordenador cuántico, existen uno o varios <em>conjuntos discretos de puertas universales</em> nativas susceptibles de ser programadas de manera resistente a errores</p>
 <p>Es importante relacionar las puertas universales con <em>puertas nativas</em>. Por ejemplo,
 en circuitos superconductores tenemos varias opciones</p>
-<div class="amsmath math notranslate nohighlight" id="equation-384bd2ae-efc5-4031-a027-5688891f2c5c">
-<span class="eqno">(17)<a class="headerlink" href="#equation-384bd2ae-efc5-4031-a027-5688891f2c5c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-eef1fb50-6481-400d-9a94-5a46a2c75ead">
+<span class="eqno">(17)<a class="headerlink" href="#equation-eef1fb50-6481-400d-9a94-5a46a2c75ead" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \hbox{base de Shor}~~
  ~&amp;:&amp; ~~ \{ H, T, \hbox{CNOT}\}  \nonumber \\ \rule{0mm}{5mm}
 \hbox{NCT}~ ~&amp;:&amp; ~~ \{ X,\hbox{CNOT}, \hbox{Toffoli}\}   \nonumber
@@ -1172,6 +1182,7 @@ Por ejemplo, el <a class="reference internal" href="#CUdecomposition"><span clas
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conjugacion">Conjugación</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#circuitos-con-controles">Circuitos con controles</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-y-controles">Medidas y controles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reinicializacion-a-cero">Reinicialización a cero</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retroceso-de-fase">Retroceso de Fase</a></li>
