@@ -478,6 +478,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-observables-multi-cubit">Valores esperados de observables multi-cúbit</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-cadenas-de-pauli">Valores esperados de cadenas de Pauli</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-hadamard">Medida de Hadamard</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-programar">¡A programar!</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proyeccion-de-hadamard">Proyección de Hadamard</a></li>
 </ul>
 </li>
@@ -495,7 +496,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 23, 2024 | 4 min read</p>
+<div><p>Apr 25, 2024 | 4 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -919,12 +920,15 @@ La medida de Hadamard hace precisamente esto aprovechando el entrelazamiento.</p
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../../_images/Hadamard_measure.png"><img alt="../../../_images/Hadamard_measure.png" src="../../../_images/Hadamard_measure.png" style="width: 280px;" /></a>
 </figure>
-<p>El aparato de medida sólo registra valores <span class="math notranslate nohighlight">\(\{0,1\}\)</span> como resultado de las medidas proyectivas sobre los ejes <span class="math notranslate nohighlight">\(X\)</span>  ó <span class="math notranslate nohighlight">\(Y\)</span>. Supongamos que medimos con el observable <span class="math notranslate nohighlight">\(X\)</span>. El promedio</p>
+<p>El aparato de medida sólo registra valores <span class="math notranslate nohighlight">\(\{0,1\}\)</span> como resultado de las medidas proyectivas sobre los ejes <span class="math notranslate nohighlight">\(X\)</span>  ó <span class="math notranslate nohighlight">\(Y\)</span>.
+El circuito nos da dos posibilidades, medir <span class="math notranslate nohighlight">\(\sigma_x\)</span> o hacerlo con <span class="math notranslate nohighlight">\(\sigma_y\)</span>. Supongamos que medimos <span class="math notranslate nohighlight">\(\sigma_x\)</span>. El promedio</p>
 <div class="math notranslate nohighlight">
 \[
 p_{0}-p_{1} = \frac{n_{0}}{N} - \frac{n_{1}}{N} = \langle X\rangle_{ancilla}
 \]</div>
-<p>es el valor esperado de <span class="math notranslate nohighlight">\(X\)</span> en la ancilla. Análogamente, será <span class="math notranslate nohighlight">\(\langle Y\rangle_{ancilla}\)</span>  si usamos el observable <span class="math notranslate nohighlight">\(Y\)</span>.  Vamos a demostrar el siguiente resultado que relaciona estos dos números con el valor esperado de <span class="math notranslate nohighlight">\(U\)</span> en el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span></p>
+<p>es el valor esperado de <span class="math notranslate nohighlight">\(X\)</span> en la ancilla.
+Análogamente,  si usamos el observable <span class="math notranslate nohighlight">\(\sigma_x\)</span> la misma cantidad <span class="math notranslate nohighlight">\((n_0-n_1)/N\)</span>, será <span class="math notranslate nohighlight">\(\langle Y\rangle_{ancilla}\)</span>, el valor esperado de <span class="math notranslate nohighlight">\(Y\)</span> en la ancilla.</p>
+<p>La magia del entrelazamiento es que estas dos cantidades poseen información que nos permite conocer el valor esperado de <span class="math notranslate nohighlight">\(U\)</span> en el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> <strong>¡sin medirlo!</strong>.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Teorema</b>:</p>
@@ -936,42 +940,37 @@ p_{0}-p_{1} = \frac{n_{0}}{N} - \frac{n_{1}}{N} = \langle X\rangle_{ancilla}
 \]</div>
 </div>
 </div>
-<p>La demostración requiere un cálculo explícito. Para el caso de medir con <span class="math notranslate nohighlight">\(X\)</span>, el circuito anterior será</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/Hadamard_measurea.png"><img alt="../../../_images/Hadamard_measurea.png" src="../../../_images/Hadamard_measurea.png" style="width: 350px;" /></a>
-</figure>
-<p>Un cálculo explícito nos da el estado que llega al aparato de medida</p>
+<details>
+<summary><p style="text-align: left ;color: navy"> >> Demostración </p></summary>
+Un cálculo explícito nos da el estado que llega al aparato de medida
 <div class="math notranslate nohighlight">
 \[
-\ket{0}\ket{\psi} ~\to ~ \ket{\Psi} = \frac{1}{2} \left[\rule{0mm}{3mm} |0\rangle \otimes (1 + U) |\psi\rangle +  |1\rangle \otimes (1 - U) |\psi\rangle \right] \label{hadam}
+\ket{0}\ket{\psi} ~\to ~ \ket{\Psi} = \frac{1}{2} \left[\rule{0mm}{3mm} |0\rangle \otimes  |\psi\rangle +  |1\rangle \otimes  U |\psi\rangle \right] \label{hadam}
 \]</div>
-<p>El número <span class="math notranslate nohighlight">\( p_{0} - p_{1}\)</span> es el valor esperado de <span class="math notranslate nohighlight">\(\langle X\rangle \)</span> en el estado de la ancilla justo  antes de la barrera. Encontramos el siguiente resultado</p>
+<p>Entonces el valor esperado de <span class="math notranslate nohighlight">\(X\)</span>, medido en la ancilla será</p>
 <div class="math notranslate nohighlight">
 \[
-\langle{X}\rangle_{ancilla}  =  \hbox{Re}\bra{\psi} U \ket{\psi}
+\bra{\Psi}(X\otimes I)\ket{\Psi} = \frac{1}{2}\big(\bra{\psi}U^\dagger\ket{\psi} + \bra{\psi}U\ket{\psi}\big)
+=\hbox{Re}\, \bra{\psi}U\ket{\psi}
 \]</div>
-<p>Supongamos ahora que medimos en la base <span class="math notranslate nohighlight">\(Y\)</span>, es decir, con el circuito siguiente.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/Hadamard_measureb.png"><img alt="../../../_images/Hadamard_measureb.png" src="../../../_images/Hadamard_measureb.png" style="width: 350px;" /></a>
-</figure>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Verificar que la parte imaginaria viene de medir  <span class="math notranslate nohighlight">\(\langle Y\rangle\)</span> en la ancilla</p>
+<p>Donde hemos usador que <span class="math notranslate nohighlight">\(X\ket{0} = \ket{1}\)</span> y <span class="math notranslate nohighlight">\(X\ket{1} = \ket{0}\)</span>.</p>
+<p>Análogamente, si lo que se ha medido es <span class="math notranslate nohighlight">\(\sigma_y\)</span>, entonces se trata del valor esperado</p>
 <div class="math notranslate nohighlight">
 \[
-\langle{Y}\rangle_{ancilla}  =  \hbox{Im}\bra{\psi} U \ket{\psi} \, .
-\]</div>
+\bra{\Psi}(Y\otimes I)\ket{\Psi} = \frac{1}{2}\big( -i \bra{\psi}U^\dagger\ket{\psi} + i \bra{\psi}U\ket{\psi}\big)
+ = \hbox{Im}\, \bra{\psi}U\ket{\psi}
+ \]</div>
+<p>Donde hemos usador que <span class="math notranslate nohighlight">\(Y\ket{0} = i\ket{1}\)</span> y <span class="math notranslate nohighlight">\(X\ket{1} = -i\ket{0}\)</span>.</p>
+<div class="docutils">
 </div>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Obtener el valor esperado de <span class="math notranslate nohighlight">\(\langle Z\otimes Z\otimes Z\rangle_\Psi\)</span> en el estado</p>
+<section id="a-programar">
+<h4>¡A programar!<a class="headerlink" href="#a-programar" title="Permalink to this heading">#</a></h4>
+<p>Vamos a obtener el valor esperado de <span class="math notranslate nohighlight">\(\langle Z\otimes Z\otimes Z\rangle_\Psi\)</span> en el estado</p>
 <div class="math notranslate nohighlight">
 \[
 |\psi&gt; = \frac{i}{4}|000&gt;+\frac{1}{\sqrt{8}}|001&gt;+\frac{1+i}{4}|010&gt;+\frac{1+2i}{\sqrt{8}}|101&gt;+\frac{1}{4}|110&gt;
 \]</div>
-<p>usando el método de Hadamard.</p>
-</div>
-<p>Generamos el circuito de medida de Hadamard</p>
+<p>usando el método de Hadamard. Generamos el circuito de medida de Hadamard</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
@@ -1031,29 +1030,45 @@ p_{0}-p_{1} = \frac{n_{0}}{N} - \frac{n_{1}}{N} = \langle X\rangle_{ancilla}
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
-<p>Define una función <i>add_Hadamadard_measure</i> que reciba un circuito y una  cadena de Pauli y añada al circuito el medidor de Hadamard asociado.</p>
+<p>demuestra siguiendo los mismos pasos que midiendo en la ancilla del siguiente circuito los valores medios <span class="math notranslate nohighlight">\(\langle X\rangle_{ancilla}\)</span> y
+<span class="math notranslate nohighlight">\(\langle Y\rangle_{ancilla}\)</span></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../../_images/Hadamard_measured.png"><img alt="../../../_images/Hadamard_measured.png" src="../../../_images/Hadamard_measured.png" style="width: 300px;" /></a>
+</figure>
+<p>obtenemos información acerca del valor esperados de <span class="math notranslate nohighlight">\(V^\dagger U\)</span> en el estado <span class="math notranslate nohighlight">\(\ket{\psi}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\langle X\rangle_{ancilla} = \hbox{Re}\bra{\psi}V^\dagger U\ket{\psi} ~~~~,~~~~
+\langle Y\rangle_{ancilla} = \hbox{Im}\bra{\psi}V^\dagger U\ket{\psi} ~~~~,~~~~
+\]</div>
 </div>
+</section>
 <section id="proyeccion-de-hadamard">
 <h4>Proyección de Hadamard<a class="headerlink" href="#proyeccion-de-hadamard" title="Permalink to this heading">#</a></h4>
-<p>Supongamos el operador <span class="math notranslate nohighlight">\(U\)</span> es un operador sobre 1 cúbit <em>a la vez hermítico y unitario</em>.</p>
-<p>Por tanto puede ser considerado, a la vez,</p>
-<ul class="simple">
-<li><p>un observable con autovalores reales  <span class="math notranslate nohighlight">\(\lambda = \pm1\)</span> y</p></li>
-<li><p>una puerta cuántica con autovalores de módulo unidad</p></li>
-</ul>
-<p>Ello deja a <span class="math notranslate nohighlight">\(\lambda = \pm 1\)</span> como los únicos autovalores posibles para un operador así.
-Los operadores <span class="math notranslate nohighlight">\(X,Y,Z\)</span> y <span class="math notranslate nohighlight">\(H\)</span> son ejemplos de ello.</p>
-<p>Denominemos <span class="math notranslate nohighlight">\(\ket{a}_U, \, a=0,1\)</span>  los autovectores de <span class="math notranslate nohighlight">\(U\)</span> con autovalores <span class="math notranslate nohighlight">\((-1)^a\)</span>, es decir <span class="math notranslate nohighlight">\(U\ket{a}_U = (-1)^a\ket{a}_U\)</span>.</p>
-<p>En este caso, los factores <span class="math notranslate nohighlight">\((1\pm U)\)</span> que aparecen en la medida de Hadamard son proyectores ortogonales sobre los autoestados de <span class="math notranslate nohighlight">\(U\)</span></p>
+<p>Consideremos el siguiente circuito sobre <span class="math notranslate nohighlight">\(\Hil\otimes \Hil\)</span></p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../../_images/HadamardProjection.png"><img alt="../../../_images/HadamardProjection.png" src="../../../_images/HadamardProjection.png" style="width: 280px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/HadamardProjection.png"><img alt="../../../_images/HadamardProjection.png" src="../../../_images/HadamardProjection.png" style="width: 300px;" /></a>
 </figure>
-<p>La imagen bajo este circuito de un estado de entrada <span class="math notranslate nohighlight">\(\ket{0}\ket{\psi}\)</span> ahora será</p>
+<p>Escribamos el estado justo antes de llegar al aparato de medida</p>
+<div class="math notranslate nohighlight">
+\[
+\ket{0}\ket{\psi} \to \ket{\Psi} =  \ket{0}\otimes \frac{1}{2}(1+U)\ket{\psi} ~+~ \ket{0}\otimes \frac{1}{2}(1-U)\ket{\psi}
+\]</div>
+<p>Supongamos que el operador <span class="math notranslate nohighlight">\(U\)</span> es un operador sobre 1 cúbit <u><em>a la vez hermítico y unitario</em></u>. Por ser unitario sus autovalores tienen que ser fases puras <span class="math notranslate nohighlight">\(\lambda = e^{i\varphi}\)</span>. Por ser hermítico, deben ser reales.</p>
+<p>Ello deja a <span class="math notranslate nohighlight">\(\lambda = \pm 1\)</span> como los únicos autovalores posibles.
+Los operadores <span class="math notranslate nohighlight">\(X,Y,Z\)</span> y <span class="math notranslate nohighlight">\(H\)</span> son ejemplos de ello.</p>
+<p>Denominemos <span class="math notranslate nohighlight">\(\ket{a}_U = \{\ket{0}_U,\ket{1}_U\}\)</span>  los autovectores de <span class="math notranslate nohighlight">\(U\)</span> con autovalores <span class="math notranslate nohighlight">\((-1)^a = \pm 1\)</span>, es decir <span class="math notranslate nohighlight">\(U\ket{0}_U = \ket{0}_U\)</span> y <span class="math notranslate nohighlight">\(U\ket{1}_U = -\ket{1}_U\)</span>.</p>
+<p>En este caso, los factores <span class="math notranslate nohighlight">\(\frac{1}{2}(1\pm U)\)</span>  son <em>proyectores ortogonales</em> sobre los autoestados de <span class="math notranslate nohighlight">\(U\)</span>. Efectivamente, cualquier estado se puede escribir en esta base <span class="math notranslate nohighlight">\(\ket{\psi} = \alpha\ket{0}_U + \beta\ket{1}_U\)</span>. Entonces</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2}(1 + U) \ket{\psi} = \alpha \ket{0}_U~~~~~~~;~~~~~~~ \frac{1}{2}(1 - U) \ket{\psi} = \beta\ket{1}_U
+\]</div>
+<p>La imagen bajo este circuito de un estado de entrada <span class="math notranslate nohighlight">\(\ket{0}\ket{\psi}\)</span>  será, entonces, un estado entrelazado</p>
 <div class="math notranslate nohighlight">
 \[
 \ket{0}\ket{\psi} = \ket{0}\otimes (\alpha\ket{0}_U + \beta\ket{1}_U) ~~\longrightarrow ~~  \alpha\ket{0}\ket{0}_U +  \beta\ket{1}\ket{1}_U\, .
 \]</div>
-<p>Al igual que con los estados de Bell, cada resultado de  medida en la ancilla está correlacionado con un autoestado del operador <span class="math notranslate nohighlight">\(U\)</span>.</p>
+<p>Al igual que con los estados de Bell, cada resultado de  medida en la ancilla está correlacionado con un autoestado del operador <span class="math notranslate nohighlight">\(U\)</span> en el segundo registro.</p>
 </section>
 </section>
 </section>
@@ -1135,6 +1150,7 @@ Los operadores <span class="math notranslate nohighlight">\(X,Y,Z\)</span> y <sp
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-observables-multi-cubit">Valores esperados de observables multi-cúbit</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#valores-esperados-de-cadenas-de-pauli">Valores esperados de cadenas de Pauli</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-hadamard">Medida de Hadamard</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-programar">¡A programar!</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#proyeccion-de-hadamard">Proyección de Hadamard</a></li>
 </ul>
 </li>
