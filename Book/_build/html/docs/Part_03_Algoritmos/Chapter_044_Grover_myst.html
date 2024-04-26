@@ -497,7 +497,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 25, 2024 | 8 min read</p>
+<div><p>Apr 26, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -569,8 +569,7 @@ U_f \ket{x}\ket{-} = (-1)^{f(x)}\ket{x}\ket{-} ~= ~ \left\{ \begin{array}{lcc}
 <p>Definamos el vector unitario compuesto por la <em>superposición uniforme</em> de los elementos que <strong>no son solución</strong></p>
 <div class="math notranslate nohighlight">
 \[\ket{s^{\prime}} = \frac{1}{\sqrt{N-1}} \sum_{x \neq w} \ket{x}\]</div>
-<p>Claramente <span class="math notranslate nohighlight">\(\braket{\omega}{s'} = 0\)</span> son ortogonales</p>
-<p>Podemos reescribir <span class="math notranslate nohighlight">\(\ket{s}\)</span> en una forma más conveniente.</p>
+<p>Claramente <span class="math notranslate nohighlight">\(\braket{\omega}{s'} = 0\)</span> son ortogonales. Ahora podemos reescribir <span class="math notranslate nohighlight">\(\ket{s}\)</span> en una forma más conveniente</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{eqnarray*}
 \ket{s} = \frac{1}{\sqrt{N}}\sum_x \ket{x}  ~&amp;=&amp; ~
@@ -594,7 +593,7 @@ $<span class="math notranslate nohighlight">\(
 \[\ket{s} = \sin{\theta}\ket{w} + \cos{\theta}\ket{s^\prime}\]</div>
 <p>caracterizado por el ángulo <span class="math notranslate nohighlight">\(\sin\theta = \frac{1}{\sqrt{N}}\)</span>, como se puede observar en la figura siguiente</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/Grover1.png"><img alt="../../_images/Grover1.png" src="../../_images/Grover1.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Grover1.png"><img alt="../../_images/Grover1.png" src="../../_images/Grover1.png" style="width: 650px;" /></a>
 </figure>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
@@ -606,12 +605,13 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <section id="rotacion-de-grover">
 <h3>Rotación de Grover<a class="headerlink" href="#rotacion-de-grover" title="Permalink to this heading">#</a></h3>
-<p>La estrategia se basa en iterar una serie de operaciones que amplifiquen la amplitud de obtener el estado <span class="math notranslate nohighlight">\(\ket{w}\)</span>.</p>
+<p>La estrategia se basa en iterar una serie de operaciones que tengan como efecto una amplificación de la probabilidad de obtener el estado <span class="math notranslate nohighlight">\(\ket{w}\)</span>.</p>
 <p>Geométricamente, cada <em>iteración de Grover</em> es una composición de dos reflectores <span class="math notranslate nohighlight">\(G = R_{s_\perp} R_w\)</span>, donde</p>
 <ul class="simple">
-<li><p><strong>el marcador</strong>, <span class="math notranslate nohighlight">\(R_w\)</span>, produce una <em>reflexión paralela</em> a  <span class="math notranslate nohighlight">\(\ket{w}\)</span>. Esto es, invierte la componente asociada a <span class="math notranslate nohighlight">\(\ket{w}\)</span> y mantiene intactas todas las demás.
-Vamos a ver que un operador así tiene la siguiente forma</p></li>
+<li><p><strong>el marcador</strong>, <span class="math notranslate nohighlight">\(R_w\)</span>, produce una <em>reflexión paralela</em> a  <span class="math notranslate nohighlight">\(\ket{w}\)</span>.</p></li>
 </ul>
+<p>Es decir, invierte la componente asociada a <span class="math notranslate nohighlight">\(\ket{w}\)</span> y mantiene intactas todas las demás.
+Un operador así tiene la siguiente forma</p>
 <div class="math notranslate nohighlight">
 \[
 R_w  =  \left( I - 2\ket{w}\bra{w}\rule{0mm}{6mm}\right)
@@ -619,20 +619,22 @@ R_w  =  \left( I - 2\ket{w}\bra{w}\rule{0mm}{6mm}\right)
 <p>Efectivamente, operando se llega inmediatamente a</p>
 <div class="math notranslate nohighlight">
 \[
-R_w\ket{s} ~=~ \left( I - 2\ket{w}\bra{w}\rule{0mm}{6mm}\right)\ket{s} ~ = ~ -\frac{1}{\sqrt{N}} \ket{w} + \sqrt{\frac{N-1}{N}} \ket{s^\prime}
+R_w\ket{s} ~=~ \left( I - 2\ket{w}\bra{w}\rule{0mm}{6mm}\right)\ket{s} ~=~  \ket{s} - \frac{2}{\sqrt{N}}\ket{w} = 
+~ = ~ -\frac{1}{\sqrt{N}} \ket{w} + \sqrt{\frac{N-1}{N}} \ket{s^\prime}
 \]</div>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/Grover2.png"><img alt="../../_images/Grover2.png" src="../../_images/Grover2.png" style="width: 600px;" /></a>
 </figure>
 <ul class="simple">
-<li><p><strong>El difusor</strong>, es también un reflector. Esta vez, perpendicular a <span class="math notranslate nohighlight">\(\ket{s}\)</span>. O lo que es igual, paralelo al vector perpendicular <span class="math notranslate nohighlight">\(\ket{s_\perp}\)</span>.</p></li>
+<li><p><strong>el difusor</strong>, <span class="math notranslate nohighlight">\(R_{s_\perp}\)</span> es también un reflector.</p></li>
 </ul>
+<p>Esta vez, <span class="math notranslate nohighlight">\(R_{s_\perp}\)</span> produce una reflexión a lo largo de un vector <span class="math notranslate nohighlight">\(\ket{s_\perp}\)</span>, perpendicular a <span class="math notranslate nohighlight">\(\ket{s}\)</span>.  Como hemos visto, el operador es</p>
 <div class="math notranslate nohighlight">
 \[
 R_{s_\perp} =  I - 2\ket{s_\perp}\bra{s_\perp}  
 \]</div>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/Grover3.png"><img alt="../../_images/Grover3.png" src="../../_images/Grover3.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Grover3.png"><img alt="../../_images/Grover3.png" src="../../_images/Grover3.png" style="width: 650px;" /></a>
 </figure>
 <p>En las ilustraciones hemos representado el efecto de una primera iteración de Grover <span class="math notranslate nohighlight">\(G = R_{s_\perp} R_w\)</span> actuando sobre el vector <span class="math notranslate nohighlight">\(\ket{s}\)</span>.</p>
 <p>Observamos que:</p>
@@ -644,8 +646,8 @@ R_{s_\perp} =  I - 2\ket{s_\perp}\bra{s_\perp}
 </section>
 <section id="el-circuito-de-grover">
 <h3>El circuito de Grover<a class="headerlink" href="#el-circuito-de-grover" title="Permalink to this heading">#</a></h3>
-<p>La tarea ahora es crear sendos circuitos implementen las reflexiones <span class="math notranslate nohighlight">\(R_w\)</span> y <span class="math notranslate nohighlight">\(R_s\)</span>.</p>
-<p>Comenzaremos repasando la prescripción general para programar estos operadores.</p>
+<p>La tarea ahora es crear sendos circuitos que implementen las reflexiones <span class="math notranslate nohighlight">\(R_w\)</span> y <span class="math notranslate nohighlight">\(R_s\)</span>.
+Comenzaremos repasando la prescripción general para programar estos operadores.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Lema</b>:</p>
@@ -658,7 +660,7 @@ R_\psi = I - 2\ket{\psi}\bra{\psi} = V \left( I - 2\ket{0}\bra{0}\rule{0mm}{6mm}
 \]</div>
 </div>
 </div>
-<p>De modo que sólo necesitamos un circuito para el reflector  <span class="math notranslate nohighlight">\(~R_0 = I- 2\ket{0}\bra{0}~\)</span> <em>paralelo</em> al estado <span class="math notranslate nohighlight">\(\ket{0}\)</span>.</p>
+<p>De modo que sólo necesitamos un circuito para el reflector  <span class="math notranslate nohighlight">\(~R_0 = I- 2\ket{0}\bra{0}~\)</span> a lo largo del estado <span class="math notranslate nohighlight">\(\ket{0}\)</span>.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Lema</b>:</p>
@@ -673,6 +675,7 @@ R_\psi = I - 2\ket{\psi}\bra{\psi} = V \left( I - 2\ket{0}\bra{0}\rule{0mm}{6mm}
 <p class="sd-card-text">donde la cadena <span class="math notranslate nohighlight">\(XZX\)</span> puede situarse en cualquier cúbit, no necesariamente el último.</p>
 </div>
 </div>
+<p>Es evidente que cualquier estado que no sea <span class="math notranslate nohighlight">\(\ket{00...0}\)</span> pasará intacto por el circuito. El estado <span class="math notranslate nohighlight">\(\ket{00...0}\)</span> activa la puera <span class="math notranslate nohighlight">\(Z\ket{1} = -\ket{1}\)</span> en el último cúbit. Ese signo es el que estamos buscando.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit.circuit.library</span> <span class="kn">import</span> <span class="n">ZGate</span>
@@ -716,7 +719,7 @@ R_w \ket{x}  ~= ~ \left\{ \begin{array}{lcc}
               \, ~~\ket{x}  &amp;  \hbox{si} &amp; x \neq w \end{array}
    \right.. 
 \end{split}\]</div>
-<p>Pero esta es, precisamente la acción del oráculo asociado a <span class="math notranslate nohighlight">\(f(x)\)</span>, implementado como orácuño de fase. Por tanto no estámos usando información prohibida. Sólo estamos invocando el oráculo.</p>
+<p>Pero esta es, precisamente la acción del oráculo asociado a <span class="math notranslate nohighlight">\(f(x)\)</span>, implementado como oráculo de fase. Por tanto no estámos usando información prohibida. La primera reflexión no es más que la invocación de oráculo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Rw</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>        
@@ -756,8 +759,7 @@ R_w \ket{x}  ~= ~ \left\{ \begin{array}{lcc}
 <h4>Codificando el difusor <span class="math notranslate nohighlight">\(D = R_{s_\perp}\)</span><a class="headerlink" href="#codificando-el-difusor-d-r-s-perp" title="Permalink to this heading">#</a></h4>
 <p>Ahora el papel de <span class="math notranslate nohighlight">\(\ket{\psi}\)</span> lo jugará el vector perpendicular <span class="math notranslate nohighlight">\(\ket{s_\perp}\)</span>. Pero ¡no sabemos preparar este estado!</p>
 <p>Sin embargo es evidente que <span class="math notranslate nohighlight">\( R_{s_\perp} R_{s} = -I\)</span> porque el producto de reflexiones paralela y perpendicular a un vector acaba invirtiendo todas las componentes. Dicho de otra manera  <span class="math notranslate nohighlight">\(R_{s_\perp} = - R_s\)</span>. Y para <span class="math notranslate nohighlight">\(\ket{s}\)</span> si que tenemos una preparación <span class="math notranslate nohighlight">\(\ket{s} = H^n\ket{0}\)</span>.</p>
-<p>Por tanto, si elegimos codificar el reflector <span class="math notranslate nohighlight">\(R_s\)</span> estaremos cometiendo un error en un signo. Pero los signos globales son inobservables. Por tanto esperamos que no habrá ninguna diferencia entre usar un reflector  u otro.</p>
-<p>En este caso el operador <span class="math notranslate nohighlight">\(V:\ket{0}\to\ket{s}\)</span> es la puerta de Walsh-Hadamard <span class="math notranslate nohighlight">\(V=H^{\otimes n}\)</span></p>
+<p>Por tanto, si elegimos codificar el reflector <span class="math notranslate nohighlight">\(R_s\)</span> en lugar de <span class="math notranslate nohighlight">\(R_{s_\perp}\)</span> sólo estaremos cometiendo un error en un signo. A priori los signos globales son inobservables. Por tanto esperamos que no habrá ninguna diferencia entre usar un reflector  u otro.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">Rs</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>        
@@ -787,17 +789,13 @@ R_w \ket{x}  ~= ~ \left\{ \begin{array}{lcc}
 <p>Con estos dos ingredientes ya podríamos fabricar el operador de Grover.</p>
 <div class="math notranslate nohighlight">
 \[
- G = D \, O = -R_s  R_w
+ G = D \, O = R_{s_\perp}  R_w = R_{s_\perp} R_w
 \]</div>
-<div class="note admonition">
-<p class="admonition-title">Notar</p>
-<p>¡no sabemos implementar  <span class="math notranslate nohighlight">\(-R_s\)</span>! <span class="math notranslate nohighlight">\(~\)</span>, sólo <span class="math notranslate nohighlight">\(R_s\)</span>. De modo que lo más cercano a la iteración de Grover que podemos conseguir es
-<span class="math notranslate nohighlight">\(
-\Rightarrow  R_s R_w = - G 
-\)</span></p>
-<p>El signo menos, en apariencia es una fase global y no debería afectar a las probabilidades finales que son sus módulos al cuadrado.</p>
-<p>De modo que, de momento, lo vamos a ignorar, pero mantenemos una nota de atención sobre este hecho.</p>
-</div>
+<p>Sin embargo, como hemos dicho, no sabemos implementar <span class="math notranslate nohighlight">\(R_s\)</span>. Con lo que sabemos hacer, sólo podemos implementar el opuesto del operador de Grover</p>
+<div class="math notranslate nohighlight">
+\[
+R_s R_w = - G
+\]</div>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/Grover5.png"><img alt="../../_images/Grover5.png" src="../../_images/Grover5.png" style="width: 600px;" /></a>
 </figure>
@@ -836,7 +834,7 @@ R_w \ket{x}  ~= ~ \left\{ \begin{array}{lcc}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># el número de cúbits de la base de datos</span>
 <span class="n">n</span><span class="o">=</span><span class="mi">4</span>
 <span class="c1"># el número de iteraciones de Grover</span>
-<span class="n">it</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">niter</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="c1"># la solución oculta en decimal y en binario</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="n">wstring</span> <span class="o">=</span> <span class="nb">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -849,7 +847,7 @@ R_w \ket{x}  ~= ~ \left\{ \begin{array}{lcc}
 <span class="n">qcGrover</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="n">qr</span><span class="p">)</span>
 <span class="n">qcGrover</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">it</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
     <span class="n">qcGrover</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">G</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">w</span><span class="p">),</span><span class="n">qr</span><span class="p">)</span>
 
 <span class="n">qcGrover</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
@@ -869,27 +867,20 @@ R_w \ket{x}  ~= ~ \left\{ \begin{array}{lcc}
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">M_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-
-<span class="n">shots</span> <span class="o">=</span> <span class="mi">10000</span>
-
-<span class="c1"># Ejecutamos la simulación y recogemos el número de cuentas de cada estado</span>
-<span class="n">cuentas</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qcGrover</span><span class="p">,</span><span class="n">backend</span><span class="o">=</span><span class="n">M_simulator</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
-
-
-<span class="c1"># Calculamos la probabilidad de medir w</span>
-<span class="c1">#prob_w = cuentas[wstring]/shots</span>
-<span class="c1">#print(r&#39;La probabilidad de medir w=%s es %f&#39; % (w, prob_w))</span>
-
-<span class="c1"># Histogramamos las probabilidades</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;ejecutamos el circuito&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
 <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
-<span class="n">plot_histogram</span><span class="p">(</span><span class="n">cuentas</span><span class="p">)</span>
+
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qcGrover</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
+
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/19887e4bf7359cff8a255b07c2f1ed86d38a4dbefcf38a00672d5a66c1522e11.png" src="../../_images/19887e4bf7359cff8a255b07c2f1ed86d38a4dbefcf38a00672d5a66c1522e11.png" />
+<img alt="../../_images/4c12078996063975e1248befc00b68cabf45523c2cf00abc317f0151db92b538.png" src="../../_images/4c12078996063975e1248befc00b68cabf45523c2cf00abc317f0151db92b538.png" />
 </div>
 </div>
 </section>
@@ -917,10 +908,6 @@ G^k\ket{s} = \begin{bmatrix} \sin 2k\theta &amp; \cos 2k \theta \\ - \cos 2k\the
 \cos(2k+1)\theta \end{bmatrix}
 \end{split}\]</div>
 <p>que giran <em>sin salirse</em> del plano <span class="math notranslate nohighlight">\((\ket{w},\ket{s'})\)</span></p>
-<div class="tip admonition">
-<p class="admonition-title">Ejercicio</p>
-<p>Prueba esta igualdad</p>
-</div>
 <p>Esta rotación comienza aumentanto la amplitud del estado <span class="math notranslate nohighlight">\(\ket{w}\)</span> ya que <span class="math notranslate nohighlight">\(\sin 3\theta &gt; \sin \theta\)</span>. Éste es el efecto de <em>amplificación de amplitud</em> buscado</p>
 <p>Habrá un valor de <span class="math notranslate nohighlight">\(k\)</span> para el cuál la iteración se aproxime mucho al valor <span class="math notranslate nohighlight">\(\sin (2k+1)\theta \approx 1\)</span>.</p>
 <p>Valores de <span class="math notranslate nohighlight">\(k\)</span> superiores conducen a una supresión de dicha amplitud al rotar el vector <span class="math notranslate nohighlight">\(G^k\ket{s}\)</span> alejándose del eje <span class="math notranslate nohighlight">\(\ket{w}\)</span>.</p>
@@ -960,7 +947,7 @@ k_{op} = \left[ \frac{\pi}{4\theta} \right]
 </div>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
-<p>Ejecuta el algoritmo de Grover variando el número <i>it</i> de iteraciones de Grover y verifica que el valor de <span class="math notranslate nohighlight">\(k\)</span> óptimo es el enunciado en el teorema.</p>
+<p>Ejecuta el algoritmo de Grover variando el número <i>niter</i> de iteraciones de Grover y verifica que el valor de <span class="math notranslate nohighlight">\(k\)</span> óptimo es el enunciado en el teorema.</p>
 </div>
 <p>Cuando <span class="math notranslate nohighlight">\(N\to \infty\)</span>, es decir, cuando nuestra base de datos es muy grande
 el vector inicial tiene un ángulo muy pequeño.</p>
@@ -987,12 +974,12 @@ k_{op} \approx \frac{\pi}{4}\sqrt{N}
 </section>
 <section id="varias-agujas-en-un-pajar">
 <h2>Varias agujas en un pajar<a class="headerlink" href="#varias-agujas-en-un-pajar" title="Permalink to this heading">#</a></h2>
-<p>Un usuario podría tener más de una línea telefónica contratada. En ese caso, <em>varios</em> números de teléfono servirán para dar con <em>un sólo</em> nombre.</p>
-<p>Supondremos ahora que la búsqueda en la base de datos admite <span class="math notranslate nohighlight">\(M\)</span> resultados satisfactorios distintos <span class="math notranslate nohighlight">\(w_1,....,w_M\)</span>.</p>
-<p>Ahora los vectores de la base que <em>son solución</em> <span class="math notranslate nohighlight">\(\{\ket{w_i} \}\)</span> generan un <em>subespacio</em> <span class="math notranslate nohighlight">\(\mathcal{B} \subset \mathcal{H}\)</span> de dimension <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<p>Un usuario podría tener más de una línea telefónica contratada. En ese caso, <em>varios</em> números de teléfono servirán para dar con <em>un sólo</em> nombre.
+Supondremos ahora que la búsqueda en la base de datos admite <span class="math notranslate nohighlight">\(M\)</span> resultados satisfactorios distintos <span class="math notranslate nohighlight">\(w_1,....,w_M\)</span>.</p>
+<p>Ahora los <span class="math notranslate nohighlight">\(M\)</span> vectores de la base que <em>son solución</em> <span class="math notranslate nohighlight">\(\{\ket{w_i} \}\)</span> generan un <em>subespacio</em> <span class="math notranslate nohighlight">\(\mathcal{B} \subset \mathcal{H}\)</span> de dimension <span class="math notranslate nohighlight">\(M\)</span>.</p>
 <p>Podemos descomponer <span class="math notranslate nohighlight">\(~\Hil = {\cal B} \oplus {\cal B}_\perp\)</span> en suma directa de subespacios <em>solución</em> y su ortogonal.
-Un vector <span class="math notranslate nohighlight">\(\ket{x}\notin {\cal B}~\)</span> será <span class="math notranslate nohighlight">\(~\ket{x} \in {\cal B}_\perp\)</span></p>
-<p>Definamos</p>
+Un vector <span class="math notranslate nohighlight">\(\ket{x}\notin {\cal B}~\)</span> será <span class="math notranslate nohighlight">\(~\ket{x} \in {\cal B}_\perp\)</span>.
+Definamos</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 \ket{w} = \frac{1}{\sqrt{M}}\sum_{x\in \mathcal{B}}\ket{x} = \frac{1}{\sqrt{M}}\sum_i^M \ket{w_i} \in {\cal B}
@@ -1008,8 +995,8 @@ Un vector <span class="math notranslate nohighlight">\(\ket{x}\notin {\cal B}~\)
 \\ \rule{0mm}{12mm}
 &amp;=&amp;\sqrt{\frac{M}{N}}\ket{w} + \sqrt{\frac{N-M}{N}}\ket{s^\prime}.
 \end{eqnarray*}\]</div>
-<p>Con estas definiciones, las figuras en las que se representan las reflexiones son idénticas y todo ocurre en el <em>plano de Grover</em> generado por los vectores <span class="math notranslate nohighlight">\(\{\ket{w},\ket{s'}\}\)</span></p>
-<p>La <em>única diferencia</em> está en el valor del ángulo inicial</p>
+<p>Con estas definiciones, las figuras en las que se representan las reflexiones son idénticas y todo ocurre en el <em>plano de Grover</em> generado por los vectores <span class="math notranslate nohighlight">\(\{\ket{w},\ket{s'}\}\)</span>.
+La <em>única diferencia</em> está en el valor del ángulo inicial</p>
 <div class="math notranslate nohighlight">
 \[
 \theta = \arcsin \sqrt{\frac{M}{N}}
@@ -1073,8 +1060,8 @@ k_{op} \approx \frac{\pi}{4}\sqrt{\frac{N}{M}}
 </div>
 </div>
 </div>
-<p>Ahora podemos correr el mismo circuito con esta modificación</p>
-<p>Primero debemos calcular el valor óptimo de iteraciones <span class="math notranslate nohighlight">\(k_{op} = [\pi/(4 \arcsin \sqrt{M/N})]\)</span></p>
+<p>Ahora podemos correr el mismo circuito con esta modificación.
+Primero debemos calcular el valor óptimo de iteraciones <span class="math notranslate nohighlight">\(k_{op} = [\pi/(4 \arcsin \sqrt{M/N})]\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dimensión de la base de datos</span>
@@ -1125,43 +1112,38 @@ k_{op} \approx \frac{\pi}{4}\sqrt{\frac{N}{M}}
   self._style, def_font_ratio = load_style(self._style)
 </pre></div>
 </div>
-<img alt="../../_images/33f9aa15e4aebc40884e932fbb76639782aa2af29ea8537cbce56b850ff16f1c.png" src="../../_images/33f9aa15e4aebc40884e932fbb76639782aa2af29ea8537cbce56b850ff16f1c.png" />
+<img alt="../../_images/b54b28d679442779598636dc70921eb4aa7dd4eacea588ea13b5543580b8b5b7.png" src="../../_images/b54b28d679442779598636dc70921eb4aa7dd4eacea588ea13b5543580b8b5b7.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">M_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-
-<span class="n">shots</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="c1"># Ejecutamos la simulación y recogemos el número de cuentas de cada estado</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qcGrover</span><span class="p">,</span><span class="n">backend</span><span class="o">=</span><span class="n">M_simulator</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
-
-<span class="c1"># Calculamos la probabilidad de medir w</span>
-<span class="c1">#prob_w = cuentas[wstring]/shots</span>
-<span class="c1">#print(r&#39;La probabilidad de medir w=%s es %f&#39; % (w, prob_w))</span>
-
-<span class="c1"># Histogramamos las probabilidades</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;ejecutamos el circuito&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
 <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qcGrover</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
+
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/570497612fb319aaa4df2918f8b86fc89d4ed5a7d1450049b5bf12cb9ce8d546.png" src="../../_images/570497612fb319aaa4df2918f8b86fc89d4ed5a7d1450049b5bf12cb9ce8d546.png" />
+<img alt="../../_images/9fb9dbbf5b8a89881b4d8cdeae1702076d9f48416c14052b5d02d88fc279fa94.png" src="../../_images/9fb9dbbf5b8a89881b4d8cdeae1702076d9f48416c14052b5d02d88fc279fa94.png" />
 </div>
 </div>
 <p>Extraemos los valores que han obtenido las máximas frecuencias de medida</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">majority_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span>  <span class="n">v</span><span class="o">&gt;</span><span class="mi">300</span> <span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">majority_counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span>  <span class="n">v</span><span class="o">&gt;</span><span class="mi">100</span> <span class="p">}</span>
 <span class="c1">#print(projected_counts)</span>
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">majority_counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fe097107c2a6b0b794ec8193b7a54fac223702133c19f88463f0e997a537ebe3.png" src="../../_images/fe097107c2a6b0b794ec8193b7a54fac223702133c19f88463f0e997a537ebe3.png" />
+<img alt="../../_images/dc0c3d1fce182113bf2eba78a73399f8b9b64fb1d9dc6818dbb5b49797597a56.png" src="../../_images/dc0c3d1fce182113bf2eba78a73399f8b9b64fb1d9dc6818dbb5b49797597a56.png" />
 </div>
 </div>
 <p>los convertimos a base decimal</p>
@@ -1182,9 +1164,9 @@ k_{op} \approx \frac{\pi}{4}\sqrt{\frac{N}{M}}
 </section>
 <section id="contaje-cuantico">
 <h2>Contaje cuántico<a class="headerlink" href="#contaje-cuantico" title="Permalink to this heading">#</a></h2>
-<p>En el algoritmos de Grover es crucial saber cuántas iteracions <span class="math notranslate nohighlight">\(k\)</span> del operador <span class="math notranslate nohighlight">\(G\)</span> hay que realizar.</p>
-<p>En el caso de múltiples soluciones, esto depende de <span class="math notranslate nohighlight">\(M\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(M\)</span> es desconocido de antemano, por lo que el algoritmo ve <em>comprometida su eficiencia</em>.</p>
+<p>En el algoritmos de Grover es crucial saber cuántas iteracions <span class="math notranslate nohighlight">\(k\)</span> del operador <span class="math notranslate nohighlight">\(G\)</span> hay que realizar.
+En el caso de múltiples soluciones, esto depende de <span class="math notranslate nohighlight">\(M\)</span>.
+Pero ¡<span class="math notranslate nohighlight">\(M\)</span> es desconocido de antemano! Por tanto, el algoritmo ve <em>comprometida su eficiencia</em>.</p>
 <p>En esta sección vamos a explicar <strong>cómo deducir</strong> <span class="math notranslate nohighlight">\(M\)</span> como paso previo, invocando el algoritmo de Estimación de Fase Cuántica.</p>
 <p>Ya hemos visto que, en la base <span class="math notranslate nohighlight">\(\{|\omega\rangle, |s'\rangle\}\)</span>, podemos escribir la iteración de Grover como la matriz de rotación</p>
 <div class="math notranslate nohighlight">
@@ -1200,7 +1182,7 @@ G =
 \[
 \theta = \arcsin M/N 
 \]</div>
-<p>Conocer el valor de <span class="math notranslate nohighlight">\(\theta\)</span> nos permitiría tener acceso al valor de $<span class="math notranslate nohighlight">\( M  = N\sin\theta 
+<p>Conocer  <span class="math notranslate nohighlight">\(\theta\)</span> nos permitiría tener acceso al valor de $<span class="math notranslate nohighlight">\( M  = N\sin\theta 
 \)</span>$</p>
 <p>Los  autovalores  y autoestados  de este operador son los siguientes</p>
 <div class="math notranslate nohighlight">
@@ -1210,25 +1192,24 @@ G =
 <p>que están pidiendo <em>a gritos</em> el algoritmo QPE, de estimación cuántica de fase.</p>
 <div class="tip admonition">
 <p class="admonition-title">Ejercicio</p>
-<p>Prueba este resultado</p>
+<p>prueba este resultado</p>
 </div>
 <section id="una-sutileza-crucial">
 <h3>Una sutileza crucial<a class="headerlink" href="#una-sutileza-crucial" title="Permalink to this heading">#</a></h3>
-<p>En su momento comentamos que el operador que codificamos en el circuito de Grover no es realmente <span class="math notranslate nohighlight">\( R_{s_\perp}\)</span> sino
-<span class="math notranslate nohighlight">\(R_s = -R_{s_\perp}\)</span></p>
-<p>Por tanto, realmente estamos implementando la acción de <span class="math notranslate nohighlight">\( R_s R_w =  -R_{s_\perp}R_w = -G  \)</span>.</p>
-<p>Este signo global lo hemos despreciado, y sin embargo es relevante a la hora de hacer una estimación de fase.</p>
-<p>El operador <span class="math notranslate nohighlight">\(-G = G e^{i\pi}\)</span> tiene por autovalores y autovectores</p>
+<p>En su momento comentamos que el operador que codificamos en el circuito de Grover no es realmente <span class="math notranslate nohighlight">\( R_{s_\perp}\)</span>, sino <span class="math notranslate nohighlight">\(R_s = -R_{s_\perp}\)</span>.
+Por tanto, realmente estamos implementando la acción de <span class="math notranslate nohighlight">\( R_s R_w =  -R_{s_\perp}R_w = -G  \)</span>.</p>
+<p>Este signo global lo hemos despreciado en el algoritmo de Grover. Sin embargo, ahora, en la estimación de fase, ya no se trata de un signo global, al estar el operador controlado. Por tanto tenemos que tenerlo en cuenta.
+El operador <span class="math notranslate nohighlight">\(-G = G e^{i\pi}\)</span> tiene por autovalores y autovectores</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
  \left(e^{+ 2i\theta + i\pi}, \begin{bmatrix}- i \\1 \end{bmatrix}\right)~~~~,~~~~ \left( e^{- 2i\theta + i\pi}, \begin{bmatrix}+ i \\1 \end{bmatrix} \right)
 \end{split}\]</div>
-<p>Vamos a definirlos las cantidades <span class="math notranslate nohighlight">\(\varphi_\pm\)</span> relacionadas con los autovalores de <span class="math notranslate nohighlight">\(-G\)</span></p>
+<p>Vamos a definir las cantidades <span class="math notranslate nohighlight">\(\varphi_\pm\)</span> relacionadas con los autovalores de <span class="math notranslate nohighlight">\(-G\)</span></p>
 <div class="math notranslate nohighlight">
 \[
  e^{\pm  2 i \theta + i\pi} \equiv e^{2\pi i \varphi_\pm} ~~~~\Rightarrow ~~~~ {\pm  2 i \theta + i\pi}  = {2\pi i \varphi_\pm} 
 \]</div>
-<p>El algoritmo de estimación de fase nos debería dar una aproximación buena a <span class="math notranslate nohighlight">\(\varphi_\pm\)</span>, y a partír de estos dos valores, a</p>
+<p>El algoritmo de estimación de fase nos debería dar una aproximación buena a <span class="math notranslate nohighlight">\(\varphi_\pm\)</span>, y a partir de estos dos valores, a</p>
 <div class="math notranslate nohighlight">
 \[
 \theta = \pm (\pi \varphi_\pm - \pi/2)
@@ -1237,9 +1218,13 @@ G =
 <figure class="align-center">
 <a class="reference internal image-reference" href="../../_images/ContajeCuantico.png"><img alt="../../_images/ContajeCuantico.png" src="../../_images/ContajeCuantico.png" style="width: 700px;" /></a>
 </figure>
-<p>A la salida de este circuito, el registro de phase, estará en una combinación de estados <span class="math notranslate nohighlight">\(\ket{m_+}\)</span> y <span class="math notranslate nohighlight">\(\ket{m_-}\)</span> donde <span class="math notranslate nohighlight">\(m_\pm\)</span> están distribuidas en torno a los estimadores de orden <span class="math notranslate nohighlight">\(t\)</span>  para <span class="math notranslate nohighlight">\( a_\pm = [\varphi_\pm]\)</span></p>
-<p>El operador <span class="math notranslate nohighlight">\(-G \in SU(2)\)</span> puesto que su determinante es 1.</p>
-<p>Por tanto $<span class="math notranslate nohighlight">\(e^{2\pi i\varphi_+} e^{2\pi i\varphi_-} = 1\)</span>$</p>
+<p>A la salida de este circuito, el registro de phase, estará en una combinación de estados <span class="math notranslate nohighlight">\(\ket{x_+}\)</span> y <span class="math notranslate nohighlight">\(\ket{x_-}\)</span> donde <span class="math notranslate nohighlight">\(x_\pm\)</span> están distribuidas en torno a los estimadores de orden <span class="math notranslate nohighlight">\(t\)</span>  para <span class="math notranslate nohighlight">\( a_\pm = [\varphi_\pm]\)</span></p>
+<p>El operador <span class="math notranslate nohighlight">\(-G \in SU(2)\)</span> puesto que su determinante es 1
+Por tanto</p>
+<div class="math notranslate nohighlight">
+\[
+e^{2\pi i\varphi_+} e^{2\pi i\varphi_-} = 1
+\]</div>
 <p>El algoritmo de estimación de fase nos dará estimaciones para <span class="math notranslate nohighlight">\(~~\varphi_+ = \varphi ~~\)</span> , <span class="math notranslate nohighlight">\(~~\varphi_- = 1 - \varphi~,~~\)</span> ambos pertenecientes al intervalo <span class="math notranslate nohighlight">\([0,1)\)</span>.</p>
 <p>En <strong>ambos casos</strong> es inmediato verificar que se cumple</p>
 <div class="math notranslate nohighlight">
@@ -1310,18 +1295,20 @@ M = N \cos^2 (\pi \varphi) = N \cos^2 (\pi (1-\varphi))
 <p>Ejecutamos el circuito de estimación de fase</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span><span class="p">,</span> <span class="n">execute</span>
-<span class="n">M_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;ejecutamos el circuito&#39;</span>
+<span class="kn">from</span> <span class="nn">qiskit.primitives</span> <span class="kn">import</span> <span class="n">Sampler</span>
 <span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span> <span class="n">M_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">2048</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
-<span class="n">counts</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+<span class="n">nshots</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qpe</span><span class="p">,</span><span class="n">shots</span><span class="o">=</span><span class="n">nshots</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">quasi_dists</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">tQ</span><span class="o">.</span><span class="n">dist2counts</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">nshots</span><span class="p">)</span>
+
 <span class="n">plot_histogram</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/50849a2bedc9e087ee303d521509881321e0aa452c7704df353df6a57390ae7e.png" src="../../_images/50849a2bedc9e087ee303d521509881321e0aa452c7704df353df6a57390ae7e.png" />
+<img alt="../../_images/4ec59cb8e2c0d845b4da4b52bc25b5a8d4cc55223f643d020a59c35ba1082b46.png" src="../../_images/4ec59cb8e2c0d845b4da4b52bc25b5a8d4cc55223f643d020a59c35ba1082b46.png" />
 </div>
 </div>
 <p>Extraemos las salidas <span class="math notranslate nohighlight">\(m_i\)</span> que tienen máxima probabilidad</p>
@@ -1334,21 +1321,21 @@ M = N \cos^2 (\pi \varphi) = N \cos^2 (\pi (1-\varphi))
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6fdd1ed6c4db1630c9f609392d4ab65ad3f5b52ef6bf2e839d7e5442e2979083.png" src="../../_images/6fdd1ed6c4db1630c9f609392d4ab65ad3f5b52ef6bf2e839d7e5442e2979083.png" />
+<img alt="../../_images/9974f9ea45331d38991bf6e0e91bb8167cd3e054a1306e727a82299d01085402.png" src="../../_images/9974f9ea45331d38991bf6e0e91bb8167cd3e054a1306e727a82299d01085402.png" />
 </div>
 </div>
 <p>Convertimos a base decimal y extraemos sucesivamente
 $<span class="math notranslate nohighlight">\(
-m_i  ~~\longrightarrow ~~ a_i = \left[\frac{m_i}{2^t}\right] ~\approx ~\varphi_i ~~\longrightarrow ~~ M_i = [N \cos^2(\pi \varphi_i)]
+x_i  ~~\longrightarrow ~~ a_i = \left[\frac{x_i}{2^t}\right] ~\approx ~\varphi_i ~~\longrightarrow ~~ M_i = [N \cos^2(\pi \varphi_i)]
 \)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># la lista de m_i</span>
-<span class="n">mi_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span>  <span class="n">keys</span> <span class="ow">in</span> <span class="n">majority_counts</span><span class="p">])</span> 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{m_i}</span><span class="s1"> ~ &#39;</span><span class="p">,</span> <span class="n">mi_list</span><span class="p">)</span>
+<span class="n">xi_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span>  <span class="n">keys</span> <span class="ow">in</span> <span class="n">majority_counts</span><span class="p">])</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{x_i}</span><span class="s1"> ~ &#39;</span><span class="p">,</span> <span class="n">xi_list</span><span class="p">)</span>
 
 <span class="c1"># la lista de a_i</span>
-<span class="n">ai_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="n">t</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mi_list</span><span class="p">]</span>
+<span class="n">ai_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="o">**</span><span class="n">t</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xi_list</span><span class="p">]</span>
 
 <span class="c1"># la lista de M_i</span>
 <span class="n">Mi_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">a</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ai_list</span><span class="p">]</span>
@@ -1361,14 +1348,14 @@ m_i  ~~\longrightarrow ~~ a_i = \left[\frac{m_i}{2^t}\right] ~\approx ~\varphi_i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{m_i} ~  [10, 22]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{x_i} ~  [10, 22]
 M_i= [4.938532541079283, 4.938532541079277]
  M_i = [5, 5]
 </pre></div>
 </div>
 </div>
 </div>
-<p>The number of solutions <span class="math notranslate nohighlight">\(M\)</span> obtained</p>
+<p>Así hemos obtenido el número de soluciones, <span class="math notranslate nohighlight">\(M\)</span>, buscado,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of solutions =&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">rounded_Mi_list</span><span class="p">)))</span>
