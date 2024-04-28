@@ -766,7 +766,7 @@
     " = \\hbox{Im}\\, \\bra{\\psi}U\\ket{\\psi}\n",
     " $$\n",
     "\n",
-    "Donde hemos usador que $Y\\ket{0} = i\\ket{1}$ y $X\\ket{1} = -i\\ket{0}$.\n",
+    "Donde hemos usador que $Y\\ket{0} = i\\ket{1}$ y $Y\\ket{1} = -i\\ket{0}$.\n",
     "</details>\n",
     "\n"
    ]
