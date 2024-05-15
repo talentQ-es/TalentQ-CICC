@@ -503,7 +503,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 28, 2024 | 5 min read</p>
+<div><p>May 15, 2024 | 5 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -539,19 +539,20 @@ document.write(`
 </div>
 </details>
 </div>
-<p>La propia palabra cúbit ya incorpora la noción de <em>bit cuántico</em>. Un <em>bit</em> es una variable  real <span class="math notranslate nohighlight">\(a\)</span> que puede tomar valores en <span class="math notranslate nohighlight">\( {\mathbb Z}_2= \{0, 1\}\)</span>. Un sistema físico que admita dos estados diferenciados implementa un bit. Por ejemplo un interruptor (encendido/apagado).</p>
+<p>La propia palabra cúbit incorpora la noción de <em>bit cuántico</em>. Un <em>bit</em> es una variable binaria <span class="math notranslate nohighlight">\(a\)</span> que puede tomar valores enteros  <span class="math notranslate nohighlight">\( {\mathbb Z}_2= \{0, 1\}\)</span>. Un sistema físico que admita dos estados diferenciados <em>implementa</em> un bit. Por ejemplo: un interruptor (apagado = 0, encendido=1).</p>
 <p>Igualmente, un sistema cuántico con dos niveles de energía diferenciados puede albergar un cúbit.  Vamos a definirlo matemáticamente en este capítulo. En capítulos posteriores veremos dos implementaciones físicas: el espín de un electrón y la polarización de un fotón.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Definición</b>:</p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">un cúbit es un <i>espacio de Hilbert</i> complejo de dimensión dos <span class="math notranslate nohighlight">\(~\Hil \sim {\mathbb C}^2\)</span></p>
+<p class="sd-card-text">un cúbit es un <i>espacio de Hilbert</i> complejo de dimensión (compleja) <span class="math notranslate nohighlight">\(N=2\)</span></p>
 </div>
 </div>
-<p>Un <strong>cútrit</strong> es un espacio de Hilbert de dimensión tres, <span class="math notranslate nohighlight">\(\Hil \sim {\mathbb C}^3\)</span>. Un <strong>cúdit</strong> de dimensión <span class="math notranslate nohighlight">\(d\)</span>.</p>
-<p>Ya hemos visto que la forma de trabajar en espacios vectoriales pasa, primeramente, por escoger una base.
-La base <em>ortonormal</em> que usaremos se denotará por  <span class="math notranslate nohighlight">\(B=\{\ket{0},\ket{1}\}\)</span> y se denomina <em>base computacional</em></p>
+<p>Esto quiere decir que el espacio de Hilbert de un cúbit es  <span class="math notranslate nohighlight">\(~\Hil \sim {\mathbb C}^2\)</span>.</p>
+<p>Un <strong>cútrit</strong> es un espacio de Hilbert de dimensión <span class="math notranslate nohighlight">\(N=3\)</span>, <span class="math notranslate nohighlight">\(\Hil \sim {\mathbb C}^3\)</span>. Un <strong>cúdit</strong> de dimensión <span class="math notranslate nohighlight">\(N=d\)</span>.</p>
+<p>Ya hemos visto que, para trabajar en espacios vectoriales, es necesario escoger una base.
+La base <em>ortonormal</em> que usaremos se denota por  <span class="math notranslate nohighlight">\(B=\{\ket{0},\ket{1}\}\)</span> y se denomina <em>base computacional</em></p>
 <div class="math notranslate nohighlight">
 \[
 \braket{0}{0} = \braket{1}{1} = 1 ~~~~~~~~~~\braket{0}{1} = \braket{1}{0} = 0
@@ -559,8 +560,8 @@ La base <em>ortonormal</em> que usaremos se denotará por  <span class="math not
 <section id="esfera-de-bloch">
 <h2>Esfera de Bloch<a class="headerlink" href="#esfera-de-bloch" title="Permalink to this heading">#</a></h2>
 <p>Si lo expresamos en la base computacional, un estado    <span class="math notranslate nohighlight">\(\ket{u} \in \Hil = \mathbb{C}^2\)</span> será <span class="math notranslate nohighlight">\(\ket{u} = a\ket{0} + b\ket{1}\)</span> donde <span class="math notranslate nohighlight">\(a\)</span> y <span class="math notranslate nohighlight">\(b\)</span> son dos números complejos, es decir cuatro números reales.</p>
-<p>Sin embargo, como cualquier estado cuántico, ha de ser un vector unitario <span class="math notranslate nohighlight">\( \braket{u}{u} = 1\)</span>. Esto impone una ecuación <span class="math notranslate nohighlight">\(a|^2+|b|^2=1\)</span>, lo que nos deja  tres grados de libertad reales.</p>
-<p>Pero uno de ellos es una fase global  <span class="math notranslate nohighlight">\(\ket{u} = e^{i\phi}\ket{u}\)</span> que no tiene significado. Por lo que, realmente, necesitamos sólo dos números reales para definir el estado de un cúbit.</p>
+<p>Sin embargo, como cualquier estado cuántico, ha de ser un vector unitario <span class="math notranslate nohighlight">\( \braket{u}{u} = 1\)</span>. Esto impone una ecuación <span class="math notranslate nohighlight">\(|a|^2+|b|^2=1\)</span>, lo que nos deja  tres grados de libertad reales.</p>
+<p>Pero uno de ellos es una fase global  <span class="math notranslate nohighlight">\(\ket{u} = e^{i\phi}\ket{u}\)</span> ¡que no tiene significado! Por lo que, realmente, necesitamos <em>sólo dos números reales</em> para definir el estado de un cúbit.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Lema</b>:</p>
@@ -713,8 +714,8 @@ Los denotamos <span class="math notranslate nohighlight">\(\{\ket{0}_{\bf n},\ke
 </div>
 <div class="sd-card-body docutils">
 <p class="sd-card-text">El operador que efectúa una <i>rotación de ángulo</i>  <span class="math notranslate nohighlight">\(\alpha\in [0,2\pi)\)</span> en torno al <i>eje que marca un vector unitario</i>  <span class="math notranslate nohighlight">\(\hat{\bf n}\)</span> es el siguiente</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c627c71f-8f79-470a-895f-063f0bda6978">
-<span class="eqno">(15)<a class="headerlink" href="#equation-c627c71f-8f79-470a-895f-063f0bda6978" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-aa0f4aa3-69f8-4ecf-9bbe-83eeba56b0ab">
+<span class="eqno">(15)<a class="headerlink" href="#equation-aa0f4aa3-69f8-4ecf-9bbe-83eeba56b0ab" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 R_{\hat{\bf n}}(\alpha)~ = ~\exp\left( -i\frac{\alpha}{2} \hat{\bf n}\cdot \boldsymbol{\sigma} \right) ~=~ 
 \cos \frac{\alpha}{2} I - i \sin\frac{\alpha}{2} \hat{\bf n}\cdot\boldsymbol{\sigma} 
 \end{eqnarray}\]</div>
@@ -735,7 +736,7 @@ R_{\hat{\bf n}}(\alpha)~ = ~\exp\left( -i\frac{\alpha}{2} \hat{\bf n}\cdot \bold
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{rcl}
-R_{\hat{\bf n}}(\alpha)~  ~=~ 
+R_{\hat{\bf n}}(\alpha)~  ~=~ \cos \displaystyle\frac{\alpha}{2} I -i  \sin\frac{\alpha}{2}(n_x \sigma_x + n_y \sigma_y + n_z \sigma_z) \\ ~~ \\ ~~=~~ 
  \begin{bmatrix} \cos \displaystyle\frac{\alpha}{2} - i n_z\sin\frac{\alpha}{2} &amp;\displaystyle (-in_x- n_y)\sin\frac{\alpha}{2} \\ \displaystyle
 (-in_x + ny) \sin\frac{\alpha}{2} &amp; \displaystyle \cos \frac{\alpha}{2} + i n_z\sin\frac{\alpha}{2} \end{bmatrix}
 \end{array}
@@ -762,7 +763,7 @@ R_{\hat{\bf n}}(\alpha)~  ~=~
 En <span class="math notranslate nohighlight">\(R_{\hat{\bf n}}(\theta)\)</span> un parámetro es <span class="math notranslate nohighlight">\(\theta\)</span> y otros dos entran  en <span class="math notranslate nohighlight">\(\hat{\bf n}\)</span> con
 <span class="math notranslate nohighlight">\(  |\hat{\bf n}|=1\)</span>.</p>
 <p>La <em>parametrización de Euler</em> consiste en una <em>composición de tres rotaciones</em> sucesivas en torno a los ejes <span class="math notranslate nohighlight">\(z\)</span>, después  <span class="math notranslate nohighlight">\(y\)</span> y  finalmente <span class="math notranslate nohighlight">\(z\)</span> de nuevo:</p>
-<p>Multiplicando las matrices asociadas, y extrayendo una fase global, definimos</p>
+<p>Multiplicando las matrices asociadas, y extrayendo una fase global, definimos el operador <span class="math notranslate nohighlight">\(U (\theta,\phi,\varphi)\)</span> mediante</p>
 <div class="math notranslate nohighlight">
 \[
  R_z(\phi)R_y(\theta)R_z(\varphi) = e^{-\frac{i}{2}(\phi + \varphi)}U(\theta,\phi,\varphi)  
@@ -770,6 +771,7 @@ En <span class="math notranslate nohighlight">\(R_{\hat{\bf n}}(\theta)\)</span>
 <p>Los <em>ángulos de Euler</em> son <span class="math notranslate nohighlight">\(\theta,\phi \)</span> y <span class="math notranslate nohighlight">\(\varphi\)</span>,</p>
 <section id="rotacion-general">
 <h4>Rotación general<a class="headerlink" href="#rotacion-general" title="Permalink to this heading">#</a></h4>
+<p>Operando se llega a la siguiente expresión</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 U(\theta,\phi,\varphi)=\begin{bmatrix}   \cos \displaystyle\frac{\theta}{2}  &amp; - e^{i\varphi} \sin\displaystyle\frac{\theta}{2}  \\ 
@@ -895,11 +897,13 @@ y el eje <span class="math notranslate nohighlight">\(y\)</span>. Esta rotación
 \hat{\bf n} = \frac{1}{\sqrt{2}}(1,0,1) ~~~~~ \Rightarrow ~~~~~ R_{\hat{\bf n}}(\pi) &amp;=&amp;-i\frac{1}{\sqrt{2}} \begin{bmatrix} 1  &amp; 1 \\ 1 &amp; -1  \end{bmatrix} =-i H \sim H\nonumber\\
 \end{array}
 \end{split}\]</div>
-<p>Como toda rotación de <span class="math notranslate nohighlight">\(\alpha = \pi/2\)</span>, una segunda aplicación da lugar a la identidad</p>
+<p>La composición de dos operadores <span class="math notranslate nohighlight">\(H\)</span> es la identidad</p>
 <div class="math notranslate nohighlight">
 \[
 H^2 = I
 \]</div>
+<p>o, lo qué es igual <span class="math notranslate nohighlight">\(H = H^{-1}\)</span>.
+Las puertas <span class="math notranslate nohighlight">\(X,Y,Z\)</span> y <span class="math notranslate nohighlight">\(H\)</span> son unitarias y a la vez hermíticas.</p>
 <p><a id='circcuant'></a></p>
 </section>
 </section>
