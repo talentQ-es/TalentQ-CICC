@@ -566,7 +566,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>May 22, 2024 | 21 min read</p>
+<div><p>Jun 07, 2024 | 22 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -605,6 +605,19 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="operador">
 <h2>Operador<a class="headerlink" href="#operador" title="Permalink to this heading">#</a></h2>
@@ -851,7 +864,7 @@ De la misma manera que obteníamos las componentes de un vector proyectando sobr
 \[
 v_i = \braket{i}{v}
 \]</div>
-<p>ahora podemos obtener los <em>elementos de matriz</em> de un operador <span class="math notranslate nohighlight">\(A\)</span> en la forma</p>
+<p>ahora podemos obtener los <em>elementos de matriz</em> de un operador <span class="math notranslate nohighlight">\(A\)</span> a partir del siguiente <em>sandwich</em></p>
 <div class="math notranslate nohighlight">
 \[  A_{ij} = \bra{i} A \ket{j} \]</div>
 <div class="tip admonition">
@@ -883,7 +896,7 @@ I= \sum_{ij} \delta_{ij}\ketbra{i}{j}  = \sum_{i}  \ketbra{i}{i}
 <p>Esta expresión se conoce también como <b>relación de completitud</b> o, también, <b>relación de cierre</b> y se utiliza muy frecuentemente.</p>
 <div class="note admonition">
 <p class="admonition-title">Notar</p>
-<p>La relación de completitud es, en realidad, una propiedad de  <b> cualquier base</b>. Dicho de otro modo, si <span class="math notranslate nohighlight">\(\{\ket{e_i}\}\)</span> y <span class="math notranslate nohighlight">\(\{\ket{\tilde e_i}\}\)</span> son, ambas, bases entonces <span class="math notranslate nohighlight">\(I\ket{e_i} = \ket{e_ i}\)</span> y <span class="math notranslate nohighlight">\(I\ket{\tilde e_j} = \ket{\tilde e_j}\)</span>, entonces <span class="math notranslate nohighlight">\(+1\)</span> es el único autovalor de <span class="math notranslate nohighlight">\(I\)</span> en cualquier base, y la descomposición espectral da</p>
+<p>La relación de completitud es una propiedad de  <b> cualquier base</b>. Dicho de otro modo, si <span class="math notranslate nohighlight">\(\{\ket{e_i}\}\)</span> y <span class="math notranslate nohighlight">\(\{\ket{\tilde e_i}\}\)</span>  ambas son bases, entonces <span class="math notranslate nohighlight">\(I\ket{e_i} = \ket{e_ i}\)</span> y <span class="math notranslate nohighlight">\(I\ket{\tilde e_j} = \ket{\tilde e_j}\)</span>, entonces <span class="math notranslate nohighlight">\(+1\)</span> es el único autovalor de <span class="math notranslate nohighlight">\(I\)</span> en cualquier base, y la descomposición espectral da</p>
 <div class="math notranslate nohighlight">
 \[
 I =  \sum_{i}  \ketbra{e_i}{e_i} =  \sum_{j}  \ketbra{\tilde e_j}{ \tilde e_j}\, .
@@ -1040,8 +1053,8 @@ Prueba<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-e9c8a51d-b90d-428b-b0b7-3a7aada453d2">
-<span class="eqno">(4)<a class="headerlink" href="#equation-e9c8a51d-b90d-428b-b0b7-3a7aada453d2" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1e30c8fb-1011-4f0a-946f-8273e32f59a0">
+<span class="eqno">(4)<a class="headerlink" href="#equation-1e30c8fb-1011-4f0a-946f-8273e32f59a0" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 {\rm tr} A  &amp;=&amp;\sum_i A_{ii} =\sum_{i} \bra{i}A\ket{i} =\sum_{i} \bra{i}A\left( \sum_j\ketbra{\tilde j}{\tilde j}\right)\ket{i}
 \nonumber\\
 &amp;=&amp; \sum_{ij}\bra{i}A\ket{\tilde j} \braket{\tilde j}{i} = \sum_{ij}\braket{\tilde j}{i}\bra{i}A\ket{\tilde j}  \nonumber\\
@@ -1347,6 +1360,7 @@ N_{ij} = \bra{e_i}N\ket{e_j}  =
 \end{split}\]</div>
 </div>
 </div>
+<p>Se podría haber definido un operador normal mediante esta segunda propiedad, y entonces la primera sería un teorema. El caso es que, comprobar si un operador es normal o no, es muy sencillo usando la definición dada.</p>
 </section>
 <section id="operador-hermitico">
 <h3>Operador Hermítico<a class="headerlink" href="#operador-hermitico" title="Permalink to this heading">#</a></h3>
@@ -1584,7 +1598,7 @@ P_\perp P = (I - P) P = P - P^2 = P - P =  0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0+0j)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0j
 </pre></div>
 </div>
 </div>
@@ -1606,8 +1620,8 @@ P_\perp P = (I - P) P = P - P^2 = P - P =  0
 \{\ket{e_i}\},~ i=1,...,N_1 ~~~~~~~,~~~~~~~~\{\ket{e_{j+N_1}},~j=1,...,N_2   
 \]</div>
 <p>Cualquier vector admite una descomposición ortogonal</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5237b93b-6758-40ba-9eea-6bd76346bf80">
-<span class="eqno">(5)<a class="headerlink" href="#equation-5237b93b-6758-40ba-9eea-6bd76346bf80" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-f9e21f4f-5398-4fce-9fd4-0be40fb87213">
+<span class="eqno">(5)<a class="headerlink" href="#equation-f9e21f4f-5398-4fce-9fd4-0be40fb87213" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \ket{\psi} &amp;~=~&amp; \sum_{i=1}^N a_i \ket{e_i}   ~= ~ \sum_{i=1}^N a_i \ket{e_i} + \sum_{i=1}^{N_2} a_{i+N_1} \ket{e_{i+N_1}} ~\equiv ~ \ket{\psi_1} + \ket{\psi_2}\rule{0mm}{5mm}
 \end{eqnarray}\]</div>
 <p>con <span class="math notranslate nohighlight">\(\braket{\psi_1}{\psi_2} = 0\)</span>.</p>
@@ -1660,12 +1674,13 @@ P_v   ~=~ \frac{1}{2}\big(\ket{e_0} + \ket{e_1}\big)\big(\bra{e_0} + \bra{e_1}\b
 </section>
 <section id="autovalores-y-autovectores">
 <h2>Autovalores y autovectores<a class="headerlink" href="#autovalores-y-autovectores" title="Permalink to this heading">#</a></h2>
+<p>El concepto de <em>autovector</em> y <em>autovalor</em> es esencial para poder definir operaciones de medida en Mecánica Cuántica. Aquí vamos a estudiar lo que son y algunas de sus propiedades esenciales.</p>
 <div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
 <div class="sd-card-header docutils">
 <p class="sd-card-text"><b>Definición</b>: </i>Autovalores y autovectores</i></p>
 </div>
 <div class="sd-card-body docutils">
-<p class="sd-card-text">Existen vectores, <span class="math notranslate nohighlight">\(\ket{\lambda}\)</span> para los cuales la <i>la acción de un operador</i> <span class="math notranslate nohighlight">\(A\)</span> devuelve un vector <i>paralelo</i></p>
+<p class="sd-card-text">Existen vectores, <span class="math notranslate nohighlight">\(\ket{\lambda}\)</span>, para los cuales <i>la acción de un operador</i> <span class="math notranslate nohighlight">\(A\)</span> devuelve un vector <i>paralelo</i></p>
 <div class="math notranslate nohighlight">
 \[
 A\ket{\lambda} = \lambda \ket{\lambda}\, 
@@ -1673,6 +1688,48 @@ A\ket{\lambda} = \lambda \ket{\lambda}\,
 <p class="sd-card-text">Decimos que <span class="math notranslate nohighlight">\(\ket{\lambda}\)</span> es un autovector (o vector propio) de <span class="math notranslate nohighlight">\(A\)</span> con autovalor (o valor propio) asociado <span class="math notranslate nohighlight">\(\lambda\in {\mathbb C}\)</span></p>
 </div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Ejemplo</p>
+<p>Sea <span class="math notranslate nohighlight">\(A\)</span> un operador dado por la matriz siguiente
+$<span class="math notranslate nohighlight">\(
+A = \begin{pmatrix} 3 &amp; 2 \\ 1 &amp; 2 \end{pmatrix}
+\)</span>$
+En general, su acción sobre cualquier vector no resultará en un vector  paralelo a dicho vector. Pero hay dos vectores para los que esto sí sucede</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\ket{\lambda_1} = \begin{pmatrix} 13 \\ -1 \end{pmatrix} ~~~~~~~~~
+\ket{\lambda_2} = \begin{pmatrix} -1 \\ 7 \end{pmatrix} ~~~~~~~~~
+\end{split}\]</div>
+<p>Operando con estas matrices es elementar mostrar que se verifica</p>
+<div class="math notranslate nohighlight">
+\[
+A \ket{\lambda_1} = 4 \ket{\lambda_1} ~~~~~~~~~~~~~~~ A \ket{\lambda_2} = - \ket{\lambda_2}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\lambda_1 = 4 \)</span> y <span class="math notranslate nohighlight">\(\lambda_2 = -1\)</span> son los autovalores asociados (también denominados <em>valores propio</em>).</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Notar</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Si $\ket{\lambda}$ es un   autovector de $A$, cualquier &lt;b&gt;vector proporcional&lt;/b&gt; $\ket{\mu} = a\ket{\lambda}$ también es autovector &lt;b&gt;con el mismo autovalor&lt;/b&gt; 
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[
+A \ket{\mu}  = A (a\ket{\lambda}) = a A\ket{\lambda} = a \lambda \ket{\lambda} = \lambda(a\ket{\lambda}) = 
+\lambda \ket{\mu}
+\]</div>
+</div>
+<p>Ahora vamos a ver la importancia de trabajar con operadores normales. Según hemos visto, si <span class="math notranslate nohighlight">\(A\)</span> es un operador normal, existe una base ortonormal en la que, la matriz que describe el operador es diagonal.
+Podemos ver  que esta <strong>base</strong> está formada por todos los <strong>autovectores</strong> de A.</p>
+<p>Efectivamente, denotemos esta base con <span class="math notranslate nohighlight">\(\{\ket{\lambda_i}\}\)</span> y escribamos el operador a partir de su matriz</p>
+<div class="math notranslate nohighlight">
+\[
+A = \sum_{ij} A_{ij} \ket{e_i}\bra{e_j} = \sum_j \lambda_j \ket{\lambda_j}\bra{\lambda_j} \, .
+\]</div>
+<p>Entonces, es evidente que <span class="math notranslate nohighlight">\(\ket{\lambda_i}\)</span> son precisamente los autovectores de <span class="math notranslate nohighlight">\(A\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+A \ket{\lambda_i} = \sum_j \lambda_j \ket{\lambda_j}\braket{\lambda_j}{\lambda_i} = \sum_j \lambda_j \ket{\lambda_j} \delta_{ji} = \lambda_i \ket{\lambda_i} \, .
+\]</div>
 <p>Supongamos que <span class="math notranslate nohighlight">\(A\)</span> tiene <span class="math notranslate nohighlight">\(d\)</span> vectores propios <span class="math notranslate nohighlight">\(\ket{\lambda_j} = \sum_i v_{ij}\ket{e_i}, \, j=1,..,d\)</span></p>
 <p>Sea <span class="math notranslate nohighlight">\(U_{ij} = v_{ij}\)</span> la matriz formada por las componentes de los vectores propios (apilados por columnas)</p>
 <p>Entonces</p>
@@ -1687,6 +1744,7 @@ A_{diag} = \begin{pmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; 
 <span class="s1">&#39; en general una matriz no será normal &#39;</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="p">)</span><span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">array_to_latex</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">A</span><span class="o">.</span><span class="n">getH</span><span class="p">())</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">getH</span><span class="p">(),</span><span class="n">A</span><span class="p">)))</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
 
 <span class="n">eigvals</span><span class="p">,</span> <span class="n">eigvecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;valprop =&#39;</span><span class="p">,</span><span class="n">eigvals</span><span class="p">)</span>
@@ -1708,11 +1766,11 @@ A_{diag} = \begin{pmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; 
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
--0.506108732 &amp; -0.1276862308 + 0.2099063648 i  \\
- -0.1276862308 - 0.2099063648 i &amp; 0.506108732  \\
+-0.4863434032 &amp; -0.0131448413 - 0.8557460078 i  \\
+ -0.0131448413 + 0.8557460078 i &amp; 0.4863434032  \\
  \end{bmatrix}
 \end{split}\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valprop = [0.14628633+0.02682589j 0.90741489+1.07659004j]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valprop = [4. 1.]
 </pre></div>
 </div>
 <div class="output text_latex math notranslate nohighlight">
@@ -1725,8 +1783,8 @@ A|\lambda_m \rangle -\lambda_m |\lambda_m\rangle =
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
-0.7267533292 &amp; -0.0689374343 + 0.1133278518 i  \\
- -0.0689374343 - 0.1133278518 i &amp; 1.2732466708  \\
+\frac{13}{10} &amp; - \frac{1}{10}  \\
+ - \frac{1}{10} &amp; \frac{7}{10}  \\
  \end{bmatrix}
 \end{split}\]</div>
 </div>
@@ -1765,7 +1823,7 @@ A|\lambda_m \rangle -\lambda_m |\lambda_m\rangle =
  0 &amp; 0  \\
  \end{bmatrix}
 \end{split}\]</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valprop = [0.09378023-1.61196687e-17j 0.95992098+1.61196687e-17j]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valprop = [4.08113883 0.91886117]
 </pre></div>
 </div>
 <div class="output text_latex math notranslate nohighlight">
@@ -1784,7 +1842,7 @@ H|\lambda_m \rangle -\lambda_m |\lambda_m\rangle =
 \end{split}\]</div>
 </div>
 </div>
-<p>Siempre que <span class="math notranslate nohighlight">\(A\)</span> sea diagonalizable en una base <span class="math notranslate nohighlight">\(A\ket{\lambda_j} = \lambda_i \ket{\lambda_i}\)</span>, la traza de <span class="math notranslate nohighlight">\(A\)</span> será la suma de sus autovalores</p>
+<p>Ya hemos visto que la traza de un operador puede calcularse en cualquier base. En particular, podemos usar la base de autoestados en la que la matriz es diagonal. Llegamos a la conclusión de que,   siempre que <span class="math notranslate nohighlight">\(A\)</span> sea diagonalizable, la traza de <span class="math notranslate nohighlight">\(A\)</span> será la suma de sus autovalores</p>
 <div class="math notranslate nohighlight">
 \[
 {\rm tr} A = \sum_i \bra{\lambda_i}A\ket{\lambda_i} = \sum_i \lambda_i
@@ -1792,25 +1850,24 @@ H|\lambda_m \rangle -\lambda_m |\lambda_m\rangle =
 <p><a id='subesprop'></a></p>
 <section id="subespacio-propio">
 <h3>Subespacio Propio<a class="headerlink" href="#subespacio-propio" title="Permalink to this heading">#</a></h3>
-<p>Decimos que un autovalor <span class="math notranslate nohighlight">\(\lambda_k\)</span> es <span class="math notranslate nohighlight">\(d_k\)</span> <i>veces degenerado</i> si existen <span class="math notranslate nohighlight">\(d_k\)</span> autovectores linealmente independientes,  <span class="math notranslate nohighlight">\(\ket{\lambda_k^{a}}\)</span> con <span class="math notranslate nohighlight">\(a=1,...,d_k\)</span> asociados al <strong>mismo</strong> autovalor</p>
+<p>Supongamos que hay <span class="math notranslate nohighlight">\(d\)</span> autovectores linealmente independientes  <span class="math notranslate nohighlight">\(\ket{\lambda^{a}}\)</span> con <span class="math notranslate nohighlight">\(a=1,...,d\)</span>, que tienen el <strong>mismo</strong> autovalor.
+En este caso decimos que  <span class="math notranslate nohighlight">\(\lambda\)</span> es <span class="math notranslate nohighlight">\(d\)</span> <i>veces degenerado</i></p>
 <div class="math notranslate nohighlight">
-\[A\ket{\lambda_k^a} = \lambda_k \ket{\lambda_k^a}\]</div>
-<p>Dichos autovectores generan un <u><i>subespacio propio</i></u> <span class="math notranslate nohighlight">\(S(\lambda_k)\subset \Hil\)</span>.
-En efecto,  sea <span class="math notranslate nohighlight">\(\ket{u} = \sum_{a=1}^{d_k} c_a\ket{\lambda^a_k} \)</span> una combinación de dichos vectores propios, entonces</p>
-<div class="amsmath math notranslate nohighlight" id="equation-37f0dc81-2a56-4cfb-8805-754d6ef33736">
-<span class="eqno">(6)<a class="headerlink" href="#equation-37f0dc81-2a56-4cfb-8805-754d6ef33736" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+\[A\ket{\lambda^a} = \lambda \ket{\lambda^a}\]</div>
+<p>Dichos autovectores generan un <u><i>subespacio propio</i></u> <span class="math notranslate nohighlight">\(S(\lambda)\subset \Hil\)</span>.
+En efecto,  sea <span class="math notranslate nohighlight">\(\ket{u} = \sum_{a=1}^{d} c_a\ket{\lambda^a} \)</span> una combinación de dichos vectores propios, entonces</p>
+<div class="amsmath math notranslate nohighlight" id="equation-718547b1-4b90-41a4-9af7-c17f658d3c1b">
+<span class="eqno">(6)<a class="headerlink" href="#equation-718547b1-4b90-41a4-9af7-c17f658d3c1b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 A \ket{u} 
-=  \sum_{a=1}^{d_k} c_a A\ket{\lambda^a_k}  =  \sum_{a=1}^{d_k} c_a \lambda_k\ket{\lambda^a_k}  =   \lambda_k \sum_{a=1}^{d_k} c_a \ket{\lambda^a_k}  =\lambda_k\ket{u}
+=  \sum_{a=1}^{d} c_a A\ket{\lambda^a}  =  \sum_{a=1}^{d} c_a \lambda\ket{\lambda^a}  =   \lambda \sum_{a=1}^{d} c_a \ket{\lambda^a}  =\lambda\ket{u}
 \end{eqnarray}\]</div>
-<p>Por tanto <span class="math notranslate nohighlight">\(\ket{u}\in S(\lambda_k)\)</span>.</p>
+<p>Por tanto <span class="math notranslate nohighlight">\(\ket{u}\in S(\lambda)\)</span>.</p>
 <ul class="simple">
-<li><p>El teorema de Gramm-Schmidt garantiza que podemos elegir (mediante un cambio adecuado) el conjunto  <span class="math notranslate nohighlight">\(\{\ket{\lambda_{k}^a}\}\in (\lambda_k), a=1,...,d_k\)</span> de forma que que sea una  <i>base ortonormal</i>
-$<span class="math notranslate nohighlight">\(\braket{\lambda_{k}^a}{\lambda_{k}^b}=\delta_{ab}\)</span>$</p></li>
-</ul>
-<ul class="simple">
-<li><p>El <strong>proyector</strong> sobre el subespacio propio <span class="math notranslate nohighlight">\(S(\lambda_k)\)</span> será
+<li><p>El teorema de Gramm-Schmidt garantiza que podemos elegir (mediante un cambio adecuado) el conjunto  <span class="math notranslate nohighlight">\(\{\ket{\lambda_{k}}\}\in (\lambda), a=1,...,d\)</span> de forma que que sea una  <i>base ortonormal</i>
+$<span class="math notranslate nohighlight">\(\braket{\lambda^a}{\lambda^b}=\delta_{ab}\)</span>$</p></li>
+<li><p>El <strong>proyector</strong> sobre el subespacio propio <span class="math notranslate nohighlight">\(S(\lambda)\)</span> será
 $<span class="math notranslate nohighlight">\(
-P_k = \sum_{a=1}^{d_k} \ketbra{\lambda_{k}^a}{\lambda_{k}^a}
+P_\lambda = \sum_{a=1}^{d} \ketbra{\lambda^a}{\lambda^a}
 \)</span>$</p></li>
 </ul>
 <div class="tip admonition">
@@ -1819,8 +1876,8 @@ P_k = \sum_{a=1}^{d_k} \ketbra{\lambda_{k}^a}{\lambda_{k}^a}
 <li><p>Llamemos <span class="math notranslate nohighlight">\(R_z(\theta)\)</span> el operador que efectúa una rotación  en el plano  <span class="math notranslate nohighlight">\((x,y)\)</span> de ángulo <span class="math notranslate nohighlight">\(\theta\)</span>. Cuando <span class="math notranslate nohighlight">\(\theta = \pi\)</span> encontramos las siguiente acción sobre los tres elementos <span class="math notranslate nohighlight">\(\{\hat{\bf x},\hat{\bf y},\hat{\bf z}\}\)</span>
 de la base cartesiana</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-020317d8-b3a0-4dd3-908f-1fe3131b3aa1">
-<span class="eqno">(7)<a class="headerlink" href="#equation-020317d8-b3a0-4dd3-908f-1fe3131b3aa1" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-2c74c879-4854-4442-bd50-01c33368ec81">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2c74c879-4854-4442-bd50-01c33368ec81" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 R_z(\pi)\hat{\bf x} &amp;=&amp;-\hat{\bf x}  \\ \rule{0mm}{6mm}
 R_z(\pi)\hat{\bf y} &amp;=&amp; -\hat{\bf y}  \\ \rule{0mm}{6mm}
 R_z(\pi)\hat{\bf z} &amp;=&amp; + \hat{\bf z}  
@@ -1828,7 +1885,7 @@ R_z(\pi)\hat{\bf z} &amp;=&amp; + \hat{\bf z}
 <ul class="simple">
 <li><p>Vemos que hay un autovector <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span> con autovalor <span class="math notranslate nohighlight">\(+1\)</span> y dos autovectores <span class="math notranslate nohighlight">\(\hat{\bf x} \)</span> y <span class="math notranslate nohighlight">\(\hat{\bf y} \)</span>
 con autovalor <span class="math notranslate nohighlight">\(-1\)</span>.</p></li>
-<li><p>El espacio <span class="math notranslate nohighlight">\({\mathbb R}^3\)</span> se divide en dos subespacios propios de <span class="math notranslate nohighlight">\(R_z(\pi)\)</span>, uno de dimensión 1 (a lo largo del eje <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span>) y otro de dimensión 2 (en el plano <span class="math notranslate nohighlight">\((\hat{\bf x},\hat{\bf y})\)</span>).</p></li>
+<li><p>El espacio <span class="math notranslate nohighlight">\({\mathbb R}^3\)</span> se divide en dos subespacios propios de <span class="math notranslate nohighlight">\(R_z(\pi)\)</span>. Uno de dimensión 1 (a lo largo del eje <span class="math notranslate nohighlight">\(\hat{\bf z}\)</span>) y otro de dimensión 2 (en el plano <span class="math notranslate nohighlight">\((\hat{\bf x},\hat{\bf y})\)</span>).</p></li>
 <li><p>Los proyectores asociados serán</p></li>
 </ul>
 <div class="math notranslate nohighlight">
@@ -2210,13 +2267,13 @@ Comprueba en distintos casos que el espectro está formado por fases</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.269+0.j 0.37 -0.j 0.881-0.j]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.101-0.j 0.856-0.j 0.096+0.j]
 </pre></div>
 </div>
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}U = \begin{bmatrix} -0.09+0.18j&amp;0.22+0.44j&amp;0.61+0.59j \\0.69+0.32j&amp;0.17-0.45j&amp;-0.13+0.41j \\0.56-0.26j&amp;0.26+0.68j&amp;-0.25-0.18j \end{bmatrix}\end{split}\]</div>
+\[\begin{split}U = \begin{bmatrix} 0.74+0.10j&amp;-0.13+0.48j&amp;0.40-0.20j \\0.28+0.59j&amp;0.62-0.14j&amp;-0.38-0.14j \\-0.06-0.09j&amp;0.57+0.18j&amp;0.42+0.68j \end{bmatrix}\end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}U^{\dagger}U = \begin{bmatrix} 1.00+0.00j&amp;-0.00-0.00j&amp;-0.00-0.00j \\-0.00+0.00j&amp;1.00-0.00j&amp;0.00-0.00j \\-0.00+0.00j&amp;0.00+0.00j&amp;1.00-0.00j \end{bmatrix}\end{split}\]</div>
+\[\begin{split}U^{\dagger}U = \begin{bmatrix} 1.00+0.00j&amp;0.00+0.00j&amp;-0.00+0.00j \\0.00+0.00j&amp;1.00+0.00j&amp;-0.00+0.00j \\-0.00-0.00j&amp;-0.00-0.00j&amp;1.00+0.00j \end{bmatrix}\end{split}\]</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.+0.j, 1.+0.j, 1.+0.j])
 </pre></div>
 </div>
@@ -2302,9 +2359,9 @@ U\Sigma V^\dagger &amp;=&amp;
 \[\begin{split}
 A=
 \begin{bmatrix}
--0.7126901957 - 0.0972487589 i &amp; 1.2558829831 - 0.4639731707 i  \\
- -0.0935819926 + 0.2647189485 i &amp; 1.1015280672 + 0.3626930966 i  \\
- 0.9183351662 + 0.1909661953 i &amp; -1.221830817 - 0.0795633634 i  \\
+-1.3805435315 + 1.226962839 i &amp; 0.0012732219 - 0.1483407741 i  \\
+ 0.3297824263 + 0.4595861481 i &amp; 1.2310925803 - 0.7489664249 i  \\
+ -0.6906312822 + 1.5136040755 i &amp; 0.4762118384 - 1.0133916627 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the shape of A is : (3, 2)
@@ -2334,25 +2391,25 @@ the shape of u = (3, 3)  s = (2,)  v = (2, 2)
 \[\begin{split}
 U=
 \begin{bmatrix}
-0.6283052802 - 0.0882838956 i &amp; 0.0966279223 + 0.2982236005 i &amp; 0.7037469498 - 0.0624851029 i  \\
- 0.4112905501 + 0.1469707118 i &amp; -0.5258623102 - 0.658890981 i &amp; -0.0251311342 - 0.3129530719 i  \\
- -0.6240531376 - 0.1312851989 i &amp; -0.4284339927 - 0.0866114797 i &amp; 0.6335136901 - 0.0304146014 i  \\
+-0.4431159002 + 0.4231374234 i &amp; -0.4299778792 + 0.2758988405 i &amp; -0.5571071023 - 0.2307239688 i  \\
+ -0.0461092815 + 0.3262512296 i &amp; 0.6534267989 - 0.5046141728 i &amp; -0.3449040833 - 0.3014518166 i  \\
+ -0.2490932339 + 0.6737875408 i &amp; -0.1157293607 - 0.209770168 i &amp; 0.6385987183 + 0.136959043 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}
 S=
 \begin{bmatrix}
-2.3700209488 &amp; 0  \\
- 0 &amp; 0.7040248748  \\
+2.7451567137 &amp; 0  \\
+ 0 &amp; 1.521737244  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}
 V=
 \begin{bmatrix}
--0.4375260683 &amp; -0.8992057271  \\
- 0.8900028769 + 0.1283192062 i &amp; -0.4330482422 - 0.0624362102 i  \\
+0.8952233343 &amp; 0.4456177529  \\
+ -0.424704552 + 0.1349119166 i &amp; 0.8532097804 - 0.2710311585 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
@@ -2408,8 +2465,8 @@ Prueba<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-42834d9e-7624-448d-b8b6-c78d488a0166">
-<span class="eqno">(8)<a class="headerlink" href="#equation-42834d9e-7624-448d-b8b6-c78d488a0166" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-d7ef2890-b0c2-4173-a780-52eaf11bc9fa">
+<span class="eqno">(8)<a class="headerlink" href="#equation-d7ef2890-b0c2-4173-a780-52eaf11bc9fa" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 {\rm tr} A  &amp;=&amp;\sum_i A_{ii} =\sum_{i} \bra{i}A\ket{i} =\sum_{i} \bra{i}A\left( \sum_j\ketbra{\tilde j}{\tilde j}\right)\ket{i}
 \nonumber\\
 &amp;=&amp; \sum_{ij}\bra{i}A\ket{\tilde j} \braket{\tilde j}{i} = \sum_{ij}\braket{\tilde j}{i}\bra{i}A\ket{\tilde j}  \nonumber\\
@@ -2697,8 +2754,8 @@ Prueba<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-dbdf91b0-190b-4524-b96d-8acf554ca60e">
-<span class="eqno">(9)<a class="headerlink" href="#equation-dbdf91b0-190b-4524-b96d-8acf554ca60e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-533f92ef-6745-477d-84b7-f20795f95760">
+<span class="eqno">(9)<a class="headerlink" href="#equation-533f92ef-6745-477d-84b7-f20795f95760" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U^\dagger &amp;=&amp; \left( e^{iH}\right)^\dagger = \left( 1+ iH + \frac{1}{2}(i H)^2 + ...\right)^\dagger \\
 &amp;=&amp; 1 - iH^\dagger  + \frac{1}{2}(-i)^2 (H^2)^\dagger + ... \\
 &amp;=&amp; 1 - iH +\frac{1}{2} H^2 - ... \\
@@ -2928,16 +2985,16 @@ Separemos <span class="math notranslate nohighlight">\({\bf a}\)</span> en su m�
 \[\begin{split}
 exp(s1)=
 \begin{bmatrix}
-0.6043692766 + 0.5974933488 i &amp; 0.4138204318 + 0.3263313132 i  \\
- -0.4138204318 + 0.3263313132 i &amp; 0.6043692766 - 0.5974933488 i  \\
+0.8312119286 + 0.2148122607 i &amp; 0.364695848 + 0.3604710264 i  \\
+ -0.364695848 + 0.3604710264 i &amp; 0.8312119286 - 0.2148122607 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}
 exp(s1)=
 \begin{bmatrix}
-0.6043692766 + 0.5974933488 i &amp; 0.4138204318 + 0.3263313132 i  \\
- -0.4138204318 + 0.3263313132 i &amp; 0.6043692766 - 0.5974933488 i  \\
+0.8312119286 + 0.2148122607 i &amp; 0.364695848 + 0.3604710264 i  \\
+ -0.364695848 + 0.3604710264 i &amp; 0.8312119286 - 0.2148122607 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 </div>
