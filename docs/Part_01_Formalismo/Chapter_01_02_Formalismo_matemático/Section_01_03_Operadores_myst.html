@@ -599,25 +599,12 @@ document.write(`
 <span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
 </pre></div>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span><span class="n">Markdown</span><span class="p">,</span><span class="n">Latex</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">qiskit.tools.visualization</span> <span class="kn">import</span> <span class="n">array_to_latex</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Latex</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;qiskit.tools&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <section id="operador">
 <h2>Operador<a class="headerlink" href="#operador" title="Permalink to this heading">#</a></h2>
@@ -1053,8 +1040,8 @@ Prueba<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-1e30c8fb-1011-4f0a-946f-8273e32f59a0">
-<span class="eqno">(4)<a class="headerlink" href="#equation-1e30c8fb-1011-4f0a-946f-8273e32f59a0" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-c19f4fd9-794a-47e4-b149-a46261a63ffe">
+<span class="eqno">(4)<a class="headerlink" href="#equation-c19f4fd9-794a-47e4-b149-a46261a63ffe" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 {\rm tr} A  &amp;=&amp;\sum_i A_{ii} =\sum_{i} \bra{i}A\ket{i} =\sum_{i} \bra{i}A\left( \sum_j\ketbra{\tilde j}{\tilde j}\right)\ket{i}
 \nonumber\\
 &amp;=&amp; \sum_{ij}\bra{i}A\ket{\tilde j} \braket{\tilde j}{i} = \sum_{ij}\braket{\tilde j}{i}\bra{i}A\ket{\tilde j}  \nonumber\\
@@ -1598,7 +1585,7 @@ P_\perp P = (I - P) P = P - P^2 = P - P =  0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0j
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0+0j)
 </pre></div>
 </div>
 </div>
@@ -1620,8 +1607,8 @@ P_\perp P = (I - P) P = P - P^2 = P - P =  0
 \{\ket{e_i}\},~ i=1,...,N_1 ~~~~~~~,~~~~~~~~\{\ket{e_{j+N_1}},~j=1,...,N_2   
 \]</div>
 <p>Cualquier vector admite una descomposición ortogonal</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9e21f4f-5398-4fce-9fd4-0be40fb87213">
-<span class="eqno">(5)<a class="headerlink" href="#equation-f9e21f4f-5398-4fce-9fd4-0be40fb87213" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-62232d5c-362e-4609-97dc-7fd80ed3b4be">
+<span class="eqno">(5)<a class="headerlink" href="#equation-62232d5c-362e-4609-97dc-7fd80ed3b4be" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \ket{\psi} &amp;~=~&amp; \sum_{i=1}^N a_i \ket{e_i}   ~= ~ \sum_{i=1}^N a_i \ket{e_i} + \sum_{i=1}^{N_2} a_{i+N_1} \ket{e_{i+N_1}} ~\equiv ~ \ket{\psi_1} + \ket{\psi_2}\rule{0mm}{5mm}
 \end{eqnarray}\]</div>
 <p>con <span class="math notranslate nohighlight">\(\braket{\psi_1}{\psi_2} = 0\)</span>.</p>
@@ -1766,8 +1753,8 @@ A_{diag} = \begin{pmatrix} \lambda_1 &amp; &amp; \\ &amp; \ddots &amp; \\ &amp; 
 <div class="cell_output docutils container">
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}\begin{bmatrix}
--0.4863434032 &amp; -0.0131448413 - 0.8557460078 i  \\
- -0.0131448413 + 0.8557460078 i &amp; 0.4863434032  \\
+0.5801152219 &amp; 0.1173162815 - 0.4843317288 i  \\
+ 0.1173162815 + 0.4843317288 i &amp; -0.5801152219  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>valprop = [4. 1.]
@@ -1856,8 +1843,8 @@ En este caso decimos que  <span class="math notranslate nohighlight">\(\lambda\)
 \[A\ket{\lambda^a} = \lambda \ket{\lambda^a}\]</div>
 <p>Dichos autovectores generan un <u><i>subespacio propio</i></u> <span class="math notranslate nohighlight">\(S(\lambda)\subset \Hil\)</span>.
 En efecto,  sea <span class="math notranslate nohighlight">\(\ket{u} = \sum_{a=1}^{d} c_a\ket{\lambda^a} \)</span> una combinación de dichos vectores propios, entonces</p>
-<div class="amsmath math notranslate nohighlight" id="equation-718547b1-4b90-41a4-9af7-c17f658d3c1b">
-<span class="eqno">(6)<a class="headerlink" href="#equation-718547b1-4b90-41a4-9af7-c17f658d3c1b" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-be115a26-41af-4a64-9c64-b6ae4f986d4f">
+<span class="eqno">(6)<a class="headerlink" href="#equation-be115a26-41af-4a64-9c64-b6ae4f986d4f" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 A \ket{u} 
 =  \sum_{a=1}^{d} c_a A\ket{\lambda^a}  =  \sum_{a=1}^{d} c_a \lambda\ket{\lambda^a}  =   \lambda \sum_{a=1}^{d} c_a \ket{\lambda^a}  =\lambda\ket{u}
 \end{eqnarray}\]</div>
@@ -1876,8 +1863,8 @@ P_\lambda = \sum_{a=1}^{d} \ketbra{\lambda^a}{\lambda^a}
 <li><p>Llamemos <span class="math notranslate nohighlight">\(R_z(\theta)\)</span> el operador que efectúa una rotación  en el plano  <span class="math notranslate nohighlight">\((x,y)\)</span> de ángulo <span class="math notranslate nohighlight">\(\theta\)</span>. Cuando <span class="math notranslate nohighlight">\(\theta = \pi\)</span> encontramos las siguiente acción sobre los tres elementos <span class="math notranslate nohighlight">\(\{\hat{\bf x},\hat{\bf y},\hat{\bf z}\}\)</span>
 de la base cartesiana</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-2c74c879-4854-4442-bd50-01c33368ec81">
-<span class="eqno">(7)<a class="headerlink" href="#equation-2c74c879-4854-4442-bd50-01c33368ec81" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-2f1e734f-8637-407f-801e-557bc0aac32c">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2f1e734f-8637-407f-801e-557bc0aac32c" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 R_z(\pi)\hat{\bf x} &amp;=&amp;-\hat{\bf x}  \\ \rule{0mm}{6mm}
 R_z(\pi)\hat{\bf y} &amp;=&amp; -\hat{\bf y}  \\ \rule{0mm}{6mm}
 R_z(\pi)\hat{\bf z} &amp;=&amp; + \hat{\bf z}  
@@ -2267,13 +2254,13 @@ Comprueba en distintos casos que el espectro está formado por fases</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.101-0.j 0.856-0.j 0.096+0.j]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.224+0.j 0.287+0.j 0.773+0.j]
 </pre></div>
 </div>
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}U = \begin{bmatrix} 0.74+0.10j&amp;-0.13+0.48j&amp;0.40-0.20j \\0.28+0.59j&amp;0.62-0.14j&amp;-0.38-0.14j \\-0.06-0.09j&amp;0.57+0.18j&amp;0.42+0.68j \end{bmatrix}\end{split}\]</div>
+\[\begin{split}U = \begin{bmatrix} 0.60+0.21j&amp;-0.02+0.20j&amp;0.25+0.70j \\-0.21-0.01j&amp;0.91+0.28j&amp;-0.14+0.19j \\-0.27+0.69j&amp;0.02+0.25j&amp;0.57-0.25j \end{bmatrix}\end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
-\[\begin{split}U^{\dagger}U = \begin{bmatrix} 1.00+0.00j&amp;0.00+0.00j&amp;-0.00+0.00j \\0.00+0.00j&amp;1.00+0.00j&amp;-0.00+0.00j \\-0.00-0.00j&amp;-0.00-0.00j&amp;1.00+0.00j \end{bmatrix}\end{split}\]</div>
+\[\begin{split}U^{\dagger}U = \begin{bmatrix} 1.00+0.00j&amp;0.00-0.00j&amp;0.00+0.00j \\0.00+0.00j&amp;1.00+0.00j&amp;0.00+0.00j \\0.00-0.00j&amp;0.00-0.00j&amp;1.00+0.00j \end{bmatrix}\end{split}\]</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.+0.j, 1.+0.j, 1.+0.j])
 </pre></div>
 </div>
@@ -2359,9 +2346,9 @@ U\Sigma V^\dagger &amp;=&amp;
 \[\begin{split}
 A=
 \begin{bmatrix}
--1.3805435315 + 1.226962839 i &amp; 0.0012732219 - 0.1483407741 i  \\
- 0.3297824263 + 0.4595861481 i &amp; 1.2310925803 - 0.7489664249 i  \\
- -0.6906312822 + 1.5136040755 i &amp; 0.4762118384 - 1.0133916627 i  \\
+-2.1389675026 + 0.0153032751 i &amp; -0.7229603229 - 0.8678686987 i  \\
+ 1.1644991781 + 0.152466844 i &amp; 0.1229621723 - 1.1426617074 i  \\
+ -0.1850663303 + 2.0484588739 i &amp; 1.4181161387 - 0.0124467696 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the shape of A is : (3, 2)
@@ -2391,25 +2378,25 @@ the shape of u = (3, 3)  s = (2,)  v = (2, 2)
 \[\begin{split}
 U=
 \begin{bmatrix}
--0.4431159002 + 0.4231374234 i &amp; -0.4299778792 + 0.2758988405 i &amp; -0.5571071023 - 0.2307239688 i  \\
- -0.0461092815 + 0.3262512296 i &amp; 0.6534267989 - 0.5046141728 i &amp; -0.3449040833 - 0.3014518166 i  \\
- -0.2490932339 + 0.6737875408 i &amp; -0.1157293607 - 0.209770168 i &amp; 0.6385987183 + 0.136959043 i  \\
+-0.5418395033 - 0.1111896844 i &amp; -0.6445716077 + 0.5155053719 i &amp; -0.0893134371 - 0.0696532183 i  \\
+ 0.4413757818 - 0.0033114449 i &amp; -0.2990386949 + 0.2321325578 i &amp; 0.2118244985 + 0.785491674 i  \\
+ 0.0216127893 + 0.7062266971 i &amp; -0.359879885 - 0.2143792364 i &amp; 0.5244237971 - 0.2242419052 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}
 S=
 \begin{bmatrix}
-2.7451567137 &amp; 0  \\
- 0 &amp; 1.521737244  \\
+3.355795171 &amp; 0  \\
+ 0 &amp; 1.8792722532  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}
 V=
 \begin{bmatrix}
-0.8952233343 &amp; 0.4456177529  \\
- -0.424704552 + 0.1349119166 i &amp; 0.8532097804 - 0.2710311585 i  \\
+0.9277768036 &amp; 0.3731356357  \\
+ 0.1693017811 + 0.3325163297 i &amp; -0.4209575562 - 0.8267796159 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
@@ -2465,8 +2452,8 @@ Prueba<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-d7ef2890-b0c2-4173-a780-52eaf11bc9fa">
-<span class="eqno">(8)<a class="headerlink" href="#equation-d7ef2890-b0c2-4173-a780-52eaf11bc9fa" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-24c808cf-5fbd-48db-acfa-57fe43840eb7">
+<span class="eqno">(8)<a class="headerlink" href="#equation-24c808cf-5fbd-48db-acfa-57fe43840eb7" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 {\rm tr} A  &amp;=&amp;\sum_i A_{ii} =\sum_{i} \bra{i}A\ket{i} =\sum_{i} \bra{i}A\left( \sum_j\ketbra{\tilde j}{\tilde j}\right)\ket{i}
 \nonumber\\
 &amp;=&amp; \sum_{ij}\bra{i}A\ket{\tilde j} \braket{\tilde j}{i} = \sum_{ij}\braket{\tilde j}{i}\bra{i}A\ket{\tilde j}  \nonumber\\
@@ -2754,8 +2741,8 @@ Prueba<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-533f92ef-6745-477d-84b7-f20795f95760">
-<span class="eqno">(9)<a class="headerlink" href="#equation-533f92ef-6745-477d-84b7-f20795f95760" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-9e198b6e-a7f5-4ddf-b886-e0e48c738697">
+<span class="eqno">(9)<a class="headerlink" href="#equation-9e198b6e-a7f5-4ddf-b886-e0e48c738697" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U^\dagger &amp;=&amp; \left( e^{iH}\right)^\dagger = \left( 1+ iH + \frac{1}{2}(i H)^2 + ...\right)^\dagger \\
 &amp;=&amp; 1 - iH^\dagger  + \frac{1}{2}(-i)^2 (H^2)^\dagger + ... \\
 &amp;=&amp; 1 - iH +\frac{1}{2} H^2 - ... \\
@@ -2985,16 +2972,16 @@ Separemos <span class="math notranslate nohighlight">\({\bf a}\)</span> en su m�
 \[\begin{split}
 exp(s1)=
 \begin{bmatrix}
-0.8312119286 + 0.2148122607 i &amp; 0.364695848 + 0.3604710264 i  \\
- -0.364695848 + 0.3604710264 i &amp; 0.8312119286 - 0.2148122607 i  \\
+0.0540903596 + 0.6344360898 i &amp; 0.5698472069 + 0.5194605296 i  \\
+ -0.5698472069 + 0.5194605296 i &amp; 0.0540903596 - 0.6344360898 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 <div class="output text_latex math notranslate nohighlight">
 \[\begin{split}
 exp(s1)=
 \begin{bmatrix}
-0.8312119286 + 0.2148122607 i &amp; 0.364695848 + 0.3604710264 i  \\
- -0.364695848 + 0.3604710264 i &amp; 0.8312119286 - 0.2148122607 i  \\
+0.0540903596 + 0.6344360898 i &amp; 0.5698472069 + 0.5194605296 i  \\
+ -0.5698472069 + 0.5194605296 i &amp; 0.0540903596 - 0.6344360898 i  \\
  \end{bmatrix}
 \end{split}\]</div>
 </div>
