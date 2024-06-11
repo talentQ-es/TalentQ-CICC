@@ -255,6 +255,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Estimación de fase y aplicaciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_Bibliografia_myst.html">Bibliografía</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -488,7 +492,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Jun 07, 2024 | 8 min read</p>
+<div><p>Jun 11, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -1128,8 +1132,8 @@ Demostración<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-e1f680d8-fb71-4628-b45c-bf17a44c357d">
-<span class="eqno">(25)<a class="headerlink" href="#equation-e1f680d8-fb71-4628-b45c-bf17a44c357d" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-0020b2d6-8139-498c-8174-1d12da19366a">
+<span class="eqno">(25)<a class="headerlink" href="#equation-0020b2d6-8139-498c-8174-1d12da19366a" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^{j+1}\ket{1} 
 \nonumber\\
  &amp;=&amp; e^{2\pi i \frac{s}{r}}  \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i  s (j+1)/r} U^{j+1}\ket{1} =
@@ -1140,8 +1144,8 @@ U \ket{u_s} &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{j=0}^{r-1} e^{-2\pi i s j/r} U^
 </div>
 </details><p>El problema es que <span class="math notranslate nohighlight">\(r\)</span> es, precisamente, ¡el dato que queremos encontrar!
 Una observación importante que nos permite soslayar esta dificultad es la siguiente: vamos a tomar una <em>combinación homogénea</em> de los autoestados <span class="math notranslate nohighlight">\(\ket{u_s}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-cee61244-a747-4f1b-8c6d-de14a0fc1d19">
-<span class="eqno">(26)<a class="headerlink" href="#equation-cee61244-a747-4f1b-8c6d-de14a0fc1d19" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1772f6c8-519a-40a9-81c7-32e776a1a733">
+<span class="eqno">(26)<a class="headerlink" href="#equation-1772f6c8-519a-40a9-81c7-32e776a1a733" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1}\ket{u_s}   &amp;=&amp; \frac{1}{\sqrt{r}} \sum_{s=0}^{r-1} \left(  \frac{1}{\sqrt{r}}   \sum_{j=0}^{r-1} e^{-2\pi i  sj/r} U^{j}\ket{1} \right) ~=~ \frac{1}{r}   \sum_{j=0}^{r-1} \left(  \sum_{s=0}^{r-1}e^{-2\pi i  sj/r} \right)U^{j}\ket{1} \nonumber\\ 
 \rule{0mm}{12mm}
 &amp;=&amp;   \frac{1}{r}   \sum_{j=0}^{r-1} \, (r \delta_{j,0}) \,  U^{j}\ket{1} = U^0\ket{1} \nonumber\\  \rule{0mm}{10mm}
