@@ -66,7 +66,11 @@ for i in $part_folders; do
     done
 
 done 
-
+## Bibliografía
+cp Chapter_Bibliografia_myst.ipynb $Destination_folder/docs
+echo "- caption: Referencias" >> $Destination_folder/_toc.yml
+echo "  chapters:" >> $Destination_folder/_toc.yml
+echo "  - file: docs/Chapter_Bibliografia_myst.ipynb" >> $Destination_folder/_toc.yml
 
 
 

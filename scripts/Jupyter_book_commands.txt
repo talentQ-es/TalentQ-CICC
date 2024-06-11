@@ -1,0 +1,88 @@
+jb build repo_mybookname
+
+jb build --all -W -n --keep-going repo_mybookname  # Versión para debug
+
+jupyter-book clean mybookname/ --all  ## Limpiar
+
+ghp-import -n -p -f repo_mybookname/_build/html
+
+pip-compile  # Generar dependencias (hace falta un archivo requirements.in con las que quieres y el programa genera el requirements.txt)
+
+
+jupyter-book toc to-project path/to/_toc.yml  ## Generar un libro en base a una _toc
+
+
+
+[<img src="./figuras/Open_on_github.png" alt="Open_on_github" align=center width="200px">](https://jupyterbook.org)
+
+###########################
+######### Labels ##########
+
+(my-label)=
+
+[here's my label](my-label)
+
+
+
+
+##################################
+### Referencias bibliográficas ###
+
+```{bibliography} ../_bibliography/references.bib
+:style: plain
+```
+
+{cite}`label_de_la_cita`
+
+##################################
+######### Generar _toc ###########
+
+jupyter-book toc from-project path/to/book -f [jb-book/jb-article]
+
+##################################
+######## Ejemplos _toc ###########
+
+format: jb-book
+root: index
+options:
+  numbered: True
+parts:
+  - caption: Name of Part 1
+    chapters:
+    - file: path/to/part1/chapter1
+    - file: path/to/part1/chapter2
+      sections:
+      - file: path/to/part1/chapter2/section1
+  - caption: Name of Part 2
+    chapters:
+    - file: path/to/part2/chapter1
+    - file: path/to/part2/chapter2
+      sections:
+      - file: path/to/part2/chapter2/section1
+
+
+format: jb-article
+root: index
+sections:
+- file: path/to/chapter1
+- file: path/to/chapter2
+
+
+####################################
+######## indice en sencciones ######
+
+```{contents}
+:local:
+:depth: 1
+```
+
+################################################################
+##########################  MyST ###############################
+
+
+jupytext notebooks.ipynb --to myst                               # Generar MyST a partir de ipynb
+jupyter-book myst init mymarkdownfile.md --kernel kernelname     # Generar MyST a partir de md
+
+myst-anchors -l 2 docs/syntax/optional.md   # Ver las labels que se generan de las secciones (-l para ver si de los #, ## o ###)
+
+

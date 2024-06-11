@@ -254,6 +254,7 @@ def build_tabset(f_data, i_start_next_cell, name_code_list ,content_list):
         content   = content_list[i]
         name_code = name_code_list[i]
         
+        #print({content[-1]}, {content[-1][:-2]+'\\n",\n'})
         content[-1] = content[-1][:-2]+'\\n",\n'
 
         build_tab_item(f_data, i_start_next_cell, name_code, content)

@@ -24,6 +24,7 @@ from build_functions import bluid_references
 
 from build_functions import build_code_block
 
+
 # Obtenemos el nombre del archivo del primer algumento de la llamada
 file_name = sys.argv[1:][0]
 print("===========================")
@@ -147,11 +148,21 @@ if len(i_start_figure_list) > 0:
     if len(i_date) > 0 :
         i_date = i_date[0]
         try: 
+            ''''
             Notebook_Date = f_data[i_date].split(':')[-1].split('\\n')[0].replace(" ","")
             Date_raw = datetime.strptime(Notebook_Date, "%Y/%m/%d")
             Date_formated = Date_raw.strftime("%b %d, %Y")
 
             f_data[i_date] = '    "\\n",\n'
+            '''
+            Notebook_Date = f_data[i_date].split(':')[-1].replace("\\n","").replace("\n","").replace(" ","").replace("\"","").replace(",","")
+            Date_raw = datetime.strptime(Notebook_Date, "%Y/%m/%d")
+            Date_formated = Date_raw.strftime("%b %d, %Y")
+
+            if '\\n\",\n' in f_data[i_date]:
+                f_data[i_date] = '    "\\n",\n'
+            else:
+                f_data[i_date] = '    "\\n"\n'
 
             my_replace(f_data, i_first_line[0], 'source": [\n'+
                                             #'    "> {sub-ref}`today` | {sub-ref}`wordcount-words` words | {sub-ref}`wordcount-minutes` min read\\n",\n'
@@ -163,6 +174,7 @@ if len(i_start_figure_list) > 0:
             print(f"\033[91mFormato erroneo en la fecha. Debe de ser:\033[0m")
             print(f"\033[91m<a id='Notebook_Date'></a> Created: yyyy/mm/dd\033[0m")
             print(f"\033[91m======\033[0m") 
+            raise
     else:
         my_replace(f_data, i_first_line[0], 'source": [\n'+
                                             #'    "> {sub-ref}`today` | {sub-ref}`wordcount-words` words | {sub-ref}`wordcount-minutes` min read\\n",\n'
@@ -211,7 +223,10 @@ if len(i_pattern_code_list) > 0:
             
             for i in range(len(content)):
                 if content[i] == f_data[i_pattern_code]:
-                    content[i] ='    "",\n'
+                    if len(content) > 1:
+                        content[i] ='    "",\n'
+                    else:
+                        content[i] ='    ""\n'
 
             # La primera celda de cada bloque conserva la salida. Lo que hacemos es esconder la entrada con "remove_input"
             if k == 0:
@@ -288,9 +303,24 @@ bluid_references(f_data, 'ec_', file_name, '{eq}', i_start_all_cells)
 command_i_pattern_a_sec = 'grep -n "<a id="  '+ file_name + ' | grep "sec_" |  cut -d":" -f1 '
 i_pattern_a_sec_list = grep_file_index(command_i_pattern_a_sec)
 
-for i_pattern_a_sec in i_pattern_a_sec_list:
-    f_data[i_pattern_a_sec] = '    "('+f_data[i_pattern_a_sec].split('\'')[1]+')= \\n",\n'
 
+
+
+try:
+    for i_pattern_a_sec in i_pattern_a_sec_list:
+        f_data[i_pattern_a_sec] = '    "('+f_data[i_pattern_a_sec].split('\'')[1]+')= \\n",\n'
+
+except Exception as error :
+    print(f"\033[91m======\033[0m") 
+    print(f"\033[91m Error encontrando la label de una sección. Esta debe ir con comillas simples\033[0m")
+    print(f"\033[91m    ",{f_data[i_pattern_a_sec]},"\033[0m")
+    print(f"\033[91m    ",{f_data[i_pattern_a_sec+1]}," \033[0m")
+    print(f"\033[91m    ",{f_data[i_pattern_a_sec+2]}," \033[0m")
+    print(f"\033[91m    ",{f_data[i_pattern_a_sec+3]}," \033[0m")
+    print("")
+    print(f"\033[91m    ",error," \033[0m")
+    print(f"\033[91m======\033[0m") 
+    raise 
 
 
 ################################################################################
@@ -328,11 +358,15 @@ if len(i_pattern_ref_bib) > 0:
         f_data[i] ='    "",\n'
     f_data[i_end_content] ='    ""\n'
 
-    f_data[i_start_content] = '    "```{bibliography} \\n",\n' + \
+    """
+    f_data[i_start_content] = '    "---\\n",\n' + \
+                '    "## Bibliografía \\n",\n' + \
+                '    "```{bibliography} \\n",\n' + \
                 '    ":style: plain\\n",\n' + \
                 '    ":filter: docname in docnames\\n",\n' + \
                 '    "```",\n'
-
+    """
+    f_data[i_start_content] = '    "",\n'
 ################################################################################
 ###### Guardamos los cambios en un nuevo fichero
 
@@ -444,6 +478,7 @@ with open(out_file, 'r') as f:
             print("")
             print(f"\033[91m    ",error," \033[0m")
             print(f"\033[91m======\033[0m") 
+            raise
 
 
     

@@ -176,6 +176,7 @@ def find_div_boxes(f_data, i_start_list):
                     print(f"\033[91m Error encontrando un details {i_start_details}. No tiene título\033[0m")
                     print(f"\033[91m    ",error," \033[0m")
                     print(f"\033[91m======\033[0m") 
+                    raise
 
                 #print(i_start_details, {f_data[i_start_details]})
                 #print("")
@@ -223,6 +224,7 @@ def find_div_boxes(f_data, i_start_list):
             print("")
             print(f"\033[91m    ",error," \033[0m")
             print(f"\033[91m======\033[0m") 
+            raise
  
 
     
@@ -361,6 +363,7 @@ def find_figures(f_data, i_start_list):
             print("")
             print(f"\033[91m    ",error," \033[0m")
             print(f"\033[91m======\033[0m") 
+            raise
 
 
     index_list_list = [i_start_list_clean, 
