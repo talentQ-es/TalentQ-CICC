@@ -255,6 +255,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_043_QPE_myst.html">Estimación de fase y aplicaciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Part_03_Algoritmos/Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Chapter_Bibliografia_myst.html">Bibliografía</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -491,7 +495,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 28, 2024 | 4 min read</p>
+<div><p>Jun 11, 2024 | 4 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../../_images/Logo_TalentQ_Azul.png"><img alt="../../../_images/Logo_TalentQ_Azul.png" src="../../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -603,8 +607,12 @@ document.write(`
 </section>
 <section id="conjugacion-adjunta">
 <h3>Conjugación adjunta<a class="headerlink" href="#conjugacion-adjunta" title="Permalink to this heading">#</a></h3>
-<p>En el capítulo de <em>Números Complejos</em> estudiamos la operación de conjugación compleja que asigna a cada número <span class="math notranslate nohighlight">\(z = x+iy\)</span> otro <span class="math notranslate nohighlight">\(\bar z = x-iy\)</span> con la parte imaginaria reflejada.</p>
-<p>La <em>extensión</em> de la <em>conjugación compleja</em> <span class="math notranslate nohighlight">\(^*\)</span> de <span class="math notranslate nohighlight">\({\mathbb C}\)</span> a  todos los elementos  de <span class="math notranslate nohighlight">\(\Hil\)</span> se denomina <em>conjugación adjunta</em>  <span class="math notranslate nohighlight">\(\dagger\)</span>,</p>
+<p>En el capítulo de <em>Números Complejos</em> estudiamos la operación de conjugación compleja que asigna a cada número <span class="math notranslate nohighlight">\(z\)</span>, otro <span class="math notranslate nohighlight">\(\bar z\)</span>  con la parte imaginaria reflejada</p>
+<div class="math notranslate nohighlight">
+\[
+z = x+iy ~~~\longleftrightarrow ~~~  \bar z = x-iy
+\]</div>
+<p>Ahora vamos a pensar en esta relación como parte de una más general que afecta a  todos los elementos  de <span class="math notranslate nohighlight">\(\Hil\)</span>. Esta operación se denomina <em>conjugación adjunta</em>  <span class="math notranslate nohighlight">\(\dagger\)</span>,</p>
 <p>Asociado a cada <em>ket</em> <span class="math notranslate nohighlight">\(\ket{u}\)</span>, definimos un vector <strong>adjunto</strong>, o <em>bra</em> <span class="math notranslate nohighlight">\(\bra{u}\equiv\left(\ket{u}\right)^\dagger\)</span>,  que representamos mediante un vector fila con las componentes conjugadas complejas</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -612,13 +620,13 @@ document.write(`
 \end{pmatrix} ~~~~~{\rightarrow}~~~~~~ \left(\ket{u}\right)^\dagger \equiv \bra{u} =\big( {u_1^*} ~~~ {u_2^*} ~~~ \cdots ~~~ {u_N^*}
 \big)
 \end{split}\]</div>
-<p>Consistentemente encontramos para el producto de un vector por un número complejo <span class="math notranslate nohighlight">\(\lambda\)</span></p>
+<p>¿Qué pasa con el producto de un número <span class="math notranslate nohighlight">\(\lambda\)</span> por un vector? La regla anterior afecta a ambos, y debe ser consistente</p>
 <div class="math notranslate nohighlight">
 \[
 \dagger \,:\quad\,  \lambda\ket{u}=\ket{\lambda u} ~~~~~{\rightarrow}~~~~~~ \left(\lambda\ket{u}\right)^\dagger=\lambda^*\bra{u} = \bra{u}\lambda^* = \bra{\lambda u}
 \]</div>
 <p>ya que el producto de un vector por un número es conmutativo.</p>
-<p>Al igual que la conjugación compleja, la conjugación adjunta es una <em>involución</em>: su aplicación sucesiva devuelve el vector original</p>
+<p>Al igual que la conjugación compleja, la conjugación adjunta es una <em>involución</em>. Esto es, su aplicación sucesiva devuelve el vector original</p>
 <div class="math notranslate nohighlight">
 \[
 (\ket{u}^\dagger)^\dagger =\bra{u}^\dagger =  \ket{u}
@@ -860,8 +868,8 @@ Solución<div class="sd-summary-down docutils">
 <div class="sd-summary-up docutils">
 <svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
 </summary><div class="sd-summary-content sd-card-body docutils">
-<div class="amsmath math notranslate nohighlight" id="equation-c3e5732b-7bc2-4f6e-90c6-fee53e94ef7f">
-<span class="eqno">(3)<a class="headerlink" href="#equation-c3e5732b-7bc2-4f6e-90c6-fee53e94ef7f" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-05701891-fbbd-412f-b37f-beb7b977ccde">
+<span class="eqno">(3)<a class="headerlink" href="#equation-05701891-fbbd-412f-b37f-beb7b977ccde" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \braket{e_k}{v} &amp;=&amp;  \bra{e_k}\left(\sum_{j=1}^N v_j\ket{e_j}\right) \nonumber\\
                 &amp;=&amp;  \sum_{j=1}^N  v_j\braket{e_k}{e_j}  \nonumber\\
                 &amp;=&amp;  \sum_{j=1}^N  v_j\delta_{kj} = v_k

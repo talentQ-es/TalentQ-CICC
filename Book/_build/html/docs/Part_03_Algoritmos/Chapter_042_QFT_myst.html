@@ -255,6 +255,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Chapter_043_QPE_myst.html">Estimación de fase y aplicaciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Chapter_044_Grover_myst.html">Algoritmos de búsqueda</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Referencias</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chapter_Bibliografia_myst.html">Bibliografía</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -487,7 +491,7 @@ document.write(`
                 <article class="bd-article">
                   
   <blockquote>
-<div><p>Apr 28, 2024 | 8 min read</p>
+<div><p>Jun 11, 2024 | 8 min read</p>
 </div></blockquote>
 <figure class="align-right">
 <a class="reference internal image-reference" href="../../_images/Logo_TalentQ_Azul.png"><img alt="../../_images/Logo_TalentQ_Azul.png" src="../../_images/Logo_TalentQ_Azul.png" style="width: 150px;" /></a>
@@ -544,13 +548,13 @@ W: \ket{x} \to \ket{\tilde x} =  \frac{1}{\sqrt{N}}\sum_{y}(-1)^{xy}\ket{y} =   
 <p>Ya hemos visto cómo la fase <span class="math notranslate nohighlight">\((-1)^{xy}= e^{2\pi i   xy/2}\)</span> produce <em>interferencias</em> interesantes que concentran la probabilidad en soluciones a problemas como el de Simon</p>
 </div>
 <p>La fase <span class="math notranslate nohighlight">\( e^{2\pi i/N}\)</span> también sirve para producir interferencias destructivas y constructivas interesantes. Esto se debe esencialmente a la importante <em>fórmula de suma nula</em> que hemos estudiado en el tema de Números Complejos</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dc459663-9fdd-40d5-8ccf-d193b34a3f0b">
-<span class="eqno">(19)<a class="headerlink" href="#equation-dc459663-9fdd-40d5-8ccf-d193b34a3f0b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3375e06a-e321-44ea-bc3e-d7b2f402f88a">
+<span class="eqno">(19)<a class="headerlink" href="#equation-3375e06a-e321-44ea-bc3e-d7b2f402f88a" title="Permalink to this equation">#</a></span>\[\begin{equation}
  \sum_{y=0}^{N} e^{2\pi i xy/N} = N \delta_{x, 0}  
 \end{equation}\]</div>
 <p>La unitariedad de <span class="math notranslate nohighlight">\(U_{TFC}\)</span> es equivalente a que la base de Fourier también sea ortonormal. Para demostrar esto sólo es necesaria la fórmula de suma nula</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fc7e6e9e-c2df-49e6-801f-b8d32a7b26a0">
-<span class="eqno">(20)<a class="headerlink" href="#equation-fc7e6e9e-c2df-49e6-801f-b8d32a7b26a0" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-78683ebb-28c3-4a30-b481-7032af878396">
+<span class="eqno">(20)<a class="headerlink" href="#equation-78683ebb-28c3-4a30-b481-7032af878396" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \braket{\tilde x'}{\tilde x} &amp;=&amp; \left(\bra{y'}\frac{1}{\sqrt{N}}\sum_{y'} e^{-2\pi i  x'y' /N}\right)
 \left( \frac{1}{\sqrt{N}}\sum_{y} e^{2\pi i  xy /N} \ket{y} \right) \nonumber \\ \rule{0mm}{12mm}
 &amp;=&amp; \frac{1}{N} \sum_{y'y} e^{-2\pi i  x'y' /N} e^{2\pi i  xy /N} \braket{y'}{y}\nonumber\\ \rule{0mm}{12mm}
@@ -571,8 +575,8 @@ U^{-1}_{TFC}\ket{x} = U^{\dagger}_{TFC}\ket{x}   =  \frac{1}{\sqrt{N}}\sum_{y} e
 <div class="note admonition">
 <p class="admonition-title">Notar (TFC y TFD)</p>
 <p>Actuando con <span class="math notranslate nohighlight">\(U_{TFC}\)</span> sobre un vector <span class="math notranslate nohighlight">\(\ket{f} = \sum_x f(x)\ket{x}\)</span> de componentes <span class="math notranslate nohighlight">\(f(x)\)</span> en la base <span class="math notranslate nohighlight">\(\ket{x}\)</span> obtendremos otro vector</p>
-<div class="amsmath math notranslate nohighlight" id="equation-77e4c9af-7dfd-447f-aee9-6c05963a66c0">
-<span class="eqno">(21)<a class="headerlink" href="#equation-77e4c9af-7dfd-447f-aee9-6c05963a66c0" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-20c203b2-5e6d-43cf-9678-8eceafb79740">
+<span class="eqno">(21)<a class="headerlink" href="#equation-20c203b2-5e6d-43cf-9678-8eceafb79740" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \ket{\tilde f} = U_{TCF}\ket{f} &amp;=&amp; \sum_x f(x) U_{TCF}\ket{x} ~=~\sum_x f(x) \frac{1}{\sqrt{N}}\sum_y e^{2\pi i xy} \ket{y} 
 \\ \rule{0mm}{12mm}
 &amp;=&amp;    \sum_y\left( \frac{1}{\sqrt{N}}\sum_x f(x) e^{2\pi i xy}\right) \ket{y} ~=~  \sum_y \tilde f(y) \ket{y}
@@ -623,8 +627,8 @@ U_{TFC} =\frac{1}{2}
 </div>
 <p>Vamos a estudiar paso a paso la acción de <span class="math notranslate nohighlight">\(U_{\rm TFC}\)</span> sobre un elemento <span class="math notranslate nohighlight">\(\ket{x} = \ket{x_{n-1}... x_0}\)</span>
 de la base computacional</p>
-<div class="amsmath math notranslate nohighlight" id="equation-945d6c55-f045-4c54-9562-90ac8d61244f">
-<span class="eqno">(22)<a class="headerlink" href="#equation-945d6c55-f045-4c54-9562-90ac8d61244f" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-95855acf-ef70-4bbe-b51b-8d27a6f0a73e">
+<span class="eqno">(22)<a class="headerlink" href="#equation-95855acf-ef70-4bbe-b51b-8d27a6f0a73e" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
  \ket{\tilde x}  ~\equiv ~  U_{\rm TFC}\ket{x}  &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y=0}^{2^n-1} e^{2\pi i  xy/2^n}\ket{y}  
 \nonumber\\ \rule{0mm}{14mm}
 &amp;=&amp;  \frac{1}{\sqrt{N}} \sum_{y_1,...,y_n=\{0,1\}} e^{ 2\pi i x \left( y_{n-1}2^{n-1} + y_{n-2}2^{n-2}  + ... + y_0\right)/2^n } \ket{y_{n-1}}\ket{y_{n-2}}\ldots \ket{ y_0}
@@ -664,8 +668,8 @@ Será util escribir la <em>acción</em> de <span class="math notranslate nohighl
  \to  \left\{ \begin{array}{l}  \ket{0}\ket{x} \\ \rule{0mm}{10mm}  e^{2 \pi i   \frac{x}{2^{k}}} \ket{1}\ket{x} \end{array} \right.
 \end{split}\]</div>
 <p>Vamos a analizar la acción del primer bloque</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60ea96f4-9a97-4bf2-a060-e2ac4a2b2af1">
-<span class="eqno">(23)<a class="headerlink" href="#equation-60ea96f4-9a97-4bf2-a060-e2ac4a2b2af1" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-f7c56db0-f045-43fa-9f92-cc3e13e225a6">
+<span class="eqno">(23)<a class="headerlink" href="#equation-f7c56db0-f045-43fa-9f92-cc3e13e225a6" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 (H\ket{x_{n-1}})\ket{x_{n-2}...x_0} &amp;=&amp;\left( \ket{0} + e^{2\pi i \left(\frac{x_{n-1}}{2}\right)} \ket{1}\right) \ket{x_{n-2}...x_0}
 \\ \rule{0mm}{12mm}
 \left(\rule{0mm}{3mm} R_{2}^{x_{n-2}}H\ket{x_{n-1}}\right) \ket{x_{n-2}...x_0}  &amp;=&amp; 
@@ -846,8 +850,8 @@ registro es  una superposición normalizada</p>
 \ket{\Psi} = \frac{1}{\sqrt{L}}  \sum_{l=0}^{L-1}\ket{ lP + p_0}\, .
 \]</div>
 <p>En este punto, en el algoritmo de Simon, volveríamos a aplicar la puerta <span class="math notranslate nohighlight">\(W_n\)</span> para conseguir una interferencia constructiva. En este caso, al tratarse de una periodicidad numérica, no bit a bit, efectuaremos sobre el estado  una transformación de Fourier cuántica, usando que <span class="math notranslate nohighlight">\(N/P = M\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-d8e70244-5c05-4e30-bf9a-21802b76aa61">
-<span class="eqno">(24)<a class="headerlink" href="#equation-d8e70244-5c05-4e30-bf9a-21802b76aa61" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
+<div class="amsmath math notranslate nohighlight" id="equation-1ccc796b-eb2a-4bdf-8414-a3cd1f132835">
+<span class="eqno">(24)<a class="headerlink" href="#equation-1ccc796b-eb2a-4bdf-8414-a3cd1f132835" title="Permalink to this equation">#</a></span>\[\begin{eqnarray}
 \ket{\Psi'} = U_{\rm TFC} \ket{\Psi} &amp;=&amp; \frac{1}{\sqrt{N M}} \sum_{y=0}^{N-1}   \sum_{l=0}^{L-1}e^{+2\pi i (p_0 + lP)y/N}\ket{y} \nonumber\\ \rule{0mm}{12mm}
 &amp;=&amp; \frac{1}{\sqrt{N L}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N} \left( \sum_{l=0}^{L-1} e^{+2\pi i ly/L}\right) \ket{y}  \\ \rule{0mm}{15mm}
  &amp;=&amp; \frac{1}{\sqrt{N L}} \sum_{y=0}^{N-1}   e^{+2\pi i p_0 y/N}  \left( \rule{0mm}{3.5mm} L \delta_{y, sL}\right) \ket{y} \nonumber\\ \rule{0mm}{15mm}

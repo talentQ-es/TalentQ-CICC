@@ -41,3 +41,6 @@ parts:
   - file:  docs/Part_03_Algoritmos/Chapter_043_QPE_myst.ipynb-e
   - file:  docs/Part_03_Algoritmos/Chapter_044_Grover_myst.ipynb
   - file:  docs/Part_03_Algoritmos/Chapter_044_Grover_myst.ipynb-e
+- caption: Referencias
+  chapters:
+  - file: docs/Chapter_Bibliografia_myst.ipynb

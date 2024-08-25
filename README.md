@@ -1,4 +1,3 @@
-# Curso Básico de Computación Cuántica
 ## Índice
 
 - **[](./Notebooks/Part_00_Intro)**
